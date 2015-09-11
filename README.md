@@ -1,2 +1,2 @@
 # prefs
-Preferences for things
+Preferences for my text editors.
