@@ -1,0 +1,10 @@
+Package Control
+Anaconda
+ColorSublime
+Color Highlighter
+Emmet
+GitGutter
+SideBarEnhancements
+SublimeLinter
+
+THeme - Flatland Dark
