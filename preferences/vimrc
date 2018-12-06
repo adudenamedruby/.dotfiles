@@ -81,8 +81,8 @@ set mat=2
 "set cursorline
 
 " column line
-highlight ColorColumn ctermbg=gray
-set colorcolumn=90
+highlight ColorColumn ctermbg=magenta "set to whatever you like
+call matchadd('ColorColumn', '\%81v', 100) "set column nr
 
 
 
@@ -125,56 +125,67 @@ let g:currentmode={
 " Automatically change the statusline color depending on mode
 function! ChangeStatuslineColor()
   if (mode() =~# '\v(n|no)')
-    exe 'hi! StatusLine ctermfg=008'
+    exe 'hi! StatusLine ctermfg=133'
   elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'V·Block' || get(g:currentmode, mode(), '') ==# 't')
+    " Grey here for visual line
     exe 'hi! StatusLine ctermfg=005'
   elseif (mode() ==# 'i')
-    exe 'hi! StatusLine ctermfg=141'
+    " Insert mode colour:
+    exe 'hi! StatusLine ctermbg=226 ctermfg=154'
   else
-    exe 'hi! StatusLine ctermfg=163'
+    exe 'hi! StatusLine ctermbg=226 ctermfg=052'
   endif
 
   return ''
 endfunction
 
+
 " Draw statusline
 set laststatus=2
 set statusline=
+set statusline+=%2*\ %m\ %*
+set statusline+=%3*\ \%n\ %*
 set statusline+=%{ChangeStatuslineColor()}
 set statusline+=\ \ \ %{toupper(g:currentmode[mode()])}\ \ \ 
-set statusline+=%1*\ \ %{StatuslineGit()}
+set statusline+=%5*\ \ %{StatuslineGit()}
 set statusline+=\ ››\ %*
-set statusline+=%2*\ %m\ %*
-set statusline+=%9*\ %F\ %*
+set statusline+=\ %F\ 
 set statusline+=%=
-set statusline+=\‹‹\ L:\ %l
+set statusline+=%4*\‹‹\ L:\ %l
 set statusline+=\ \|\ C:\ %c
-set statusline+=\ ››\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\ [%{&fileformat}\]
-set statusline+=\ %p\ \ \ 
+set statusline+=\ ››
+set statusline+=%6*\ %y\ 
+set statusline+=%1*\ %{&fileencoding?&fileencoding:&encoding}\ 
+set statusline+=%9*\ [%{&fileformat}\]\ 
+set statusline+=%8*\ \ %p%%\ \ 
 
-" Gold
-hi User1 ctermfg=000 ctermbg=135
 
-" Red
-hi User2 ctermfg=000 ctermbg=160
+" Red w/ yellow text used for modifier
+hi User2 ctermfg=226 ctermbg=160
 
-" Green
+" Green with black text used for buffer number
 hi User3 ctermfg=000 ctermbg=154
 
-" Light-blue/teal
-hi User4 ctermfg=000 ctermbg=159
+" Light-blue/teal used for lines
+hi User4 ctermfg=232 ctermbg=123
 
-" Fuschia
-hi User5 ctermfg=000 ctermbg=163
+" Teal used for filetype
+hi User6 ctermfg=232 ctermbg=045
+
+" Gold used for encoding
+hi User1 ctermfg=051 ctermbg=033
+
+" used for fileformat
+hi User9 ctermfg=051 ctermbg=026
+
+" orange used for git
+hi User5 ctermfg=232 ctermbg=202
 
 " Purple
 hi User7 ctermfg=000 ctermbg=141
 
-" Rose
-hi User8 ctermfg=000 ctermbg=133
-"hi User9 ctermfg=000 ctermbg=136
+" Rose used for file percent
+hi User8 ctermfg=051 ctermbg=019
 
 
 
