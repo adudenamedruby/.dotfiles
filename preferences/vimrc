@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" .vimrc (30/03/2017)
+" .vimrc (12/05/2018)
 "
 " => roux g buciu
 "
@@ -9,6 +9,7 @@
 "
 "   -> General
 "   -> VIM user interface
+"   -> Statusline
 "   -> Colors & fonts
 "   -> Text, tab & indent
 "   -> ViVisual mode related
@@ -25,8 +26,13 @@ set undolevels=200
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+" let mapleader = ","
+" let g:mapleader = ","
+
+" enable vim to do cool stuff without caring about vi
+set nocompatible
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -36,6 +42,9 @@ let g:mapleader = ","
 
 "Add line numbering
 set number
+
+"Add relative line numbering
+set relativenumber
 
 "Always show current position
 set ruler
@@ -53,6 +62,9 @@ set smartcase
 " Highlight search results
 set hlsearch
 
+" turn off search highlight
+" nnoremap <leader><space> :nohlsearch<CR>
+
 " Makes search act like search in modern browsers
 set incsearch
 
@@ -65,6 +77,107 @@ set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
+" Draws a cursorline under the cursor
+"set cursorline
+
+" column line
+highlight ColorColumn ctermbg=gray
+set colorcolumn=90
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Statusline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+" :h mode() to see all modes
+let g:currentmode={
+    \ 'n'      : 'NORMAL',
+    \ 'no'     : 'NORMAL·Operator Pending ',
+    \ 'v'      : 'VISUAL ',
+    \ 'V'      : 'VISUAL·LINE ',
+    \ '\<C-V>' : 'VISUAL·BLOCK ',
+    \ 's'      : 'SELECT ',
+    \ 'S'      : 'SELECT·LINE ',
+    \ '\<C-S>' : 'S·Block ',
+    \ 'i'      : 'INSERT ',
+    \ 'R'      : 'REPLACE ',
+    \ 'Rv'     : 'VISUAL·REPLACE ',
+    \ 'c'      : 'COMMAND ',
+    \ 'cv'     : 'VIM EX ',
+    \ 'ce'     : 'EX ',
+    \ 'r'      : 'PROMPT ',
+    \ 'rm'     : 'More ',
+    \ 'r?'     : 'Confirm ',
+    \ '!'      : 'SHELL ',
+    \ 't'      : 'TERMINAL '
+    \}
+
+" Automatically change the statusline color depending on mode
+function! ChangeStatuslineColor()
+  if (mode() =~# '\v(n|no)')
+    exe 'hi! StatusLine ctermfg=008'
+  elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'V·Block' || get(g:currentmode, mode(), '') ==# 't')
+    exe 'hi! StatusLine ctermfg=005'
+  elseif (mode() ==# 'i')
+    exe 'hi! StatusLine ctermfg=141'
+  else
+    exe 'hi! StatusLine ctermfg=163'
+  endif
+
+  return ''
+endfunction
+
+" Draw statusline
+set laststatus=2
+set statusline=
+set statusline+=%{ChangeStatuslineColor()}
+set statusline+=\ \ \ %{toupper(g:currentmode[mode()])}\ \ \ 
+set statusline+=%1*\ \ %{StatuslineGit()}
+set statusline+=\ ››\ %*
+set statusline+=%2*\ %m\ %*
+set statusline+=%9*\ %F\ %*
+set statusline+=%=
+set statusline+=\‹‹\ L:\ %l
+set statusline+=\ \|\ C:\ %c
+set statusline+=\ ››\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ [%{&fileformat}\]
+set statusline+=\ %p\ \ \ 
+
+" Gold
+hi User1 ctermfg=000 ctermbg=135
+
+" Red
+hi User2 ctermfg=000 ctermbg=160
+
+" Green
+hi User3 ctermfg=000 ctermbg=154
+
+" Light-blue/teal
+hi User4 ctermfg=000 ctermbg=159
+
+" Fuschia
+hi User5 ctermfg=000 ctermbg=163
+
+" Purple
+hi User7 ctermfg=000 ctermbg=141
+
+" Rose
+hi User8 ctermfg=000 ctermbg=133
+"hi User9 ctermfg=000 ctermbg=136
+
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -76,6 +189,8 @@ set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -94,6 +209,8 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+
+
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
@@ -101,6 +218,8 @@ set wrap "Wrap lines
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -112,11 +231,12 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 'jk' as ESC
-inoremap qj  <esc>
+" 'qj' as ESC
+" inoremap qj  <esc>
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
