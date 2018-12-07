@@ -1,11 +1,12 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" .vimrc (12/05/2018)
+"  .vimrc
 "
+" _> maintained by
 " => roux g buciu
-"
+" => last updated(12/05/2018)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-"   TABLE OF CONTENTS (SECTIONS)
+"   TABLE OF CONTENTS
 "
 "   -> General
 "   -> VIM user interface
@@ -107,7 +108,7 @@ autocmd filetype html,xml set listchars-=tab:>.
 function CurrentGitStatus()
     let gitoutput = split(system('git status --porcelain -b '.shellescape(expand('%')).' 2>/dev/null'),'\n')
     if len(gitoutput) > 0
-        let b:gitstatus = ' ' . strpart(get(gitoutput,0,''),3) 
+        let b:gitstatus = ' ' . strpart(get(gitoutput,0,''),3)
     else
         let b:gitstatus = ''
     endif
@@ -190,13 +191,13 @@ set statusline+=
 set statusline+=%{ChangeStatuslineColor()}
 set statusline+=\ \ \ %{toupper(g:currentmode[mode()])}\ \ \ 
 set statusline+=%=
-set statusline+=%8*\ \ %7*\ %c\ 
-set statusline+=%6*\%5*\ %p%%\ ☰\ \ %* 
+set statusline+=%8*\ [%b][[0x%B]\ %7*\ %c\
+set statusline+=%6*\%5*\ %p%%\ ☰\ \ %*
 set statusline+=%4*%3*\ %y
 set statusline+=\ %2*%1*\ %{&fileencoding?&fileencoding:&encoding}\ [%{&fileformat}\]%*
 
 
-" dark grey with beige text 
+" dark grey with beige text
 hi User1 ctermfg=007 ctermbg=237
 
 " Transition
@@ -299,14 +300,14 @@ endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
-" remapping keys to useful things
-map <up> <nop>
-map <down> <nop>
+" Remapping the arrow keys to other useful things
+map <up> <C-F>
+map <down> <C-D>
 map <left> <nop>
 map <right> <nop>
 
 " Swap implementations of ` and ' jump to markers
 " By default, ' jumps to the marked line, ` jumps to the marked line and
-" column, so swap them
+" column which is infinitely more useful, so swap them
 nnoremap ' `
 nnoremap ` '
