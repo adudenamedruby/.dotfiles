@@ -1,49 +1,60 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  .vimrc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" _> maintained by
-" => roux g buciu
-" => last updated(12/05/2018)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"   .vimrc
+"
+"   => maintained by roux g. buciu
+"
+"
+"   'To a hammer, everything looks like a nail. Wield VIM responsibly.'
+"       (Or - don't use shit you don't need.)
+"
+"   => last updated(12/07/2018)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 "   TABLE OF CONTENTS
 "
 "   -> General
-"   -> VIM user interface
+"   -> VIM Quality of Life
+"   -> Search options
 "   -> Statusline
 "   -> Colors & fonts
 "   -> Text, tab & indent
 "   -> ViVisual mode related
 "   -> Moving around, tabs and buffers
-"   -> Editing mappings
+"   -> Personal Key Mappings
 "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use vim settnigs rather than vi settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Use VIM settings rather than vi settings
 "   - this must be first because it changes other options
 set nocompatible
 
-" Sets how many lines of history VIM has to remember
+" Make sure that unsaved buffers that are to be put in the background are
+" allowed to go in there (ie. the "must save first" error doesn't come up)
 set hidden
+
+" Sets how many lines of history VIM has to remember
 set history=200
 set undolevels=200
 
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-" let mapleader = ","
-" let g:mapleader = ","
+" Let VIM try and figure out filetypes if it can
+filetype on
+
+" Enable syntax highlighting
+syntax enable
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VIM Quality of Life
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
-"set so=7
-
-" keep 3 lines off the edges of the screen when scrolling
+" Keep 3 lines off the edges of the screen when scrolling for more context
+" while doing the scroll thing.
 set scrolloff=4
 
 "Add line numbering
@@ -58,21 +69,6 @@ set ruler
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
-
-" Ignore case when searching
-set ignorecase
-
-" When searching try to be smart about cases
-set smartcase
-
-" Highlight search results
-set hlsearch
-
-" turn off search highlight
-" nnoremap <leader><space> :nohlsearch<CR>
-
-" Makes search act like search in modern browsers
-set incsearch
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
@@ -100,9 +96,40 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 " but ignore them if in an html file or xml file
 autocmd filetype html,xml set listchars-=tab:>.
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.coffee :call DeleteTrailingWS()
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Statusline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Set case insensitive search
+set ignorecase
+
+" Smart case search ignores case if search pattern is lowercase
+" Otherwise, search is case-sensitive
+set smartcase
+
+" Hilight search terms
+set hlsearch
+
+" Should show search matches as you type
+set incsearch
+
+" turn off search highlight
+nnoremap <leader>/ :nohlsearch<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Statusline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " returns a string of the current branch
 function CurrentGitStatus()
@@ -115,69 +142,92 @@ function CurrentGitStatus()
 endfunc
 autocmd BufEnter,BufWritePost * call CurrentGitStatus()
 
-" :h mode() to see all modes
-let g:currentmode={
-    \ 'n'      : 'NORMAL',
-    \ 'no'     : 'NORMAL·Operator Pending ',
-    \ 'v'      : 'VISUAL ',
-    \ 'V'      : 'VISUAL·LINE ',
-    \ '\<C-V>' : 'VISUAL·BLOCK ',
-    \ 's'      : 'SELECT ',
-    \ 'S'      : 'SELECT·LINE ',
-    \ '\<C-S>' : 'S·Block ',
-    \ 'i'      : 'INSERT ',
-    \ 'R'      : 'REPLACE ',
-    \ 'Rv'     : 'VISUAL·REPLACE ',
-    \ 'c'      : 'COMMAND ',
-    \ 'cv'     : 'VIM EX ',
-    \ 'ce'     : 'EX ',
-    \ 'r'      : 'PROMPT ',
-    \ 'rm'     : 'More ',
-    \ 'r?'     : 'Confirm ',
-    \ '!'      : 'SHELL ',
-    \ 't'      : 'TERMINAL '
-    \}
+function! GetMode()
+    if (mode() ==# 'n')
+        return 'NORMAL'
+    elseif (mode() ==# 'no')
+        return 'NORMAL·OPERATOR PENDING '
+    elseif (mode() ==# 'i')
+        return 'INSERT'
+    elseif (mode() ==# 'v')
+        return 'VISUAL'
+    elseif (mode() ==# 'V')
+        return 'VISUAL·LINE'
+    elseif (mode() ==# 'R')
+        return 'REPLACE'
+    elseif (mode() ==# 'Rv')
+        return 'VISUAL·REPLACE'
+    elseif (mode() ==# 's')
+        return 'SELECT'
+    elseif (mode() ==# 'S')
+        return 'SELECT·LINE'
+    elseif (mode() ==# 'c')
+        return 'COMMAND'
+    elseif (mode() ==# 'cv')
+        return 'VIM·EX'
+    elseif (mode() ==# 'ce')
+        return 'EX'
+    elseif (mode() ==# 'r')
+        return 'PROMPT'
+    elseif (mode() ==# 'rm')
+        return 'MORE·AVAILABLE'
+    elseif (mode() ==# 'r?')
+        return 'CONFIRMATION·REQUIRED'
+    elseif (mode() ==# 't')
+        return 'TERMINAL·MODE'
+    elseif (mode() ==# '!')
+        return 'SHELL·EXECUTING'
+    else
+        return 'SPECIAL·MODE'
+    endif
+endfunction
 
 " Automatically change the statusline color depending on mode for the NORMAL bar
 function! ChangeStatuslineColor()
-  if (mode() =~# '\v(n|no)')
+  if (mode() ==# 'n' || mode() ==# 'no')
     exe 'hi! StatusLine ctermfg=13 ctermbg=7'
-  elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'V·Block' || get(g:currentmode, mode(), '') ==# 't')
-    " Grey here for visual line
+  elseif (mode() ==# 'v' || mode() ==# 'V')
+    " Visual mode
     exe 'hi! StatusLine ctermfg=54 ctermbg=7'
   elseif (mode() ==# 'i')
     " Insert mode colour:
     exe 'hi! StatusLine ctermfg=12 ctermbg=7'
+  elseif (mode() ==# 'R')
+    " Replace mode colour:
+    exe 'hi! StatusLine ctermfg=9 ctermbg=7'
   elseif (mode() ==# 'c')
     " Command mode colour:
-    exe 'hi! StatusLine ctermfg=11 ctermbg=0'
+    exe 'hi! StatusLine ctermfg=22 ctermbg=7'
   else
-    exe 'hi! StatusLine ctermfg=9 ctermbg=7'
+    exe 'hi! StatusLine ctermfg=198 ctermbg=7'
   endif
 
   return ''
 endfunction
 
-" Automatically change the statusline color depending on mode for the NORMAL bar
+" Automatically change the initial statusline character color depending on mode for the NORMAL bar
 function! ChangeStatuslineLeftColor()
-  if (mode() =~# '\v(n|no)')
+  if (mode() ==# 'n' || mode() ==# 'no')
+    " normal modes
     exe 'hi! StatusLine ctermfg=15 ctermbg=13'
-  elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'V·Block' || get(g:currentmode, mode(), '') ==# 't')
-    " Grey here for visual line
+  elseif (mode() ==# 'v' || mode() ==# 'V')
+    " Grey here for visual modes
     exe 'hi! StatusLine ctermfg=15 ctermbg=54'
   elseif (mode() ==# 'i')
     " Insert mode colour:
     exe 'hi! StatusLine ctermfg=15 ctermbg=12'
+  elseif (mode() ==# 'R')
+    " Replace mode colour:
+    exe 'hi! StatusLine ctermfg=9 ctermbg=9'
   elseif (mode() ==# 'c')
     " Command mode colour:
-    exe 'hi! StatusLine ctermfg=15 ctermbg=11'
+    exe 'hi! StatusLine ctermfg=15 ctermbg=22'
   else
-    exe 'hi! StatusLine ctermfg=15 ctermbg=9'
+    exe 'hi! StatusLine ctermfg=15 ctermbg=198'
   endif
 
   return ''
 endfunction
-
 
 " Draw statusline
 set laststatus=2
@@ -189,62 +239,44 @@ set statusline+=%4*%5*\ %f\ %r%m\ %*
 set statusline+=%{ChangeStatuslineLeftColor()}
 set statusline+=
 set statusline+=%{ChangeStatuslineColor()}
-set statusline+=\ \ \ %{toupper(g:currentmode[mode()])}\ \ \ 
+set statusline+=\ \ \ %{GetMode()}\ \ \ 
 set statusline+=%=
-set statusline+=%8*\ [%b][[0x%B]\ %7*\ %c\
-set statusline+=%6*\%5*\ %p%%\ ☰\ \ %*
+set statusline+=%8*\ [%b][[0x%B]\ %7*\ %c
+set statusline+=\ %6*\%5*\ %p%%\ ☰\ \ %*
 set statusline+=%4*%3*\ %y
 set statusline+=\ %2*%1*\ %{&fileencoding?&fileencoding:&encoding}\ [%{&fileformat}\]%*
 
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " dark grey with beige text
 hi User1 ctermfg=007 ctermbg=237
-
 " Transition
 hi User2 ctermfg=237 ctermbg=14
-
 " Green with yellow background
 hi User3 ctermfg=226 ctermbg=14
-
 " Transition
 hi User4 ctermfg=14 ctermbg=015
-
 " Beige with dark text
 hi User5 ctermfg=0 ctermbg=15
-
 " Transition
 hi User6 ctermfg=15 ctermbg=11
-
 " gold with black text
 hi User7 ctermfg=0 ctermbg=11
-
 " Transition
 hi User8 ctermfg=11 ctermbg=235
-
 " Rose used for file percent
 hi User9 ctermfg=9 ctermbg=235
-
 " use a status bar that is 2 rows high
 set cmdheight=2
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
-syntax enable
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
 set expandtab
 
@@ -264,9 +296,9 @@ set wrap "Wrap lines
 
 
 
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Visual mode related
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f')<CR>
@@ -274,9 +306,9 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -285,24 +317,21 @@ map <C-l> <C-W>l
 
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 'qj' as ESC
-" inoremap qj  <esc>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Personal Key Mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+
+" Easier way of pressing ESC for a Dvorak user. Because qj is great
+" but I always end up recording macros! :(
+inoremap <C-t>  <esc>
 
 " Remapping the arrow keys to other useful things
-map <up> <C-F>
-map <down> <C-D>
+map <up> <C-B>
+map <down> <C-F>
 map <left> <nop>
 map <right> <nop>
 
@@ -311,3 +340,8 @@ map <right> <nop>
 " column which is infinitely more useful, so swap them
 nnoremap ' `
 nnoremap ` '
+
+" If there's long and wrapped lines, then j and k behave unnaturally.
+" Let's take care of that unnecessary silliness.
+nnoremap j gj
+nnoremap k gk
