@@ -19,6 +19,10 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use vim settnigs rather than vi settings
+"   - this must be first because it changes other options
+set nocompatible
+
 " Sets how many lines of history VIM has to remember
 set hidden
 set history=200
@@ -29,8 +33,6 @@ set undolevels=200
 " let mapleader = ","
 " let g:mapleader = ","
 
-" enable vim to do cool stuff without caring about vi
-set nocompatible
 
 
 
@@ -39,6 +41,9 @@ set nocompatible
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
 "set so=7
+
+" keep 3 lines off the edges of the screen when scrolling
+set scrolloff=4
 
 "Add line numbering
 set number
@@ -80,24 +85,34 @@ set mat=2
 " Draws a cursorline under the cursor
 "set cursorline
 
+" normal OS clipboard interaction
+set clipboard=unnamed
+
 " column line
 highlight ColorColumn ctermbg=magenta "set to whatever you like
 call matchadd('ColorColumn', '\%81v', 100) "set column nr
 
+" higight whitespaces and tabs and extensions
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
+" but ignore them if in an html file or xml file
+autocmd filetype html,xml set listchars-=tab:>.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Statusline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
-function! StatuslineGit()
-  let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-endfunction
+" returns a string of the current branch
+function CurrentGitStatus()
+    let gitoutput = split(system('git status --porcelain -b '.shellescape(expand('%')).' 2>/dev/null'),'\n')
+    if len(gitoutput) > 0
+        let b:gitstatus = ' ' . strpart(get(gitoutput,0,''),3) 
+    else
+        let b:gitstatus = ''
+    endif
+endfunc
+autocmd BufEnter,BufWritePost * call CurrentGitStatus()
 
 " :h mode() to see all modes
 let g:currentmode={
@@ -122,18 +137,41 @@ let g:currentmode={
     \ 't'      : 'TERMINAL '
     \}
 
-" Automatically change the statusline color depending on mode
+" Automatically change the statusline color depending on mode for the NORMAL bar
 function! ChangeStatuslineColor()
   if (mode() =~# '\v(n|no)')
-    exe 'hi! StatusLine ctermfg=133'
+    exe 'hi! StatusLine ctermfg=13 ctermbg=7'
   elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'V·Block' || get(g:currentmode, mode(), '') ==# 't')
     " Grey here for visual line
-    exe 'hi! StatusLine ctermfg=005'
+    exe 'hi! StatusLine ctermfg=54 ctermbg=7'
   elseif (mode() ==# 'i')
     " Insert mode colour:
-    exe 'hi! StatusLine ctermbg=226 ctermfg=154'
+    exe 'hi! StatusLine ctermfg=12 ctermbg=7'
+  elseif (mode() ==# 'c')
+    " Command mode colour:
+    exe 'hi! StatusLine ctermfg=11 ctermbg=0'
   else
-    exe 'hi! StatusLine ctermbg=226 ctermfg=052'
+    exe 'hi! StatusLine ctermfg=9 ctermbg=7'
+  endif
+
+  return ''
+endfunction
+
+" Automatically change the statusline color depending on mode for the NORMAL bar
+function! ChangeStatuslineLeftColor()
+  if (mode() =~# '\v(n|no)')
+    exe 'hi! StatusLine ctermfg=15 ctermbg=13'
+  elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'V·Block' || get(g:currentmode, mode(), '') ==# 't')
+    " Grey here for visual line
+    exe 'hi! StatusLine ctermfg=15 ctermbg=54'
+  elseif (mode() ==# 'i')
+    " Insert mode colour:
+    exe 'hi! StatusLine ctermfg=15 ctermbg=12'
+  elseif (mode() ==# 'c')
+    " Command mode colour:
+    exe 'hi! StatusLine ctermfg=15 ctermbg=11'
+  else
+    exe 'hi! StatusLine ctermfg=15 ctermbg=9'
   endif
 
   return ''
@@ -143,50 +181,50 @@ endfunction
 " Draw statusline
 set laststatus=2
 set statusline=
-set statusline+=%2*\ %m\ %*
-set statusline+=%3*\ \%n\ %*
+set statusline+=%1*\ %(%{&buflisted?bufnr('%'):''}:%L\ %)
+set statusline+=%< " Truncate line here
+set statusline+=%2*%3*\ %(%{b:gitstatus}%)\ 
+set statusline+=%4*%5*\ %f\ %r%m\ %*
+set statusline+=%{ChangeStatuslineLeftColor()}
+set statusline+=
 set statusline+=%{ChangeStatuslineColor()}
-set statusline+=\ \ \ %{toupper(g:currentmode[mode()])}\ \ \ 
-set statusline+=%5*\ \ %{StatuslineGit()}
-set statusline+=\ ››\ %*
-set statusline+=\ %F\ 
+set statusline+=\ \ \ %{toupper(g:currentmode[mode()])}\ \ \ 
 set statusline+=%=
-set statusline+=%4*\‹‹\ L:\ %l
-set statusline+=\ \|\ C:\ %c
-set statusline+=\ ››
-set statusline+=%6*\ %y\ 
-set statusline+=%1*\ %{&fileencoding?&fileencoding:&encoding}\ 
-set statusline+=%9*\ [%{&fileformat}\]\ 
-set statusline+=%8*\ \ %p%%\ \ 
+set statusline+=%8*\ \ %7*\ %c\ 
+set statusline+=%6*\%5*\ %p%%\ ☰\ \ %* 
+set statusline+=%4*%3*\ %y
+set statusline+=\ %2*%1*\ %{&fileencoding?&fileencoding:&encoding}\ [%{&fileformat}\]%*
 
 
-" Red w/ yellow text used for modifier
-hi User2 ctermfg=226 ctermbg=160
+" dark grey with beige text 
+hi User1 ctermfg=007 ctermbg=237
 
-" Green with black text used for buffer number
-hi User3 ctermfg=000 ctermbg=154
+" Transition
+hi User2 ctermfg=237 ctermbg=14
 
-" Light-blue/teal used for lines
-hi User4 ctermfg=232 ctermbg=123
+" Green with yellow background
+hi User3 ctermfg=226 ctermbg=14
 
-" Teal used for filetype
-hi User6 ctermfg=232 ctermbg=045
+" Transition
+hi User4 ctermfg=14 ctermbg=015
 
-" Gold used for encoding
-hi User1 ctermfg=051 ctermbg=033
+" Beige with dark text
+hi User5 ctermfg=0 ctermbg=15
 
-" used for fileformat
-hi User9 ctermfg=051 ctermbg=026
+" Transition
+hi User6 ctermfg=15 ctermbg=11
 
-" orange used for git
-hi User5 ctermfg=232 ctermbg=202
+" gold with black text
+hi User7 ctermfg=0 ctermbg=11
 
-" Purple
-hi User7 ctermfg=000 ctermbg=141
+" Transition
+hi User8 ctermfg=11 ctermbg=235
 
 " Rose used for file percent
-hi User8 ctermfg=051 ctermbg=019
+hi User9 ctermfg=9 ctermbg=235
 
+" use a status bar that is 2 rows high
+set cmdheight=2
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -215,6 +253,9 @@ set smarttab
 " 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
+
+" Use multiple of shift width when indenting with < and >
+set shiftround
 
 set ai "Auto indent
 set si "Smart indent
@@ -257,3 +298,15 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
+
+" remapping keys to useful things
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+" Swap implementations of ` and ' jump to markers
+" By default, ' jumps to the marked line, ` jumps to the marked line and
+" column, so swap them
+nnoremap ' `
+nnoremap ` '
