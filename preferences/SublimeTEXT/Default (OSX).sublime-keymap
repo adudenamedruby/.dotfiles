@@ -1,3 +1,0 @@
-[
-	{"keys": ["q", "j"], "command": "_enter_normal_mode", "args": {"mode": "mode_insert"}},
-]

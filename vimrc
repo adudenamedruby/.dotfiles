@@ -1,4 +1,4 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 "   .vimrc
 "
@@ -8,22 +8,22 @@
 "   'To a hammer, everything looks like a nail. Wield VIM responsibly.'
 "       (Or - don't use shit you don't need.)
 "
-"   => last updated(12/07/2018)
+"   => last updated(12/09/2018)
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 "   TABLE OF CONTENTS
 "
-"   -> General                          29
-"   -> VIM Quality of Life              59
-"   -> Search options                   144
-"   -> Statusline                       163
-"   -> Colors & fonts                   300
-"   -> Text, tab & indent               325
-"   -> Visual mode related              350
-"   -> Personal Key Mappings            361
-"   -> Leader Key Mappiings             398
+"   -> General Settings                  29
+"   -> VIM Quality of Life               64
+"   -> Search options                   168
+"   -> Statusline                       187
+"   -> Colors & fonts                   324
+"   -> Text, tab & indent               349
+"   -> Visual mode related              374
+"   -> Personal Key Mappings            385
+"   -> Leader Key Mappiings             417
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -38,26 +38,37 @@ set nocompatible
 set hidden
 
 " Sets how many lines of history VIM has to remember
-set history=100
-set undolevels=100
+set history=200
+set undolevels=200
 
 " Let VIM try and figure out filetypes if it can
-filetype on
+filetype indent on
 
-" Enable syntax highlighting
+" Enable syntax highlighting with current color settings
 syntax enable
 
 " Set the gui options the way I like it, uh-huh uh-huh.
 set guioptions=acg
 
-" Wildmenu, is... wild!!!!!!
-set wildmenu
+" I save all the time so let's get rid of this annoying and unecessary stuff.
+set nobackup
+set nowritebackup
+set noswapfile
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM Quality of Life
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Wildmenu, is... wild!!!!!! But also very helpful so set this up to behave nicely
+set wildmenu
+set wildchar=<TAB>
+set wildmode=list:longest
+set wildignore+=*.DS_STORE,*.jpg,*.png,*.gif
 
 " Turn line wrapping on because who the hell wants to keep scrolling forever and ever.
 set wrap
@@ -66,10 +77,8 @@ set wrap
 " while doing the scroll thing.
 "set scrolloff=4
 
-"Add line numbering
+"Add line numbering, as well as relative numbers becasue no Vim should be without them
 set number
-
-"Add relative line numbering
 set relativenumber
 
 "Always show current position
@@ -78,13 +87,10 @@ set ruler
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
-
 " This is the timeout used while waiting for user input on a multi-keyed macro
 " or while just sitting and waiting for another key to be pressed measured
 " in milliseconds. Play to figure out how I like it.
-"set timeoutlen=500
+set timeoutlen=500
 
 " Show matching brackets when text indicator is over them
 set showmatch
@@ -93,7 +99,7 @@ set showmatch
 set mat=2
 
 " Draws a cursorline under the cursor. This is cool in Xcode.
-" But it looks weird in VIM. But it looks neat when you invoke line&column.
+" But it looks neat when you invoke line&column.
 "set cursorline
 "set cursorcolumn
 
@@ -107,6 +113,9 @@ set clipboard=unnamed
 " Use a status bar that is 2 rows high
 set cmdheight=2
 
+" Set up default window splitting behaviour unless I manually specify what I want
+set splitright
+
 " I use 90 space columns but VIMs regular visual line is busy and ugly. This make it such
 " that, if a character appears on the 91 column, it'll be highlighted with a magenta 
 " block to let me know to code cleaner and more concisely. But dont's stress about
@@ -117,6 +126,9 @@ call matchadd('ColorColumn', '\%91v', 100)
 " Get rid of the goddamn bell! It's more annying than pigeons in an Italian plaza.
 set vb
 
+" Add vertical spaces to keep right and left aligned
+set diffopt=filler
+
 " Add ignorance of whitespace to diff
 set diffopt+=iwhite
 
@@ -125,12 +137,21 @@ set diffopt+=iwhite
 " sucks.  Setting it to double makes it awesome.
 set ambiwidth=single
 
+" Folding is love. So let's make it behave in a civilized manner
+set foldmethod=manual
+
+" Let's avoid insane levels of folding
+set foldnestmax=2
+
 " Highlight whitespaces and tabs and extensions and....
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 " ...but ignore them if in an html file or xml file.
 autocmd filetype html,xml set listchars-=tab:>.
+
+" Also, fill folds with characters
+set fillchars=fold:-
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
@@ -369,10 +390,10 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 inoremap <C-t>  <esc>
 
 " Remapping the arrow keys to other useful things
-map <up> <C-B>
-map <down> <C-F>
-map <left> <nop>
-map <right> <nop>
+map <up> <nop>
+map <down> <nop>
+map <left> <C-B>
+map <right> <C-F>
 
 " Swap implementations of ` and ' jump to markers. By default, ' jumps to the marked
 " line, ` jumps to the marked line and column which is infinitely more useful.
@@ -403,6 +424,9 @@ let mapleader = " "
 
 " In case I accidentally press space, double space is ESC
 nnoremap <silent> <leader><space> <esc>
+
+" Let's make saving easier on the hands
+nmap <silent> <leader>s :w<CR>
 
 " turn off search highlight
 nnoremap <silent> <leader>th :nohlsearch<CR>
