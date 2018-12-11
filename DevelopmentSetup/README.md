@@ -17,8 +17,8 @@ Development Environment Setup Runbook
 - First, install homebrew
 ```/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
 - Git `brew install git`
-- zsh `brew install zsh zsh-completions`
-    - Once complete, set it to be default shell `chsh -s $(which zsh)
+- [zsh install instructions](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH)
+    - If encountering trouble [here's how to use Homebrew's zsh as system zsh](https://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/)
 - Vim `brew install --override-system-vi vim`
     - using `which vim`, verify that you're sourcing `usr/local/bin/vim` before `usr/bin/vim`
 - Install Python 3: `brew install python3`
