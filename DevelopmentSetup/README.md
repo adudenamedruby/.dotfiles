@@ -21,9 +21,11 @@ Development Environment Setup Runbook
 - [**ZSH** install instructions](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH)
     - If encountering trouble [here's how to use Homebrew's zsh as system zsh](https://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/)
     - Install of [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+    - Install **Powerlevel9x** `git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k`
+    - Install **zsh-syntax-highlighting** `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
+    - Install **zsh-auto-completion** `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
     - Copy .zshrc from the repo to the local .zshrc
         - Watch line 5! Make sure to put in your current username, rather than acmelabs
-    - Also install `git clone https://github.com/zsh-users/zsh-syntax-highlighting` Don't forget to add `zsh-syntax-highlighting` to the .zshrc plugins section
 - **Vim** `brew install vim --with-override-system-vi`
     - Restart terminal
     - using `which vim`, verify that you're sourcing `usr/local/bin/vim` before `usr/bin/vim`
