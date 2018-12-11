@@ -16,6 +16,7 @@ Development Environment Setup Runbook
 ## Homebrew and Other Tools
 - First, install homebrew
 ```/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
+- Git `brew install git`
 - Using homebrew:
 `brew install --override-system-vi vim`
     - using `which vim`, verify that you're sourcing `usr/local/bin/vim` before `usr/bin/vim`
@@ -24,8 +25,6 @@ Development Environment Setup Runbook
 
 
 ## Firvolous Stuff
-
-- G
 - Download Xcode themes https://github.com/hdoria/xcode-themes
     - Go to `~/Library/Developer/Xcode/UserData/FontAndColorThemes/` (FontAndColoThemes may not exist.)
     - Drop in .dvtcolortheme files here. Restart Xcode and your themes should be there.
