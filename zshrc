@@ -1,13 +1,52 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/usr/local/sbin:$PATH"
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/acmelabs/.oh-my-zsh
+export ZSH=/Users/gh057/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+
+#POWERLEVEL9k customization
+POWERLEVEL9K_MODE="nerdfont-complete"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir_writable dir vcs newline time status)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time public_ip root_indicator background_jobs ram)
+POWERLEVEL9K_USER_ICON="\uF415" # 
+POWERLEVEL9K_ROOT_ICON="\uF09C"
+POWERLEVEL9K_SUDO_ICON=$'\uF09C' # 
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S}"
+POWERLEVEL9K_VCS_GIT_ICON='\uF408 '
+POWERLEVEL9K_VCS_GIT_GITHUB_ICON='\uF408 '
+
+POWERLEVEL9K_CONTEXT_TEMPLATE="\uF415 %n@%m"
+POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="white"
+POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="0"
+POWERLEVEL9K_CONTEXT_SUDO_BACKGROUND="9"
+POWERLEVEL9K_CONTEXT_SUDO_FOREGROUND="7"
+POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND="12"
+POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND="7"
+POWERLEVEL9K_CONTEXT_REMOTE_FOREGROUND="10"
+POWERLEVEL9K_CONTEXT_REMOTE_FOREGROUND="7"
+POWERLEVEL9K_CONTEXT_REMOTE_SUDO_FOREGROUND="1"
+POWERLEVEL9K_CONTEXT_REMOTE_SUDO_FOREGROUND="7"
+
+POWERLEVEL9K_HOME_ICON='\uF015'
+POWERLEVEL9K_HOME_SUB_ICON='\uFC6E'
+POWERLEVEL9K_FOLDER_ICON='\uF74E'
+POWERLEVEL9K_ETC_ICON='\uFB1A'
+POWERLEVEL9K_DIR_SHOW_WRITABLE=true
+
+POWERLEVEL9K_TIME_BACKGROUND="yellow"
+POWERLEVEL9K_TIME_FOREGROUND="black"
+
+P9K_VCS_CLEAN_BACKGROUND="green"
+P9K_VCS_CLEAN_FOREGROUND="$DEFAULT_BACKGROUND"
+P9K_VCS_MODIFIED_BACKGROUND="yellow"
+P9K_VCS_MODIFIED_FOREGROUND="$DEFAULT_BACKGROUND"
+P9K_VCS_UNTRACKED_BACKGROUND="magenta"
+P9K_VCS_UNTRACKED_FOREGROUND="$DEFAULT_BACKGROUND"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,7 +90,11 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+	git
+	colored-man-pages
+	zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -83,3 +126,4 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias gitlog="git log | vim -R -"
