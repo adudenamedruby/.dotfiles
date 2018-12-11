@@ -17,8 +17,10 @@ Development Environment Setup Runbook
 - First, install homebrew
 ```/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
 - Git `brew install git`
-- [zsh install instructions](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH)
+- [ZSH install instructions](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH)
     - If encountering trouble [here's how to use Homebrew's zsh as system zsh](https://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/)
+    - Install of [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+    - Copy .zshrc from the repo to the local .zshrc
 - Vim `brew install --override-system-vi vim`
     - using `which vim`, verify that you're sourcing `usr/local/bin/vim` before `usr/bin/vim`
 - Install Python 3: `brew install python3`
@@ -30,17 +32,3 @@ Development Environment Setup Runbook
     - Go to `~/Library/Developer/Xcode/UserData/FontAndColorThemes/` (FontAndColoThemes may not exist.)
     - Drop in .dvtcolortheme files here. Restart Xcode and your themes should be there.
 - Wouldn't it be great if we could see our `$ git log` in vim? Gotta alias `gitlog = git log | vim -R -`
-
-
-To activate these completions, add the following to your .zshrc:
-
-  fpath=(/usr/local/share/zsh-completions $fpath)
-
-You may also need to force rebuild `zcompdump`:
-
-  rm -f ~/.zcompdump; compinit
-
-Additionally, if you receive "zsh compinit: insecure directories" warnings when attempting
-to load these completions, you may need to run this:
-
-  chmod go-w '/usr/local/share'
