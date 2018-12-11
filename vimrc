@@ -15,6 +15,7 @@
 "
 "   TABLE OF CONTENTS
 "
+"   -> Plugins
 "   -> General Settings                  29
 "   -> VIM Quality of Life               64
 "   -> Search options                   168
@@ -25,6 +26,20 @@
 "   -> Personal Key Mappings            385
 "   -> Leader Key Mappiings             417
 "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
+
+" Declare the list of plugins.
+"Plug 'tpope/vim-sensible'
+
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
