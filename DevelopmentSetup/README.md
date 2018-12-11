@@ -21,6 +21,7 @@ Development Environment Setup Runbook
     - If encountering trouble [here's how to use Homebrew's zsh as system zsh](https://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/)
     - Install of [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
     - Copy .zshrc from the repo to the local .zshrc
+        - Watch line 5! Make sure to put in your current username, rather than acmelabs
 - Vim `brew install --override-system-vi vim`
     - using `which vim`, verify that you're sourcing `usr/local/bin/vim` before `usr/bin/vim`
 - Install Python 3: `brew install python3`
