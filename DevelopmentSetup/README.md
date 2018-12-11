@@ -16,6 +16,7 @@ Development Environment Setup Runbook
 ## Homebrew and Other Tools
 - Install **Homebrew**
 ```/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
+    - Run `brew doctor` to see any issues and fix them as needed
 - **Git** `brew install git`
 - [**ZSH** install instructions](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH)
     - If encountering trouble [here's how to use Homebrew's zsh as system zsh](https://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/)
@@ -42,7 +43,13 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
 
 ## Firvolous Stuff
-- Download Xcode themes https://github.com/hdoria/xcode-themes
+- Download Xcode themes
     - Go to `~/Library/Developer/Xcode/UserData/FontAndColorThemes/` (FontAndColoThemes may not exist.)
     - Drop in .dvtcolortheme files here. Restart Xcode and your themes should be there.
+- **Emacs**
+    - `brew cask install emacs`
+    - verify that we're using the latest [Emacs](https://www.gnu.org/software/emacs/) `emacs --version`
+    - verify that we're using brew's emacs `which emacs`
+    - verify Emacs app is in /Applications
+    - Then, flavour Emacs, unless you want to start from scratch, with [**Spacemacs**](https://github.com/syl20bnr/spacemacs)
 - Wouldn't it be great if we could see our `$ git log` in vim? Gotta alias `gitlog = git log | vim -R -` in .zshrc
