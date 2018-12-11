@@ -46,7 +46,7 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
 ### XVim
 - Rename standard xcode to Xcode-Distribution (if you need a distribution Xcode)
-- Download another version of Xcode [from Apple]()
+- Download another version of Xcode [from Apple](https://developer.apple.com/download/more/)
 - Sign your own [code signing certificate](https://github.com/XVimProject/XVim2/blob/master/SIGNING_Xcode.md)
 - Install [XVim2](https://github.com/XVimProject/XVim2)
 - If .xvimrc doesn't exist, create it
