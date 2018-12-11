@@ -30,7 +30,10 @@ Development Environment Setup Runbook
 - **Vim** `brew install vim --with-override-system-vi`
     - Restart terminal
     - using `which vim`, verify that you're sourcing `usr/local/bin/vim` before `usr/bin/vim`
+    - Install Vim-Plug `curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
     - .vimrc: `curl https://raw.githubusercontent.com/rouxbuciu/toolPreferences/master/vimrc > .vimrc`
+    - open vim and run `:PlugInstall` to install plugins
+        - `:PlugUpdate`.... updates plugins. Run it once in a while
 - **Python 3** `brew install python3`
 - **openssh** `brew install openssh`
 - **grep** `brew install grep --with-default-names`
