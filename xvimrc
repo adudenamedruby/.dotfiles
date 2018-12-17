@@ -1,0 +1,40 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+"   .xvimrc
+"
+"   => maintained by roux g. buciu
+"
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Search
+set hlsearch
+set ignorecase
+set smartcase
+
+" Use the system pasteboard
+set clipboard=unnamed
+
+" Can be typed even faster than jj, and if you are already in
+"    normal mode, you (usually) don't accidentally move:
+imap qj <Esc>
+
+" Better navigation
+nnoremap H ^
+nnoremap L $
+
+" Better window management
+nmap <space>wn <C-w>v
+nmap <space>ws <C-w>s
+nmap <space>wo :xcmenucmd Show Standard Editor<CR>
+nmap <space>wc <C-w>c
+
+" Better window navigation
+nmap <space>wh <C-w>h
+nmap <space>wl <C-w>l
+nmap <space>wj <C-w>j
+nmap <space>wk <C-w>k
+
+" Leader keybindings
+nmap <space>o :xcmenucmd Open Quickly...<CR>
+nmap <space>wv :xcmenucmd Show Version Editor<CR>
+nmap <space>bb :xcmenucmd Add Breakpoint at Current Line<CR>

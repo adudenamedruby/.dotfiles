@@ -1,5 +1,4 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
 "   .vimrc
 "
 "   => maintained by roux g. buciu
@@ -16,16 +15,17 @@
 "   TABLE OF CONTENTS
 "
 "   -> Plugins
-"   -> General Settings                  29
-"   -> VIM Quality of Life               64
-"   -> Search options                   168
-"   -> Statusline                       187
-"   -> Colors & fonts                   324
-"   -> Text, tab & indent               349
-"   -> Visual mode related              374
-"   -> Personal Key Mappings            385
-"   -> Leader Key Mappiings             417
+"   -> General Settings
+"   -> VIM Quality of Life
+"   -> Search options
+"   -> Statusline
+"   -> Colors & fonts
+"   -> Text, tab & indent
+"   -> Visual mode related
+"   -> Personal Key Mappings
+"   -> Leader Key Mappiings
 "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -34,7 +34,14 @@
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
-"Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+"Plug 'wellle/targets.vim'
+"Plug 'tpope/vim-fugitive'
+"Plug 'airblade/vim-gitgutter'
+Plug 'easymotion/vim-easymotion'
+"Plug 'valloric/youcompleteme'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -407,8 +414,8 @@ inoremap <C-t>  <esc>
 " Remapping the arrow keys to other useful things
 map <up> <nop>
 map <down> <nop>
-map <left> <C-B>
-map <right> <C-F>
+map <left> :bp<CR>
+map <right> :bn<CR>
 
 " Swap implementations of ` and ' jump to markers. By default, ' jumps to the marked
 " line, ` jumps to the marked line and column which is infinitely more useful.
@@ -419,13 +426,12 @@ nnoremap ` '
 " Let's take care of that unnecessary silliness.
 nnoremap j gj
 nnoremap k gk
+vmap j gj
+vmap k gk
 
-" A better way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
+" Better navigation
+nnoremap H ^
+nnoremap L $
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -449,3 +455,16 @@ nnoremap <silent> <leader>th :nohlsearch<CR>
 " Edit the vimrc file
 nmap <silent> <leader>ev :e ~/.vimrc<CR>
 
+" A better window management system
+nnoremap <leader>wh <C-W>h
+nnoremap <leader>wl <C-W>l
+nnoremap <leader>wj <C-W>j
+nnoremap <leader>wk <C-W>k
+nnoremap <leader>ws :sp<CR>
+nnoremap <leader>wv :vsp<CR>
+nnoremap <leader>wc :close<CR>
+nnoremap <leader>wn :vne<CR>
+nnoremap <leader>wo :only<CR>
+
+" FZF activation
+nnoremap <leader>o :Files<CR>

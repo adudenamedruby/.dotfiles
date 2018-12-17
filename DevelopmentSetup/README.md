@@ -53,6 +53,8 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 - Install [XVim2](https://github.com/XVimProject/XVim2)
 - If .xvimrc doesn't exist, create it
     - `curl https://raw.githubusercontent.com/rouxbuciu/toolPreferences/master/xvimrc > .xvimrc`
+- Go to ~Library/Developer/Xcode/UserData/Keybindings
+    - copy Roux's Keybindings in there.
 
 ### Firvolous Stuff
 - Download Xcode themes
