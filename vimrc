@@ -40,7 +40,7 @@ Plug 'tpope/vim-surround'
 "Plug 'airblade/vim-gitgutter'
 Plug 'easymotion/vim-easymotion'
 "Plug 'valloric/youcompleteme'
-Plug '/usr/local/opt/fzf'
+Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
