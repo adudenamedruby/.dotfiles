@@ -16,7 +16,7 @@ set clipboard=unnamed
 
 " Can be typed even faster than jj, and if you are already in
 "    normal mode, you (usually) don't accidentally move:
-imap qj <Esc>
+imap <C-t> <Esc>
 
 " Better navigation
 nnoremap H ^
