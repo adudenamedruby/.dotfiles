@@ -35,13 +35,17 @@ call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
 Plug 'tpope/vim-surround'
+Plug 'airblade/vim-gitgutter'
+Plug 'keith/swift.vim'
+Plug 'itchyny/lightline.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'srcery-colors/srcery-vim'
+"Plug 'tpope/vim-commentary'
 "Plug 'wellle/targets.vim'
 "Plug 'tpope/vim-fugitive'
-"Plug 'airblade/vim-gitgutter'
-Plug 'easymotion/vim-easymotion'
+"Plug 'easymotion/vim-easymotion'
 "Plug 'valloric/youcompleteme'
-Plug '~/.fzf'
-Plug 'junegunn/fzf.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -50,6 +54,9 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Use a specifc color scheme
+colorscheme srcery
 
 " Use VIM settings rather than vi settings
 "   - this must be first because it changes other options
@@ -93,11 +100,11 @@ set wildmode=list:longest
 set wildignore+=*.DS_STORE,*.jpg,*.png,*.gif
 
 " Turn line wrapping on because who the hell wants to keep scrolling forever and ever.
-set wrap
+set nowrap
 
 " Keep 3 lines off the edges of the screen when scrolling for more context
 " while doing the scroll thing.
-"set scrolloff=4
+set scrolloff=4
 
 "Add line numbering, as well as relative numbers becasue no Vim should be without them
 set number
@@ -105,6 +112,9 @@ set relativenumber
 
 "Always show current position
 set ruler
+
+"We're using Lightline so we'll disable the mode
+set noshowmode
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -217,128 +227,128 @@ set incsearch
 " RIGHT SID => [unicode][hex], Column, % through file, filetype, encoding, file format
 
 " Returns a string of the current branch
-function GetCurrentGitStatus()
-    let gitoutput = split(system('git status --porcelain -b '.shellescape(expand('%')).' 2>/dev/null'),'\n')
-    if len(gitoutput) > 0
-        let b:gitstatus = ' ' . strpart(get(gitoutput,0,''),3)
-    else
-        let b:gitstatus = ''
-    endif
-endfunc
-autocmd BufEnter,BufWritePost * call GetCurrentGitStatus()
+"function GetCurrentGitStatus()
+"    let gitoutput = split(system('git status --porcelain -b '.shellescape(expand('%')).' 2>/dev/null'),'\n')
+"    if len(gitoutput) > 0
+"        let b:gitstatus = ' ' . strpart(get(gitoutput,0,''),3)
+"    else
+"        let b:gitstatus = ''
+"    endif
+"endfunc
+"autocmd BufEnter,BufWritePost * call GetCurrentGitStatus()
 
 " Returs a string of the current mode VIM is in.
 " Currently not returning Visual Block and Select Block. <C-V>/<C-S> only register once
 " instead of twice which mode() apparently requires? The literals are '\<C-V>'
-function! GetMode()
-    if (mode() ==# 'n')
-        return 'NORMAL'
-    elseif (mode() ==# 'no')
-        return 'NORMAL·OPERATOR PENDING '
-    elseif (mode() ==# 'i')
-        return 'INSERT'
-    elseif (mode() ==# 'v')
-        return 'VISUAL'
-    elseif (mode() ==# 'V')
-        return 'VISUAL·LINE'
-    elseif (mode() ==# 'R')
-        return 'REPLACE'
-    elseif (mode() ==# 'Rv')
-        return 'VISUAL·REPLACE'
-    elseif (mode() ==# 's')
-        return 'SELECT'
-    elseif (mode() ==# 'S')
-        return 'SELECT·LINE'
-    elseif (mode() ==# 'c')
-        return 'COMMAND'
-    elseif (mode() ==# 'cv')
-        return 'VIM·EX'
-    elseif (mode() ==# 'ce')
-        return 'EX'
-    elseif (mode() ==# 'r')
-        return 'PROMPT'
-    elseif (mode() ==# 'rm')
-        return 'MORE·AVAILABLE'
-    elseif (mode() ==# 'r?')
-        return 'CONFIRMATION·REQUIRED'
-    elseif (mode() ==# 't')
-        return 'TERMINAL·MODE'
-    elseif (mode() ==# '!')
-        return 'SHELL·EXECUTING'
-    else
-        return 'SPECIAL·MODE'
-    endif
-endfunction
+"function! GetMode()
+"    if (mode() ==# 'n')
+"        return 'NORMAL'
+"    elseif (mode() ==# 'no')
+"        return 'NORMAL·OPERATOR PENDING '
+"    elseif (mode() ==# 'i')
+"        return 'INSERT'
+"    elseif (mode() ==# 'v')
+"        return 'VISUAL'
+"    elseif (mode() ==# 'V')
+"        return 'VISUAL·LINE'
+"    elseif (mode() ==# 'R')
+"        return 'REPLACE'
+"    elseif (mode() ==# 'Rv')
+"        return 'VISUAL·REPLACE'
+"    elseif (mode() ==# 's')
+"        return 'SELECT'
+"    elseif (mode() ==# 'S')
+"        return 'SELECT·LINE'
+"    elseif (mode() ==# 'c')
+"        return 'COMMAND'
+"    elseif (mode() ==# 'cv')
+"        return 'VIM·EX'
+"    elseif (mode() ==# 'ce')
+"        return 'EX'
+"    elseif (mode() ==# 'r')
+"        return 'PROMPT'
+"    elseif (mode() ==# 'rm')
+"        return 'MORE·AVAILABLE'
+"    elseif (mode() ==# 'r?')
+"        return 'CONFIRMATION·REQUIRED'
+"    elseif (mode() ==# 't')
+"        return 'TERMINAL·MODE'
+"    elseif (mode() ==# '!')
+"        return 'SHELL·EXECUTING'
+"    else
+"        return 'SPECIAL·MODE'
+"    endif
+"endfunction
 
 " Automatically change the statusline color depending on mode for the NORMAL bar
-function! ChangeStatuslineColor()
-  if (mode() ==# 'n' || mode() ==# 'no')
-    exe 'hi! StatusLine ctermfg=13 ctermbg=7'
-  elseif (mode() ==# 'v' || mode() ==# 'V')
-    " Visual mode
-    exe 'hi! StatusLine ctermfg=54 ctermbg=7'
-  elseif (mode() ==# 'i')
-    " Insert mode colour:
-    exe 'hi! StatusLine ctermfg=12 ctermbg=7'
-  elseif (mode() ==# 'R')
-    " Replace mode colour:
-    exe 'hi! StatusLine ctermfg=9 ctermbg=7'
-  elseif (mode() ==# 'r')
-    " Prompt mode colour:
-    exe 'hi! StatusLine ctermfg=21 ctermbg=7'
-  elseif (mode() ==# 'c')
-    " Command mode colour:
-    exe 'hi! StatusLine ctermfg=22 ctermbg=7'
-  else
-    exe 'hi! StatusLine ctermfg=198 ctermbg=7'
-  endif
+"function! ChangeStatuslineColor()
+"  if (mode() ==# 'n' || mode() ==# 'no')
+"    exe 'hi! StatusLine ctermfg=13 ctermbg=7'
+"  elseif (mode() ==# 'v' || mode() ==# 'V')
+"    " Visual mode
+"    exe 'hi! StatusLine ctermfg=54 ctermbg=7'
+"  elseif (mode() ==# 'i')
+"    " Insert mode colour:
+"    exe 'hi! StatusLine ctermfg=12 ctermbg=7'
+"  elseif (mode() ==# 'R')
+"    " Replace mode colour:
+"    exe 'hi! StatusLine ctermfg=9 ctermbg=7'
+"  elseif (mode() ==# 'r')
+"    " Prompt mode colour:
+"    exe 'hi! StatusLine ctermfg=21 ctermbg=7'
+"  elseif (mode() ==# 'c')
+"    " Command mode colour:
+"    exe 'hi! StatusLine ctermfg=22 ctermbg=7'
+"  else
+"    exe 'hi! StatusLine ctermfg=198 ctermbg=7'
+"  endif
 
-  return ''
-endfunction
+"  return ''
+"endfunction
 
 " Automatically change the initial statusline character color depending on mode for the NORMAL bar
-function! ChangeStatuslineLeftColor()
-  if (mode() ==# 'n' || mode() ==# 'no')
-    " normal modes
-    exe 'hi! StatusLine ctermfg=15 ctermbg=13'
-  elseif (mode() ==# 'v' || mode() ==# 'V')
-    " Grey here for visual modes
-    exe 'hi! StatusLine ctermfg=15 ctermbg=54'
-  elseif (mode() ==# 'i')
-    " Insert mode colour:
-    exe 'hi! StatusLine ctermfg=15 ctermbg=12'
-  elseif (mode() ==# 'R')
-    " Replace mode colour:
-    exe 'hi! StatusLine ctermfg=15 ctermbg=9'
-  elseif (mode() ==# 'r')
-    " Prompt mode colour:
-    exe 'hi! StatusLine ctermfg=15 ctermbg=21'
-  elseif (mode() ==# 'c')
-    " Command mode colour:
-    exe 'hi! StatusLine ctermfg=15 ctermbg=22'
-  else
-    exe 'hi! StatusLine ctermfg=15 ctermbg=198'
-  endif
-
-  return ''
-endfunction
+"function! ChangeStatuslineLeftColor()
+"  if (mode() ==# 'n' || mode() ==# 'no')
+"    " normal modes
+"    exe 'hi! StatusLine ctermfg=15 ctermbg=13'
+"  elseif (mode() ==# 'v' || mode() ==# 'V')
+"    " Grey here for visual modes
+"    exe 'hi! StatusLine ctermfg=15 ctermbg=54'
+"  elseif (mode() ==# 'i')
+"    " Insert mode colour:
+"    exe 'hi! StatusLine ctermfg=15 ctermbg=12'
+"  elseif (mode() ==# 'R')
+"    " Replace mode colour:
+"    exe 'hi! StatusLine ctermfg=15 ctermbg=9'
+"  elseif (mode() ==# 'r')
+"    " Prompt mode colour:
+"    exe 'hi! StatusLine ctermfg=15 ctermbg=21'
+"  elseif (mode() ==# 'c')
+"    " Command mode colour:
+"    exe 'hi! StatusLine ctermfg=15 ctermbg=22'
+"  else
+"    exe 'hi! StatusLine ctermfg=15 ctermbg=198'
+"  endif
+"
+"  return ''
+"endfunction
 
 " Draw statusline
 set laststatus=2
-set statusline=
-set statusline+=%1*\ %(%{&buflisted?bufnr('%'):''}:%L\ %)
-set statusline+=%< " Truncate line here
-set statusline+=%2*%3*\ %(%{b:gitstatus}%)\ 
-set statusline+=%4*%5*\ %f\ %r%m\ %*
-set statusline+=%{ChangeStatuslineLeftColor()}
-set statusline+=
-set statusline+=%{ChangeStatuslineColor()}
-set statusline+=\ \ \ %{GetMode()}\ \ \ 
-set statusline+=%=
-set statusline+=%8*\ [%b][0x%B]\ %7*\ %c
-set statusline+=\ %6*\%5*\ %p%%\ ☰\ \ %*
-set statusline+=%4*%3*\ %y
-set statusline+=\ %2*%1*\ %{&fileencoding?&fileencoding:&encoding}\ [%{&fileformat}\]%*
+"set statusline=
+"set statusline+=%1*\ %(%{&buflisted?bufnr('%'):''}:%L\ %)
+"set statusline+=%< " Truncate line here
+"set statusline+=%2*%3*\ %(%{b:gitstatus}%)\ 
+"set statusline+=%4*%5*\ %f\ %r%m\ %*
+"set statusline+=%{ChangeStatuslineLeftColor()}
+"set statusline+=
+"set statusline+=%{ChangeStatuslineColor()}
+"set statusline+=\ \ \ %{GetMode()}\ \ \ 
+"set statusline+=%=
+"set statusline+=%8*\ [%b][0x%B]\ %7*\ %c
+"set statusline+=\ %6*\%5*\ %p%%\ ☰\ \ %*
+"set statusline+=%4*%3*\ %y
+"set statusline+=\ %2*%1*\ %{&fileencoding?&fileencoding:&encoding}\ [%{&fileformat}\]%*
 
 
 
@@ -468,3 +478,4 @@ nnoremap <leader>wo :only<CR>
 
 " FZF activation
 nnoremap <leader>o :Files<CR>
+nnoremap <leader>bs :Buffers<CR>
