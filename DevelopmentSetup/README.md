@@ -18,6 +18,7 @@ Development Environment Setup Runbook
 ```/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
     - Run `brew doctor` to see any issues and fix them as needed
 - **Git** `brew install git`
+- **FZF** `brew install fzf`
 - [**ZSH** install instructions](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH)
     - If encountering trouble with `which zsh` here's [how to use Homebrew's zsh as system zsh](https://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/)
     - Install [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
