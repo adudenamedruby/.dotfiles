@@ -1,5 +1,4 @@
 # Dotfiles and Development Environment Setup Runbook
-====================================================
 
 Preferences for various tools and environment setups to save time later on.
 
