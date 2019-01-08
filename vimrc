@@ -223,6 +223,7 @@ set incsearch
 
 " The goal was to have a Powerline/Airline like statusline with what I want...
 " ... without having a plugin. This was more annoying than it was worth, maybe.
+" Why so much effort for the fancy, Tom? Mostly because I like how it looks, Jerry.
 
 " Returs a string of the current mode VIM is in. It's not perfect yet, but serviceable.
 " Currently not returning Visual Block and Select Block. <C-V>/<C-S> only register once
