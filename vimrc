@@ -30,7 +30,7 @@
 " => Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" NB: Strive to use as little plugins as possible. Only what is really needed and 
+" IMPORTANT Strive to use as little plugins as possible. Only what is really needed and 
 " provides useful additions to Vim.
 
 " Plugins will be downloaded under the specified directory.
