@@ -41,12 +41,13 @@ Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 
 " INACTIVE
+"Plug 'easymotion/vim-easymotion'
 "Plug 'srcery-colors/srcery-vim'
+"Plug 'junegunn/goyo.vim'
 "Plug 'itchyny/lightline.vim'
 "Plug 'tpope/vim-commentary'
 "Plug 'wellle/targets.vim'
 "Plug 'tpope/vim-fugitive'
-"Plug 'easymotion/vim-easymotion'
 "Plug 'valloric/youcompleteme'
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -374,6 +375,8 @@ set autoindent
 " TODO: Toran Billups had a cool effect that, when you :s/p1/p2/, highlighted p1 and
 " inserted p2 highlighted until you hit <CR>. Look into it.
 
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Personal Key Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -435,7 +438,7 @@ noremap <silent> <leader>vme :e ~/.vimrc<CR>
 " And then source that sucker
 noremap <silent> <leader>vms :source $MYVIMRC<CR>
 
-" A better for me window management system... kinda inspired by Spacemacs!
+" A better for me window management system... inspired by Spacemacs!
 nnoremap <leader>wh <C-W>h
 nnoremap <leader>wl <C-W>l
 nnoremap <leader>wj <C-W>j
