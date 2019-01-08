@@ -30,14 +30,21 @@
 " => Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" NB: Strive to use as little plugins as possible. Only what is really needed and 
+" provides useful additions to Vim.
+
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
-" Declare the list of plugins. Strive to use as little as possible. Only what is really
-" needed and provides useful additions to Vim.
+" Declare the list of ACTIVE plugins.
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'keith/swift.vim'
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
+
+" INACTIVE plugins but I may look into them in the future.
+"I do like this colour scheme, separate from my terminal colours.
 "Plug 'srcery-colors/srcery-vim'
 " TODO Look into lightline code to see how it's different from my own statusline.
 " Still undecided which way to go. :/
@@ -47,8 +54,6 @@ Plug 'keith/swift.vim'
 "Plug 'tpope/vim-fugitive'
 "Plug 'easymotion/vim-easymotion'
 "Plug 'valloric/youcompleteme'
-Plug '~/.fzf'
-Plug 'junegunn/fzf.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
