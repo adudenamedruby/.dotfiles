@@ -430,8 +430,10 @@ vmap k gk
 " => Leader Key Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" With a map leader it's possible to do extra key combinations that you
-" define. I like
+" Spacemacs was a really interesting experience. While not switching to Emacs becasue
+" it doesn't meet my current workflow needs, the SPACEBAR IS MY LEADER philosophy is
+" something I can get behind. I shall try it. The one thing to be careful of is that
+" key combinations shouldn't overlap so try and Pay Attension.
 nnoremap <space> <nop>
 xnoremap <space> <nop>
 let mapleader = " "
@@ -439,11 +441,14 @@ let mapleader = " "
 " Let's make saving easier on the hands
 nmap <silent> <leader>s :w<CR>
 
-" turn off search highlight
+" Easily turn off search highlight
 nnoremap <silent> <leader>th :nohlsearch<CR>
 
 " Edit the vimrc file
-nmap <silent> <leader>ev :e ~/.vimrc<CR>
+nmap <silent> <leader>vme :e ~/.vimrc<CR>
+
+" And the source that sucker
+nmap <silent> <leader>vms :source ~/.vimrc<CR>
 
 " A better for me window management system... kinda inspired by Spacemacs!
 nnoremap <leader>wh <C-W>h
