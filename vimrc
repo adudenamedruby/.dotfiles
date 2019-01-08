@@ -393,7 +393,9 @@ set smartindent
 "vnoremap <silent> * :call VisualSelection('f')<CR>
 "vnoremap <silent> # :call VisualSelection('b')<CR>
 
-
+" TODO: Toran Billups had a cool effect that, when you :s/p1/p2/, highlighted p1 and
+" inserted p2 highlighted until you hit <CR>. Look into it. Mabybe do it yourself.
+" Don't use a plugin.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Personal Key Mappings
