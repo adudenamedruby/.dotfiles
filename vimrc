@@ -7,7 +7,7 @@
 "   'To a hammer, everything looks like a nail. Wield VIM responsibly.'
 "       (Or - don't use shit you don't need.)
 "
-"   => last updated(12/09/2018)
+"   => last updated(09/01/2019)
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -37,15 +37,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'keith/swift.vim'
-Plug 'itchyny/lightline.vim'
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'srcery-colors/srcery-vim'
+"Plug 'srcery-colors/srcery-vim'
+"Plug 'itchyny/lightline.vim'
 "Plug 'tpope/vim-commentary'
 "Plug 'wellle/targets.vim'
 "Plug 'tpope/vim-fugitive'
 "Plug 'easymotion/vim-easymotion'
 "Plug 'valloric/youcompleteme'
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -54,13 +54,6 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Use a specifc color scheme
-colorscheme srcery
-
-" Use VIM settings rather than vi settings
-"   - this must be first because it changes other options
-set nocompatible
 
 " Make sure that unsaved buffers that are to be put in the background are
 " allowed to go in there (ie. the 'must save first' error doesn't come up)
@@ -99,21 +92,25 @@ set wildchar=<TAB>
 set wildmode=list:longest
 set wildignore+=*.DS_STORE,*.jpg,*.png,*.gif
 
-" Turn line wrapping on because who the hell wants to keep scrolling forever and ever.
+" Turn line wrapping off becasue... well, reasons.
 set nowrap
 
-" Keep 3 lines off the edges of the screen when scrolling for more context
+" Don't autowrap text as I'm writing. Sometimes I turn this on... and then
+" forget to turn it off!
+set textwidth=0
+
+" Keep some lines off the edges of the screen when scrolling for more context
 " while doing the scroll thing.
 set scrolloff=4
 
-"Add line numbering, as well as relative numbers becasue no Vim should be without them
+" Add line numbering, as well as relative numbers becasue no Vim should be without them
 set number
 set relativenumber
 
-"Always show current position
+" Always show current position
 set ruler
 
-"We're using Lightline so we'll disable the mode
+" We're using Lightline/custom statusline so we'll disable the mode
 set noshowmode
 
 " Configure backspace so it acts as it should act
@@ -132,12 +129,9 @@ set mat=2
 
 " Draws a cursorline under the cursor. This is cool in Xcode.
 " But it looks neat when you invoke line&column.
+" Like RED OCTOBER!
 "set cursorline
 "set cursorcolumn
-
-" Set up the gui cursor to look nice. Still figuring this out.
-"highlight iCursor=pink         " Use this if you want a custom colour for the cursor
-"set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 " Normal OS clipboard interaction
 set clipboard=unnamed
@@ -148,10 +142,10 @@ set cmdheight=2
 " Set up default window splitting behaviour unless I manually specify what I want
 set splitright
 
-" I use 90 space columns but VIMs regular visual line is busy and ugly. This make it such
+" I use 90 space columns but VIMs regular visual line is busy and ugly. This makes it such
 " that, if a character appears on the 91 column, it'll be highlighted with a magenta 
 " block to let me know to code cleaner and more concisely. But dont's stress about
-" occasional going over. Sometimes variable names NEED to be ginormous.
+" occasionally going over. Sometimes variable names NEED to be ginormous.
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%91v', 100)
 
@@ -185,7 +179,7 @@ autocmd filetype html,xml set listchars-=tab:>.
 " Also, fill folds with characters
 set fillchars=fold:-
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+" Delete trailing white space on save, useful for Python sssssssssssss
 func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
@@ -222,133 +216,117 @@ set incsearch
 " The goal was to have a Powerline/Airline like statusline with what I want...
 " ... without having a plugin. This was more annoying than it was worth, maybe.
 
-" EASY READ LINE INFO
-" LEFT SIDE => Buffer, lines in file, git branch, file [RO][Modified],  VIM MODE
-" RIGHT SID => [unicode][hex], Column, % through file, filetype, encoding, file format
-
-" Returns a string of the current branch
-"function GetCurrentGitStatus()
-"    let gitoutput = split(system('git status --porcelain -b '.shellescape(expand('%')).' 2>/dev/null'),'\n')
-"    if len(gitoutput) > 0
-"        let b:gitstatus = ' ' . strpart(get(gitoutput,0,''),3)
-"    else
-"        let b:gitstatus = ''
-"    endif
-"endfunc
-"autocmd BufEnter,BufWritePost * call GetCurrentGitStatus()
-
 " Returs a string of the current mode VIM is in.
 " Currently not returning Visual Block and Select Block. <C-V>/<C-S> only register once
 " instead of twice which mode() apparently requires? The literals are '\<C-V>'
-"function! GetMode()
-"    if (mode() ==# 'n')
-"        return 'NORMAL'
-"    elseif (mode() ==# 'no')
-"        return 'NORMAL·OPERATOR PENDING '
-"    elseif (mode() ==# 'i')
-"        return 'INSERT'
-"    elseif (mode() ==# 'v')
-"        return 'VISUAL'
-"    elseif (mode() ==# 'V')
-"        return 'VISUAL·LINE'
-"    elseif (mode() ==# 'R')
-"        return 'REPLACE'
-"    elseif (mode() ==# 'Rv')
-"        return 'VISUAL·REPLACE'
-"    elseif (mode() ==# 's')
-"        return 'SELECT'
-"    elseif (mode() ==# 'S')
-"        return 'SELECT·LINE'
-"    elseif (mode() ==# 'c')
-"        return 'COMMAND'
-"    elseif (mode() ==# 'cv')
-"        return 'VIM·EX'
-"    elseif (mode() ==# 'ce')
-"        return 'EX'
-"    elseif (mode() ==# 'r')
-"        return 'PROMPT'
-"    elseif (mode() ==# 'rm')
-"        return 'MORE·AVAILABLE'
-"    elseif (mode() ==# 'r?')
-"        return 'CONFIRMATION·REQUIRED'
-"    elseif (mode() ==# 't')
-"        return 'TERMINAL·MODE'
-"    elseif (mode() ==# '!')
-"        return 'SHELL·EXECUTING'
-"    else
-"        return 'SPECIAL·MODE'
-"    endif
-"endfunction
+function! GetMode()
+    if (mode() ==# 'n')
+        return 'NORMAL'
+    elseif (mode() ==# 'no')
+        return 'NORMAL·OPERATOR PENDING '
+    elseif (mode() ==# 'i')
+        return 'INSERT'
+    elseif (mode() ==# 'v')
+        return 'VISUAL'
+    elseif (mode() ==# 'V')
+        return 'VISUAL·LINE'
+    elseif (mode() ==# 'R')
+        return 'REPLACE'
+    elseif (mode() ==# 'Rv')
+        return 'VISUAL·REPLACE'
+    elseif (mode() ==# 's')
+        return 'SELECT'
+    elseif (mode() ==# 'S')
+        return 'SELECT·LINE'
+    elseif (mode() ==# 'c')
+        return 'COMMAND'
+    elseif (mode() ==# 'cv')
+        return 'VIM·EX'
+    elseif (mode() ==# 'ce')
+        return 'EX'
+    elseif (mode() ==# 'r')
+        return 'PROMPT'
+    elseif (mode() ==# 'rm')
+        return 'MORE·AVAILABLE'
+    elseif (mode() ==# 'r?')
+        return 'CONFIRMATION·REQUIRED'
+    elseif (mode() ==# 't')
+        return 'TERMINAL·MODE'
+    elseif (mode() ==# '!')
+        return 'SHELL·EXECUTING'
+    else
+        return 'SPECIAL·MODE'
+    endif
+endfunction
 
 " Automatically change the statusline color depending on mode for the NORMAL bar
-"function! ChangeStatuslineColor()
-"  if (mode() ==# 'n' || mode() ==# 'no')
-"    exe 'hi! StatusLine ctermfg=13 ctermbg=7'
-"  elseif (mode() ==# 'v' || mode() ==# 'V')
-"    " Visual mode
-"    exe 'hi! StatusLine ctermfg=54 ctermbg=7'
-"  elseif (mode() ==# 'i')
-"    " Insert mode colour:
-"    exe 'hi! StatusLine ctermfg=12 ctermbg=7'
-"  elseif (mode() ==# 'R')
-"    " Replace mode colour:
-"    exe 'hi! StatusLine ctermfg=9 ctermbg=7'
-"  elseif (mode() ==# 'r')
-"    " Prompt mode colour:
-"    exe 'hi! StatusLine ctermfg=21 ctermbg=7'
-"  elseif (mode() ==# 'c')
-"    " Command mode colour:
-"    exe 'hi! StatusLine ctermfg=22 ctermbg=7'
-"  else
-"    exe 'hi! StatusLine ctermfg=198 ctermbg=7'
-"  endif
+function! ChangeStatuslineColor()
+  if (mode() ==# 'n' || mode() ==# 'no')
+    exe 'hi! StatusLine ctermfg=13 ctermbg=7'
+  elseif (mode() ==# 'v' || mode() ==# 'V')
+    " Visual mode
+    exe 'hi! StatusLine ctermfg=54 ctermbg=7'
+  elseif (mode() ==# 'i')
+    " Insert mode colour:
+    exe 'hi! StatusLine ctermfg=12 ctermbg=7'
+  elseif (mode() ==# 'R')
+    " Replace mode colour:
+    exe 'hi! StatusLine ctermfg=9 ctermbg=7'
+  elseif (mode() ==# 'r')
+    " Prompt mode colour:
+    exe 'hi! StatusLine ctermfg=21 ctermbg=7'
+  elseif (mode() ==# 'c')
+    " Command mode colour:
+    exe 'hi! StatusLine ctermfg=22 ctermbg=7'
+  else
+    exe 'hi! StatusLine ctermfg=198 ctermbg=7'
+  endif
 
-"  return ''
-"endfunction
+  return ''
+endfunction
 
 " Automatically change the initial statusline character color depending on mode for the NORMAL bar
-"function! ChangeStatuslineLeftColor()
-"  if (mode() ==# 'n' || mode() ==# 'no')
-"    " normal modes
-"    exe 'hi! StatusLine ctermfg=15 ctermbg=13'
-"  elseif (mode() ==# 'v' || mode() ==# 'V')
-"    " Grey here for visual modes
-"    exe 'hi! StatusLine ctermfg=15 ctermbg=54'
-"  elseif (mode() ==# 'i')
-"    " Insert mode colour:
-"    exe 'hi! StatusLine ctermfg=15 ctermbg=12'
-"  elseif (mode() ==# 'R')
-"    " Replace mode colour:
-"    exe 'hi! StatusLine ctermfg=15 ctermbg=9'
-"  elseif (mode() ==# 'r')
-"    " Prompt mode colour:
-"    exe 'hi! StatusLine ctermfg=15 ctermbg=21'
-"  elseif (mode() ==# 'c')
-"    " Command mode colour:
-"    exe 'hi! StatusLine ctermfg=15 ctermbg=22'
-"  else
-"    exe 'hi! StatusLine ctermfg=15 ctermbg=198'
-"  endif
-"
-"  return ''
-"endfunction
+function! ChangeStatuslineLeftColor()
+  if (mode() ==# 'n' || mode() ==# 'no')
+    " normal modes
+    exe 'hi! StatusLine ctermfg=15 ctermbg=13'
+  elseif (mode() ==# 'v' || mode() ==# 'V')
+    " Grey here for visual modes
+    exe 'hi! StatusLine ctermfg=15 ctermbg=54'
+  elseif (mode() ==# 'i')
+    " Insert mode colour:
+    exe 'hi! StatusLine ctermfg=15 ctermbg=12'
+  elseif (mode() ==# 'R')
+    " Replace mode colour:
+    exe 'hi! StatusLine ctermfg=15 ctermbg=9'
+  elseif (mode() ==# 'r')
+    " Prompt mode colour:
+    exe 'hi! StatusLine ctermfg=15 ctermbg=21'
+  elseif (mode() ==# 'c')
+    " Command mode colour:
+    exe 'hi! StatusLine ctermfg=15 ctermbg=22'
+  else
+    exe 'hi! StatusLine ctermfg=15 ctermbg=198'
+  endif
+
+  return ''
+endfunction
 
 " Draw statusline
 set laststatus=2
-"set statusline=
-"set statusline+=%1*\ %(%{&buflisted?bufnr('%'):''}:%L\ %)
-"set statusline+=%< " Truncate line here
-"set statusline+=%2*%3*\ %(%{b:gitstatus}%)\ 
-"set statusline+=%4*%5*\ %f\ %r%m\ %*
-"set statusline+=%{ChangeStatuslineLeftColor()}
-"set statusline+=
-"set statusline+=%{ChangeStatuslineColor()}
-"set statusline+=\ \ \ %{GetMode()}\ \ \ 
-"set statusline+=%=
-"set statusline+=%8*\ [%b][0x%B]\ %7*\ %c
-"set statusline+=\ %6*\%5*\ %p%%\ ☰\ \ %*
-"set statusline+=%4*%3*\ %y
-"set statusline+=\ %2*%1*\ %{&fileencoding?&fileencoding:&encoding}\ [%{&fileformat}\]%*
+set statusline=
+set statusline+=%1*\ Buf:\ %(%{&buflisted?bufnr('%'):''}\ %)
+set statusline+=%< " Truncate line here
+set statusline+=%9*%5*\ %f\ %r%m\ %*
+set statusline+=%{ChangeStatuslineLeftColor()}
+set statusline+=
+set statusline+=%{ChangeStatuslineColor()}
+set statusline+=\ \ \ %{GetMode()}\ \ \ 
+set statusline+=%=
+set statusline+=%8*\ [%b][0x%B]\ %7*\ %c
+set statusline+=\ %6*\%5*\ %p%%\ ☰\ \ %*
+set statusline+=%4*%3*\ %y
+set statusline+=\ %2*%1*\ %{&fileencoding?&fileencoding:&encoding}\ [%{&fileformat}\]%*
 
 
 
@@ -373,7 +351,7 @@ hi User7 ctermfg=0 ctermbg=11
 " Transition
 hi User8 ctermfg=11 ctermbg=235
 " Rose used for file percent
-hi User9 ctermfg=9 ctermbg=235
+hi User9 ctermfg=237 ctermbg=007
 
 
 
@@ -395,10 +373,11 @@ set tabstop=4
 set shiftround
 
 " Auto indent because it's a standard these days.
-set ai
+set autoindent
 
 " Enable smart indenting that copies based off the previous indent!
-set si
+" This may no longer be needed as it's an old script. TODO: Investigate!
+set smartindent
 
 
 
@@ -408,8 +387,8 @@ set si
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :call VisualSelection('f')<CR>
-vnoremap <silent> # :call VisualSelection('b')<CR>
+"vnoremap <silent> * :call VisualSelection('f')<CR>
+"vnoremap <silent> # :call VisualSelection('b')<CR>
 
 
 
@@ -421,40 +400,36 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 " but I always end up recording macros! :(
 inoremap <C-t>  <esc>
 
-" Remapping the arrow keys to other useful things
+" Temporarily remapping the arrow keys to other useful things
 map <up> <nop>
 map <down> <nop>
 map <left> :bp<CR>
 map <right> :bn<CR>
 
 " Swap implementations of ` and ' jump to markers. By default, ' jumps to the marked
-" line, ` jumps to the marked line and column which is infinitely more useful.
+" line, ` jumps to the marked line and column which is infinitely more useful... imo.
 nnoremap ' `
 nnoremap ` '
 
 " If there's long and wrapped lines, then j and k behave unnaturally.
-" Let's take care of that unnecessary silliness.
+" Let's take care of that unnecessary silliness. Keeping this setting on as
+" sometimes I do like to manually wrap text for easy of reading/manipulating.
+" Na'meen?
 nnoremap j gj
 nnoremap k gk
 vmap j gj
 vmap k gk
-
-" Better navigation
-nnoremap H ^
-nnoremap L $
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Leader Key Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" With a map leader it's possible to do extra key combinations that you define
+" With a map leader it's possible to do extra key combinations that you
+" define. I like
 nnoremap <space> <nop>
 xnoremap <space> <nop>
 let mapleader = " "
-
-" In case I accidentally press space, double space is ESC
-nnoremap <silent> <leader><space> <esc>
 
 " Let's make saving easier on the hands
 nmap <silent> <leader>s :w<CR>
@@ -465,7 +440,7 @@ nnoremap <silent> <leader>th :nohlsearch<CR>
 " Edit the vimrc file
 nmap <silent> <leader>ev :e ~/.vimrc<CR>
 
-" A better window management system
+" A better for me window management system... kinda inspired by Spacemacs!
 nnoremap <leader>wh <C-W>h
 nnoremap <leader>wl <C-W>l
 nnoremap <leader>wj <C-W>j
@@ -476,6 +451,6 @@ nnoremap <leader>wc :close<CR>
 nnoremap <leader>wn :vne<CR>
 nnoremap <leader>wo :only<CR>
 
-" FZF activation
+" FZF activation for the important stuff
 nnoremap <leader>o :Files<CR>
 nnoremap <leader>bs :Buffers<CR>
