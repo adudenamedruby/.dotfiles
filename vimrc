@@ -4,7 +4,7 @@
 "   => maintained by roux g. buciu
 "
 "
-"   'To a hammer, everything looks like a nail. Wield VIM responsibly.'
+"   'To a hammer, everything looks like a nail.'
 "       (Or - don't use shit you don't need.)
 "
 "   => last updated(09/01/2019)
@@ -16,38 +16,32 @@
 "
 "   -> Plugins
 "   -> General Settings
-"   -> VIM Quality of Life
+"   -> Quality of Life
 "   -> Search options
 "   -> Statusline
-"   -> Colors & fonts
+"   -> Colours & fonts
 "   -> Text, tab & indent
 "   -> Visual mode related
 "   -> Personal Key Mappings
-"   -> Leader Key Mappiings
+"   -> Leader Key Mappings
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" IMPORTANT Strive to use as little plugins as possible. Only what is really needed and 
-" provides useful additions to Vim.
-
-" Plugins will be downloaded under the specified directory.
+" Plugin download directory
 call plug#begin('~/.vim/plugged')
 
-" Declare the list of ACTIVE plugins.
+" ACTIVE
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'keith/swift.vim'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 
-" INACTIVE plugins but I may look into them in the future.
-"I do like this colour scheme, separate from my terminal colours.
+" INACTIVE
 "Plug 'srcery-colors/srcery-vim'
-" TODO Look into lightline code to see how it's different from my own statusline.
-" Still undecided which way to go. :/
 "Plug 'itchyny/lightline.vim'
 "Plug 'tpope/vim-commentary'
 "Plug 'wellle/targets.vim'
@@ -67,7 +61,7 @@ call plug#end()
 " allowed to go in there (ie. the 'must save first' error doesn't come up)
 set hidden
 
-" Sets how many lines of history VIM has to remember
+" Sets how many lines of history VIM remembers
 set history=200
 set undolevels=200
 
@@ -77,93 +71,73 @@ filetype indent on
 " Enable syntax highlighting with current color settings
 syntax enable
 
-" Set the gui options the way I like it, uh-huh uh-huh.
+" Set the gui options: autoselect, console popups and grey menu items if unselected
 set guioptions=acg
 
-" I save all the time so let's get rid of this annoying and unecessary stuff.
+" I save all the time so let's get rid of this stuff that adds up
 set nobackup
 set nowritebackup
 set noswapfile
 
-" Don't redraw while executing macros (good performance config)
+" Don't redraw while executing macros
 set lazyredraw
 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM Quality of Life
+" => Quality of Life
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Wildmenu, is... wild!!!!!! But also very helpful so set this up to behave nicely
+" Wildmenu setup
 set wildmenu
 set wildchar=<TAB>
 set wildmode=list:longest
 set wildignore+=*.DS_STORE,*.jpg,*.png,*.gif
 
-" Turn line wrapping off becasue... well, reasons.
+" Turn line wrapping off. It can be manually set if needed
 set nowrap
-
-" Don't autowrap text as I'm writing. Sometimes I turn this on... and then
-" forget to turn it off!
-set textwidth=0
-
-" Keep some lines off the edges of the screen when scrolling for more context
-" while doing the scroll thing.
-set scrolloff=4
 
 " Add line numbering, as well as relative numbers becasue no Vim should be without them
 set number
 set relativenumber
 
-" Always show current position
-set ruler
-
-" We're using Lightline/custom statusline so we'll disable the mode
-set noshowmode
-
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 
 " This is the timeout used while waiting for user input on a multi-keyed macro
-" or while just sitting and waiting for another key to be pressed measured
-" in milliseconds. Play to figure out how I like it.
-set timeoutlen=500
+" or while just sitting and waiting for another key to be pressed, measured
+" in milliseconds.
+set timeoutlen=700
 
 " Show matching brackets when text indicator is over them
 set showmatch
 
 " How many tenths of a second to blink when matching brackets
-set mat=2
+set matchtime=2
 
-" Draws a cursorline under the cursor. This is cool in Xcode.
-" But it looks neat when you invoke line&column.
-" Like RED OCTOBER!
-"set cursorline
-"set cursorcolumn
-
-" Normal OS clipboard interaction
-set clipboard=unnamed
+" Normal OS clipboard interaction while keeping plaftorm specific options
+set clipboard^=unnamed
 
 " Use a status bar that is 2 rows high
 set cmdheight=2
 
-" Set up default window splitting behaviour unless I manually specify what I want
+" Set up default vsplit behaviour to right of the current split
 set splitright
 
-" I use 90 space columns but VIMs regular visual line is busy and ugly. This makes it such
-" that, if a character appears on the 91 column, it'll be highlighted with a magenta 
-" block to let me know to code cleaner and more concisely. But dont's stress about
-" occasionally going over. Sometimes variable names NEED to be ginormous.
+" VIMs regular visual line is busy and ugly. This makes it such that, if a character
+" appears on the 91 column, it'll be highlighted with a magenta block.
 highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%91v', 100)
+augroup TooLong
+    autocmd!
+    autocmd winEnter,BufEnter * call clearmatches() | call matchadd('ColorColumn', '\%91v', 100)
+augroup END
 
-" Get rid of the goddamn bell! It's more annying than pigeons in an Italian plaza.
-set vb
+" Get rid of the bell and relpace it with a visual bell
+set visualbell
 
-" Add vertical spaces to keep right and left aligned
+" Add vertical spaces to keep right and left aligned and add ignorance of
+" whitespace to diff
 set diffopt=filler
-
-" Add ignorance of whitespace to diff
 set diffopt+=iwhite
 
 " Various characters are wider than normal fixed width characters, but the
@@ -171,21 +145,26 @@ set diffopt+=iwhite
 " sucks.  Setting it to double makes it awesome.
 set ambiwidth=single
 
-" Folding is love. So let's make it behave in a civilized manner
+" Make folding method behave in a civilized manner
 set foldmethod=manual
 
 " Let's avoid insane levels of folding
 set foldnestmax=2
 
-" Highlight whitespaces and tabs and extensions and....
+" Also, fill folds with characters
+set fillchars=fold:-
+
+" Highlight whitespaces and tabs and extensions
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 " ...but ignore them if in an html file or xml file.
-autocmd filetype html,xml set listchars-=tab:>.
-
-" Also, fill folds with characters
-set fillchars=fold:-
+augroup HighlightCharacters
+    "Removes any autocmds from this augroup so we don't have multiple
+    "instances of them
+    autocmd!
+    autocmd filetype html,xml set listchars-=tab:>.
+augroup END
 
 " Delete trailing white space on save, useful for Python sssssssssssss
 func! DeleteTrailingWS()
@@ -193,8 +172,11 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
+augroup DeleteTrailingWhitespaces
+    autocmd!
+    autocmd BufWrite *.py :call DeleteTrailingWS()
+    autocmd BufWrite *.coffee :call DeleteTrailingWS()
+augroup End
 
 
 
@@ -202,11 +184,11 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 " => Search Options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Set case insensitive search
+" Set case insensitive search as the default behaviour
 set ignorecase
 
-" Smart case search ignores case if search pattern is lowercase
-" Otherwise, search is case-sensitive
+" Smart case search ignores case if search pattern is all lowercase.
+" Otherwise, search is cAse-seNsItiVe
 set smartcase
 
 " Hilight search terms
@@ -221,9 +203,8 @@ set incsearch
 " => Statusline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" The goal was to have a Powerline/Airline like statusline with what I want...
-" ... without having a plugin. This was more annoying than it was worth, maybe.
-" Why so much effort for the fancy, Tom? Mostly because I like how it looks, Jerry.
+" Custom statusline/Lightline use replaces this.
+set noshowmode
 
 " Returs a string of the current mode VIM is in. It's not perfect yet, but serviceable.
 " Currently not returning Visual Block and Select Block. <C-V>/<C-S> only register once
@@ -340,27 +321,27 @@ set statusline+=\ %2*%1*\ %{&fileencoding?&fileencoding:&encoding}\ [%{&fi
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
+" => Colours & Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " dark grey with beige text
-hi User1 ctermfg=007 ctermbg=237
+highlight User1 ctermfg=007 ctermbg=237
 " Transition
-hi User2 ctermfg=237 ctermbg=14
+highlight User2 ctermfg=237 ctermbg=14
 " Green with yellow background
-hi User3 ctermfg=226 ctermbg=14
+highlight User3 ctermfg=226 ctermbg=14
 " Transition
-hi User4 ctermfg=14 ctermbg=015
+highlight User4 ctermfg=14 ctermbg=015
 " Beige with dark text
-hi User5 ctermfg=0 ctermbg=15
+highlight User5 ctermfg=0 ctermbg=15
 " Transition
-hi User6 ctermfg=15 ctermbg=11
+highlight User6 ctermfg=15 ctermbg=11
 " gold with black text
-hi User7 ctermfg=0 ctermbg=11
+highlight User7 ctermfg=0 ctermbg=11
 " Transition
-hi User8 ctermfg=11 ctermbg=235
+highlight User8 ctermfg=11 ctermbg=235
 " Rose used for file percent
-hi User9 ctermfg=237 ctermbg=007
+highlight User9 ctermfg=237 ctermbg=15
 
 
 
@@ -371,7 +352,7 @@ hi User9 ctermfg=237 ctermbg=007
 " Use spaces instead of tabs
 set expandtab
 
-" Be smart when using tabs ;)
+" Insert blanks according to 'shiftwidth'
 set smarttab
 
 " 1 tab == 4 spaces
@@ -381,12 +362,8 @@ set tabstop=4
 " Use multiple of shift width when indenting with < and >
 set shiftround
 
-" Auto indent because it's a standard these days.
+" Copy indent from current line when starting a new line
 set autoindent
-
-" Enable smart indenting that copies based off the previous indent!
-" This may no longer be needed as it's an old script. TODO: Investigate!
-set smartindent
 
 
 
@@ -394,67 +371,69 @@ set smartindent
 " => Visual mode related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-"vnoremap <silent> * :call VisualSelection('f')<CR>
-"vnoremap <silent> # :call VisualSelection('b')<CR>
-
 " TODO: Toran Billups had a cool effect that, when you :s/p1/p2/, highlighted p1 and
-" inserted p2 highlighted until you hit <CR>. Look into it. Mabybe do it yourself.
-" Don't use a plugin.
+" inserted p2 highlighted until you hit <CR>. Look into it.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Personal Key Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Easier way of pressing ESC for a Dvorak user. Because qj is great
-" but I always end up recording macros! :(
+" Easier way of pressing ESC for a Dvorak user while in Insert mode
 inoremap <C-t>  <esc>
 
 " Temporarily remapping the arrow keys to other useful things
-map <up> <nop>
-map <down> <nop>
-map <left> :bp<CR>
-map <right> :bn<CR>
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> :bp<CR>
+noremap <right> :bn<CR>
 
 " Swap implementations of ` and ' jump to markers. By default, ' jumps to the marked
 " line, ` jumps to the marked line and column which is infinitely more useful... imo.
 nnoremap ' `
 nnoremap ` '
 
-" If there's long and wrapped lines, then j and k behave unnaturally.
-" Let's take care of that unnecessary silliness. Keeping this setting on as
-" sometimes I do like to manually wrap text for easy of reading/manipulating.
-" Na'meen?
-nnoremap j gj
-nnoremap k gk
-vmap j gj
-vmap k gk
+" If there's long and wrapped lines, then j and k behave unnaturally. This
+" mapping makes movements operate on 1 screen line in wrap mode.
+function! ScreenMovement(movement)
+   if &wrap
+      return "g" . a:movement
+   else
+      return a:movement
+   endif
+endfunction
+onoremap <silent> <expr> j ScreenMovement("j")
+onoremap <silent> <expr> k ScreenMovement("k")
+onoremap <silent> <expr> 0 ScreenMovement("0")
+onoremap <silent> <expr> ^ ScreenMovement("^")
+onoremap <silent> <expr> $ ScreenMovement("$")
+nnoremap <silent> <expr> j ScreenMovement("j")
+nnoremap <silent> <expr> k ScreenMovement("k")
+nnoremap <silent> <expr> 0 ScreenMovement("0")
+nnoremap <silent> <expr> ^ ScreenMovement("^")
+nnoremap <silent> <expr> $ ScreenMovement("$")
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Leader Key Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Spacemacs was a really interesting experience. While not switching to Emacs becasue
-" it doesn't meet my current workflow needs, the SPACEBAR IS MY LEADER philosophy is
-" something I can get behind. I shall try it. The one thing to be careful of is that
-" key combinations shouldn't overlap so try and Pay Attension.
+" SPACEBAR IS MY LEADER!
 nnoremap <space> <nop>
 xnoremap <space> <nop>
 let mapleader = " "
 
 " Let's make saving easier on the hands
-nmap <silent> <leader>s :w<CR>
+noremap <silent> <leader>s :w<CR>
 
 " Easily turn off search highlight
 nnoremap <silent> <leader>th :nohlsearch<CR>
 
 " Edit the vimrc file
-nmap <silent> <leader>vme :e ~/.vimrc<CR>
+noremap <silent> <leader>vme :e ~/.vimrc<CR>
 
-" And the source that sucker
-nmap <silent> <leader>vms :source ~/.vimrc<CR>
+" And then source that sucker
+noremap <silent> <leader>vms :source $MYVIMRC<CR>
 
 " A better for me window management system... kinda inspired by Spacemacs!
 nnoremap <leader>wh <C-W>h
@@ -470,3 +449,4 @@ nnoremap <leader>wo :only<CR>
 " FZF activation for the important stuff
 nnoremap <leader>o :Files<CR>
 nnoremap <leader>bs :Buffers<CR>
+
