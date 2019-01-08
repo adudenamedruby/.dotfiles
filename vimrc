@@ -219,7 +219,7 @@ set incsearch
 " The goal was to have a Powerline/Airline like statusline with what I want...
 " ... without having a plugin. This was more annoying than it was worth, maybe.
 
-" Returs a string of the current mode VIM is in.
+" Returs a string of the current mode VIM is in. It's not perfect yet, but serviceable.
 " Currently not returning Visual Block and Select Block. <C-V>/<C-S> only register once
 " instead of twice which mode() apparently requires? The literals are '\<C-V>'
 function! GetMode()
