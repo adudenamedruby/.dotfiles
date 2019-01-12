@@ -15,11 +15,10 @@
 "   TABLE OF CONTENTS
 "
 "   -> Plugins
+"   -> Plugin Settings
 "   -> General Settings
 "   -> Quality of Life
 "   -> Search options
-"   -> Statusline
-"   -> Colours & fonts
 "   -> Text, tab & indent
 "   -> Visual mode related
 "   -> Personal Key Mappings
@@ -36,7 +35,9 @@ call plug#begin('~/.vim/plugged')
 " ACTIVE
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
-Plug 'keith/swift.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fugitive'
+Plug 'itchyny/lightline.vim'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 
@@ -44,14 +45,20 @@ Plug 'junegunn/fzf.vim'
 "Plug 'easymotion/vim-easymotion'
 "Plug 'srcery-colors/srcery-vim'
 "Plug 'junegunn/goyo.vim'
-"Plug 'itchyny/lightline.vim'
 "Plug 'tpope/vim-commentary'
 "Plug 'wellle/targets.vim'
-"Plug 'tpope/vim-fugitive'
 "Plug 'valloric/youcompleteme'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -122,6 +129,9 @@ set clipboard^=unnamed
 " Use a status bar that is 2 rows high
 set cmdheight=2
 
+" Draw the statusline
+set laststatus=2
+
 " Set up default vsplit behaviour to right of the current split
 set splitright
 
@@ -135,6 +145,9 @@ augroup END
 
 " Get rid of the bell and relpace it with a visual bell
 set visualbell
+
+" Lightline replaces this so it's not needed
+set noshowmode
 
 " Add vertical spaces to keep right and left aligned and add ignorance of
 " whitespace to diff
@@ -197,152 +210,6 @@ set hlsearch
 
 " Should show search matches as you type
 set incsearch
-
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Statusline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Custom statusline/Lightline use replaces this.
-set noshowmode
-
-" Returs a string of the current mode VIM is in. It's not perfect yet, but serviceable.
-" Currently not returning Visual Block and Select Block. <C-V>/<C-S> only register once
-" instead of twice which mode() apparently requires? The literals are '\<C-V>'
-function! GetMode()
-    if (mode() ==# 'n')
-        return 'NORMAL'
-    elseif (mode() ==# 'no')
-        return 'NORMAL·OPERATOR PENDING '
-    elseif (mode() ==# 'i')
-        return 'INSERT'
-    elseif (mode() ==# 'v')
-        return 'VISUAL'
-    elseif (mode() ==# 'V')
-        return 'VISUAL·LINE'
-    elseif (mode() ==# 'R')
-        return 'REPLACE'
-    elseif (mode() ==# 'Rv')
-        return 'VISUAL·REPLACE'
-    elseif (mode() ==# 's')
-        return 'SELECT'
-    elseif (mode() ==# 'S')
-        return 'SELECT·LINE'
-    elseif (mode() ==# 'c')
-        return 'COMMAND'
-    elseif (mode() ==# 'cv')
-        return 'VIM·EX'
-    elseif (mode() ==# 'ce')
-        return 'EX'
-    elseif (mode() ==# 'r')
-        return 'PROMPT'
-    elseif (mode() ==# 'rm')
-        return 'MORE·AVAILABLE'
-    elseif (mode() ==# 'r?')
-        return 'CONFIRMATION·REQUIRED'
-    elseif (mode() ==# 't')
-        return 'TERMINAL·MODE'
-    elseif (mode() ==# '!')
-        return 'SHELL·EXECUTING'
-    else
-        return 'SPECIAL·MODE'
-    endif
-endfunction
-
-" Automatically change the statusline color depending on mode for the NORMAL bar
-function! ChangeStatuslineColor()
-  if (mode() ==# 'n' || mode() ==# 'no')
-    exe 'hi! StatusLine ctermfg=13 ctermbg=7'
-  elseif (mode() ==# 'v' || mode() ==# 'V')
-    " Visual mode
-    exe 'hi! StatusLine ctermfg=54 ctermbg=7'
-  elseif (mode() ==# 'i')
-    " Insert mode colour:
-    exe 'hi! StatusLine ctermfg=12 ctermbg=7'
-  elseif (mode() ==# 'R')
-    " Replace mode colour:
-    exe 'hi! StatusLine ctermfg=9 ctermbg=7'
-  elseif (mode() ==# 'r')
-    " Prompt mode colour:
-    exe 'hi! StatusLine ctermfg=21 ctermbg=7'
-  elseif (mode() ==# 'c')
-    " Command mode colour:
-    exe 'hi! StatusLine ctermfg=22 ctermbg=7'
-  else
-    exe 'hi! StatusLine ctermfg=198 ctermbg=7'
-  endif
-
-  return ''
-endfunction
-
-" Automatically change the initial statusline character color depending on mode for the NORMAL bar
-function! ChangeStatuslineLeftColor()
-  if (mode() ==# 'n' || mode() ==# 'no')
-    " normal modes
-    exe 'hi! StatusLine ctermfg=15 ctermbg=13'
-  elseif (mode() ==# 'v' || mode() ==# 'V')
-    " Grey here for visual modes
-    exe 'hi! StatusLine ctermfg=15 ctermbg=54'
-  elseif (mode() ==# 'i')
-    " Insert mode colour:
-    exe 'hi! StatusLine ctermfg=15 ctermbg=12'
-  elseif (mode() ==# 'R')
-    " Replace mode colour:
-    exe 'hi! StatusLine ctermfg=15 ctermbg=9'
-  elseif (mode() ==# 'r')
-    " Prompt mode colour:
-    exe 'hi! StatusLine ctermfg=15 ctermbg=21'
-  elseif (mode() ==# 'c')
-    " Command mode colour:
-    exe 'hi! StatusLine ctermfg=15 ctermbg=22'
-  else
-    exe 'hi! StatusLine ctermfg=15 ctermbg=198'
-  endif
-
-  return ''
-endfunction
-
-" Draw statusline
-set laststatus=2
-set statusline=
-set statusline+=%1*\ Buf:\ %(%{&buflisted?bufnr('%'):''}\ %)
-set statusline+=%< " Truncate line here
-set statusline+=%9*%5*\ %f\ %r%m\ %*
-set statusline+=%{ChangeStatuslineLeftColor()}
-set statusline+=
-set statusline+=%{ChangeStatuslineColor()}
-set statusline+=\ \ \ %{GetMode()}\ \ \ 
-set statusline+=%=
-set statusline+=%8*\ [%b][0x%B]\ %7*\ %c
-set statusline+=\ %6*\%5*\ %p%%\ ☰\ \ %*
-set statusline+=%4*%3*\ %y
-set statusline+=\ %2*%1*\ %{&fileencoding?&fileencoding:&encoding}\ [%{&fileformat}\]%*
-
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colours & Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" dark grey with beige text
-highlight User1 ctermfg=007 ctermbg=237
-" Transition
-highlight User2 ctermfg=237 ctermbg=14
-" Green with yellow background
-highlight User3 ctermfg=226 ctermbg=14
-" Transition
-highlight User4 ctermfg=14 ctermbg=015
-" Beige with dark text
-highlight User5 ctermfg=0 ctermbg=15
-" Transition
-highlight User6 ctermfg=15 ctermbg=11
-" gold with black text
-highlight User7 ctermfg=0 ctermbg=11
-" Transition
-highlight User8 ctermfg=11 ctermbg=235
-" Rose used for file percent
-highlight User9 ctermfg=237 ctermbg=15
 
 
 
@@ -451,6 +318,6 @@ nnoremap <leader>wo :only<CR>
 
 " FZF activation for the important stuff
 nnoremap <leader>o :Files<CR>
+nnoremap <leader>a :Ag<CR>
 nnoremap <leader>bs :Buffers<CR>
 nmap <leader>H :Helptags!<CR>
-
