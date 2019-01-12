@@ -452,4 +452,5 @@ nnoremap <leader>wo :only<CR>
 " FZF activation for the important stuff
 nnoremap <leader>o :Files<CR>
 nnoremap <leader>bs :Buffers<CR>
+nmap <leader>H :Helptags!<CR>
 
