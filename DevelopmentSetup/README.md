@@ -50,6 +50,9 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 ```
 - Don’t display the annoying prompt when quitting iTerm `defaults write com.googlecode.iterm2 PromptOnQuit -bool false`
 - End setup by running `brew cleanup' to clean out any old formulas
+- Download Xcode themes
+    - Go to `~/Library/Developer/Xcode/UserData/FontAndColorThemes/` (FontAndColoThemes may not exist.)
+    - Drop in .dvtcolortheme files here. Restart Xcode and your themes should be there.
 
 ### XVim
 - Rename standard xcode to Xcode-Distribution (if you need a distribution Xcode)
@@ -61,13 +64,5 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 - Go to ~Library/Developer/Xcode/UserData/Keybindings
     - copy Roux's Keybindings in there.
 
-### Firvolous Stuff
-- Download Xcode themes
-    - Go to `~/Library/Developer/Xcode/UserData/FontAndColorThemes/` (FontAndColoThemes may not exist.)
-    - Drop in .dvtcolortheme files here. Restart Xcode and your themes should be there.
-- If we're feeling real frisky, we can install **Emacs**
-    - `brew cask install emacs`
-    - verify that we're using the latest [Emacs](https://www.gnu.org/software/emacs/) `emacs --version`
-    - verify that we're using brew's emacs `which emacs`
-    - verify Emacs app is in /Applications
-    - Then, flavour Emacs, unless you want to start from scratch, with [**Spacemacs**](https://github.com/syl20bnr/spacemacs)
+### Spacemacs
+- Spacemacs install instructions: https://github.com/syl20bnr/spacemacs
