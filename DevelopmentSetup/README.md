@@ -41,6 +41,7 @@ Preferences for various tools and environment setups to save time later on.
 - **Python 3** `brew install python3`
 - **openssh** `brew install openssh`
 - **grep** `brew install grep --with-default-names`
+- **Ag** `brew install the_silver_searcher`
 - Restart terminal
 - Disable Notification Center and remove the menu bar icon `launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null`
 - Expand save panel by default
