@@ -6,6 +6,9 @@
 "
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"   General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Search
 set hlsearch
 set ignorecase
@@ -14,27 +17,53 @@ set smartcase
 " Use the system pasteboard
 set clipboard=unnamed
 
-" Can be typed even faster than jj, and if you are already in
-"    normal mode, you (usually) don't accidentally move:
-imap <C-t> <Esc>
+" Jump to definition more easily
+nmap <C-j> <C-]>
 
-" Better navigation
-nnoremap H ^
-nnoremap L $
+" Comment code easily
+nmap gcc :xcmenucmd Toggle Comments<CR>
 
-" Better window management
-nmap <space>wn <C-w>v
+" Insert a line below current line
+nmap <space>ij o<ESC>k
+" Insert a line above the current line
+nmap <space>ik O<ESC>j
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"   SpaceCODE
+"
+" I use Spacemacs, thus, spacebar is my leader
+" However, that also means that I have some ingrained commands in my hands.
+" These will be respected, even if in Xcode, they don't make exact sense
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Window management
+nmap <space>wv <C-w>v
 nmap <space>ws <C-w>s
+nmap <space>wd <C-w>c
 nmap <space>wo :xcmenucmd Show Standard Editor<CR>
-nmap <space>wc <C-w>c
+nmap <space>wg :xcmenucmd Show Version Editor<CR>
 
-" Better window navigation
+" Window navigation
 nmap <space>wh <C-w>h
 nmap <space>wl <C-w>l
 nmap <space>wj <C-w>j
 nmap <space>wk <C-w>k
 
-" Leader keybindings
-nmap <space>o :xcmenucmd Open Quickly...<CR>
-nmap <space>wv :xcmenucmd Show Version Editor<CR>
-nmap <space>bb :xcmenucmd Add Breakpoint at Current Line<CR>
+" File commands
+nmap <space>fs :xcmenucmd Save<CR>
+
+" Search commands
+nmap <space>pf :xcmenucmd Open Quickly...<CR>
+nmap <space>/ :xcmenucmd Open Quickly...<CR>
+nmap <space>sup viw:xccmd findSelectedTextInWorkspace<CR>
+
+" Compilation commands
+nmap <space>cC :xcmenucmd Run<CR>
+nmap <space>cr :xcmenucmd Run<CR>
+nmap <space>ct :xcmenucmd Test<CR>
+nmap <space>cb :xcmenucmd Bulid<CR>
+nmap <space>cc :xcmenucmd Clean Build Folder<CR>
+
+" Breakpoints
+nmap <space>tb :xcmenucmd toggleBreakpointAtCurrentLine<CR>
