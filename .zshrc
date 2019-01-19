@@ -1,8 +1,8 @@
-# If you come from bash you might have to change your $PATH.
+## If you come from bash you might have to change your $PATH.
 export PATH="/usr/local/sbin:$PATH"
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/gh057/.oh-my-zsh
+export ZSH=/Users/acmelabs/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -11,8 +11,8 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 
 #POWERLEVEL9k customization
 POWERLEVEL9K_MODE="nerdfont-complete"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir_writable dir vcs newline time status)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time public_ip root_indicator background_jobs ram)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir_writable dir vcs newline time root_indicator command_execution_time status)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 POWERLEVEL9K_USER_ICON="\uF415" # 
 POWERLEVEL9K_ROOT_ICON="\uF09C"
 POWERLEVEL9K_SUDO_ICON=$'\uF09C' # 
@@ -127,3 +127,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias gitlog="git log | vim -R -"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
