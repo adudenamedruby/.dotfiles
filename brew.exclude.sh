@@ -68,6 +68,9 @@ brew cask install the-unarchiver
 # Google Chrome
 brew cask install google-chrome
 
+# Keycastr
+brew cask install keycastr
+
 # Emacs
 brew tap d12frosted/emacs-plus
 brew cask install emacs-plus
