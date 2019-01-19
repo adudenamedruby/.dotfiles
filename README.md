@@ -53,6 +53,7 @@ Here you'll find my dotfiles and my setup preferences. All nice and neat. It's a
     - Install [Vim-Plug](https://github.com/junegunn/vim-plug) `curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
     - open vim and run `:PlugInstall` to install plugins
 - Xcode themes from [here](https://github.com/hdoria/xcode-themes) and [here](http://www.codethemes.net/themes/popular/all) should go in `~/Library/Developer/Xcode/UserData/FontAndColorThemes/` (FontAndColoThemes may not exist.)
+- [iTerm2 Themes](https://github.com/mbadolato/iTerm2-Color-Schemes)
 
 ### Other
 - In chrome, don't forget to install `vimium`
