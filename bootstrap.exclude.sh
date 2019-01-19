@@ -1,7 +1,8 @@
 #!/bin/sh
 
 init () {
-    echo "Begining bootstrap of system. Hang tight!"
+    echo "Begining bootstrap of system."
+    echo "Geronimooooooooo!!!!"
 }
 
 link () {
@@ -10,6 +11,13 @@ link () {
 	read resp
 	if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
 		for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|.*.md|.*.idekeybindings' ) ; do
+            if [ -e ~/$file ]; then
+                echo "File $file already exists. Remove it? [y/n]"
+                read resp
+                if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+                    rm ~/$file
+                fi
+            fi
 			ln -sv "$PWD/$file" "$HOME"
 		done
         ln -sv "$PWD/RouxAlternateBindings.idekeybindings" "$HOME/Library/Developer/Xcode/UserData/Keybindings/"
