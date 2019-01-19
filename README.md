@@ -19,6 +19,8 @@ Here you'll find my dotfiles and my setup preferences. All nice and neat. It's a
       - Once installed, open to install tools!
     - 1Password (also get safari/crome extension)
     - Magnet (and set hotkeys)
+    - Tweetbot
+    - Spotify
 
 ### Let's get Phys... no. Let's get automated!
 - In iTerm `git clone https://github.com/rouxbuciu/.dotfiles.git` in the home directory
