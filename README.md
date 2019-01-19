@@ -15,7 +15,7 @@ Sharing is caring; We learn from each other 🌷
 
 The contents of this repo are licensed under the MIT license.
 
-#Contributing
+# Contributing
 
 If you have any ideas or suggestions, feel free to open up an issue or shoot through a pull request! Thanks!
 
