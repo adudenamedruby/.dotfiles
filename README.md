@@ -1,17 +1,16 @@
 # What dis?
 
-Here you'll find my dotfiles and my setup preferences. All nice and neat. It's a work in progress, mostly.
+Here you'll find my dotfiles, my setup/keybinding preferences, and a fun script for the whole thing. All nice and neat. It's a work in progress, mostly.
 
-**Important:** if for some reason you see fit to try some of these things out, please fork the repo and remove things you don't want or need before using them. Don’t blindly use my settings unless you know what that entails.
+**Important:** if for some reason you see fit to try some of these things out, please fork the repo and remove things you don't want or need before using them. Don’t blindly use my settings unless you know what a thing does. Don't blame me if something goes wrong. Or do, really. But I won't feel sorry. :P
 
 # Installation
 
 ### First things first
 - Take a moment and appreciate what an unadulterated, fresh mac looks like. Yeah, it's pretty neat. Let's get to the nitty-gritty.
-- Sign in to Apple accounts; set System Preferences; set preferred backgrounds!
+- Sign in to Apple accounts; set System Preferences.
 - Download and install the important stuff:
     - [Alfred](www.alfredapp.com)
-    - [Dash](https://kapeli.com/dash)
     - [iTerm 2](https://www.iterm2.com/downloads.html) - set up hotkey shortcut Cmd-Ctrl-T
     - [Karabiner](https://pqrs.org/osx/karabiner/)
 - Download from App Store
@@ -58,6 +57,7 @@ Here you'll find my dotfiles and my setup preferences. All nice and neat. It's a
 ### Other
 - In chrome, don't forget to install `vimium`
 - In Alfred, set up various workflows or shortcuts you need.
+- Maybe get [Dash](https://kapeli.com/dash)
 
 # Why a dotfiles repo?
 
