@@ -5,8 +5,11 @@ alias doc="cd ~/Documents"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias c0="cd ~/c0de"
+
+# Alias for manipulating the dotfile folder
 alias dot="cd ~/.dotfiles"
 alias dotupdate="git add -A; git commit -m \"Update repo\"; git push origin master"
+alias dotsync="pushd ~/.dotfiles; git pull origin master; popd"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
