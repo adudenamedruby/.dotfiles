@@ -45,6 +45,7 @@ brew install grep --with-default-names
 
 # Zsh 
 brew install zsh zsh-completions
+chsh -s /bin/zsh
 
 
 # ---------------------------------------------
@@ -91,6 +92,7 @@ brew cask install font-inconsolata-for-powerline
 brew cask install font-inconsolata-nerd-font
 brew cask install font-inconsolata-nerd-font-mono
 
+
 # ---------------------------------------------
 # Terminal gimmicks xD
 # ---------------------------------------------
@@ -104,6 +106,11 @@ brew install cowsay
 # Multicolored text output
 brew install lolcat
 
+# Cmatricx
+brew install cmatricx
+
+# SL
+brew install sl
 
 
 # Now that we're done brewing...

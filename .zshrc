@@ -91,10 +91,10 @@ P9K_VCS_UNTRACKED_FOREGROUND="$DEFAULT_BACKGROUND"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	git
-	colored-man-pages
+    git
+    colored-man-pages
     vi-mode
-	zsh-syntax-highlighting
+    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
