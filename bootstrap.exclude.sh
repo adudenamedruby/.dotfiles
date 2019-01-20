@@ -3,11 +3,11 @@
 init () {
     echo "SYSTEM BOOTSTRAP"
     echo "WARNING: This utility will run the bootstrap scrip to set up your computer."
-    echo "Proceed? (y/n)
+    echo "Proceed? (y/n)"
     read resp
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
         echo "Geronimooooooooo!!!!"
-        developer_mode
+	developer_mode 
         install_tools
         symlink_setup
         download_other
