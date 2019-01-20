@@ -40,6 +40,8 @@ It's a work in progress, however, and is likely to change frequently.
 ### Almost done!
 - Run `brew doctor` to see any issues and fix them as needed
 - Open Vim and run `:PlugInstall` to install plugins
+- **ZSH**
+    - The bootstrap utility installs ZSH with brew but [there are further install instructions](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) that should be done manually
 - Xcode themes from [here](https://github.com/hdoria/xcode-themes) and [here](http://www.codethemes.net/themes/popular/all) should go in `~/Library/Developer/Xcode/UserData/FontAndColorThemes/` (FontAndColoThemes may not exist.)
 - [iTerm2 Themes](https://github.com/mbadolato/iTerm2-Color-Schemes)
 - One last restart!
