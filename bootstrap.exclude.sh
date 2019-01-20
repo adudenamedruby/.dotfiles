@@ -37,6 +37,7 @@ symlink_setup () {
 	if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
 		symlink_dotfiles
 		symlink_xcodeKeybindings
+		symlink_karabiner
 		symlink_alfredPreferences
 		echo "Symlinking process complete."
 	else
@@ -72,6 +73,17 @@ symlink_xcodeKeybindings () {
 		echo "Xcode symlinking complete"
 	else
 		echo "Skipping Xcode keybinding symlinks"
+	fi
+}
+
+symlink_karabiner () {
+	echo "Symlink Karabiner Keybindings? (y/n)"
+	read resp
+	if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+        	ln -sv "$PWD/karabiner.json" "$HOME/.config/karabiner/"
+		echo "Karabiner symlinking complete"
+	else
+		echo "Skipping Karabiner keybinding symlinks"
 	fi
 }
 
