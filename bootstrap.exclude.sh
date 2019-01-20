@@ -11,6 +11,7 @@ init () {
         install_tools
         setup_utilities
         symlink_setup
+        fetch_repos
         macOS_preferences
         install_finished
     else
@@ -38,7 +39,6 @@ symlink_setup () {
         symlink_dotfiles
         symlink_xcodeKeybindings
         symlink_karabiner
-        symlink_alfredPreferences
         echo "Symlinking process complete."
     else
         echo "Symlinking cancelled by user"
@@ -87,19 +87,6 @@ symlink_karabiner () {
     fi
 }
 
-symlink_alfredPreferences () {
-    echo "Symlink Alfred preferences? (y/n)"
-    read resp
-    if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
-        mkdir ~/code/
-        mkdir ~/code/Alfred/
-            ln -sv "$PWD/Alfred.preferences" "~/code/Alfred/"
-        echo "Alfred preferences symlinking complete"
-    else
-        echo "Skipping Alfred preferences symlinks"
-    fi
-}
-
 install_tools () {
     if [ $( echo "$OSTYPE" | grep 'darwin' ) ] ; then
         echo "This utility will install useful utilities using Homebrew"
@@ -126,6 +113,22 @@ setup_utilities () {
         sh download.exclude.sh
     else
         echo "Skipping miscellaneous file downloads."
+    fi
+}
+
+fetch_repos () {
+    echo "This utility will fetch roux's personal git repos and put them in the ~/code/src/ folder"
+    echo "Proceed? (y/n)"
+    read resp
+    if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+        echo "Creating folders"
+        mkdir ~/code
+        mkdir ~/code/src
+        echo "Fetching repos:"
+        sh fetchPersonalRepos.exclude.sh
+        echo "Repo fetch complete."
+    else
+        echo "Setting preferences skipped."
     fi
 }
 
