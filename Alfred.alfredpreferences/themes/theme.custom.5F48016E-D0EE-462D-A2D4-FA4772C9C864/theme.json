@@ -1,0 +1,60 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 4,
+      "subtext" : {
+        "size" : 11,
+        "colorSelected" : "#131315BE",
+        "font" : "Hack",
+        "color" : "#FFF7D740"
+      },
+      "shortcut" : {
+        "size" : 13,
+        "colorSelected" : "#EFCE73FF",
+        "font" : "Andale Mono",
+        "color" : "#35373BFF"
+      },
+      "backgroundSelected" : "#EFCE73FF",
+      "text" : {
+        "size" : 17,
+        "colorSelected" : "#120930FF",
+        "font" : "Hack",
+        "color" : "#FFF7D7BE"
+      },
+      "iconPaddingHorizontal" : 5,
+      "paddingVertical" : 4,
+      "iconSize" : 40
+    },
+    "separator" : {
+      "color" : "#EFCE7309",
+      "thickness" : 1
+    },
+    "search" : {
+      "paddingVertical" : 2,
+      "background" : "#131315FF",
+      "spacing" : 10,
+      "text" : {
+        "size" : 40,
+        "colorSelected" : "#000000FF",
+        "font" : "Hack",
+        "color" : "#EFCE73FF"
+      },
+      "backgroundSelected" : "#B2D7FFFF"
+    },
+    "scrollbar" : {
+      "color" : "#EFCE73FF",
+      "thickness" : 2
+    },
+    "name" : "DeusExALternate",
+    "window" : {
+      "color" : "#000000E6",
+      "paddingHorizontal" : 0,
+      "width" : 620,
+      "borderPadding" : 10,
+      "borderColor" : "#E7453E00",
+      "blur" : 38,
+      "roundness" : 8,
+      "paddingVertical" : 12
+    }
+  }
+}
