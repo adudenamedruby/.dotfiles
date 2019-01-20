@@ -45,7 +45,6 @@ install_tools () {
 		echo "This utility will install useful utilities using Homebrew"
 		echo "Proceed? (y/n)"
 		read resp
-		# TODO - regex here?
 		if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
 			echo "Installing useful stuff using brew. This may take a while..."
             echo "Maybe brew yourself a coffee?"
@@ -62,7 +61,6 @@ download_other () {
     echo "This utility will download the rest of the files for bootstrapping system"
     echo "Proceed? (y/n)"
     read resp
-    # TODO - regex here?
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
         echo "Downloading."
         sh download.exclude.sh
@@ -71,8 +69,20 @@ download_other () {
     fi
 }
 
+macOS_preferences () {
+    echo "This utility will set system preferences to prepared defaults"
+    echo "Proceed? (y/n)"
+    read resp
+    if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+        echo "Setting preferences..."
+        sh download.exclude.sh
+    else
+        echo "Setting preferences skipped."
+    fi
+}
+
 install_finished () {
-    echo "Install has finished. Please enjoy"
+    echo "Install has finished. Please to enjoy."
 }
 
 init
@@ -80,4 +90,5 @@ developer_mode
 link
 install_tools
 download_other
+macOS_preferences
 install_finished
