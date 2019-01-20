@@ -13,10 +13,10 @@ init () {
         download_other
         macOS_preferences
         install_finished
-	else
-		echo "System bootstrap aborted."
-		return 1
-	fi
+    else
+        echo "System bootstrap aborted."
+        return 1
+    fi
 }
 
 developer_mode () {
