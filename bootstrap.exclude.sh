@@ -32,7 +32,7 @@ developer_mode () {
 }
 
 symlink_setup () {
-	echo "This utility will symlink the files in this repo to the home directory"
+	echo "This utility will symlink the files in this repo to the appropriate directories"
 	echo "Proceed? (y/n)"
 	read resp
 	if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
