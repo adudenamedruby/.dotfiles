@@ -5,6 +5,18 @@ init () {
     echo "Geronimooooooooo!!!!"
 }
 
+developer_mode () {
+	echo "Would you like to enable Developer mode on this Mac? (y/n)"
+	read resp
+	if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+		DevToolsSecurity -enable
+        echo "Developer mode enabled"
+	else
+		echo "Developer mode not enabled"
+		return 1
+	fi
+}
+
 link () {
 	echo "This utility will symlink the files in this repo to the home directory"
 	echo "Proceed? (y/n)"
@@ -64,6 +76,7 @@ install_finished () {
 }
 
 init
+developer_mode
 link
 install_tools
 download_other
