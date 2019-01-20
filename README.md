@@ -1,8 +1,10 @@
 # What dis?
 
-Here you'll find my dotfiles, my setup/keybinding preferences, and a fun script for the whole thing. All nice and neat. It's a work in progress, mostly.
+Here you'll find my dotfiles, my setup/keybinding preferences, and a fun script for bootstrapping your whole system from fresh. All nice and neat.
 
-**Important:** if for some reason you see fit to try some of these things out, please fork the repo and remove things you don't want or need before using them. Don’t blindly use my settings unless you know what a thing does. Don't blame me if something goes wrong. Or do, really. But I won't feel sorry. :P
+It's a work in progress, however, and is likely to change frequently.
+
+**Important:** if for some reason you see fit to try some of these things out, please fork the repo and remove things you don't want or need before using them. Don’t blindly use my settings unless you know what a thing does - a lot of this stuff is idiosyncratic to my workflow. Don't blame me if something goes wrong, or behaves how you don't like it. You have been warned.
 
 # Installation
 
@@ -23,8 +25,8 @@ Here you'll find my dotfiles, my setup/keybinding preferences, and a fun script 
 
 ### Let's get Phys... no. Let's get automated!
 - In iTerm `git clone https://github.com/rouxbuciu/.dotfiles.git` in the home directory
-- Then `cd .dotfiles` & `bootstrap.exclude.sh` & grab some hangtime because this'll take a while.
-- Once this has run, quit terminal and reboot computer for a good time!
+- Then `cd .dotfiles` & `sh bootstrap.exclude.sh` This'll take a while.
+- Once finished running, quit terminal and reboot computer for a good time!
 
 ### XVim - why settle for less!?
 - Rename standard xcode to Xcode-Distribution (if you need a distribution Xcode)
@@ -37,16 +39,7 @@ Here you'll find my dotfiles, my setup/keybinding preferences, and a fun script 
 
 ### Almost done!
 - Run `brew doctor` to see any issues and fix them as needed
-- For further **ZSH** customization:
-    - Install [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-    - Install **Powerlevel9x** `git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k`
-    - Install **zsh-syntax-highlighting** `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
-    - Install **zsh-auto-completion** `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
-    - In .zshrc watch line 5! Make sure to put in your current username, rather than `acmelabs`
-- More **VIM** stuff
-    - Using `which vim`, verify that you're sourcing `usr/local/bin/vim` before `usr/bin/vim`
-    - Install [Vim-Plug](https://github.com/junegunn/vim-plug) `curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
-    - open vim and run `:PlugInstall` to install plugins
+- Open Vim and run `:PlugInstall` to install plugins
 - Xcode themes from [here](https://github.com/hdoria/xcode-themes) and [here](http://www.codethemes.net/themes/popular/all) should go in `~/Library/Developer/Xcode/UserData/FontAndColorThemes/` (FontAndColoThemes may not exist.)
 - [iTerm2 Themes](https://github.com/mbadolato/iTerm2-Color-Schemes)
 - One last restart!
@@ -58,7 +51,9 @@ Here you'll find my dotfiles, my setup/keybinding preferences, and a fun script 
 
 # Why a dotfiles repo?
 
-Inspired by [mathiasbyens'](https://github.com/mathiasbynens/dotfiles) and others, the dotfile repo is a great way to keep all your preferences the same across all dev environments! Tasty! furthermore.... it helps get a system going faster! Finally, and most importantly, symlinked files are <3.
+Inspired by various members of Github, the dotfile repo is a great way to keep all your preferences the same across all dev environments! Tasty!
+
+Furthermore.... it helps get a system going faster from fresh install to ready for development.
 
 # Why share?
 Sharing is caring. We learn from each other 🌷
