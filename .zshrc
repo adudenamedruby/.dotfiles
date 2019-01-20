@@ -93,6 +93,7 @@ P9K_VCS_UNTRACKED_FOREGROUND="$DEFAULT_BACKGROUND"
 plugins=(
 	git
 	colored-man-pages
+    vi-mode
 	zsh-syntax-highlighting
 )
 
