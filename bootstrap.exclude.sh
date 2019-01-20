@@ -27,7 +27,6 @@ developer_mode () {
         echo "Developer mode enabled"
 	else
 		echo "Developer mode not enabled"
-		return 1
 	fi
 }
 
@@ -36,21 +35,56 @@ symlink_setup () {
 	echo "Proceed? (y/n)"
 	read resp
 	if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
-		for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|.*.md|.*.idekeybindings|.' ) ; do
-            if [ -e ~/$file ]; then
-                echo "File $file already exists. Remove it? [y/n]"
-                read resp
-                if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
-                    rm ~/$file
-                fi
-            fi
-			ln -sv "$PWD/$file" "$HOME"
-		done
-        ln -sv "$PWD/RouxAlternateBindings.idekeybindings" "$HOME/Library/Developer/Xcode/UserData/Keybindings/"
-		echo "Symlinking complete"
+		symlink_dotfiles
+		symlink_xcodeKeybindings
+		symlink_alfredPreferences
+		echo "Symlinking process complete."
 	else
 		echo "Symlinking cancelled by user"
-		return 1
+	fi
+}
+
+symlink_dotfiles () {
+	echo "Symlink preference dotfiles? (y/n)"
+	read resp
+	if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+		for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|.*.md|.*.idekeybindings|.*.json' ) ; do
+            		if [ -e ~/$file ]; then
+                		echo "File $file already exists. Remove it? [y/n]"
+                		read resp
+                		if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+                    			rm ~/$file
+                		fi
+            		fi
+			ln -sv "$PWD/$file" "$HOME"
+		done
+        	echo "Dotfile symlinking complete."
+	else
+		echo "Skipping dotfiles symlinks"
+	fi
+}
+
+symlink_xcodeKeybindings () {
+	echo "Symlink XCode Keybindings? (y/n)"
+	read resp
+	if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+        	ln -sv "$PWD/RouxAlternateBindings.idekeybindings" "$HOME/Library/Developer/Xcode/UserData/Keybindings/"
+		echo "Xcode symlinking complete"
+	else
+		echo "Skipping Xcode keybinding symlinks"
+	fi
+}
+
+symlink_alfredPreferences () {
+	echo "Symlink Alfred preferences? (y/n)"
+	read resp
+	if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+		mkdir ~/code/
+		mkdir ~/code/Alfred/
+        	ln -sv "$PWD/Alfred.preferences" "~/code/Alfred/"
+		echo "Alfred preferences symlinking complete"
+	else
+		echo "Skipping Alfred preferences symlinks"
 	fi
 }
 
@@ -61,7 +95,7 @@ install_tools () {
 		read resp
 		if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
 			echo "Installing useful stuff using brew. This may take a while..."
-            echo "Maybe brew yourself a coffee?"
+           		echo "Maybe brew yourself a coffee?"
 			sh brew.exclude.sh
 		else
 			echo "Brew installation cancelled by user"
@@ -76,10 +110,10 @@ download_other () {
     echo "Proceed? (y/n)"
     read resp
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
-        echo "Downloading."
+        echo "Downloading..."
         sh download.exclude.sh
     else
-        echo "Downloads cancelled by user"
+        echo "Skipping miscellaneous file downloads."
     fi
 }
 
@@ -89,7 +123,7 @@ macOS_preferences () {
     read resp
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
         echo "Setting preferences..."
-        sh download.exclude.sh
+        sh macos.exclude.sh
     else
         echo "Setting preferences skipped."
     fi
