@@ -73,7 +73,7 @@ brew cask install keycastr
 
 # Emacs
 brew tap d12frosted/emacs-plus
-brew cask install emacs-plus
+brew cask install emacs
 
 
 # ---------------------------------------------
@@ -84,9 +84,12 @@ brew cask install emacs-plus
 brew tap caskroom/fonts
 brew cask install font-source-code-pro
 brew cask install font-hack
+brew cask install font-hack-nerd-font
+brew cask install font-hack-nerd-font-mono
 brew cask install font-inconsolata
 brew cask install font-inconsolata-for-powerline
-
+brew cask install font-inconsolata-nerd-font
+brew cask install font-inconsolata-nerd-font-mono
 
 # ---------------------------------------------
 # Terminal gimmicks xD
