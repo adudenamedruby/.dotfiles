@@ -31,10 +31,6 @@ Here you'll find my dotfiles, my setup/keybinding preferences, and a fun script 
 - Download another version of Xcode [from Apple](https://developer.apple.com/download/more/)
 - Sign your own [code signing certificate](https://github.com/XVimProject/XVim2/blob/master/SIGNING_Xcode.md)
 - Install [XVim2](https://github.com/XVimProject/XVim2)
-- If .xvimrc doesn't exist, create it
-    - `curl https://raw.githubusercontent.com/rouxbuciu/toolPreferences/master/xvimrc > .xvimrc`
-- Go to ~Library/Developer/Xcode/UserData/Keybindings
-    - Symlink my personal bindings `ln -sv ~/.dotfiles/RouxAlternateBindings.idekeybindings ~/Library/Developer/Xcode/UserData/Keybindings/`
 
 ### Spacemacs
 - Spacemacs install instructions: https://github.com/syl20bnr/spacemacs (Install dev branch (if stable))
@@ -53,6 +49,7 @@ Here you'll find my dotfiles, my setup/keybinding preferences, and a fun script 
     - open vim and run `:PlugInstall` to install plugins
 - Xcode themes from [here](https://github.com/hdoria/xcode-themes) and [here](http://www.codethemes.net/themes/popular/all) should go in `~/Library/Developer/Xcode/UserData/FontAndColorThemes/` (FontAndColoThemes may not exist.)
 - [iTerm2 Themes](https://github.com/mbadolato/iTerm2-Color-Schemes)
+- One last restart!
 
 ### Other
 - In chrome, don't forget to install `vimium`
@@ -61,14 +58,14 @@ Here you'll find my dotfiles, my setup/keybinding preferences, and a fun script 
 
 # Why a dotfiles repo?
 
-Inspired by [mathiasbyens'](https://github.com/mathiasbynens/dotfiles), the dotfile repo is a great way to keep all your preferences the same across all dev environments! Tasty! furthermore.... it helps get a system going faster!
+Inspired by [mathiasbyens'](https://github.com/mathiasbynens/dotfiles) and others, the dotfile repo is a great way to keep all your preferences the same across all dev environments! Tasty! furthermore.... it helps get a system going faster! Finally, and most importantly, symlinked files are <3.
 
 # Why share?
 Sharing is caring. We learn from each other 🌷
 
 # License
 
-The contents of this repo are licensed under the MIT license.
+The contents of this repo are licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 # Contributing
 
