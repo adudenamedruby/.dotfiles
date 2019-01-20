@@ -1,8 +1,22 @@
 #!/bin/sh
 
 init () {
-    echo "Begining bootstrap of system."
-    echo "Geronimooooooooo!!!!"
+    echo "SYSTEM BOOTSTRAP"
+    echo "WARNING: This utility will run the bootstrap scrip to set up your computer."
+    echo "Proceed? (y/n)
+	read resp
+	if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+        echo "Geronimooooooooo!!!!"
+		developer_mode
+        install_tools
+        symlink_setup
+        download_other
+        macOS_preferences
+        install_finished
+	else
+		echo "System bootstrap aborted."
+		return 1
+	fi
 }
 
 developer_mode () {
@@ -17,12 +31,12 @@ developer_mode () {
 	fi
 }
 
-link () {
+symlink_setup () {
 	echo "This utility will symlink the files in this repo to the home directory"
 	echo "Proceed? (y/n)"
 	read resp
 	if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
-		for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|.*.md|.*.idekeybindings' ) ; do
+		for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|.*.md|.*.idekeybindings|.' ) ; do
             if [ -e ~/$file ]; then
                 echo "File $file already exists. Remove it? [y/n]"
                 read resp
@@ -82,13 +96,8 @@ macOS_preferences () {
 }
 
 install_finished () {
-    echo "Install has finished. Please to enjoy."
+    echo "System bootstrap has finished."
+    echo "Code responsibly."
 }
 
 init
-developer_mode
-link
-install_tools
-download_other
-macOS_preferences
-install_finished
