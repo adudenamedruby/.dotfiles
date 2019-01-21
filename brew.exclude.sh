@@ -74,7 +74,11 @@ brew cask install keycastr
 
 # Emacs
 brew tap d12frosted/emacs-plus
-brew cask install emacs
+brew install emacs-plus
+ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
+
+# Spacemacs - develop branch!
+git clone -b develop https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 
 # ---------------------------------------------
