@@ -65,14 +65,13 @@ This function should only modify configuration layer settings."
      git
      helm
      html
-     javascript
      markdown
      ;; multiple-cursors
      neotree
      org
      python
      (shell :variables
-            shell-default-height 30
+            shell-default-height 35
             shell-default-position 'bottom
             shell-default-shell 'eshell)
      shell-scripts
@@ -385,7 +384,7 @@ It should only modify the values of Spacemacs settings."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers '(:relative nil
+   dotspacemacs-line-numbers '(:relative t
                                :disabled-for-modes dired-mode)
 
    ;; Code folding method. Possible values are `evil' and `origami'.
