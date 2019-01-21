@@ -15,20 +15,18 @@ It's a work in progress, however, and is likely to change frequently.
     - [Alfred](https://www.alfredapp.com)
     - [iTerm 2](https://www.iterm2.com/downloads.html) - set up hotkey shortcut Cmd-Ctrl-T
     - [Karabiner](https://pqrs.org/osx/karabiner/)
-- Download from App Store
+- Download apps you want from App Store
     - Xcode
       - Once installed, open to install tools!
     - 1Password (also get safari/crome extension)
-    - Magnet (and set hotkeys)
-    - Tweetbot
-    - Spotify
 
-### Let's get Phys... no. Let's get automated!
+### Let's get phys... no. Let's get automated!
 - In iTerm `git clone https://github.com/rouxbuciu/.dotfiles.git` in the home directory
 - Then `cd .dotfiles` & `sh bootstrap.exclude.sh` This'll take a while.
 - Once finished running, quit terminal and reboot computer for a good time!
 
 ### XVim - why settle for less!?
+- Because of the certificate, these steps should be done manually.
 - Rename standard xcode to Xcode-Distribution (if you need a distribution Xcode)
 - Download another version of Xcode [from Apple](https://developer.apple.com/download/more/)
 - Sign your own [code signing certificate](https://github.com/XVimProject/XVim2/blob/master/SIGNING_Xcode.md)
@@ -39,17 +37,14 @@ It's a work in progress, however, and is likely to change frequently.
 
 ### Almost done!
 - Run `brew doctor` to see any issues and fix them as needed
-- Open Vim and run `:PlugInstall` to install plugins
 - **ZSH**
-    - The bootstrap utility installs ZSH with brew but [there are further install instructions](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) that should be done manually
+    - The bootstrap utility installs ZSH but sometimes things may not work 100%. [Here are further install instructions](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) in case of fire.
 - Xcode themes from [here](https://github.com/hdoria/xcode-themes) and [here](http://www.codethemes.net/themes/popular/all) should go in `~/Library/Developer/Xcode/UserData/FontAndColorThemes/` (FontAndColoThemes may not exist.)
 - [iTerm2 Themes](https://github.com/mbadolato/iTerm2-Color-Schemes)
-- One last restart!
-
-### Other
 - In chrome, don't forget to install `vimium`
 - In Alfred, set up various workflows or shortcuts you need.
 - Maybe get [Dash](https://kapeli.com/dash)
+- One last restart!
 
 # Why a dotfiles repo?
 

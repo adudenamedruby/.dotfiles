@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 # Install oh-my-zsh framework
+cd ~
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+cd ~/.dotfiles
 
 # Get POWERLEVER9K
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
