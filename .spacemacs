@@ -73,7 +73,7 @@ This function should only modify configuration layer settings."
      (shell :variables
             shell-default-height 35
             shell-default-position 'bottom
-            shell-default-shell 'eshell)
+            shell-default-shell 'term)
      shell-scripts
      ;; spotify
      swift
