@@ -12,6 +12,9 @@
 ;; This file are the personal preferences of roux buciu
 ;; Copying it may be weird for you.
 
+;; If something has gone terribly wrong and a complete reset of Spacemacs
+;; is needed, run the following command: rm -fr ~/.emacs.d ~/.spacemacs
+
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
