@@ -77,8 +77,17 @@ brew tap d12frosted/emacs-plus
 brew install emacs-plus
 ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
 
-# Spacemacs - develop branch!
-git clone -b develop https://github.com/syl20bnr/spacemacs ~/.emacs.d
+# Select which branch of Spacemacs we want - master or dev
+echo "By default this ulitily installs Spacemacs off the MASTER branch?"
+echo "Would you like to install off DEVELOP branch instead? (y/n)"
+read resp
+if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+    echo "Develop branch selected"
+    git clone -b develop https://github.com/syl20bnr/spacemacs ~/.emacs.d
+else
+    echo "Master branch selected"
+    git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+fi
 
 
 # ---------------------------------------------
