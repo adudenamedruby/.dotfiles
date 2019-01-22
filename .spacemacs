@@ -81,7 +81,8 @@ This function should only modify configuration layer settings."
      themes-megapack
      yaml
      (version-control :variables
-                      version-control-diff-tool 'git-gutter)
+                      version-control-diff-tool 'git-gutter
+                      version-control-diff-side 'left)
      vimscript
      )
 
@@ -384,7 +385,16 @@ It should only modify the values of Spacemacs settings."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers 'relative
+   dotspacemacs-line-numbers '(:relative t
+                               :enabled-for-modes prog-mode
+                                                  markdown-mode
+                                                  org-mode
+                                                  text-mode
+                                                  LaTeX-mode
+                                                  latex-mode
+                               :disabled-for-modes dired-mode
+                                                   doc-view-mode
+                                                   pdf-view-mode)
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
