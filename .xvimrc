@@ -42,7 +42,7 @@ nmap <space>wv <C-w>v
 nmap <space>ws <C-w>s
 nmap <space>wd <C-w>c
 nmap <space>wo :xcmenucmd Show Standard Editor<CR>
-nmap <space>wg :xcmenucmd Show Version Editor<CR>
+nmap <space>gs :xcmenucmd Show Version Editor<CR>
 
 " Window navigation
 nmap <space>wh <C-w>h
@@ -52,6 +52,7 @@ nmap <space>wk <C-w>k
 
 " File commands
 nmap <space>fs :xcmenucmd Save<CR>
+nmap <space>ff :xcmenucmd File...<CR>
 
 " Search commands
 nmap <space>pf :xcmenucmd Open Quickly...<CR>
@@ -67,3 +68,6 @@ nmap <space>cc :xcmenucmd Clean Build Folder<CR>
 
 " Breakpoints
 nmap <space>tb :xcmenucmd toggleBreakpointAtCurrentLine<CR>
+
+" Miscellaneous commands
+nmap <space>qq :xcmenucmd Quit Xcode<CR>
