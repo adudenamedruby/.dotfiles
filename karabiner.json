@@ -6,44 +6,6 @@
     },
     "profiles": [
         {
-            "simple_modifications": {
-                "q": "quote",
-                "w": "comma",
-                "e": "period",
-                "r": "p",
-                "t": "y",
-                "y": "f",
-                "u": "g",
-                "i": "c",
-                "o": "r",
-                "p": "z",
-                "open_bracket": "slash",
-                "close_bracket": "equal_sign",
-                "backslash": "backslash",
-                "a": "a",
-                "s": "o",
-                "d": "e",
-                "f": "u",
-                "g": "i",
-                "h": "d",
-                "j": "h",
-                "k": "t",
-                "l": "n",
-                "semicolon": "s",
-                "quote": "hyphen",
-                "z": "semicolon",
-                "x": "q",
-                "c": "j",
-                "v": "k",
-                "b": "x",
-                "n": "b",
-                "m": "m",
-                "comma": "w",
-                "period": "v",
-                "slash": "l",
-                "hyphen": "open_bracket",
-                "equal_sign": "close_bracket"
-            },
             "complex_modifications": {
                 "parameters": {
                     "basic.simultaneous_threshold_milliseconds": 50,
@@ -58,6 +20,37 @@
                             {
                                 "from": {
                                     "key_code": "caps_lock",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_control"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "escape",
+                                        "modifiers": {
+                                            "optional": [
+                                                "any"
+                                            ]
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change control to control if pressed with other keys, to escape if pressed alone.",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_control",
                                     "modifiers": {
                                         "optional": [
                                             "any"
