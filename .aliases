@@ -4,7 +4,7 @@
 alias doc="cd ~/Documents"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias c0="cd ~/c0de"
+alias co="cd ~/code"
 
 # Alias for manipulating the dotfile folder
 alias dot="cd ~/.dotfiles"
