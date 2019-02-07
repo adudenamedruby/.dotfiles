@@ -159,7 +159,7 @@ KEYMAPS(
   (___,                         Key_1,         Key_2,          Key_3,           Key_4,       Key_5,       Key_LEDEffectNext,
    LGUI(Key_V),                 Key_Quote,     Key_Comma,      Key_Period,      Key_P,       Key_Y,       LALT(LSHIFT(Key_LeftControl)),
    CTL_T(Escape),               Key_A,         Key_O,          Key_E,           Key_I,       Key_U,
-   LGUI(Key_C),                 Key_Semicolon, Key_Q,          Key_J,           Key_K,       Key_X,       LCTRL(LGUI(Key_T)),
+   LGUI(Key_C),                 Key_Semicolon, Key_Q,          Key_J,           Key_K,       Key_X,       TD(4),
    Key_LeftGui, Key_Spacebar, Key_Enter, LCTRL(LALT(LSHIFT(Key_LeftGui))),
    ShiftToLayer(NUMBERS_FUNCTION),
 
@@ -393,6 +393,9 @@ void tapDanceAction(uint8_t tap_dance_index, byte row, byte col, uint8_t tap_cou
     return tapDanceActionKeys(tap_count, tap_dance_action, Consumer_ScanNextTrack, Consumer_ScanPreviousTrack);
   case 3:
     return tapDanceActionKeys(tap_count, tap_dance_action, LCTRL(Key_Spacebar), Consumer_PlaySlashPause);
+  case 4:
+    return tapDanceActionKeys(tap_count, tap_dance_action, LCTRL(LGUI(Key_T)), LCTRL(LALT(LSHIFT(LGUI(Key_T))))
+);
   }
 }
 
@@ -530,7 +533,7 @@ void setup() {
   // 'BlazingTrail'. For details on other options, see
   // https://github.com/keyboardio/Kaleidoscope/blob/master/doc/plugin/LED-Stalker.md
   StalkerEffect.variant = STALKER(Haunt, (CRGB(145, 43, 255)));
-  StalkerEffect.variant = STALKER(BlazingTrail);
+  // StalkerEffect.variant = STALKER(BlazingTrail);
 
 
   // We want to make sure that the firmware starts with LED effects off
