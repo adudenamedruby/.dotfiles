@@ -6,7 +6,7 @@ dotfiles () {
     echo "Symlink preference dotfiles? (y/n)"
     read resp
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
-        for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|.*.md|.*.idekeybindings|.*.json' ) ; do
+        for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|.*.md|.*.ino|.*.idekeybindings|.*.json' ) ; do
                     if [ -e ~/$file ]; then
                         echo "File $file already exists. Remove it? [y/n]"
                         read resp
