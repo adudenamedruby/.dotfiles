@@ -145,7 +145,7 @@ enum { MACRO_VERSION_INFO,
   *
   */
 
-enum { PRIMARY, NUMBERS_FUNCTION, PROGRAMMING_CHARACTERS, ARROWS, MEDIA, IDIOCY }; // layers
+enum { PRIMARY, NUMBERS_FUNCTION, PROGRAMMING_CHARACTERS, ARROWS, HYPER, MEDIA, IDIOCY }; // layers
 
 
 /* This comment temporarily turns off astyle's indent enforcement
@@ -158,7 +158,7 @@ KEYMAPS(
   [PRIMARY] = KEYMAP_STACKED
   (___,                         Key_1,         Key_2,          Key_3,           Key_4,       Key_5,       Key_LEDEffectNext,
    LGUI(Key_V),                 Key_Quote,     Key_Comma,      Key_Period,      Key_P,       Key_Y,       LALT(LSHIFT(Key_LeftControl)),
-   CTL_T(Escape),               Key_A,         Key_O,          Key_E,           Key_I,       Key_U,
+   CTL_T(Escape),               Key_A,         Key_O,          Key_E,           Key_U,       Key_I,
    LGUI(Key_C),                 Key_Semicolon, Key_Q,          Key_J,           Key_K,       Key_X,       TD(4),
    Key_LeftGui, Key_Spacebar, Key_Enter, LCTRL(LALT(LSHIFT(Key_LeftGui))),
    ShiftToLayer(NUMBERS_FUNCTION),
@@ -176,7 +176,7 @@ KEYMAPS(
    ___, Key_F1, Key_F2, Key_F3, Key_F4, Key_F5, ___,
    ___, ___, ___, ___, ___, ___,
    ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___,
+   ___, ___, Key_LeftShift, ___,
    ___,
 
    ___, ___, ___,   ___,   ___,   ___,   ___,
@@ -193,7 +193,7 @@ KEYMAPS(
    ___, Key_Slash,     LSHIFT(Key_LeftBracket), LSHIFT(Key_Semicolon), TD(0),              LSHIFT(Key_Equals),
    ___, LSHIFT(Key_3), LSHIFT(Key_Backtick),    LSHIFT(Key_7),         LSHIFT(Key_Slash),  Key_LeftBracket, ___,
    ___, ___, ___, ___,
-   ___,
+   ShiftToLayer(HYPER),
 
    ___, ___, ___, ___, ___, ___, ___,
    ___, LSHIFT(Key_Backslash), Key_0,         LSHIFT(Key_6),   LSHIFT(Key_4),            ___,               ___,
@@ -216,6 +216,22 @@ KEYMAPS(
         ___, Key_LeftArrow, Key_DownArrow, Key_RightArrow, ___, ___,
    ___, ___, ___,           ___,           ___,            ___, ___,
    ___, ___, ___, ___,
+   XXX),
+
+
+   [HYPER] = KEYMAP_STACKED
+  (___, LCTRL(LALT(LSHIFT(LGUI(Key_1)))),         LCTRL(LALT(LSHIFT(LGUI(Key_2)))),          LCTRL(LALT(LSHIFT(LGUI(Key_3)))),           LCTRL(LALT(LSHIFT(LGUI(Key_4)))), LCTRL(LALT(LSHIFT(LGUI(Key_5)))), XXX,
+   XXX, LCTRL(LALT(LSHIFT(LGUI(Key_Quote)))),     LCTRL(LALT(LSHIFT(LGUI(Key_Comma)))),      LCTRL(LALT(LSHIFT(LGUI(Key_Period)))),      LCTRL(LALT(LSHIFT(LGUI(Key_P)))), LCTRL(LALT(LSHIFT(LGUI(Key_Y)))), XXX,
+   XXX, LCTRL(LALT(LSHIFT(LGUI(Key_A)))),         LCTRL(LALT(LSHIFT(LGUI(Key_O)))),          LCTRL(LALT(LSHIFT(LGUI(Key_E)))),           LCTRL(LALT(LSHIFT(LGUI(Key_U)))), LCTRL(LALT(LSHIFT(LGUI(Key_I)))),
+   XXX, LCTRL(LALT(LSHIFT(LGUI(Key_Semicolon)))), LCTRL(LALT(LSHIFT(LGUI(Key_Q)))),          LCTRL(LALT(LSHIFT(LGUI(Key_J)))),           LCTRL(LALT(LSHIFT(LGUI(Key_K)))), LCTRL(LALT(LSHIFT(LGUI(Key_X)))), XXX,
+   XXX, XXX, XXX, XXX,
+   ___,
+
+   XXX, LCTRL(LALT(LSHIFT(LGUI(Key_6)))), LCTRL(LALT(LSHIFT(LGUI(Key_7)))), LCTRL(LALT(LSHIFT(LGUI(Key_8)))), LCTRL(LALT(LSHIFT(LGUI(Key_9)))), LCTRL(LALT(LSHIFT(LGUI(Key_0)))), XXX,
+   XXX, LCTRL(LALT(LSHIFT(LGUI(Key_F)))), LCTRL(LALT(LSHIFT(LGUI(Key_G)))), LCTRL(LALT(LSHIFT(LGUI(Key_C)))), LCTRL(LALT(LSHIFT(LGUI(Key_R)))), LCTRL(LALT(LSHIFT(LGUI(Key_L)))), XXX,
+        LCTRL(LALT(LSHIFT(LGUI(Key_D)))), LCTRL(LALT(LSHIFT(LGUI(Key_H)))), LCTRL(LALT(LSHIFT(LGUI(Key_T)))), LCTRL(LALT(LSHIFT(LGUI(Key_N)))), LCTRL(LALT(LSHIFT(LGUI(Key_S)))), XXX,
+   XXX, LCTRL(LALT(LSHIFT(LGUI(Key_B)))), LCTRL(LALT(LSHIFT(LGUI(Key_M)))), LCTRL(LALT(LSHIFT(LGUI(Key_W)))), LCTRL(LALT(LSHIFT(LGUI(Key_V)))), LCTRL(LALT(LSHIFT(LGUI(Key_Z)))), XXX,
+   XXX, XXX, XXX, XXX,
    XXX),
 
 
@@ -559,3 +575,5 @@ void setup() {
 void loop() {
   Kaleidoscope.loop();
 }
+
+
