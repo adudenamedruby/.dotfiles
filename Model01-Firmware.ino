@@ -145,7 +145,7 @@ enum { MACRO_VERSION_INFO,
   *
   */
 
-enum { PRIMARY, NUMBERS_FUNCTION, PROGRAMMING_CHARACTERS, ARROWS, HYPER, MEDIA, IDIOCY }; // layers
+enum { PRIMARY, NUMBERS_FUNCTION, PROGRAMMING_CHARACTERS, ARROWS, HYPER, MEH, MEDIA, IDIOCY }; // layers
 
 
 /* This comment temporarily turns off astyle's indent enforcement
@@ -160,7 +160,7 @@ KEYMAPS(
    LGUI(Key_V),                 Key_Quote,     Key_Comma,      Key_Period,      Key_P,       Key_Y,       LALT(LSHIFT(Key_LeftControl)),
    CTL_T(Escape),               Key_A,         Key_O,          Key_E,           Key_U,       Key_I,
    LGUI(Key_C),                 Key_Semicolon, Key_Q,          Key_J,           Key_K,       Key_X,       TD(4),
-   Key_LeftGui, Key_Spacebar, Key_Enter, LCTRL(LALT(LSHIFT(Key_LeftGui))),
+   Key_LeftGui, Key_Spacebar, Key_Enter, ALT_T(Tab),
    ShiftToLayer(NUMBERS_FUNCTION),
 
    M(MACRO_ANY),        Key_6,         Key_7,          Key_8,          Key_9,       Key_0,        LockLayer(IDIOCY),
@@ -176,7 +176,7 @@ KEYMAPS(
    ___, Key_F1, Key_F2, Key_F3, Key_F4, Key_F5, ___,
    ___, ___, ___, ___, ___, ___,
    ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, Key_LeftShift, ___,
+   ___, Key_Backspace, Key_LeftShift, ___,
    ___,
 
    ___, ___, ___,   ___,   ___,   ___,   ___,
@@ -184,7 +184,7 @@ KEYMAPS(
         ___, Key_4, Key_5, Key_6, Key_0, ___,
    ___, ___, Key_1, Key_2, Key_3, Key_0, ___,
    ___, ___, ___, ___,
-   ___),
+   ShiftToLayer(MEH)),
 
 
   [PROGRAMMING_CHARACTERS] =  KEYMAP_STACKED
@@ -233,6 +233,22 @@ KEYMAPS(
    XXX, LCTRL(LALT(LSHIFT(LGUI(Key_B)))), LCTRL(LALT(LSHIFT(LGUI(Key_M)))), LCTRL(LALT(LSHIFT(LGUI(Key_W)))), LCTRL(LALT(LSHIFT(LGUI(Key_V)))), LCTRL(LALT(LSHIFT(LGUI(Key_Z)))), XXX,
    XXX, XXX, XXX, XXX,
    XXX),
+
+
+   [MEH] = KEYMAP_STACKED
+  (___, LCTRL(LALT(LSHIFT(Key_1))),         LCTRL(LALT(LSHIFT(Key_2))),          LCTRL(LALT(LSHIFT(Key_3))),           LCTRL(LALT(LSHIFT(Key_4))), LCTRL(LALT(LSHIFT(Key_5))), XXX,
+   XXX, LCTRL(LALT(LSHIFT(Key_Quote))),     LCTRL(LALT(LSHIFT(Key_Comma))),      LCTRL(LALT(LSHIFT(Key_Period))),      LCTRL(LALT(LSHIFT(Key_P))), LCTRL(LALT(LSHIFT(Key_Y))), XXX,
+   XXX, LCTRL(LALT(LSHIFT(Key_A))),         LCTRL(LALT(LSHIFT(Key_O))),          LCTRL(LALT(LSHIFT(Key_E))),           LCTRL(LALT(LSHIFT(Key_U))), LCTRL(LALT(LSHIFT(Key_I))),
+   XXX, LCTRL(LALT(LSHIFT(Key_Semicolon))), LCTRL(LALT(LSHIFT(Key_Q))),          LCTRL(LALT(LSHIFT(Key_J))),           LCTRL(LALT(LSHIFT(Key_K))), LCTRL(LALT(LSHIFT(Key_X))), XXX,
+   XXX, XXX, XXX, XXX,
+   XXX,
+
+   XXX, LCTRL(LALT(LSHIFT(Key_6))), LCTRL(LALT(LSHIFT(Key_7))), LCTRL(LALT(LSHIFT(Key_8))), LCTRL(LALT(LSHIFT(Key_9))), LCTRL(LALT(LSHIFT(Key_0))), XXX,
+   XXX, LCTRL(LALT(LSHIFT(Key_F))), LCTRL(LALT(LSHIFT(Key_G))), LCTRL(LALT(LSHIFT(Key_C))), LCTRL(LALT(LSHIFT(Key_R))), LCTRL(LALT(LSHIFT(Key_L))), XXX,
+        LCTRL(LALT(LSHIFT(Key_D))), LCTRL(LALT(LSHIFT(Key_H))), LCTRL(LALT(LSHIFT(Key_T))), LCTRL(LALT(LSHIFT(Key_N))), LCTRL(LALT(LSHIFT(Key_S))), XXX,
+   XXX, LCTRL(LALT(LSHIFT(Key_B))), LCTRL(LALT(LSHIFT(Key_M))), LCTRL(LALT(LSHIFT(Key_W))), LCTRL(LALT(LSHIFT(Key_V))), LCTRL(LALT(LSHIFT(Key_Z))), XXX,
+   XXX, XXX, XXX, XXX,
+   ___),
 
 
    [MEDIA] =  KEYMAP_STACKED
