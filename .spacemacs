@@ -46,7 +46,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(javascript
+   '(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -65,6 +65,7 @@ This function should only modify configuration layer settings."
      git
      helm
      html
+     javascript
      markdown
      ;; multiple-cursors
      neotree
@@ -77,7 +78,8 @@ This function should only modify configuration layer settings."
      shell-scripts
      ;; spotify
      swift
-     ;; syntax-checking
+     spell-checking
+     syntax-checking
      themes-megapack
      yaml
      (version-control :variables
