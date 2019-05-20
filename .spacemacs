@@ -500,6 +500,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
    ;; Evil shift round indents to the nearest value of 4
    evil-shift-round t
+
+   avy-all-windows 'all-frames
    )
   )
 
