@@ -53,7 +53,7 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      (auto-completion :variables
-                      auto-completion-return-key-behavior nil
+                      auto-completion-return-key-behavior 'complete
                       auto-completion-tab-key-behavior 'cycle
                       :disabled-for org erc)
      colors
@@ -63,12 +63,15 @@ This function should only modify configuration layer settings."
      emoji
      evil-commentary
      git
+     haskell
      helm
      html
      javascript
+     latex
      markdown
      ;; multiple-cursors
      neotree
+     haskell-
      org
      python
      (shell :variables
@@ -202,8 +205,8 @@ It should only modify the values of Spacemacs settings."
    ;; `recents' `bookmarks' `projects' `agenda' `todos'.
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   dotspacemacs-startup-lists '((recents . 5)
-                                (projects . 7))
+   dotspacemacs-startup-lists '((recents . 10)
+                                (projects . 10))
 
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
@@ -244,7 +247,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Hack"
-                               :size 15
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.3)
@@ -489,6 +492,15 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (setq-default
+
+   ;; Edit the real file rather than the symlinks
+   vc-follow-symlinks t
+   indent-tabs-mode nil
+
+   ;; Evil shift round indents to the nearest value of 4
+   evil-shift-round t
+   )
   )
 
 (defun dotspacemacs/user-load ()
