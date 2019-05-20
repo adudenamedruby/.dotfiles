@@ -512,6 +512,9 @@ before packages are loaded."
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 
+  (setq org-todo-keywords
+        '((sequence "TODO(t!)" "IN PROGRESS(p!)" "BLOCKED(b!)" "FOLLOWUP(f!)" "CANCELLED(c!)" "DONE(d!)")))
+
   (defun my/enable-word-wrap ()
     (setq-local word-wrap t))
   (add-hook 'text-mode-hook #'my/enable-word-wrap)
