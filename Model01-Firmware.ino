@@ -156,14 +156,14 @@ enum { PRIMARY, NUMBERS_FUNCTION, PROGRAMMING_CHARACTERS, ARROWS, HYPER, MEH, ME
 KEYMAPS(
 
   [PRIMARY] = KEYMAP_STACKED
-  (___,                         Key_1,         Key_2,          Key_3,           Key_4,       Key_5,       Key_LEDEffectNext,
-   LGUI(Key_V),                 Key_Quote,     Key_Comma,      Key_Period,      Key_P,       Key_Y,       LALT(LSHIFT(Key_LeftControl)),
+  (___,                         ___,           ___,            ___,             ___,         ___,         Key_LEDEffectNext,
+   TD(0),                       Key_Quote,     Key_Comma,      Key_Period,      Key_P,       Key_Y,       LALT(LSHIFT(Key_LeftControl)),
    CTL_T(Escape),               Key_A,         Key_O,          Key_E,           Key_U,       Key_I,
-   LGUI(Key_C),                 Key_Semicolon, Key_Q,          Key_J,           Key_K,       Key_X,       TD(4),
+   Key_LeftShift,               Key_Semicolon, Key_Q,          Key_J,           Key_K,       Key_X,       TD(4),
    Key_LeftGui, Key_Spacebar, Key_Enter, ALT_T(Tab),
    ShiftToLayer(NUMBERS_FUNCTION),
 
-   M(MACRO_ANY),        Key_6,         Key_7,          Key_8,          Key_9,       Key_0,        LockLayer(IDIOCY),
+   M(MACRO_ANY),        ___,           ___,            ___,            ___,         ___,          LockLayer(IDIOCY),
    Key_Enter,           Key_F,         Key_G,          Key_C,          Key_R,       Key_L,        LGUI(Key_Z),
                         Key_D,         Key_H,          Key_T,          Key_N,       Key_S,        ___,
    TD(3),               Key_B,         Key_M,          Key_W,          Key_V,       Key_Z,        LSHIFT(LGUI(Key_Z)),
@@ -190,14 +190,14 @@ KEYMAPS(
   [PROGRAMMING_CHARACTERS] =  KEYMAP_STACKED
   (___, ___, ___, ___, ___, ___, ___,
    ___, ___,           Key_Backtick,            LSHIFT(Key_2),         LSHIFT(Key_5),      LSHIFT(Key_Backtick), ___,
-   ___, Key_Slash,     LSHIFT(Key_LeftBracket), LSHIFT(Key_Semicolon), TD(0),              LSHIFT(Key_Equals),
+   ___, Key_Slash,     LSHIFT(Key_LeftBracket), LSHIFT(Key_Semicolon), LSHIFT(Key_9),              LSHIFT(Key_Equals),
    ___, LSHIFT(Key_3), LSHIFT(Key_Backtick),    LSHIFT(Key_7),         LSHIFT(Key_Slash),  Key_LeftBracket, ___,
    ___, ___, ___, ___,
    ShiftToLayer(HYPER),
 
    ___, ___, ___, ___, ___, ___, ___,
    ___, LSHIFT(Key_Backslash), Key_0,         LSHIFT(Key_6),   LSHIFT(Key_4),            ___,               ___,
-        LSHIFT(Key_8),         TD(1),         Key_Equals,      LSHIFT(Key_RightBracket), Key_Minus,         ___,
+        LSHIFT(Key_8),         LSHIFT(Key_0),         Key_Equals,      LSHIFT(Key_RightBracket), Key_Minus,         ___,
    ___, Key_RightBracket,      LSHIFT(Key_1), Key_Backslash,   ___,                      LSHIFT(Key_Minus), ___,
    ShiftToLayer(MEDIA), ShiftToLayer(ARROWS), ___, ___,
    ___),
@@ -418,7 +418,7 @@ USE_MAGIC_COMBOS({.action = toggleKeyboardProtocol,
 void tapDanceAction(uint8_t tap_dance_index, byte row, byte col, uint8_t tap_count, kaleidoscope::plugin::TapDance::ActionType tap_dance_action) {
   switch (tap_dance_index) {
   case 0:
-    return tapDanceActionKeys(tap_count, tap_dance_action, LSHIFT(Key_9), Key_LeftBracket);
+    return tapDanceActionKeys(tap_count, tap_dance_action, LGUI(Key_C), LGUI(Key_V));
   case 1:
     return tapDanceActionKeys(tap_count, tap_dance_action, LSHIFT(Key_0), Key_RightBracket);
   case 2:
@@ -490,7 +490,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // solidRed, solidOrange, solidYellow, solidGreen, solidBlue, solidIndigo, solidViolet,
 
   // The breathe effect slowly pulses all of the LEDs on your keyboard
-  // LEDBreatheEffect,
+  LEDBreatheEffect,
 
   //LEDDigitarRainEffect,
 
