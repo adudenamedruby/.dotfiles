@@ -71,7 +71,6 @@ This function should only modify configuration layer settings."
      markdown
      ;; multiple-cursors
      neotree
-     haskell-
      org
      python
      (shell :variables
