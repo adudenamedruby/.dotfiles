@@ -77,7 +77,7 @@
                         ]
                     },
                     {
-                        "description": "Change TAB to cmd+shift+option+ctrl modifier",
+                        "description": "Change TAB to cmd+shift+option+ctrl if held, stay TAB if alone",
                         "manipulators": [
                             {
                                 "from": {
@@ -101,6 +101,36 @@
                                 "to_if_alone": [
                                     {
                                         "key_code": "tab"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change RightShift to shift+option+ctrl if held",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "right_shift",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": [
+                                            "left_control",
+                                            "left_option"
+                                        ]
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "right_shift"
                                     }
                                 ],
                                 "type": "basic"
