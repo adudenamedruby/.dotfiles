@@ -61,11 +61,10 @@ nmap <space>sap :xcmenucmd Find in Project...<CR>
 nmap <space>sup viw:xccmd findSelectedTextInWorkspace<CR>
 
 " Compilation commands
-nmap <space>cc :xcmenucmd Run<CR>
 nmap <space>cr :xcmenucmd Run<CR>
 nmap <space>ct :xcmenucmd Test<CR>
 nmap <space>cb :xcmenucmd Bulid<CR>
-nmap <space>cf :xcmenucmd Clean Build Folder<CR>
+nmap <space>cc :xcmenucmd Clean Build Folder<CR>
 
 " Toggles
 nmap <space>tb viw:xccmd toggleBreakpointAtCurrentLine<CR>
