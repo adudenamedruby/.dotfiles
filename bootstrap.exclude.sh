@@ -66,7 +66,7 @@ setup_utilities () {
     read resp
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
         echo "Downloading..."
-        sh download.exclude.sh
+        sh downloads.exclude.sh
     else
         echo "Skipping miscellaneous file downloads."
     fi
