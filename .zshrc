@@ -62,6 +62,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # User configuration
 
