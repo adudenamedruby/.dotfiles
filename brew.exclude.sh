@@ -7,7 +7,7 @@ which brew 1>&/dev/null
 if [ ! "$?" -eq 0 ] ; then
     echo "Failed to find HOMEBREW. It must not be installed."
 	echo "Hombrew required to bootstrap system. Attempting to install Homebrew..."
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 	if [ ! "$?" -eq 0 ] ; then
 		echo "Something went wrong. How depressing. Exiting..." && exit 1
 	fi
@@ -44,8 +44,8 @@ brew install openssh
 brew install grep --with-default-names
 
 # Zsh 
-brew install zsh zsh-completions
-chsh -s /bin/zsh
+#brew install zsh zsh-completions
+#chsh -s /bin/zsh
 
 
 # ---------------------------------------------
@@ -61,13 +61,10 @@ brew install python3
 # ---------------------------------------------
 
 # Vim, followed by installing Plug plugin manager
-brew install vim --with-override-system-vi
+brew install vim
 
 # The Unarchiver
 brew cask install the-unarchiver
-
-# Google Chrome
-brew cask install google-chrome
 
 # Keycastr
 brew cask install keycastr
@@ -95,7 +92,7 @@ fi
 # ---------------------------------------------
 
 # My preferred fonts
-brew tap caskroom/fonts
+brew tap homebrew/cask-fonts  
 brew cask install font-source-code-pro
 brew cask install font-hack
 brew cask install font-hack-nerd-font
