@@ -41,11 +41,7 @@ brew install the_silver_searcher
 brew install openssh
 
 # g|re|p
-brew install grep --with-default-names
-
-# Zsh 
-#brew install zsh zsh-completions
-#chsh -s /bin/zsh
+brew install grep
 
 
 # ---------------------------------------------
@@ -66,8 +62,19 @@ brew install vim
 # The Unarchiver
 brew cask install the-unarchiver
 
+# VLC
+brew cask install vlc
+
+# Onyx maintenance
+brew cast install onyx
+
 # Keycastr
 brew cask install keycastr
+
+# Alfred
+brew cask install alfred
+
+#
 
 # Emacs
 brew tap d12frosted/emacs-plus
@@ -88,7 +95,7 @@ fi
 
 
 # ---------------------------------------------
-# Misc
+# Other
 # ---------------------------------------------
 
 # My preferred fonts
@@ -103,24 +110,19 @@ brew cask install font-inconsolata-nerd-font
 brew cask install font-inconsolata-nerd-font-mono
 
 
+# Get ZSH syntax highlighting
+brew install zsh-syntax-highlighting
+
+# Get ZSH auto-completions
+brew install zsh-completions
+
+
 # ---------------------------------------------
 # Terminal gimmicks xD
 # ---------------------------------------------
 
-# The computer fortune teller 
-brew install fortune
-
-# The famous cowsay
-brew install cowsay
-
-# Multicolored text output
-brew install lolcat
-
 # Cmatricx
-brew install cmatricx
-
-# SL
-brew install sl
+brew install cmatrix
 
 
 # Now that we're done brewing...
