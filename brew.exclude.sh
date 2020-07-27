@@ -43,6 +43,9 @@ brew install openssh
 # g|re|p
 brew install grep
 
+# Cocoapods
+brew install cocoapods
+
 
 # ---------------------------------------------
 # Programming Languages
