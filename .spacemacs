@@ -55,9 +55,9 @@ This function should only modify configuration layer settings."
      (auto-completion :variables
                       auto-completion-return-key-behavior 'complete
                       auto-completion-tab-key-behavior 'cycle
-                      :disabled-for org erc)
+                      :disabled-for org)
      colors
-     games
+     ;;games
      ;; dash
      emacs-lisp
      emoji
@@ -71,7 +71,9 @@ This function should only modify configuration layer settings."
      markdown
      ;; multiple-cursors
      neotree
-     org
+     (org :variables
+          org-enable-jira-support t
+          jiralib-url "https://jira.ges.symantec.com:443")
      python
      (shell :variables
             shell-default-height 35
@@ -80,7 +82,7 @@ This function should only modify configuration layer settings."
      shell-scripts
      ;; spotify
      swift
-     spell-checking
+     ;;spell-checking
      syntax-checking
      themes-megapack
      yaml
@@ -220,13 +222,12 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(cyberpunk
+   dotspacemacs-themes '(lush
                          gruvbox-dark-hard
+                         cyberpunk
                          badwolf
                          afternoon
-                         lush
                          spacegray
-                         soft-stone
                          sanityinc-tomorrow-eighties
                          sanityinc-tomorrow-night)
 
@@ -245,7 +246,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Hack"
+   dotspacemacs-default-font '("Hack Nerd Font"
                                :size 16
                                :weight normal
                                :width normal
@@ -396,6 +397,7 @@ It should only modify the values of Spacemacs settings."
                                                   text-mode
                                                   LaTeX-mode
                                                   latex-mode
+                                                  fundamental-mode
                                :disabled-for-modes dired-mode
                                                    doc-view-mode
                                                    pdf-view-mode)
