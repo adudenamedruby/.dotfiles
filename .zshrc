@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 ## If you come from bash you might have to change your $PATH.
 export PATH="/usr/local/sbin:$PATH"
 
@@ -9,46 +16,7 @@ unset $CURRENTUSER
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel9k/powerlevel9k"
-
-#POWERLEVEL9k customization
-POWERLEVEL9K_MODE="nerdfont-complete"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir_writable dir vcs newline time root_indicator command_execution_time status)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
-POWERLEVEL9K_USER_ICON="\uF415" # 
-POWERLEVEL9K_ROOT_ICON="\uF09C"
-POWERLEVEL9K_SUDO_ICON=$'\uF09C' # 
-POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S}"
-POWERLEVEL9K_VCS_GIT_ICON='\uF408 '
-POWERLEVEL9K_VCS_GIT_GITHUB_ICON='\uF408 '
-
-POWERLEVEL9K_CONTEXT_TEMPLATE="\uF415 %n@%m"
-POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="white"
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="0"
-POWERLEVEL9K_CONTEXT_SUDO_BACKGROUND="9"
-POWERLEVEL9K_CONTEXT_SUDO_FOREGROUND="7"
-POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND="12"
-POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND="7"
-POWERLEVEL9K_CONTEXT_REMOTE_FOREGROUND="10"
-POWERLEVEL9K_CONTEXT_REMOTE_FOREGROUND="7"
-POWERLEVEL9K_CONTEXT_REMOTE_SUDO_FOREGROUND="1"
-POWERLEVEL9K_CONTEXT_REMOTE_SUDO_FOREGROUND="7"
-
-POWERLEVEL9K_HOME_ICON='\uF015'
-POWERLEVEL9K_HOME_SUB_ICON='\uFC6E'
-POWERLEVEL9K_FOLDER_ICON='\uF74E'
-POWERLEVEL9K_ETC_ICON='\uFB1A'
-POWERLEVEL9K_DIR_SHOW_WRITABLE=true
-
-POWERLEVEL9K_TIME_BACKGROUND="yellow"
-POWERLEVEL9K_TIME_FOREGROUND="black"
-
-P9K_VCS_CLEAN_BACKGROUND="green"
-P9K_VCS_CLEAN_FOREGROUND="$DEFAULT_BACKGROUND"
-P9K_VCS_MODIFIED_BACKGROUND="yellow"
-P9K_VCS_MODIFIED_FOREGROUND="$DEFAULT_BACKGROUND"
-P9K_VCS_UNTRACKED_BACKGROUND="magenta"
-P9K_VCS_UNTRACKED_FOREGROUND="$DEFAULT_BACKGROUND"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -96,10 +64,10 @@ plugins=(
     git
     colored-man-pages
     vi-mode
-    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # User configuration
 
@@ -124,3 +92,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 [ -f ~/.aliases ] && source ~/.aliases
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

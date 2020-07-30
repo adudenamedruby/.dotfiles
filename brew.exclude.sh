@@ -7,7 +7,7 @@ which brew 1>&/dev/null
 if [ ! "$?" -eq 0 ] ; then
     echo "Failed to find HOMEBREW. It must not be installed."
 	echo "Hombrew required to bootstrap system. Attempting to install Homebrew..."
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 	if [ ! "$?" -eq 0 ] ; then
 		echo "Something went wrong. How depressing. Exiting..." && exit 1
 	fi
@@ -41,11 +41,10 @@ brew install the_silver_searcher
 brew install openssh
 
 # g|re|p
-brew install grep --with-default-names
+brew install grep
 
-# Zsh 
-brew install zsh zsh-completions
-chsh -s /bin/zsh
+# Cocoapods
+brew install cocoapods
 
 
 # ---------------------------------------------
@@ -61,16 +60,24 @@ brew install python3
 # ---------------------------------------------
 
 # Vim, followed by installing Plug plugin manager
-brew install vim --with-override-system-vi
+brew install vim
 
 # The Unarchiver
 brew cask install the-unarchiver
 
-# Google Chrome
-brew cask install google-chrome
+# VLC
+brew cask install vlc
+
+# Onyx maintenance
+brew cast install onyx
 
 # Keycastr
 brew cask install keycastr
+
+# Alfred
+brew cask install alfred
+
+#
 
 # Emacs
 brew tap d12frosted/emacs-plus
@@ -91,11 +98,11 @@ fi
 
 
 # ---------------------------------------------
-# Misc
+# Other
 # ---------------------------------------------
 
 # My preferred fonts
-brew tap caskroom/fonts
+brew tap homebrew/cask-fonts  
 brew cask install font-source-code-pro
 brew cask install font-hack
 brew cask install font-hack-nerd-font
@@ -106,24 +113,19 @@ brew cask install font-inconsolata-nerd-font
 brew cask install font-inconsolata-nerd-font-mono
 
 
+# Get ZSH syntax highlighting
+brew install zsh-syntax-highlighting
+
+# Get ZSH auto-completions
+brew install zsh-completions
+
+
 # ---------------------------------------------
 # Terminal gimmicks xD
 # ---------------------------------------------
 
-# The computer fortune teller 
-brew install fortune
-
-# The famous cowsay
-brew install cowsay
-
-# Multicolored text output
-brew install lolcat
-
 # Cmatricx
-brew install cmatricx
-
-# SL
-brew install sl
+brew install cmatrix
 
 
 # Now that we're done brewing...

@@ -58,7 +58,7 @@
 //#include <Kaleidoscope-LEDEffect-DigitalRain.h>
 
 // Support for TapDance
-#include <Kaleidoscope-TapDance.h>
+#include "Kaleidoscope-TapDance.h"
 
 // Support for an LED mode that prints the keys you press in letters 4px high
 #include "Kaleidoscope-LED-AlphaSquare.h"
@@ -76,7 +76,7 @@
 #include "Kaleidoscope-USB-Quirks.h"
 
 // Support for Qukeys, enabling tap and hold behaviour
-#include <Kaleidoscope-Qukeys.h>
+#include "Kaleidoscope-Qukeys.h"
 
 
 
@@ -145,7 +145,7 @@ enum { MACRO_VERSION_INFO,
   *
   */
 
-enum { PRIMARY, NUMBERS_FUNCTION, PROGRAMMING_CHARACTERS, ARROWS, HYPER, MEH, MEDIA, IDIOCY }; // layers
+enum { PRIMARY, NUMBERS_FUNCTION, PROGRAMMING_CHARACTERS, ARROWS, HYPER, MEH, MEDIA, IDIOCY, WOW }; // layers
 
 
 /* This comment temporarily turns off astyle's indent enforcement
@@ -164,7 +164,7 @@ KEYMAPS(
    ShiftToLayer(NUMBERS_FUNCTION),
 
    M(MACRO_ANY),        ___,           ___,            ___,            ___,         ___,          LockLayer(IDIOCY),
-   Key_Enter,           Key_F,         Key_G,          Key_C,          Key_R,       Key_L,        LGUI(Key_Z),
+   LockLayer(WOW),           Key_F,         Key_G,          Key_C,          Key_R,       Key_L,        LGUI(Key_Z),
                         Key_D,         Key_H,          Key_T,          Key_N,       Key_S,        ___,
    TD(3),               Key_B,         Key_M,          Key_W,          Key_V,       Key_Z,        LSHIFT(LGUI(Key_Z)),
    ALT_T(Tab), SFT_T(Tab), Key_Backspace, CTL_T(Escape),
@@ -277,6 +277,21 @@ KEYMAPS(
 
    M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         ___,
    Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
+                  Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
+   Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
+   Key_RightAlt, Key_LeftShift, Key_Backspace, Key_RightControl,
+   XXX),
+
+   [WOW] =  KEYMAP_STACKED
+  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
+   Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
+   Key_Tab,   Key_LeftShift, Key_S, Key_D, Key_F, Key_G,
+   Key_PageDown, Key_LeftControl, Key_X, Key_C, Key_V, Key_B, Key_Escape,
+   Key_Tab, Key_Spacebar, Key_Enter, Key_RightAlt,
+   Key_LeftControl,
+
+   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         ___,
+   ___,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
                   Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
    Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
    Key_RightAlt, Key_LeftShift, Key_Backspace, Key_RightControl,
@@ -534,10 +549,6 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
  
 void setup() {
-  QUKEYS(
-    //                  l, r, c, alt_keycode
-    //kaleidoscope::Qukey(2, 0, 1, Key_LeftShift)      // A/cmd
-  )
   Qukeys.setTimeout(180);
   Qukeys.setReleaseDelay(20);
   
@@ -546,7 +557,7 @@ void setup() {
 
   // While we hope to improve this in the future, the NumPad plugin
   // needs to be explicitly told which keymap layer is your numpad layer
-  NumPad.numPadLayer = IDIOCY;
+  NumPad.numPadLayer = WOW;
   NumPad.lock_hue = 0;
 
   // We configure the AlphaSquare effect to use RED letters
@@ -591,5 +602,3 @@ void setup() {
 void loop() {
   Kaleidoscope.loop();
 }
-
-
