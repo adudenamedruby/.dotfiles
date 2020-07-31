@@ -145,7 +145,7 @@ enum { MACRO_VERSION_INFO,
   *
   */
 
-enum { PRIMARY, NUMBERS_FUNCTION, PROGRAMMING_CHARACTERS, ARROWS, HYPER, MEH, MEDIA, IDIOCY, WOW }; // layers
+enum { PRIMARY, NUMBERS_FUNCTION, PROGRAMMING_CHARACTERS, ARROWS, HYPER, MEH, MEDIA, DVORAK, WOW }; // layers
 
 
 /* This comment temporarily turns off astyle's indent enforcement
@@ -156,18 +156,18 @@ enum { PRIMARY, NUMBERS_FUNCTION, PROGRAMMING_CHARACTERS, ARROWS, HYPER, MEH, ME
 KEYMAPS(
 
   [PRIMARY] = KEYMAP_STACKED
-  (___,                         ___,           ___,            ___,             ___,         ___,         Key_LEDEffectNext,
-   TD(0),                       Key_Quote,     Key_Comma,      Key_Period,      Key_P,       Key_Y,       LALT(LSHIFT(Key_LeftControl)),
-   CTL_T(Escape),               Key_A,         Key_O,          Key_E,           Key_U,       Key_I,
-   Key_LeftShift,               Key_Semicolon, Key_Q,          Key_J,           Key_K,       Key_X,       TD(4),
+  (___,                         Key_1,           Key_2,          Key_3,           Key_4,       Key_5,       Key_LEDEffectNext,
+   Key_Tab,                     Key_Q,           Key_W,          Key_E,           Key_R,       Key_T,       LGUI(Key_C),
+   CTL_T(Escape),               Key_A,           Key_S,          Key_D,           Key_F,       Key_G,
+   Key_LeftShift,               Key_Z,           Key_X,          Key_C,           Key_V,       Key_B,       LGUI(Key_V),
    Key_LeftGui, Key_Spacebar, Key_Enter, ALT_T(Tab),
    ShiftToLayer(NUMBERS_FUNCTION),
 
-   M(MACRO_ANY),        ___,           ___,            ___,            ___,         ___,          LockLayer(IDIOCY),
-   LockLayer(WOW),           Key_F,         Key_G,          Key_C,          Key_R,       Key_L,        LGUI(Key_Z),
-                        Key_D,         Key_H,          Key_T,          Key_N,       Key_S,        ___,
-   TD(3),               Key_B,         Key_M,          Key_W,          Key_V,       Key_Z,        LSHIFT(LGUI(Key_Z)),
-   ALT_T(Tab), SFT_T(Tab), Key_Backspace, CTL_T(Escape),
+   M(MACRO_ANY),        Key_6,           Key_7,          Key_8,          Key_9,         Key_0,         LockLayer(DVORAK),
+   ShiftToLayer(MEDIA), Key_Y,           Key_U,          Key_I,          Key_O,         Key_P,         LGUI(Key_Z),
+                        Key_H,           Key_J,          Key_K,          Key_L,         Key_Semicolon, ___,
+   Key_RightAlt,        Key_N,           Key_M,          Key_Comma,      Key_Period,    Key_Slash,     LSHIFT(LGUI(Key_Z)),
+   LockLayer(WOW), SFT_T(Tab), Key_Backspace, CTL_T(Escape),
    ShiftToLayer(PROGRAMMING_CHARACTERS)),
 
 
@@ -189,17 +189,17 @@ KEYMAPS(
 
   [PROGRAMMING_CHARACTERS] =  KEYMAP_STACKED
   (___, ___, ___, ___, ___, ___, ___,
-   ___, ___,           Key_Backtick,            LSHIFT(Key_2),         LSHIFT(Key_5),      LSHIFT(Key_Backtick), ___,
-   ___, Key_Slash,     LSHIFT(Key_LeftBracket), LSHIFT(Key_Semicolon), LSHIFT(Key_9),              LSHIFT(Key_Equals),
-   ___, LSHIFT(Key_3), LSHIFT(Key_Backtick),    LSHIFT(Key_7),         LSHIFT(Key_Slash),  Key_LeftBracket, ___,
+   ___, ___,                    Key_Backtick,               LSHIFT(Key_2),         LSHIFT(Key_5),      Key_Backslash,       ___,
+   ___, Key_LeftBracket,        Key_Minus,                  LSHIFT(Key_Z),         LSHIFT(Key_9),      LSHIFT(Key_RightBracket),
+   ___, LSHIFT(Key_Backtick),   LSHIFT(Key_Minus),          LSHIFT(Key_7),         LSHIFT(Key_LeftBracket),  ___,                 ___,
    ___, ___, ___, ___,
    ShiftToLayer(HYPER),
 
    ___, ___, ___, ___, ___, ___, ___,
-   ___, LSHIFT(Key_Backslash), Key_0,         LSHIFT(Key_6),   LSHIFT(Key_4),            ___,               ___,
-        LSHIFT(Key_8),         LSHIFT(Key_0),         Key_Equals,      LSHIFT(Key_RightBracket), Key_Minus,         ___,
-   ___, Key_RightBracket,      LSHIFT(Key_1), Key_Backslash,   ___,                      LSHIFT(Key_Minus), ___,
-   ShiftToLayer(MEDIA), ShiftToLayer(ARROWS), ___, ___,
+   ___, LSHIFT(Key_Backslash), Key_0,                 LSHIFT(Key_6),              LSHIFT(Key_4),              ___,                   ___,
+        LSHIFT(Key_8),         LSHIFT(Key_0),         Key_RightBracket,           Key_Equals,                 Key_Quote,             ___,
+   ___, ___,                   LSHIFT(Key_1),         LSHIFT(Key_Quote),          LSHIFT(Key_Equals),      LSHIFT(Key_3),         ___,
+   ___, ___, ShiftToLayer(ARROWS), ___,
    ___),
 
 
@@ -221,32 +221,32 @@ KEYMAPS(
 
    [HYPER] = KEYMAP_STACKED
   (___, LCTRL(LALT(LSHIFT(LGUI(Key_1)))),         LCTRL(LALT(LSHIFT(LGUI(Key_2)))),          LCTRL(LALT(LSHIFT(LGUI(Key_3)))),           LCTRL(LALT(LSHIFT(LGUI(Key_4)))), LCTRL(LALT(LSHIFT(LGUI(Key_5)))), XXX,
-   XXX, LCTRL(LALT(LSHIFT(LGUI(Key_Quote)))),     LCTRL(LALT(LSHIFT(LGUI(Key_Comma)))),      LCTRL(LALT(LSHIFT(LGUI(Key_Period)))),      LCTRL(LALT(LSHIFT(LGUI(Key_P)))), LCTRL(LALT(LSHIFT(LGUI(Key_Y)))), XXX,
-   XXX, LCTRL(LALT(LSHIFT(LGUI(Key_A)))),         LCTRL(LALT(LSHIFT(LGUI(Key_O)))),          LCTRL(LALT(LSHIFT(LGUI(Key_E)))),           LCTRL(LALT(LSHIFT(LGUI(Key_U)))), LCTRL(LALT(LSHIFT(LGUI(Key_I)))),
-   XXX, LCTRL(LALT(LSHIFT(LGUI(Key_Semicolon)))), LCTRL(LALT(LSHIFT(LGUI(Key_Q)))),          LCTRL(LALT(LSHIFT(LGUI(Key_J)))),           LCTRL(LALT(LSHIFT(LGUI(Key_K)))), LCTRL(LALT(LSHIFT(LGUI(Key_X)))), XXX,
+   XXX, LCTRL(LALT(LSHIFT(LGUI(Key_Q)))),         LCTRL(LALT(LSHIFT(LGUI(Key_W)))),          LCTRL(LALT(LSHIFT(LGUI(Key_E)))),           LCTRL(LALT(LSHIFT(LGUI(Key_R)))), LCTRL(LALT(LSHIFT(LGUI(Key_T)))), XXX,
+   XXX, LCTRL(LALT(LSHIFT(LGUI(Key_A)))),         LCTRL(LALT(LSHIFT(LGUI(Key_S)))),          LCTRL(LALT(LSHIFT(LGUI(Key_D)))),           LCTRL(LALT(LSHIFT(LGUI(Key_F)))), LCTRL(LALT(LSHIFT(LGUI(Key_G)))),
+   XXX, LCTRL(LALT(LSHIFT(LGUI(Key_Z)))),         LCTRL(LALT(LSHIFT(LGUI(Key_X)))),          LCTRL(LALT(LSHIFT(LGUI(Key_C)))),           LCTRL(LALT(LSHIFT(LGUI(Key_V)))), LCTRL(LALT(LSHIFT(LGUI(Key_B)))), XXX,
    XXX, XXX, XXX, XXX,
    ___,
 
    XXX, LCTRL(LALT(LSHIFT(LGUI(Key_6)))), LCTRL(LALT(LSHIFT(LGUI(Key_7)))), LCTRL(LALT(LSHIFT(LGUI(Key_8)))), LCTRL(LALT(LSHIFT(LGUI(Key_9)))), LCTRL(LALT(LSHIFT(LGUI(Key_0)))), XXX,
-   XXX, LCTRL(LALT(LSHIFT(LGUI(Key_F)))), LCTRL(LALT(LSHIFT(LGUI(Key_G)))), LCTRL(LALT(LSHIFT(LGUI(Key_C)))), LCTRL(LALT(LSHIFT(LGUI(Key_R)))), LCTRL(LALT(LSHIFT(LGUI(Key_L)))), XXX,
-        LCTRL(LALT(LSHIFT(LGUI(Key_D)))), LCTRL(LALT(LSHIFT(LGUI(Key_H)))), LCTRL(LALT(LSHIFT(LGUI(Key_T)))), LCTRL(LALT(LSHIFT(LGUI(Key_N)))), LCTRL(LALT(LSHIFT(LGUI(Key_S)))), XXX,
-   XXX, LCTRL(LALT(LSHIFT(LGUI(Key_B)))), LCTRL(LALT(LSHIFT(LGUI(Key_M)))), LCTRL(LALT(LSHIFT(LGUI(Key_W)))), LCTRL(LALT(LSHIFT(LGUI(Key_V)))), LCTRL(LALT(LSHIFT(LGUI(Key_Z)))), XXX,
+   XXX, LCTRL(LALT(LSHIFT(LGUI(Key_Y)))), LCTRL(LALT(LSHIFT(LGUI(Key_U)))), LCTRL(LALT(LSHIFT(LGUI(Key_I)))), LCTRL(LALT(LSHIFT(LGUI(Key_O)))), LCTRL(LALT(LSHIFT(LGUI(Key_P)))), XXX,
+        LCTRL(LALT(LSHIFT(LGUI(Key_H)))), LCTRL(LALT(LSHIFT(LGUI(Key_J)))), LCTRL(LALT(LSHIFT(LGUI(Key_K)))), LCTRL(LALT(LSHIFT(LGUI(Key_L)))), LCTRL(LALT(LSHIFT(LGUI(Key_Semicolon)))), XXX,
+   XXX, LCTRL(LALT(LSHIFT(LGUI(Key_N)))), LCTRL(LALT(LSHIFT(LGUI(Key_M)))), LCTRL(LALT(LSHIFT(LGUI(Key_Comma)))), LCTRL(LALT(LSHIFT(LGUI(Key_Period)))), LCTRL(LALT(LSHIFT(LGUI(Key_Slash)))), XXX,
    XXX, XXX, XXX, XXX,
    XXX),
 
 
    [MEH] = KEYMAP_STACKED
   (___, LCTRL(LALT(LSHIFT(Key_1))),         LCTRL(LALT(LSHIFT(Key_2))),          LCTRL(LALT(LSHIFT(Key_3))),           LCTRL(LALT(LSHIFT(Key_4))), LCTRL(LALT(LSHIFT(Key_5))), XXX,
-   XXX, LCTRL(LALT(LSHIFT(Key_Quote))),     LCTRL(LALT(LSHIFT(Key_Comma))),      LCTRL(LALT(LSHIFT(Key_Period))),      LCTRL(LALT(LSHIFT(Key_P))), LCTRL(LALT(LSHIFT(Key_Y))), XXX,
-   XXX, LCTRL(LALT(LSHIFT(Key_A))),         LCTRL(LALT(LSHIFT(Key_O))),          LCTRL(LALT(LSHIFT(Key_E))),           LCTRL(LALT(LSHIFT(Key_U))), LCTRL(LALT(LSHIFT(Key_I))),
-   XXX, LCTRL(LALT(LSHIFT(Key_Semicolon))), LCTRL(LALT(LSHIFT(Key_Q))),          LCTRL(LALT(LSHIFT(Key_J))),           LCTRL(LALT(LSHIFT(Key_K))), LCTRL(LALT(LSHIFT(Key_X))), XXX,
+   XXX, LCTRL(LALT(LSHIFT(Key_Q))),         LCTRL(LALT(LSHIFT(Key_W))),          LCTRL(LALT(LSHIFT(Key_E))),           LCTRL(LALT(LSHIFT(Key_R))), LCTRL(LALT(LSHIFT(Key_T))), XXX,
+   XXX, LCTRL(LALT(LSHIFT(Key_A))),         LCTRL(LALT(LSHIFT(Key_S))),          LCTRL(LALT(LSHIFT(Key_D))),           LCTRL(LALT(LSHIFT(Key_F))), LCTRL(LALT(LSHIFT(Key_G))),
+   XXX, LCTRL(LALT(LSHIFT(Key_Z))),         LCTRL(LALT(LSHIFT(Key_X))),          LCTRL(LALT(LSHIFT(Key_C))),           LCTRL(LALT(LSHIFT(Key_V))), LCTRL(LALT(LSHIFT(Key_B))), XXX,
    XXX, XXX, XXX, XXX,
    XXX,
 
    XXX, LCTRL(LALT(LSHIFT(Key_6))), LCTRL(LALT(LSHIFT(Key_7))), LCTRL(LALT(LSHIFT(Key_8))), LCTRL(LALT(LSHIFT(Key_9))), LCTRL(LALT(LSHIFT(Key_0))), XXX,
-   XXX, LCTRL(LALT(LSHIFT(Key_F))), LCTRL(LALT(LSHIFT(Key_G))), LCTRL(LALT(LSHIFT(Key_C))), LCTRL(LALT(LSHIFT(Key_R))), LCTRL(LALT(LSHIFT(Key_L))), XXX,
-        LCTRL(LALT(LSHIFT(Key_D))), LCTRL(LALT(LSHIFT(Key_H))), LCTRL(LALT(LSHIFT(Key_T))), LCTRL(LALT(LSHIFT(Key_N))), LCTRL(LALT(LSHIFT(Key_S))), XXX,
-   XXX, LCTRL(LALT(LSHIFT(Key_B))), LCTRL(LALT(LSHIFT(Key_M))), LCTRL(LALT(LSHIFT(Key_W))), LCTRL(LALT(LSHIFT(Key_V))), LCTRL(LALT(LSHIFT(Key_Z))), XXX,
+   XXX, LCTRL(LALT(LSHIFT(Key_Y))), LCTRL(LALT(LSHIFT(Key_U))), LCTRL(LALT(LSHIFT(Key_I))), LCTRL(LALT(LSHIFT(Key_O))), LCTRL(LALT(LSHIFT(Key_P))), XXX,
+        LCTRL(LALT(LSHIFT(Key_H))), LCTRL(LALT(LSHIFT(Key_J))), LCTRL(LALT(LSHIFT(Key_K))), LCTRL(LALT(LSHIFT(Key_L))), LCTRL(LALT(LSHIFT(Key_Semicolon))), XXX,
+   XXX, LCTRL(LALT(LSHIFT(Key_N))), LCTRL(LALT(LSHIFT(Key_M))), LCTRL(LALT(LSHIFT(Key_Comma))), LCTRL(LALT(LSHIFT(Key_Period))), LCTRL(LALT(LSHIFT(Key_Slash))), XXX,
    XXX, XXX, XXX, XXX,
    ___),
 
@@ -260,25 +260,25 @@ KEYMAPS(
    ___,
    
    ___,                        ___,                      ___, ___, ___, ___, ___,
-   TD(2),                      Consumer_Mute,            ___, ___, ___, ___, ___,
+   ___,                        Consumer_Mute,            ___, ___, ___, ___, ___,
                                Consumer_VolumeIncrement, ___, ___, ___, ___, ___,
    Consumer_PlaySlashPause,    Consumer_VolumeDecrement, ___, ___, ___, ___, ___,
    ___, ___, ___, ___,
    XXX),
 
 
-   [IDIOCY] = KEYMAP_STACKED
-  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
-   Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
-   Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
+   [DVORAK] = KEYMAP_STACKED
+  (___,          Key_1,         Key_2,     Key_3,      Key_4, Key_5, Key_LEDEffectNext,
+   Key_Backtick, Key_Quote,     Key_Comma, Key_Period, Key_P, Key_Y, Key_Tab,
+   Key_PageUp,   Key_A,         Key_O,     Key_E,      Key_U, Key_I,
+   Key_PageDown, Key_Semicolon, Key_Q,     Key_J,      Key_K, Key_X, Key_Escape,
    Key_LeftGui, Key_Spacebar, Key_Enter, Key_LeftControl,
    XXX,
 
-   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         ___,
-   Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
-                  Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
+   M(MACRO_ANY),   Key_6, Key_7, Key_8, Key_9, Key_0, ___,
+   Key_Enter,      Key_F, Key_G, Key_C, Key_R, Key_L, Key_Slash,
+                   Key_D, Key_H, Key_T, Key_N, Key_S, Key_Minus,
+   Key_RightAlt,   Key_B, Key_M, Key_W, Key_V, Key_Z, Key_Equals,
    Key_RightAlt, Key_LeftShift, Key_Backspace, Key_RightControl,
    XXX),
 
@@ -381,11 +381,9 @@ void toggleLedsOnSuspendResume(kaleidoscope::plugin::HostPowerManagement::Event 
   case kaleidoscope::plugin::HostPowerManagement::Suspend:
     LEDControl.set_all_leds_to({0, 0, 0});
     LEDControl.syncLeds();
-    LEDControl.paused = true;
-    break;
+     break;
   case kaleidoscope::plugin::HostPowerManagement::Resume:
-    LEDControl.paused = false;
-    LEDControl.refreshAll();
+     LEDControl.refreshAll();
     break;
   case kaleidoscope::plugin::HostPowerManagement::Sleep:
     break;
@@ -557,7 +555,7 @@ void setup() {
 
   // While we hope to improve this in the future, the NumPad plugin
   // needs to be explicitly told which keymap layer is your numpad layer
-  NumPad.numPadLayer = WOW;
+  NumPad.numPadLayer = DVORAK;
   NumPad.lock_hue = 0;
 
   // We configure the AlphaSquare effect to use RED letters

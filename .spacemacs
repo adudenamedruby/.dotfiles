@@ -73,7 +73,7 @@ This function should only modify configuration layer settings."
      neotree
      (org :variables
           org-enable-jira-support t
-          jiralib-url "https://jira.ges.symantec.com:443")
+          jiralib-url "https://jira.corp.nortonlifelock.com:443")
      python
      (shell :variables
             shell-default-height 35
