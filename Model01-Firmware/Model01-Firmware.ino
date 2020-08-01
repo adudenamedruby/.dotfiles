@@ -157,16 +157,16 @@ KEYMAPS(
 
   [PRIMARY] = KEYMAP_STACKED
   (___,                         Key_1,           Key_2,          Key_3,           Key_4,       Key_5,       Key_LEDEffectNext,
-   Key_Tab,                     Key_Q,           Key_W,          Key_E,           Key_R,       Key_T,       LGUI(Key_C),
+   Key_Tab,                     Key_Q,           Key_W,          Key_E,           Key_R,       Key_T,       LGUI(Key_I),
    CTL_T(Escape),               Key_A,           Key_S,          Key_D,           Key_F,       Key_G,
-   Key_LeftShift,               Key_Z,           Key_X,          Key_C,           Key_V,       Key_B,       LGUI(Key_V),
+   Key_LeftShift,               Key_Z,           Key_X,          Key_C,           Key_V,       Key_B,       LGUI(Key_Period),
    Key_LeftGui, Key_Spacebar, Key_Enter, ALT_T(Tab),
    ShiftToLayer(NUMBERS_FUNCTION),
 
    M(MACRO_ANY),        Key_6,           Key_7,          Key_8,          Key_9,         Key_0,         LockLayer(DVORAK),
-   ShiftToLayer(MEDIA), Key_Y,           Key_U,          Key_I,          Key_O,         Key_P,         LGUI(Key_Z),
+   ShiftToLayer(MEDIA), Key_Y,           Key_U,          Key_I,          Key_O,         Key_P,         LGUI(Key_Slash),
                         Key_H,           Key_J,          Key_K,          Key_L,         Key_Semicolon, ___,
-   Key_RightAlt,        Key_N,           Key_M,          Key_Comma,      Key_Period,    Key_Slash,     LSHIFT(LGUI(Key_Z)),
+   Key_RightAlt,        Key_N,           Key_M,          Key_Comma,      Key_Period,    Key_Slash,     LSHIFT(LGUI(Key_Slash)),
    LockLayer(WOW), SFT_T(Tab), Key_Backspace, CTL_T(Escape),
    ShiftToLayer(PROGRAMMING_CHARACTERS)),
 
