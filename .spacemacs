@@ -46,7 +46,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(ruby
+   '(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -57,7 +57,6 @@ This function should only modify configuration layer settings."
                       auto-completion-tab-key-behavior 'cycle
                       :disabled-for org)
      colors
-     ;;games
      ;; dash
      emacs-lisp
      emoji
@@ -69,20 +68,20 @@ This function should only modify configuration layer settings."
      javascript
      latex
      markdown
-     ;; multiple-cursors
      neotree
      (org :variables
           org-enable-jira-support t
           jiralib-url "https://jira.corp.nortonlifelock.com:443")
      python
+     ruby
      (shell :variables
             shell-default-height 35
             shell-default-position 'bottom
             shell-default-shell 'term)
      shell-scripts
-     ;; spotify
      swift
      ;;spell-checking
+     sql
      syntax-checking
      themes-megapack
      yaml
@@ -247,7 +246,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Hack Nerd Font"
-                               :size 16
+                               :size 16 
                                :weight normal
                                :width normal
                                :powerline-scale 1.3)
