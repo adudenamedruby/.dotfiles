@@ -167,7 +167,7 @@ KEYMAPS(
    ShiftToLayer(MEDIA), Key_Y,           Key_U,          Key_I,          Key_O,         Key_P,         LGUI(Key_Slash),
                         Key_H,           Key_J,          Key_K,          Key_L,         Key_Semicolon, ___,
    Key_RightAlt,        Key_N,           Key_M,          Key_Comma,      Key_Period,    Key_Slash,     LSHIFT(LGUI(Key_Slash)),
-   LockLayer(WOW), SFT_T(Tab), Key_Backspace, CTL_T(Escape),
+   LockLayer(WOW), Key_LeftShift, Key_Backspace, CTL_T(Escape),
    ShiftToLayer(PROGRAMMING_CHARACTERS)),
 
 
