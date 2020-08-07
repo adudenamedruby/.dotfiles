@@ -46,6 +46,41 @@ It's a work in progress, however, and is likely to change frequently.
 - Maybe get [Dash](https://kapeli.com/dash)
 - One last restart!
 
+## Other Software
+This is a list of the software I usually add afterwards that's not sourced from the App Store. It's here so I can just click to go there making my life easier. In no particular order
+
+### Games
+- [8BitDo Ultimate Software](https://support.8bitdo.com/ultimate-software.html)
+- [Tetr.io](https://tetr.io/about/desktop/)
+
+### Communication
+- [Discord](https://discord.com/new/download)
+- [Skype](https://www.skype.com/en/get-skype/)
+
+- [Arduino](https://www.arduino.cc/en/Main/Software)
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+
 # Why a dotfiles repo?
 
 Inspired by various members of Github, the dotfile repo is a great way to keep all your preferences the same across all dev environments! Tasty!
