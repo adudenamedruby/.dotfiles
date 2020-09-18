@@ -37,14 +37,44 @@ It's a work in progress, however, and is likely to change frequently.
 
 ### Almost done!
 - Run `brew doctor` to see any issues and fix them as needed
-- **ZSH**
-    - The bootstrap utility installs ZSH but sometimes things may not work 100%. [Here are further install instructions](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) in case of fire.
 - Xcode themes from [here](https://github.com/hdoria/xcode-themes) and [here](http://www.codethemes.net/themes/popular/all) should go in `~/Library/Developer/Xcode/UserData/FontAndColorThemes/` (FontAndColoThemes may not exist.)
 - [iTerm2 Themes](https://github.com/mbadolato/iTerm2-Color-Schemes)
-- In chrome, don't forget to install `vimium`
-- In Alfred, set up various workflows or shortcuts you need.
-- Maybe get [Dash](https://kapeli.com/dash)
 - One last restart!
+
+## Other Software
+This is a list of the software I usually add afterwards that's not sourced from the App Store. It's here so I can just click to go there making my life easier. In no particular order
+
+### Games
+- [8BitDo Ultimate Software](https://support.8bitdo.com/ultimate-software.html)
+- [Tetr.io](https://tetr.io/about/desktop/)
+
+### Communication
+- [Discord](https://discord.com/new/download)
+- [Skype](https://www.skype.com/en/get-skype/)
+
+### Development
+- [Arduino](https://www.arduino.cc/en/Main/Software)
+- [Dash](https://kapeli.com/dash)
+- [GitKraken](https://www.gitkraken.com/)
+
+### Entertainment
+- [Spotify](https://www.spotify.com/ca-en/download/mac/)
+
+### Browsers
+- [Firefox](https://www.mozilla.org/en-CA/firefox/new/)
+
+### Music
+- [Band-in-a-Box](https://www.pgmusic.com/)
+
+### Streaming
+- [Game Capture HD](https://www.elgato.com/en/gaming/downloads)
+- [OBS](https://obsproject.com/download)
+- [Slobs](https://streamlabs.com/)
+
+### Utilities
+- [AppCleaner](https://freemacsoft.net/appcleaner/)
+- [LoopBack](https://rogueamoeba.com/loopback/)
+
 
 # Why a dotfiles repo?
 
