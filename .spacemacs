@@ -59,6 +59,7 @@ This function should only modify configuration layer settings."
      colors
      ;; dash
      emacs-lisp
+     common-lisp
      emoji
      evil-commentary
      git

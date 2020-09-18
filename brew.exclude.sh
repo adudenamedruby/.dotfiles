@@ -54,6 +54,8 @@ brew install cocoapods
 # Python 3
 brew install python3
 
+# Common List
+brew install scbl
 
 # ---------------------------------------------
 # Applications
