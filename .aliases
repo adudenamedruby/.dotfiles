@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # Shortcuts
-alias doc="cd ~/Documents"
+alias docs="cd ~/Documents - ACMElabs"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias co="cd ~/code"
+alias code="cd ~/Documents - ACMElabs/code"
 
 # Alias for manipulating the dotfile folder
 alias dot="cd ~/.dotfiles"
