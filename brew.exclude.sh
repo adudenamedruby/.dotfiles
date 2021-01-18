@@ -7,7 +7,7 @@ which brew 1>&/dev/null
 if [ ! "$?" -eq 0 ] ; then
     echo "Failed to find HOMEBREW. It must not be installed."
 	echo "Hombrew required to bootstrap system. Attempting to install Homebrew..."
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	if [ ! "$?" -eq 0 ] ; then
 		echo "Something went wrong. How depressing. Exiting..." && exit 1
 	fi
@@ -83,8 +83,9 @@ brew cask install alfred
 
 # Emacs
 brew tap d12frosted/emacs-plus
-brew install emacs-plus
-ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
+brew install emacs-plus@27 --with-spacemacs-icon
+brew link emacs-plus
+#ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
 
 # Select which branch of Spacemacs we want - master or dev
 echo "By default this ulitily installs Spacemacs off the MASTER branch?"
@@ -104,7 +105,7 @@ fi
 # ---------------------------------------------
 
 # My preferred fonts
-brew tap homebrew/cask-fonts  
+brew tap homebrew/cask-fonts
 brew cask install font-source-code-pro
 brew cask install font-hack
 brew cask install font-hack-nerd-font
