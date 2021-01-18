@@ -16,75 +16,6 @@
                 },
                 "rules": [
                     {
-                        "description": "Map shift keys to parens",
-                        "manipulators": [
-                            {
-                                "description": "Map left shift to opening parenthesis",
-                                "from": {
-                                    "key_code": "left_shift",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_shift",
-                                        "lazy": true,
-                                        "modifiers": []
-                                    }
-                                ],
-                                "to_if_held_down": [
-                                    {
-                                        "key_code": "left_shift"
-                                    }
-                                ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "9",
-                                        "modifiers": [
-                                            "left_shift"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "Map right shift to closing parenthesis",
-                                "from": {
-                                    "key_code": "right_shift",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "right_shift",
-                                        "lazy": true,
-                                        "modifiers": []
-                                    }
-                                ],
-                                "to_if_held_down": [
-                                    {
-                                        "key_code": "right_shift"
-                                    }
-                                ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "0",
-                                        "modifiers": [
-                                            "right_shift"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Ctrl + Esc funsies",
                         "manipulators": [
                             {
@@ -297,7 +228,7 @@
                     }
                 }
             ],
-            "name": "Roux Space Cadet Modified",
+            "name": "Roux's Fancyness",
             "parameters": {
                 "delay_milliseconds_before_open_device": 1000
             },
@@ -310,3 +241,4 @@
         }
     ]
 }
+
