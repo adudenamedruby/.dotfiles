@@ -106,14 +106,14 @@ fi
 
 # My preferred fonts
 brew tap homebrew/cask-fonts
-brew cask install font-source-code-pro
-brew cask install font-hack
-brew cask install font-hack-nerd-font
-brew cask install font-hack-nerd-font-mono
-brew cask install font-inconsolata
-brew cask install font-inconsolata-for-powerline
-brew cask install font-inconsolata-nerd-font
-brew cask install font-inconsolata-nerd-font-mono
+brew install --cask font-source-code-pro
+brew install --cask font-hack
+brew install --cask font-hack-nerd-font
+brew install --cask font-hack-nerd-font-mono
+brew install --cask font-inconsolata
+brew install --cask font-inconsolata-for-powerline
+brew install --cask font-inconsolata-nerd-font
+brew install --cask font-inconsolata-nerd-font-mono
 
 
 # Get ZSH syntax highlighting
