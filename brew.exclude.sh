@@ -109,12 +109,9 @@ brew tap homebrew/cask-fonts
 brew install --cask font-source-code-pro
 brew install --cask font-hack
 brew install --cask font-hack-nerd-font
-brew install --cask font-hack-nerd-font-mono
 brew install --cask font-inconsolata
 brew install --cask font-inconsolata-for-powerline
 brew install --cask font-inconsolata-nerd-font
-brew install --cask font-inconsolata-nerd-font-mono
-
 
 # Get ZSH syntax highlighting
 brew install zsh-syntax-highlighting
