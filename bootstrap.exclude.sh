@@ -60,18 +60,6 @@ install_tools () {
     fi
 }
 
-setup_utilities () {
-    echo "This utility will download and install the rest of the utilities for bootstrapping"
-    echo "Proceed? (y/n)"
-    read resp
-    if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
-        echo "Downloading..."
-        sh downloads.exclude.sh
-    else
-        echo "Skipping miscellaneous file downloads."
-    fi
-}
-
 fetch_repos () {
     echo "This utility will fetch roux's personal git repos and put them in the ~/code/src/ folder"
     echo "Proceed? (y/n)"
@@ -97,6 +85,18 @@ macOS_preferences () {
         sh macos.exclude.sh
     else
         echo "Setting preferences skipped."
+    fi
+}
+
+setup_utilities () {
+    echo "This utility will download and install the rest of the utilities for bootstrapping"
+    echo "Proceed? (y/n)"
+    read resp
+    if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+        echo "Downloading..."
+        sh downloads.exclude.sh
+    else
+        echo "Skipping miscellaneous file downloads."
     fi
 }
 
