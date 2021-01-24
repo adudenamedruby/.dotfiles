@@ -84,6 +84,7 @@ This is a list of the software I usually add afterwards that's not sourced from 
 - [Slobs](https://streamlabs.com/)
 
 ### Utilities
+- [Amphetamine](https://apps.apple.com/us/app/amphetamine/id937984704?mt=12)
 - [AppCleaner](https://freemacsoft.net/appcleaner/)
 - [LoopBack](https://rogueamoeba.com/loopback/)
 
