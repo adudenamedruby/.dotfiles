@@ -27,10 +27,10 @@ It's a work in progress, however, and is likely to change frequently.
     - Additionally, make sure it's the default shell: `echo $SHELL` with expected
   result as `/usr/bin/zsh` or similar
     - If this doesn't work, [install ZSH](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
-- Oh-my-zsh
-    - Run `sh -c "$(curl -fsSL
-  https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
-  in the home directory. 
+- [Oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
+    - Run `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+  in the home directory.
+    - Restart iTerm
 
 ### Let's get phys... no. Let's get automated!
 - In iTerm `git clone https://github.com/rouxbuciu/.dotfiles.git` in the home directory
