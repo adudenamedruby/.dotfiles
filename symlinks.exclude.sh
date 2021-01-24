@@ -14,7 +14,7 @@ dotfiles () {
                                 rm ~/$file
                         fi
                     fi
-            ln -sv "$PWD/$file" "~/"
+            ln -sv $file ~/
         done
             echo "Dotfile symlinking complete."
     else
@@ -32,7 +32,7 @@ xcodeKeybindings () {
             if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
                     rm ~/Library/developer/Xcode/UserData/Keybindings/RouxAlternateBindings.idekeybindings
             fi
-        ln -sv "$PWD/RouxAlternateBindings.idekeybindings" "$HOME/Library/Developer/Xcode/UserData/Keybindings/"
+        ln -sv RouxAlternateBindings.idekeybindings ~/Library/Developer/Xcode/UserData/Keybindings/
         echo "Xcode symlinking complete"
         fi
     else
@@ -50,7 +50,7 @@ karabiner () {
             if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
                     rm ~/.config/karabiner/karabiner.json
             fi
-            ln -sv "$PWD/karabiner.json" "$HOME/.config/karabiner/"
+            ln -sv karabiner.json ~/.config/karabiner/
             echo "Karabiner symlinking complete"
         fi
     else
