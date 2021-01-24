@@ -45,7 +45,7 @@ It's a work in progress, however, and is likely to change frequently.
 - Install [XVim2](https://github.com/XVimProject/XVim2)
 
 ### Spacemacs
-- Spacemacs install instructions: https://github.com/syl20bnr/spacemacs (Install dev branch (if stable))
+- Spacemacs install instructions if things didn't go right otherwise: https://github.com/syl20bnr/spacemacs (Install dev branch (if stable))
 
 ### Almost done!
 - Run `brew doctor` to see any issues and fix them as needed
@@ -79,7 +79,6 @@ This is a list of the software I usually add afterwards that's not sourced from 
 - [Band-in-a-Box](https://www.pgmusic.com/)
 
 ### Streaming
-- [Game Capture HD](https://www.elgato.com/en/gaming/downloads)
 - [OBS](https://obsproject.com/download)
 - [Slobs](https://streamlabs.com/)
 
