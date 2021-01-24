@@ -65,21 +65,22 @@ brew install scbl
 brew install vim
 
 # The Unarchiver
-brew cask install the-unarchiver
+brew install --cask the-unarchiver
 
 # VLC
-brew cask install vlc
+brew install --cask vlc
 
 # Onyx maintenance
-brew cast install onyx
+brew install --cask onyx
 
 # Keycastr
-brew cask install keycastr
+brew install --cask keycastr
 
 # Alfred
-brew cask install alfred
+brew install --cask alfred
 
-#
+# Powerline10k
+brew install romkatv/powerlevel10k/powerlevel10k
 
 # Emacs
 brew tap d12frosted/emacs-plus
