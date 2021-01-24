@@ -14,7 +14,7 @@ dotfiles () {
                                 rm ~/$file
                         fi
                     fi
-            ln -sv "$PWD/$file" "$HOME"
+            ln -sv "$PWD/$file" "~/"
         done
             echo "Dotfile symlinking complete."
     else
