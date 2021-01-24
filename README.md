@@ -20,6 +20,18 @@ It's a work in progress, however, and is likely to change frequently.
       - Once installed, open to install tools!
     - 1Password (also get safari/crome extension)
 
+### Next, let's setup the terminal becasue this setup breaks automation:
+- ZSH
+    - Verify that zsh is installed: `zsh --version` (expected result is `zsh 5.4.2`
+  or more recent)
+    - Additionally, make sure it's the default shell: `echo $SHELL` with expected
+  result as `/usr/bin/zsh` or similar
+    - If this doesn't work, [install ZSH](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
+- Oh-my-zsh
+    - Run `sh -c "$(curl -fsSL
+  https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+  in the home directory. 
+
 ### Let's get phys... no. Let's get automated!
 - In iTerm `git clone https://github.com/rouxbuciu/.dotfiles.git` in the home directory
 - Then `cd .dotfiles` & `sh bootstrap.exclude.sh` This'll take a while.
