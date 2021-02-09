@@ -36,6 +36,7 @@ It's a work in progress, however, and is likely to change frequently.
 - In iTerm `git clone https://github.com/rouxbuciu/.dotfiles.git` in the home directory
 - Then `cd .dotfiles` & `sh bootstrap.exclude.sh` This'll take a while.
 - Once finished running, quit terminal and reboot computer for a good time!
+- Don't forget to run `p10k configure` to configure your prompt.
 
 ### XVim - why settle for less!?
 - Because of the certificate, these steps should be done manually.
@@ -49,7 +50,7 @@ It's a work in progress, however, and is likely to change frequently.
 
 ### Almost done!
 - Run `brew doctor` to see any issues and fix them as needed
-- Xcode themes from [here](https://github.com/hdoria/xcode-themes) and [here](http://www.codethemes.net/themes/popular/all) should go in `~/Library/Developer/Xcode/UserData/FontAndColorThemes/` (FontAndColoThemes may not exist.)
+- Xcode themes from [here](https://github.com/hdoria/xcode-themes) and [here](http://www.codethemes.net/themes/popular/all) should go in `~/Library/Developer/Xcode/UserData/FontAndColorThemes/` (FontAndColorThemes may not exist.)
 - [iTerm2 Themes](https://github.com/mbadolato/iTerm2-Color-Schemes)
 - One last restart!
 
@@ -83,6 +84,7 @@ This is a list of the software I usually add afterwards that's not sourced from 
 - [Slobs](https://streamlabs.com/)
 
 ### Utilities
+- [Amphetamine](https://apps.apple.com/us/app/amphetamine/id937984704?mt=12)
 - [AppCleaner](https://freemacsoft.net/appcleaner/)
 - [LoopBack](https://rogueamoeba.com/loopback/)
 
