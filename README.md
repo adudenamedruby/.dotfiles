@@ -12,7 +12,6 @@ It's a work in progress, however, and is likely to change frequently.
 - Take a moment and appreciate what an unadulterated, fresh mac looks like. Yeah, it's pretty neat. Let's get to the nitty-gritty.
 - Sign in to Apple accounts; set System Preferences.
 - Download and install the important stuff:
-    - [Alfred](https://www.alfredapp.com)
     - [iTerm 2](https://www.iterm2.com/downloads.html) - set up hotkey shortcut Cmd-Ctrl-T
     - [Karabiner](https://pqrs.org/osx/karabiner/)
 - Download apps you want from App Store
