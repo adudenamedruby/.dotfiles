@@ -32,8 +32,8 @@ It's a work in progress, however, and is likely to change frequently.
     - Restart iTerm
 
 ### Let's get phys... no. Let's get automated!
-- In iTerm `git clone https://github.com/rouxbuciu/.dotfiles.git` in the home directory
-- Then `cd .dotfiles` & `sh bootstrap.exclude.sh` This'll take a while.
+- In iTerm, in the home directory, copy and paste the following:
+`sh -c "$(curl -fsSL https://raw.githubusercontent.com/electricRGB/.dotfiles/master/setup.sh)"`
 - Once finished running, quit terminal and reboot computer for a good time!
 - Don't forget to run `p10k configure` to configure your prompt.
 

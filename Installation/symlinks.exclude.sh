@@ -6,17 +6,21 @@ dotfiles () {
     echo "Symlink preference dotfiles? (y/n)"
     read resp
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+        cd ..
+	      cd RC_Files
         for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|.*.md|.*.ino|.*.idekeybindings|.*.json' ) ; do
-                    if [ -e ~/$file ]; then
+                    if [[ -f "~/${file##*/}" ]]; then
                         echo "File $file already exists. Remove it? [y/n]"
                         read resp
                         if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
                                 rm ~/$file
                         fi
                     fi
-            ln -sv $file ~/
+            ln -s $file ~/
         done
-            echo "Dotfile symlinking complete."
+        echo "Dotfile symlinking complete."
+	cd ..
+	cd Installation
     else
         echo "Skipping dotfiles symlinks"
     fi
