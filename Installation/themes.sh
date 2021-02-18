@@ -5,6 +5,7 @@ installThemes() {
     read resp
 	  if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
 		    echo "Copying themes."
+        mkdir ~/Library/Developer/Xcode/UserData/FontAndColorThemes
         cp ~/.dotfiles/Themes/* ~/Library/Developer/Xcode/UserData/FontAndColorThemes/
 	  else
 		    echo "Aborting theme copying."
