@@ -36,7 +36,7 @@ symlink_setup () {
     echo "Proceed? (y/n)"
     read resp
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
-        sh symlinks.exclude.sh
+        sh symlinks.sh
         echo "Symlinking process complete."
     else
         echo "Symlinking cancelled by user"
@@ -51,7 +51,7 @@ install_tools () {
         if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
             echo "Installing useful stuff using brew. This may take a while..."
                    echo "Maybe brew yourself a coffee?"
-            sh brew.exclude.sh
+            sh brew.sh
         else
             echo "Brew installation cancelled by user"
         fi
@@ -69,7 +69,7 @@ fetch_repos () {
         mkdir ~/code
         mkdir ~/code/src
         echo "Fetching repos:"
-        sh fetchPersonalRepos.exclude.sh
+        sh fetchPersonalRepos.sh
         echo "Repo fetch complete."
     else
         echo "Setting preferences skipped."
@@ -82,7 +82,7 @@ macOS_preferences () {
     read resp
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
         echo "Setting preferences..."
-        sh macos.exclude.sh
+        sh macos.sh
     else
         echo "Setting preferences skipped."
     fi
@@ -94,7 +94,8 @@ setup_utilities () {
     read resp
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
         echo "Downloading..."
-        sh downloads.exclude.sh
+        sh downloads.sh
+        sh themes.sh
     else
         echo "Skipping miscellaneous file downloads."
     fi
