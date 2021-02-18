@@ -19,8 +19,8 @@ dotfiles () {
             ln -s $file ~/
         done
         echo "Dotfile symlinking complete."
-	cd ..
-	cd Installation
+    cd ..
+    cd Installation
     else
         echo "Skipping dotfiles symlinks"
     fi

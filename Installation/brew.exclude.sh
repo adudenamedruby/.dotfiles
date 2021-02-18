@@ -46,6 +46,12 @@ brew install grep
 # Cocoapods
 brew install cocoapods
 
+# Carthage
+brew install carthage
+
+# Node
+brew install node
+
 
 # ---------------------------------------------
 # Programming Languages
@@ -54,7 +60,10 @@ brew install cocoapods
 # Python 3
 brew install python3
 
-# Common List
+# virtual environments for Python
+pip3 install virtualenv
+
+# Common Lisp
 brew install scbl
 
 # ---------------------------------------------
