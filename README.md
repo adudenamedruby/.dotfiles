@@ -1,6 +1,6 @@
 # What dis?
 
-Here you'll find my dotfiles, my setup/keybinding preferences, and a fun script for bootstrapping your whole system from fresh. All nice and neat.
+Here you'll find my dotfiles repo, my setup/keybinding preferences, and a fun script for bootstrapping your whole system from fresh. All nice and neat.
 
 It's a work in progress, however, and is likely to change frequently.
 
