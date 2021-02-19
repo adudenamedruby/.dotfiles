@@ -9,7 +9,7 @@ alias code="cd ~/Documents/code"
 # Alias for manipulating the dotfile folder
 alias dot="cd ~/.dotfiles"
 alias dotupdate="pushd ~/.dotfiles; git add -A; git commit -m \"Update repo\"; git push origin master; popd"
-alias dotsync="pushd ~/.dotfiles; git pull origin master; popd"
+alias dotsync="pushd ~/.dotfiles; git pull origin main; popd"
 
 # Detect which `ls` flavor is in use
 #if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -39,7 +39,7 @@ alias week='date +%V'
 alias update='brew update; brew upgrade; brew cleanup'
 
 # Google Chrome
-alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+#alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
