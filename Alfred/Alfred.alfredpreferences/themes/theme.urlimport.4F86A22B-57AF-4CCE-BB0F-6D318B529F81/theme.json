@@ -1,0 +1,61 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 8,
+      "subtext" : {
+        "size" : 11,
+        "colorSelected" : "#54BE5AFF",
+        "font" : "Menlo",
+        "color" : "#69878FFF"
+      },
+      "shortcut" : {
+        "size" : 24,
+        "colorSelected" : "#E1404AFF",
+        "font" : "Menlo",
+        "color" : "#8B86CEFF"
+      },
+      "backgroundSelected" : "#282B35FF",
+      "text" : {
+        "size" : 20,
+        "colorSelected" : "#FFFFFFFF",
+        "font" : "Menlo",
+        "color" : "#D08E5DFF"
+      },
+      "iconPaddingHorizontal" : 5,
+      "paddingVertical" : 8,
+      "iconSize" : 40
+    },
+    "search" : {
+      "paddingVertical" : 2,
+      "background" : "#282B35FF",
+      "spacing" : 10,
+      "text" : {
+        "size" : 36,
+        "colorSelected" : "#000000FF",
+        "font" : "Courier",
+        "color" : "#BF369AFF"
+      },
+      "backgroundSelected" : "#B5D5FFFF"
+    },
+    "window" : {
+      "color" : "#282B35FF",
+      "paddingHorizontal" : 10,
+      "width" : 680,
+      "borderPadding" : 10,
+      "borderColor" : "#E1404900",
+      "blur" : 0,
+      "roundness" : 3,
+      "paddingVertical" : 10
+    },
+    "credit" : "Gonsie",
+    "separator" : {
+      "color" : "#282B35FF",
+      "thickness" : 1
+    },
+    "scrollbar" : {
+      "color" : "#918F75FF",
+      "thickness" : 2
+    },
+    "name" : "Dusk (v2)"
+  }
+}

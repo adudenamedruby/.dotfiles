@@ -1,0 +1,61 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 5,
+      "subtext" : {
+        "size" : 11,
+        "colorSelected" : "#DBDCDBFF",
+        "font" : "Avenir Next Condensed",
+        "color" : "#707073FF"
+      },
+      "shortcut" : {
+        "size" : 12,
+        "colorSelected" : "#FFFFFFFF",
+        "font" : "Avenir Next Condensed",
+        "color" : "#FEFFFF66"
+      },
+      "backgroundSelected" : "#8E0A41FF",
+      "text" : {
+        "size" : 18,
+        "colorSelected" : "#DBDCDBFF",
+        "font" : "Avenir Next Condensed",
+        "color" : "#D9D9D9FF"
+      },
+      "iconPaddingHorizontal" : 6,
+      "paddingVertical" : 3,
+      "iconSize" : 40
+    },
+    "search" : {
+      "paddingVertical" : 4,
+      "background" : "#00000000",
+      "spacing" : 4,
+      "text" : {
+        "size" : 26,
+        "colorSelected" : "#000000FF",
+        "font" : "Avenir Next",
+        "color" : "#FFFFFFFF"
+      },
+      "backgroundSelected" : "#00CCEAFF"
+    },
+    "window" : {
+      "color" : "#142028FF",
+      "paddingHorizontal" : 0,
+      "width" : 650,
+      "borderPadding" : 0,
+      "borderColor" : "#0000007F",
+      "blur" : 40,
+      "roundness" : 3,
+      "paddingVertical" : 0
+    },
+    "credit" : "Ducky",
+    "separator" : {
+      "color" : "#101B20FF",
+      "thickness" : 0
+    },
+    "scrollbar" : {
+      "color" : "#A70A4CFF",
+      "thickness" : 2
+    },
+    "name" : "Midnight"
+  }
+}
