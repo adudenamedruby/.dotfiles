@@ -6,9 +6,8 @@ dotfiles () {
     echo "Symlink preference dotfiles? (y/n)"
     read resp
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
-        ln -s ~/.dotfiles/RC_Files/* ~/
+        ln -s ~/.dotfiles/RC_Files/.* ~/
         echo "Dotfile symlinking complete."
-    cd Installation
     else
         echo "Skipping dotfiles symlinks"
     fi
@@ -20,7 +19,6 @@ xcodeKeybindings () {
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
         ln -s ~/.dotfiles/Keyboard_Preferences/RouxsNightmare.idekeybindings ~/Library/Developer/Xcode/UserData/KeyBindings/
         echo "Xcode symlinking complete"
-        fi
     else
         echo "Skipping Xcode keybinding symlinks"
     fi
