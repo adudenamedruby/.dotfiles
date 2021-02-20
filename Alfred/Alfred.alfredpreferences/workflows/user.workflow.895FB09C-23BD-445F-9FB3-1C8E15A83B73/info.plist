@@ -948,7 +948,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Firefox.app</string>
+					<string>/Applications/Firefox Nightly.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>

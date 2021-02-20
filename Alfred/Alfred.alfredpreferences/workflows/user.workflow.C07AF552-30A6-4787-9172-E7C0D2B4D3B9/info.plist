@@ -600,14 +600,14 @@
 				<key>matchmode</key>
 				<integer>0</integer>
 				<key>matchstring</key>
-				<string>search</string>
-				<key>replacestring</key>
 				<string>search for: </string>
+				<key>replacestring</key>
+				<string></string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.replace</string>
 			<key>uid</key>
-			<string>7C2D4636-4283-4717-ACD5-71711DBF4968</string>
+			<string>8DB4BD8E-EBD5-4DB0-ACC5-5406B678F640</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -617,14 +617,14 @@
 				<key>matchmode</key>
 				<integer>0</integer>
 				<key>matchstring</key>
-				<string>search for: </string>
+				<string>search</string>
 				<key>replacestring</key>
-				<string></string>
+				<string>search for: </string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.replace</string>
 			<key>uid</key>
-			<string>8DB4BD8E-EBD5-4DB0-ACC5-5406B678F640</string>
+			<string>7C2D4636-4283-4717-ACD5-71711DBF4968</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -968,25 +968,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://github.com/mozilla-mobile/firefox-ios/issues/{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>3705A618-6F5C-45B0-8907-FEE643CACABE</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>subtext</key>
@@ -1000,6 +981,25 @@
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>68441686-7C1A-45E4-9E6D-B3338DAAE3C4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://github.com/mozilla-mobile/firefox-ios/issues/{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>3705A618-6F5C-45B0-8907-FEE643CACABE</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1046,7 +1046,10 @@
 				<integer>102</integer>
 				<key>script</key>
 				<string>cd ~/.dotfiles
-git pull</string>
+git pull
+git add .
+git commit -m "Update repo"
+git push</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
