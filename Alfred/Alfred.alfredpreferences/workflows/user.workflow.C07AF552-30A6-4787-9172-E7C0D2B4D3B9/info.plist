@@ -21,6 +21,31 @@
 				<false/>
 			</dict>
 		</array>
+		<key>168B6FF4-9448-4E86-A7BB-C24409446BD2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8C6B04BD-9D41-45B7-AA1D-3234071BDEBF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>7404076B-92D3-473E-8105-33687B04D1FF</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>FD7F0561-1CF1-45A3-B3E1-45957651F722</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>24BA330E-0896-410A-88FA-36BC77EE9DA4</key>
 		<array>
 			<dict>
@@ -282,6 +307,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>CD6FB589-E1FD-4D4E-A62D-C90126D9B441</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C32D5F07-C114-4C52-9A18-7642747B6C5C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>168B6FF4-9448-4E86-A7BB-C24409446BD2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -600,14 +638,14 @@
 				<key>matchmode</key>
 				<integer>0</integer>
 				<key>matchstring</key>
-				<string>search for: </string>
+				<string>search</string>
 				<key>replacestring</key>
-				<string></string>
+				<string>search for: </string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.replace</string>
 			<key>uid</key>
-			<string>8DB4BD8E-EBD5-4DB0-ACC5-5406B678F640</string>
+			<string>7C2D4636-4283-4717-ACD5-71711DBF4968</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -617,14 +655,14 @@
 				<key>matchmode</key>
 				<integer>0</integer>
 				<key>matchstring</key>
-				<string>search</string>
-				<key>replacestring</key>
 				<string>search for: </string>
+				<key>replacestring</key>
+				<string></string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.replace</string>
 			<key>uid</key>
-			<string>7C2D4636-4283-4717-ACD5-71711DBF4968</string>
+			<string>8DB4BD8E-EBD5-4DB0-ACC5-5406B678F640</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -968,25 +1006,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>subtext</key>
-				<string>No issue ID opens all issues</string>
-				<key>text</key>
-				<string>Enter issue ID</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>68441686-7C1A-45E4-9E6D-B3338DAAE3C4</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>browser</key>
 				<string></string>
 				<key>spaces</key>
@@ -1000,6 +1019,25 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>3705A618-6F5C-45B0-8907-FEE643CACABE</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>subtext</key>
+				<string>No issue ID opens all issues</string>
+				<key>text</key>
+				<string>Enter issue ID</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>68441686-7C1A-45E4-9E6D-B3338DAAE3C4</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1060,6 +1098,30 @@ git push</string>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
+			<string>8C6B04BD-9D41-45B7-AA1D-3234071BDEBF</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>cd ~/.dotfiles
+git status</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
 			<string>C32D5F07-C114-4C52-9A18-7642747B6C5C</string>
 			<key>version</key>
 			<integer>2</integer>
@@ -1088,6 +1150,36 @@ git push</string>
 			<string>alfred.workflow.input.listfilter</string>
 			<key>uid</key>
 			<string>CB2180D3-3AC9-4C13-B997-F432D1AEC361</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>4</integer>
+						<key>matchstring</key>
+						<string>Changes not staged for commit:</string>
+						<key>outputlabel</key>
+						<string>commit</string>
+						<key>uid</key>
+						<string>7404076B-92D3-473E-8105-33687B04D1FF</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>pull</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>168B6FF4-9448-4E86-A7BB-C24409446BD2</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1138,6 +1230,30 @@ git push</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>cd ~/.dotfiles
+git pull</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>FD7F0561-1CF1-45A3-B3E1-45957651F722</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -1149,6 +1265,13 @@ git push</string>
 			<integer>1255</integer>
 			<key>ypos</key>
 			<integer>1225</integer>
+		</dict>
+		<key>168B6FF4-9448-4E86-A7BB-C24409446BD2</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1260</integer>
+			<key>ypos</key>
+			<integer>1390</integer>
 		</dict>
 		<key>240F0EEC-4564-4D2E-9F2C-A2C4FF3D60F2</key>
 		<dict>
@@ -1233,6 +1356,13 @@ git push</string>
 			<integer>725</integer>
 			<key>ypos</key>
 			<integer>270</integer>
+		</dict>
+		<key>8C6B04BD-9D41-45B7-AA1D-3234071BDEBF</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1460</integer>
+			<key>ypos</key>
+			<integer>1315</integer>
 		</dict>
 		<key>8DB4BD8E-EBD5-4DB0-ACC5-5406B678F640</key>
 		<dict>
@@ -1352,6 +1482,13 @@ git push</string>
 			<integer>985</integer>
 			<key>ypos</key>
 			<integer>985</integer>
+		</dict>
+		<key>FD7F0561-1CF1-45A3-B3E1-45957651F722</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1465</integer>
+			<key>ypos</key>
+			<integer>1435</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
