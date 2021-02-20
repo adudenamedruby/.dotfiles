@@ -102,7 +102,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>8E4EEBE8-53E6-4E94-84E3-A4615ACDAB31</string>
+				<string>F95CA534-6F98-4619-ABF4-638EF9D692E1</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -420,6 +420,31 @@
 				<false/>
 			</dict>
 		</array>
+		<key>F95CA534-6F98-4619-ABF4-638EF9D692E1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>06DC3F4F-3BF2-42FC-821F-642F388E0503</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>C2241E24-B8A4-4B3F-B691-54A5F27BB04B</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>8E4EEBE8-53E6-4E94-84E3-A4615ACDAB31</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string></string>
@@ -530,14 +555,14 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://github.com/electricRGB/{query}</string>
+				<string>https://github.com/{query}</string>
 				<key>utf8</key>
 				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>8E4EEBE8-53E6-4E94-84E3-A4615ACDAB31</string>
+			<string>06DC3F4F-3BF2-42FC-821F-642F388E0503</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -557,6 +582,36 @@
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>885E725B-04C0-48EF-B673-D2C86B85ED09</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>4</integer>
+						<key>matchstring</key>
+						<string>/</string>
+						<key>outputlabel</key>
+						<string>other repo</string>
+						<key>uid</key>
+						<string>C2241E24-B8A4-4B3F-B691-54A5F27BB04B</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>personal</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>F95CA534-6F98-4619-ABF4-638EF9D692E1</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -593,6 +648,25 @@
 			<string>E0B1F55C-F5B8-4B38-A2BF-9BD6BFBB879F</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://github.com/electricRGB/{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>8E4EEBE8-53E6-4E94-84E3-A4615ACDAB31</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1259,6 +1333,13 @@ git pull</string>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>06DC3F4F-3BF2-42FC-821F-642F388E0503</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1170</integer>
+			<key>ypos</key>
+			<integer>215</integer>
+		</dict>
 		<key>0D1FD25C-D8CC-42C9-9416-23B4A57D228E</key>
 		<dict>
 			<key>xpos</key>
@@ -1325,7 +1406,7 @@ git pull</string>
 		<key>7265329B-9C6F-48F3-A25A-ED0FB90FF81B</key>
 		<dict>
 			<key>xpos</key>
-			<integer>900</integer>
+			<integer>905</integer>
 			<key>ypos</key>
 			<integer>300</integer>
 		</dict>
@@ -1381,9 +1462,9 @@ git pull</string>
 		<key>8E4EEBE8-53E6-4E94-84E3-A4615ACDAB31</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1015</integer>
+			<integer>1170</integer>
 			<key>ypos</key>
-			<integer>270</integer>
+			<integer>320</integer>
 		</dict>
 		<key>93C82FF5-3DE8-4422-850A-5BC5A6E94CD7</key>
 		<dict>
@@ -1475,6 +1556,13 @@ git pull</string>
 			<integer>650</integer>
 			<key>ypos</key>
 			<integer>300</integer>
+		</dict>
+		<key>F95CA534-6F98-4619-ABF4-638EF9D692E1</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1055</integer>
+			<key>ypos</key>
+			<integer>290</integer>
 		</dict>
 		<key>F9EBB369-BD82-49F9-9987-7A08F9B4125C</key>
 		<dict>
