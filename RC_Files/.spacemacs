@@ -65,7 +65,9 @@ This function should only modify configuration layer settings."
      git
      haskell
      helm
+     helpful
      html
+     imenu-list
      javascript
      latex
      markdown
@@ -76,9 +78,9 @@ This function should only modify configuration layer settings."
      python
      ruby
      (shell :variables
-            shell-default-height 35
-            shell-default-position 'bottom
-            shell-default-shell 'term)
+            shell-default-height 45
+            shell-default-position 'top
+            shell-default-shell 'vterm)
      shell-scripts
      swift
      ;;spell-checking
@@ -206,7 +208,7 @@ It should only modify the values of Spacemacs settings."
    ;; `recents' `bookmarks' `projects' `agenda' `todos'.
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   dotspacemacs-startup-lists '((recents . 10)
+   dotspacemacs-startup-lists '((recents . 7)
                                 (projects . 10))
 
    ;; True if the home buffer should respond to resize events. (default t)

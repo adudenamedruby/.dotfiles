@@ -52,6 +52,12 @@ brew install carthage
 # Node
 brew install node
 
+# CMAKE
+brew install cmake
+
+# libvterm
+brew install libvterm
+
 
 # ---------------------------------------------
 # Programming Languages

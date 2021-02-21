@@ -14,17 +14,19 @@ set hlsearch
 set ignorecase
 set smartcase
 
+" numbering
+set number
+set relativenumber
+
 " Use the system pasteboard
 set clipboard=unnamed
 
-" Jump to definition more easily
-nmap <C-j> <C-]>
-
 " Comment code easily
-nmap gcc :xcmenucmd Toggle Comments<CR>
+nmap gcc :xcmenucmd Comment Selection<CR>
 
 " Insert a line below current line
 nmap <space>ij o<ESC>k
+
 " Insert a line above the current line
 nmap <space>ik O<ESC>j
 
@@ -32,17 +34,19 @@ nmap <space>ik O<ESC>j
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   SpaceCODE
 "
-" I use Spacemacs, thus, spacebar is my leader
+" I use Spacemacs, thus, spacebar is my leader.
 " However, that also means that I have some ingrained commands in my hands.
-" These will be respected, even if in Xcode, they don't make exact sense
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Here, I'll be trying to replicate some of them with an approximation
+" of their behaviour within Xcode.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Window management
-nmap <space>wv <C-w>v
-nmap <space>ws <C-w>s
-nmap <space>wd <C-w>c
-nmap <space>wo :xcmenucmd Show Standard Editor<CR>
-nmap <space>wg :xcmenucmd Show Version Editor<CR>
+nmap <space>wv :xcmenucmd Editor<CR>
+nmap <space>ws :xcmenucmd Change Editor Orientation<CR>
+nmap <space>wd :xcmenucmd Close Editor<CR>
+nmap <space>wm :xcmenucmd Close Other Editors<CR>
+nmap <space>wo :xcmenucmd Hide Code Review<CR>
+nmap <space>wg :xcmenucmd Show Code Review<CR>
 
 " Window navigation
 nmap <space>wh <C-w>h
@@ -53,12 +57,14 @@ nmap <space>wk <C-w>k
 " File commands
 nmap <space>fs :xcmenucmd Save<CR>
 nmap <space>ff :xcmenucmd File...<CR>
+nmap <space>fe :xcmenucmd Export...<CR>
+
 
 " Search commands
 nmap <space>pf :xcmenucmd Open Quickly...<CR>
 nmap <space>/ :xcmenucmd Open Quickly...<CR>
-nmap <space>sap :xcmenucmd Find in Project...<CR>
-nmap <space>sup viw:xccmd findSelectedTextInWorkspace<CR>
+nmap <space>sap :xcmenucmd Find in Workspace...<CR>
+nmap <space>* viw:xccmd findSelectedSymbolInWorkspace<CR>
 
 " Compilation commands
 nmap <space>cr :xcmenucmd Run<CR>
@@ -68,7 +74,6 @@ nmap <space>cc :xcmenucmd Clean Build Folder<CR>
 
 " Toggles
 nmap <space>tb viw:xccmd toggleBreakpointAtCurrentLine<CR>
-nmap <space>;  viw:xccmd commentAndUncommentCurrentLines<CR>
 
 " Miscellaneous commands
 nmap <space>qq :xcmenucmd Quit Xcode<CR>
