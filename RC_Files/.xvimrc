@@ -15,8 +15,8 @@ set ignorecase
 set smartcase
 
 " numbering
-set number
-set relativenumber
+" set number
+" set relativenumber
 
 " Use the system pasteboard
 set clipboard=unnamed
