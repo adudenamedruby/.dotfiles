@@ -58,6 +58,8 @@ brew install cmake
 # libvterm
 brew install libvterm
 
+# SwiftLint
+brew install swiftlint
 
 # ---------------------------------------------
 # Programming Languages

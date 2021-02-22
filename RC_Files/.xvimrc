@@ -59,6 +59,8 @@ nmap <space>fs :xcmenucmd Save<CR>
 nmap <space>ff :xcmenucmd File...<CR>
 nmap <space>fe :xcmenucmd Export...<CR>
 
+" Navigation
+nmap <space>pt :xcmenucmd Reveal in Project Navigator<CR>
 
 " Search commands
 nmap <space>pf :xcmenucmd Open Quickly...<CR>
