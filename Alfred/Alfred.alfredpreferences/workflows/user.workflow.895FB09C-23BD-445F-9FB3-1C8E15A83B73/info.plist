@@ -87,18 +87,7 @@
 			</dict>
 		</array>
 		<key>74BE6261-6726-4287-93FE-5D164441DD94</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>A7EA7CF3-8C33-4F61-9D3C-FAFE44AC50AF</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>75FA6826-160D-44EB-8FCB-975A83A8878B</key>
 		<array>
 			<dict>
@@ -206,6 +195,44 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>4C076AA2-9318-458A-836B-6C2C8DC4E560</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>B316DDF5-38CE-4E20-B79B-4FD3DD87C1E8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A7EA7CF3-8C33-4F61-9D3C-FAFE44AC50AF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>58E6CADC-3764-4A33-B59E-4658B9B68569</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>56F94257-BBE6-4F6B-8277-B003AC2C8105</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>BD007A18-A00F-4AF2-8134-B96B8D677173</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B316DDF5-38CE-4E20-B79B-4FD3DD87C1E8</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -393,6 +420,23 @@
 			<dict>
 				<key>paths</key>
 				<array>
+					<string>/Applications/Spotify.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>A7EA7CF3-8C33-4F61-9D3C-FAFE44AC50AF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
 					<string>/Applications/Xcode.app</string>
 				</array>
 				<key>toggle</key>
@@ -439,19 +483,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/Spotify.app</string>
-				</array>
-				<key>toggle</key>
+				<key>concurrently</key>
 				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>echo $(id -u -n | tr -d '\r')</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>A7EA7CF3-8C33-4F61-9D3C-FAFE44AC50AF</string>
+			<string>BD007A18-A00F-4AF2-8134-B96B8D677173</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -498,6 +548,36 @@
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
 			<string>A3ECCB66-CEC0-4DE6-9DD2-346525C56E7F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{query}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>4</integer>
+						<key>matchstring</key>
+						<string>home</string>
+						<key>outputlabel</key>
+						<string>home</string>
+						<key>uid</key>
+						<string>58E6CADC-3764-4A33-B59E-4658B9B68569</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>work</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>B316DDF5-38CE-4E20-B79B-4FD3DD87C1E8</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -582,6 +662,23 @@
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
 			<string>80B66471-DDEE-4A7D-9F03-C461B1FC984B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/zoom.us.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>56F94257-BBE6-4F6B-8277-B003AC2C8105</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1340,6 +1437,13 @@
 			<key>ypos</key>
 			<integer>625</integer>
 		</dict>
+		<key>56F94257-BBE6-4F6B-8277-B003AC2C8105</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1540</integer>
+			<key>ypos</key>
+			<integer>160</integer>
+		</dict>
 		<key>64975824-5181-429B-9D2A-07BAF68D11A2</key>
 		<dict>
 			<key>xpos</key>
@@ -1446,6 +1550,20 @@
 			<integer>440</integer>
 		</dict>
 		<key>A7EA7CF3-8C33-4F61-9D3C-FAFE44AC50AF</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1540</integer>
+			<key>ypos</key>
+			<integer>55</integer>
+		</dict>
+		<key>B316DDF5-38CE-4E20-B79B-4FD3DD87C1E8</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1460</integer>
+			<key>ypos</key>
+			<integer>125</integer>
+		</dict>
+		<key>BD007A18-A00F-4AF2-8134-B96B8D677173</key>
 		<dict>
 			<key>xpos</key>
 			<integer>1300</integer>
