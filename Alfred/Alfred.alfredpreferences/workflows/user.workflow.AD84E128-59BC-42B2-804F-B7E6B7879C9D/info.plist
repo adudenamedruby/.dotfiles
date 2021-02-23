@@ -190,6 +190,18 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>F4AFC3D2-026A-4DB7-809E-8479606970C0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>BCE62312-2CA8-4FA4-9FDB-4DAA83F3DDBD</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>8FD543E2-CB5F-4B67-99AD-CFE3477FA57B</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -971,6 +983,20 @@
 						<key>uid</key>
 						<string>033A2AAF-9EAE-461C-88DB-F778C125B60B</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>figma</string>
+						<key>outputlabel</key>
+						<string>figma</string>
+						<key>uid</key>
+						<string>BCE62312-2CA8-4FA4-9FDB-4DAA83F3DDBD</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
@@ -1185,7 +1211,7 @@
 				<key>fixedorder</key>
 				<true/>
 				<key>items</key>
-				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"People","arg":"people","subtitle":"People Directory"},{"title":"ADP","arg":"adp","subtitle":"Payroll Information"},{"title":"WorkDay","arg":"workday","subtitle":"Open WorkDay"},{"title":"Account","arg":"account","subtitle":"Account Management Portal"},{"title":"Air Mozilla","arg":"air","subtitle":"Watch Mozilla content"},{"title":"Gear Store","arg":"gear","subtitle":"Buy fun Mozilla merch!"},{"title":"Mana","arg":"mana","subtitle":"Mozilla Internal Wiki"},{"title":"MANA Search","arg":"search","subtitle":"Do an advanced MANA search"},{"title":"Udemy","arg":"udemy","subtitle":"Learning is fun!"},{"title":"Service Now","arg":"service","subtitle":"For all your Mozilla needs"},{"title":"The Hub","arg":"hub","subtitle":"For all your gear needs"},{"title":"PTO","arg":"pto","subtitle":"Personal Time Off - Take a break!"},{"title":"discourse","arg":"discourse","subtitle":"Chat about stuff!"},{"title":"Moderator","arg":"moderator","subtitle":"Ask questions for events"},{"title":"Element","arg":"element","subtitle":"Element board"},{"title":"Bugzilla","arg":"bugzilla","subtitle":"Report pesky bugs..."},{"title":"Bitrise","arg":"bitrise","subtitle":"CI pipeline"},{"title":"Matrix","arg":"matrix","subtitle":"Matrix chat"},{"title":"Retrium","arg":"retrium","subtitle":"Retro moderating tool"}]</string>
+				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"People","arg":"people","subtitle":"People Directory"},{"title":"ADP","arg":"adp","subtitle":"Payroll Information"},{"title":"WorkDay","arg":"workday","subtitle":"Open WorkDay"},{"title":"Account","arg":"account","subtitle":"Account Management Portal"},{"title":"Air Mozilla","arg":"air","subtitle":"Watch Mozilla content"},{"title":"Gear Store","arg":"gear","subtitle":"Buy fun Mozilla merch!"},{"title":"Mana","arg":"mana","subtitle":"Mozilla Internal Wiki"},{"title":"MANA Search","arg":"search","subtitle":"Do an advanced MANA search"},{"title":"Udemy","arg":"udemy","subtitle":"Learning is fun!"},{"title":"Service Now","arg":"service","subtitle":"For all your Mozilla needs"},{"title":"The Hub","arg":"hub","subtitle":"For all your gear needs"},{"title":"PTO","arg":"pto","subtitle":"Personal Time Off - Take a break!"},{"title":"discourse","arg":"discourse","subtitle":"Chat about stuff!"},{"title":"Moderator","arg":"moderator","subtitle":"Ask questions for events"},{"title":"Element","arg":"element","subtitle":"Element board"},{"title":"Bugzilla","arg":"bugzilla","subtitle":"Report pesky bugs..."},{"title":"Bitrise","arg":"bitrise","subtitle":"CI pipeline"},{"title":"Matrix","arg":"matrix","subtitle":"Matrix chat"},{"title":"Retrium","arg":"retrium","subtitle":"Retro moderating tool"},{"title":"Figma","arg":"figma","subtitle":"Figma design systems"}]</string>
 				<key>keyword</key>
 				<string>moz</string>
 				<key>runningsubtext</key>
@@ -1372,6 +1398,25 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>9F6EDFFA-D5E7-4FF7-93A8-7387D89BDC37</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://www.figma.com/files/887474606008184927</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>F4AFC3D2-026A-4DB7-809E-8479606970C0</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1679,6 +1724,13 @@
 			<integer>915</integer>
 			<key>ypos</key>
 			<integer>425</integer>
+		</dict>
+		<key>F4AFC3D2-026A-4DB7-809E-8479606970C0</key>
+		<dict>
+			<key>xpos</key>
+			<integer>930</integer>
+			<key>ypos</key>
+			<integer>855</integer>
 		</dict>
 		<key>F6A01AFD-33BF-4B68-99C3-CD32CD0160DA</key>
 		<dict>
