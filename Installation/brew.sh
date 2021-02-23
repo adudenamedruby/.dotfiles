@@ -96,6 +96,9 @@ brew install --cask keycastr
 # Alfred
 brew install --cask alfred
 
+# Rectangle - window management
+brew install --cask rectangle
+
 # Powerline10k
 brew install romkatv/powerlevel10k/powerlevel10k
 
