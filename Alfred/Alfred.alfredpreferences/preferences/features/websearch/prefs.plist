@@ -108,6 +108,19 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>BB2D0C0D-C2E2-4B5B-82E1-86BE1C0E0C25</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>blacktoplay</string>
+			<key>text</key>
+			<string>Black2Play</string>
+			<key>url</key>
+			<string>https://blacktoplay.com</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
 		<key>C7A01733-6F9B-45B2-8AEC-2C0927C3D89D</key>
 		<dict>
 			<key>enabled</key>
