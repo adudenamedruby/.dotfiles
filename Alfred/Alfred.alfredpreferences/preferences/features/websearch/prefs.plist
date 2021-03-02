@@ -69,19 +69,6 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
-		<key>6791C035-F81E-4999-BC2B-B383AB67AF59</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>ogs</string>
-			<key>text</key>
-			<string>OGS</string>
-			<key>url</key>
-			<string>https://online-go.com/</string>
-			<key>utf8</key>
-			<true/>
-		</dict>
 		<key>76C27C08-9EBF-4E66-95BA-DC9FE85B2A0B</key>
 		<dict>
 			<key>enabled</key>
