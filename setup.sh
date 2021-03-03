@@ -9,7 +9,8 @@ setup () {
 	if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
 		echo "Cloning dotfile repo."
 		git clone https://github.com/rouxbuciu/.dotfiles.git
-    sh .dotfiles/Installation/bootstrap.sh
+		cd .dotfiles/Installation
+    		sh bootstrap.sh
 	else
 		echo "Aborting installation."
 	fi
