@@ -5,9 +5,12 @@
 # Install homebrew if it is not installed
 which brew 1>&/dev/null
 if [ ! "$?" -eq 0 ] ; then
-    echo "Failed to find HOMEBREW. It must not be installed."
+    	echo "Failed to find HOMEBREW. It must not be installed."
 	echo "Hombrew required to bootstrap system. Attempting to install Homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  	echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/rbuciu/.zprofile
+    	eval $(/opt/homebrew/bin/brew shellenv)
+	
 	if [ ! "$?" -eq 0 ] ; then
 		echo "Something went wrong. How depressing. Exiting..." && exit 1
 	fi
