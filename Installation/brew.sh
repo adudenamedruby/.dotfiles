@@ -3,23 +3,17 @@
 # Install command-line tools using Homebrew.
 
 # Install homebrew if it is not installed
-which brew 1>&/dev/null
-if [ ! "$?" -eq 0 ] ; then
+if test ! $(which brew; then
     	echo "Failed to find HOMEBREW. It must not be installed."
 	echo "Hombrew required to bootstrap system. Attempting to install Homebrew..."
   	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  	echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/rbuciu/.zprofile
-    	eval $(/opt/homebrew/bin/brew shellenv)
-	
-	if [ ! "$?" -eq 0 ] ; then
-		echo "Something went wrong. How depressing. Exiting..." && exit 1
-	fi
+  	#echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/rbuciu/.zprofile
+    	#eval $(/opt/homebrew/bin/brew shellenv)
 fi
 
-# Make sure we’re using the latest Homebrew
+# Make sure we’re using the latest Homebrew and upgrade installed formulae.
+# This shouldn't be needed, but it's good practice to have
 brew update
-
-# Upgrade any already-installed formulae
 brew upgrade
 
 
@@ -27,20 +21,15 @@ brew upgrade
 # Core Utilities
 # ---------------------------------------------
 
-# Get the latest git
-brew install git
+# Here we'll install what I consider core utilities. Not apps,
+# not fun stuff, but development oriented things, or QoL things
+# like FZF.
 
-# Install FZF
+brew install git
 brew install fzf
 /usr/local/opt/fzf/install
-
-# Core Utils
 brew install coreutils
-
-# Ag
-brew install the_silver_searcher
-
-# OpenSSH
+brew install the_silver_searcher # AG
 brew install openssh
 
 # g|re|p
