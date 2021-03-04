@@ -1271,7 +1271,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Postbox.app</string>
+					<string>/System/Applications/Mail.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
