@@ -947,7 +947,7 @@
 				<key>fixedorder</key>
 				<true/>
 				<key>items</key>
-				<string>[{"title":"Home","subtitle":"View my profile"},{"title":"Search","arg":"search","subtitle":"Search GitHub"},{"title":"User","arg":"user","subtitle":"Open user's homepage"},{"title":"Open Repo","arg":"repo","subtitle":"Open a specific repo"},{"title":"FxiOS","arg":"fxios","subtitle":"Open the Firefox iOS repo"},{"title":"Mozilla mobile","arg":"mobile","subtitle":"Open the Mozilla-Mobile group"},{"title":"Sync","arg":"sync","subtitle":"Synchronize existing local repos"}]</string>
+				<string>[{"title":"Home","subtitle":"View my profile"},{"imagefile":"f35a3988f24873039cdc57eb278b28acea536bc7.png","title":"Search","arg":"search","subtitle":"Search GitHub"},{"imagefile":"94e245b01fd6ac4365c21fa483925df77636ea66.png","title":"User","arg":"user","subtitle":"Open user's homepage"},{"imagefile":"4e5025e909ca2744e1d1419c13d400e0f9e4c156.png","title":"Open Repo","arg":"repo","subtitle":"Open a specific repo"},{"imagefile":"d17a6ff95b2195240aad01de8961e7cfcd96305f.png","title":"FxiOS","arg":"fxios","subtitle":"Open the Firefox iOS repo"},{"imagefile":"1929788b7a0e101695cdfeff873a67983147efa5.png","title":"Mozilla mobile","arg":"mobile","subtitle":"Open the Mozilla-Mobile group"},{"imagefile":"da26b210bf534e4166e7449e63c86663e364e977.png","title":"Sync","arg":"sync","subtitle":"Synchronize existing local repos"}]</string>
 				<key>keyword</key>
 				<string>git</string>
 				<key>runningsubtext</key>
@@ -1573,9 +1573,9 @@ git pull</string>
 		<key>70C77728-874F-43A0-A801-89490AD44D1F</key>
 		<dict>
 			<key>xpos</key>
-			<integer>10</integer>
+			<integer>85</integer>
 			<key>ypos</key>
-			<integer>720</integer>
+			<integer>730</integer>
 		</dict>
 		<key>7265329B-9C6F-48F3-A25A-ED0FB90FF81B</key>
 		<dict>

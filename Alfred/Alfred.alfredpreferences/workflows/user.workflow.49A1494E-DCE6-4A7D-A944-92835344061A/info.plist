@@ -203,7 +203,7 @@
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"title":"cgs","arg":"cgs","subtitle":"Color Go Server"},{"title":"ogs","arg":"ogs","subtitle":"online-go.com"},{"title":"kgs","arg":"kgs","subtitle":"gokgs.com"},{"title":"tygem","arg":"tygem","subtitle":"TYGEMGO"}]</string>
+				<string>[{"imagefile":"7d7eed5807ed7f2869286b3af0e9f85f1fe58d69.png","title":"cgs","arg":"cgs","subtitle":"Color Go Server"},{"title":"ogs","arg":"ogs","subtitle":"online-go.com"},{"imagefile":"64ea12edfc1c0377cd464a22efb2e847069d349b.png","title":"kgs","arg":"kgs","subtitle":"gokgs.com"},{"imagefile":"d8e4f556b5e941efdd78f50342ddcb2d1513d13f.png","title":"tygem","arg":"tygem","subtitle":"TYGEMGO"}]</string>
 				<key>keyword</key>
 				<string>go</string>
 				<key>runningsubtext</key>

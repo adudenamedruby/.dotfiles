@@ -139,7 +139,7 @@
 				<key>fixedorder</key>
 				<true/>
 				<key>items</key>
-				<string>[{"title":"Apple ID","arg":"id","subtitle":"Apple ID sign in page"},{"title":"Developer","arg":"developer","subtitle":"Developer portal"},{"title":"iTunes Connect","arg":"itunes","subtitle":"App store manager"}]</string>
+				<string>[{"title":"Apple ID","arg":"id","subtitle":"Apple ID sign in page"},{"imagefile":"3f1d0507e71fb803e0f3311329cece7b70b0158e.png","title":"Developer","arg":"developer","subtitle":"Developer portal"},{"imagefile":"b262f02f037e00223d1ee5f31e3673f834e3c071.png","title":"iTunes Connect","arg":"itunes","subtitle":"App store manager"}]</string>
 				<key>keyword</key>
 				<string>apple</string>
 				<key>runningsubtext</key>
