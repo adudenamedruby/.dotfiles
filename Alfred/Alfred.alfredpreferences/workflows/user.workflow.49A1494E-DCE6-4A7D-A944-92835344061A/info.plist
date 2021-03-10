@@ -21,6 +21,34 @@
 				<false/>
 			</dict>
 		</array>
+		<key>ABF3D847-EE23-4FE6-8423-F19EA694E4A2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C0CB81D1-13A2-4948-80CF-A96465C2E41F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>58E6CADC-3764-4A33-B59E-4658B9B68569</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>F9030676-3967-49F0-AA9C-8077DA6916BB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>ABF3D847-EE23-4FE6-8423-F19EA694E4A2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>FEC13C30-1E97-4A4A-86CE-DA8608579335</key>
 		<array>
 			<dict>
@@ -68,6 +96,18 @@
 				<string></string>
 				<key>sourceoutputuid</key>
 				<string>0B7673C1-5B79-4337-BFAF-A52923D65FEB</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>F9030676-3967-49F0-AA9C-8077DA6916BB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>8EEDAAA0-B025-4569-A770-E56AD1DE3399</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -163,6 +203,20 @@
 						<key>uid</key>
 						<string>0B7673C1-5B79-4337-BFAF-A52923D65FEB</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>katrain</string>
+						<key>outputlabel</key>
+						<string>katrain</string>
+						<key>uid</key>
+						<string>8EEDAAA0-B025-4569-A770-E56AD1DE3399</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
@@ -171,6 +225,35 @@
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
 			<string>FEC13C30-1E97-4A4A-86CE-DA8608579335</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"imagefile":"7d7eed5807ed7f2869286b3af0e9f85f1fe58d69.png","title":"cgs","arg":"cgs","subtitle":"Color Go Server"},{"title":"ogs","arg":"ogs","subtitle":"online-go.com"},{"imagefile":"64ea12edfc1c0377cd464a22efb2e847069d349b.png","title":"kgs","arg":"kgs","subtitle":"gokgs.com"},{"imagefile":"d8e4f556b5e941efdd78f50342ddcb2d1513d13f.png","title":"tygem","arg":"tygem","subtitle":"TYGEMGO"},{"title":"KaTrain","arg":"katrain","subtitle":"Katago based GO training"}]</string>
+				<key>keyword</key>
+				<string>go</string>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string></string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>7993D0AF-9339-46BE-B399-C6A223A319EC</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -190,35 +273,6 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>6B14D183-CD35-4FBE-95C6-9E11FC6D266D</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>fixedorder</key>
-				<false/>
-				<key>items</key>
-				<string>[{"imagefile":"7d7eed5807ed7f2869286b3af0e9f85f1fe58d69.png","title":"cgs","arg":"cgs","subtitle":"Color Go Server"},{"title":"ogs","arg":"ogs","subtitle":"online-go.com"},{"imagefile":"64ea12edfc1c0377cd464a22efb2e847069d349b.png","title":"kgs","arg":"kgs","subtitle":"gokgs.com"},{"imagefile":"d8e4f556b5e941efdd78f50342ddcb2d1513d13f.png","title":"tygem","arg":"tygem","subtitle":"TYGEMGO"}]</string>
-				<key>keyword</key>
-				<string>go</string>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string></string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
-			<key>uid</key>
-			<string>7993D0AF-9339-46BE-B399-C6A223A319EC</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -260,6 +314,76 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/KaTrain.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>C0CB81D1-13A2-4948-80CF-A96465C2E41F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>echo $(id -u -n | tr -d '\r')</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F9030676-3967-49F0-AA9C-8077DA6916BB</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{query}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>4</integer>
+						<key>matchstring</key>
+						<string>home</string>
+						<key>outputlabel</key>
+						<string>home</string>
+						<key>uid</key>
+						<string>58E6CADC-3764-4A33-B59E-4658B9B68569</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>work</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>ABF3D847-EE23-4FE6-8423-F19EA694E4A2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -268,23 +392,23 @@
 		<key>25326263-E1D9-485C-A19F-A073D835F4FF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>595</integer>
+			<integer>625</integer>
 			<key>ypos</key>
-			<integer>515</integer>
+			<integer>530</integer>
 		</dict>
 		<key>6B14D183-CD35-4FBE-95C6-9E11FC6D266D</key>
 		<dict>
 			<key>xpos</key>
-			<integer>635</integer>
+			<integer>625</integer>
 			<key>ypos</key>
-			<integer>245</integer>
+			<integer>310</integer>
 		</dict>
 		<key>72BFDAEC-5110-4539-9BF2-41F11552C42C</key>
 		<dict>
 			<key>xpos</key>
-			<integer>640</integer>
+			<integer>625</integer>
 			<key>ypos</key>
-			<integer>395</integer>
+			<integer>420</integer>
 		</dict>
 		<key>7993D0AF-9339-46BE-B399-C6A223A319EC</key>
 		<dict>
@@ -296,9 +420,30 @@
 		<key>837DF904-9EDC-434A-B387-B0AD2733471F</key>
 		<dict>
 			<key>xpos</key>
-			<integer>575</integer>
+			<integer>625</integer>
 			<key>ypos</key>
-			<integer>105</integer>
+			<integer>205</integer>
+		</dict>
+		<key>ABF3D847-EE23-4FE6-8423-F19EA694E4A2</key>
+		<dict>
+			<key>xpos</key>
+			<integer>545</integer>
+			<key>ypos</key>
+			<integer>665</integer>
+		</dict>
+		<key>C0CB81D1-13A2-4948-80CF-A96465C2E41F</key>
+		<dict>
+			<key>xpos</key>
+			<integer>625</integer>
+			<key>ypos</key>
+			<integer>640</integer>
+		</dict>
+		<key>F9030676-3967-49F0-AA9C-8077DA6916BB</key>
+		<dict>
+			<key>xpos</key>
+			<integer>385</integer>
+			<key>ypos</key>
+			<integer>645</integer>
 		</dict>
 		<key>FEC13C30-1E97-4A4A-86CE-DA8608579335</key>
 		<dict>
