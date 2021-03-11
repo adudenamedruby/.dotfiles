@@ -276,6 +276,54 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>FF33FD1B-50DE-426E-A374-C5F4739D87F2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>B97DACB5-FBFA-4D6E-95D7-FD46643C2E50</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>F6A01AFD-33BF-4B68-99C3-CD32CD0160DA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>EC6A0831-D69F-4817-B634-E4D569F4E859</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>4DAB1E70-EF7B-448F-8A69-961AE1804DFD</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>10D1871C-876F-45A1-8D4E-26397269C1D7</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>96C97B4E-779C-4B03-85A0-976A46F95929</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>06E819B6-8ADC-43C6-8234-44CA037FF0DD</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>337215C2-B111-479C-B4B4-EB74FCA40E06</key>
 		<array>
@@ -307,26 +355,6 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>D41C0838-407F-4DB7-98D0-3D4CC669C981</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>E711775E-F667-40EC-B5E0-DB5D65BECBB2</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>25385034-EA7E-4E34-A503-94D9C750EA98</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -335,9 +363,25 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+		</array>
+		<key>96C97B4E-779C-4B03-85A0-976A46F95929</key>
+		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>F89CF690-5BA2-4F2F-9EC9-27F9BC139160</string>
+				<string>C8964D22-2A55-410D-8040-DFB2B0BEC7B5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C8964D22-2A55-410D-8040-DFB2B0BEC7B5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0C1B3CB5-8A1C-4EB9-ADBD-B479CEAFB1ED</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -351,34 +395,6 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>0CF60F8B-E720-469F-AC29-4D85E78DE2A3</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>D41C0838-407F-4DB7-98D0-3D4CC669C981</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>F6A01AFD-33BF-4B68-99C3-CD32CD0160DA</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>DDC93268-3156-4821-A18A-4C2EF7BB3862</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>E711775E-F667-40EC-B5E0-DB5D65BECBB2</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>FF33FD1B-50DE-426E-A374-C5F4739D87F2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -409,21 +425,6 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>F89CF690-5BA2-4F2F-9EC9-27F9BC139160</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>4DAB1E70-EF7B-448F-8A69-961AE1804DFD</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>185BDE3B-404B-44C0-AE58-A0B7989377A4</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -474,55 +475,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://jira.mozilla.com/secure/RapidBoard.jspa?rapidView=389</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>F6A01AFD-33BF-4B68-99C3-CD32CD0160DA</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>sprint</string>
-						<key>outputlabel</key>
-						<string></string>
-						<key>uid</key>
-						<string>DDC93268-3156-4821-A18A-4C2EF7BB3862</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>else</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>D41C0838-407F-4DB7-98D0-3D4CC669C981</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>subtext</key>
@@ -561,44 +513,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://jira.mozilla.com/browse/FXIOS-{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>9E804F5E-9EE1-4FB4-9D81-6EA25AC132A3</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>subtext</key>
-				<string></string>
-				<key>text</key>
-				<string>Open a ticket...</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>6A0DEA4D-3E05-4149-8194-8122945268EF</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>matchmode</key>
 				<integer>0</integer>
 				<key>matchstring</key>
@@ -627,88 +541,6 @@
 			<string>alfred.workflow.utility.replace</string>
 			<key>uid</key>
 			<string>F8270520-9C06-4291-9BE9-F8D3AB2D4F97</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>fixedorder</key>
-				<true/>
-				<key>items</key>
-				<string>[{"title":"Sprint Board","arg":"sprint","subtitle":"Sprint board for current sprint"},{"title":"Ticket","arg":"ticket","subtitle":"Search for a specific ticket"},{"title":"Epic Board","arg":"epics","subtitle":"Launch the FxiOS Epic Board"},{"title":"Backlog","arg":"backlog","subtitle":"Launch the FxiOS Backlog"}]</string>
-				<key>keyword</key>
-				<string>jira</string>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>Mozilla JIRA</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
-			<key>uid</key>
-			<string>7382042F-D7A5-4966-BFA7-469165C01E23</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>inputstring</key>
-				<string></string>
-				<key>matchcasesensitive</key>
-				<true/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>ticket</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>E711775E-F667-40EC-B5E0-DB5D65BECBB2</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>ticket</string>
-				<key>replacestring</key>
-				<string>FIXIOS-</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.replace</string>
-			<key>uid</key>
-			<string>FF33FD1B-50DE-426E-A374-C5F4739D87F2</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>FIXIOS-</string>
-				<key>replacestring</key>
-				<string></string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.replace</string>
-			<key>uid</key>
-			<string>337215C2-B111-479C-B4B4-EB74FCA40E06</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -1054,104 +886,6 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://jira.mozilla.com/secure/RapidBoard.jspa?rapidView=581&amp;projectKey=FXIOS</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>D30B507D-FA70-4D44-A6BD-899C29B2B810</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://jira.mozilla.com/secure/RapidBoard.jspa?rapidView=389&amp;projectKey=FXIOS&amp;view=planning&amp;issueLimit=100</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>4DAB1E70-EF7B-448F-8A69-961AE1804DFD</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>epics</string>
-						<key>outputlabel</key>
-						<string></string>
-						<key>uid</key>
-						<string>412DE045-551F-46F3-BDAE-911C164864C1</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>else</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>25385034-EA7E-4E34-A503-94D9C750EA98</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>backlog</string>
-						<key>outputlabel</key>
-						<string></string>
-						<key>uid</key>
-						<string>185BDE3B-404B-44C0-AE58-A0B7989377A4</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>else</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>F89CF690-5BA2-4F2F-9EC9-27F9BC139160</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
 				<string>https://mozillagear.corpmerchandise.com/StaticPage.aspx?spid=18942</string>
 				<key>utf8</key>
 				<true/>
@@ -1477,11 +1211,317 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://jira.mozilla.com/secure/RapidBoard.jspa?rapidView=581&amp;projectKey=FXIOS</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>D30B507D-FA70-4D44-A6BD-899C29B2B810</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://jira.mozilla.com/browse/FXIOS-{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>9E804F5E-9EE1-4FB4-9D81-6EA25AC132A3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Open a ticket...</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>6A0DEA4D-3E05-4149-8194-8122945268EF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>ticket</string>
+				<key>replacestring</key>
+				<string>FIXIOS-</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.replace</string>
+			<key>uid</key>
+			<string>FF33FD1B-50DE-426E-A374-C5F4739D87F2</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>FIXIOS-</string>
+				<key>replacestring</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.replace</string>
+			<key>uid</key>
+			<string>337215C2-B111-479C-B4B4-EB74FCA40E06</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://jira.mozilla.com/secure/RapidBoard.jspa?rapidView=389</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>F6A01AFD-33BF-4B68-99C3-CD32CD0160DA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>epics</string>
+						<key>outputlabel</key>
+						<string>epics</string>
+						<key>uid</key>
+						<string>412DE045-551F-46F3-BDAE-911C164864C1</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>ticket</string>
+						<key>outputlabel</key>
+						<string>ticket</string>
+						<key>uid</key>
+						<string>B97DACB5-FBFA-4D6E-95D7-FD46643C2E50</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>sprint</string>
+						<key>outputlabel</key>
+						<string>sprint</string>
+						<key>uid</key>
+						<string>EC6A0831-D69F-4817-B634-E4D569F4E859</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>backlog</string>
+						<key>outputlabel</key>
+						<string>backlog</string>
+						<key>uid</key>
+						<string>10D1871C-876F-45A1-8D4E-26397269C1D7</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>search</string>
+						<key>outputlabel</key>
+						<string>search</string>
+						<key>uid</key>
+						<string>06E819B6-8ADC-43C6-8234-44CA037FF0DD</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>25385034-EA7E-4E34-A503-94D9C750EA98</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<true/>
+				<key>items</key>
+				<string>[{"title":"Sprint Board","arg":"sprint","subtitle":"Sprint board for current sprint"},{"title":"Backlog","arg":"backlog","subtitle":"Launch the FxiOS Backlog"},{"title":"Ticket","arg":"ticket","subtitle":"Search for a specific ticket"},{"title":"Epic Board","arg":"epics","subtitle":"Launch the FxiOS Epic Board"},{"title":"Search","arg":"search","subtitle":"Search the FXiOS project"}]</string>
+				<key>keyword</key>
+				<string>jira</string>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Mozilla JIRA</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>7382042F-D7A5-4966-BFA7-469165C01E23</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://jira.mozilla.com/secure/RapidBoard.jspa?rapidView=389&amp;projectKey=FXIOS&amp;view=planning&amp;issueLimit=100</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>4DAB1E70-EF7B-448F-8A69-961AE1804DFD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://jira.mozilla.com/browse/FXIOS-1569?jql=text%20~%20%22{query}%22</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>0C1B3CB5-8A1C-4EB9-ADBD-B479CEAFB1ED</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Search JIRA for keywords</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>C8964D22-2A55-410D-8040-DFB2B0BEC7B5</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>search</string>
+				<key>replacestring</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.replace</string>
+			<key>uid</key>
+			<string>96C97B4E-779C-4B03-85A0-976A46F95929</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>0C1B3CB5-8A1C-4EB9-ADBD-B479CEAFB1ED</key>
+		<dict>
+			<key>xpos</key>
+			<integer>670</integer>
+			<key>ypos</key>
+			<integer>1890</integer>
+		</dict>
 		<key>0CF60F8B-E720-469F-AC29-4D85E78DE2A3</key>
 		<dict>
 			<key>xpos</key>
@@ -1499,9 +1539,9 @@
 		<key>25385034-EA7E-4E34-A503-94D9C750EA98</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1375</integer>
+			<integer>185</integer>
 			<key>ypos</key>
-			<integer>290</integer>
+			<integer>1660</integer>
 		</dict>
 		<key>256BB1EC-F85D-45B9-8598-10CF2CC4C2CA</key>
 		<dict>
@@ -1527,9 +1567,9 @@
 		<key>337215C2-B111-479C-B4B4-EB74FCA40E06</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1580</integer>
+			<integer>585</integer>
 			<key>ypos</key>
-			<integer>175</integer>
+			<integer>1580</integer>
 		</dict>
 		<key>371F8E7C-BD35-47C3-A192-C072B765C6D2</key>
 		<dict>
@@ -1548,9 +1588,9 @@
 		<key>4DAB1E70-EF7B-448F-8A69-961AE1804DFD</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1655</integer>
+			<integer>440</integer>
 			<key>ypos</key>
-			<integer>265</integer>
+			<integer>1775</integer>
 		</dict>
 		<key>63FD0DC9-9AE5-4AD9-AB6E-F438D578C2FA</key>
 		<dict>
@@ -1569,16 +1609,16 @@
 		<key>6A0DEA4D-3E05-4149-8194-8122945268EF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1430</integer>
+			<integer>435</integer>
 			<key>ypos</key>
-			<integer>145</integer>
+			<integer>1550</integer>
 		</dict>
 		<key>7382042F-D7A5-4966-BFA7-469165C01E23</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1140</integer>
+			<integer>30</integer>
 			<key>ypos</key>
-			<integer>165</integer>
+			<integer>1680</integer>
 		</dict>
 		<key>77D7F2C3-4CD2-42E9-9991-2D540373D1BA</key>
 		<dict>
@@ -1601,6 +1641,13 @@
 			<key>ypos</key>
 			<integer>885</integer>
 		</dict>
+		<key>96C97B4E-779C-4B03-85A0-976A46F95929</key>
+		<dict>
+			<key>xpos</key>
+			<integer>450</integer>
+			<key>ypos</key>
+			<integer>1920</integer>
+		</dict>
 		<key>9A6878E9-AE66-4FD1-B830-8B2DE5C33711</key>
 		<dict>
 			<key>xpos</key>
@@ -1611,9 +1658,9 @@
 		<key>9E804F5E-9EE1-4FB4-9D81-6EA25AC132A3</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1650</integer>
+			<integer>655</integer>
 			<key>ypos</key>
-			<integer>145</integer>
+			<integer>1550</integer>
 		</dict>
 		<key>9F6EDFFA-D5E7-4FF7-93A8-7387D89BDC37</key>
 		<dict>
@@ -1643,6 +1690,13 @@
 			<key>ypos</key>
 			<integer>370</integer>
 		</dict>
+		<key>C8964D22-2A55-410D-8040-DFB2B0BEC7B5</key>
+		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
+			<key>ypos</key>
+			<integer>1890</integer>
+		</dict>
 		<key>CF2DBCF3-9683-450C-9918-0EE05D14AA1E</key>
 		<dict>
 			<key>xpos</key>
@@ -1653,16 +1707,9 @@
 		<key>D30B507D-FA70-4D44-A6BD-899C29B2B810</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1435</integer>
+			<integer>440</integer>
 			<key>ypos</key>
-			<integer>260</integer>
-		</dict>
-		<key>D41C0838-407F-4DB7-98D0-3D4CC669C981</key>
-		<dict>
-			<key>xpos</key>
-			<integer>1330</integer>
-			<key>ypos</key>
-			<integer>60</integer>
+			<integer>1440</integer>
 		</dict>
 		<key>E668EADC-390E-4C6E-B240-F50084C599CA</key>
 		<dict>
@@ -1670,13 +1717,6 @@
 			<integer>450</integer>
 			<key>ypos</key>
 			<integer>990</integer>
-		</dict>
-		<key>E711775E-F667-40EC-B5E0-DB5D65BECBB2</key>
-		<dict>
-			<key>xpos</key>
-			<integer>1330</integer>
-			<key>ypos</key>
-			<integer>175</integer>
 		</dict>
 		<key>E853853D-B747-44E2-A7F1-B8FFDA27F177</key>
 		<dict>
@@ -1709,9 +1749,9 @@
 		<key>F6A01AFD-33BF-4B68-99C3-CD32CD0160DA</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1430</integer>
+			<integer>440</integer>
 			<key>ypos</key>
-			<integer>30</integer>
+			<integer>1660</integer>
 		</dict>
 		<key>F8270520-9C06-4291-9BE9-F8D3AB2D4F97</key>
 		<dict>
@@ -1720,19 +1760,12 @@
 			<key>ypos</key>
 			<integer>155</integer>
 		</dict>
-		<key>F89CF690-5BA2-4F2F-9EC9-27F9BC139160</key>
-		<dict>
-			<key>xpos</key>
-			<integer>1600</integer>
-			<key>ypos</key>
-			<integer>300</integer>
-		</dict>
 		<key>FF33FD1B-50DE-426E-A374-C5F4739D87F2</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1380</integer>
+			<integer>385</integer>
 			<key>ypos</key>
-			<integer>175</integer>
+			<integer>1580</integer>
 		</dict>
 		<key>FF3E0E98-1A19-424B-903E-CE4D2C15A4BB</key>
 		<dict>
