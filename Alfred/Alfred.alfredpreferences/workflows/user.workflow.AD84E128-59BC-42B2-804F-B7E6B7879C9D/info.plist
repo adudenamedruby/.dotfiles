@@ -94,6 +94,18 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>63FD0DC9-9AE5-4AD9-AB6E-F438D578C2FA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>1FF6DE1E-5BDC-46AD-8C24-D8DC01115D0D</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>2D58AF65-56E8-4E96-9141-BDDBF233B2DC</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -101,18 +113,6 @@
 				<string></string>
 				<key>sourceoutputuid</key>
 				<string>35E4E906-E286-45BF-A65D-3A228C237972</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>2EB6F2DA-C5DA-4E26-AD8D-97FCC0E4B955</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>1FF6DE1E-5BDC-46AD-8C24-D8DC01115D0D</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -1238,44 +1238,6 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://login.mozilla.com/</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>2D58AF65-56E8-4E96-9141-BDDBF233B2DC</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://mozillagear.corpmerchandise.com/StaticPage.aspx?spid=18942</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>2EB6F2DA-C5DA-4E26-AD8D-97FCC0E4B955</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
 				<string>https://www.myworkday.com/vhr_mozilla/d/home.htmld</string>
 				<key>utf8</key>
 				<true/>
@@ -1284,6 +1246,25 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>63FD0DC9-9AE5-4AD9-AB6E-F438D578C2FA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://login.mozilla.com/</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>2D58AF65-56E8-4E96-9141-BDDBF233B2DC</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1543,13 +1524,6 @@
 			<key>ypos</key>
 			<integer>520</integer>
 		</dict>
-		<key>2EB6F2DA-C5DA-4E26-AD8D-97FCC0E4B955</key>
-		<dict>
-			<key>xpos</key>
-			<integer>455</integer>
-			<key>ypos</key>
-			<integer>525</integer>
-		</dict>
 		<key>337215C2-B111-479C-B4B4-EB74FCA40E06</key>
 		<dict>
 			<key>xpos</key>
@@ -1581,9 +1555,9 @@
 		<key>63FD0DC9-9AE5-4AD9-AB6E-F438D578C2FA</key>
 		<dict>
 			<key>xpos</key>
-			<integer>450</integer>
+			<integer>445</integer>
 			<key>ypos</key>
-			<integer>525</integer>
+			<integer>490</integer>
 		</dict>
 		<key>67911BDC-6DEF-40DB-BE7B-952CFDB32A55</key>
 		<dict>
