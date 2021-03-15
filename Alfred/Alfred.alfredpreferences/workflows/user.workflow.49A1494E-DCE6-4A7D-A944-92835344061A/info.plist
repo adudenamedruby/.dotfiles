@@ -101,6 +101,18 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>F89BF6B8-D55A-4021-BEB1-DC5ACE4C8ACD</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>3928119E-B5BF-41B7-AB8D-5AF002D123CA</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>F9030676-3967-49F0-AA9C-8077DA6916BB</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -139,6 +151,25 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>837DF904-9EDC-434A-B387-B0AD2733471F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://colorgoserver.com/play</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>6B14D183-CD35-4FBE-95C6-9E11FC6D266D</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -217,6 +248,20 @@
 						<key>uid</key>
 						<string>8EEDAAA0-B025-4569-A770-E56AD1DE3399</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>osr</string>
+						<key>outputlabel</key>
+						<string>osr</string>
+						<key>uid</key>
+						<string>3928119E-B5BF-41B7-AB8D-5AF002D123CA</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
@@ -231,6 +276,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://shin.gokgs.com/chat</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>72BFDAEC-5110-4539-9BF2-41F11552C42C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -238,7 +302,7 @@
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"imagefile":"7d7eed5807ed7f2869286b3af0e9f85f1fe58d69.png","title":"cgs","arg":"cgs","subtitle":"Color Go Server"},{"title":"ogs","arg":"ogs","subtitle":"online-go.com"},{"imagefile":"64ea12edfc1c0377cd464a22efb2e847069d349b.png","title":"kgs","arg":"kgs","subtitle":"gokgs.com"},{"imagefile":"d8e4f556b5e941efdd78f50342ddcb2d1513d13f.png","title":"tygem","arg":"tygem","subtitle":"TYGEMGO"},{"title":"KaTrain","arg":"katrain","subtitle":"Katago based GO training"}]</string>
+				<string>[{"imagefile":"7d7eed5807ed7f2869286b3af0e9f85f1fe58d69.png","title":"cgs","arg":"cgs","subtitle":"Color Go Server"},{"title":"ogs","arg":"ogs","subtitle":"online-go.com"},{"imagefile":"64ea12edfc1c0377cd464a22efb2e847069d349b.png","title":"kgs","arg":"kgs","subtitle":"gokgs.com"},{"imagefile":"d8e4f556b5e941efdd78f50342ddcb2d1513d13f.png","title":"tygem","arg":"tygem","subtitle":"TYGEMGO"},{"title":"KaTrain","arg":"katrain","subtitle":"Katago based GO training"},{"title":"osr","arg":"osr","subtitle":"Open Study Room"}]</string>
 				<key>keyword</key>
 				<string>go</string>
 				<key>runningsubtext</key>
@@ -265,44 +329,6 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://colorgoserver.com/play</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>6B14D183-CD35-4FBE-95C6-9E11FC6D266D</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://shin.gokgs.com/chat</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>72BFDAEC-5110-4539-9BF2-41F11552C42C</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
 				<string>http://www.tygemgo.com/</string>
 				<key>utf8</key>
 				<true/>
@@ -311,6 +337,25 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>25326263-E1D9-485C-A19F-A073D835F4FF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://openstudyroom.org/</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>F89BF6B8-D55A-4021-BEB1-DC5ACE4C8ACD</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -392,23 +437,23 @@
 		<key>25326263-E1D9-485C-A19F-A073D835F4FF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>625</integer>
+			<integer>620</integer>
 			<key>ypos</key>
-			<integer>530</integer>
+			<integer>355</integer>
 		</dict>
 		<key>6B14D183-CD35-4FBE-95C6-9E11FC6D266D</key>
 		<dict>
 			<key>xpos</key>
-			<integer>625</integer>
+			<integer>620</integer>
 			<key>ypos</key>
-			<integer>310</integer>
+			<integer>135</integer>
 		</dict>
 		<key>72BFDAEC-5110-4539-9BF2-41F11552C42C</key>
 		<dict>
 			<key>xpos</key>
-			<integer>625</integer>
+			<integer>620</integer>
 			<key>ypos</key>
-			<integer>420</integer>
+			<integer>245</integer>
 		</dict>
 		<key>7993D0AF-9339-46BE-B399-C6A223A319EC</key>
 		<dict>
@@ -420,9 +465,9 @@
 		<key>837DF904-9EDC-434A-B387-B0AD2733471F</key>
 		<dict>
 			<key>xpos</key>
-			<integer>625</integer>
+			<integer>620</integer>
 			<key>ypos</key>
-			<integer>205</integer>
+			<integer>30</integer>
 		</dict>
 		<key>ABF3D847-EE23-4FE6-8423-F19EA694E4A2</key>
 		<dict>
@@ -437,6 +482,13 @@
 			<integer>625</integer>
 			<key>ypos</key>
 			<integer>640</integer>
+		</dict>
+		<key>F89BF6B8-D55A-4021-BEB1-DC5ACE4C8ACD</key>
+		<dict>
+			<key>xpos</key>
+			<integer>620</integer>
+			<key>ypos</key>
+			<integer>460</integer>
 		</dict>
 		<key>F9030676-3967-49F0-AA9C-8077DA6916BB</key>
 		<dict>
