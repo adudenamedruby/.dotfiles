@@ -113,6 +113,18 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>8B02F2B7-B7C6-4BD3-A8CC-16471AD32D89</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>5B28B391-C643-4816-AA71-2266517ED765</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>F9030676-3967-49F0-AA9C-8077DA6916BB</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -262,6 +274,20 @@
 						<key>uid</key>
 						<string>3928119E-B5BF-41B7-AB8D-5AF002D123CA</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>igs</string>
+						<key>outputlabel</key>
+						<string>igs</string>
+						<key>uid</key>
+						<string>5B28B391-C643-4816-AA71-2266517ED765</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
@@ -302,7 +328,7 @@
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"imagefile":"7d7eed5807ed7f2869286b3af0e9f85f1fe58d69.png","title":"cgs","arg":"cgs","subtitle":"Color Go Server"},{"title":"ogs","arg":"ogs","subtitle":"online-go.com"},{"imagefile":"64ea12edfc1c0377cd464a22efb2e847069d349b.png","title":"kgs","arg":"kgs","subtitle":"gokgs.com"},{"imagefile":"d8e4f556b5e941efdd78f50342ddcb2d1513d13f.png","title":"tygem","arg":"tygem","subtitle":"TYGEMGO"},{"title":"KaTrain","arg":"katrain","subtitle":"Katago based GO training"},{"title":"osr","arg":"osr","subtitle":"Open Study Room"}]</string>
+				<string>[{"imagefile":"7d7eed5807ed7f2869286b3af0e9f85f1fe58d69.png","title":"cgs","arg":"cgs","subtitle":"Color Go Server"},{"title":"ogs","arg":"ogs","subtitle":"online-go.com"},{"imagefile":"64ea12edfc1c0377cd464a22efb2e847069d349b.png","title":"kgs","arg":"kgs","subtitle":"gokgs.com"},{"imagefile":"d8e4f556b5e941efdd78f50342ddcb2d1513d13f.png","title":"tygem","arg":"tygem","subtitle":"TYGEMGO"},{"title":"KaTrain","arg":"katrain","subtitle":"Katago based GO training"},{"title":"osr","arg":"osr","subtitle":"Open Study Room"},{"title":"igs","arg":"igs","subtitle":"Internet Go School"}]</string>
 				<key>keyword</key>
 				<string>go</string>
 				<key>runningsubtext</key>
@@ -356,6 +382,25 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>F89BF6B8-D55A-4021-BEB1-DC5ACE4C8ACD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://internetgoschool.com/</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>8B02F2B7-B7C6-4BD3-A8CC-16471AD32D89</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -469,19 +514,26 @@
 			<key>ypos</key>
 			<integer>30</integer>
 		</dict>
+		<key>8B02F2B7-B7C6-4BD3-A8CC-16471AD32D89</key>
+		<dict>
+			<key>xpos</key>
+			<integer>625</integer>
+			<key>ypos</key>
+			<integer>570</integer>
+		</dict>
 		<key>ABF3D847-EE23-4FE6-8423-F19EA694E4A2</key>
 		<dict>
 			<key>xpos</key>
 			<integer>545</integer>
 			<key>ypos</key>
-			<integer>665</integer>
+			<integer>705</integer>
 		</dict>
 		<key>C0CB81D1-13A2-4948-80CF-A96465C2E41F</key>
 		<dict>
 			<key>xpos</key>
 			<integer>625</integer>
 			<key>ypos</key>
-			<integer>640</integer>
+			<integer>680</integer>
 		</dict>
 		<key>F89BF6B8-D55A-4021-BEB1-DC5ACE4C8ACD</key>
 		<dict>
@@ -495,7 +547,7 @@
 			<key>xpos</key>
 			<integer>385</integer>
 			<key>ypos</key>
-			<integer>645</integer>
+			<integer>685</integer>
 		</dict>
 		<key>FEC13C30-1E97-4A4A-86CE-DA8608579335</key>
 		<dict>
