@@ -344,35 +344,12 @@
 			</dict>
 		</array>
 		<key>F05238C3-739E-417C-873A-46F008D113EB</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>275227B0-9557-4C58-9036-D566965CEF9A</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>58E6CADC-3764-4A33-B59E-4658B9B68569</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>6EC2244F-7A60-4003-9EE9-93272558A11A</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>F1AC46CD-F67E-4C4C-B26E-3DA3B03CA913</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>D8AC5BAC-776A-432D-B6F6-5FB18F2BFA9A</string>
+				<string>6EC2244F-7A60-4003-9EE9-93272558A11A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1067,6 +1044,59 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>echo $(id -u -n | tr -d '\r')</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>D8AC5BAC-776A-432D-B6F6-5FB18F2BFA9A</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{query}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>4</integer>
+						<key>matchstring</key>
+						<string>home</string>
+						<key>outputlabel</key>
+						<string>home</string>
+						<key>uid</key>
+						<string>58E6CADC-3764-4A33-B59E-4658B9B68569</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>work</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>F05238C3-739E-417C-873A-46F008D113EB</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>paths</key>
 				<array>
 					<string>/Applications/Spark.app</string>
@@ -1138,29 +1168,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>echo $(id -u -n | tr -d '\r')</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>5</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>D8AC5BAC-776A-432D-B6F6-5FB18F2BFA9A</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -1192,30 +1199,17 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>conditions</key>
+				<key>paths</key>
 				<array>
-					<dict>
-						<key>inputstring</key>
-						<string>{query}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>4</integer>
-						<key>matchstring</key>
-						<string>home</string>
-						<key>outputlabel</key>
-						<string>home</string>
-						<key>uid</key>
-						<string>58E6CADC-3764-4A33-B59E-4658B9B68569</string>
-					</dict>
+					<string>/Applications/Firefox Nightly.app</string>
 				</array>
-				<key>elselabel</key>
-				<string>work</string>
+				<key>toggle</key>
+				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
+			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
-			<string>F05238C3-739E-417C-873A-46F008D113EB</string>
+			<string>6EC2244F-7A60-4003-9EE9-93272558A11A</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1246,23 +1240,6 @@
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
 			<string>99C9B868-2385-4000-99E6-5572EE95E2D4</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/Firefox Nightly.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>6EC2244F-7A60-4003-9EE9-93272558A11A</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1492,9 +1469,9 @@
 		<key>275227B0-9557-4C58-9036-D566965CEF9A</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1140</integer>
+			<integer>1405</integer>
 			<key>ypos</key>
-			<integer>560</integer>
+			<integer>475</integer>
 		</dict>
 		<key>33957F02-F913-4FBA-826A-2EBAAA564A50</key>
 		<dict>
@@ -1583,9 +1560,9 @@
 		<key>6EC2244F-7A60-4003-9EE9-93272558A11A</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1140</integer>
+			<integer>875</integer>
 			<key>ypos</key>
-			<integer>670</integer>
+			<integer>625</integer>
 		</dict>
 		<key>74BE6261-6726-4287-93FE-5D164441DD94</key>
 		<dict>
@@ -1730,9 +1707,9 @@
 		<key>D8AC5BAC-776A-432D-B6F6-5FB18F2BFA9A</key>
 		<dict>
 			<key>xpos</key>
-			<integer>885</integer>
+			<integer>1150</integer>
 			<key>ypos</key>
-			<integer>625</integer>
+			<integer>540</integer>
 		</dict>
 		<key>DC6870D2-D009-4CF5-9ECA-EF88854CB58E</key>
 		<dict>
@@ -1744,9 +1721,9 @@
 		<key>F05238C3-739E-417C-873A-46F008D113EB</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1050</integer>
+			<integer>1315</integer>
 			<key>ypos</key>
-			<integer>645</integer>
+			<integer>560</integer>
 		</dict>
 		<key>F1AC46CD-F67E-4C4C-B26E-3DA3B03CA913</key>
 		<dict>
