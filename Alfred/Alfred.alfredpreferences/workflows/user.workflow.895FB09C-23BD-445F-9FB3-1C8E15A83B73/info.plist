@@ -100,7 +100,18 @@
 			</dict>
 		</array>
 		<key>74BE6261-6726-4287-93FE-5D164441DD94</key>
-		<array/>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>BD007A18-A00F-4AF2-8134-B96B8D677173</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>75FA6826-160D-44EB-8FCB-975A83A8878B</key>
 		<array>
 			<dict>
