@@ -801,7 +801,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Microsoft OneNote.app</string>
+					<string>/Applications/Notion.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
