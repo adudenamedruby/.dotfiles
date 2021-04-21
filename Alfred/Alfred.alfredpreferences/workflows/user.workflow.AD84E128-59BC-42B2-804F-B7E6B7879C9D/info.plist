@@ -238,6 +238,18 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>649CE086-D3FD-4BD2-8A93-21376A18C376</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>C1A5B283-5C90-4586-B61E-4196936887AE</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>B8B81177-C70C-4A1C-9560-2C315D4136D8</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -257,6 +269,18 @@
 				<string></string>
 				<key>sourceoutputuid</key>
 				<string>A8C7C95A-700B-4A31-8029-4F4F02EDD7FC</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>950723B6-3086-40C7-93A0-C41CD6BC3F84</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>5724FE9E-F406-47AB-A380-B5A3E86D0D55</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -881,6 +905,34 @@
 						<key>uid</key>
 						<string>6A19D04A-A32A-4B4F-9CFE-387B39B4C70B</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>looker</string>
+						<key>outputlabel</key>
+						<string>looker</string>
+						<key>uid</key>
+						<string>C1A5B283-5C90-4586-B61E-4196936887AE</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>gleandict</string>
+						<key>outputlabel</key>
+						<string>gleandict</string>
+						<key>uid</key>
+						<string>5724FE9E-F406-47AB-A380-B5A3E86D0D55</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
@@ -997,7 +1049,7 @@
 				<key>fixedorder</key>
 				<true/>
 				<key>items</key>
-				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"People","arg":"people","subtitle":"People Directory"},{"title":"ADP","arg":"adp","subtitle":"Payroll Information"},{"title":"WorkDay","arg":"workday","subtitle":"Open WorkDay"},{"title":"Account","arg":"account","subtitle":"Account Management Portal"},{"title":"Air Mozilla","arg":"air","subtitle":"Watch Mozilla content"},{"title":"Gear Store","arg":"gear","subtitle":"Buy fun Mozilla merch!"},{"title":"Mana","arg":"mana","subtitle":"Mozilla Internal Wiki"},{"title":"MANA Search","arg":"search","subtitle":"Do an advanced MANA search"},{"title":"Udemy","arg":"udemy","subtitle":"Learning is fun!"},{"title":"Service Now","arg":"service","subtitle":"For all your Mozilla needs"},{"title":"The Hub","arg":"hub","subtitle":"For all your gear needs"},{"title":"PTO","arg":"pto","subtitle":"Personal Time Off - Take a break!"},{"title":"discourse","arg":"discourse","subtitle":"Chat about stuff!"},{"title":"Element","arg":"element","subtitle":"Element board"},{"title":"Bitrise","arg":"bitrise","subtitle":"CI pipeline"},{"title":"Bugzilla","arg":"bugzilla","subtitle":"Report pesky bugs..."},{"title":"Matrix","arg":"matrix","subtitle":"Matrix chat"},{"title":"Moderator","arg":"moderator","subtitle":"Ask questions for events"},{"title":"Retrium","arg":"retrium","subtitle":"Retro moderating tool"},{"title":"Figma","arg":"figma","subtitle":"Figma design systems"},{"title":"Wiki","arg":"wiki","subtitle":"Mozilla Wiki"},{"title":"Sentry","arg":"sentry","subtitle":"Crash reporting dashboard"}]</string>
+				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"People","arg":"people","subtitle":"People Directory"},{"title":"ADP","arg":"adp","subtitle":"Payroll Information"},{"title":"WorkDay","arg":"workday","subtitle":"Open WorkDay"},{"title":"Account","arg":"account","subtitle":"Account Management Portal"},{"title":"Air Mozilla","arg":"air","subtitle":"Watch Mozilla content"},{"title":"Gear Store","arg":"gear","subtitle":"Buy fun Mozilla merch!"},{"title":"Mana","arg":"mana","subtitle":"Mozilla Internal Wiki"},{"title":"MANA Search","arg":"search","subtitle":"Do an advanced MANA search"},{"title":"Udemy","arg":"udemy","subtitle":"Learning is fun!"},{"title":"Service Now","arg":"service","subtitle":"For all your Mozilla needs"},{"title":"The Hub","arg":"hub","subtitle":"For all your gear needs"},{"title":"PTO","arg":"pto","subtitle":"Personal Time Off - Take a break!"},{"title":"discourse","arg":"discourse","subtitle":"Chat about stuff!"},{"title":"Element","arg":"element","subtitle":"Element board"},{"title":"Bitrise","arg":"bitrise","subtitle":"CI pipeline"},{"title":"Bugzilla","arg":"bugzilla","subtitle":"Report pesky bugs..."},{"title":"Matrix","arg":"matrix","subtitle":"Matrix chat"},{"title":"Moderator","arg":"moderator","subtitle":"Ask questions for events"},{"title":"Retrium","arg":"retrium","subtitle":"Retro moderating tool"},{"title":"Figma","arg":"figma","subtitle":"Figma design systems"},{"title":"Wiki","arg":"wiki","subtitle":"Mozilla Wiki"},{"title":"Sentry","arg":"sentry","subtitle":"Crash reporting dashboard"},{"title":"Looker","arg":"looker","subtitle":"Metrics interpretation"},{"title":"gleandict","arg":"gleandict","subtitle":"Glean Dictionary Alpha"}]</string>
 				<key>keyword</key>
 				<string>moz</string>
 				<key>runningsubtext</key>
@@ -1252,6 +1304,25 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
+				<string>https://mozilla.cloud.looker.com/folders/home</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>649CE086-D3FD-4BD2-8A93-21376A18C376</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
 				<string>https://chat.mozilla.org/#/room/!csUwCMlPTKXjPqINFV:mozilla.org</string>
 				<key>utf8</key>
 				<true/>
@@ -1279,6 +1350,25 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>7F13CF2C-8235-4C9D-80E8-E4838855173A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://glean-dictionary.netlify.app/?product=firefox-ios-dev</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>950723B6-3086-40C7-93A0-C41CD6BC3F84</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1696,6 +1786,13 @@
 			<key>ypos</key>
 			<integer>490</integer>
 		</dict>
+		<key>649CE086-D3FD-4BD2-8A93-21376A18C376</key>
+		<dict>
+			<key>xpos</key>
+			<integer>690</integer>
+			<key>ypos</key>
+			<integer>1090</integer>
+		</dict>
 		<key>67911BDC-6DEF-40DB-BE7B-952CFDB32A55</key>
 		<dict>
 			<key>xpos</key>
@@ -1744,6 +1841,13 @@
 			<integer>450</integer>
 			<key>ypos</key>
 			<integer>885</integer>
+		</dict>
+		<key>950723B6-3086-40C7-93A0-C41CD6BC3F84</key>
+		<dict>
+			<key>xpos</key>
+			<integer>690</integer>
+			<key>ypos</key>
+			<integer>1200</integer>
 		</dict>
 		<key>96C97B4E-779C-4B03-85A0-976A46F95929</key>
 		<dict>
