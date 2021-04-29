@@ -1105,7 +1105,7 @@
 				<key>fixedorder</key>
 				<true/>
 				<key>items</key>
-				<string>[{"title":"Firefox-iOS","arg":"main","subtitle":"Open the main repo"},{"title":"Open Issue(s)","arg":"issue","subtitle":"Open all issues, or a specific issue"},{"title":"Wiki","arg":"wiki","subtitle":"Open Firefox iOS Wiki"},{"title":"Forked","arg":"fork","subtitle":"Firefox-iOS - my fork"}]</string>
+				<string>[{"title":"Home","arg":"main","subtitle":"Open the mozilla\/main repo"},{"title":"Open Issue(s)","arg":"issue","subtitle":"Open all issues, or a specific issue"},{"title":"Wiki","arg":"wiki","subtitle":"Open Firefox iOS Wiki"},{"title":"Forked","arg":"fork","subtitle":"Firefox-iOS - my fork"}]</string>
 				<key>keyword</key>
 				<string>fxios</string>
 				<key>runningsubtext</key>
