@@ -292,6 +292,18 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>4B548A99-86AD-4EDC-B875-0E9171458D73</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>EAEB31B9-F60D-48DD-A95D-F6B8E6A39AB3</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>7A664528-41E6-43A0-A236-B63E1520227E</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -926,6 +938,20 @@
 						<key>uid</key>
 						<string>1F36B66F-13E8-44D5-B916-F7728810C301</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>notifications</string>
+						<key>outputlabel</key>
+						<string>notifications</string>
+						<key>uid</key>
+						<string>EAEB31B9-F60D-48DD-A95D-F6B8E6A39AB3</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
@@ -947,7 +973,7 @@
 				<key>fixedorder</key>
 				<true/>
 				<key>items</key>
-				<string>[{"title":"Home","subtitle":"View my profile"},{"imagefile":"f35a3988f24873039cdc57eb278b28acea536bc7.png","title":"Search","arg":"search","subtitle":"Search GitHub"},{"imagefile":"94e245b01fd6ac4365c21fa483925df77636ea66.png","title":"User","arg":"user","subtitle":"Open user's homepage"},{"imagefile":"4e5025e909ca2744e1d1419c13d400e0f9e4c156.png","title":"Open Repo","arg":"repo","subtitle":"Open a specific repo"},{"imagefile":"d17a6ff95b2195240aad01de8961e7cfcd96305f.png","title":"FxiOS","arg":"fxios","subtitle":"Open the Firefox iOS repo"},{"imagefile":"1929788b7a0e101695cdfeff873a67983147efa5.png","title":"Mozilla mobile","arg":"mobile","subtitle":"Open the Mozilla-Mobile group"},{"imagefile":"da26b210bf534e4166e7449e63c86663e364e977.png","title":"Sync","arg":"sync","subtitle":"Synchronize existing local repos"}]</string>
+				<string>[{"title":"Home","subtitle":"View my profile"},{"imagefile":"f35a3988f24873039cdc57eb278b28acea536bc7.png","title":"Search","arg":"search","subtitle":"Search GitHub"},{"imagefile":"94e245b01fd6ac4365c21fa483925df77636ea66.png","title":"User","arg":"user","subtitle":"Open user's homepage"},{"imagefile":"4e5025e909ca2744e1d1419c13d400e0f9e4c156.png","title":"Open Repo","arg":"repo","subtitle":"Open a specific repo"},{"imagefile":"d17a6ff95b2195240aad01de8961e7cfcd96305f.png","title":"FxiOS","arg":"fxios","subtitle":"Open the Firefox iOS repo"},{"imagefile":"1929788b7a0e101695cdfeff873a67983147efa5.png","title":"Mozilla mobile","arg":"mobile","subtitle":"Open the Mozilla-Mobile group"},{"imagefile":"da26b210bf534e4166e7449e63c86663e364e977.png","title":"Sync","arg":"sync","subtitle":"Synchronize existing local repos"},{"title":"Notifications","arg":"notifications","subtitle":"See what's going on in your GitHub world"}]</string>
 				<key>keyword</key>
 				<string>git</string>
 				<key>runningsubtext</key>
@@ -982,6 +1008,25 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>B95EFE6E-ADFA-47F3-88FB-846CCA539306</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://github.com/notifications</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>4B548A99-86AD-4EDC-B875-0E9171458D73</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1548,6 +1593,13 @@ git pull</string>
 			<integer>1370</integer>
 			<key>ypos</key>
 			<integer>1195</integer>
+		</dict>
+		<key>4B548A99-86AD-4EDC-B875-0E9171458D73</key>
+		<dict>
+			<key>xpos</key>
+			<integer>655</integer>
+			<key>ypos</key>
+			<integer>860</integer>
 		</dict>
 		<key>55CFDF9A-0AF6-4D9D-9502-030775852E23</key>
 		<dict>
