@@ -57,6 +57,9 @@
 // Support for DigitalRain LED
 //#include <Kaleidoscope-LEDEffect-DigitalRain.h>
 
+// Support for Layer highlighter
+//#include "Kaleidoscope-LayerHighlighter.h"
+
 // Support for TapDance
 #include "Kaleidoscope-TapDance.h"
 
@@ -166,8 +169,8 @@ KEYMAPS(
    M(MACRO_ANY),        Key_6,           Key_7,          Key_8,          Key_9,         Key_0,         LockLayer(DVORAK),
    ShiftToLayer(MEDIA), Key_Y,           Key_U,          Key_I,          Key_O,         Key_P,         LGUI(Key_Slash),
                         Key_H,           Key_J,          Key_K,          Key_L,         Key_Semicolon, ___,
-   Key_RightAlt,        Key_N,           Key_M,          Key_Comma,      Key_Period,    Key_Slash,     LSHIFT(LGUI(Key_Slash)),
-   LockLayer(WOW), Key_LeftShift, Key_Backspace, CTL_T(Escape),
+   LockLayer(WOW),        Key_N,           Key_M,          Key_Comma,      Key_Period,    Key_Slash,     LSHIFT(LGUI(Key_Slash)),
+   Key_RightAlt, Key_LeftShift, Key_Backspace, CTL_T(Escape),
    ShiftToLayer(PROGRAMMING_CHARACTERS)),
 
 
@@ -283,19 +286,19 @@ KEYMAPS(
    XXX),
 
    [WOW] =  KEYMAP_STACKED
-  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
-   Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
-   Key_Tab,   Key_LeftShift, Key_S, Key_D, Key_F, Key_G,
-   Key_PageDown, Key_LeftControl, Key_X, Key_C, Key_V, Key_B, Key_Escape,
-   Key_Tab, Key_Spacebar, Key_Enter, Key_RightAlt,
-   Key_LeftControl,
+  (___,                         Key_1,           Key_2,          Key_3,           Key_4,       Key_5,       Key_LEDEffectNext,
+   Key_Tab,                     Key_Q,           Key_W,          Key_E,           Key_R,       Key_T,       LGUI(Key_I),
+   Key_LeftShift,               Key_A,           Key_S,          Key_D,           Key_F,       Key_G,
+   Key_LeftControl,               Key_Z,           Key_X,          Key_C,           Key_V,       Key_B,       LGUI(Key_Period),
+   Key_LeftGui, Key_Spacebar, Key_Enter, Key_LeftAlt,
+   ShiftToLayer(PROGRAMMING_CHARACTERS),
 
-   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         ___,
-   ___,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
-                  Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
-   Key_RightAlt, Key_LeftShift, Key_Backspace, Key_RightControl,
-   XXX)
+   M(MACRO_ANY),        Key_6,           Key_7,          Key_8,          Key_9,         Key_0,         ___,
+   ShiftToLayer(MEDIA), Key_Y,           Key_U,          Key_I,          Key_O,         Key_P,         LGUI(Key_Slash),
+                        Key_H,           Key_J,          Key_K,          Key_L,         Key_Semicolon, ___,
+   ___,        Key_N,           Key_M,          Key_Comma,      Key_Period,    Key_Slash,     LSHIFT(LGUI(Key_Slash)),
+   Key_RightAlt, Key_LeftShift, Key_Backspace, CTL_T(Escape),
+   ShiftToLayer(PROGRAMMING_CHARACTERS))
 ) // KEYMAPS(
 
 /* Re-enable astyle's indent enforcement */
@@ -322,15 +325,16 @@ static void versionInfoMacro(uint8_t keyState) {
  */
 
 static void anyKeyMacro(uint8_t keyState) {
+
   static Key lastKey;
   bool toggledOn = false;
   if (keyToggledOn(keyState)) {
-    lastKey.keyCode = Key_A.keyCode + (uint8_t)(millis() % 36);
+    lastKey.setKeyCode(Key_A.getKeyCode() + (uint8_t)(millis() % 36));
     toggledOn = true;
   }
 
   if (keyIsPressed(keyState))
-    kaleidoscope::hid::pressKey(lastKey, toggledOn);
+    Kaleidoscope.hid().keyboard().pressKey(lastKey, toggledOn);
 }
 
 
@@ -444,6 +448,8 @@ void tapDanceAction(uint8_t tap_dance_index, byte row, byte col, uint8_t tap_cou
   }
 }
 
+//LayerHighlighter wowLayerHighlight(WOW);
+
 
 // First, tell Kaleidoscope which plugins you want to use.
 // The order can be important. For example, LED effects are
@@ -505,6 +511,8 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // The breathe effect slowly pulses all of the LEDs on your keyboard
   LEDBreatheEffect,
 
+  //wowLayerHighlighter,
+
   //LEDDigitarRainEffect,
 
   // The stalker effect lights up the keys you've pressed recently
@@ -547,16 +555,19 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
  
 void setup() {
-  Qukeys.setTimeout(180);
-  Qukeys.setReleaseDelay(20);
+  //Qukeys.setHoldTimeout(180);
+  //Qukeys.releaseDelayed(20);
+
   
   // First, call Kaleidoscope's internal setup function
   Kaleidoscope.setup();
 
   // While we hope to improve this in the future, the NumPad plugin
   // needs to be explicitly told which keymap layer is your numpad layer
-  NumPad.numPadLayer = DVORAK;
+  NumPad.numPadLayer = WOW;
   NumPad.lock_hue = 0;
+
+  //wowLayerHighlighter.lockHue = 100; // green(ish)
 
   // We configure the AlphaSquare effect to use RED letters
   //AlphaSquare.color = CRGB(255, 0, 0);
