@@ -125,6 +125,18 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>3E1A3753-9CFF-412C-B913-80CA45271CBB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>DE39EB17-4322-4B44-8955-31D81460574E</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>F9030676-3967-49F0-AA9C-8077DA6916BB</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -288,6 +300,20 @@
 						<key>uid</key>
 						<string>5B28B391-C643-4816-AA71-2266517ED765</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>cga</string>
+						<key>outputlabel</key>
+						<string>cga</string>
+						<key>uid</key>
+						<string>DE39EB17-4322-4B44-8955-31D81460574E</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
@@ -328,7 +354,7 @@
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"imagefile":"7d7eed5807ed7f2869286b3af0e9f85f1fe58d69.png","title":"cgs","arg":"cgs","subtitle":"Color Go Server"},{"title":"ogs","arg":"ogs","subtitle":"online-go.com"},{"imagefile":"64ea12edfc1c0377cd464a22efb2e847069d349b.png","title":"kgs","arg":"kgs","subtitle":"gokgs.com"},{"imagefile":"d8e4f556b5e941efdd78f50342ddcb2d1513d13f.png","title":"tygem","arg":"tygem","subtitle":"TYGEMGO"},{"title":"KaTrain","arg":"katrain","subtitle":"Katago based GO training"},{"title":"osr","arg":"osr","subtitle":"Open Study Room"},{"title":"igs","arg":"igs","subtitle":"Internet Go School"}]</string>
+				<string>[{"imagefile":"7d7eed5807ed7f2869286b3af0e9f85f1fe58d69.png","title":"cgs","arg":"cgs","subtitle":"Color Go Server"},{"title":"ogs","arg":"ogs","subtitle":"online-go.com"},{"imagefile":"64ea12edfc1c0377cd464a22efb2e847069d349b.png","title":"kgs","arg":"kgs","subtitle":"gokgs.com"},{"imagefile":"d8e4f556b5e941efdd78f50342ddcb2d1513d13f.png","title":"tygem","arg":"tygem","subtitle":"TYGEMGO"},{"imagefile":"d901b3899f011d8b5ee47e4f212257703010310c.png","title":"KaTrain","arg":"katrain","subtitle":"Katago based GO training"},{"imagefile":"d9268a2df3cd67e278b53ef8c65b1d2edaa2b1a9.png","title":"osr","arg":"osr","subtitle":"Open Study Room"},{"imagefile":"f93bcadffa9caa2f8e36b51a957608a1784b7648.png","title":"igs","arg":"igs","subtitle":"Internet Go School"},{"title":"cga","arg":"cga","subtitle":"Canadian Go Association"}]</string>
 				<key>keyword</key>
 				<string>go</string>
 				<key>runningsubtext</key>
@@ -382,6 +408,25 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>F89BF6B8-D55A-4021-BEB1-DC5ACE4C8ACD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://canadiango.org/</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>3E1A3753-9CFF-412C-B913-80CA45271CBB</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -485,6 +530,13 @@
 			<integer>620</integer>
 			<key>ypos</key>
 			<integer>355</integer>
+		</dict>
+		<key>3E1A3753-9CFF-412C-B913-80CA45271CBB</key>
+		<dict>
+			<key>xpos</key>
+			<integer>835</integer>
+			<key>ypos</key>
+			<integer>570</integer>
 		</dict>
 		<key>6B14D183-CD35-4FBE-95C6-9E11FC6D266D</key>
 		<dict>
