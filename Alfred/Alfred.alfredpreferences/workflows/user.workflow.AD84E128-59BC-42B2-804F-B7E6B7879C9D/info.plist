@@ -1490,7 +1490,7 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://jira.mozilla.com/secure/RapidBoard.jspa?rapidView=389</string>
+				<string>https://mozilla-hub.atlassian.net/secure/RapidBoard.jspa?rapidView=200&amp;selectedIssue=FXIOS-1806&amp;assignee=6048302caf98490072495aa2</string>
 				<key>utf8</key>
 				<true/>
 			</dict>
