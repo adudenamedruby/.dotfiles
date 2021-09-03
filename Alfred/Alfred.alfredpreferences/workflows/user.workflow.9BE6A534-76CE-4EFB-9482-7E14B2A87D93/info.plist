@@ -47,6 +47,33 @@
 				<false/>
 			</dict>
 		</array>
+		<key>4BB637F9-F671-41BA-931D-3C4071E098AA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>28DA6F5E-E3E5-47E6-A33F-ABD0D4C3732D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>8B920D02-C5F8-489D-9177-25CEF358A76A</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>99D98E99-ECA6-4D30-9B09-3DCDAB2B75EB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>A736F654-3915-4EFF-813F-FD5E6CE44167</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>5B90E8E8-8DC4-489B-A2F4-056847B40A57</key>
 		<array>
 			<dict>
@@ -77,17 +104,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>C95FF59B-C38D-4A54-B969-087A6FB8A03F</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>4D03021F-E1AB-4D97-86C5-F753D3FBE9EF</string>
+				<string>4BB637F9-F671-41BA-931D-3C4071E098AA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -119,19 +136,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>C95FF59B-C38D-4A54-B969-087A6FB8A03F</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>99D98E99-ECA6-4D30-9B09-3DCDAB2B75EB</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 	</dict>
 	<key>createdby</key>
 	<string></string>
@@ -151,14 +155,14 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://scotts-bass-lessons.teachable.com/</string>
+				<string>https://www.calimove.com/courses/</string>
 				<key>utf8</key>
 				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>99D98E99-ECA6-4D30-9B09-3DCDAB2B75EB</string>
+			<string>28DA6F5E-E3E5-47E6-A33F-ABD0D4C3732D</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -172,7 +176,7 @@
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"imagefile":"c17f0a2c5d57d3a198c9456c0bacea0af900b752.png","title":"sbl","arg":"sbl","subtitle":"Scott's Bass Lessons"},{"imagefile":"43334549915a16f6afcd784dd54a6d98b54cb7f6.png","title":"ddb","arg":"ddb","subtitle":"Discover Double Bass"}]</string>
+				<string>[{"imagefile":"c17f0a2c5d57d3a198c9456c0bacea0af900b752.png","title":"Scott's Bass Lessons","arg":"sbl","subtitle":"Scott's Bass Lessons"},{"imagefile":"43334549915a16f6afcd784dd54a6d98b54cb7f6.png","title":"Discover Double Bass","arg":"ddb","subtitle":"Discover Double Bass"},{"title":"CaliMove","arg":"calimove","subtitle":"Calisthentics"}]</string>
 				<key>keyword</key>
 				<string>teachable</string>
 				<key>runningsubtext</key>
@@ -194,38 +198,63 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>inputstring</key>
-				<string></string>
-				<key>matchcasesensitive</key>
-				<true/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>sbl</string>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>calimove</string>
+						<key>outputlabel</key>
+						<string>calimove</string>
+						<key>uid</key>
+						<string>8B920D02-C5F8-489D-9177-25CEF358A76A</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>sbl</string>
+						<key>outputlabel</key>
+						<string>sbl</string>
+						<key>uid</key>
+						<string>A736F654-3915-4EFF-813F-FD5E6CE44167</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>ddb</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
+			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
-			<string>C95FF59B-C38D-4A54-B969-087A6FB8A03F</string>
+			<string>4BB637F9-F671-41BA-931D-3C4071E098AA</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>inputstring</key>
+				<key>browser</key>
 				<string></string>
-				<key>matchcasesensitive</key>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://scotts-bass-lessons.teachable.com/</string>
+				<key>utf8</key>
 				<true/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>ddb</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
+			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>4D03021F-E1AB-4D97-86C5-F753D3FBE9EF</string>
+			<string>99D98E99-ECA6-4D30-9B09-3DCDAB2B75EB</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -354,23 +383,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>subreddit</string>
-				<key>replacestring</key>
-				<string>r/</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.replace</string>
-			<key>uid</key>
-			<string>08C8544F-3C1A-4014-A843-F5938CE6065A</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>inputstring</key>
 				<string></string>
 				<key>matchcasesensitive</key>
@@ -387,6 +399,23 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>subreddit</string>
+				<key>replacestring</key>
+				<string>r/</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.replace</string>
+			<key>uid</key>
+			<string>08C8544F-3C1A-4014-A843-F5938CE6065A</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -398,6 +427,13 @@
 			<integer>315</integer>
 			<key>ypos</key>
 			<integer>325</integer>
+		</dict>
+		<key>28DA6F5E-E3E5-47E6-A33F-ABD0D4C3732D</key>
+		<dict>
+			<key>xpos</key>
+			<integer>385</integer>
+			<key>ypos</key>
+			<integer>10</integer>
 		</dict>
 		<key>2BC08918-D330-4C1F-8C35-6DF0BFA32353</key>
 		<dict>
@@ -413,12 +449,12 @@
 			<key>ypos</key>
 			<integer>325</integer>
 		</dict>
-		<key>4D03021F-E1AB-4D97-86C5-F753D3FBE9EF</key>
+		<key>4BB637F9-F671-41BA-931D-3C4071E098AA</key>
 		<dict>
 			<key>xpos</key>
-			<integer>220</integer>
+			<integer>200</integer>
 			<key>ypos</key>
-			<integer>95</integer>
+			<integer>45</integer>
 		</dict>
 		<key>5B90E8E8-8DC4-489B-A2F4-056847B40A57</key>
 		<dict>
@@ -444,16 +480,16 @@
 		<key>7BB09A05-4336-4E9E-A01D-AC94DFB9A9BC</key>
 		<dict>
 			<key>xpos</key>
-			<integer>30</integer>
+			<integer>40</integer>
 			<key>ypos</key>
-			<integer>20</integer>
+			<integer>40</integer>
 		</dict>
 		<key>99D98E99-ECA6-4D30-9B09-3DCDAB2B75EB</key>
 		<dict>
 			<key>xpos</key>
-			<integer>315</integer>
+			<integer>540</integer>
 			<key>ypos</key>
-			<integer>10</integer>
+			<integer>55</integer>
 		</dict>
 		<key>B8C7497B-008E-416E-847A-95D31DC2411D</key>
 		<dict>
@@ -461,13 +497,6 @@
 			<integer>40</integer>
 			<key>ypos</key>
 			<integer>245</integer>
-		</dict>
-		<key>C95FF59B-C38D-4A54-B969-087A6FB8A03F</key>
-		<dict>
-			<key>xpos</key>
-			<integer>220</integer>
-			<key>ypos</key>
-			<integer>40</integer>
 		</dict>
 		<key>D0429473-545D-4F8B-9605-BDAEEA519868</key>
 		<dict>
