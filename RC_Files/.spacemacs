@@ -88,9 +88,7 @@ This function should only modify configuration layer settings."
      imenu-list
      lsp
      neotree
-     (org :variables
-          org-enable-jira-support t
-          jiralib-url "https://jira.corp.nortonlifelock.com:443")
+     org
 
      ;; SPC ' runs a shell in a popup buffer
      (shell :variables
@@ -103,9 +101,6 @@ This function should only modify configuration layer settings."
                      spell-checking-enable-by-default nil)
      syntax-checking
      themes-megapack
-     (version-control :variables
-                      version-control-diff-tool 'git-gutter
-                      version-control-diff-side 'left)
 
      ;; Support font ligatures (fancy symbols) in all modes
      ;; 'prog-mode for only programming languages
@@ -117,6 +112,8 @@ This function should only modify configuration layer settings."
      ;; Highlight changes in buffers
      ;; SPC g . transient state for navigating changes
      (version-control :variables
+                      version-control-diff-tool 'git-gutter
+                      version-control-diff-side 'left
                       version-control-diff-tool 'diff-hl
                       version-control-global-margin t)
 
@@ -131,7 +128,6 @@ This function should only modify configuration layer settings."
      python
      ruby
      swift
-
 
      ;; Non-programming language file handling
      csv
