@@ -47,7 +47,6 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     ;; Spacemacs UI Stuff
 
      ;; Add tool tips to show doc string of functions
      ;; Show snippets in the auto-completion popup
@@ -57,7 +56,7 @@ This function should only modify configuration layer settings."
      (auto-completion :variables
                       auto-completion-return-key-behavior 'complete
                       auto-completion-tab-key-behavior 'cycle
-                      auto-completion-enable-help-tooltip 'manual
+                      auto-completion-enable-help-tooltip t
                       auto-completion-enable-sort-by-usage t
                       :disabled-for org)
 
@@ -86,15 +85,75 @@ This function should only modify configuration layer settings."
 
      helpful
      imenu-list
-     lsp
+     (lsp :variables
+          ;; Commented variables are default values in the lsp layer configuration
+
+          ;; Formatting and indentation
+          ;; lsp-enable-on-type-formatting nil
+          ;; Set to nil to use CIDER features instead of LSP UI
+          ;; lsp-enable-indentation nil
+          ;; lsp-enable-completion-at-point nil
+
+          ;; Buffer visual elements
+          ;; shows directory path at top of buffer
+          ;; lsp-headerline-breadcrumb-enable nil
+
+          ;; symbol highlighting - `lsp-toggle-symbol-highlight` toggles highlighting
+          ;; change made to doom-gruvbox-light theme for subtle highlighting
+          ;; lsp-enable-symbol-highlighting t
+
+          ;; Show lint errors in the mode-bar (tested on doom-modeline)
+          ;; lsp-modeline--enable-diagnostics t
+
+          ;; popup documentation boxes
+          ;; lsp-ui-doc-enable nil          ;; disable doc popups
+          ;; lsp-ui-doc-show-with-cursor nil
+          ;; lsp-ui-doc-show-with-mouse t
+          ;; lsp-ui-doc-delay 2
+
+          ;; show code actions and diagnostics text as right-hand side of buffer
+          ;; lsp-ui-sideline-enable nil
+          ;; Is this just display or disabling the actions
+          ;; lsp-modeline-code-actions-enable nil
+          ;; lsp-ui-sideline-show-diagnostics nil
+          ;; When non-nil, the symbol information overlay includes symbol name (redundant for c-modes).
+          ;; lsp-ui-sideline-show-symbol    nil
+
+          ;; show reference count for functions (assume their maybe other lenses in future)
+          ;; lsp-lens-enable t
+
+          ;; Symbol highlighting
+          ;; lsp-enable-symbol-highlighting nil
+          ;; Do not highlight current symbol, only other matches ??  Avoids visual clashing with visual select
+          ;; lsp-symbol-highlighting-skip-current nil
+
+          ;; add a delay to all lsp features, how much does this affect ?
+          ;; lsp-idle-delay 2
+
+          ;; Efficient use of space in treemacs-lsp display
+          treemacs-space-between-root-nodes nil
+
+          ;; lsp-file-watch-threshold 10000
+          )
      neotree
-     org
+
+     ;; Spacemacs Org Mode
+     (org :variables
+          org-enable-github-support t)
 
      ;; SPC ' runs a shell in a popup buffer
      (shell :variables
             shell-default-height 45
             shell-default-position 'top
             shell-default-shell 'vterm)
+
+     ;; Modeline of fancyness
+     (spacemacs-modeline :variables
+                         doom-modeline-height 40
+                         doom-modeline-buffer-file-name-style 'buffer-name
+                         doom-modeline-major-mode-color-icon t
+                         doom-modeline-lsp t
+                         doom-modeline-minor-modes nil)
 
      shell-scripts
      (spell-checking :variables
@@ -113,11 +172,9 @@ This function should only modify configuration layer settings."
      ;; Highlight changes in buffers
      ;; SPC g . transient state for navigating changes
      (version-control :variables
-                      version-control-diff-tool 'git-gutter
+                      version-control-diff-tool 'git-gutter+
                       version-control-diff-side 'left
-                      version-control-diff-tool 'diff-hl
                       version-control-global-margin t)
-
 
      ;; Programming Languages
      common-lisp
@@ -150,7 +207,7 @@ This function should only modify configuration layer settings."
      ;; To use a local version of a package, use the `:location' property:
      ;; '(your-package :location "~/path/to/your-package/")
      ;; Also include the dependencies as they will not be resolved automatically.
-     dotspacemacs-additional-packages '()
+     dotspacemacs-additional-packages '(lsp-sourcekit)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -219,7 +276,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil then verify the signature for downloaded Spacelpa archives.
    ;; (default nil)
-   dotspacemacs-verify-spacelpa-archives nil
+   dotspacemacs-verify-spacelpa-archives t
 
    ;; If non-nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
@@ -257,8 +314,8 @@ It should only modify the values of Spacemacs settings."
    ;; `recents' `bookmarks' `projects' `agenda' `todos'.
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   dotspacemacs-startup-lists '((recents . 7)
-                                (projects . 10))
+   dotspacemacs-startup-lists '((recents . 5)
+                                (projects . 4))
 
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
@@ -291,7 +348,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(doom)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -407,7 +464,7 @@ It should only modify the values of Spacemacs settings."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-active-transparency 90
+   dotspacemacs-active-transparency 100
 
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
@@ -444,13 +501,6 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; (default nil)
    dotspacemacs-line-numbers '(:relative t
-                               :enabled-for-modes prog-mode
-                                                  markdown-mode
-                                                  org-mode
-                                                  text-mode
-                                                  LaTeX-mode
-                                                  latex-mode
-                                                  fundamental-mode
                                :disabled-for-modes dired-mode
                                                    doc-view-mode
                                                    pdf-view-mode)
@@ -573,6 +623,11 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  ;; Customizing themes
+  (setq theming-modifications
+        '((farmhouse-dark
+           (evil-ex-lazy-highlight :background "#cc0000"))))
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Keeping Helm history clean
   (setq history-delete-duplicates t)
@@ -587,14 +642,13 @@ before packages are loaded."
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 
   ;; Swift LSP configuration
-  (eval-after-load 'lsp-mode
+  (with-eval-after-load 'lsp-mode
     (progn
       (require 'lsp-sourcekit)
       (setq lsp-sourcekit-executable
             (string-trim (shell-command-to-string "xcrun --find sourcekit-lsp")))))
 
   (add-hook 'swift-mode-hook (lambda () (lsp)))
-  (with-eval-after-load 'flycheck '(flycheck-swift-setup))
 
   ;; Word wrapping
   (defun my/enable-word-wrap ()
@@ -611,9 +665,14 @@ before packages are loaded."
      '((python . t))))
 
 
-  (setq theming-modifications
-        '((farmhouse-dark
-           (evil-ex-lazy-highlight :background "#cc0000"))))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Magit - forge configuration
+  ;;
+  ;; Set the files that are searched for writing tokens
+  ;; by default ~/.authinfo will be used
+  ;; and write a token in unencrypted format
+  (setq auth-sources '("~/.authinfo.gpg"))
+
 
   ;; End of user-config
   )
@@ -644,7 +703,7 @@ This function is called at the very end of Spacemacs initialization."
      ("flagged" :foreground "#0a9dff")
      ("deleted" :foreground "#ff2c4b" :bold t)))
  '(package-selected-packages
-   '(shrink-path cfrs slack circe oauth2 websocket lsp-ui lsp-python-ms lsp-pyright lsp-origami origami lsp-latex helm-lsp flyspell-correct-helm flyspell-correct auto-dictionary unicode-fonts ucs-utils font-utils persistent-soft pcache ligature keycast csv-mode command-log-mode company-quickhelp seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode dap-mode posframe lsp-treemacs bui treemacs pfuture counsel swiper ivy chruby bundler inf-ruby tern livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc helm-gtags ggtags counsel-gtags add-node-modules-path typit mmt sudoku pacmacs dash-functional 2048-game zenburn-theme zen-and-art-theme yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum white-sand-theme which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit symon swift-mode sunny-day-theme sublime-themes subatomic256-theme subatomic-theme string-inflection spaceline-all-the-icons spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle slim-mode shell-pop seti-theme scss-mode sass-mode reverse-theme restart-emacs rebecca-theme rainbow-mode rainbow-identifiers rainbow-delimiters railscasts-theme pyvenv pytest pyenv-mode py-isort purple-haze-theme pug-mode professional-theme prettier-js popwin planet-theme pippel pipenv pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el password-generator paradox overseer orgit organic-green-theme org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme neotree naquadah-theme nameless mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-svn magit-gitflow madhat2r-theme macrostep lush-theme lorem-ipsum live-py-mode link-hint light-soap-theme kaolin-themes jbeans-theme jazz-theme ir-black-theme insert-shebang inkpot-theme indent-guide importmagic impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md gandalf-theme fuzzy font-lock+ flycheck-bashate flx-ido flatui-theme flatland-theme fish-mode fill-column-indicator farmhouse-theme fancy-battery eziam-theme eyebrowse expand-region exotica-theme evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu espresso-theme eshell-z eshell-prompt-extras esh-help emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav editorconfig dumb-jump dracula-theme dotenv-mode doom-themes doom-modeline django-theme diminish diff-hl define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme dactyl-mode cython-mode cyberpunk-theme counsel-projectile company-web company-statistics company-shell company-emoji company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized color-identifiers-mode clues-theme clean-aindent-mode cherry-blossom-theme centered-cursor-mode busybee-theme bubbleberry-theme browse-at-remote birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ace-window ace-link ace-jump-helm-line ac-ispell))
+   '(ox-gfm grip-mode github-search github-clone with-editor transient magit-section git-commit gist gh marshal logito lsp-sourcekit shrink-path cfrs slack circe oauth2 websocket lsp-ui lsp-python-ms lsp-pyright lsp-origami origami lsp-latex helm-lsp flyspell-correct-helm flyspell-correct auto-dictionary unicode-fonts ucs-utils font-utils persistent-soft pcache ligature keycast csv-mode command-log-mode company-quickhelp seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode dap-mode posframe lsp-treemacs bui treemacs pfuture counsel swiper ivy chruby bundler inf-ruby tern livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc helm-gtags ggtags counsel-gtags add-node-modules-path typit mmt sudoku pacmacs dash-functional 2048-game zenburn-theme zen-and-art-theme yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum white-sand-theme which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit symon swift-mode sunny-day-theme sublime-themes subatomic256-theme subatomic-theme string-inflection spaceline-all-the-icons spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle slim-mode shell-pop seti-theme scss-mode sass-mode reverse-theme restart-emacs rebecca-theme rainbow-mode rainbow-identifiers rainbow-delimiters railscasts-theme pyvenv pytest pyenv-mode py-isort purple-haze-theme pug-mode professional-theme prettier-js popwin planet-theme pippel pipenv pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el password-generator paradox overseer orgit organic-green-theme org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme neotree naquadah-theme nameless mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-svn magit-gitflow madhat2r-theme macrostep lush-theme lorem-ipsum live-py-mode link-hint light-soap-theme kaolin-themes jbeans-theme jazz-theme ir-black-theme insert-shebang inkpot-theme indent-guide importmagic impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md gandalf-theme fuzzy font-lock+ flycheck-bashate flx-ido flatui-theme flatland-theme fish-mode fill-column-indicator farmhouse-theme fancy-battery eziam-theme eyebrowse expand-region exotica-theme evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu espresso-theme eshell-z eshell-prompt-extras esh-help emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav editorconfig dumb-jump dracula-theme dotenv-mode doom-themes doom-modeline django-theme diminish diff-hl define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme dactyl-mode cython-mode cyberpunk-theme counsel-projectile company-web company-statistics company-shell company-emoji company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized color-identifiers-mode clues-theme clean-aindent-mode cherry-blossom-theme centered-cursor-mode busybee-theme bubbleberry-theme browse-at-remote birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ace-window ace-link ace-jump-helm-line ac-ispell))
  '(pdf-view-midnight-colors '("#fdf4c1" . "#1d2021"))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
@@ -673,5 +732,5 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(evil-ex-lazy-highlight ((t (:background "#cc0000")))))
 )
