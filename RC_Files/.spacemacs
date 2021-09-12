@@ -121,13 +121,10 @@ This function should only modify configuration layer settings."
 
      ;; Programming Languages
      common-lisp
-     ;; dash
      emacs-lisp
-     haskell
      html
      javascript
      python
-     ruby
      swift
 
      ;; Non-programming language file handling
@@ -582,11 +579,6 @@ before packages are loaded."
   (setq extended-command-history
         (delq nil (delete-dups extended-command-history)))
 
-
-  ;; Enable the global visual line so that reading is easier
-  ;; (global-visual-line-mode t)
-  ;; (global-visual-fill-column-mode t)
-
   ;; Make evil-mode up/down operate in screen lines instead of logical lines
   (define-key evil-motion-state-map "j" 'evil-next-visual-line)
   (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
@@ -594,31 +586,17 @@ before packages are loaded."
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 
+  ;; Swift LSP configuration
+  (eval-after-load 'lsp-mode
+    (progn
+      (require 'lsp-sourcekit)
+      (setq lsp-sourcekit-executable
+            "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp")))
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Org-mode configuration
-  ;;
-  ;; I should write a toggle function to show descriptive or literate links in Org-mode
-  ;;(setq org-descriptive-links nil)
-  ;;
-  ;; Org-reveal - define were reveal.js files can be found
-  ;; (I place reveal.js files in same directory as I write the org files)
-  ;; (setq org-reveal-root "")
-  ;;
-  ;; Define the location of the file to hold tasks
-  ;; (with-eval-after-load 'org
-    ;; (setq org-default-notes-file "~/Dropbox/todo-list.org"))
+  (add-hook 'swift-mode-hook (lambda () (lsp)))
+  (with-eval-after-load 'flycheck '(flycheck-swift-setup))
 
-
-  ;; SWIFT LSP configuration
-  ;; (eval-after-load 'lsp-mode
-  ;;   (progn
-  ;;     (require 'lsp-sourcekit)
-  ;;     (setq lsp-sourcekit-executable
-  ;;           "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp")))
-
-  ;; (add-hook 'swift-mode-hook (lambda () (lsp)))
-
+  ;; Word wrapping
   (defun my/enable-word-wrap ()
     (setq-local word-wrap t))
   (add-hook 'text-mode-hook #'my/enable-word-wrap)
@@ -632,7 +610,6 @@ before packages are loaded."
      'org-babel-load-languages
      '((python . t))))
 
-  (with-eval-after-load 'flycheck '(flycheck-swift-setup))
 
   (setq theming-modifications
         '((farmhouse-dark
