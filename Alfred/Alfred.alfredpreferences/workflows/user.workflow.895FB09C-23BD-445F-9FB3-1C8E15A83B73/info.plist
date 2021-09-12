@@ -1504,7 +1504,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/usr/local/Cellar/emacs-plus@27/27.1/Emacs.app</string>
+					<string>/Applications/Emacs.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
