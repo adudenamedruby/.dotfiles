@@ -73,6 +73,16 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>3BC704C9-2AD2-4A05-A610-81FC91148460</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>5B90E8E8-8DC4-489B-A2F4-056847B40A57</key>
 		<array>
@@ -169,35 +179,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>fixedorder</key>
-				<false/>
-				<key>items</key>
-				<string>[{"imagefile":"c17f0a2c5d57d3a198c9456c0bacea0af900b752.png","title":"Scott's Bass Lessons","arg":"sbl","subtitle":"Scott's Bass Lessons"},{"imagefile":"43334549915a16f6afcd784dd54a6d98b54cb7f6.png","title":"Discover Double Bass","arg":"ddb","subtitle":"Discover Double Bass"},{"title":"CaliMove","arg":"calimove","subtitle":"Calisthentics"}]</string>
-				<key>keyword</key>
-				<string>teachable</string>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>teach:able</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
-			<key>uid</key>
-			<string>7BB09A05-4336-4E9E-A01D-AC94DFB9A9BC</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -228,14 +209,57 @@
 						<key>uid</key>
 						<string>A736F654-3915-4EFF-813F-FD5E6CE44167</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>ddb</string>
+						<key>outputlabel</key>
+						<string>ddb</string>
+						<key>uid</key>
+						<string>5333932B-66E0-4431-9E1B-B3243AC3A106</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
-				<string>ddb</string>
+				<string></string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
 			<string>4BB637F9-F671-41BA-931D-3C4071E098AA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"imagefile":"c17f0a2c5d57d3a198c9456c0bacea0af900b752.png","title":"Scott's Bass Lessons","arg":"sbl","subtitle":"Scott's Bass Lessons"},{"imagefile":"43334549915a16f6afcd784dd54a6d98b54cb7f6.png","title":"Discover Double Bass","arg":"ddb","subtitle":"Discover Double Bass"},{"title":"CaliMove","arg":"calimove","subtitle":"Calisthentics"}]</string>
+				<key>keyword</key>
+				<string>teachable</string>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>teach:able</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>7BB09A05-4336-4E9E-A01D-AC94DFB9A9BC</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -255,6 +279,25 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>99D98E99-ECA6-4D30-9B09-3DCDAB2B75EB</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://courses.discoverdoublebass.com/courses</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>3BC704C9-2AD2-4A05-A610-81FC91148460</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -424,9 +467,9 @@
 		<key>08C8544F-3C1A-4014-A843-F5938CE6065A</key>
 		<dict>
 			<key>xpos</key>
-			<integer>315</integer>
+			<integer>320</integer>
 			<key>ypos</key>
-			<integer>325</integer>
+			<integer>545</integer>
 		</dict>
 		<key>28DA6F5E-E3E5-47E6-A33F-ABD0D4C3732D</key>
 		<dict>
@@ -438,44 +481,51 @@
 		<key>2BC08918-D330-4C1F-8C35-6DF0BFA32353</key>
 		<dict>
 			<key>xpos</key>
-			<integer>390</integer>
+			<integer>395</integer>
 			<key>ypos</key>
-			<integer>295</integer>
+			<integer>515</integer>
+		</dict>
+		<key>3BC704C9-2AD2-4A05-A610-81FC91148460</key>
+		<dict>
+			<key>xpos</key>
+			<integer>370</integer>
+			<key>ypos</key>
+			<integer>135</integer>
 		</dict>
 		<key>3E862150-95DD-4635-9676-EA949BB6E550</key>
 		<dict>
 			<key>xpos</key>
-			<integer>565</integer>
+			<integer>570</integer>
 			<key>ypos</key>
-			<integer>325</integer>
+			<integer>545</integer>
 		</dict>
 		<key>4BB637F9-F671-41BA-931D-3C4071E098AA</key>
 		<dict>
 			<key>xpos</key>
-			<integer>200</integer>
+			<integer>215</integer>
 			<key>ypos</key>
-			<integer>45</integer>
+			<integer>15</integer>
 		</dict>
 		<key>5B90E8E8-8DC4-489B-A2F4-056847B40A57</key>
 		<dict>
 			<key>xpos</key>
-			<integer>230</integer>
+			<integer>265</integer>
 			<key>ypos</key>
-			<integer>195</integer>
+			<integer>405</integer>
 		</dict>
 		<key>5CDD8E30-2648-4E9F-A259-CCFDDA0DD46E</key>
 		<dict>
 			<key>xpos</key>
-			<integer>680</integer>
+			<integer>685</integer>
 			<key>ypos</key>
-			<integer>295</integer>
+			<integer>515</integer>
 		</dict>
 		<key>6DE4CCD3-7C26-41AD-9DD7-FEA1044236F0</key>
 		<dict>
 			<key>xpos</key>
-			<integer>235</integer>
+			<integer>240</integer>
 			<key>ypos</key>
-			<integer>325</integer>
+			<integer>545</integer>
 		</dict>
 		<key>7BB09A05-4336-4E9E-A01D-AC94DFB9A9BC</key>
 		<dict>
@@ -487,23 +537,23 @@
 		<key>99D98E99-ECA6-4D30-9B09-3DCDAB2B75EB</key>
 		<dict>
 			<key>xpos</key>
-			<integer>540</integer>
+			<integer>525</integer>
 			<key>ypos</key>
-			<integer>55</integer>
+			<integer>70</integer>
 		</dict>
 		<key>B8C7497B-008E-416E-847A-95D31DC2411D</key>
 		<dict>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>45</integer>
 			<key>ypos</key>
-			<integer>245</integer>
+			<integer>465</integer>
 		</dict>
 		<key>D0429473-545D-4F8B-9605-BDAEEA519868</key>
 		<dict>
 			<key>xpos</key>
-			<integer>680</integer>
+			<integer>685</integer>
 			<key>ypos</key>
-			<integer>165</integer>
+			<integer>385</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
