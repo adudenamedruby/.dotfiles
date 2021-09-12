@@ -591,7 +591,7 @@ before packages are loaded."
     (progn
       (require 'lsp-sourcekit)
       (setq lsp-sourcekit-executable
-            "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp")))
+            (string-trim (shell-command-to-string "xcrun --find sourcekit-lsp")))))
 
   (add-hook 'swift-mode-hook (lambda () (lsp)))
   (with-eval-after-load 'flycheck '(flycheck-swift-setup))
