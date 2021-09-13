@@ -670,9 +670,8 @@ before packages are loaded."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Magit - forge configuration
   ;;
-  ;; Set the files that are searched for writing tokens
-  ;; by default ~/.authinfo will be used
-  ;; and write a token in unencrypted format
+  ;; Set the files that are searched for writing tokens by default
+  ;; ~/.authinfo will be used and write a token in unencrypted format
   (setq auth-sources '("~/.authinfo.gpg"))
 
 
