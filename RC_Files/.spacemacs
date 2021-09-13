@@ -152,6 +152,7 @@ This function should only modify configuration layer settings."
                          doom-modeline-height 40
                          doom-modeline-buffer-file-name-style 'buffer-name
                          doom-modeline-major-mode-color-icon t
+                         doom-modeline-vcs-max-length 75
                          doom-modeline-lsp t
                          doom-modeline-minor-modes nil)
 
