@@ -4,11 +4,11 @@
 
 # Install homebrew if it is not installed
 if test ! $(which brew; then
-    	echo "Failed to find HOMEBREW. It must not be installed."
-	echo "Hombrew required to bootstrap system. Attempting to install Homebrew..."
-  	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  	#echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/rbuciu/.zprofile
-    	#eval $(/opt/homebrew/bin/brew shellenv)
+      echo "Failed to find HOMEBREW. It must not be installed."
+  echo "Hombrew required to bootstrap system. Attempting to install Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    #echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/rbuciu/.zprofile
+      #eval $(/opt/homebrew/bin/brew shellenv)
 fi
 
 # Make sure we’re using the latest Homebrew and upgrade installed formulae.
@@ -96,7 +96,7 @@ brew install romkatv/powerlevel10k/powerlevel10k
 
 # Emacs
 brew tap d12frosted/emacs-plus
-brew install emacs-plus@27 --with-spacemacs-icon
+brew install emacs-plus@27 --with-modern-sexy-v1-icon
 brew link emacs-plus
 #ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
 

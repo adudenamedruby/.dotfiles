@@ -1,6 +1,6 @@
 # What dis?
 
-Here you'll find my dotfiles repo, my setup/keybinding preferences, and a fun script for bootstrapping your whole system from fresh. 
+Here you'll find my dotfiles repo, my setup/keybinding preferences, and a fun script for bootstrapping your whole system from fresh.
 All nice and neat.
 
 It's a work in progress, however, and is likely to change frequently.
@@ -18,7 +18,7 @@ It's a work in progress, however, and is likely to change frequently.
 - Download apps you want from App Store
     - Xcode
       - Once installed, open to install tools!
-    - 1Password (also get safari/crome extension)
+    - 1Password
 
 ### Next, let's setup the terminal becasue this setup breaks automation:
 - ZSH
@@ -47,6 +47,9 @@ It's a work in progress, however, and is likely to change frequently.
 
 ### Spacemacs
 - Spacemacs install instructions if things didn't go right otherwise: https://github.com/syl20bnr/spacemacs (Install dev branch (if stable))
+- Additional steps, to be done from M-x:
+    - LSP: Once Spacemacs is open, run: `package-install lsp-sourcekit`
+    - Also: `all-the-icons-fonts`
 
 ### Almost done!
 - Run `brew doctor` to see any issues and fix them as needed
