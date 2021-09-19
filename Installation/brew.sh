@@ -27,7 +27,7 @@ brew upgrade
 
 brew install git
 brew install fzf
-/usr/local/opt/fzf/install
+$(brew --prefix)/opt/fzf/install
 brew install coreutils
 brew install the_silver_searcher # AG
 brew install openssh
