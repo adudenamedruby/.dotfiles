@@ -143,7 +143,7 @@ This function should only modify configuration layer settings."
 
      ;; SPC ' runs a shell in a popup buffer
      (shell :variables
-            shell-default-height 45
+            shell-default-height 60
             shell-default-position 'top
             shell-default-shell 'vterm)
 
@@ -628,7 +628,8 @@ before packages are loaded."
   ;; Customizing themes
   (setq theming-modifications
         '((farmhouse-dark
-           (evil-ex-lazy-highlight :background "#cc0000"))))
+           (evil-ex-lazy-highlight :background "#cc0000")
+           (iedit-occurrence :background "#7510F0"))))
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Keeping Helm history clean

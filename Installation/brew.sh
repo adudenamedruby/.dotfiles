@@ -3,12 +3,11 @@
 # Install command-line tools using Homebrew.
 
 # Install homebrew if it is not installed
-if test ! $(which brew; then
-      echo "Failed to find HOMEBREW. It must not be installed."
-  echo "Hombrew required to bootstrap system. Attempting to install Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    #echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/rbuciu/.zprofile
-      #eval $(/opt/homebrew/bin/brew shellenv)
+
+which -s brew
+if [[ $? != 0 ]] ; then
+    # Install Homebrew
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # Make sure we’re using the latest Homebrew and upgrade installed formulae.
