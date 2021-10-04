@@ -26,7 +26,7 @@ brew upgrade
 
 brew install git
 brew install fzf
-/usr/local/opt/fzf/install
+$(brew --prefix)/opt/fzf/install
 brew install coreutils
 brew install the_silver_searcher # AG
 brew install openssh
@@ -90,9 +90,6 @@ brew install --cask alfred
 # Rectangle - window management
 brew install --cask rectangle
 
-# Powerline10k
-brew install romkatv/powerlevel10k/powerlevel10k
-
 # Emacs
 brew tap d12frosted/emacs-plus
 brew install emacs-plus@27 --with-modern-sexy-v1-icon
@@ -127,11 +124,13 @@ brew install --cask font-inconsolata-for-powerline
 brew install --cask font-inconsolata-nerd-font
 
 # Get ZSH syntax highlighting
-brew install zsh-syntax-highlighting
+#brew install zsh-syntax-highlighting
 
 # Get ZSH auto-completions
-brew install zsh-completions
+#brew install zsh-completions
 
+# Powerline10k
+brew install romkatv/powerlevel10k/powerlevel10k
 
 # ---------------------------------------------
 # Terminal gimmicks xD
