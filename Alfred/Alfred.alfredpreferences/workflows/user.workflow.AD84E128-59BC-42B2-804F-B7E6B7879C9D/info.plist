@@ -238,6 +238,18 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>514020CF-AE35-4D0B-A3D2-944065653943</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>AA81B7F8-B369-47CE-808A-DE691896BD42</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>E668EADC-390E-4C6E-B240-F50084C599CA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -985,6 +997,20 @@
 						<key>uid</key>
 						<string>5C748A1C-D132-42C5-8391-AE056594F6D9</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>dataReview</string>
+						<key>outputlabel</key>
+						<string>data review</string>
+						<key>uid</key>
+						<string>AA81B7F8-B369-47CE-808A-DE691896BD42</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
@@ -1101,7 +1127,7 @@
 				<key>fixedorder</key>
 				<true/>
 				<key>items</key>
-				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"People","arg":"people","subtitle":"People Directory"},{"title":"ADP","arg":"adp","subtitle":"Payroll Information"},{"title":"WorkDay","arg":"workday","subtitle":"Open WorkDay"},{"title":"Account","arg":"account","subtitle":"Account Management Portal"},{"title":"Air Mozilla","arg":"air","subtitle":"Watch Mozilla content"},{"title":"Gear Store","arg":"gear","subtitle":"Buy fun Mozilla merch!"},{"title":"Mana","arg":"mana","subtitle":"Mozilla Internal Wiki"},{"title":"MANA Search","arg":"search","subtitle":"Do an advanced MANA search"},{"title":"Udemy","arg":"udemy","subtitle":"Learning is fun!"},{"title":"Service Now","arg":"service","subtitle":"For all your Mozilla needs"},{"title":"The Hub","arg":"hub","subtitle":"For all your gear needs"},{"title":"PTO","arg":"pto","subtitle":"Personal Time Off - Take a break!"},{"title":"discourse","arg":"discourse","subtitle":"Chat about stuff!"},{"title":"Element","arg":"element","subtitle":"Element board"},{"title":"Bitrise","arg":"bitrise","subtitle":"CI pipeline"},{"title":"Bugzilla","arg":"bugzilla","subtitle":"Report pesky bugs..."},{"title":"Matrix","arg":"matrix","subtitle":"Matrix chat"},{"title":"Moderator","arg":"moderator","subtitle":"Ask questions for events"},{"title":"Retrium","arg":"retrium","subtitle":"Retro moderating tool"},{"title":"Figma","arg":"figma","subtitle":"Figma design systems"},{"title":"Wiki","arg":"wiki","subtitle":"Mozilla Wiki"},{"title":"Sentry","arg":"sentry","subtitle":"Crash reporting dashboard"},{"title":"Looker","arg":"looker","subtitle":"Metrics interpretation"},{"title":"gleandict","arg":"gleandict","subtitle":"Glean Dictionary Alpha"},{"title":"CultureAmp","arg":"cultureamp","subtitle":"Culture Amp"},{"title":"greenhouse","arg":"greenhouse","subtitle":"Greenhouse interviewing center"}]</string>
+				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"People","arg":"people","subtitle":"People Directory"},{"title":"ADP","arg":"adp","subtitle":"Payroll Information"},{"title":"WorkDay","arg":"workday","subtitle":"Open WorkDay"},{"title":"Account","arg":"account","subtitle":"Account Management Portal"},{"title":"Air Mozilla","arg":"air","subtitle":"Watch Mozilla content"},{"title":"Gear Store","arg":"gear","subtitle":"Buy fun Mozilla merch!"},{"title":"Mana","arg":"mana","subtitle":"Mozilla Internal Wiki"},{"title":"MANA Search","arg":"search","subtitle":"Do an advanced MANA search"},{"title":"Udemy","arg":"udemy","subtitle":"Learning is fun!"},{"title":"Service Now","arg":"service","subtitle":"For all your Mozilla needs"},{"title":"The Hub","arg":"hub","subtitle":"For all your gear needs"},{"title":"PTO","arg":"pto","subtitle":"Personal Time Off - Take a break!"},{"title":"discourse","arg":"discourse","subtitle":"Chat about stuff!"},{"title":"Element","arg":"element","subtitle":"Element board"},{"title":"Bitrise","arg":"bitrise","subtitle":"CI pipeline"},{"title":"Bugzilla","arg":"bugzilla","subtitle":"Report pesky bugs..."},{"title":"Matrix","arg":"matrix","subtitle":"Matrix chat"},{"title":"Moderator","arg":"moderator","subtitle":"Ask questions for events"},{"title":"Retrium","arg":"retrium","subtitle":"Retro moderating tool"},{"title":"Figma","arg":"figma","subtitle":"Figma design systems"},{"title":"Wiki","arg":"wiki","subtitle":"Mozilla Wiki"},{"title":"Sentry","arg":"sentry","subtitle":"Crash reporting dashboard"},{"title":"Looker","arg":"looker","subtitle":"Metrics interpretation"},{"title":"gleandict","arg":"gleandict","subtitle":"Glean Dictionary Alpha"},{"title":"CultureAmp","arg":"cultureamp","subtitle":"Culture Amp"},{"title":"greenhouse","arg":"greenhouse","subtitle":"Greenhouse interviewing center"},{"title":"Data Review","arg":"dataReview","subtitle":"mazilla\/data-review repo"}]</string>
 				<key>keyword</key>
 				<string>moz</string>
 				<key>runningsubtext</key>
@@ -1345,6 +1371,25 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>ECEA00DE-1701-4842-B07C-3F01B6D1A817</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://github.com/mozilla/data-review</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>514020CF-AE35-4D0B-A3D2-944065653943</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1868,6 +1913,13 @@
 			<integer>440</integer>
 			<key>ypos</key>
 			<integer>1775</integer>
+		</dict>
+		<key>514020CF-AE35-4D0B-A3D2-944065653943</key>
+		<dict>
+			<key>xpos</key>
+			<integer>925</integer>
+			<key>ypos</key>
+			<integer>980</integer>
 		</dict>
 		<key>63FD0DC9-9AE5-4AD9-AB6E-F438D578C2FA</key>
 		<dict>
