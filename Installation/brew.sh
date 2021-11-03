@@ -52,6 +52,12 @@ brew install libvterm
 # SwiftLint
 brew install swiftlint
 
+# SVN
+brew install svn
+
+# SVN
+brew install zsh-syntax-highlighting
+
 # ---------------------------------------------
 # Programming Languages
 # ---------------------------------------------
@@ -122,12 +128,6 @@ brew install --cask font-hack-nerd-font
 brew install --cask font-inconsolata
 brew install --cask font-inconsolata-for-powerline
 brew install --cask font-inconsolata-nerd-font
-
-# Get ZSH syntax highlighting
-#brew install zsh-syntax-highlighting
-
-# Get ZSH auto-completions
-#brew install zsh-completions
 
 # Powerline10k
 brew install romkatv/powerlevel10k/powerlevel10k

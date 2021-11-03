@@ -80,3 +80,6 @@ alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# get rid of a file that's really annoying.
+alias metrics="rm ~/Code/src/git/firefox-ios/Client/Generated/Metrics.swift"
