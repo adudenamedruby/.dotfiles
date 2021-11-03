@@ -2,22 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>hideAfterSelectingSong</key>
-	<false/>
-	<key>hotkey</key>
+	<key>default</key>
 	<dict>
 		<key>key</key>
-		<integer>-1</integer>
+		<integer>49</integer>
 		<key>mod</key>
-		<integer>-1</integer>
+		<integer>262144</integer>
 		<key>string</key>
-		<string></string>
+		<string> </string>
 	</dict>
-	<key>keywordEnabled</key>
-	<false/>
-	<key>largerRandomAlbumsOnly</key>
-	<false/>
-	<key>showPlaylists</key>
-	<false/>
 </dict>
 </plist>
