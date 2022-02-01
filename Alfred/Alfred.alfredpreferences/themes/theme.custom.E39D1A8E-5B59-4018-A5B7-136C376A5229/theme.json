@@ -1,0 +1,63 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 8,
+      "subtext" : {
+        "size" : 11,
+        "colorSelected" : "#54BE5AFF",
+        "font" : "Source Code Pro",
+        "color" : "#69878FFF"
+      },
+      "shortcut" : {
+        "size" : 24,
+        "colorSelected" : "#E1404AFF",
+        "font" : "Source Code Pro",
+        "color" : "#8B86CEFF"
+      },
+      "backgroundSelected" : "#282B35FF",
+      "text" : {
+        "size" : 20,
+        "colorSelected" : "#FFFFFFFF",
+        "font" : "Source Code Pro",
+        "color" : "#D08E5DFF"
+      },
+      "iconPaddingHorizontal" : 5,
+      "roundness" : 0,
+      "paddingVertical" : 8,
+      "iconSize" : 40
+    },
+    "separator" : {
+      "color" : "#282B35FF",
+      "thickness" : 1
+    },
+    "search" : {
+      "backgroundSelected" : "#B5D5FFFF",
+      "paddingHorizontal" : 8,
+      "spacing" : 10,
+      "text" : {
+        "size" : 36,
+        "colorSelected" : "#000000FF",
+        "font" : "Source Code Pro",
+        "color" : "#BF369AFF"
+      },
+      "background" : "#282B35FF",
+      "roundness" : 0,
+      "paddingVertical" : 2
+    },
+    "scrollbar" : {
+      "color" : "#918F75FF",
+      "thickness" : 2
+    },
+    "name" : "Dusk (v3)",
+    "window" : {
+      "color" : "#282B35FF",
+      "paddingHorizontal" : 10,
+      "width" : 680,
+      "borderPadding" : 10,
+      "borderColor" : "#E1404900",
+      "blur" : 0,
+      "roundness" : 3,
+      "paddingVertical" : 10
+    }
+  }
+}

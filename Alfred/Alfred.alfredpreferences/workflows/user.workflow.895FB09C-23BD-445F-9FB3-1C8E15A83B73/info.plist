@@ -1456,7 +1456,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Fantastical.app</string>
+					<string>/System/Applications/Calendar.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1824,7 +1824,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Xcode.app</string>
+					<string>/Applications/Xcode1321.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
