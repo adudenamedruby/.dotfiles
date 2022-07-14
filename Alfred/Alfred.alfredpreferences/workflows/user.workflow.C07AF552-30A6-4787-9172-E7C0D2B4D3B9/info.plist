@@ -1135,9 +1135,9 @@
 						<key>matchmode</key>
 						<integer>0</integer>
 						<key>matchstring</key>
-						<string>issues</string>
+						<string>wiki</string>
 						<key>outputlabel</key>
-						<string>issues</string>
+						<string>wiki</string>
 						<key>uid</key>
 						<string>9CED3B2A-DCB7-47D7-A10C-E5EC66CFD145</string>
 					</dict>
