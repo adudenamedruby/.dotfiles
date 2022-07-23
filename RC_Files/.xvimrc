@@ -15,8 +15,8 @@ set ignorecase
 set smartcase
 
 " numbering
-" set number
-" set relativenumber
+set number
+set relativenumber
 
 " Use the system pasteboard
 set clipboard=unnamed
@@ -45,8 +45,7 @@ nmap <space>wv :xcmenucmd Editor<CR>
 nmap <space>ws :xcmenucmd Change Editor Orientation<CR>
 nmap <space>wd :xcmenucmd Close Editor<CR>
 nmap <space>wm :xcmenucmd Close Other Editors<CR>
-nmap <space>wo :xcmenucmd Hide Code Review<CR>
-nmap <space>wg :xcmenucmd Show Code Review<CR>
+nmap <space>gs :xcmenucmd Show Code Review<CR>
 
 " Window navigation
 nmap <space>wh <C-w>h
@@ -56,26 +55,40 @@ nmap <space>wk <C-w>k
 
 " File commands
 nmap <space>fs :xcmenucmd Save<CR>
-nmap <space>ff :xcmenucmd File...<CR>
-nmap <space>fe :xcmenucmd Export...<CR>
-
-" Navigation
-nmap <space>pt :xcmenucmd Reveal in Project Navigator<CR>
 
 " Search commands
+nmap <space>pt :xcmenucmd Reveal in Project Navigator<CR>
 nmap <space>pf :xcmenucmd Open Quickly...<CR>
 nmap <space>/ :xcmenucmd Open Quickly...<CR>
-nmap <space>sap :xcmenucmd Find in Workspace...<CR>
+nmap <space>sap :xcmenucmd Find in Project...<CR>
 nmap <space>* viw:xccmd findSelectedSymbolInWorkspace<CR>
 
-" Compilation commands
+" Jumping
+nmap gd :xcmenucmd Jump to Definition<CR>
+nmap gc :xcmenucmd Show Code Actions<CR>
+
+" Running & Building
 nmap <space>cr :xcmenucmd Run<CR>
+nmap <space>cb :xcmenucmd Build<CR>
+
+" Testing
 nmap <space>ct :xcmenucmd Test<CR>
-nmap <space>cb :xcmenucmd Bulid<CR>
-nmap <space>cc :xcmenucmd Clean Build Folder<CR>
+nmap <space>cta :xcmenucmd Test Again<CR>
+nmap <space>cts :xcmenucmd Test Selected Items<CR>
+
+" Cleaning
+nmap <space>ctk :xcmenucmd Clean Test Results<CR>
+nmap <space>ck :xcmenucmd Clean Build Folder<CR>
 
 " Toggles
 nmap <space>tb viw:xccmd toggleBreakpointAtCurrentLine<CR>
+nmap <space>ta :xcmenucmd Authors<CR>
+nmap <space>tc :xcmenucmd Code Coverage<CR>
+nmap <space>tm :xcmenucmd Minimap<CR>
+nmap <space>tn :xcmenucmd Show Navigator<CR>
+nmap <space>ti :xcmenucmd Show Inspector<CR>
+nmap <space>td :xcmenucmd Show Debug Area<CR>
+nmap <space>tw :xcmenucmd Invisibles<CR>
 
-" Miscellaneous commands
+" Quitting
 nmap <space>qq :xcmenucmd Quit Xcode<CR>
