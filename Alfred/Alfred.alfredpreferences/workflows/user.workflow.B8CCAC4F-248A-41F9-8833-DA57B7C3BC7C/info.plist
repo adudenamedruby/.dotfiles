@@ -8,78 +8,90 @@
 	<string>Internet</string>
 	<key>connections</key>
 	<dict>
-		<key>B8D27235-8544-4201-9CF4-656018F7A76C</key>
+		<key>97AC872B-9537-4037-942C-EE8373A99EFC</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>934326ED-C941-4526-B0A7-4E15E8CC8D26</string>
+				<string>B476455C-04B4-407B-918D-A4A5C419626E</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
-				<key>sourceoutputuid</key>
-				<string>8CD38659-3E7D-4C9D-80F9-0027BEEB5898</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>EE53BF97-24E4-42C0-B69C-69D62AD6927C</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>02CD6841-AFFC-4F9C-A7DD-8BC465E97079</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>1FA2617D-9374-4FCD-B995-8E1088023B69</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>7257093A-0119-471E-AD69-25F1B483AAE3</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>34F3B8CE-2774-4C3A-89B9-46C0725DA052</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>FCCB9DA5-1F2E-4CF4-9D63-B0B66C1525AE</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>A6B4EAE9-C29E-45AC-8CE5-276AC6FEAEA0</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>3779B4B9-5432-4382-B743-ABECCD59E3D7</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
 		</array>
-		<key>E8F47979-5269-492F-865B-0F6630808B74</key>
+		<key>B476455C-04B4-407B-918D-A4A5C419626E</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>B8D27235-8544-4201-9CF4-656018F7A76C</string>
+				<string>2A716061-3D41-4EA3-9F12-3A4A33BB54BB</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>sourceoutputuid</key>
+				<string>560611B2-16EC-4725-9CE6-31B337234864</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>AFC164BA-1FF2-48C3-9046-D70891861D78</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>690D542F-2B64-4ACA-A5A6-7404CFA8B441</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>03A97013-8FFA-44CE-A673-CDBD5E5A1DF8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>C1A5B283-5C90-4586-B61E-4196936887AE</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>837C8489-D767-435B-9975-5C9A846226DD</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>5724FE9E-F406-47AB-A380-B5A3E86D0D55</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>C12E120D-DA9D-405A-B6F5-769322782006</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>34500F70-E5BB-411F-B015-4C36A2752A96</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>A5324E89-53BD-4F39-B285-5FFA73E2A930</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>8EBF4EE3-2539-4080-8A9D-3516323522B1</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -92,7 +104,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Apple Development</string>
+	<string>Google</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -107,12 +119,12 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://appleid.apple.com/#!&amp;page=signin</string>
+				<string>https://docs.google.com/spreadsheets/u/0/</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>934326ED-C941-4526-B0A7-4E15E8CC8D26</string>
+			<string>2A716061-3D41-4EA3-9F12-3A4A33BB54BB</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -128,12 +140,12 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://idmsa.apple.com/IDMSWebAuth/signin?appIdKey=891bd3417a7776362562d2197f89480a8547b108fd934911bcbea0110d07f757&amp;path=%2Faccount%2F&amp;rv=1</string>
+				<string>https://docs.google.com/document/u/0/</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>EE53BF97-24E4-42C0-B69C-69D62AD6927C</string>
+			<string>AFC164BA-1FF2-48C3-9046-D70891861D78</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -150,53 +162,11 @@
 						<key>matchmode</key>
 						<integer>0</integer>
 						<key>matchstring</key>
-						<string>id</string>
+						<string>sheets</string>
 						<key>outputlabel</key>
-						<string>id</string>
+						<string>sheets</string>
 						<key>uid</key>
-						<string>8CD38659-3E7D-4C9D-80F9-0027BEEB5898</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>developer</string>
-						<key>outputlabel</key>
-						<string>developer</string>
-						<key>uid</key>
-						<string>02CD6841-AFFC-4F9C-A7DD-8BC465E97079</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>connect</string>
-						<key>outputlabel</key>
-						<string>connect</string>
-						<key>uid</key>
-						<string>7257093A-0119-471E-AD69-25F1B483AAE3</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>xcodereleases</string>
-						<key>outputlabel</key>
-						<string>xcodereleases</string>
-						<key>uid</key>
-						<string>FCCB9DA5-1F2E-4CF4-9D63-B0B66C1525AE</string>
+						<string>560611B2-16EC-4725-9CE6-31B337234864</string>
 					</dict>
 					<dict>
 						<key>inputstring</key>
@@ -210,7 +180,63 @@
 						<key>outputlabel</key>
 						<string>docs</string>
 						<key>uid</key>
-						<string>3779B4B9-5432-4382-B743-ABECCD59E3D7</string>
+						<string>690D542F-2B64-4ACA-A5A6-7404CFA8B441</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>cal</string>
+						<key>outputlabel</key>
+						<string>calendar</string>
+						<key>uid</key>
+						<string>C1A5B283-5C90-4586-B61E-4196936887AE</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>translate</string>
+						<key>outputlabel</key>
+						<string>translate</string>
+						<key>uid</key>
+						<string>5724FE9E-F406-47AB-A380-B5A3E86D0D55</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>maps</string>
+						<key>outputlabel</key>
+						<string>maps</string>
+						<key>uid</key>
+						<string>34500F70-E5BB-411F-B015-4C36A2752A96</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>drive</string>
+						<key>outputlabel</key>
+						<string>drive</string>
+						<key>uid</key>
+						<string>8EBF4EE3-2539-4080-8A9D-3516323522B1</string>
 					</dict>
 				</array>
 				<key>elselabel</key>
@@ -221,7 +247,7 @@
 			<key>type</key>
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
-			<string>B8D27235-8544-4201-9CF4-656018F7A76C</string>
+			<string>B476455C-04B4-407B-918D-A4A5C419626E</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -237,12 +263,12 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://appstoreconnect.apple.com</string>
+				<string>https://calendar.google.com/calendar/u/0/r?tab=ic</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>1FA2617D-9374-4FCD-B995-8E1088023B69</string>
+			<string>03A97013-8FFA-44CE-A673-CDBD5E5A1DF8</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -256,9 +282,9 @@
 				<key>fixedorder</key>
 				<true/>
 				<key>items</key>
-				<string>[{"title":"Apple ID","arg":"id","subtitle":"Apple ID sign in page"},{"imagefile":"3f1d0507e71fb803e0f3311329cece7b70b0158e.png","title":"Developer","arg":"developer","subtitle":"Developer portal"},{"imagefile":"b262f02f037e00223d1ee5f31e3673f834e3c071.png","title":"App Store Connect","arg":"connect","subtitle":"Previously iTunesConnect"},{"title":"XcodeReleases","arg":"xcodereleases"},{"title":"Developer Documentation","arg":"docs","subtitle":"Apple's Online Dev Docs"}]</string>
+				<string>[{"imagefile":"aba71fdcd77a8ca0dc9f08a87f80d4692b176c9d.png","title":"sheets","arg":"sheets","subtitle":"Google Sheets"},{"imagefile":"4057a99cb36f9cd2711a902f8fcd2315333d2863.png","title":"docs","arg":"docs","subtitle":"Google Docs"},{"imagefile":"180eca95559bb51a91394b8fcd706d3d3597023f.png","title":"cal","arg":"cal","subtitle":"Google Calendar"},{"imagefile":"f6219655bdd4f4c67aecb2bd7ca47b7831c7e8c7.png","title":"translate","arg":"translate","subtitle":"Google Translate"},{"imagefile":"23c8405db17c0a858061ea034c5e9936d41d6858.png","title":"maps","arg":"maps","subtitle":"Google Maps"},{"imagefile":"a3365f7ebe4d91ad2c492979a9733054b1f6a9d3.png","title":"drive","arg":"drive","subtitle":"Google Drive"}]</string>
 				<key>keyword</key>
-				<string>apple</string>
+				<string>g</string>
 				<key>matchmode</key>
 				<integer>0</integer>
 				<key>runningsubtext</key>
@@ -266,14 +292,14 @@
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>Apple</string>
+				<string>google</string>
 				<key>withspace</key>
 				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.listfilter</string>
 			<key>uid</key>
-			<string>E8F47979-5269-492F-865B-0F6630808B74</string>
+			<string>97AC872B-9537-4037-942C-EE8373A99EFC</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -289,12 +315,12 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://xcodereleases.com/</string>
+				<string>https://translate.google.ca/?hl=en</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>34F3B8CE-2774-4C3A-89B9-46C0725DA052</string>
+			<string>837C8489-D767-435B-9975-5C9A846226DD</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -310,12 +336,33 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://developer.apple.com/documentation/</string>
+				<string>https://www.google.ca/maps?hl=en&amp;tab=cl</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>A6B4EAE9-C29E-45AC-8CE5-276AC6FEAEA0</string>
+			<string>C12E120D-DA9D-405A-B6F5-769322782006</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://drive.google.com/drive/my-drive</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>A5324E89-53BD-4F39-B285-5FFA73E2A930</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -324,54 +371,61 @@
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>1FA2617D-9374-4FCD-B995-8E1088023B69</key>
+		<key>03A97013-8FFA-44CE-A673-CDBD5E5A1DF8</key>
 		<dict>
 			<key>xpos</key>
-			<real>455</real>
+			<real>660</real>
 			<key>ypos</key>
-			<real>445</real>
+			<real>265</real>
 		</dict>
-		<key>34F3B8CE-2774-4C3A-89B9-46C0725DA052</key>
+		<key>2A716061-3D41-4EA3-9F12-3A4A33BB54BB</key>
 		<dict>
 			<key>xpos</key>
-			<real>455</real>
-			<key>ypos</key>
-			<real>550</real>
-		</dict>
-		<key>934326ED-C941-4526-B0A7-4E15E8CC8D26</key>
-		<dict>
-			<key>xpos</key>
-			<real>455</real>
-			<key>ypos</key>
-			<real>230</real>
-		</dict>
-		<key>A6B4EAE9-C29E-45AC-8CE5-276AC6FEAEA0</key>
-		<dict>
-			<key>xpos</key>
-			<real>530</real>
-			<key>ypos</key>
-			<real>765</real>
-		</dict>
-		<key>B8D27235-8544-4201-9CF4-656018F7A76C</key>
-		<dict>
-			<key>xpos</key>
-			<real>200</real>
-			<key>ypos</key>
-			<real>440</real>
-		</dict>
-		<key>E8F47979-5269-492F-865B-0F6630808B74</key>
-		<dict>
-			<key>xpos</key>
-			<real>30</real>
-			<key>ypos</key>
-			<real>450</real>
-		</dict>
-		<key>EE53BF97-24E4-42C0-B69C-69D62AD6927C</key>
-		<dict>
-			<key>xpos</key>
-			<real>455</real>
-			<key>ypos</key>
 			<real>340</real>
+			<key>ypos</key>
+			<real>210</real>
+		</dict>
+		<key>837C8489-D767-435B-9975-5C9A846226DD</key>
+		<dict>
+			<key>xpos</key>
+			<real>820</real>
+			<key>ypos</key>
+			<real>290</real>
+		</dict>
+		<key>97AC872B-9537-4037-942C-EE8373A99EFC</key>
+		<dict>
+			<key>xpos</key>
+			<real>20</real>
+			<key>ypos</key>
+			<real>280</real>
+		</dict>
+		<key>A5324E89-53BD-4F39-B285-5FFA73E2A930</key>
+		<dict>
+			<key>xpos</key>
+			<real>1100</real>
+			<key>ypos</key>
+			<real>350</real>
+		</dict>
+		<key>AFC164BA-1FF2-48C3-9046-D70891861D78</key>
+		<dict>
+			<key>xpos</key>
+			<real>495</real>
+			<key>ypos</key>
+			<real>235</real>
+		</dict>
+		<key>B476455C-04B4-407B-918D-A4A5C419626E</key>
+		<dict>
+			<key>xpos</key>
+			<real>190</real>
+			<key>ypos</key>
+			<real>240</real>
+		</dict>
+		<key>C12E120D-DA9D-405A-B6F5-769322782006</key>
+		<dict>
+			<key>xpos</key>
+			<real>960</real>
+			<key>ypos</key>
+			<real>320</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>

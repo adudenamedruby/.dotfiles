@@ -1,0 +1,64 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 7,
+      "subtext" : {
+        "size" : 12,
+        "colorSelected" : "#FFF7D7BE",
+        "font" : "Fira Code Light Regular",
+        "color" : "#FFF7D740"
+      },
+      "shortcut" : {
+        "size" : 17,
+        "colorSelected" : "#EFCE73FF",
+        "font" : "Fira Code Light Regular",
+        "color" : "#35373BFF"
+      },
+      "backgroundSelected" : "#5D512EFF",
+      "text" : {
+        "size" : 19,
+        "colorSelected" : "#EFCE73FF",
+        "font" : "Fira Code Light Regular",
+        "color" : "#DFD9AABE"
+      },
+      "iconPaddingHorizontal" : 10,
+      "roundness" : 7,
+      "paddingVertical" : 9,
+      "iconSize" : 40
+    },
+    "search" : {
+      "backgroundSelected" : "#B2D7FFFF",
+      "paddingHorizontal" : 8,
+      "spacing" : 10,
+      "text" : {
+        "size" : 44,
+        "colorSelected" : "#000000FF",
+        "font" : "Fira Code Light Regular",
+        "color" : "#F6CE55FF"
+      },
+      "background" : "#05080AD5",
+      "roundness" : 7,
+      "paddingVertical" : 7
+    },
+    "window" : {
+      "color" : "#05080AE4",
+      "paddingHorizontal" : 18,
+      "width" : 701,
+      "borderPadding" : 0,
+      "borderColor" : "#F6CE55FF",
+      "blur" : 0,
+      "roundness" : 7,
+      "paddingVertical" : 15
+    },
+    "visualEffectMode" : 2,
+    "separator" : {
+      "color" : "#FBFCFF19",
+      "thickness" : 0
+    },
+    "scrollbar" : {
+      "color" : "#EFCE73FF",
+      "thickness" : 2
+    },
+    "name" : "Deus Ex v2"
+  }
+}

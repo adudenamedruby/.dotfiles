@@ -36,12 +36,12 @@
         "font" : "Hack Regular Nerd Font Complete Mono",
         "color" : "#F645C9FF"
       },
-      "background" : "#282B35FF",
+      "background" : "#282B34FF",
       "roundness" : 0,
       "paddingVertical" : 2
     },
     "window" : {
-      "color" : "#282B35FF",
+      "color" : "#282B34FF",
       "paddingHorizontal" : 10,
       "width" : 680,
       "borderPadding" : 0,
@@ -50,7 +50,7 @@
       "roundness" : 7,
       "paddingVertical" : 10
     },
-    "credit" : "Gonsie",
+    "visualEffectMode" : 2,
     "separator" : {
       "color" : "#282B35FF",
       "thickness" : 1
@@ -59,6 +59,6 @@
       "color" : "#918F75FF",
       "thickness" : 2
     },
-    "name" : "Dusk (v2)"
+    "name" : "Dusk (v3)"
   }
 }

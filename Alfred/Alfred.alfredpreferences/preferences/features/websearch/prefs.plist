@@ -35,13 +35,11 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyword</key>
-			<string>bb</string>
+			<string>bloodborne</string>
 			<key>text</key>
 			<string>SpeedSouls: BloodBorne</string>
 			<key>url</key>
 			<string>https://wiki.speedsouls.com/Bloodborne</string>
-			<key>utf8</key>
-			<true/>
 		</dict>
 		<key>54D51F72-C559-49D6-9DBD-C09A2486E2C7</key>
 		<dict>

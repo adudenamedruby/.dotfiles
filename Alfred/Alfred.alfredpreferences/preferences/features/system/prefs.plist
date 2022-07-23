@@ -14,8 +14,12 @@
 	<false/>
 	<key>quitallKeywordEnabled</key>
 	<false/>
+	<key>restartConfirm</key>
+	<true/>
 	<key>showtrashKeyword</key>
 	<string>show trash</string>
+	<key>shutdownConfirm</key>
+	<true/>
 	<key>sleepdisplaysKeywordEnabled</key>
 	<false/>
 	<key>volumedownKeywordEnabled</key>
