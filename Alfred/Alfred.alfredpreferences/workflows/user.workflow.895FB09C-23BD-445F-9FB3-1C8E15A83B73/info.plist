@@ -73,19 +73,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>33957F02-F913-4FBA-826A-2EBAAA564A50</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>80B66471-DDEE-4A7D-9F03-C461B1FC984B</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>3EE01843-348E-4B73-A4C1-907B2D4E1C30</key>
 		<array/>
 		<key>4092C2D6-8166-486F-9A5C-85999A2B3152</key>
@@ -179,31 +166,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>80B66471-DDEE-4A7D-9F03-C461B1FC984B</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>002D19AA-745C-47EC-AE13-9D354AE1C14A</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>58E6CADC-3764-4A33-B59E-4658B9B68569</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>3B773FC2-26CD-410C-A360-1BD4CE54AD68</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>89D2A96A-2328-4181-9DBB-C0C7C26EDEE7</key>
 		<array>
 			<dict>
@@ -233,7 +195,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>33957F02-F913-4FBA-826A-2EBAAA564A50</string>
+				<string>002D19AA-745C-47EC-AE13-9D354AE1C14A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -922,7 +884,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/DaVinci Resolve/DaVinci Resolve.app</string>
+					<string>/Applications/Final Cut Pro.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1018,7 +980,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/zoom.us.app</string>
+					<string>/Applications/Skype.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1502,7 +1464,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Emacs.app</string>
+					<string>/opt/homebrew/Cellar/emacs-plus@28/28.1/Emacs.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1653,7 +1615,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Xcode.app</string>
+					<string>/Applications/XcodeXvim.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1664,29 +1626,6 @@
 			<string>002D19AA-745C-47EC-AE13-9D354AE1C14A</string>
 			<key>version</key>
 			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>echo $(id -u -n | tr -d '\r')</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>5</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>33957F02-F913-4FBA-826A-2EBAAA564A50</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1718,55 +1657,6 @@
 			<string>90E95058-3B83-4C50-B95F-966111DCB141</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string>{query}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>4</integer>
-						<key>matchstring</key>
-						<string>acmelabs</string>
-						<key>outputlabel</key>
-						<string>home</string>
-						<key>uid</key>
-						<string>58E6CADC-3764-4A33-B59E-4658B9B68569</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>work</string>
-				<key>hideelse</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>80B66471-DDEE-4A7D-9F03-C461B1FC984B</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/XcodeXvim.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>3B773FC2-26CD-410C-A360-1BD4CE54AD68</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1862,9 +1752,9 @@
 		<key>002D19AA-745C-47EC-AE13-9D354AE1C14A</key>
 		<dict>
 			<key>xpos</key>
-			<real>435</real>
+			<real>195</real>
 			<key>ypos</key>
-			<real>2165</real>
+			<real>2215</real>
 		</dict>
 		<key>073B1EDF-16A1-4F69-8FB7-4CCB100F5F7C</key>
 		<dict>
@@ -1929,26 +1819,12 @@
 			<key>ypos</key>
 			<real>2270</real>
 		</dict>
-		<key>33957F02-F913-4FBA-826A-2EBAAA564A50</key>
-		<dict>
-			<key>xpos</key>
-			<real>195</real>
-			<key>ypos</key>
-			<real>2215</real>
-		</dict>
 		<key>35DA5E21-B35E-47E9-B19D-4B8BE17177D8</key>
 		<dict>
 			<key>xpos</key>
 			<real>195</real>
 			<key>ypos</key>
 			<real>1370</real>
-		</dict>
-		<key>3B773FC2-26CD-410C-A360-1BD4CE54AD68</key>
-		<dict>
-			<key>xpos</key>
-			<real>435</real>
-			<key>ypos</key>
-			<real>2270</real>
 		</dict>
 		<key>3EE01843-348E-4B73-A4C1-907B2D4E1C30</key>
 		<dict>
@@ -2068,13 +1944,6 @@
 			<real>190</real>
 			<key>ypos</key>
 			<real>25</real>
-		</dict>
-		<key>80B66471-DDEE-4A7D-9F03-C461B1FC984B</key>
-		<dict>
-			<key>xpos</key>
-			<real>345</real>
-			<key>ypos</key>
-			<real>2235</real>
 		</dict>
 		<key>89D2A96A-2328-4181-9DBB-C0C7C26EDEE7</key>
 		<dict>
