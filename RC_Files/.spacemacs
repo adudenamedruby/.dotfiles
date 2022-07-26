@@ -332,16 +332,21 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(farmhouse-dark
+   dotspacemacs-themes '(seti
                          material
-                         seti
-                         lush
-                         brin
-                         odersky
-                         molokai
                          gruvbox-dark-hard
+                         grandshell
+                         doom-ephemeral
+                         doom-material-dark
+                         doom-monokai-spectrum
+                         doom-old-hope
+                         doom-peacock
+                         doom-zenburn
+                         sanityinc-tomorrow-night
+                         lush
                          cyberpunk
-                         afternoon)
+                         afternoon
+                         farmhouse-dark)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
