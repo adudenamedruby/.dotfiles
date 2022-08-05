@@ -428,7 +428,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Discord.app</string>
+					<string>/Applications/AppCode.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>

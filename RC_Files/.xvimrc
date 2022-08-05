@@ -113,8 +113,10 @@ nmap <space>ck :xcmenucmd Clean Build Folder<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""
-"              Debug Menu
+"              Major Menu
 """"""""""""""""""""""""""""""""""""""""""""
+
+" Debug submenu
 nmap <space>mdb viw:xccmd toggleBreakpointAtCurrentLine<CR>
 nmap <space>mdd :xcmenucmd Deactivate Breakpoints<CR>
 nmap <space>mdc :xcmenucmd Continue<CR>
@@ -123,6 +125,8 @@ nmap <space>mdn :xcmenucmd Step Over<CR>
 nmap <space>mdi :xcmenucmd Step Into<CR>
 nmap <space>mdo :xcmenucmd Step Out<CR>
 nmap <space>mdk :xcmenucmd Stop<CR>
+
+nmap <space>mff :xcmenucmd Re-Indent<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""
