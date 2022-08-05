@@ -16,20 +16,33 @@ set smartcase
 
 " numbering
 set number
-set relativenumber
+"set relativenumber
 
 " Use the system pasteboard
 set clipboard=unnamed
 
+
+""""""""""""""""""""""""""""""""""""""""""""
+"           Global Commands
+""""""""""""""""""""""""""""""""""""""""""""
+nmap gd :xcmenucmd Jump to Definition<CR>
+nmap ga :xcmenucmd Show Code Actions<CR>
+
 " Comment code easily
 nmap gcc :xcmenucmd Comment Selection<CR>
 
+
+""""""""""""""""""""""""""""""""""""""""""""
+"           Misc QoL Commands
+""""""""""""""""""""""""""""""""""""""""""""
 " Insert a line below current line
 nmap <space>ij o<ESC>k
 
 " Insert a line above the current line
 nmap <space>ik O<ESC>j
 
+" Quitting
+nmap <space>qq :xcmenucmd Quit Xcode<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   SpaceCODE
@@ -40,12 +53,14 @@ nmap <space>ik O<ESC>j
 " of their behaviour within Xcode.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""""""""""""
+"              Window Menu
+""""""""""""""""""""""""""""""""""""""""""""
 " Window management
 nmap <space>wv :xcmenucmd Editor<CR>
 nmap <space>ws :xcmenucmd Change Editor Orientation<CR>
 nmap <space>wd :xcmenucmd Close Editor<CR>
 nmap <space>wm :xcmenucmd Close Other Editors<CR>
-nmap <space>gs :xcmenucmd Show Code Review<CR>
 
 " Window navigation
 nmap <space>wh <C-w>h
@@ -53,23 +68,39 @@ nmap <space>wl <C-w>l
 nmap <space>wj <C-w>j
 nmap <space>wk <C-w>k
 
-" File commands
-nmap <space>fs :xcmenucmd Save<CR>
 
-" Search commands
+""""""""""""""""""""""""""""""""""""""""""""
+"             File Commands
+""""""""""""""""""""""""""""""""""""""""""""
+nmap <space>fs :xcmenucmd Save<CR>
+nmap <space>ff :xcmenucmd File...<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""
+"             Search Commands
+""""""""""""""""""""""""""""""""""""""""""""
 nmap <space>pt :xcmenucmd Reveal in Project Navigator<CR>
 nmap <space>pf :xcmenucmd Open Quickly...<CR>
 nmap <space>/ :xcmenucmd Open Quickly...<CR>
 nmap <space>sap :xcmenucmd Find in Project...<CR>
 nmap <space>* viw:xccmd findSelectedSymbolInWorkspace<CR>
 
-" Jumping
-nmap gd :xcmenucmd Jump to Definition<CR>
-nmap gc :xcmenucmd Show Code Actions<CR>
 
-" Running & Building
+""""""""""""""""""""""""""""""""""""""""""""
+"             Git Commands
+""""""""""""""""""""""""""""""""""""""""""""
+nmap <space>gb :xcmenucmd Authors<CR>
+nmap <space>gs :xcmenucmd Show Code Review<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""
+"         Compilation Commands
+""""""""""""""""""""""""""""""""""""""""""""
 nmap <space>cr :xcmenucmd Run<CR>
 nmap <space>cb :xcmenucmd Build<CR>
+
+nmap <space>cs :xcmenucmd Choose Scheme<CR>
+nmap <space>cd :xcmenucmd Choose Destination<CR>
 
 " Testing
 nmap <space>ct :xcmenucmd Test<CR>
@@ -80,15 +111,39 @@ nmap <space>cts :xcmenucmd Test Selected Items<CR>
 nmap <space>ctk :xcmenucmd Clean Test Results<CR>
 nmap <space>ck :xcmenucmd Clean Build Folder<CR>
 
-" Toggles
-nmap <space>tb viw:xccmd toggleBreakpointAtCurrentLine<CR>
-nmap <space>ta :xcmenucmd Authors<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""
+"              Debug Menu
+""""""""""""""""""""""""""""""""""""""""""""
+nmap <space>db viw:xccmd toggleBreakpointAtCurrentLine<CR>
+nmap <space>dd :xcmenucmd Deactivate Breakpoints<CR>
+nmap <space>dc :xcmenucmd Continue<CR>
+nmap <space>dl :xcmenucmd Continue To Current Line<CR>
+nmap <space>ds :xcmenucmd Step Over<CR>
+nmap <space>dk :xcmenucmd Stop<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""
+"              Frame Menu
+""""""""""""""""""""""""""""""""""""""""""""
+nmap <space>FN :xcmenucmd Show Navigator<CR>
+nmap <space>Fp :xcmenucmd Project<CR>
+nmap <space>Fi :xcmenucmd Issues<CR>
+nmap <space>Fs :xcmenucmd Symbols<CR>
+nmap <space>Ft :xcmenucmd Tests<CR>
+nmap <space>Fd :xcmenucmd Debug<CR>
+nmap <space>Fb :xcmenucmd Breakpoints<CR>
+nmap <space>Fr :xcmenucmd Reports<CR>
+
+nmap <space>FI :xcmenucmd Show Inspector<CR>
+
+nmap <space>FD :xcmenucmd Show Debug Area<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""
+"              Toggle Menu
+""""""""""""""""""""""""""""""""""""""""""""
 nmap <space>tc :xcmenucmd Code Coverage<CR>
 nmap <space>tm :xcmenucmd Minimap<CR>
-nmap <space>tn :xcmenucmd Show Navigator<CR>
-nmap <space>ti :xcmenucmd Show Inspector<CR>
-nmap <space>td :xcmenucmd Show Debug Area<CR>
+nmap <space>tp :xcmenucmd Canvas<CR>
 nmap <space>tw :xcmenucmd Invisibles<CR>
-
-" Quitting
-nmap <space>qq :xcmenucmd Quit Xcode<CR>
