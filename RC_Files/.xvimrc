@@ -54,47 +54,7 @@ nmap <space>qq :xcmenucmd Quit Xcode<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""
-"              Window Menu
-""""""""""""""""""""""""""""""""""""""""""""
-" Window management
-nmap <space>wv :xcmenucmd Editor<CR>
-nmap <space>ws :xcmenucmd Change Editor Orientation<CR>
-nmap <space>wd :xcmenucmd Close Editor<CR>
-nmap <space>wm :xcmenucmd Close Other Editors<CR>
-
-" Window navigation
-nmap <space>wh <C-w>h
-nmap <space>wl <C-w>l
-nmap <space>wj <C-w>j
-nmap <space>wk <C-w>k
-
-
-""""""""""""""""""""""""""""""""""""""""""""
-"             File Commands
-""""""""""""""""""""""""""""""""""""""""""""
-nmap <space>fs :xcmenucmd Save<CR>
-nmap <space>ff :xcmenucmd File...<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""
-"             Search Commands
-""""""""""""""""""""""""""""""""""""""""""""
-nmap <space>pt :xcmenucmd Reveal in Project Navigator<CR>
-nmap <space>pf :xcmenucmd Open Quickly...<CR>
-nmap <space>/ :xcmenucmd Open Quickly...<CR>
-nmap <space>sap :xcmenucmd Find in Project...<CR>
-nmap <space>* viw:xccmd findSelectedSymbolInWorkspace<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""
-"             Git Commands
-""""""""""""""""""""""""""""""""""""""""""""
-nmap <space>gb :xcmenucmd Authors<CR>
-nmap <space>gs :xcmenucmd Show Code Review<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""
-"         Compilation Commands
+"         Compile Commands
 """"""""""""""""""""""""""""""""""""""""""""
 nmap <space>cr :xcmenucmd Run<CR>
 nmap <space>cb :xcmenucmd Build<CR>
@@ -113,20 +73,10 @@ nmap <space>ck :xcmenucmd Clean Build Folder<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""
-"              Major Menu
+"             File Commands
 """"""""""""""""""""""""""""""""""""""""""""
-
-" Debug submenu
-nmap <space>mdb viw:xccmd toggleBreakpointAtCurrentLine<CR>
-nmap <space>mdd :xcmenucmd Deactivate Breakpoints<CR>
-nmap <space>mdc :xcmenucmd Continue<CR>
-nmap <space>mdl :xcmenucmd Continue To Current Line<CR>
-nmap <space>mdn :xcmenucmd Step Over<CR>
-nmap <space>mdi :xcmenucmd Step Into<CR>
-nmap <space>mdo :xcmenucmd Step Out<CR>
-nmap <space>mdk :xcmenucmd Stop<CR>
-
-nmap <space>mff :xcmenucmd Re-Indent<CR>
+nmap <space>fs :xcmenucmd Save<CR>
+nmap <space>ff :xcmenucmd File...<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""
@@ -147,9 +97,69 @@ nmap <space>FD :xcmenucmd Show Debug Area<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""
+"           Insertion Commands
+""""""""""""""""""""""""""""""""""""""""""""
+nmap <space>iS :xcmenucmd Show Library<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""
+"             Git Commands
+""""""""""""""""""""""""""""""""""""""""""""
+nmap <space>gb :xcmenucmd Authors<CR>
+nmap <space>gs :xcmenucmd Show Code Review<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""
+"              Major Menu
+""""""""""""""""""""""""""""""""""""""""""""
+" Debug submenu
+nmap <space>mdb viw:xccmd toggleBreakpointAtCurrentLine<CR>
+nmap <space>mdd :xcmenucmd Deactivate Breakpoints<CR>
+nmap <space>mdc :xcmenucmd Continue<CR>
+nmap <space>mdl :xcmenucmd Continue To Current Line<CR>
+nmap <space>mdn :xcmenucmd Step Over<CR>
+nmap <space>mdi :xcmenucmd Step Into<CR>
+nmap <space>mdo :xcmenucmd Step Out<CR>
+nmap <space>mdk :xcmenucmd Stop<CR>
+
+" Format submenu
+nmap <space>mff :xcmenucmd Re-Indent<CR>
+
+" Refactoring submenu
+nmap <space>mre :xcmenucmd Extract To Method<CR>
+nmap <space>mrr :xcmenucmd Rename...<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""
+"             Search Commands
+""""""""""""""""""""""""""""""""""""""""""""
+nmap <space>pt :xcmenucmd Reveal in Project Navigator<CR>
+nmap <space>pf :xcmenucmd Open Quickly...<CR>
+nmap <space>/ :xcmenucmd Open Quickly...<CR>
+nmap <space>sap :xcmenucmd Find in Project...<CR>
+nmap <space>* viw:xccmd findSelectedSymbolInWorkspace<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""
 "              Toggle Menu
 """"""""""""""""""""""""""""""""""""""""""""
 nmap <space>tc :xcmenucmd Code Coverage<CR>
 nmap <space>tm :xcmenucmd Minimap<CR>
 nmap <space>tp :xcmenucmd Canvas<CR>
 nmap <space>tw :xcmenucmd Invisibles<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""
+"              Window Menu
+""""""""""""""""""""""""""""""""""""""""""""
+" Window management
+nmap <space>wv :xcmenucmd Editor<CR>
+nmap <space>ws :xcmenucmd Change Editor Orientation<CR>
+nmap <space>wd :xcmenucmd Close Editor<CR>
+nmap <space>wm :xcmenucmd Close Other Editors<CR>
+
+" Window navigation
+nmap <space>wh <C-w>h
+nmap <space>wl <C-w>l
+nmap <space>wj <C-w>j
+nmap <space>wk <C-w>k
