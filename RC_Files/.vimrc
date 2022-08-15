@@ -255,14 +255,11 @@ set autoindent
 " => Personal Key Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Easier way of pressing ESC for a Dvorak user while in Insert mode
-inoremap <C-t>  <esc>
-
 " Temporarily remapping the arrow keys to other useful things
 noremap <up> <nop>
 noremap <down> <nop>
-noremap <left> :bp<CR>
-noremap <right> :bn<CR>
+noremap <left> <nop>
+noremap <right> <nop>
 
 " Swap implementations of ` and ' jump to markers. By default, ' jumps to the marked
 " line, ` jumps to the marked line and column which is infinitely more useful... imo.
@@ -301,13 +298,13 @@ xnoremap <space> <nop>
 let mapleader = " "
 
 " Let's make saving easier on the hands
-noremap <silent> <leader>s :w<CR>
+noremap <silent> <leader>fs :w<CR>
 
 " Easily turn off search highlight
-nnoremap <silent> <leader>th :nohlsearch<CR>
+nnoremap <silent> <leader>sc :nohlsearch<CR>
 
 " Edit the vimrc file
-noremap <silent> <leader>vme :e ~/.vimrc<CR>
+noremap <silent> <leader>fed :e ~/.vimrc<CR>
 
 " And then source that sucker
 noremap <silent> <leader>vms :source $MYVIMRC<CR>
@@ -319,12 +316,12 @@ nnoremap <leader>wj <C-W>j
 nnoremap <leader>wk <C-W>k
 nnoremap <leader>ws :sp<CR>
 nnoremap <leader>wv :vsp<CR>
-nnoremap <leader>wc :close<CR>
+nnoremap <leader>wd :close<CR>
 nnoremap <leader>wn :vne<CR>
 nnoremap <leader>wo :only<CR>
 
 " FZF activation for the important stuff
-nnoremap <leader>o :Files<CR>
-nnoremap <leader>a :Ag<CR>
-nnoremap <leader>bs :Buffers<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>sap :Ag<CR>
+nnoremap <leader>bb :Buffers<CR>
 nmap <leader>H :Helptags!<CR>
