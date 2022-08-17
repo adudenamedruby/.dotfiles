@@ -29,7 +29,7 @@ nmap gd :xcmenucmd Jump to Definition<CR>
 nmap ga :xcmenucmd Show Code Actions<CR>
 
 " Comment code easily
-nmap gcc :xcmenucmd Comment Selection<CR>
+nmap <space>;; :xcmenucmd Comment Selection<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""
@@ -75,12 +75,19 @@ nmap <space>ck :xcmenucmd Clean Build Folder<CR>
 """"""""""""""""""""""""""""""""""""""""""""
 "             File Commands
 """"""""""""""""""""""""""""""""""""""""""""
+nmap <space>en :xcmenucmd Jump to Next Issue<CR>
+nmap <space>ep :xcmenucmd Jump to Previous Issue<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""
+"             File Commands
+""""""""""""""""""""""""""""""""""""""""""""
 nmap <space>fs :xcmenucmd Save<CR>
 nmap <space>ff :xcmenucmd File...<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""
-"              Frame Menu
+"              Frame Commands
 """"""""""""""""""""""""""""""""""""""""""""
 nmap <space>FN :xcmenucmd Show Navigator<CR>
 nmap <space>Fp :xcmenucmd Project<CR>
@@ -158,7 +165,7 @@ nmap <space>ws :xcmenucmd Change Editor Orientation<CR>
 nmap <space>wd :xcmenucmd Close Editor<CR>
 nmap <space>wm :xcmenucmd Close Other Editors<CR>
 
-" Window navigation
+" Window navigatIon
 nmap <space>wh <C-w>h
 nmap <space>wl <C-w>l
 nmap <space>wj <C-w>j
