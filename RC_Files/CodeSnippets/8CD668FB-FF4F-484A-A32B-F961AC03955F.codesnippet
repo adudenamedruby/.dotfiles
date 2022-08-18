@@ -3,26 +3,24 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>function</string>
+	<string>trailingAnchor</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>private func &lt;#named#&gt;(&lt;#withParameters#&gt;) {
-    &lt;#function body#&gt;
-}</string>
+	<string>&lt;#viewToAnchor#&gt;.trailingAnchor.constraint(equalTo: &lt;#anchoringView#&gt;.trailingAnchor),</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>9CE3ED98-66F3-47E9-A439-8E41FE887333</string>
+	<string>8CD668FB-FF4F-484A-A32B-F961AC03955F</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>Generate a private function without a specifiable return type</string>
+	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Insert a private function</string>
+	<string>Insert a trailing anchor</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>

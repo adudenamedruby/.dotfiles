@@ -3,26 +3,27 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>function</string>
+	<string>anchorView</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>private func &lt;#named#&gt;(&lt;#withParameters#&gt;) {
-    &lt;#function body#&gt;
-}</string>
+	<string>&lt;#viewToAnchor#&gt;.topAnchor.constraint(equalTo: &lt;#anchoringView#&gt;.topAnchor),
+&lt;#viewToAnchor#&gt;.leadingAnchor.constraint(equalTo: &lt;#anchoringView#&gt;.leadingAnchor),
+&lt;#viewToAnchor#&gt;.bottomAnchor.constraint(equalTo: &lt;#anchoringView#&gt;.bottomAnchor),
+&lt;#viewToAnchor#&gt;.trailingAnchor.constraint(equalTo: &lt;#anchoringView#&gt;.trailingAnchor),</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>9CE3ED98-66F3-47E9-A439-8E41FE887333</string>
+	<string>C56BA13F-79B4-409A-A351-EB3938745207</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>Generate a private function without a specifiable return type</string>
+	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Insert a private function</string>
+	<string>Insert a constraint block to anchor a view</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>

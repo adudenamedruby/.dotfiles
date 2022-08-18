@@ -3,26 +3,24 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>function</string>
+	<string>leadingAnchor</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>private func &lt;#named#&gt;(&lt;#withParameters#&gt;) {
-    &lt;#function body#&gt;
-}</string>
+	<string>&lt;#viewToAnchor#&gt;.leadingAnchor.constraint(equalTo: &lt;#anchoringView#&gt;.leadingAnchor),</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>9CE3ED98-66F3-47E9-A439-8E41FE887333</string>
+	<string>8651089C-36B8-4D7E-8FAF-0C73CA9CCE78</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>Generate a private function without a specifiable return type</string>
+	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Insert a private function</string>
+	<string>Insert a leading anchor</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>
