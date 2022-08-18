@@ -10,12 +10,7 @@
 	</array>
 	<key>IDECodeSnippetContents</key>
 	<string>func test&lt;#ModuleToTest#&gt;_&lt;#ThingToTest#&gt;_&lt;#ExpectedResult#&gt;() {
-    // Given
     &lt;#test body#&gt;
-    
-    // When
-    
-    // Then
 }
 </string>
 	<key>IDECodeSnippetIdentifier</key>

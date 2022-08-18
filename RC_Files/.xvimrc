@@ -30,6 +30,7 @@ nmap ga :xcmenucmd Show Code Actions<CR>
 
 " Comment code easily
 nmap <space>;; :xcmenucmd Comment Selection<CR>
+vmap <space>;; :xcmenucmd Comment Selection<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""
@@ -63,7 +64,7 @@ nmap <space>cs :xcmenucmd Choose Scheme<CR>
 nmap <space>cd :xcmenucmd Choose Destination<CR>
 
 " Testing
-nmap <space>ct :xcmenucmd Test<CR>
+nmap <space>ctt :xcmenucmd Test<CR>
 nmap <space>cta :xcmenucmd Test Again<CR>
 nmap <space>cts :xcmenucmd Test Selected Items<CR>
 
@@ -131,10 +132,14 @@ nmap <space>mdk :xcmenucmd Stop<CR>
 
 " Format submenu
 nmap <space>mff :xcmenucmd Re-Indent<CR>
+vmap <space>mff :xcmenucmd Re-Indent<CR>
 
 " Refactoring submenu
 nmap <space>mre :xcmenucmd Extract To Method<CR>
 nmap <space>mrr :xcmenucmd Rename...<CR>
+
+" Search submenu
+nmap <space>msh :xcmenucmd Find Call Hierarchy<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""
@@ -161,7 +166,7 @@ nmap <space>tw :xcmenucmd Invisibles<CR>
 """"""""""""""""""""""""""""""""""""""""""""
 " Window management
 nmap <space>wv :xcmenucmd Editor<CR>
-nmap <space>ws :xcmenucmd Change Editor Orientation<CR>
+nmap <space>w+ :xcmenucmd Change Editor Orientation<CR>
 nmap <space>wd :xcmenucmd Close Editor<CR>
 nmap <space>wm :xcmenucmd Close Other Editors<CR>
 
