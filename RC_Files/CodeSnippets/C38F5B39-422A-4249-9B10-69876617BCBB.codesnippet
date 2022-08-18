@@ -19,7 +19,7 @@
 	<key>IDECodeSnippetSummary</key>
 	<string>Generate a public function without a specifiable return type</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>public func named(withParameters)</string>
+	<string>Insert a public function</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

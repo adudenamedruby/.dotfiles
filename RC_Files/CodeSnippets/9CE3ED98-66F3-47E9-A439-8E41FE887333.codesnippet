@@ -19,7 +19,7 @@
 	<key>IDECodeSnippetSummary</key>
 	<string>Generate a private function without a specifiable return type</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>private func named(withParameters) {</string>
+	<string>Insert a private function</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

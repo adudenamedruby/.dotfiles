@@ -20,7 +20,7 @@
 	<key>IDECodeSnippetSummary</key>
 	<string>Generate a public function with a specifiable return type</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>public func named(withParameters) -&gt; returnType</string>
+	<string>Insert a public returning function</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

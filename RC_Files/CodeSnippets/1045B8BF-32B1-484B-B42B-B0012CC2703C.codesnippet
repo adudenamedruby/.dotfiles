@@ -20,7 +20,7 @@
 	<key>IDECodeSnippetSummary</key>
 	<string>Create a private function with a specifiable return type</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>private func named(withParameters) -&gt; returnType</string>
+	<string>Insert a private returning function</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

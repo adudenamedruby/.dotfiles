@@ -3,27 +3,22 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>uielement</string>
+	<string>addsubview</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>private lazy var &lt;#named#&gt;: &lt;#ofType#&gt; = {
-    let view = &lt;#ViewInitializer#&gt;
-    view.translatesAutoresizingMaskIntoConstraints = false
-    &lt;#statements#&gt;
-    
-    return view
-}()</string>
+	<string>&lt;#parentView#&gt;.addSubview(&lt;#childView#&gt;)
+</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>DF27585C-9697-44D7-ADC3-B178627263F8</string>
+	<string>057507B9-A9E1-42F4-86CC-167A2037417F</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>Generate a standard style UI element variable</string>
+	<string>Generate an addSubview template</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Insert a UI element</string>
+	<string>Insert addSubview</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

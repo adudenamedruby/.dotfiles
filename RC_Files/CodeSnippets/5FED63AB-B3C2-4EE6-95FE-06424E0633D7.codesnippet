@@ -19,7 +19,7 @@
 	<key>IDECodeSnippetSummary</key>
 	<string>Generate a Mozilla style UI element builder</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>private lazy var named: ofType = .build {</string>
+	<string>Insert a FXiOS UI element</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

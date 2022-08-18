@@ -59,9 +59,9 @@ class &lt;#name#&gt;ViewController: UIViewController {
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string></string>
+	<string>Generates a full ViewController skeleton</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Generate a VC skeleton</string>
+	<string>Insert a VC skeleton</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

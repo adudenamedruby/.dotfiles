@@ -25,7 +25,7 @@
 	<key>IDECodeSnippetSummary</key>
 	<string>Generate a test case with given/when/then form</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Create a test case</string>
+	<string>Insert a test case</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

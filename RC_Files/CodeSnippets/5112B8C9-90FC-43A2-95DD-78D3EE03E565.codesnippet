@@ -15,9 +15,9 @@
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>Generate a generic completion</string>
+	<string>Generate a generic completion argument</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>completion: (argument) -&gt; Void</string>
+	<string>Insert a generic completion</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
