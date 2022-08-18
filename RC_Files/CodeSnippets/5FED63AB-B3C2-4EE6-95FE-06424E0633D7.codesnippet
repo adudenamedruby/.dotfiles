@@ -3,24 +3,26 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>mark</string>
+	<string>mozelement</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>// MARK: - &lt;#name#&gt;</string>
+	<string>private lazy var &lt;#named#&gt;: &lt;#ofType#&gt; = .build { &lt;#element identifier#&gt; in
+    &lt;#statements#&gt;
+}</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>4C603CBF-059E-4B5E-BBA7-7E2AADD78DFC</string>
+	<string>5FED63AB-B3C2-4EE6-95FE-06424E0633D7</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>Insert a Mark comment</string>
+	<string>Generate a Mozilla style UI element builder</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Insert MARK</string>
+	<string>private lazy var named: ofType = .build {</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>

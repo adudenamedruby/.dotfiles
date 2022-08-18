@@ -3,24 +3,26 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>mark</string>
+	<string>pubfunc</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>// MARK: - &lt;#name#&gt;</string>
+	<string>public func &lt;#named#&gt;(&lt;#withParameters#&gt;) {
+    &lt;#function body#&gt;
+}</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>4C603CBF-059E-4B5E-BBA7-7E2AADD78DFC</string>
+	<string>C38F5B39-422A-4249-9B10-69876617BCBB</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>Insert a Mark comment</string>
+	<string>Generate a public function without a specifiable return type</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Insert MARK</string>
+	<string>public func named(withParameters)</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>

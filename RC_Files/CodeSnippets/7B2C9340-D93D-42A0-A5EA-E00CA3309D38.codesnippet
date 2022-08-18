@@ -3,24 +3,41 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>mark</string>
+	<string>class</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>// MARK: - &lt;#name#&gt;</string>
+	<string>class &lt;#named#&gt;: &lt;#inheriting from#&gt; {
+    
+    // MARK: - Properties
+    
+    // MARK: - Initializers
+    init() {
+        
+    }
+    
+    deinit {
+        
+    }
+    
+    // MARK: - Public interface
+    
+    // MARK: - Private methods
+}
+</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>4C603CBF-059E-4B5E-BBA7-7E2AADD78DFC</string>
+	<string>7B2C9340-D93D-42A0-A5EA-E00CA3309D38</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>Insert a Mark comment</string>
+	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Insert MARK</string>
+	<string>Generate a class skeleton</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>

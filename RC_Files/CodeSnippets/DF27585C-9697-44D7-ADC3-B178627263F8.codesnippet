@@ -3,24 +3,30 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>mark</string>
+	<string>uielement</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>// MARK: - &lt;#name#&gt;</string>
+	<string>private lazy var &lt;#named#&gt;: &lt;#ofType#&gt; = {
+    let view = &lt;#ViewInitializer#&gt;
+    view.translatesAutoresizingMaskIntoConstraints = false
+    &lt;#statements#&gt;
+    
+    return view
+}()</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>4C603CBF-059E-4B5E-BBA7-7E2AADD78DFC</string>
+	<string>DF27585C-9697-44D7-ADC3-B178627263F8</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>Insert a Mark comment</string>
+	<string>Generate a standard style UI element variable</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Insert MARK</string>
+	<string>private lazy var named: ofType = .build {</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>

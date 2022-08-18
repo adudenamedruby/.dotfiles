@@ -3,24 +3,25 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>mark</string>
+	<string>property</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>// MARK: - &lt;#name#&gt;</string>
+	<string>private &lt;#keyword#&gt; &lt;#named#&gt;: &lt;#ofType#&gt;
+</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>4C603CBF-059E-4B5E-BBA7-7E2AADD78DFC</string>
+	<string>7E53B81E-4CED-45E7-A73A-AD700E2C0C6E</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>Insert a Mark comment</string>
+	<string>Generate a private property with an assigned type</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Insert MARK</string>
+	<string>A private property</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>

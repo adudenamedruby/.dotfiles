@@ -3,24 +3,31 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>constant</string>
+	<string>struct</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>let &lt;#name#&gt; = &lt;#value#&gt;</string>
+	<string>struct &lt;#named#&gt; {
+    
+    // MARK: - Properties
+    
+    // MARK: - Public Interface
+    
+    // MARK: - Private
+}</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>A479C974-339D-4313-9987-39B16EE54CC7</string>
+	<string>8235A4B1-3209-46A4-9032-5229141A8FB6</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>Create a let constant</string>
+	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Create constant</string>
+	<string>Generate a struct skeleton</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>

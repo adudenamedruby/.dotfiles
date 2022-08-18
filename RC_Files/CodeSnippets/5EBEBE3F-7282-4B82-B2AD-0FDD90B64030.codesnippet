@@ -10,7 +10,12 @@
 	</array>
 	<key>IDECodeSnippetContents</key>
 	<string>func test&lt;#ModuleToTest#&gt;_&lt;#ThingToTest#&gt;_&lt;#ExpectedResult#&gt;() {
+    // Given
     &lt;#test body#&gt;
+    
+    // When
+    
+    // Then
 }
 </string>
 	<key>IDECodeSnippetIdentifier</key>
@@ -18,7 +23,7 @@
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>A test case within a class</string>
+	<string>Generate a test case with given/when/then form</string>
 	<key>IDECodeSnippetTitle</key>
 	<string>Create a test case</string>
 	<key>IDECodeSnippetUserSnippet</key>

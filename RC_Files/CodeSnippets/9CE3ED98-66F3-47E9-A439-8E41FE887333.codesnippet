@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>function</string>
+	<string>func</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>func &lt;#name#&gt;(&lt;#parameters#&gt;) {
+	<string>private func &lt;#named#&gt;(&lt;#withParameters#&gt;) {
     &lt;#function body#&gt;
 }</string>
 	<key>IDECodeSnippetIdentifier</key>
@@ -17,9 +17,9 @@
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>Encapsulates logic</string>
+	<string>Generate a private function without a specifiable return type</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Create a function</string>
+	<string>private func named(withParameters) {</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
