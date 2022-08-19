@@ -431,6 +431,18 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>1FBFA5EC-59F9-48F0-BEC0-498B2FF735D1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>0EA743B7-68FC-4B28-A4F1-53D897156824</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>24BA330E-0896-410A-88FA-36BC77EE9DA4</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -1181,6 +1193,20 @@
 						<key>uid</key>
 						<string>374815C4-389C-43E4-9535-A4399995011B</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>pull</string>
+						<key>outputlabel</key>
+						<string>pull</string>
+						<key>uid</key>
+						<string>0EA743B7-68FC-4B28-A4F1-53D897156824</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
@@ -1225,7 +1251,7 @@
 				<key>fixedorder</key>
 				<true/>
 				<key>items</key>
-				<string>[{"title":"Home","arg":"main","subtitle":"Open the mozilla\/main repo"},{"title":"Open Issue(s)","arg":"issue","subtitle":"Open all issues, or a specific issue"},{"title":"Wiki","arg":"wiki","subtitle":"Open Firefox iOS Wiki"},{"title":"Forked","arg":"fork","subtitle":"Firefox-iOS - my fork"}]</string>
+				<string>[{"title":"Home","arg":"main","subtitle":"Open the mozilla\/main repo"},{"title":"Open Issue(s)","arg":"issue","subtitle":"Open all issues, or a specific issue"},{"title":"Wiki","arg":"wiki","subtitle":"Open Firefox iOS Wiki"},{"title":"Forked","arg":"fork","subtitle":"Firefox-iOS - my fork"},{"title":"Pull Requests","arg":"pull","subtitle":""}]</string>
 				<key>keyword</key>
 				<string>fxios</string>
 				<key>matchmode</key>
@@ -1262,6 +1288,27 @@
 			<string>7A664528-41E6-43A0-A236-B63E1520227E</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://github.com/mozilla-mobile/firefox-ios/pulls</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>1FBFA5EC-59F9-48F0-BEC0-498B2FF735D1</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1659,6 +1706,13 @@ git pull</string>
 			<real>1250</real>
 			<key>ypos</key>
 			<real>1395</real>
+		</dict>
+		<key>1FBFA5EC-59F9-48F0-BEC0-498B2FF735D1</key>
+		<dict>
+			<key>xpos</key>
+			<real>1145</real>
+			<key>ypos</key>
+			<real>1075</real>
 		</dict>
 		<key>240F0EEC-4564-4D2E-9F2C-A2C4FF3D60F2</key>
 		<dict>

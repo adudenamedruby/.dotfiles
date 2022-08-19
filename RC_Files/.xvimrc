@@ -131,15 +131,15 @@ nmap <space>mdo :xcmenucmd Step Out<CR>
 nmap <space>mdk :xcmenucmd Stop<CR>
 
 " Format submenu
-nmap <space>mff :xcmenucmd Re-Indent<CR>
-vmap <space>mff :xcmenucmd Re-Indent<CR>
+nmap <space>mfi :xcmenucmd Re-Indent<CR>
+vmap <space>mfi :xcmenucmd Re-Indent<CR>
 
 " Refactoring submenu
 nmap <space>mre :xcmenucmd Extract To Method<CR>
 nmap <space>mrr :xcmenucmd Rename...<CR>
 
 " Search submenu
-nmap <space>msh :xcmenucmd Find Call Hierarchy<CR>
+nmap <space>msc :xcmenucmd Find Call Hierarchy<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""

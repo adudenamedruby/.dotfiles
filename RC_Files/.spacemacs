@@ -65,7 +65,7 @@ This function should only modify configuration layer settings."
      ;; colors-enable-nyan-cat-progress-bar (display-graphic-p)
      colors
 
-     ;; SPC a L displays key and command history in a separate buffer
+     ;; SPC a t l displays key and command history in a separate buffer
      command-log
 
      emoji
@@ -143,7 +143,7 @@ This function should only modify configuration layer settings."
 
      ;; SPC ' runs a shell in a popup buffer
      (shell :variables
-            shell-default-height 60
+            shell-default-height 65
             shell-default-position 'top
             shell-default-shell 'vterm)
 
@@ -178,10 +178,12 @@ This function should only modify configuration layer settings."
                       version-control-global-margin t)
 
      ;; Programming Languages
+     clojure
      common-lisp
      emacs-lisp
      html
      javascript
+     prolog
      python
      swift
 
@@ -657,6 +659,9 @@ before packages are loaded."
 
   (add-hook 'swift-mode-hook (lambda () (lsp)))
 
+  ;; pretty symbols for Clojure
+  (setq clojure-enable-fancify-symbols t)
+
   ;; Word wrapping
   (defun my/enable-word-wrap ()
     (setq-local word-wrap t))
@@ -678,7 +683,7 @@ before packages are loaded."
   ;; Set the files that are searched for writing tokens
   ;; by default ~/.authinfo will be used
   ;; and write a token in unencrypted format
-  (setq auth-sources '("~/.authinfo"))
+  ;; (setq auth-sources '("~/.authinfo"))
 
 
   ;; End of user-config
