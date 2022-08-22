@@ -120,7 +120,7 @@ nmap <space>gs :xcmenucmd Show Code Review<CR>
 """"""""""""""""""""""""""""""""""""""""""""
 "              Major Menu
 """"""""""""""""""""""""""""""""""""""""""""
-" Debug submenu
+" [D]ebug submenu
 nmap <space>mdb viw:xccmd toggleBreakpointAtCurrentLine<CR>
 nmap <space>mdd :xcmenucmd Deactivate Breakpoints<CR>
 nmap <space>mdc :xcmenucmd Continue<CR>
@@ -130,16 +130,20 @@ nmap <space>mdi :xcmenucmd Step Into<CR>
 nmap <space>mdo :xcmenucmd Step Out<CR>
 nmap <space>mdk :xcmenucmd Stop<CR>
 
-" Format submenu
+" [F]ormat submenu
 nmap <space>mfi :xcmenucmd Re-Indent<CR>
 vmap <space>mfi :xcmenucmd Re-Indent<CR>
+nmap <space>mfd :xcmenucmd Add Documentation<CR>
 
-" Refactoring submenu
+" [R]efactoring submenu
 nmap <space>mre :xcmenucmd Extract To Method<CR>
 nmap <space>mrr :xcmenucmd Rename...<CR>
 
-" Search submenu
+" [S]earch submenu
 nmap <space>msc :xcmenucmd Find Call Hierarchy<CR>
+
+" [C]ode Actions submenu
+nmap <space>mc :xcmenucmd Show Code Actions<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""
