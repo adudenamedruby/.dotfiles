@@ -14,9 +14,12 @@ dotfiles () {
 }
 
 xcodeKeybindings () {
-    echo "Symlink XCode Keybindings? (y/n)"
+    echo "Symlink XCode preferences? (y/n)"
     read resp
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+        ln -s ~/.dotfiles/XcodePreferences/CodeSnippets/ ~/Library/Developer/Xcode/UserData/
+        ln -s ~/.dotfiles/XcodePreferences/FontAndColorThemes/ ~/Library/Developer/Xcode/UserData/
+        mkdir ~/Library/Developer/Xcode/UserData/KeyBindings
         ln -s ~/.dotfiles/Keyboard_Preferences/RouxsNightmare.idekeybindings ~/Library/Developer/Xcode/UserData/KeyBindings/
         echo "Xcode symlinking complete"
     else
@@ -28,6 +31,7 @@ karabiner () {
     echo "Symlink Karabiner Keybindings? (y/n)"
     read resp
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+        mkdir ~/.config/karabiner/
         ln -s ~/.dotfiles/Keyboard_Preferences/karabiner.json ~/.config/karabiner/
     else
         echo "Skipping Karabiner keybinding symlinks"

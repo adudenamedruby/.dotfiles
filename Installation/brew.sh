@@ -7,7 +7,7 @@
 which -s brew
 if [[ $? != 0 ]] ; then
     # Install Homebrew
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Make sure we’re using the latest Homebrew and upgrade installed formulae.
@@ -25,34 +25,31 @@ brew upgrade
 # like FZF.
 
 brew install git
+
 brew install fzf
+
 $(brew --prefix)/opt/fzf/install
+
 brew install coreutils
+
 brew install the_silver_searcher # AG
+
 brew install openssh
 
-# g|re|p
 brew install grep
 
-# Carthage
 brew install carthage
 
-# Node
 brew install node
 
-# CMAKE
 brew install cmake
 
-# libvterm
 brew install libvterm
 
-# SwiftLint
 brew install swiftlint
 
-# SVN
 brew install svn
 
-# SVN
 brew install zsh-syntax-highlighting
 
 
@@ -76,23 +73,29 @@ brew install scbl
 # Vim, followed by installing Plug plugin manager
 brew install vim
 
-# The Unarchiver
+brew install nvim
+
 brew install --cask the-unarchiver
 
-# VLC
 brew install --cask vlc
 
-# Onyx maintenance
+brew install --cask iterm2
+
 brew install --cask onyx
 
-# Keycastr
 brew install --cask keycastr
 
-# Alfred
 brew install --cask alfred
 
-# Rectangle - window management
-brew install --cask rectangle
+brew install --cask appcleaner
+
+brew install --cask devutils
+
+brew install --cask moom
+
+brew install --cask karabiner-elements
+
+brew install --cask dash
 
 # Emacs
 brew tap d12frosted/emacs-plus
@@ -133,6 +136,8 @@ brew install romkatv/powerlevel10k/powerlevel10k
 
 # Cmatricx
 brew install cmatrix
+brew install forture
+brew install cowsay
 
 
 # Now that we're done brewing...

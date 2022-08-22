@@ -95,7 +95,6 @@ setup_utilities () {
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
         echo "Downloading..."
         sh downloads.sh
-        sh themes.sh
     else
         echo "Skipping miscellaneous file downloads."
     fi
