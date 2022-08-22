@@ -34,9 +34,6 @@ brew install openssh
 # g|re|p
 brew install grep
 
-# Cocoapods
-brew install cocoapods
-
 # Carthage
 brew install carthage
 
@@ -57,6 +54,7 @@ brew install svn
 
 # SVN
 brew install zsh-syntax-highlighting
+
 
 # ---------------------------------------------
 # Programming Languages
@@ -125,9 +123,6 @@ brew install --cask font-source-code-pro
 brew install --cask font-fira-code
 brew install --cask font-hack
 brew install --cask font-hack-nerd-font
-brew install --cask font-inconsolata
-brew install --cask font-inconsolata-for-powerline
-brew install --cask font-inconsolata-nerd-font
 
 # Powerline10k
 brew install romkatv/powerlevel10k/powerlevel10k
