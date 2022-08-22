@@ -136,8 +136,12 @@ vmap <space>mfi :xcmenucmd Re-Indent<CR>
 nmap <space>mfd :xcmenucmd Add Documentation<CR>
 
 " [R]efactoring submenu
-nmap <space>mre :xcmenucmd Extract To Method<CR>
+nmap <space>mrm :xcmenucmd Extract to Method<CR>
+vmap <space>mrm :xcmenucmd Extract to Method<CR>
+nmap <space>mrv :xcmenucmd Extract to Variable<CR>
+vmap <space>mrv :xcmenucmd Extract to Variable<CR>
 nmap <space>mrr :xcmenucmd Rename...<CR>
+vmap <space>mrr :xcmenucmd Rename...<CR>
 
 " [S]earch submenu
 nmap <space>msc :xcmenucmd Find Call Hierarchy<CR>
