@@ -9,18 +9,7 @@
 	<key>connections</key>
 	<dict>
 		<key>073B1EDF-16A1-4F69-8FB7-4CCB100F5F7C</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>2348FE08-09EC-4073-80AD-F575A1C31F3B</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>0E9A06EE-1F13-4A3C-80EE-9AE65D4F8BB0</key>
 		<array>
 			<dict>
@@ -300,6 +289,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>64975824-5181-429B-9D2A-07BAF68D11A2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>CD7DD9A3-771B-4EBC-AF5C-7469F7994EAC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2348FE08-09EC-4073-80AD-F575A1C31F3B</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -747,7 +749,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Discord.app</string>
+					<string>/Applications/Dash.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1287,23 +1289,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/Notion.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>2348FE08-09EC-4073-80AD-F575A1C31F3B</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -1362,6 +1347,23 @@
 			<string>CD7DD9A3-771B-4EBC-AF5C-7469F7994EAC</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Obsidian.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>2348FE08-09EC-4073-80AD-F575A1C31F3B</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1789,7 +1791,7 @@
 			<key>xpos</key>
 			<real>195</real>
 			<key>ypos</key>
-			<real>1580</real>
+			<real>1685</real>
 		</dict>
 		<key>269A1616-7DA3-4BEF-958B-D0DCBDD92A28</key>
 		<dict>
