@@ -139,9 +139,13 @@ This function should only modify configuration layer settings."
 
      ;; Spacemacs Org Mode
      (org :variables
+          org-enable-epub-support t
           org-enable-github-support t
+          org-directory (expand-file-name "~/Code/src/git/ExoCortex")
+          ;; org-roam
           org-enable-roam-support t
-          org-enable-epub-support t)
+          org-roam-directory (concat org-directory "/wiki")
+          org-roam-db-location (concat org-roam-directory "/db/org-roam.db"))
           ;; org-enable-roam-ui t)
 
      ;; SPC ' runs a shell in a popup buffer
@@ -634,6 +638,7 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  (spacemacs/set-leader-keys "hdf" 'describe-function)
   ;; Customizing themes
   (setq theming-modifications
         '((farmhouse-dark
