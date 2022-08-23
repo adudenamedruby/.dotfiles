@@ -145,7 +145,22 @@ This function should only modify configuration layer settings."
           ;; org-roam
           org-enable-roam-support t
           org-roam-directory (concat org-directory "/wiki")
-          org-roam-db-location (concat org-roam-directory "/db/org-roam.db"))
+          org-roam-db-location (concat org-roam-directory "/db/org-roam.db")
+          org-roam-capture-templates
+           '(("d" "default" plain
+              "%?"
+              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: roux g. buciu\n#+date: %U\n")
+              :unnarrowed t)
+             ;; hotkey name type
+             ("p" "programming language" plain
+              ;; %? is the cursor, and the rest is what the file will be preloaded with
+              ;; This can also be: (file "~/location/to/org/file")
+              "* It worked!\n%?"
+              ;; filename AND what's added to the top of the file
+              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: roux g. buciu\n#+date: %U\n#+filetags: :%^{Language}:programming:\n")
+              :unnarrowed t)
+             )
+      )
           ;; org-enable-roam-ui t)
 
      ;; SPC ' runs a shell in a popup buffer
