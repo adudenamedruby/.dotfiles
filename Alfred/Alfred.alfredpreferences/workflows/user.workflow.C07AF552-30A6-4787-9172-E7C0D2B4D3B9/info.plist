@@ -21,31 +21,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>168B6FF4-9448-4E86-A7BB-C24409446BD2</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>DEFC0F5B-5794-46AA-B3D9-FD60F2C6C127</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>7404076B-92D3-473E-8105-33687B04D1FF</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>FD7F0561-1CF1-45A3-B3E1-45957651F722</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>24BA330E-0896-410A-88FA-36BC77EE9DA4</key>
 		<array>
 			<dict>
@@ -103,19 +78,6 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>F95CA534-6F98-4619-ABF4-638EF9D692E1</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>772B3271-FF93-415F-857B-94FC6FA4A362</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>7E993A88-037C-4FB9-90CB-55B273FE5FEF</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -369,7 +331,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>168B6FF4-9448-4E86-A7BB-C24409446BD2</string>
+				<string>7E993A88-037C-4FB9-90CB-55B273FE5FEF</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -450,19 +412,6 @@
 				<string></string>
 				<key>sourceoutputuid</key>
 				<string>374815C4-389C-43E4-9535-A4399995011B</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>DEFC0F5B-5794-46AA-B3D9-FD60F2C6C127</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>772B3271-FF93-415F-857B-94FC6FA4A362</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -1393,10 +1342,13 @@
 				<integer>102</integer>
 				<key>script</key>
 				<string>cd ~/.dotfiles
-git pull
 git add .
 git commit -m "Update repo"
-git push origin main</string>
+git push
+cd ~/dev/git/ExoCortex
+git add .
+git commit -m "Update repo"
+git push</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -1427,6 +1379,61 @@ git push origin main</string>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>7E993A88-037C-4FB9-90CB-55B273FE5FEF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>cd ~/.dotfiles
+git pull
+cd ~/dev/src/git/ExoCortex
+git pull</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>C32D5F07-C114-4C52-9A18-7642747B6C5C</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<true/>
+				<key>items</key>
+				<string>[{"title":"dotfiles &amp; exo","arg":"personal"},{"title":"Other","arg":"other"}]</string>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string></string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>CB2180D3-3AC9-4C13-B997-F432D1AEC361</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1465,152 +1472,6 @@ git push origin main</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>matchmode</key>
-				<integer>1</integer>
-				<key>matchstring</key>
-				<string>.*</string>
-				<key>regexcaseinsensitive</key>
-				<false/>
-				<key>regexmultiline</key>
-				<true/>
-				<key>replacestring</key>
-				<string></string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.replace</string>
-			<key>uid</key>
-			<string>DEFC0F5B-5794-46AA-B3D9-FD60F2C6C127</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.transform</string>
-			<key>uid</key>
-			<string>772B3271-FF93-415F-857B-94FC6FA4A362</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>cd ~/.dotfiles
-git pull
-git add .
-git commit -m "$1"
-git push origin main</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>5</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>BBCEF990-1BF3-48F2-AC6B-C14534EB293C</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>cd ~/.dotfiles
-git status</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>5</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>C32D5F07-C114-4C52-9A18-7642747B6C5C</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>fixedorder</key>
-				<true/>
-				<key>items</key>
-				<string>[{"title":"dotfiles","arg":"dotfiles"},{"title":"Other","arg":"other"}]</string>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string></string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
-			<key>uid</key>
-			<string>CB2180D3-3AC9-4C13-B997-F432D1AEC361</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>4</integer>
-						<key>matchstring</key>
-						<string>Changes not staged for commit:</string>
-						<key>outputlabel</key>
-						<string>commit</string>
-						<key>uid</key>
-						<string>7404076B-92D3-473E-8105-33687B04D1FF</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>pull</string>
-				<key>hideelse</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>168B6FF4-9448-4E86-A7BB-C24409446BD2</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -1621,9 +1482,9 @@ git status</string>
 						<key>matchmode</key>
 						<integer>0</integer>
 						<key>matchstring</key>
-						<string>dotfiles</string>
+						<string>personal</string>
 						<key>outputlabel</key>
-						<string>dotfiles</string>
+						<string>personal</string>
 						<key>uid</key>
 						<string>63C3AE0D-0839-4297-93C7-27BD7CA797B8</string>
 					</dict>
@@ -1666,7 +1527,13 @@ git status</string>
 				<integer>102</integer>
 				<key>script</key>
 				<string>cd ~/.dotfiles
-git pull</string>
+git add .
+git commit -m "$1"
+git push
+cd ~/dev/git/ExoCortex
+git add .
+git commit -m "$1"
+git push</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -1677,7 +1544,7 @@ git pull</string>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>FD7F0561-1CF1-45A3-B3E1-45957651F722</string>
+			<string>BBCEF990-1BF3-48F2-AC6B-C14534EB293C</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -1699,13 +1566,6 @@ git pull</string>
 			<real>1255</real>
 			<key>ypos</key>
 			<real>1225</real>
-		</dict>
-		<key>168B6FF4-9448-4E86-A7BB-C24409446BD2</key>
-		<dict>
-			<key>xpos</key>
-			<real>1250</real>
-			<key>ypos</key>
-			<real>1395</real>
 		</dict>
 		<key>1FBFA5EC-59F9-48F0-BEC0-498B2FF735D1</key>
 		<dict>
@@ -1777,13 +1637,6 @@ git pull</string>
 			<key>ypos</key>
 			<real>300</real>
 		</dict>
-		<key>772B3271-FF93-415F-857B-94FC6FA4A362</key>
-		<dict>
-			<key>xpos</key>
-			<real>1395</real>
-			<key>ypos</key>
-			<real>1345</real>
-		</dict>
 		<key>78B876B8-1D45-4284-9191-C653AE23C48B</key>
 		<dict>
 			<key>xpos</key>
@@ -1808,9 +1661,9 @@ git pull</string>
 		<key>7E993A88-037C-4FB9-90CB-55B273FE5FEF</key>
 		<dict>
 			<key>xpos</key>
-			<real>1455</real>
+			<real>1255</real>
 			<key>ypos</key>
-			<real>1315</real>
+			<real>1370</real>
 		</dict>
 		<key>885E725B-04C0-48EF-B673-D2C86B85ED09</key>
 		<dict>
@@ -1822,9 +1675,9 @@ git pull</string>
 		<key>8C6B04BD-9D41-45B7-AA1D-3234071BDEBF</key>
 		<dict>
 			<key>xpos</key>
-			<real>1735</real>
+			<real>1585</real>
 			<key>ypos</key>
-			<real>1260</real>
+			<real>1335</real>
 		</dict>
 		<key>8DB4BD8E-EBD5-4DB0-ACC5-5406B678F640</key>
 		<dict>
@@ -1892,9 +1745,9 @@ git pull</string>
 		<key>BBCEF990-1BF3-48F2-AC6B-C14534EB293C</key>
 		<dict>
 			<key>xpos</key>
-			<real>1735</real>
+			<real>1585</real>
 			<key>ypos</key>
-			<real>1365</real>
+			<real>1455</real>
 		</dict>
 		<key>BF4722E4-E762-4A63-89FE-8307C9E92939</key>
 		<dict>
@@ -1938,13 +1791,6 @@ git pull</string>
 			<key>ypos</key>
 			<real>865</real>
 		</dict>
-		<key>DEFC0F5B-5794-46AA-B3D9-FD60F2C6C127</key>
-		<dict>
-			<key>xpos</key>
-			<real>1335</real>
-			<key>ypos</key>
-			<real>1345</real>
-		</dict>
 		<key>DFC659DE-B772-4D42-A3F6-1C19E375237A</key>
 		<dict>
 			<key>xpos</key>
@@ -1962,9 +1808,9 @@ git pull</string>
 		<key>F1107CAC-6645-40F5-8382-85C2EC9310CA</key>
 		<dict>
 			<key>xpos</key>
-			<real>1595</real>
+			<real>1425</real>
 			<key>ypos</key>
-			<real>1335</real>
+			<real>1390</real>
 		</dict>
 		<key>F95CA534-6F98-4619-ABF4-638EF9D692E1</key>
 		<dict>
@@ -1979,13 +1825,6 @@ git pull</string>
 			<real>985</real>
 			<key>ypos</key>
 			<real>985</real>
-		</dict>
-		<key>FD7F0561-1CF1-45A3-B3E1-45957651F722</key>
-		<dict>
-			<key>xpos</key>
-			<real>1395</real>
-			<key>ypos</key>
-			<real>1430</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
