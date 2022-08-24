@@ -60,7 +60,7 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-sort-by-usage t
                       :disabled-for org)
 
-     bibtex
+     ;; bibtex
 
      ;; Nyan cat tells you where you are in your file
      ;; :variables
@@ -181,7 +181,7 @@ This function should only modify configuration layer settings."
              )
       )
 
-     pandoc
+     ;; pandoc
      pdf
      prolog
      python
@@ -192,6 +192,7 @@ This function should only modify configuration layer settings."
             shell-default-position 'top
             shell-default-shell 'vterm)
 
+     shell-scripts
      ;; Modeline of fancyness
      (spacemacs-modeline :variables
                          doom-modeline-height 40
@@ -201,13 +202,11 @@ This function should only modify configuration layer settings."
                          doom-modeline-lsp t
                          doom-modeline-minor-modes nil)
 
-     shell-scripts
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
      sql
      syntax-checking
      swift
-
 
      themes-megapack
      theming
