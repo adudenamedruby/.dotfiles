@@ -60,13 +60,19 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-sort-by-usage t
                       :disabled-for org)
 
+     bibtex
+
      ;; Nyan cat tells you where you are in your file
      ;; :variables
      ;; colors-enable-nyan-cat-progress-bar (display-graphic-p)
      colors
 
+     clojure
+     common-lisp
+
      ;; SPC a t l displays key and command history in a separate buffer
      command-log
+     csv
 
      emoji
      evil-commentary
@@ -78,13 +84,23 @@ This function should only modify configuration layer settings."
           magit-diff-refine-hunk 'all
           magit-refs-show-commit-count 'all)
 
+     emacs-lisp
+
+     html
      ;; helm-follow-mode sticky - remembers use of C-c C-f
      ;; - follow mode previews when scrolling through a helm list
      ;; (setq helm-follow-mode-persistent t)
      helm
 
      helpful
+
      imenu-list
+
+     javascript
+     json
+
+     latex
+
      (lsp :variables
           ;; Commented variables are default values in the lsp layer configuration
 
@@ -135,6 +151,9 @@ This function should only modify configuration layer settings."
 
           ;; lsp-file-watch-threshold 10000
           )
+
+     markdown
+
      neotree
 
      ;; Spacemacs Org Mode
@@ -163,6 +182,11 @@ This function should only modify configuration layer settings."
       )
           ;; org-enable-roam-ui t)
 
+     pandoc
+     pdf
+     prolog
+     python
+
      ;; SPC ' runs a shell in a popup buffer
      (shell :variables
             shell-default-height 65
@@ -181,7 +205,11 @@ This function should only modify configuration layer settings."
      shell-scripts
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
+     sql
      syntax-checking
+     swift
+
+
      themes-megapack
      theming
 
@@ -199,27 +227,7 @@ This function should only modify configuration layer settings."
                       version-control-diff-side 'left
                       version-control-global-margin t)
 
-     ;; Programming Languages
-     clojure
-     common-lisp
-     emacs-lisp
-     html
-     javascript
-     prolog
-     python
-     swift
-
-     ;; Non-programming language file handling
-     csv
-     json
-     latex
-     markdown
-     sql
      yaml
-     vimscript
-
-
-     ;; Other
 
      ;; end of configure-layers
      )
@@ -654,6 +662,7 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
   (spacemacs/set-leader-keys "hdf" 'describe-function)
+
   ;; Customizing themes
   (setq theming-modifications
         '((farmhouse-dark
@@ -697,7 +706,16 @@ before packages are loaded."
   (with-eval-after-load 'org
     (org-babel-do-load-languages
      'org-babel-load-languages
-     '((python . t))))
+     '(
+       (python . t)
+       (haskell . t)
+       (clojure . t)
+       (ruby . t)
+       (swift . t)
+       (lisp . t)
+      )
+    )
+  )
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

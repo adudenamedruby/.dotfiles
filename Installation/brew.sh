@@ -52,6 +52,10 @@ brew install svn
 
 brew install zsh-syntax-highlighting
 
+brew install pandoc
+
+brew install librsvg
+
 
 # ---------------------------------------------
 # Programming Languages
@@ -96,6 +100,8 @@ brew install --cask moom
 brew install --cask karabiner-elements
 
 brew install --cask dash
+
+brew install --cask basictex
 
 # Emacs
 brew tap d12frosted/emacs-plus
