@@ -38,6 +38,8 @@ brew install openssh
 
 brew install grep
 
+brew install ripgrep
+
 brew install carthage
 
 brew install node

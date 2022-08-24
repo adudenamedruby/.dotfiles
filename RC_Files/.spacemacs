@@ -165,6 +165,10 @@ This function should only modify configuration layer settings."
           org-enable-roam-ui t
           org-roam-directory (concat org-directory "/myWiki/zettlekasten")
           org-roam-db-location (concat org-directory "/myWiki/db/org-roam.db")
+          org-roam-mode-section-functions
+           (list #'org-roam-backlinks-section
+                 #'org-roam-reflinks-section
+                 #'org-roam-unlinked-references-section)
           org-roam-capture-templates
            '(("d" "default" plain
               "* ${title}\n\n%?\n* References"
