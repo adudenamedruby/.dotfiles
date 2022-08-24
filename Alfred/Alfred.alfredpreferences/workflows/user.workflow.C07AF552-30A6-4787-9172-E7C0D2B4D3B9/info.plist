@@ -328,18 +328,7 @@
 			</dict>
 		</array>
 		<key>C32D5F07-C114-4C52-9A18-7642747B6C5C</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>7E993A88-037C-4FB9-90CB-55B273FE5FEF</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>CB2180D3-3AC9-4C13-B997-F432D1AEC361</key>
 		<array>
 			<dict>
@@ -1661,7 +1650,7 @@ git push</string>
 		<key>7E993A88-037C-4FB9-90CB-55B273FE5FEF</key>
 		<dict>
 			<key>xpos</key>
-			<real>1255</real>
+			<real>1285</real>
 			<key>ypos</key>
 			<real>1370</real>
 		</dict>
