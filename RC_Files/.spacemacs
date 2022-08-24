@@ -75,6 +75,7 @@ This function should only modify configuration layer settings."
      csv
 
      emoji
+     emacs-lisp
      evil-commentary
 
      ;; SPC g s opens Magit git client full screen (q restores previous layout)
@@ -84,15 +85,13 @@ This function should only modify configuration layer settings."
           magit-diff-refine-hunk 'all
           magit-refs-show-commit-count 'all)
 
-     emacs-lisp
-
-     html
      ;; helm-follow-mode sticky - remembers use of C-c C-f
      ;; - follow mode previews when scrolling through a helm list
      ;; (setq helm-follow-mode-persistent t)
      helm
 
      helpful
+     html
 
      imenu-list
 
@@ -163,12 +162,13 @@ This function should only modify configuration layer settings."
           org-directory (expand-file-name "~/Code/src/git/ExoCortex")
           ;; org-roam
           org-enable-roam-support t
-          org-roam-directory (concat org-directory "/wiki")
-          org-roam-db-location (concat org-roam-directory "/db/org-roam.db")
+          org-enable-roam-ui t
+          org-roam-directory (concat org-directory "/myWiki/zettlekasten")
+          org-roam-db-location (concat org-directory "/myWiki/db/org-roam.db")
           org-roam-capture-templates
            '(("d" "default" plain
-              "%?"
-              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: roux g. buciu\n#+date: %U\n")
+              "* ${title}\n\n%?\n* References"
+              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: roux g. buciu\n")
               :unnarrowed t)
              ;; hotkey name type
              ("p" "programming language" plain
@@ -176,11 +176,10 @@ This function should only modify configuration layer settings."
               ;; This can also be: (file "~/location/to/org/file")
               "* It worked!\n%?"
               ;; filename AND what's added to the top of the file
-              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: roux g. buciu\n#+date: %U\n#+filetags: :%^{Language}:programming:\n")
+              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: roux g. buciu\n#+filetags: :%^{Language}:programming:\n")
               :unnarrowed t)
              )
       )
-          ;; org-enable-roam-ui t)
 
      pandoc
      pdf
@@ -711,7 +710,6 @@ before packages are loaded."
        (haskell . t)
        (clojure . t)
        (ruby . t)
-       (swift . t)
        (lisp . t)
       )
     )
