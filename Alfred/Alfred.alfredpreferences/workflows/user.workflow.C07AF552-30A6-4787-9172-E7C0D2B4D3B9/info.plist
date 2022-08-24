@@ -1392,7 +1392,7 @@ git push</string>
 				<key>script</key>
 				<string>cd ~/.dotfiles
 git pull
-cd ~/dev/src/git/ExoCortex
+cd ~/dev/git/ExoCortex
 git pull</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>

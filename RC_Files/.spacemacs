@@ -160,6 +160,7 @@ This function should only modify configuration layer settings."
           org-enable-epub-support t
           org-enable-github-support t
           org-directory (expand-file-name "~/dev/git/ExoCortex")
+
           ;; org-roam
           org-enable-roam-support t
           org-enable-roam-ui t
