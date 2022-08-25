@@ -159,12 +159,12 @@ This function should only modify configuration layer settings."
      (org :variables
           org-enable-epub-support t
           org-enable-github-support t
-          org-directory (expand-file-name "~/dev/git/ExoCortex")
+          org-directory (expand-file-name "~/dev/git/ExoCortex/org")
           ;; org-roam
           org-enable-roam-support t
           org-enable-roam-ui t
-          org-roam-directory (concat org-directory "/myWiki/zettlekasten")
-          org-roam-db-location (concat org-directory "/myWiki/db/org-roam.db")
+          org-roam-directory (expand-file-name "~/dev/git/ExoCortex/myWiki/zettlekasten")
+          org-roam-db-location (expand-file-name "~/dev/git/ExoCortex/myWiki/db/org-roam.db")
           org-roam-mode-section-functions
            (list #'org-roam-backlinks-section
                  #'org-roam-reflinks-section
@@ -367,19 +367,13 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(doom-old-hope
-                         material
                          gruvbox-dark-hard
                          grandshell
-                         doom-ephemeral
-                         doom-material-dark
-                         doom-monokai-spectrum
-                         doom-peacock
                          doom-zenburn
                          sanityinc-tomorrow-night
                          lush
                          cyberpunk
-                         afternoon
-                         farmhouse-dark)
+                         afternoon)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -663,26 +657,51 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
-  (spacemacs/set-leader-keys "hdf" 'describe-function)
-
-  ;; Customizing themes
-  (setq theming-modifications
-        '((farmhouse-dark
-           (evil-ex-lazy-highlight :background "#cc0000")
-           (iedit-occurrence :background "#7510F0"))))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Who am I?
+  (setq user-full-name "roux g. buciu"
+        user-mail-address "roux@acmelabs.ca")
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Keeping Helm history clean
-  (setq history-delete-duplicates t)
-  (setq extended-command-history
-        (delq nil (delete-dups extended-command-history)))
+  ;; Clojure
 
+  ;; clojure - pretty symbols
+  (setq clojure-enable-fancify-symbols t)
+  ;; set pretty symbols everywhere, really
+  (global-prettify-symbols-mode t)
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Custom Keybindings
+
+  ;; Easily call up describe-function
+  (spacemacs/set-leader-keys "hdf" 'describe-function)
+
+  ;; Evil-mode stuff
   ;; Make evil-mode up/down operate in screen lines instead of logical lines
   (define-key evil-motion-state-map "j" 'evil-next-visual-line)
   (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
   ;; Also in visual mode
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Helm - keep history clean
+  (setq history-delete-duplicates t)
+  (setq extended-command-history
+        (delq nil (delete-dups extended-command-history)))
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Magit - forge configuration
+  ;;
+  ;; Set the files that are searched for writing tokens
+  ;; by default ~/.authinfo will be used
+  ;; and write a token in unencrypted format
+  ;; (setq auth-sources '("~/.authinfo"))
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; LSP
 
   ;; Swift LSP configuration
   (with-eval-after-load 'lsp-mode
@@ -693,18 +712,8 @@ before packages are loaded."
 
   (add-hook 'swift-mode-hook (lambda () (lsp)))
 
-  ;; pretty symbols for Clojure
-  (setq clojure-enable-fancify-symbols t)
-
-  ;; Word wrapping
-  (defun my/enable-word-wrap ()
-    (setq-local word-wrap t))
-  (add-hook 'text-mode-hook #'my/enable-word-wrap)
-
-  (add-hook 'text-mode-hook 'auto-fill-mode)
-  (add-hook 'org-mode-hook 'auto-fill-mode)
-  (setq powerline-default-separator 'slant)
-
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Org mode setup
   (with-eval-after-load 'org
     (org-babel-do-load-languages
      'org-babel-load-languages
@@ -717,15 +726,45 @@ before packages are loaded."
       )
     )
   )
+  (setq org-ellipsis "…")
+  (setq org-pretty-entities t)
+  (setq org-startup-with-inline-images t
+        org-image-actual-width '(600))
+  (setq org-src-fontify-natively t)
 
+  ;; Store my org files in ~/documents/org, define the location of an index file (my main todo list),
+  ;; and archive finished tasks in ~/documents/org/archive/archive-YYYY.org
+  (defun org-file-path (filename)
+    "Return the absolute address of an org file, given its relative name."
+    (concat (file-name-as-directory org-directory) filename))
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Magit - forge configuration
-  ;;
-  ;; Set the files that are searched for writing tokens
-  ;; by default ~/.authinfo will be used
-  ;; and write a token in unencrypted format
-  ;; (setq auth-sources '("~/.authinfo"))
+  (setq org-index-file (org-file-path "index.org"))
+  (setq org-archive-location
+        (concat
+         (org-file-path (format "archive/archive-%s.org" (format-time-string "%Y")))
+         "::* From %s"))
+
+  (setq org-refile-targets `((,org-index-file :level . 1)
+                             (,(org-file-path "deliveries.org") :level . 1)))
+  (advice-add 'org-archive-subtree :after 'org-save-all-org-buffers)
+  (setq org-confirm-babel-evaluate nil)
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Theme customization
+  (setq theming-modifications
+        '((farmhouse-dark
+           (evil-ex-lazy-highlight :background "#cc0000")
+           (iedit-occurrence :background "#7510F0"))))
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Wrapping
+  (defun my/enable-word-wrap ()
+    (setq-local word-wrap t))
+  (add-hook 'text-mode-hook #'my/enable-word-wrap)
+
+  (add-hook 'text-mode-hook 'auto-fill-mode)
+  (add-hook 'org-mode-hook 'auto-fill-mode)
+  (setq powerline-default-separator 'slant)
 
 
   ;; End of user-config
