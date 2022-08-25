@@ -21,7 +21,6 @@ synchronize () {
     git commit -m "Update exocortex"
     git push
     popd
-#pushd ~/.dotfiles; git pull; popd; pushd ~/dev/git/ExoCortex; git pull; popd"
     echo "Finished synchonizing presonal repos"
 }
 alias sync="synchronize"
