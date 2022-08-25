@@ -1,0 +1,64 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 8,
+      "subtext" : {
+        "size" : 12,
+        "colorSelected" : "#000000FF",
+        "font" : "Courier",
+        "color" : "#00F900FF"
+      },
+      "shortcut" : {
+        "size" : 16,
+        "colorSelected" : "#000000FF",
+        "font" : "Courier",
+        "color" : "#00F900FF"
+      },
+      "backgroundSelected" : "#00F900FF",
+      "text" : {
+        "size" : 18,
+        "colorSelected" : "#000000FF",
+        "font" : "Courier",
+        "color" : "#00F900FF"
+      },
+      "iconPaddingHorizontal" : 4,
+      "roundness" : 0,
+      "paddingVertical" : 10,
+      "iconSize" : 40
+    },
+    "search" : {
+      "backgroundSelected" : "#00F900FF",
+      "paddingHorizontal" : 8,
+      "spacing" : 8,
+      "text" : {
+        "size" : 32,
+        "colorSelected" : "#000000FF",
+        "font" : "Courier",
+        "color" : "#00F900FF"
+      },
+      "background" : "#0000001A",
+      "roundness" : 0,
+      "paddingVertical" : 5
+    },
+    "window" : {
+      "color" : "#000000CB",
+      "paddingHorizontal" : 0,
+      "width" : 759,
+      "borderPadding" : 0,
+      "borderColor" : "#0000007F",
+      "blur" : 0,
+      "roundness" : -56,
+      "paddingVertical" : 0
+    },
+    "credit" : "Tamio",
+    "separator" : {
+      "color" : "#CBCBCBF3",
+      "thickness" : 0
+    },
+    "scrollbar" : {
+      "color" : "#00F900FF",
+      "thickness" : 2
+    },
+    "name" : "Monochrome"
+  }
+}

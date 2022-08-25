@@ -56,7 +56,7 @@
       "borderPadding" : 0,
       "borderColor" : "#E1404900",
       "blur" : 0,
-      "roundness" : 7,
+      "roundness" : 8,
       "paddingVertical" : 10
     }
   }
