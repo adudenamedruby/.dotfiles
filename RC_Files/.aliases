@@ -4,12 +4,19 @@
 alias docs="cd ~/Documents"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias code="cd ~/Documents/code"
-
-# Alias for manipulating the dotfile folder
 alias dot="cd ~/.dotfiles"
-alias dotupdate="pushd ~/.dotfiles; git add -A; git commit -m \"Update repo\"; git push origin master; popd"
-alias dotsync="pushd ~/.dotfiles; git pull origin main; popd"
+
+#keeping my stuff in sync
+synchronize () {
+    pushd ~/.dotfiles;
+    git add .
+    git commit -m "Update dotfiles"
+    git push
+    popd
+    #pushd ~/dev/git/exo; git add .; git commit -m \"Update repo\"; git push; popd; "
+#pushd ~/.dotfiles; git pull; popd; pushd ~/dev/git/ExoCortex; git pull; popd"
+}
+alias sync="synchronize"
 
 # Detect which `ls` flavor is in use
 #if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -68,10 +75,6 @@ alias spotoff="sudo mdutil -a -i off"
 # Enable Spotlight
 alias spoton="sudo mdutil -a -i on"
 
-# Kill all the tabs in Chrome to free up memory
-# [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
-alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
-
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
@@ -80,6 +83,3 @@ alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
-
-# get rid of a file that's really annoying.
-alias metrics="rm ~/Code/src/git/firefox-ios/Client/Generated/Metrics.swift"
