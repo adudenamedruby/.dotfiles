@@ -60,7 +60,7 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-sort-by-usage t
                       :disabled-for org)
 
-     ;; bibtex
+     bibtex
 
      ;; Nyan cat tells you where you are in your file
      ;; :variables
@@ -170,22 +170,26 @@ This function should only modify configuration layer settings."
                  #'org-roam-reflinks-section
                  #'org-roam-unlinked-references-section)
           org-roam-capture-templates
-           '(("d" "default" plain
-              "* ${title}\n\n%?\n* References"
-              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: roux g. buciu\n")
-              :unnarrowed t)
+           '(;; EXAMPLE TEMPLATE
              ;; hotkey name type
-             ("p" "programming language" plain
+             ("n" "Note" plain
               ;; %? is the cursor, and the rest is what the file will be preloaded with
               ;; This can also be: (file "~/location/to/org/file")
-              "* It worked!\n%?"
+              "* ${title}\n** Summary\n%?\n\n** More details\n\n* References\n\n* LINKS\n"
               ;; filename AND what's added to the top of the file
-              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: roux g. buciu\n#+filetags: :%^{Language}:programming:\n")
+              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: electricRGB\n#+date: %t\n\n")
+              :unnarrowed t)
+             ("g" "Glossary term" plain
+              "* ${title}\n** Definition\n%?\n\n* References\n\n* LINKS\n- [[id:C1F1861B-20E0-4E15-9C0A-C93CE1652CC9][Glossary]]\n"
+              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: electricRGB\n#+date: %t\n\n")
+              :unnarrowed t)
+             ("q" "Quote" plain
+              "#+BEGIN_QUOTE\n%?#+END_QUOTE\n\n* References\n\n* LINKS\n-[[id:ADC4CC70-7EE8-4B34-A852-7A4F9DF8AFBF][Quotes]]\n"
+              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: electricRGB\n#+date: %t\n\n")
               :unnarrowed t)
              )
       )
 
-     ;; pandoc
      pdf
      prolog
      python
@@ -243,7 +247,9 @@ This function should only modify configuration layer settings."
      ;; '(your-package :location "~/path/to/your-package/")
      ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(lsp-sourcekit
-                                      all-the-icons)
+                                      all-the-icons
+                                      olivetti
+                                      org-reverse-datetree)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -658,11 +664,6 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Who am I?
-  (setq user-full-name "roux g. buciu"
-        user-mail-address "roux@acmelabs.ca")
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Clojure
 
   ;; clojure - pretty symbols
@@ -726,12 +727,22 @@ before packages are loaded."
       )
     )
   )
+
   (setq org-ellipsis "…")
   (setq org-pretty-entities t)
   (setq org-startup-with-inline-images t
         org-image-actual-width '(600))
   (setq org-src-fontify-natively t)
-
+  (setq org-todo-keywords
+        '((sequence "TODO(t!)" "UNDERWAY(u!)" "BLOCKED(b!)" "REVIEW(r!)" "|" "CANCELLED(c!)" "DONE(d!)")))
+  ;; Skip finished items
+  (setq org-agenda-skip-deadline-if-done t)
+  (setq org-agenda-skip-scheduled-if-done t)
+  (setq org-agenda-skip-timestamp-if-done t)
+  ;; To add all org files in a repository to the agenda
+  (setq org-agenda-files (directory-files-recursively "~/dev/git/ExoCortex/org/" "\.org$"))
+  ;; Skip deleted files
+  (setq org-agenda-skip-unavailable-files t)
   ;; Store my org files in ~/documents/org, define the location of an index file (my main todo list),
   ;; and archive finished tasks in ~/documents/org/archive/archive-YYYY.org
   (defun org-file-path (filename)
@@ -748,6 +759,44 @@ before packages are loaded."
                              (,(org-file-path "deliveries.org") :level . 1)))
   (advice-add 'org-archive-subtree :after 'org-save-all-org-buffers)
   (setq org-confirm-babel-evaluate nil)
+
+  ;; Org-Capture templates
+  (setq org-capture-templates
+        (quote (
+                ("n" "Notes" entry
+                 (file+function "~/dev/git/ExoCortex/org/tasks.org" org-reverse-datetree-goto-date-in-file)
+                 "* %^{Description}\nAdded: %t\n%?")
+
+                ("t" "Task" entry
+                 (file+function "~/dev/git/ExoCortex/org/tasks.org" org-reverse-datetree-goto-date-in-file)
+                 "* TODO %^{Description}\nAdded: %t\n%?"))))
+
+  ;; Olivetti mode
+  ;; Text takes up 85% of the buffer
+  (setq olivetti-body-width 0.75)
+  ;; Starts text files (like .org .txt .md) in olivetti mode
+  (add-hook 'text-mode-hook 'olivetti-mode)
+
+  ;; Making checkboxes pretty!
+  (add-hook 'org-mode-hook (lambda ()
+                             "Beautify Org Checkbox Symbol"
+                             (push '("[ ]" .  "☐") prettify-symbols-alist)
+                             (push '("[X]" . "☑" ) prettify-symbols-alist)
+                             (push '("[-]" . "❍" ) prettify-symbols-alist)
+                             (prettify-symbols-mode)))
+  (defface org-checkbox-done-text
+    '((t (:foreground "#71696A")))
+    "Face for the text part of a checked org-mode checkbox.")
+
+  ;; Makes some things look nicer
+  (setq org-startup-indented t
+        org-pretty-entities t
+        ;; show actually italicized text instead of /italicized text/
+        org-hide-emphasis-markers t
+        org-agenda-block-separator ""
+        org-fontify-whole-heading-line t
+        org-fontify-done-headline t
+        org-fontify-quote-and-verse-blocks t)
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Theme customization
@@ -796,7 +845,7 @@ This function is called at the very end of Spacemacs initialization."
      ("flagged" :foreground "#0a9dff")
      ("deleted" :foreground "#ff2c4b" :bold t)))
  '(package-selected-packages
-   '(org-roam compat ox-epub lsp-docker ox-gfm grip-mode github-search github-clone with-editor transient magit-section git-commit gist gh marshal logito lsp-sourcekit shrink-path cfrs slack circe oauth2 websocket lsp-ui lsp-python-ms lsp-pyright lsp-origami origami lsp-latex helm-lsp flyspell-correct-helm flyspell-correct auto-dictionary unicode-fonts ucs-utils font-utils persistent-soft pcache ligature keycast csv-mode command-log-mode company-quickhelp seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode dap-mode posframe lsp-treemacs bui treemacs pfuture counsel swiper ivy chruby bundler inf-ruby tern livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc helm-gtags ggtags counsel-gtags add-node-modules-path typit mmt sudoku pacmacs dash-functional 2048-game zenburn-theme zen-and-art-theme yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum white-sand-theme which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit symon swift-mode sunny-day-theme sublime-themes subatomic256-theme subatomic-theme string-inflection spaceline-all-the-icons spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle slim-mode shell-pop seti-theme scss-mode sass-mode reverse-theme restart-emacs rebecca-theme rainbow-mode rainbow-identifiers rainbow-delimiters railscasts-theme pyvenv pytest pyenv-mode py-isort purple-haze-theme pug-mode professional-theme prettier-js popwin planet-theme pippel pipenv pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el password-generator paradox overseer orgit organic-green-theme org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme neotree naquadah-theme nameless mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-svn magit-gitflow madhat2r-theme macrostep lush-theme lorem-ipsum live-py-mode link-hint light-soap-theme kaolin-themes jbeans-theme jazz-theme ir-black-theme insert-shebang inkpot-theme indent-guide importmagic impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md gandalf-theme fuzzy font-lock+ flycheck-bashate flx-ido flatui-theme flatland-theme fish-mode fill-column-indicator farmhouse-theme fancy-battery eziam-theme eyebrowse expand-region exotica-theme evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu espresso-theme eshell-z eshell-prompt-extras esh-help emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav editorconfig dumb-jump dracula-theme dotenv-mode doom-themes doom-modeline django-theme diminish diff-hl define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme dactyl-mode cython-mode cyberpunk-theme counsel-projectile company-web company-statistics company-shell company-emoji company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized color-identifiers-mode clues-theme clean-aindent-mode cherry-blossom-theme centered-cursor-mode busybee-theme bubbleberry-theme browse-at-remote birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ace-window ace-link ace-jump-helm-line ac-ispell))
+   '(org-reverse-datetree helm-bibtex olivetti org-ref ox-pandoc citeproc bibtex-completion biblio biblio-core parsebib org-roam compat ox-epub lsp-docker ox-gfm grip-mode github-search github-clone with-editor transient magit-section git-commit gist gh marshal logito lsp-sourcekit shrink-path cfrs slack circe oauth2 websocket lsp-ui lsp-python-ms lsp-pyright lsp-origami origami lsp-latex helm-lsp flyspell-correct-helm flyspell-correct auto-dictionary unicode-fonts ucs-utils font-utils persistent-soft pcache ligature keycast csv-mode command-log-mode company-quickhelp seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode dap-mode posframe lsp-treemacs bui treemacs pfuture counsel swiper ivy chruby bundler inf-ruby tern livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc helm-gtags ggtags counsel-gtags add-node-modules-path typit mmt sudoku pacmacs dash-functional 2048-game zenburn-theme zen-and-art-theme yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum white-sand-theme which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit symon swift-mode sunny-day-theme sublime-themes subatomic256-theme subatomic-theme string-inflection spaceline-all-the-icons spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle slim-mode shell-pop seti-theme scss-mode sass-mode reverse-theme restart-emacs rebecca-theme rainbow-mode rainbow-identifiers rainbow-delimiters railscasts-theme pyvenv pytest pyenv-mode py-isort purple-haze-theme pug-mode professional-theme prettier-js popwin planet-theme pippel pipenv pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el password-generator paradox overseer orgit organic-green-theme org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme neotree naquadah-theme nameless mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-svn magit-gitflow madhat2r-theme macrostep lush-theme lorem-ipsum live-py-mode link-hint light-soap-theme kaolin-themes jbeans-theme jazz-theme ir-black-theme insert-shebang inkpot-theme indent-guide importmagic impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md gandalf-theme fuzzy font-lock+ flycheck-bashate flx-ido flatui-theme flatland-theme fish-mode fill-column-indicator farmhouse-theme fancy-battery eziam-theme eyebrowse expand-region exotica-theme evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu espresso-theme eshell-z eshell-prompt-extras esh-help emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav editorconfig dumb-jump dracula-theme dotenv-mode doom-themes doom-modeline django-theme diminish diff-hl define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme dactyl-mode cython-mode cyberpunk-theme counsel-projectile company-web company-statistics company-shell company-emoji company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized color-identifiers-mode clues-theme clean-aindent-mode cherry-blossom-theme centered-cursor-mode busybee-theme bubbleberry-theme browse-at-remote birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ace-window ace-link ace-jump-helm-line ac-ispell))
  '(pdf-view-midnight-colors '("#fdf4c1" . "#1d2021"))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
