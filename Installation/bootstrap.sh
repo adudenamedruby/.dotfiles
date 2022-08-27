@@ -9,7 +9,6 @@ init () {
         echo "Geronimooooooooo!!!!"
         developer_mode
         install_tools
-        setup_utilities
         symlink_setup
         fetch_repos
         macOS_preferences
@@ -67,9 +66,9 @@ fetch_repos () {
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
         echo "Creating folders"
         mkdir ~/code
-        mkdir ~/code/src
+        mkdir ~/code/git
         echo "Fetching repos:"
-        sh fetchPersonalRepos.sh
+        sh fetchRepos.sh
         echo "Repo fetch complete."
     else
         echo "Setting preferences skipped."
@@ -85,18 +84,6 @@ macOS_preferences () {
         sh macos.sh
     else
         echo "Setting preferences skipped."
-    fi
-}
-
-setup_utilities () {
-    echo "This utility will download and install the rest of the utilities for bootstrapping"
-    echo "Proceed? (y/n)"
-    read resp
-    if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
-        echo "Downloading..."
-        sh downloads.sh
-    else
-        echo "Skipping miscellaneous file downloads."
     fi
 }
 

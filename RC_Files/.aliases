@@ -10,7 +10,8 @@ alias dot="cd ~/.dotfiles"
 synchronize () {
     echo "Synchonizing presonal repos"
     echo "+++++++++ Syncing ~/.dotfiles +++++++++"
-    pushd ~/.dotfiles;
+    dirs -c
+    pushd ~/.dotfiles
     git pull
     git add .
     git commit -m "Update dotfiles"
@@ -21,6 +22,13 @@ synchronize () {
     git pull
     git add .
     git commit -m "Update exocortex"
+    git push
+    popd
+    echo "+++++++++ Syncing Learn2Code +++++++++"
+    pushd ~/code/git/Learn2Code
+    git pull
+    git add .
+    git commit -m "Update learning repo"
     git push
     popd
     echo "Finished synchonizing presonal repos"

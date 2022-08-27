@@ -13,7 +13,7 @@ dotfiles () {
     fi
 }
 
-xcodeKeybindings () {
+xcodePrefs () {
     echo "Symlink XCode preferences? (y/n)"
     read resp
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
@@ -42,5 +42,5 @@ karabiner () {
 }
 
 dotfiles
-xcodeKeybindings
+xcodePrefs
 karabiner
