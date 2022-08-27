@@ -26,9 +26,9 @@
                         ;; keys need to be pressed within this threshold to be considered simultaneous
         :delay   1      ;; to_delayed_action_delay_milliseconds (def: 500)
                         ;; basically it means time after which the key press is count delayed
-        :alone   1000    ;; to_if_alone_timeout_milliseconds (def: 1000)
+        :alone   1000   ;; to_if_alone_timeout_milliseconds (def: 1000)
                         ;; hold for 995s and single tap registered; hold for 1005s and seen as modifier
-        :held    5000     ;; to_if_held_down_threshold_milliseconds (def: 500)
+        :held    500    ;; to_if_held_down_threshold_milliseconds (def: 500)
                         ;; key is fired twice when 500 ms is elapsed (otherwise seen as a hold command)
     }
 } ;; profiles
@@ -58,7 +58,6 @@
 
     ;; (custom variables) & modifiers -> Advanced
     ;; https://github.com/yqrashawn/GokuRakuJoudo/blob/master/examples.org#custom-variable
-
     {
         :des "Caps Lock -> Esc : Control"
         :rules [[:##caps_lock :left_control nil {:alone :escape}]]
@@ -67,6 +66,86 @@
         :des "Tab -> Tab : HYPER"
         :rules [[:##tab :!COSleft_control nil {:alone :tab}]]
     }
+    {
+        :des "========= LAYER 1 (Prog Chars) =========="
+        :rules [
+
+              ;;--------- LAYER ACTIVATOR | right_command  -----------
+              [:##right_command ["L1" 1] nil {:afterup ["L1" 0]}]
+
+              ;; Top row
+              [:##w :grave_accent_and_tilde  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##e :!S2  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##r :!S5  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##t :!Sbackslash  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##y :backslash  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##u :0  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##i :!S6  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##o :!S4  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+
+              ;; Home row
+              [:##a :open_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##s :!Shyphen  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##d :!Sz  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##f :!S9  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##g :!Sclose_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##h :!S8  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##j :!S0  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##k :close_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##l :!Sequal_sign  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##semicolon :quote  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+
+              ;; Bottom Row
+              [:##z :!Sgrave_accent_and_tilde  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##x :hyphen  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##c :!S7  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##v :!Sopen_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##m :!S1  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##comma :!Squote  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##period :equal_sign  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##slash :!S3  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+          ]
+      }
+      {
+          :des "========= LAYER 2 () =========="
+          :rules [
+
+                ;;--------- LAYER ACTIVATOR | right_command  -----------
+                [:##right_option ["L2" 1] nil {:afterup ["L2" 0]}]
+
+                ;; Top row
+                [:##w :grave_accent_and_tilde  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##e :!S2  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##r :!S5  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##t :!Sbackslash  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##y :backslash  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##u :0  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##i :!S6  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##o :!S4  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+
+                ;; Home row
+                [:##a :open_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##s :!Shyphen  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##d :!Sz  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##f :!S9  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##g :!Sclose_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##h :!S8  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##j :!S0  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##k :close_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##l :!Sequal_sign  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##semicolon :quote  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+
+                ;; Bottom Row
+                [:##z :!Sgrave_accent_and_tilde  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##x :hyphen  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##c :!S7  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##v :!Sopen_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##m :!S1  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##comma :!Squote  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##period :equal_sign  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                [:##slash :!S3  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+            ]
+        }
 ] ;; main list
 
 }

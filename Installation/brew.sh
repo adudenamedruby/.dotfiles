@@ -58,6 +58,8 @@ brew install pandoc
 
 brew install librsvg
 
+brew install yqrashawn/goku/goku
+
 
 # ---------------------------------------------
 # Programming Languages

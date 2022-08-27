@@ -32,7 +32,10 @@ karabiner () {
     read resp
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
         mkdir ~/.config/karabiner/
-        ln -s ~/.dotfiles/Keyboard_Preferences/karabiner.json ~/.config/karabiner/
+        touch ~/.config/karabiner/karabiner.json
+        ln -s ~/.dotfiles/Keyboard_Preferences/karabiner.edn ~/.config
+        cd ~/.config
+        goku
     else
         echo "Skipping Karabiner keybinding symlinks"
     fi
