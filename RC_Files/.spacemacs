@@ -740,16 +740,16 @@ before packages are loaded."
   (setq org-agenda-skip-scheduled-if-done t)
   (setq org-agenda-skip-timestamp-if-done t)
   ;; To add all org files in a repository to the agenda
-  (setq org-agenda-files (directory-files-recursively "~/dev/git/ExoCortex/org/" "\.org$"))
+  (setq org-agenda-files (directory-files-recursively "~/dev/git/ExoCortex/org" "org$"))
   ;; Skip deleted files
   (setq org-agenda-skip-unavailable-files t)
   ;; Store my org files in ~/documents/org, define the location of an index file (my main todo list),
-  ;; and archive finished tasks in ~/documents/org/archive/archive-YYYY.org
+  ;; and archive finished tasks in ~/.../archive/archive-YYYY.org
   (defun org-file-path (filename)
     "Return the absolute address of an org file, given its relative name."
     (concat (file-name-as-directory org-directory) filename))
 
-  (setq org-index-file (org-file-path "index.org"))
+  (setq org-index-file (org-file-path "tasks.org"))
   (setq org-archive-location
         (concat
          (org-file-path (format "archive/archive-%s.org" (format-time-string "%Y")))
@@ -777,13 +777,6 @@ before packages are loaded."
   ;; Starts text files (like .org .txt .md) in olivetti mode
   (add-hook 'text-mode-hook 'olivetti-mode)
 
-  ;; Making checkboxes pretty!
-  (add-hook 'org-mode-hook (lambda ()
-                             "Beautify Org Checkbox Symbol"
-                             (push '("[ ]" .  "☐") prettify-symbols-alist)
-                             (push '("[X]" . "☑" ) prettify-symbols-alist)
-                             (push '("[-]" . "❍" ) prettify-symbols-alist)
-                             (prettify-symbols-mode)))
   (defface org-checkbox-done-text
     '((t (:foreground "#71696A")))
     "Face for the text part of a checked org-mode checkbox.")
