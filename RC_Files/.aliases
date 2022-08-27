@@ -9,12 +9,14 @@ alias dot="cd ~/.dotfiles"
 #keeping my stuff in sync
 synchronize () {
     echo "Synchonizing presonal repos"
+    echo "+++++++++ Syncing ~/.dotfiles +++++++++"
     pushd ~/.dotfiles;
     git pull
     git add .
     git commit -m "Update dotfiles"
     git push
     popd
+    echo "+++++++++ Syncing ExoCortex +++++++++"
     pushd ~/code/git/ExoCortex
     git pull
     git add .
