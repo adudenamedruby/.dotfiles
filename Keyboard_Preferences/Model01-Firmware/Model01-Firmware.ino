@@ -161,15 +161,15 @@ KEYMAPS(
   [PRIMARY] = KEYMAP_STACKED
   (___,                         Key_1,           Key_2,          Key_3,           Key_4,       Key_5,       Key_LEDEffectNext,
    Key_Tab,                     Key_Q,           Key_W,          Key_E,           Key_R,       Key_T,       LGUI(Key_I),
-   CTL_T(Escape),               Key_A,           Key_S,          Key_D,           Key_F,       Key_G,
+   Key_LeftControl,             Key_A,           Key_S,          Key_D,           Key_F,       Key_G,
    Key_LeftShift,               Key_Z,           Key_X,          Key_C,           Key_V,       Key_B,       LGUI(Key_Period),
    Key_LeftGui, Key_Spacebar, Key_Enter, ALT_T(Tab),
    ShiftToLayer(NUMBERS_FUNCTION),
 
    M(MACRO_ANY),        Key_6,           Key_7,          Key_8,          Key_9,         Key_0,         LockLayer(DVORAK),
    ShiftToLayer(MEDIA), Key_Y,           Key_U,          Key_I,          Key_O,         Key_P,         LGUI(Key_Slash),
-                        Key_H,           Key_J,          Key_K,          Key_L,         Key_Semicolon, ___,
-   LockLayer(WOW),        Key_N,           Key_M,          Key_Comma,      Key_Period,    Key_Slash,     LSHIFT(LGUI(Key_Slash)),
+                        Key_H,           Key_J,          Key_K,          Key_L,         Key_Semicolon, Key_RightShift,
+   LockLayer(WOW),      Key_N,           Key_M,          Key_Comma,      Key_Period,    Key_Slash,     LSHIFT(LGUI(Key_Slash)),
    Key_RightAlt, Key_LeftShift, Key_Backspace, CTL_T(Escape),
    ShiftToLayer(PROGRAMMING_CHARACTERS)),
 
@@ -185,7 +185,7 @@ KEYMAPS(
    ___, ___, ___,   ___,   ___,   ___,   ___,
    ___, ___, Key_7, Key_8, Key_9, ___,   ___,
         ___, Key_4, Key_5, Key_6, Key_0, ___,
-   ___, ___, Key_1, Key_2, Key_3, Key_0, ___,
+   ___, ___, Key_1, Key_2, Key_3, ___, ___,
    ___, ___, ___, ___,
    ShiftToLayer(MEH)),
 
@@ -193,15 +193,15 @@ KEYMAPS(
   [PROGRAMMING_CHARACTERS] =  KEYMAP_STACKED
   (___, ___, ___, ___, ___, ___, ___,
    ___, ___,                    Key_Backtick,               LSHIFT(Key_2),         LSHIFT(Key_5),      Key_Backslash,       ___,
-   ___, Key_LeftBracket,        Key_Minus,                  LSHIFT(Key_Z),         LSHIFT(Key_9),      LSHIFT(Key_RightBracket),
-   ___, LSHIFT(Key_Backtick),   LSHIFT(Key_Minus),          LSHIFT(Key_7),         LSHIFT(Key_LeftBracket),  ___,                 ___,
+   ___, Key_LeftBracket,        LSHIFT(Key_Minus),          LSHIFT(Key_Z),         LSHIFT(Key_9),      LSHIFT(Key_RightBracket),
+   ___, LSHIFT(Key_Backtick),   Key_Minus,                  LSHIFT(Key_7),         LSHIFT(Key_LeftBracket),  ___,                 ___,
    ___, ___, ___, ___,
    ShiftToLayer(HYPER),
 
    ___, ___, ___, ___, ___, ___, ___,
    ___, LSHIFT(Key_Backslash), Key_0,                 LSHIFT(Key_6),              LSHIFT(Key_4),              ___,                   ___,
-        LSHIFT(Key_8),         LSHIFT(Key_0),         Key_RightBracket,           Key_Equals,                 Key_Quote,             ___,
-   ___, ___,                   LSHIFT(Key_1),         LSHIFT(Key_Quote),          LSHIFT(Key_Equals),      LSHIFT(Key_3),         ___,
+        LSHIFT(Key_8),         LSHIFT(Key_0),         Key_RightBracket,           LSHIFT(Key_Equals),         Key_Quote,             ___,
+   ___, ___,                   LSHIFT(Key_1),         LSHIFT(Key_Quote),          Key_Equals,                 LSHIFT(Key_3),         ___,
    ___, ___, ShiftToLayer(ARROWS), ___,
    ___),
 

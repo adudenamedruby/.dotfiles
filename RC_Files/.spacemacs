@@ -159,12 +159,12 @@ This function should only modify configuration layer settings."
      (org :variables
           org-enable-epub-support t
           org-enable-github-support t
-          org-directory (expand-file-name "~/dev/git/ExoCortex/org")
+          org-directory (expand-file-name "~/code/git/ExoCortex/org")
           ;; org-roam
           org-enable-roam-support t
           org-enable-roam-ui t
-          org-roam-directory (expand-file-name "~/dev/git/ExoCortex/myWiki/zettlekasten")
-          org-roam-db-location (expand-file-name "~/dev/git/ExoCortex/myWiki/db/org-roam.db")
+          org-roam-directory (expand-file-name "~/code/git/ExoCortex/myWiki/zettlekasten")
+          org-roam-db-location (expand-file-name "~/code/git/ExoCortex/myWiki/db/org-roam.db")
           org-roam-mode-section-functions
            (list #'org-roam-backlinks-section
                  #'org-roam-reflinks-section
@@ -740,7 +740,7 @@ before packages are loaded."
   (setq org-agenda-skip-scheduled-if-done t)
   (setq org-agenda-skip-timestamp-if-done t)
   ;; To add all org files in a repository to the agenda
-  (setq org-agenda-files (directory-files-recursively "~/dev/git/ExoCortex/org" "org$"))
+  (setq org-agenda-files (directory-files-recursively "~/code/git/ExoCortex/org" "org$"))
   ;; Skip deleted files
   (setq org-agenda-skip-unavailable-files t)
   ;; Store my org files in ~/documents/org, define the location of an index file (my main todo list),
@@ -764,11 +764,11 @@ before packages are loaded."
   (setq org-capture-templates
         (quote (
                 ("n" "Notes" entry
-                 (file+function "~/dev/git/ExoCortex/org/tasks.org" org-reverse-datetree-goto-date-in-file)
+                 (file+function "~/code/git/ExoCortex/org/tasks.org" org-reverse-datetree-goto-date-in-file)
                  "* %^{Description}\nAdded: %t\n%?")
 
                 ("t" "Task" entry
-                 (file+function "~/dev/git/ExoCortex/org/tasks.org" org-reverse-datetree-goto-date-in-file)
+                 (file+function "~/code/git/ExoCortex/org/tasks.org" org-reverse-datetree-goto-date-in-file)
                  "* TODO %^{Description}\nAdded: %t\n%?"))))
 
   ;; Olivetti mode

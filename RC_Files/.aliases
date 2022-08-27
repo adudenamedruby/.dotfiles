@@ -15,7 +15,7 @@ synchronize () {
     git commit -m "Update dotfiles"
     git push
     popd
-    pushd ~/dev/git/ExoCortex
+    pushd ~/code/git/ExoCortex
     git pull
     git add .
     git commit -m "Update exocortex"
