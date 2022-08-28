@@ -48,12 +48,10 @@ updateSpacemacs() {
     popd
 }
 
-alias sync="synchronize"
-
 alias updateBrew="updateBrew"
 alias updateSpacemacs="updateSpacemacs"
 
-alias mesh="synchronize; updateBrew; updateSpacemacs"
+alias sync="updateSpacemacs; updateBrew; synchronize"
 
 # Detect which `ls` flavor is in use
 #if ls --color > /dev/null 2>&1; then # GNU `ls`
