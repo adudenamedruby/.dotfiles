@@ -58,9 +58,11 @@ This function should only modify configuration layer settings."
                       auto-completion-tab-key-behavior 'cycle
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-sort-by-usage t
-                      :disabled-for org)
+                      auto-completion-enable-snippets-in-popup t)
 
      bibtex
+
+     c-c++
 
      ;; Nyan cat tells you where you are in your file
      ;; :variables
@@ -175,19 +177,22 @@ This function should only modify configuration layer settings."
              ("n" "Note" plain
               ;; %? is the cursor, and the rest is what the file will be preloaded with
               ;; This can also be: (file "~/location/to/org/file")
-              "* ${title}\n** Summary\n%?\n\n** More details\n\n* References\n\n* LINKS\n"
+              "\n\n* ${title}\n** Summary\n%?\n\n** More details\n\n* References\n\n* LINKS\n"
               ;; filename AND what's added to the top of the file
-              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: electricRGB\n#+date: %t\n\n")
+              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: electricRGB\n#+date: %t")
               :unnarrowed t)
+
              ("g" "Glossary term" plain
-              "* ${title}\n** Definition\n%?\n\n* References\n\n* LINKS\n- [[id:C1F1861B-20E0-4E15-9C0A-C93CE1652CC9][Glossary]]\n"
-              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: electricRGB\n#+date: %t\n\n")
+              "\n\n* ${title}\n** Definition\n%?\n\n* References\n\n* LINKS\n- [[id:C1F1861B-20E0-4E15-9C0A-C93CE1652CC9][Glossary]]\n"
+              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: electricRGB\n#+date: %t")
               :unnarrowed t)
+
              ("q" "Quote" plain
-              "#+BEGIN_QUOTE\n%?#+END_QUOTE\n\n* References\n\n* LINKS\n-[[id:ADC4CC70-7EE8-4B34-A852-7A4F9DF8AFBF][Quotes]]\n"
-              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: electricRGB\n#+date: %t\n\n")
+              "\n\n#+BEGIN_QUOTE\n%?#+END_QUOTE\n\n* References\n\n* LINKS\n-[[id:ADC4CC70-7EE8-4B34-A852-7A4F9DF8AFBF][Quotes]]\n"
+              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: electricRGB\n#+date: %t")
               :unnarrowed t)
              )
+
       )
 
      pdf
@@ -204,7 +209,7 @@ This function should only modify configuration layer settings."
      ;; Modeline of fancyness
      (spacemacs-modeline :variables
                          doom-modeline-height 40
-                         doom-modeline-buffer-file-name-style 'buffer-name
+                         doom-modeline-buffer-file-name-style 'relative-to-project
                          doom-modeline-major-mode-color-icon t
                          doom-modeline-vcs-max-length 75
                          doom-modeline-lsp t
@@ -551,7 +556,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil the frame is undecorated when Emacs starts up. Combine this
    ;; variable with `dotspacemacs-maximized-at-startup' in OSX to obtain
    ;; borderless fullscreen. (default nil)
-   dotspacemacs-undecorated-at-startup t
+   dotspacemacs-undecorated-at-startup nil
 
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
@@ -685,7 +690,7 @@ It should only modify the values of Spacemacs settings."
    ;; `trailing' to delete only the whitespace at end of lines, `changed' to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'all
 
    ;; If non-nil activate `clean-aindent-mode' which tries to correct
    ;; virtual indentation of simple modes. This can interfere with mode specific
@@ -815,7 +820,6 @@ before packages are loaded."
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; LSP
-
   ;; Swift LSP configuration
   (with-eval-after-load 'lsp-mode
     (progn
@@ -824,6 +828,13 @@ before packages are loaded."
             (string-trim (shell-command-to-string "xcrun --find sourcekit-lsp")))))
 
   (add-hook 'swift-mode-hook (lambda () (lsp)))
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Olivetti mode
+  ;; Text takes up xx% of the buffer
+  (setq olivetti-body-width 0.75)
+  ;; Starts text files (like .org .txt .md) in olivetti mode
+  (add-hook 'text-mode-hook 'olivetti-mode)
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org mode setup
@@ -835,10 +846,7 @@ before packages are loaded."
        (haskell . t)
        (clojure . t)
        (ruby . t)
-       (lisp . t)
-      )
-    )
-  )
+       (lisp . t))))
 
   (setq org-ellipsis "…")
   (setq org-pretty-entities t)
@@ -846,7 +854,7 @@ before packages are loaded."
         org-image-actual-width '(600))
   (setq org-src-fontify-natively t)
   (setq org-todo-keywords
-        '((sequence "TODO(t!)" "UNDERWAY(u!)" "BLOCKED(b!)" "REVIEW(r!)" "|" "CANCELLED(c!)" "DONE(d!)")))
+        '((sequence "TODO(t)" "FIXME(f)" "REMINDER(m)" "UNDERWAY(u)" "BLOCKED(b)" "REVIEW(r)" "|" "CANCELLED(c!)" "DONE(d!)")))
   ;; Skip finished items
   (setq org-agenda-skip-deadline-if-done t)
   (setq org-agenda-skip-scheduled-if-done t)
@@ -872,22 +880,87 @@ before packages are loaded."
   (advice-add 'org-archive-subtree :after 'org-save-all-org-buffers)
   (setq org-confirm-babel-evaluate nil)
 
+  ;; Separate org blocks with nearly complete lines, not rows of ===.
+  (setq org-enforce-todo-dependencies t)
+  (setq org-agenda-block-separator ?─
+        org-agenda-time-grid
+        '((daily today require-timed)
+          (800 1000 1200 1400 1600 1800 2000)
+          " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
+        org-agenda-current-time-string
+        "⭠ now ─────────────────────────────────────────────────")
+
+  ;; Hide blocks in the agenda that don’t contain any tasks.
+  ;; (defun org-agenda-delete-empty-blocks ()
+  ;;   "Remove empty agenda blocks.
+  ;; A block is identified as empty if there are fewer than 2
+  ;; non-empty lines in the block (excluding the line with
+  ;; `org-agenda-block-separator' characters)."
+  ;;   (when org-agenda-compact-blocks
+  ;;     (user-error "Cannot delete empty compact blocks"))
+  ;;   (setq buffer-read-only nil)
+  ;;   (save-excursion
+  ;;     (goto-char (point-min))
+  ;;     (let* ((blank-line-re "^\\s-*$")
+  ;;           (content-line-count (if (looking-at-p blank-line-re) 0 1))
+  ;;           (start-pos (point))
+  ;;           (block-re (format "%c\\{10,\\}" org-agenda-block-separator)))
+  ;;       (while (and (not (eobp)) (forward-line))
+  ;;         (cond
+  ;;         ((looking-at-p block-re)
+  ;;           (when (< content-line-count 2)
+  ;;             (delete-region start-pos (1+ (point-at-bol))))
+  ;;           (setq start-pos (point))
+  ;;           (forward-line)
+  ;;           (setq content-line-count (if (looking-at-p blank-line-re) 0 1)))
+  ;;         ((not (looking-at-p blank-line-re))
+  ;;           (setq content-line-count (1+ content-line-count)))))
+  ;;       (when (< content-line-count 2)
+  ;;         (delete-region start-pos (point-max)))
+  ;;       (goto-char (point-min))
+  ;;       ;; The above strategy can leave a separator line at the beginning
+  ;;       ;; of the buffer.
+  ;;       (when (looking-at-p block-re)
+  ;;         (delete-region (point) (1+ (point-at-eol))))))
+  ;;   (setq buffer-read-only t))
+  ;; (add-hook 'org-agenda-finalize-hook #'org-agenda-delete-empty-blocks)
+
   ;; Org-Capture templates
   (setq org-capture-templates
         (quote (
-                ("n" "Notes" entry
+                ("n" "Quick note"
+                 entry
+                 (file+headline "~/code/git/ExoCortex/org/notes.org" "Notes")
+                 "** %^{Description}\nAdded: %t\n%?")
+
+                ("o" "One on one"
+                 entry
+                 (file+headline "~/code/git/ExoCortex/org/mozilla.org" "1:1")
+                 "** %t\n*** %?\n")
+
+                ("b" "Books/Articles to read"
+                 entry
+                 (file+headline "~/code/git/ExoCortex/org/media.org" "Books")
+                 "- [ ] %?\n")
+
+                ("w" "Watch - Movie/Show/Documentary"
+                 entry
+                 (file+headline "~/code/git/ExoCortex/org/media.org" "Movies & Documentaries")
+                 "- [ ] [[%^{Link}][%^{Title}]\n")
+
+                ("r" "Reminder"
+                 entry
                  (file+function "~/code/git/ExoCortex/org/tasks.org" org-reverse-datetree-goto-date-in-file)
-                 "* %^{Description}\nAdded: %t\n%?")
+                 "* REMINDER %^{Description}\n%?")
+
+                ("f" "Fix code"
+                 entry
+                 (file+function "~/code/git/ExoCortex/org/tasks.org" org-reverse-datetree-goto-date-in-file)
+                 "* FIXME %^{Description}\n@[[][Link]]%a\n%?")
 
                 ("t" "Task" entry
                  (file+function "~/code/git/ExoCortex/org/tasks.org" org-reverse-datetree-goto-date-in-file)
-                 "* TODO %^{Description}\nAdded: %t\n%?"))))
-
-  ;; Olivetti mode
-  ;; Text takes up 85% of the buffer
-  (setq olivetti-body-width 0.75)
-  ;; Starts text files (like .org .txt .md) in olivetti mode
-  (add-hook 'text-mode-hook 'olivetti-mode)
+                 "* TODO %^{Description}\n%?"))))
 
   (defface org-checkbox-done-text
     '((t (:foreground "#71696A")))
@@ -902,6 +975,16 @@ before packages are loaded."
         org-fontify-whole-heading-line t
         org-fontify-done-headline t
         org-fontify-quote-and-verse-blocks t)
+  (with-eval-after-load 'org
+    (setq org-todo-keyword-faces
+          '(("TODO" . "#dc752f")
+            ("FIXME" . "#e75a7c")
+            ("REMINDER" . "#dc752f")
+            ("UNDERWAY" . "#51bbfe")
+            ("BLOCKED" . "#d7263d")
+            ("REVIEW" . "#f9db6d")
+            ("CANCELLED" . "#adb6c4")
+            ("DONE" . "#32936f"))))
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Theme customization
@@ -950,7 +1033,7 @@ This function is called at the very end of Spacemacs initialization."
      ("flagged" :foreground "#0a9dff")
      ("deleted" :foreground "#ff2c4b" :bold t)))
  '(package-selected-packages
-   '(org-reverse-datetree helm-bibtex olivetti org-ref ox-pandoc citeproc bibtex-completion biblio biblio-core parsebib org-roam compat ox-epub lsp-docker ox-gfm grip-mode github-search github-clone with-editor transient magit-section git-commit gist gh marshal logito lsp-sourcekit shrink-path cfrs slack circe oauth2 websocket lsp-ui lsp-python-ms lsp-pyright lsp-origami origami lsp-latex helm-lsp flyspell-correct-helm flyspell-correct auto-dictionary unicode-fonts ucs-utils font-utils persistent-soft pcache ligature keycast csv-mode command-log-mode company-quickhelp seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode dap-mode posframe lsp-treemacs bui treemacs pfuture counsel swiper ivy chruby bundler inf-ruby tern livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc helm-gtags ggtags counsel-gtags add-node-modules-path typit mmt sudoku pacmacs dash-functional 2048-game zenburn-theme zen-and-art-theme yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum white-sand-theme which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit symon swift-mode sunny-day-theme sublime-themes subatomic256-theme subatomic-theme string-inflection spaceline-all-the-icons spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle slim-mode shell-pop seti-theme scss-mode sass-mode reverse-theme restart-emacs rebecca-theme rainbow-mode rainbow-identifiers rainbow-delimiters railscasts-theme pyvenv pytest pyenv-mode py-isort purple-haze-theme pug-mode professional-theme prettier-js popwin planet-theme pippel pipenv pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el password-generator paradox overseer orgit organic-green-theme org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme neotree naquadah-theme nameless mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-svn magit-gitflow madhat2r-theme macrostep lush-theme lorem-ipsum live-py-mode link-hint light-soap-theme kaolin-themes jbeans-theme jazz-theme ir-black-theme insert-shebang inkpot-theme indent-guide importmagic impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md gandalf-theme fuzzy font-lock+ flycheck-bashate flx-ido flatui-theme flatland-theme fish-mode fill-column-indicator farmhouse-theme fancy-battery eziam-theme eyebrowse expand-region exotica-theme evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu espresso-theme eshell-z eshell-prompt-extras esh-help emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav editorconfig dumb-jump dracula-theme dotenv-mode doom-themes doom-modeline django-theme diminish diff-hl define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme dactyl-mode cython-mode cyberpunk-theme counsel-projectile company-web company-statistics company-shell company-emoji company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized color-identifiers-mode clues-theme clean-aindent-mode cherry-blossom-theme centered-cursor-mode busybee-theme bubbleberry-theme browse-at-remote birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ace-window ace-link ace-jump-helm-line ac-ispell))
+   '(ccls company-c-headers company-rtags company-ycmd cpp-auto-include disaster flycheck-rtags flycheck-ycmd gendoxy google-c-style helm-rtags rtags ycmd request-deferred org-reverse-datetree helm-bibtex olivetti org-ref ox-pandoc citeproc bibtex-completion biblio biblio-core parsebib org-roam compat ox-epub lsp-docker ox-gfm grip-mode github-search github-clone with-editor transient magit-section git-commit gist gh marshal logito lsp-sourcekit shrink-path cfrs slack circe oauth2 websocket lsp-ui lsp-python-ms lsp-pyright lsp-origami origami lsp-latex helm-lsp flyspell-correct-helm flyspell-correct auto-dictionary unicode-fonts ucs-utils font-utils persistent-soft pcache ligature keycast csv-mode command-log-mode company-quickhelp seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode dap-mode posframe lsp-treemacs bui treemacs pfuture counsel swiper ivy chruby bundler inf-ruby tern livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc helm-gtags ggtags counsel-gtags add-node-modules-path typit mmt sudoku pacmacs dash-functional 2048-game zenburn-theme zen-and-art-theme yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum white-sand-theme which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit symon swift-mode sunny-day-theme sublime-themes subatomic256-theme subatomic-theme string-inflection spaceline-all-the-icons spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle slim-mode shell-pop seti-theme scss-mode sass-mode reverse-theme restart-emacs rebecca-theme rainbow-mode rainbow-identifiers rainbow-delimiters railscasts-theme pyvenv pytest pyenv-mode py-isort purple-haze-theme pug-mode professional-theme prettier-js popwin planet-theme pippel pipenv pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el password-generator paradox overseer orgit organic-green-theme org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme neotree naquadah-theme nameless mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-svn magit-gitflow madhat2r-theme macrostep lush-theme lorem-ipsum live-py-mode link-hint light-soap-theme kaolin-themes jbeans-theme jazz-theme ir-black-theme insert-shebang inkpot-theme indent-guide importmagic impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md gandalf-theme fuzzy font-lock+ flycheck-bashate flx-ido flatui-theme flatland-theme fish-mode fill-column-indicator farmhouse-theme fancy-battery eziam-theme eyebrowse expand-region exotica-theme evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu espresso-theme eshell-z eshell-prompt-extras esh-help emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav editorconfig dumb-jump dracula-theme dotenv-mode doom-themes doom-modeline django-theme diminish diff-hl define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme dactyl-mode cython-mode cyberpunk-theme counsel-projectile company-web company-statistics company-shell company-emoji company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized color-identifiers-mode clues-theme clean-aindent-mode cherry-blossom-theme centered-cursor-mode busybee-theme bubbleberry-theme browse-at-remote birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ace-window ace-link ace-jump-helm-line ac-ispell))
  '(pdf-view-midnight-colors '("#fdf4c1" . "#1d2021"))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
