@@ -33,7 +33,26 @@ synchronize () {
     popd
     echo "Finished synchonizing presonal repos"
 }
+
+updateBrew() {
+    brew update
+    brew upgrade
+    brew cleanup
+}
+
+updateSpacemacs() {
+    dirs -c
+    pushd ~/.emacs.d
+    git pull
+    popd
+}
+
 alias sync="synchronize"
+
+alias updateBrew="updateBrew"
+alias updateSpacemacs="updateSpacemacs"
+
+alias mesh="synchronize; updateBrew; updateSpacemacs"
 
 # Detect which `ls` flavor is in use
 #if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -58,9 +77,6 @@ alias sync="synchronize"
 
 # Get week number
 alias week='date +%V'
-
-# Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update="brew update; brew upgrade; brew cleanup; pushd ~/.emacs.d/; git pull; popd"
 
 # Google Chrome
 #alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
