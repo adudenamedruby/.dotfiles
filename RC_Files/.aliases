@@ -41,6 +41,7 @@ updateBrew() {
 }
 
 updateSpacemacs() {
+    echo "+++++++++ Updating Spacemacs +++++++++"
     dirs -c
     pushd ~/.emacs.d
     git pull
