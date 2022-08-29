@@ -993,17 +993,6 @@ before packages are loaded."
            (evil-ex-lazy-highlight :background "#cc0000")
            (iedit-occurrence :background "#7510F0"))))
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Wrapping
-  (defun my/enable-word-wrap ()
-    (setq-local word-wrap t))
-  (add-hook 'text-mode-hook #'my/enable-word-wrap)
-
-  (add-hook 'text-mode-hook 'auto-fill-mode)
-  (add-hook 'org-mode-hook 'auto-fill-mode)
-  (setq powerline-default-separator 'slant)
-
-
   ;; End of user-config
   )
 
