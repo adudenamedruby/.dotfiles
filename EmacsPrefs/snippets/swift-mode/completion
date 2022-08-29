@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: completion
+# key: completion
+# --
+completion: ($0) -> Void

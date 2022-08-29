@@ -9,7 +9,7 @@
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>&lt;#externalName#&gt; &lt;#internalName#&gt;: &lt;#ofType#&gt;</string>
+	<string>&lt;#externalName#&gt; &lt;#internalName#&gt;: &lt;#ofType#&gt;,</string>
 	<key>IDECodeSnippetIdentifier</key>
 	<string>970DECD6-3D09-42AC-AADE-FF6452247B4E</string>
 	<key>IDECodeSnippetLanguage</key>

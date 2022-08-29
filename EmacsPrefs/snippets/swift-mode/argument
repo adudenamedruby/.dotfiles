@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: argument
+# key: argument
+# --
+$0 $1: $3,

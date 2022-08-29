@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: anchorLeading
+# key: anchorLeading
+# --
+$0.leadingAnchor.constraint(equalTo: $1.leadingAnchor),

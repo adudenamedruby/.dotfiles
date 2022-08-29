@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: anchorTrailing
+# key: anchorTrailing
+# --
+$0.trailingAnchor.constraint(equalTo: $1.trailingAnchor),

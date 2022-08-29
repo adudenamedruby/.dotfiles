@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: constraintBlock
+# key: constraintBlock
+# --
+$0.topAnchor.constraint(equalTo: $1.topAnchor),
+$0.leadingAnchor.constraint(equalTo: $1.leadingAnchor),
+$0.bottomAnchor.constraint(equalTo: $1.bottomAnchor),
+$0.trailingAnchor.constraint(equalTo: $1.trailingAnchor),

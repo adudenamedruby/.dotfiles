@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: addSubview
+# key: addSubview
+# --
+$0.addSubview($1)

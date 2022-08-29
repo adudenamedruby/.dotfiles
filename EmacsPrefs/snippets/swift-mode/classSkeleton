@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: classSkeleton
+# key: classSkeleton
+# --
+class $0: $1 {
+
+    // MARK: - Properties
+
+    // MARK: - Initializers
+    init() {
+
+    }
+
+    deinit {
+
+    }
+
+    // MARK: - Public interface
+
+    // MARK: - Private methods
+}

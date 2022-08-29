@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: func
+# key: func
+# --
+private func $0($1) {
+    $2
+}

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: anchorTop
+# key: anchorTop
+# --
+$0.topAnchor.constraint(equalTo: $1.topAnchor),
