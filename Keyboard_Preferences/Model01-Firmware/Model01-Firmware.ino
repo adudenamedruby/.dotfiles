@@ -161,7 +161,7 @@ KEYMAPS(
   [PRIMARY] = KEYMAP_STACKED
   (___,                         Key_1,           Key_2,          Key_3,           Key_4,       Key_5,       Key_LEDEffectNext,
    Key_Tab,                     Key_Q,           Key_W,          Key_E,           Key_R,       Key_T,       LGUI(Key_I),
-   Key_LeftControl,             Key_A,           Key_S,          Key_D,           Key_F,       Key_G,
+   Key_CapsLock,                Key_A,           Key_S,          Key_D,           Key_F,       Key_G,
    Key_LeftShift,               Key_Z,           Key_X,          Key_C,           Key_V,       Key_B,       LGUI(Key_Period),
    Key_LeftGui, Key_Spacebar, Key_Enter, ALT_T(Tab),
    ShiftToLayer(NUMBERS_FUNCTION),
