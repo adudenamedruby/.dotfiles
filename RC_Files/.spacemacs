@@ -793,6 +793,7 @@ before packages are loaded."
 
   ;; Easily call up describe-function
   (spacemacs/set-leader-keys "hdf" 'describe-function)
+  (spacemacs/set-leader-keys "aoP" 'org-present)
 
   ;; Evil-mode stuff
   ;; Make evil-mode up/down operate in screen lines instead of logical lines
