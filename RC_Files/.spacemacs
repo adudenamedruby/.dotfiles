@@ -951,13 +951,13 @@ before packages are loaded."
 
                 ("r" "Reminder"
                  entry
-                 (file+function "~/code/git/ExoCortex/org/tasks.org" org-reverse-datetree-goto-date-in-file)
+                 (file+headline "~/code/git/ExoCortex/org/tasks.org" "Reminders")
                  "* REMINDER %^{Description}\n%?")
 
                 ("f" "Fix code"
                  entry
-                 (file+function "~/code/git/ExoCortex/org/tasks.org" org-reverse-datetree-goto-date-in-file)
-                 "* FIXME %^{Description}\n@[[][Link]]%a\n%?")
+                 (file+headline "~/code/git/ExoCortex/org/tasks.org" "Fixes")
+                 "* FIXME %^{Description}\n@%a\n%?")
 
                 ("t" "Task" entry
                  (file+function "~/code/git/ExoCortex/org/tasks.org" org-reverse-datetree-goto-date-in-file)
