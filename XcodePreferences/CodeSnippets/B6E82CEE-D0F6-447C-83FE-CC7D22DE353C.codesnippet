@@ -3,24 +3,24 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>proux</string>
+	<string>troux</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>print("RGB - &lt;#comment#&gt;")</string>
+	<string>// TODO: [roux] - &lt;#notes#&gt;</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>435F1136-1F13-4582-8B17-8E0B212213A0</string>
+	<string>B6E82CEE-D0F6-447C-83FE-CC7D22DE353C</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>Inserts a print statement with my initials for easy debugging</string>
+	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Insert an initialed print statement</string>
+	<string>Insert a todo mark with Roux</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>
