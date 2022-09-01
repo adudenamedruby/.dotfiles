@@ -12,21 +12,27 @@ synchronize () {
     echo "+++++++++ Syncing ~/.dotfiles +++++++++"
     dirs -c
     pushd ~/.dotfiles
+    git stash
     git pull
+    git stash pop
     git add .
     git commit -m "Update dotfiles"
     git push
     popd
     echo "+++++++++ Syncing ExoCortex +++++++++"
     pushd ~/code/git/ExoCortex
+    git stash
     git pull
+    git stash pop
     git add .
     git commit -m "Update exocortex"
     git push
     popd
     echo "+++++++++ Syncing Learn2Code +++++++++"
     pushd ~/code/git/Learn2Code
+    git stash
     git pull
+    git stash pop
     git add .
     git commit -m "Update learning repo"
     git push
