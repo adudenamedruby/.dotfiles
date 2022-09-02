@@ -868,7 +868,7 @@ before packages are loaded."
         org-image-actual-width '(600))
   (setq org-src-fontify-natively t)
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "FIXME(f)" "REMINDER(m)" "UNDERWAY(u)" "BLOCKED(b)" "REVIEW(r)" "|" "CANCELLED(c!)" "DONE(d!)")))
+        '((sequence "TODO(t)" "FIXME(f)" "REMINDER(m)" "UNDERWAY(u)" "BLOCKED(b)" "REVIEW(r)" "|" "CANCELLED(c)" "DONE(d)")))
   ;; Skip finished items
   (setq org-agenda-skip-deadline-if-done t)
   (setq org-agenda-skip-scheduled-if-done t)
