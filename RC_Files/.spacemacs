@@ -46,7 +46,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(vimscript
 
      ;; Add tool tips to show doc string of functions
      ;; Show snippets in the auto-completion popup
