@@ -383,7 +383,7 @@ It should only modify the values of Spacemacs settings."
    ;; pair of numbers, e.g. `(recents-by-project . (7 .  5))', where the first
    ;; number is the project limit and the second the limit on the recent files
    ;; within a project.
-   dotspacemacs-startup-lists '((recents-by-project . (4 . 5)))
+   dotspacemacs-startup-lists '((recents-by-project . (4 . 4)))
 
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
@@ -794,6 +794,18 @@ before packages are loaded."
   ;; Easily call up describe-function
   (spacemacs/set-leader-keys "hdf" 'describe-function)
   (spacemacs/set-leader-keys "aoP" 'org-present)
+  (spacemacs/set-leader-keys "ot" 'open-tasks-file)
+  (spacemacs/set-leader-keys "on" 'open-notes-file)
+  (spacemacs/set-leader-keys "om" 'open-media-file)
+
+  (defun open-tasks-file ()
+    (interactive)(find-file "~/code/git/ExoCortex/org/tasks.org"))
+
+  (defun open-notes-file ()
+    (interactive)(find-file "~/code/git/ExoCortex/org/notes.org"))
+
+  (defun open-media-file ()
+    (interactive)(find-file "~/code/git/ExoCortex/org/media.org"))
 
   ;; Evil-mode stuff
   ;; Make evil-mode up/down operate in screen lines instead of logical lines
@@ -802,6 +814,7 @@ before packages are loaded."
   ;; Also in visual mode
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
+
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Helm - keep history clean
@@ -929,6 +942,16 @@ before packages are loaded."
   ;; Org-Capture templates
   (setq org-capture-templates
         (quote (
+                ("b" "Books to read"
+                 entry
+                 (file+headline "~/code/git/ExoCortex/org/media.org" "Books")
+                 "** %^{Title} %?\n")
+
+                ("f" "Fix code"
+                 entry
+                 (file+headline "~/code/git/ExoCortex/org/tasks.org" "Fixes")
+                 "* FIXME %^{Description}\n@%a\n%?")
+
                 ("n" "Quick note"
                  entry
                  (file+headline "~/code/git/ExoCortex/org/notes.org" "Notes")
@@ -939,29 +962,20 @@ before packages are loaded."
                  (file+headline "~/code/git/ExoCortex/org/mozilla.org" "1:1")
                  "** %t\n*** %?\n")
 
-                ("b" "Books/Articles to read"
-                 entry
-                 (file+headline "~/code/git/ExoCortex/org/media.org" "Books")
-                 "- [ ] %?\n")
-
-                ("w" "Watch - Movie/Show/Documentary"
-                 entry
-                 (file+headline "~/code/git/ExoCortex/org/media.org" "Movies & Documentaries")
-                 "- [ ] [[%^{Link}][%^{Title}]\n")
-
                 ("r" "Reminder"
                  entry
                  (file+headline "~/code/git/ExoCortex/org/tasks.org" "Reminders")
                  "* REMINDER %^{Description}\n%?")
 
-                ("f" "Fix code"
-                 entry
-                 (file+headline "~/code/git/ExoCortex/org/tasks.org" "Fixes")
-                 "* FIXME %^{Description}\n@%a\n%?")
-
                 ("t" "Task" entry
                  (file+function "~/code/git/ExoCortex/org/tasks.org" org-reverse-datetree-goto-date-in-file)
-                 "* TODO %^{Description}\n%?"))))
+                 "* TODO %^{Description}\n%?")
+
+                ("w" "Watch - Movie/Show/Documentary"
+                 entry
+                 (file+headline "~/code/git/ExoCortex/org/media.org" "Watch")
+                 "** [[%^{Link}][%^{Title}]]\n%?"))))
+
 
   (defface org-checkbox-done-text
     '((t (:foreground "#71696A")))
