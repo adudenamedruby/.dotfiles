@@ -28,7 +28,7 @@
     },
     "search" : {
       "backgroundSelected" : "#480069E4",
-      "paddingHorizontal" : 8,
+      "paddingHorizontal" : 0,
       "spacing" : 8,
       "text" : {
         "size" : 40,
@@ -36,19 +36,19 @@
         "font" : "Fira Code",
         "color" : "#F2E709FF"
       },
-      "background" : "#1300376C",
+      "background" : "#13003700",
       "roundness" : 10,
-      "paddingVertical" : 5
+      "paddingVertical" : 0
     },
     "window" : {
       "color" : "#130036CC",
-      "paddingHorizontal" : 16,
-      "width" : 559,
+      "paddingHorizontal" : 21,
+      "width" : 600,
       "borderPadding" : 0,
       "borderColor" : "#0000007F",
       "blur" : 0,
       "roundness" : 10,
-      "paddingVertical" : 8
+      "paddingVertical" : 12
     },
     "visualEffectMode" : 2,
     "separator" : {
