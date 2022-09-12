@@ -60,6 +60,10 @@ brew install librsvg
 
 brew install yqrashawn/goku/goku
 
+brew install npm
+
+npm install -g tldr
+
 
 # ---------------------------------------------
 # Programming Languages
