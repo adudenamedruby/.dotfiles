@@ -177,6 +177,9 @@ nmap <space>wv :xcmenucmd Editor<CR>
 nmap <space>w+ :xcmenucmd Change Editor Orientation<CR>
 nmap <space>wd :xcmenucmd Close Editor<CR>
 nmap <space>wm :xcmenucmd Close Other Editors<CR>
+nmap <space>bd :xcmenucmd Close Tab<CR>
+nmap <space>bn :xcmenucmd Show Next Tab<CR>
+nmap <space>bp :xcmenucmd Show Previous Tab<CR>
 
 " Window navigatIon
 nmap <space>wh <C-w>h
