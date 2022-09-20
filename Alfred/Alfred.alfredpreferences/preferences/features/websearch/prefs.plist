@@ -27,8 +27,6 @@
 			<string>Royal Bank Online Banking</string>
 			<key>url</key>
 			<string>https://www1.royalbank.com/cgi-bin/rbaccess/rbcgi3m01?F6=1&amp;F7=IB&amp;F21=IB&amp;F22=IB&amp;REQUEST=ClientSignin&amp;LANGUAGE=ENGLISH</string>
-			<key>utf8</key>
-			<true/>
 		</dict>
 		<key>4D6D469A-3FFE-4E25-B881-82B9C6C13B18</key>
 		<dict>
@@ -51,8 +49,6 @@
 			<string>Netflix</string>
 			<key>url</key>
 			<string>https://www.netflix.com/browse</string>
-			<key>utf8</key>
-			<true/>
 		</dict>
 		<key>57C286B2-8674-4919-A519-DC4158CB9FE9</key>
 		<dict>
@@ -77,8 +73,6 @@
 			<string>Twitch Dashboard</string>
 			<key>url</key>
 			<string>https://dashboard.twitch.tv/u/electricshera/home</string>
-			<key>utf8</key>
-			<true/>
 		</dict>
 		<key>8B34ECEB-B490-449A-8CE0-A83E0A451E57</key>
 		<dict>
@@ -90,8 +84,17 @@
 			<string>FastMail</string>
 			<key>url</key>
 			<string>https://www.fastmail.com/login/</string>
-			<key>utf8</key>
+		</dict>
+		<key>970D1E57-A189-42A4-8F22-F8DCC5FB36FC</key>
+		<dict>
+			<key>enabled</key>
 			<true/>
+			<key>keyword</key>
+			<string>desjardins</string>
+			<key>text</key>
+			<string>Desjardins</string>
+			<key>url</key>
+			<string>https://www.desjardins.com/ca/</string>
 		</dict>
 		<key>BB2D0C0D-C2E2-4B5B-82E1-86BE1C0E0C25</key>
 		<dict>
@@ -103,21 +106,6 @@
 			<string>Black2Play</string>
 			<key>url</key>
 			<string>https://blacktoplay.com</string>
-			<key>utf8</key>
-			<true/>
-		</dict>
-		<key>C7A01733-6F9B-45B2-8AEC-2C0927C3D89D</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>rbc investing</string>
-			<key>text</key>
-			<string>RBC Direct Investing</string>
-			<key>url</key>
-			<string>https://www1.royalbank.com/english/netaction/sgne.html</string>
-			<key>utf8</key>
-			<true/>
 		</dict>
 		<key>CD2A33E4-990E-455B-BC69-8E43C7D40C33</key>
 		<dict>
@@ -155,8 +143,17 @@
 			<string>Duolingo</string>
 			<key>url</key>
 			<string>https://www.duolingo.com/</string>
-			<key>utf8</key>
+		</dict>
+		<key>F5064CCD-C53D-47E9-B821-764CFE062739</key>
+		<dict>
+			<key>enabled</key>
 			<true/>
+			<key>keyword</key>
+			<string>ddb</string>
+			<key>text</key>
+			<string>Search D&amp;D Beyond</string>
+			<key>url</key>
+			<string>https://www.dndbeyond.com/search?q={query}</string>
 		</dict>
 	</dict>
 	<key>onlyShowEnabledInPrefs</key>

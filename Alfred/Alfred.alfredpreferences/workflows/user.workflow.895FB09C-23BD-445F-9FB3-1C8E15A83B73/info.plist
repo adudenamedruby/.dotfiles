@@ -8,19 +8,6 @@
 	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
-		<key>0E9A06EE-1F13-4A3C-80EE-9AE65D4F8BB0</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>89D2A96A-2328-4181-9DBB-C0C7C26EDEE7</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>14253085-F66C-4D06-8FCA-EAF6C76F2D8D</key>
 		<array>
 			<dict>
@@ -153,31 +140,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>89D2A96A-2328-4181-9DBB-C0C7C26EDEE7</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>C4643DF2-EB56-42EA-9B68-255781DE3A66</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>58E6CADC-3764-4A33-B59E-4658B9B68569</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>711BB5C2-FB75-4602-A136-FE5AADE7CFEE</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>90E95058-3B83-4C50-B95F-966111DCB141</key>
 		<array>
 			<dict>
@@ -195,7 +157,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>0E9A06EE-1F13-4A3C-80EE-9AE65D4F8BB0</string>
+				<string>C4643DF2-EB56-42EA-9B68-255781DE3A66</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1326,7 +1288,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/opt/homebrew/Cellar/emacs-plus@28/28.1/Emacs.app</string>
+					<string>/opt/homebrew/Cellar/emacs-plus@28/28.2/Emacs.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1337,29 +1299,6 @@
 			<string>C4643DF2-EB56-42EA-9B68-255781DE3A66</string>
 			<key>version</key>
 			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>echo $(id -u -n | tr -d '\r')</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>5</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>0E9A06EE-1F13-4A3C-80EE-9AE65D4F8BB0</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1391,55 +1330,6 @@
 			<string>91E35486-02F0-48A0-B71D-9D59F0EF9064</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string>{query}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>4</integer>
-						<key>matchstring</key>
-						<string>acmelabs</string>
-						<key>outputlabel</key>
-						<string>home</string>
-						<key>uid</key>
-						<string>58E6CADC-3764-4A33-B59E-4658B9B68569</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>work</string>
-				<key>hideelse</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>89D2A96A-2328-4181-9DBB-C0C7C26EDEE7</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/Emacs.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>711BB5C2-FB75-4602-A136-FE5AADE7CFEE</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1573,7 +1463,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Xcode1341.app/Contents/Developer/Applications/Simulator.app</string>
+					<string>/Applications/XcodeXvim.app/Contents/Developer/Applications/Simulator.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1634,13 +1524,6 @@
 			<real>195</real>
 			<key>ypos</key>
 			<real>2215</real>
-		</dict>
-		<key>0E9A06EE-1F13-4A3C-80EE-9AE65D4F8BB0</key>
-		<dict>
-			<key>xpos</key>
-			<real>195</real>
-			<key>ypos</key>
-			<real>2000</real>
 		</dict>
 		<key>14253085-F66C-4D06-8FCA-EAF6C76F2D8D</key>
 		<dict>
@@ -1768,13 +1651,6 @@
 			<key>ypos</key>
 			<real>1790</real>
 		</dict>
-		<key>711BB5C2-FB75-4602-A136-FE5AADE7CFEE</key>
-		<dict>
-			<key>xpos</key>
-			<real>440</real>
-			<key>ypos</key>
-			<real>2045</real>
-		</dict>
 		<key>74BE6261-6726-4287-93FE-5D164441DD94</key>
 		<dict>
 			<key>xpos</key>
@@ -1809,13 +1685,6 @@
 			<real>190</real>
 			<key>ypos</key>
 			<real>25</real>
-		</dict>
-		<key>89D2A96A-2328-4181-9DBB-C0C7C26EDEE7</key>
-		<dict>
-			<key>xpos</key>
-			<real>340</real>
-			<key>ypos</key>
-			<real>2020</real>
 		</dict>
 		<key>90E95058-3B83-4C50-B95F-966111DCB141</key>
 		<dict>
@@ -1897,9 +1766,9 @@
 		<key>C4643DF2-EB56-42EA-9B68-255781DE3A66</key>
 		<dict>
 			<key>xpos</key>
-			<real>440</real>
+			<real>195</real>
 			<key>ypos</key>
-			<real>1940</real>
+			<real>2000</real>
 		</dict>
 		<key>C8F07787-AA29-4B16-BBAC-2B79E6B3E776</key>
 		<dict>

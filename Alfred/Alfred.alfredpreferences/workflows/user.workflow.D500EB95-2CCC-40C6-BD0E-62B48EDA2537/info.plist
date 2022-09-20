@@ -54,6 +54,8 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>sourceoutputuid</key>
+				<string>5333932B-66E0-4431-9E1B-B3243AC3A106</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -69,6 +71,48 @@
 	<string>Teachable</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://www.calimove.com/courses/</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>76F7F8CD-A8B4-4890-A615-6B4D17EFD640</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://scotts-bass-lessons.teachable.com/</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>EF02F32F-2097-46D0-8B91-2FC27428B4D3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -132,35 +176,14 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>skipqueryencode</key>
-				<false/>
-				<key>skipvarencode</key>
-				<false/>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://www.calimove.com/courses/</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>76F7F8CD-A8B4-4890-A615-6B4D17EFD640</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"imagefile":"c17f0a2c5d57d3a198c9456c0bacea0af900b752.png","title":"Scott's Bass Lessons","arg":"sbl","subtitle":"Scott's Bass Lessons"},{"imagefile":"43334549915a16f6afcd784dd54a6d98b54cb7f6.png","title":"Discover Double Bass","arg":"ddb","subtitle":"Discover Double Bass"},{"title":"CaliMove","arg":"calimove","subtitle":"Calisthentics"}]</string>
+				<string>[{"imagefile":"17a3687df85739b87fb32aa68a0995f348bb994a.png","title":"Scott's Bass Lessons","arg":"sbl","subtitle":"Scott's Bass Lessons"},{"imagefile":"f8648c521bc8195d7fb5d4461a724e07848c14ad.png","title":"Discover Double Bass","arg":"ddb","subtitle":"Discover Double Bass"},{"imagefile":"95cf90b998c5b0f7d6d6e7a43fcc558a9748c342.png","title":"CaliMove","arg":"calimove","subtitle":"Calisthentics"}]</string>
 				<key>keyword</key>
 				<string>teachable</string>
 				<key>matchmode</key>
@@ -178,27 +201,6 @@
 			<string>alfred.workflow.input.listfilter</string>
 			<key>uid</key>
 			<string>1A154162-B35F-4673-96E9-F3F04D4EE707</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>skipqueryencode</key>
-				<false/>
-				<key>skipvarencode</key>
-				<false/>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://scotts-bass-lessons.teachable.com/</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>EF02F32F-2097-46D0-8B91-2FC27428B4D3</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -238,16 +240,16 @@
 		<key>76F7F8CD-A8B4-4890-A615-6B4D17EFD640</key>
 		<dict>
 			<key>xpos</key>
-			<real>565</real>
+			<real>555</real>
 			<key>ypos</key>
-			<real>380</real>
+			<real>265</real>
 		</dict>
 		<key>98D1BF67-B3ED-4C4D-AF21-78004C82B279</key>
 		<dict>
 			<key>xpos</key>
-			<real>550</real>
+			<real>555</real>
 			<key>ypos</key>
-			<real>500</real>
+			<real>485</real>
 		</dict>
 		<key>A7258C62-9C39-4DAA-A7DB-23025F24862A</key>
 		<dict>
@@ -259,9 +261,9 @@
 		<key>EF02F32F-2097-46D0-8B91-2FC27428B4D3</key>
 		<dict>
 			<key>xpos</key>
-			<real>705</real>
+			<real>555</real>
 			<key>ypos</key>
-			<real>435</real>
+			<real>375</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>

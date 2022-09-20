@@ -95,6 +95,18 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>DDF7DFAE-DAF9-4621-986A-EDFE22E8A6FD</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>459B8489-EF60-4AF6-B97A-3B96ABFD0BBF</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 	</dict>
 	<key>createdby</key>
@@ -238,6 +250,20 @@
 						<key>uid</key>
 						<string>8EBF4EE3-2539-4080-8A9D-3516323522B1</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>slides</string>
+						<key>outputlabel</key>
+						<string>slides</string>
+						<key>uid</key>
+						<string>459B8489-EF60-4AF6-B97A-3B96ABFD0BBF</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
@@ -282,7 +308,7 @@
 				<key>fixedorder</key>
 				<true/>
 				<key>items</key>
-				<string>[{"imagefile":"aba71fdcd77a8ca0dc9f08a87f80d4692b176c9d.png","title":"sheets","arg":"sheets","subtitle":"Google Sheets"},{"imagefile":"4057a99cb36f9cd2711a902f8fcd2315333d2863.png","title":"docs","arg":"docs","subtitle":"Google Docs"},{"imagefile":"180eca95559bb51a91394b8fcd706d3d3597023f.png","title":"cal","arg":"cal","subtitle":"Google Calendar"},{"imagefile":"f6219655bdd4f4c67aecb2bd7ca47b7831c7e8c7.png","title":"translate","arg":"translate","subtitle":"Google Translate"},{"imagefile":"23c8405db17c0a858061ea034c5e9936d41d6858.png","title":"maps","arg":"maps","subtitle":"Google Maps"},{"imagefile":"a3365f7ebe4d91ad2c492979a9733054b1f6a9d3.png","title":"drive","arg":"drive","subtitle":"Google Drive"}]</string>
+				<string>[{"imagefile":"88bd356ead96e01439729fe4f96b4f6c5d67c222.png","title":"Sheets","arg":"sheets","subtitle":"Google Sheets"},{"imagefile":"05e18763aafd12f3650f1650b05e9aa27eabbe14.png","title":"Docs","arg":"docs","subtitle":"Google Docs"},{"imagefile":"90faadfba311652e0790ce98aee28b1c5a18e429.png","title":"Calendar","arg":"cal","subtitle":"Google Calendar"},{"imagefile":"8d6cb0ddb5ee580383625ea08a7a9a203ef621ad.png","title":"Translate","arg":"translate","subtitle":"Google Translate"},{"imagefile":"bc753601df0611d6e34e5c6d7d94c7775c5151b8.png","title":"Maps","arg":"maps","subtitle":"Google Maps"},{"imagefile":"14557a2098fd02aae40692bc9385204bf8b886a8.png","title":"Drive","arg":"drive","subtitle":"Google Drive"},{"imagefile":"465219f994ac54bdf7c31914d8caf3c79d872d46.png","title":"Slides","arg":"slides","subtitle":"Google Slides"}]</string>
 				<key>keyword</key>
 				<string>g</string>
 				<key>matchmode</key>
@@ -366,6 +392,27 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://docs.google.com/presentation/u/0/</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>DDF7DFAE-DAF9-4621-986A-EDFE22E8A6FD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -383,7 +430,7 @@
 			<key>xpos</key>
 			<real>340</real>
 			<key>ypos</key>
-			<real>210</real>
+			<real>205</real>
 		</dict>
 		<key>837C8489-D767-435B-9975-5C9A846226DD</key>
 		<dict>
@@ -395,7 +442,7 @@
 		<key>97AC872B-9537-4037-942C-EE8373A99EFC</key>
 		<dict>
 			<key>xpos</key>
-			<real>20</real>
+			<real>30</real>
 			<key>ypos</key>
 			<real>280</real>
 		</dict>
@@ -426,6 +473,13 @@
 			<real>960</real>
 			<key>ypos</key>
 			<real>320</real>
+		</dict>
+		<key>DDF7DFAE-DAF9-4621-986A-EDFE22E8A6FD</key>
+		<dict>
+			<key>xpos</key>
+			<real>985</real>
+			<key>ypos</key>
+			<real>460</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>

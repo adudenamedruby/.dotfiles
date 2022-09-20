@@ -254,18 +254,6 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>935AF48C-24DE-4ACA-9CFB-ED14F92F05C9</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>6B142354-CF15-4B51-BB62-07338F45919C</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>4B548A99-86AD-4EDC-B875-0E9171458D73</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -365,6 +353,18 @@
 				<string></string>
 				<key>sourceoutputuid</key>
 				<string>3E64ED86-1C35-4103-98B0-FC8A5484064C</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>935AF48C-24DE-4ACA-9CFB-ED14F92F05C9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>8A14B534-6A9A-464A-B78A-B7E722BB4993</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -967,27 +967,6 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://github.com/mozilla-l10n/firefoxios-l10n</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>935AF48C-24DE-4ACA-9CFB-ED14F92F05C9</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>skipqueryencode</key>
-				<false/>
-				<key>skipvarencode</key>
-				<false/>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
 				<string>https://github.com/electricRGB/firefox-ios</string>
 			</dict>
 			<key>type</key>
@@ -1046,6 +1025,27 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>4B548A99-86AD-4EDC-B875-0E9171458D73</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://github.com/mozilla-l10n/firefoxios-l10n</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>935AF48C-24DE-4ACA-9CFB-ED14F92F05C9</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1145,6 +1145,20 @@
 						<key>uid</key>
 						<string>0EA743B7-68FC-4B28-A4F1-53D897156824</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>l10n</string>
+						<key>outputlabel</key>
+						<string>l10n</string>
+						<key>uid</key>
+						<string>8A14B534-6A9A-464A-B78A-B7E722BB4993</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
@@ -1182,6 +1196,27 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://github.com/mozilla-mobile/firefox-ios/pulls</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>1FBFA5EC-59F9-48F0-BEC0-498B2FF735D1</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -1189,7 +1224,7 @@
 				<key>fixedorder</key>
 				<true/>
 				<key>items</key>
-				<string>[{"title":"Home","arg":"main","subtitle":"Open the mozilla\/main repo"},{"title":"Open Issue(s)","arg":"issue","subtitle":"Open all issues, or a specific issue"},{"title":"Wiki","arg":"wiki","subtitle":"Open Firefox iOS Wiki"},{"title":"Forked","arg":"fork","subtitle":"Firefox-iOS - my fork"},{"title":"Pull Requests","arg":"pull","subtitle":""}]</string>
+				<string>[{"title":"Home","arg":"main","subtitle":"Open the mozilla\/main repo"},{"imagefile":"5dfa03a3e411e4da57d7ce9301a85915b01653d2.png","title":"Open Issue(s)","arg":"issue","subtitle":"Open all issues, or a specific issue"},{"title":"Fx-iOS Wiki","arg":"wiki","subtitle":"Open Firefox iOS Wiki"},{"imagefile":"a2d1b9c8d8015948f844a416efa4759fc0e9c0d2.png","title":"electricRGB's Fork","arg":"fork","subtitle":"Firefox-iOS - my fork"},{"imagefile":"62af086be857f7c5d3322aa39c49e371411a333f.png","title":"Pull Requests","arg":"pull","subtitle":""},{"imagefile":"7ef514b164a716f1faeeb058f3171cc1f399cf2a.png","title":"Localization","arg":"l10n","subtitle":"L10N Repo"}]</string>
 				<key>keyword</key>
 				<string>fxios</string>
 				<key>matchmode</key>
@@ -1226,27 +1261,6 @@
 			<string>7A664528-41E6-43A0-A236-B63E1520227E</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>skipqueryencode</key>
-				<false/>
-				<key>skipvarencode</key>
-				<false/>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://github.com/mozilla-mobile/firefox-ios/pulls</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>1FBFA5EC-59F9-48F0-BEC0-498B2FF735D1</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1559,9 +1573,9 @@ git push</string>
 		<key>1FBFA5EC-59F9-48F0-BEC0-498B2FF735D1</key>
 		<dict>
 			<key>xpos</key>
-			<real>1145</real>
+			<real>1135</real>
 			<key>ypos</key>
-			<real>1075</real>
+			<real>990</real>
 		</dict>
 		<key>240F0EEC-4564-4D2E-9F2C-A2C4FF3D60F2</key>
 		<dict>
@@ -1692,9 +1706,9 @@ git push</string>
 		<key>935AF48C-24DE-4ACA-9CFB-ED14F92F05C9</key>
 		<dict>
 			<key>xpos</key>
-			<real>655</real>
+			<real>1135</real>
 			<key>ypos</key>
-			<real>725</real>
+			<real>865</real>
 		</dict>
 		<key>93C82FF5-3DE8-4422-850A-5BC5A6E94CD7</key>
 		<dict>
