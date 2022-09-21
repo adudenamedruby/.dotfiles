@@ -48,7 +48,18 @@
 			</dict>
 		</array>
 		<key>3EE01843-348E-4B73-A4C1-907B2D4E1C30</key>
-		<array/>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>43E7F234-6FF1-44B9-941C-CDB53A75A7F0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>4092C2D6-8166-486F-9A5C-85999A2B3152</key>
 		<array>
 			<dict>
@@ -389,7 +400,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Firefox.app</string>
+					<string>/System/Applications/Books.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -966,6 +977,23 @@
 			<string>3EE01843-348E-4B73-A4C1-907B2D4E1C30</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Firefox.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>43E7F234-6FF1-44B9-941C-CDB53A75A7F0</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1601,6 +1629,13 @@
 			<real>35</real>
 			<key>ypos</key>
 			<real>1895</real>
+		</dict>
+		<key>43E7F234-6FF1-44B9-941C-CDB53A75A7F0</key>
+		<dict>
+			<key>xpos</key>
+			<real>195</real>
+			<key>ypos</key>
+			<real>1055</real>
 		</dict>
 		<key>4C076AA2-9318-458A-836B-6C2C8DC4E560</key>
 		<dict>
