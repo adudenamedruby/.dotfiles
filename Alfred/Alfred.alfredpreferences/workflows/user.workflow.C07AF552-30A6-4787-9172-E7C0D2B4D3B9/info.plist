@@ -494,7 +494,7 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://github.com/polymathruby</string>
+				<string>https://github.com/adudenamedruby</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>

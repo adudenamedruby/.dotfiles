@@ -1443,7 +1443,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/XcodeXvim.app</string>
+					<string>/Applications/Xcode141.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
