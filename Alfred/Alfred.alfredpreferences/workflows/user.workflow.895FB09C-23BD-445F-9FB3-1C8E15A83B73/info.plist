@@ -1553,7 +1553,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Xcode141.app</string>
+					<string>/Applications/Xcode142.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
