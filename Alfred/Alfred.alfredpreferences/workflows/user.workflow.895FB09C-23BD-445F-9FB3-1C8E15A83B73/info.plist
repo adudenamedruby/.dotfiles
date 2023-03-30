@@ -1021,7 +1021,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Firefox.app</string>
+					<string>/Applications/Arc.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
