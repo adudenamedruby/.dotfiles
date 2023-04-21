@@ -383,7 +383,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/AppCode.app</string>
+					<string>/Applications/Visual Studio Code.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
