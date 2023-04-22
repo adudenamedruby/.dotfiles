@@ -151,6 +151,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>7A5997C6-C47F-45F2-BC5C-39418E10F5F6</key>
+		<array/>
 		<key>90E95058-3B83-4C50-B95F-966111DCB141</key>
 		<array>
 			<dict>
@@ -217,6 +219,21 @@
 				<false/>
 			</dict>
 		</array>
+		<key>AA5181D6-AF82-4F8F-8B2E-D634681314F2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>632E1C41-F7ED-43BA-A8A3-70E676986AC8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>B7F7D9AA-B507-4EBF-AA29-DC41E14EFFF4</key>
+		<array/>
 		<key>C8F07787-AA29-4B16-BBAC-2B79E6B3E776</key>
 		<array>
 			<dict>
@@ -350,6 +367,23 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Visual Studio Code.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>7DE16EFE-CD99-4904-B18E-8901AA0660B4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -383,24 +417,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Visual Studio Code.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>7DE16EFE-CD99-4904-B18E-8901AA0660B4</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array>
-					<string>/System/Applications/Books.app</string>
+					<string>/Applications/Band-in-a-Box/Band-in-a-Box.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -463,6 +480,29 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>echo $(id -u -n | tr -d '\r')</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>64975824-5181-429B-9D2A-07BAF68D11A2</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -488,29 +528,6 @@
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>CC78EAE9-5069-4888-8C8B-0C3C78FA5067</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>echo $(id -u -n | tr -d '\r')</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>5</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>64975824-5181-429B-9D2A-07BAF68D11A2</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -847,6 +864,29 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>echo $(id -u -n | tr -d '\r')</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>269A1616-7DA3-4BEF-958B-D0DCBDD92A28</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -872,29 +912,6 @@
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>CBD47FE4-44C4-45C3-8625-D6BC066B8745</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>echo $(id -u -n | tr -d '\r')</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>5</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>269A1616-7DA3-4BEF-958B-D0DCBDD92A28</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -1060,23 +1077,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/Logic Pro X.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>35DA5E21-B35E-47E9-B19D-4B8BE17177D8</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -1104,6 +1104,23 @@
 			<string>75FA6826-160D-44EB-8FCB-975A83A8878B</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Logic Pro X.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>35DA5E21-B35E-47E9-B19D-4B8BE17177D8</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1141,7 +1158,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Spotify.app</string>
+					<string>/Applications/Spark.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1150,6 +1167,23 @@
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
 			<string>A7EA7CF3-8C33-4F61-9D3C-FAFE44AC50AF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Notability.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>632E1C41-F7ED-43BA-A8A3-70E676986AC8</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1218,6 +1252,23 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Todoist.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>00159579-F605-49DB-99CE-6E02A93359C3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -1251,7 +1302,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Band-in-a-Box/Band-in-a-Box.app</string>
+					<string>/Applications/Fantastical.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1259,7 +1310,7 @@
 			<key>type</key>
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
-			<string>00159579-F605-49DB-99CE-6E02A93359C3</string>
+			<string>A3ECCB66-CEC0-4DE6-9DD2-346525C56E7F</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1297,40 +1348,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/Fantastical.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>A3ECCB66-CEC0-4DE6-9DD2-346525C56E7F</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array>
-					<string>/opt/homebrew/Cellar/emacs-plus@28/28.2/Emacs.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>C4643DF2-EB56-42EA-9B68-255781DE3A66</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -1364,7 +1381,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Fantastical.app</string>
+					<string>/opt/homebrew/Cellar/emacs-plus@28/28.2/Emacs.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1372,7 +1389,24 @@
 			<key>type</key>
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
-			<string>2EAC2DB5-7235-46FB-BB5C-FEAFF9E12C7E</string>
+			<string>C4643DF2-EB56-42EA-9B68-255781DE3A66</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/DevUtils.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>80A32D7F-E799-47AF-BF24-B1DC15200832</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1410,6 +1444,23 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Xcode.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>002D19AA-745C-47EC-AE13-9D354AE1C14A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -1443,7 +1494,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Xcode.app</string>
+					<string>/Applications/XcodeXvim.app/Contents/Developer/Applications/Simulator.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1451,7 +1502,7 @@
 			<key>type</key>
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
-			<string>002D19AA-745C-47EC-AE13-9D354AE1C14A</string>
+			<string>6481E27F-C35F-4448-ABF5-A829251FD3B4</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1485,23 +1536,6 @@
 			<string>30DD5C9D-F2DA-48F1-A458-4E36DCD9B552</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/XcodeXvim.app/Contents/Developer/Applications/Simulator.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>6481E27F-C35F-4448-ABF5-A829251FD3B4</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1551,7 +1585,7 @@
 			<key>xpos</key>
 			<real>200</real>
 			<key>ypos</key>
-			<real>2220</real>
+			<real>2215</real>
 		</dict>
 		<key>14253085-F66C-4D06-8FCA-EAF6C76F2D8D</key>
 		<dict>
@@ -1587,13 +1621,6 @@
 			<real>435</real>
 			<key>ypos</key>
 			<real>895</real>
-		</dict>
-		<key>2EAC2DB5-7235-46FB-BB5C-FEAFF9E12C7E</key>
-		<dict>
-			<key>xpos</key>
-			<real>195</real>
-			<key>ypos</key>
-			<real>2105</real>
 		</dict>
 		<key>30DD5C9D-F2DA-48F1-A458-4E36DCD9B552</key>
 		<dict>
@@ -1658,6 +1685,13 @@
 			<key>ypos</key>
 			<real>635</real>
 		</dict>
+		<key>632E1C41-F7ED-43BA-A8A3-70E676986AC8</key>
+		<dict>
+			<key>xpos</key>
+			<real>195</real>
+			<key>ypos</key>
+			<real>1580</real>
+		</dict>
 		<key>6481E27F-C35F-4448-ABF5-A829251FD3B4</key>
 		<dict>
 			<key>xpos</key>
@@ -1720,6 +1754,13 @@
 			<real>190</real>
 			<key>ypos</key>
 			<real>25</real>
+		</dict>
+		<key>80A32D7F-E799-47AF-BF24-B1DC15200832</key>
+		<dict>
+			<key>xpos</key>
+			<real>200</real>
+			<key>ypos</key>
+			<real>2105</real>
 		</dict>
 		<key>90E95058-3B83-4C50-B95F-966111DCB141</key>
 		<dict>
