@@ -150,6 +150,16 @@
 		<string>0.783359 0.82317 0.795234 1</string>
 		<key>xcode.syntax.preprocessor</key>
 		<string>0.648642 0.243226 0.239746 1</string>
+		<key>xcode.syntax.regex</key>
+		<string>0.537255 0.745098 0.403922 1</string>
+		<key>xcode.syntax.regex.capturename</key>
+		<string>0.808157 0.391599 0.13148 1</string>
+		<key>xcode.syntax.regex.charname</key>
+		<string>0.808157 0.391599 0.13148 1</string>
+		<key>xcode.syntax.regex.number</key>
+		<string>0.658401 0.752579 0.603047 1</string>
+		<key>xcode.syntax.regex.other</key>
+		<string>0.783359 0.82317 0.795234 1</string>
 		<key>xcode.syntax.string</key>
 		<string>0.537255 0.745098 0.403922 1</string>
 		<key>xcode.syntax.url</key>
@@ -158,59 +168,69 @@
 	<key>DVTSourceTextSyntaxFonts</key>
 	<dict>
 		<key>xcode.syntax.attribute</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.character</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.comment</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.comment.doc</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.comment.doc.keyword</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.declaration.other</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.declaration.type</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.class</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.class.system</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.constant</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.constant.system</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.function</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.function.system</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.macro</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.macro.system</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.type</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.type.system</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.variable</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.identifier.variable.system</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.keyword</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.mark</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.markup.code</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.number</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.plain</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.preprocessor</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
+		<key>xcode.syntax.regex</key>
+		<string>FiraCodeRoman-Regular - 15.0</string>
+		<key>xcode.syntax.regex.capturename</key>
+		<string>FiraCodeRoman-Regular - 15.0</string>
+		<key>xcode.syntax.regex.charname</key>
+		<string>FiraCodeRoman-Regular - 15.0</string>
+		<key>xcode.syntax.regex.number</key>
+		<string>FiraCodeRoman-Regular - 15.0</string>
+		<key>xcode.syntax.regex.other</key>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.string</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 		<key>xcode.syntax.url</key>
-		<string>FiraCodeRoman-Regular - 19.0</string>
+		<string>FiraCodeRoman-Regular - 15.0</string>
 	</dict>
 </dict>
 </plist>
