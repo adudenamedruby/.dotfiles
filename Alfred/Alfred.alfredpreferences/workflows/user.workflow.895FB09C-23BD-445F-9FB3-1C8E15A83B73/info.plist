@@ -63,7 +63,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>89A701AB-F67C-4A3E-801D-4184FFF63458</string>
+				<string>7B807827-5759-4114-AAA5-95B363D036D0</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1570,7 +1570,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Xcode141.app</string>
+					<string>/Applications/Xcode.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1578,7 +1578,7 @@
 			<key>type</key>
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
-			<string>89A701AB-F67C-4A3E-801D-4184FFF63458</string>
+			<string>7B807827-5759-4114-AAA5-95B363D036D0</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1855,6 +1855,13 @@
 			<key>ypos</key>
 			<real>2105</real>
 		</dict>
+		<key>7B807827-5759-4114-AAA5-95B363D036D0</key>
+		<dict>
+			<key>xpos</key>
+			<real>405</real>
+			<key>ypos</key>
+			<real>2265</real>
+		</dict>
 		<key>7DE16EFE-CD99-4904-B18E-8901AA0660B4</key>
 		<dict>
 			<key>xpos</key>
@@ -1868,13 +1875,6 @@
 			<real>195</real>
 			<key>ypos</key>
 			<real>2105</real>
-		</dict>
-		<key>89A701AB-F67C-4A3E-801D-4184FFF63458</key>
-		<dict>
-			<key>xpos</key>
-			<real>405</real>
-			<key>ypos</key>
-			<real>2265</real>
 		</dict>
 		<key>90E95058-3B83-4C50-B95F-966111DCB141</key>
 		<dict>
