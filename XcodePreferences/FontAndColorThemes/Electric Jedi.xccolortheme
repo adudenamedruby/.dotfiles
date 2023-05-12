@@ -5,23 +5,23 @@
 	<key>DVTConsoleDebuggerInputTextColor</key>
 	<string>0.105882 0.815686 0.482353 1</string>
 	<key>DVTConsoleDebuggerInputTextFont</key>
-	<string>SFMono-Bold - 14.0</string>
+	<string>FiraCodeRoman-Regular - 14.0</string>
 	<key>DVTConsoleDebuggerOutputTextColor</key>
 	<string>0.653927 0.773968 0.783257 1</string>
 	<key>DVTConsoleDebuggerOutputTextFont</key>
-	<string>SFMono-Bold - 14.0</string>
+	<string>FiraCodeRoman-Regular - 14.0</string>
 	<key>DVTConsoleDebuggerPromptTextColor</key>
 	<string>0.751101 0.575369 0.94509 1</string>
 	<key>DVTConsoleDebuggerPromptTextFont</key>
-	<string>SFMono-Bold - 14.0</string>
+	<string>FiraCodeRoman-Regular - 14.0</string>
 	<key>DVTConsoleExectuableInputTextColor</key>
 	<string>0.770437 0.783913 0.778299 1</string>
 	<key>DVTConsoleExectuableInputTextFont</key>
-	<string>SFMono-Bold - 14.0</string>
+	<string>FiraCodeRoman-Regular - 14.0</string>
 	<key>DVTConsoleExectuableOutputTextColor</key>
 	<string>0.770437 0.783913 0.778299 1</string>
 	<key>DVTConsoleExectuableOutputTextFont</key>
-	<string>SFMono-Bold - 14.0</string>
+	<string>FiraCodeRoman-Regular - 14.0</string>
 	<key>DVTConsoleTextBackgroundColor</key>
 	<string>0.104959 0.112401 0.122805 1</string>
 	<key>DVTConsoleTextInsertionPointColor</key>
