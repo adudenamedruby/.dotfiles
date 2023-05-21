@@ -337,7 +337,18 @@
 		<key>CD7DD9A3-771B-4EBC-AF5C-7469F7994EAC</key>
 		<array/>
 		<key>DC6870D2-D009-4CF5-9ECA-EF88854CB58E</key>
-		<array/>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CA97BFC0-04DB-4A08-A504-AD56163F82B2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>E51463CA-496F-45A4-B707-7ECF50EFF071</key>
 		<array/>
 		<key>EFE2F3C8-1C51-4DBB-9E6E-39FA7E7842D0</key>
@@ -702,6 +713,23 @@
 			<dict>
 				<key>paths</key>
 				<array>
+					<string>/System/Applications/Books.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>CA97BFC0-04DB-4A08-A504-AD56163F82B2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
 					<string>/Applications/Final Cut Pro.app</string>
 				</array>
 				<key>toggle</key>
@@ -877,7 +905,7 @@
 						<key>matchmode</key>
 						<integer>4</integer>
 						<key>matchstring</key>
-						<string>acmelabs</string>
+						<string>fringeFoundation</string>
 						<key>outputlabel</key>
 						<string>home</string>
 						<key>uid</key>
@@ -1959,6 +1987,13 @@
 			<real>355</real>
 			<key>ypos</key>
 			<real>355</real>
+		</dict>
+		<key>CA97BFC0-04DB-4A08-A504-AD56163F82B2</key>
+		<dict>
+			<key>xpos</key>
+			<real>195</real>
+			<key>ypos</key>
+			<real>635</real>
 		</dict>
 		<key>CBD47FE4-44C4-45C3-8625-D6BC066B8745</key>
 		<dict>
