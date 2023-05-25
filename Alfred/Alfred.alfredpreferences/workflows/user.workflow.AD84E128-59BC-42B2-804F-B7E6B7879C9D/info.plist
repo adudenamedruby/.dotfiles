@@ -1412,7 +1412,7 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://app.element.io/#/login</string>
+				<string>https://chat.mozilla.org/#/room/%23fx-ios:mozilla.org</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
