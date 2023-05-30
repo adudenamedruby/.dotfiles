@@ -1399,7 +1399,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/opt/homebrew/Cellar/emacs-plus@28/28.2/Emacs.app</string>
+					<string>/opt/homebrew/Cellar/emacs-plus@29/29.0.90/Emacs.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>

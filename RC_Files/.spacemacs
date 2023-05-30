@@ -46,8 +46,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(vimscript
-
+   '(
      ;; Add tool tips to show doc string of functions
      ;; Show snippets in the auto-completion popup
      ;; Show suggestions by most commonly used
@@ -213,7 +212,7 @@ This function should only modify configuration layer settings."
                          doom-modeline-major-mode-color-icon t
                          doom-modeline-vcs-max-length 75
                          doom-modeline-lsp t
-                         doom-modeline-minor-modes nil)
+                         doom-modeline-minor-modes t)
 
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
