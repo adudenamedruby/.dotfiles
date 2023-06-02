@@ -550,7 +550,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
 
    ;; If non-nil the frame is undecorated when Emacs starts up. Combine this
    ;; variable with `dotspacemacs-maximized-at-startup' in OSX to obtain
@@ -841,6 +841,33 @@ before packages are loaded."
             (string-trim (shell-command-to-string "xcrun --find sourcekit-lsp")))))
 
   (add-hook 'swift-mode-hook (lambda () (lsp)))
+
+  (defun xcode-build()
+    (interactive)
+    (shell-command-to-string
+     "osascript -e 'tell application \"Xcode\"' -e 'set targetProject to active workspace document' -e 'build targetProject' -e 'end tell'"))
+  (defun xcode-run()
+    (interactive)
+    (shell-command-to-string
+     "osascript -e 'tell application \"Xcode\"' -e 'set targetProject to active workspace document' -e 'stop targetProject' -e 'run targetProject' -e 'end tell'"))
+  (defun xcode-test()
+    (interactive)
+    (shell-command-to-string
+     "osascript -e 'tell application \"Xcode\"' -e 'set targetProject to active workspace document' -e 'stop targetProject' -e 'test targetProject' -e 'end tell'"))
+  (defun xcode-clean()
+    (interactive)
+    (shell-command-to-string
+     "osascript -e 'tell application \"Xcode\"' -e 'set targetProject to active workspace document' -e 'stop targetProject' -e 'clean targetProject' -e 'end tell'"))
+  (defun xcode-open-current-file()
+    (interactive)
+    (shell-command-to-string
+     (concat "open -a \"/Applications/Xcode.app\" " (buffer-file-name))))
+  (spacemacs/declare-prefix "c x" "xcode")
+  (spacemacs/set-leader-keys "cxr" 'xcode-run)
+  (spacemacs/set-leader-keys "cxb" 'xcode-build)
+  (spacemacs/set-leader-keys "cxt" 'xcode-test)
+  (spacemacs/set-leader-keys "cxc" 'xcode-clean)
+  (spacemacs/set-leader-keys "cxf" 'xcode-open-current-file)
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Olivetti mode
