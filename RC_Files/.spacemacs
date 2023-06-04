@@ -9,7 +9,7 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
-;; This file are the personal preferences of electricRGB
+;; This file are the personal preferences of adudenamedruby
 ;; Copying it may be weird for you.
 
 ;; If something has gone terribly wrong and a complete reset of Spacemacs
@@ -59,8 +59,6 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t)
 
-     bibtex
-
      c-c++
 
      ;; Nyan cat tells you where you are in your file
@@ -96,7 +94,6 @@ This function should only modify configuration layer settings."
 
      imenu-list
 
-     javascript
      json
 
      latex
@@ -178,17 +175,17 @@ This function should only modify configuration layer settings."
               ;; This can also be: (file "~/location/to/org/file")
               "\n\n* ${title}\n** Summary\n%?\n\n** More details\n\n* References\n\n* LINKS\n"
               ;; filename AND what's added to the top of the file
-              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: electricRGB\n#+date: %t")
+              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: adudenamedruby\n#+date: %t")
               :unnarrowed t)
 
              ("g" "Glossary term" plain
               "\n\n* ${title}\n** Definition\n%?\n\n* References\n\n* LINKS\n- [[id:C1F1861B-20E0-4E15-9C0A-C93CE1652CC9][Glossary]]\n"
-              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: electricRGB\n#+date: %t")
+              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: adudenamedruby\n#+date: %t")
               :unnarrowed t)
 
              ("q" "Quote" plain
               "\n\n#+BEGIN_QUOTE\n%?#+END_QUOTE\n\n* References\n\n* LINKS\n-[[id:ADC4CC70-7EE8-4B34-A852-7A4F9DF8AFBF][Quotes]]\n"
-              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: electricRGB\n#+date: %t")
+              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: adudenamedruby\n#+date: %t")
               :unnarrowed t)
              )
 
@@ -382,7 +379,7 @@ It should only modify the values of Spacemacs settings."
    ;; pair of numbers, e.g. `(recents-by-project . (7 .  5))', where the first
    ;; number is the project limit and the second the limit on the recent files
    ;; within a project.
-   dotspacemacs-startup-lists '((recents-by-project . (4 . 4)))
+   dotspacemacs-startup-lists '((recents-by-project . (4 . 5)))
 
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
@@ -834,6 +831,7 @@ before packages are loaded."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; LSP
   ;; Swift LSP configuration
+  (eval-after-load 'flycheck '(flycheck-swift-setup))
   (with-eval-after-load 'lsp-mode
     (progn
       (require 'lsp-sourcekit)
