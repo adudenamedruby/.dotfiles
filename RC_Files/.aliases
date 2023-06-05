@@ -14,11 +14,11 @@ synchronize () {
     git stash
     git pull
     git stash pop
-    cp ~/Library/Developer/Xcode/UserData/KeyBindings/adudenamedruby.idekeybindings ~/.dotfiles/XcodePreferences/
+    # cp ~/Library/Developer/Xcode/UserData/KeyBindings/adudenamedruby.idekeybindings ~/.dotfiles/XcodePreferences/
     git add .
     git commit -m "Update dotfiles"
     git push
-    mv -f ~/.dotfiles/XcodePreferences/adudenamedruby.idekeybindings ~/Library/Developer/Xcode/UserData/KeyBindings/
+    # mv -f ~/.dotfiles/XcodePreferences/adudenamedruby.idekeybindings ~/Library/Developer/Xcode/UserData/KeyBindings/
     popd
     echo "+++++++++ Syncing ExoCortex +++++++++"
     pushd ~/code/git/ExoCortex
