@@ -21,7 +21,7 @@ synchronize () {
     # mv -f ~/.dotfiles/XcodePreferences/adudenamedruby.idekeybindings ~/Library/Developer/Xcode/UserData/KeyBindings/
     popd
     echo "+++++++++ Syncing ExoCortex +++++++++"
-    pushd ~/code/git/ExoCortex
+    pushd ~/CodexSeraphinianus/ExoCortex
     git stash
     git pull
     git stash pop
@@ -30,7 +30,7 @@ synchronize () {
     git push
     popd
     echo "+++++++++ Syncing Learn2Code +++++++++"
-    pushd ~/code/git/Learn2Code
+    pushd ~/CodexSeraphinianus/Learn2Code
     git stash
     git pull
     git stash pop
