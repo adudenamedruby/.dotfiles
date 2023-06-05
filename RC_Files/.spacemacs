@@ -762,6 +762,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (org-roam-db-autosync-mode)
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Array magic!
@@ -831,7 +832,6 @@ before packages are loaded."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; LSP
   ;; Swift LSP configuration
-  (eval-after-load 'flycheck '(flycheck-swift-setup))
   (with-eval-after-load 'lsp-mode
     (progn
       (require 'lsp-sourcekit)
@@ -839,6 +839,7 @@ before packages are loaded."
             (string-trim (shell-command-to-string "xcrun --find sourcekit-lsp")))))
 
   (add-hook 'swift-mode-hook (lambda () (lsp)))
+  (with-eval-after-load 'flycheck '(flycheck-swift-setup))
 
   (defun xcode-build()
     (interactive)

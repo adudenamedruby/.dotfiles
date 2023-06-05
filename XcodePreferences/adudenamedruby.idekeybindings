@@ -360,7 +360,7 @@
 				<key>GroupedAlternate</key>
 				<string>NO</string>
 				<key>Keyboard Shortcut</key>
-				<string>^o</string>
+				<string>^i</string>
 				<key>Navigation</key>
 				<string>YES</string>
 				<key>Title</key>
@@ -380,7 +380,7 @@
 				<key>GroupedAlternate</key>
 				<string>NO</string>
 				<key>Keyboard Shortcut</key>
-				<string>^~o</string>
+				<string>^~i</string>
 				<key>Navigation</key>
 				<string>YES</string>
 				<key>Title</key>
@@ -400,7 +400,7 @@
 				<key>GroupedAlternate</key>
 				<string>NO</string>
 				<key>Keyboard Shortcut</key>
-				<string>^~$O</string>
+				<string>^~$I</string>
 				<key>Navigation</key>
 				<string>YES</string>
 				<key>Title</key>
@@ -1386,10 +1386,6 @@
 				<string>transpose:</string>
 				<string>joinParagraphs:</string>
 				<string>deleteToEndOfParagraph:</string>
-				<array>
-					<string>insertNewlineIgnoringFieldEditor:</string>
-					<string>moveBackward:</string>
-				</array>
 			</array>
 			<key></key>
 			<string>deleteBackward:</string>
