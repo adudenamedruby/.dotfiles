@@ -282,7 +282,18 @@
 			</dict>
 		</array>
 		<key>B7F7D9AA-B507-4EBF-AA29-DC41E14EFFF4</key>
-		<array/>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>410E7A9E-044F-4DAF-9943-AA9603245012</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>C8F07787-AA29-4B16-BBAC-2B79E6B3E776</key>
 		<array>
 			<dict>
@@ -1689,6 +1700,23 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Spotify.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>410E7A9E-044F-4DAF-9943-AA9603245012</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -1826,6 +1854,13 @@
 			<real>35</real>
 			<key>ypos</key>
 			<real>1895</real>
+		</dict>
+		<key>410E7A9E-044F-4DAF-9943-AA9603245012</key>
+		<dict>
+			<key>xpos</key>
+			<real>195</real>
+			<key>ypos</key>
+			<real>2325</real>
 		</dict>
 		<key>43E7F234-6FF1-44B9-941C-CDB53A75A7F0</key>
 		<dict>
