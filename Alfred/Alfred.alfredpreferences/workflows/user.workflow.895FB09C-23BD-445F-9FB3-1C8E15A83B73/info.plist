@@ -1436,6 +1436,43 @@
 		<dict>
 			<key>config</key>
 			<dict>
+<<<<<<< Updated upstream
+=======
+				<key>paths</key>
+				<array>
+					<string>/Applications/Fantastical.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>A3ECCB66-CEC0-4DE6-9DD2-346525C56E7F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/opt/homebrew/Cellar/emacs-plus@29/29.0.90/Emacs.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>C4643DF2-EB56-42EA-9B68-255781DE3A66</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+>>>>>>> Stashed changes
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
