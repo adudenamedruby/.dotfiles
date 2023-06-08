@@ -8,9 +8,10 @@ alias dotfiles="cd ~/.dotfiles"
 
 #keeping my stuff in sync
 synchronize () {
+    cd ..
     echo "Synchonizing presonal repos"
     echo "+++++++++ Syncing ~/.dotfiles +++++++++"
-    pushd ~/.dotfiles
+    cd ~/.dotfiles
     git stash
     git pull
     git stash pop
@@ -19,25 +20,22 @@ synchronize () {
     git commit -m "Update dotfiles"
     git push
     # mv -f ~/.dotfiles/XcodePreferences/adudenamedruby.idekeybindings ~/Library/Developer/Xcode/UserData/KeyBindings/
-    popd
     echo "+++++++++ Syncing ExoCortex +++++++++"
-    pushd ~/CodexSeraphinianus/ExoCortex
+    cd ~/CodexSeraphinianus/ExoCortex
     git stash
     git pull
     git stash pop
     git add .
     git commit -m "Update exocortex"
     git push
-    popd
     echo "+++++++++ Syncing Learn2Code +++++++++"
-    pushd ~/CodexSeraphinianus/Learn2Code
+    cd ~/CodexSeraphinianus/Learn2Code
     git stash
     git pull
     git stash pop
     git add .
     git commit -m "Update learning repo"
     git push
-    popd
     echo "Finished synchonizing presonal repos"
 }
 
