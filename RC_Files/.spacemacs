@@ -53,8 +53,8 @@ This function should only modify configuration layer settings."
      ;; To have auto-completion on as soon as you start typing
      ;; (auto-completion :variables auto-completion-idle-delay nil)
      (auto-completion :variables
-                      auto-completion-return-key-behavior 'complete
-                      auto-completion-tab-key-behavior 'cycle
+                      auto-completion-return-key-behavior nil
+                      auto-completion-tab-key-behavior 'complete
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t)
@@ -199,7 +199,6 @@ This function should only modify configuration layer settings."
      prolog
      python
 
-     rust
      (rust :variables
            rust-backend 'lsp)
 
@@ -213,11 +212,15 @@ This function should only modify configuration layer settings."
      ;; Modeline of fancyness
      (spacemacs-modeline :variables
                          doom-modeline-height 40
-                         doom-modeline-buffer-file-name-style 'relative-to-project
-                         doom-modeline-major-mode-color-icon t
-                         doom-modeline-vcs-max-length 75
+                         doom-modeline-buffer-file-name-style 'file-name
                          doom-modeline-lsp t
-                         doom-modeline-minor-modes t)
+                         doom-modeline-vcs-max-length 75
+                         doom-modeline-icon t
+                         doom-modeline-major-mode-color-icon t
+                         doom-modeline-minor-modes nil
+                         doom-modeline-major-mode-color-icon t
+                         doom-modeline-buffer-state-icon t
+                         )
 
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
@@ -242,7 +245,6 @@ This function should only modify configuration layer settings."
                       version-control-diff-side 'left
                       version-control-global-margin t)
 
-     yaml
      (yaml :variables
            yaml-enable-lsp t)
 
@@ -403,7 +405,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil, show file icons for entries and headings on Spacemacs home buffer.
    ;; This has no effect in terminal or if "all-the-icons" package or the font
    ;; is not installed. (default nil)
-   dotspacemacs-startup-buffer-show-icons nil
+   dotspacemacs-startup-buffer-show-icons t
 
    ;; Default major mode for a new empty buffer. Possible values are mode
    ;; names such as `text-mode'; and `nil' to use Fundamental mode.
