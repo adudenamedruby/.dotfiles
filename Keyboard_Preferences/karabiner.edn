@@ -20,7 +20,7 @@
     ;; need to prefix C T O S F with ! or #
 
 :profiles {
-    :electricRGB {
+    :adudenamedruby {
         :default true
         :sim     50     ;; simultaneous_threshold_milliseconds (def: 50)
                         ;; keys need to be pressed within this threshold to be considered simultaneous
@@ -33,16 +33,20 @@
     }
 } ;; profiles
 
+
 ;; :devices {
 ;;     :apl-usb-int [{:vendor_id 1452, :product_id 635 }]  ;; Apple Internal & Magic Keyboard (USB)
 ;;     :apl-bt [{:vendor_id 1452, :product_id 615}] ;; Apple Magic Keyboard (Bluetooth)
 ;; } ;; devices
 
+;; simlayer
+:simlayers {
+            :prog-right {:key :f}
+            :prog-left {:key :j}
+}
+
 ;; main contains multiple manipulators
 :main [
-
-    ;; each manipulator has a description and multiple rules
-
     ;;{:des "..."                               ;; -> description
     ;; :rules[
     ;;          [<from>  <to>  <conditions> <other options>]    ;; -> rule 1
@@ -67,6 +71,110 @@
         :rules [[:##tab :!COSleft_control nil {:alone :tab}]]
     }
     {
+        :des "Programming Layer (Right)"
+        :rules [
+                ;; Top row
+                [:y :backslash  :prog-right]
+                [:u :0  :prog-right]
+                [:i :!S6  :prog-right]
+                [:o :!S4  :prog-right]
+                [:p :backslash  :prog-right]
+
+                ;; Home row
+                [:h :!S8  :prog-right]
+                [:j :!S0  :prog-right]
+                [:k :close_bracket  :prog-right]
+                [:l :!Sequal_sign  :prog-right]
+                [:semicolon :quote  :prog-right]
+
+                ;; Bottom Row
+                [:m :!S1  :prog-right]
+                [:comma :!Squote  :prog-right]
+                [:period :equal_sign  :prog-right]
+                [:slash :!S3  :prog-right]
+                ]
+    }
+    {
+        :des "Programming Layer (Left)"
+        :rules [
+                ;; Top row
+                [:q :!Sbackslash  :prog-left]
+                [:w :grave_accent_and_tilde  :prog-left]
+                [:e :!S2  :prog-left]
+                [:r :!S5  :prog-left]
+                [:t :!Sbackslash  :prog-left]
+
+                ;; Home row
+                [:a :open_bracket  :prog-left]
+                [:s :!Shyphen  :prog-left]
+                [:d :!Sz  :prog-left]
+                [:f :!S9  :prog-left]
+                [:g :!Sclose_bracket  :prog-left]
+
+                ;; Bottom Row
+                [:z :!Sgrave_accent_and_tilde  :prog-left]
+                [:x :hyphen  :prog-left]
+                [:c :!S7  :prog-left]
+                [:v :!Sopen_bracket  :prog-left]]
+     }
+    ;; {
+    ;;     :des "========= LAYER 3 (Prog Chars - Right Half) =========="
+    ;;     :rules [
+
+    ;;           ;;--------- LAYER ACTIVATOR | right_command  -----------
+    ;;           [:f ["L3" 1] nil {:afterup ["L3" 0] :alone :f}]
+
+    ;;           ;; Top row
+    ;;           [:##y :backslash  [["L1" 0] ["L2" 0] ["L3" 1] ["L4" 0]]]
+    ;;           [:##u :0  [["L1" 0] ["L2" 0] ["L3" 1] ["L4" 0]]]
+    ;;           [:##i :!S6  [["L1" 0] ["L2" 0] ["L3" 1] ["L4" 0]]]
+    ;;           [:##o :!S4  [["L1" 0] ["L2" 0] ["L3" 1] ["L4" 0]]]
+    ;;           [:##p :backslash  [["L1" 0] ["L2" 0] ["L3" 1] ["L4" 0]]]
+
+    ;;           ;; Home row
+    ;;           [:##h :!S8  [["L1" 0] ["L2" 0] ["L3" 1] ["L4" 0]]]
+    ;;           [:##j :!S0  [["L1" 0] ["L2" 0] ["L3" 1] ["L4" 0]]]
+    ;;           [:##k :close_bracket  [["L1" 0] ["L2" 0] ["L3" 1] ["L4" 0]]]
+    ;;           [:##l :!Sequal_sign  [["L1" 0] ["L2" 0] ["L3" 1] ["L4" 0]]]
+    ;;           [:##semicolon :quote  [["L1" 0] ["L2" 0] ["L3" 1] ["L4" 0]]]
+
+    ;;           ;; Bottom Row
+    ;;           [:##m :!S1  [["L1" 0] ["L2" 0] ["L3" 1] ["L4" 0]]]
+    ;;           [:##comma :!Squote  [["L1" 0] ["L2" 0] ["L3" 1] ["L4" 0]]]
+    ;;           [:##period :equal_sign  [["L1" 0] ["L2" 0] ["L3" 1] ["L4" 0]]]
+    ;;           [:##slash :!S3  [["L1" 0] ["L2" 0] ["L3" 1] ["L4" 0]]]
+    ;;       ]
+    ;;   }
+    ;;   {
+    ;;     :des "========= LAYER 4 (Prog Chars - Left Half) =========="
+    ;;     :rules [
+
+    ;;           ;;--------- LAYER ACTIVATOR | j  -----------
+    ;;           [:j ["L4" 1] nil {:afterup ["L4" 0] :alone :j}]
+
+    ;;           ;; Top row
+    ;;           [:##q :!Sbackslash  [["L1" 0] ["L2" 0] ["L3" 0] ["L4" 1]]]
+    ;;           [:##w :grave_accent_and_tilde  [["L1" 0] ["L2" 0] ["L3" 0] ["L4" 1]]]
+    ;;           [:##e :!S2  [["L1" 0] ["L2" 0] ["L3" 0] ["L4" 1]]]
+    ;;           [:##r :!S5  [["L1" 0] ["L2" 0] ["L3" 0] ["L4" 1]]]
+    ;;           [:##t :!Sbackslash  [["L1" 0] ["L2" 0] ["L3" 0] ["L4" 1]]]
+
+    ;;           ;; Home row
+    ;;           [:##a :open_bracket  [["L1" 0] ["L2" 0] ["L3" 0] ["L4" 1]]]
+    ;;           [:##s :!Shyphen  [["L1" 0] ["L2" 0] ["L3" 0] ["L4" 1]]]
+    ;;           [:##d :!Sz  [["L1" 0] ["L2" 0] ["L3" 0] ["L4" 1]]]
+    ;;           [:##f :!S9  [["L1" 0] ["L2" 0] ["L3" 0] ["L4" 1]]]
+    ;;           [:##g :!Sclose_bracket  [["L1" 0] ["L2" 0] ["L3" 0] ["L4" 1]]]
+
+    ;;           ;; Bottom Row
+    ;;           [:##z :!Sgrave_accent_and_tilde  [["L1" 0] ["L2" 0] ["L3" 0] ["L4" 1]]]
+    ;;           [:##x :hyphen  [["L1" 0] ["L2" 0] ["L3" 0] ["L4" 1]]]
+    ;;           [:##c :!S7  [["L1" 0] ["L2" 0] ["L3" 0] ["L4" 1]]]
+    ;;           [:##v :!Sopen_bracket  [["L1" 0] ["L2" 0] ["L3" 0] ["L4" 1]]]
+
+    ;;       ]
+    ;;   }
+      {
         :des "========= LAYER 1 (Prog Chars) =========="
         :rules [
 
@@ -74,82 +182,82 @@
               [:##right_command ["L1" 1] nil {:afterup ["L1" 0]}]
 
               ;; Top row
-              [:##q :!Sbackslash  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##w :grave_accent_and_tilde  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##e :!S2  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##r :!S5  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##t :!Sbackslash  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##y :backslash  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##u :0  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##i :!S6  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##o :!S4  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##p :backslash  [["L1" 1] ["L2" 0] ["L3" 0]]]
+              [:##q :!Sbackslash  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##w :grave_accent_and_tilde  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##e :!S2  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##r :!S5  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##t :!Sbackslash  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##y :backslash  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##u :0  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##i :!S6  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##o :!S4  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##p :backslash  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
 
               ;; Home row
-              [:##a :open_bracket  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##s :!Shyphen  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##d :!Sz  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##f :!S9  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##g :!Sclose_bracket  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##h :!S8  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##j :!S0  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##k :close_bracket  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##l :!Sequal_sign  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##semicolon :quote  [["L1" 1] ["L2" 0] ["L3" 0]]]
+              [:##a :open_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##s :!Shyphen  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##d :!Sz  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##f :!S9  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##g :!Sclose_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##h :!S8  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##j :!S0  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##k :close_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##l :!Sequal_sign  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##semicolon :quote  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
 
               ;; Bottom Row
-              [:##z :!Sgrave_accent_and_tilde  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##x :hyphen  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##c :!S7  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##v :!Sopen_bracket  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##m :!S1  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##comma :!Squote  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##period :equal_sign  [["L1" 1] ["L2" 0] ["L3" 0]]]
-              [:##slash :!S3  [["L1" 1] ["L2" 0] ["L3" 0]]]
+              [:##z :!Sgrave_accent_and_tilde  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##x :hyphen  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##c :!S7  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##v :!Sopen_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##m :!S1  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##comma :!Squote  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##period :equal_sign  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+              [:##slash :!S3  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
           ]
       }
-      {
-          :des "========= LAYER 2 () =========="
-          :rules [
+      ;; {
+      ;;     :des "========= LAYER 2 () =========="
+      ;;     :rules [
 
-                ;;--------- LAYER ACTIVATOR | right_command  -----------
-                [:##right_option ["L2" 1] nil {:afterup ["L2" 0]}]
+      ;;           ;;--------- LAYER ACTIVATOR | right_command  -----------
+      ;;           [:##right_option ["L2" 1] nil {:afterup ["L2" 0]}]
 
-                ;; Top row
-                [:##q :grave_accent_and_tilde  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##w :grave_accent_and_tilde  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##e :!S2  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##r :!S5  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##t :!Sbackslash  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##y :backslash  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##u :0  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##i :!S6  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##o :!S4  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##p :!S4  [["L1" 1] ["L2" 0] ["L3" 0]]]
+      ;;           ;; Top row
+      ;;           [:##q :grave_accent_and_tilde  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##w :grave_accent_and_tilde  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##e :!S2  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##r :!S5  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##t :!Sbackslash  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##y :backslash  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##u :0  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##i :!S6  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##o :!S4  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##p :!S4  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
 
-                ;; Home row
-                [:##a :open_bracket  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##s :!Shyphen  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##d :!Sz  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##f :!S9  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##g :!Sclose_bracket  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##h :!S8  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##j :!S0  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##k :close_bracket  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##l :!Sequal_sign  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##semicolon :quote  [["L1" 1] ["L2" 0] ["L3" 0]]]
+      ;;           ;; Home row
+      ;;           [:##a :open_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##s :!Shyphen  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##d :!Sz  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##f :!S9  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##g :!Sclose_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##h :!S8  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##j :!S0  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##k :close_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##l :!Sequal_sign  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##semicolon :quote  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
 
-                ;; Bottom Row
-                [:##z :!Sgrave_accent_and_tilde  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##x :hyphen  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##c :!S7  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##v :!Sopen_bracket  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##m :!S1  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##comma :!Squote  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##period :equal_sign  [["L1" 1] ["L2" 0] ["L3" 0]]]
-                [:##slash :!S3  [["L1" 1] ["L2" 0] ["L3" 0]]]
-            ]
-        }
+      ;;           ;; Bottom Row
+      ;;           [:##z :!Sgrave_accent_and_tilde  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##x :hyphen  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##c :!S7  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##v :!Sopen_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##m :!S1  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##comma :!Squote  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##period :equal_sign  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;           [:##slash :!S3  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+      ;;       ]
+      ;;   }
 ] ;; main list
 
 }
