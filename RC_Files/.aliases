@@ -3,6 +3,7 @@
 # Shortcuts
 alias docs="cd ~/Documents"
 alias downloads="cd ~/Downloads"
+alias dev="cd ~/Developer"
 alias desktop="cd ~/Desktop"
 alias dotfiles="cd ~/.dotfiles"
 
@@ -21,7 +22,7 @@ synchronize () {
     git push
     # mv -f ~/.dotfiles/XcodePreferences/adudenamedruby.idekeybindings ~/Library/Developer/Xcode/UserData/KeyBindings/
     echo "+++++++++ Syncing ExoCortex +++++++++"
-    cd ~/CodexSeraphinianus/ExoCortex
+    cd ~/Developer/ExoCortex
     git stash
     git pull
     git stash pop
@@ -29,7 +30,7 @@ synchronize () {
     git commit -m "Update exocortex"
     git push
     echo "+++++++++ Syncing Learn2Code +++++++++"
-    cd ~/CodexSeraphinianus/Learn2Code
+    cd ~/Developer/Learn2Code
     git stash
     git pull
     git stash pop
@@ -76,12 +77,12 @@ alias dsstorecleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias clearsystemlogs="sudo rm -rfv /private/var/log/asl/*.asl"
 
 # Show/hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+# alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+# alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 # Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+# alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+# alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # Disable Spotlight
 alias spotlightoff="sudo mdutil -a -i off"

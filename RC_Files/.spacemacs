@@ -161,12 +161,12 @@ This function should only modify configuration layer settings."
      (org :variables
           org-enable-epub-support t
           org-enable-github-support t
-          org-directory (expand-file-name "~/CodexSeraphinianus/ExoCortex/org")
+          org-directory (expand-file-name "~/Developer/ExoCortex/org")
           ;; org-roam
           org-enable-roam-support t
           org-enable-roam-ui t
-          org-roam-directory (expand-file-name "~/CodexSeraphinianus/ExoCortex/myWiki/zettlekasten")
-          org-roam-db-location (expand-file-name "~/CodexSeraphinianus/ExoCortex/myWiki/db/org-roam.db")
+          org-roam-directory (expand-file-name "~/Developer/ExoCortex/myWiki/zettlekasten")
+          org-roam-db-location (expand-file-name "~/Developer/ExoCortex/myWiki/db/org-roam.db")
           org-roam-mode-section-functions
            (list #'org-roam-backlinks-section
                  #'org-roam-reflinks-section
@@ -829,13 +829,13 @@ before packages are loaded."
   (spacemacs/set-leader-keys "om" 'open-media-file)
 
   (defun open-tasks-file ()
-    (interactive)(find-file "~/CodexSeraphinianus/ExoCortex/org/tasks.org"))
+    (interactive)(find-file "~/Developer/ExoCortex/org/tasks.org"))
 
   (defun open-notes-file ()
-    (interactive)(find-file "~/CodexSeraphinianus/ExoCortex/org/notes.org"))
+    (interactive)(find-file "~/Developer/ExoCortex/org/notes.org"))
 
   (defun open-media-file ()
-    (interactive)(find-file "~/CodexSeraphinianus/ExoCortex/org/media.org"))
+    (interactive)(find-file "~/Developer/ExoCortex/org/media.org"))
 
   ;; Evil-mode stuff
   ;; Make evil-mode up/down operate in screen lines instead of logical lines
