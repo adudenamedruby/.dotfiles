@@ -15,6 +15,20 @@ fi
 brew update
 brew upgrade
 
+#Alfred
+brew install --cask alfred
+
+# ---------------------------------------------
+# Terminal
+# ---------------------------------------------
+brew install --cask iterm2
+
+# Powerline10k
+brew install romkatv/powerlevel10k/powerlevel10k
+
+brew install zsh-syntax-highlighting
+
+brew install zsh-autosuggestions
 
 # ---------------------------------------------
 # Core Utilities
@@ -32,9 +46,11 @@ $(brew --prefix)/opt/fzf/install
 
 brew install coreutils
 
+brew install openssh
+
 brew install the_silver_searcher # AG
 
-brew install openssh
+brew install awk
 
 brew install grep
 
@@ -51,8 +67,6 @@ brew install libvterm
 brew install swiftlint
 
 brew install svn
-
-brew install zsh-syntax-highlighting
 
 brew install pandoc
 
@@ -78,6 +92,8 @@ pip3 install virtualenv
 # Common Lisp
 brew install scbl
 
+brew install --cask racket
+
 # ---------------------------------------------
 # Applications
 # ---------------------------------------------
@@ -91,13 +107,9 @@ brew install --cask the-unarchiver
 
 brew install --cask vlc
 
-brew install --cask iterm2
-
 brew install --cask onyx
 
 brew install --cask keycastr
-
-brew install --cask alfred
 
 brew install --cask appcleaner
 
@@ -109,11 +121,9 @@ brew install --cask karabiner-elements
 
 brew install --cask dash
 
-brew install --cask basictex
-
 # Emacs
 brew tap d12frosted/emacs-plus
-brew install emacs-plus@27 --with-modern-sexy-v1-icon
+brew install emacs-plus@29 --with-modern-sexy-v1-icon
 brew link emacs-plus
 #ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
 
@@ -131,7 +141,7 @@ fi
 
 
 # ---------------------------------------------
-# Other
+# Fonts
 # ---------------------------------------------
 
 # My preferred fonts
@@ -140,9 +150,6 @@ brew install --cask font-source-code-pro
 brew install --cask font-fira-code
 brew install --cask font-hack
 brew install --cask font-hack-nerd-font
-
-# Powerline10k
-brew install romkatv/powerlevel10k/powerlevel10k
 
 # ---------------------------------------------
 # Terminal gimmicks xD

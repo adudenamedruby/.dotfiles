@@ -6,6 +6,7 @@ alias downloads="cd ~/Downloads"
 alias dev="cd ~/Developer"
 alias desktop="cd ~/Desktop"
 alias dotfiles="cd ~/.dotfiles"
+alias vim="nvim"
 
 #keeping my stuff in sync
 synchronize () {
