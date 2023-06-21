@@ -74,6 +74,8 @@ brew install librsvg
 
 brew install yqrashawn/goku/goku
 
+brew install lsd
+
 brew install npm
 
 npm install -g tldr
