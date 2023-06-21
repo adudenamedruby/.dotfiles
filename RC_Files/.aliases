@@ -55,6 +55,7 @@ updateSpacemacs() {
     popd
 }
 
+alias ls=lsd
 alias updateBrew="updateBrew"
 alias updateSpacemacs="updateSpacemacs"
 
