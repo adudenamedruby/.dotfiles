@@ -263,7 +263,7 @@ This function should only modify configuration layer settings."
      ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(lsp-sourcekit
                                       all-the-icons
-                                      olivetti
+                                      ;; olivetti
                                       org-reverse-datetree)
 
    ;; A list of packages that cannot be updated.
@@ -905,9 +905,9 @@ before packages are loaded."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Olivetti mode
   ;; Text takes up xx% of the buffer
-  (setq olivetti-body-width 0.75)
+  ;; (setq olivetti-body-width 0.75)
   ;; Starts text files (like .org .txt .md) in olivetti mode
-  (add-hook 'text-mode-hook 'olivetti-mode)
+  ;; (add-hook 'text-mode-hook 'olivetti-mode)
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org mode setup
