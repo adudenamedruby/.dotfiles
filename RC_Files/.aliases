@@ -38,6 +38,7 @@ synchronize () {
     git add .
     git commit -m "Update learning repo"
     git push
+    cd
     echo "Finished synchonizing presonal repos"
 }
 
