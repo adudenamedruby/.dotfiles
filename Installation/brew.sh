@@ -54,6 +54,8 @@ brew install awk
 
 brew install grep
 
+brew install pandoc
+
 brew install ripgrep
 
 brew install carthage
