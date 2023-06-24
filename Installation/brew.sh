@@ -30,6 +30,10 @@ brew install zsh-syntax-highlighting
 
 brew install zsh-autosuggestions
 
+brew install --cask karabiner-elements
+
+brew install yqrashawn/goku/goku
+
 # ---------------------------------------------
 # Core Utilities
 # ---------------------------------------------
@@ -50,13 +54,9 @@ brew install openssh
 
 brew install the_silver_searcher # AG
 
-brew install awk
-
 brew install grep
 
 brew install pandoc
-
-brew install ripgrep
 
 brew install carthage
 
@@ -74,14 +74,25 @@ brew install pandoc
 
 brew install librsvg
 
-brew install yqrashawn/goku/goku
-
-brew install lsd
-
 brew install npm
 
 npm install -g tldr
 
+# rust alternatives to
+
+brew install ripgrep # instead of grep
+
+brew install fd # instead of find 
+
+brew install sd # instead of sed
+
+brew install choose # instead of cut/awk
+
+brew install lsd # instead of ls
+
+brew install tldr
+
+brew install grex
 
 # ---------------------------------------------
 # Programming Languages
@@ -102,9 +113,6 @@ brew install --cask racket
 # Applications
 # ---------------------------------------------
 
-# Vim, followed by installing Plug plugin manager
-brew install vim
-
 brew install nvim
 
 brew install --cask the-unarchiver
@@ -120,8 +128,6 @@ brew install --cask appcleaner
 brew install --cask devutils
 
 brew install --cask moom
-
-brew install --cask karabiner-elements
 
 brew install --cask dash
 
