@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 
-# Shortcuts
+# Directory Shortcuts
 alias docs="cd ~/Documents"
 alias downloads="cd ~/Downloads"
 alias dev="cd ~/Developer"
 alias desktop="cd ~/Desktop"
 alias dotfiles="cd ~/.dotfiles"
+
+# don't use vim
 alias vim="nvim"
 
-#keeping my stuff in sync
+# repo sync based things
 synchronize () {
     cd ..
     echo "Synchonizing presonal repos"
@@ -56,14 +58,29 @@ updateSpacemacs() {
     popd
 }
 
-alias ls=lsd
-alias updateBrew="updateBrew"
-alias updateSpacemacs="updateSpacemacs"
+alias syncBrew="updateBrew"
+alias syncSpacemacs="updateSpacemacs"
+alias syncRepos="synchronize"
+alias syncAll="updateSpacemacs; updateBrew; synchronize"
 
-alias sync="updateSpacemacs; updateBrew; synchronize"
+# Cheatsheet
+cheatsheet() {
+    echo "+++ adudenamedruby sys cheatsheet +++"
+    echo " in progress "
+    echo " -> fd # instead of find"
+    echo " -> rg # instead of grep"
+    echo " -> sd # instead of sed"
+    echo " -> choose # instead of cut/awk"
+    echo " -> grex # regex generator of sorts"
+    echo " -> ouch # unarchiver, basically"
+}
 
-# Get week number
-alias week='date +%V'
+alias cheatsheet="cheatsheet"
+
+# ls aliases
+alias ls="lsd -h"
+alias ll="lsd -lh"
+alias lla="lsd -lh"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"

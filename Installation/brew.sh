@@ -76,8 +76,6 @@ brew install librsvg
 
 brew install npm
 
-npm install -g tldr
-
 # rust alternatives to
 
 brew install ripgrep # instead of grep
@@ -90,9 +88,11 @@ brew install choose # instead of cut/awk
 
 brew install lsd # instead of ls
 
-brew install tldr
+brew install tealdeer # instead of tldr
 
-brew install grex
+brew install grex # regex generator of sorts
+
+brew install ouch # unarchiver, basically
 
 # ---------------------------------------------
 # Programming Languages
@@ -104,18 +104,24 @@ brew install python3
 # virtual environments for Python
 pip3 install virtualenv
 
-# Common Lisp
+# Lisp family languages
 brew install scbl
 
 brew install --cask racket
+
+brew install clojure/tools/clojure
+
+## Haskell
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+
+# Rust
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 
 # ---------------------------------------------
 # Applications
 # ---------------------------------------------
 
 brew install nvim
-
-brew install --cask the-unarchiver
 
 brew install --cask vlc
 
@@ -138,17 +144,7 @@ brew link emacs-plus
 #ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
 
 # Select which branch of Spacemacs we want - master or dev
-echo "By default this ulitily installs Spacemacs off the MASTER branch?"
-echo "Would you like to install off DEVELOP branch instead? (y/n)"
-read resp
-if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
-    echo "Develop branch selected"
-    git clone -b develop https://github.com/syl20bnr/spacemacs ~/.emacs.d
-else
-    echo "Master branch selected"
-    git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-fi
-
+git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
 
 # ---------------------------------------------
 # Fonts
@@ -158,6 +154,7 @@ fi
 brew tap homebrew/cask-fonts
 brew install --cask font-source-code-pro
 brew install --cask font-fira-code
+brew install --cask font-fira-code-nerd-font
 brew install --cask font-hack
 brew install --cask font-hack-nerd-font
 
@@ -169,7 +166,6 @@ brew install --cask font-hack-nerd-font
 brew install cmatrix
 brew install forture
 brew install cowsay
-
 
 # Now that we're done brewing...
 # Remove outdated versions from the cellar
