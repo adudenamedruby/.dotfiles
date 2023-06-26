@@ -1,4 +1,5 @@
 # Ignor other folder
 \.git
+\.gitignore
 Meta
 README\.md
