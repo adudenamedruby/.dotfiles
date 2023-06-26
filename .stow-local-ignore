@@ -1,2 +1,4 @@
 # Ignor other folder
-.dotfiles
+\.git
+Meta
+README\.md
