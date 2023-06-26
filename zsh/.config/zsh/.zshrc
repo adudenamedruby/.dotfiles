@@ -98,7 +98,7 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Example aliases
-[ -f ~/.aliases ] && source ~/.aliases
+[ -f ~/.aliases ] && source ~/.dotfiles/aliases/.aliases
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+SCRIPTS="$HOME/.dotfiles/.meta/Scripts"
+
 # Directory Shortcuts
 alias docs="cd ~/Documents"
 alias downloads="cd ~/Downloads"
@@ -58,10 +60,21 @@ updateSpacemacs() {
     popd
 }
 
-alias syncBrew="updateBrew"
-alias syncSpacemacs="updateSpacemacs"
-alias syncRepos="synchronize"
-alias syncAll="updateSpacemacs; updateBrew; synchronize"
+syncCall () {
+  if [ $# -eq 0 ]; then
+    echo "Warning: sync requires at least one argument to run."
+    echo "Please provide one of the following arguments:"
+    echo "   -d   syncs & stows dotfiles"
+    echo "   -r   syncs all available personal repos"
+    echo "   -b   runs brew update, upgrade, and clean"
+    echo "   -a   performs all of the above operations"
+    return 1
+  fi
+
+  $SCRIPTS/machineSynchronize.sh "$@"
+}
+
+alias sync='syncCall'
 
 # Cheatsheet
 cheatsheet() {
