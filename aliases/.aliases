@@ -80,7 +80,7 @@ alias cheatsheet="cheatsheet"
 # ls aliases
 alias ls="lsd -h"
 alias ll="lsd -lh"
-alias lla="lsd -lh"
+alias lla="lsd -lha"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
