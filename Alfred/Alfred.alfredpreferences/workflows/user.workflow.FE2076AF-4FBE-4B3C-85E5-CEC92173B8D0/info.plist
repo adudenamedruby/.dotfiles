@@ -51,7 +51,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>92604862-9C52-4EDA-91B5-D8B8C2E262EC</string>
+				<string>FC68A4E7-7C90-4727-AB35-F5E02F1BEC55</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -63,7 +63,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>9C70649F-7BD9-45DE-B2CF-5531C446C7F4</string>
+				<string>D569049E-13CF-467F-B161-6F61D19FD6C2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -132,6 +132,32 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>72E5EE8A-CC5F-4141-8907-8AEA922B8FBC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>D569049E-13CF-467F-B161-6F61D19FD6C2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9C70649F-7BD9-45DE-B2CF-5531C446C7F4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>FC68A4E7-7C90-4727-AB35-F5E02F1BEC55</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>92604862-9C52-4EDA-91B5-D8B8C2E262EC</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -259,13 +285,11 @@
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"imagefile":"e08ca838141ef933fba95a4598903fe763df37e0.png","title":"OverTheWire: Wargames","arg":"overthewire"},{"title":"Try Hack Me","arg":"tryhackme"},{"imagefile":"2385e534bb9b30aa3c5118ebefa0bb476da4d6ce.png","title":"Hack the Box","arg":"hackthebox"}]</string>
-				<key>keyword</key>
-				<string>security</string>
+				<string>[{"imagefile":"e08ca838141ef933fba95a4598903fe763df37e0.png","title":"OverTheWire: Wargames","arg":"overthewire","subtitle":"overthewire.com"},{"title":"Try Hack Me","arg":"tryhackme","subtitle":"tryhackme.com"},{"imagefile":"2385e534bb9b30aa3c5118ebefa0bb476da4d6ce.png","title":"Hack the Box","arg":"hackthebox","subtitle":"hackthebox.com"}]</string>
 				<key>matchmode</key>
 				<integer>0</integer>
 				<key>runningsubtext</key>
@@ -283,6 +307,23 @@
 			<string>92604862-9C52-4EDA-91B5-D8B8C2E262EC</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>security</string>
+				<key>replacestring</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.replace</string>
+			<key>uid</key>
+			<string>FC68A4E7-7C90-4727-AB35-F5E02F1BEC55</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -332,7 +373,7 @@
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
@@ -406,6 +447,52 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>challenges</string>
+				<key>replacestring</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.replace</string>
+			<key>uid</key>
+			<string>D569049E-13CF-467F-B161-6F61D19FD6C2</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"imagefile":"b0fd264e8f8da1c63909801da6cab03bd6c7f916.png","title":"LeetCode","arg":"leetcode","subtitle":""},{"imagefile":"a69a6393790c8a0f70db73c94c8801f8fd1a02ef.png","title":"Advent of Code","arg":"adventofcode"}]</string>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string></string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>9C70649F-7BD9-45DE-B2CF-5531C446C7F4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -452,37 +539,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>fixedorder</key>
-				<false/>
-				<key>items</key>
-				<string>[]</string>
-				<key>keyword</key>
-				<string>challenges</string>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string></string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
-			<key>uid</key>
-			<string>9C70649F-7BD9-45DE-B2CF-5531C446C7F4</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>browser</key>
 				<string></string>
 				<key>skipqueryencode</key>
@@ -509,7 +565,7 @@
 		<key>01646D32-AF34-4B04-B323-0CEA3F3F07BD</key>
 		<dict>
 			<key>xpos</key>
-			<real>490</real>
+			<real>615</real>
 			<key>ypos</key>
 			<real>120</real>
 		</dict>
@@ -523,14 +579,14 @@
 		<key>342E8085-C0E4-4DFB-9427-D3718A09CB1F</key>
 		<dict>
 			<key>xpos</key>
-			<real>625</real>
+			<real>775</real>
 			<key>ypos</key>
 			<real>125</real>
 		</dict>
 		<key>50177FDD-E318-47EE-8B77-B23B275C6DF9</key>
 		<dict>
 			<key>xpos</key>
-			<real>635</real>
+			<real>790</real>
 			<key>ypos</key>
 			<real>520</real>
 		</dict>
@@ -539,47 +595,61 @@
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>435</real>
+			<real>445</real>
 		</dict>
 		<key>66F7124B-F562-4F3A-9628-90B5F84177F5</key>
 		<dict>
 			<key>xpos</key>
-			<real>635</real>
+			<real>790</real>
 			<key>ypos</key>
 			<real>415</real>
 		</dict>
 		<key>72E5EE8A-CC5F-4141-8907-8AEA922B8FBC</key>
 		<dict>
 			<key>xpos</key>
-			<real>495</real>
+			<real>635</real>
 			<key>ypos</key>
-			<real>455</real>
+			<real>490</real>
 		</dict>
 		<key>7E239FE7-76CE-498F-A764-D294088467FD</key>
 		<dict>
 			<key>xpos</key>
-			<real>625</real>
+			<real>775</real>
 			<key>ypos</key>
 			<real>235</real>
 		</dict>
 		<key>92604862-9C52-4EDA-91B5-D8B8C2E262EC</key>
 		<dict>
 			<key>xpos</key>
-			<real>315</real>
+			<real>420</real>
 			<key>ypos</key>
 			<real>125</real>
 		</dict>
 		<key>9C70649F-7BD9-45DE-B2CF-5531C446C7F4</key>
 		<dict>
 			<key>xpos</key>
-			<real>325</real>
+			<real>465</real>
 			<key>ypos</key>
 			<real>485</real>
+		</dict>
+		<key>D569049E-13CF-467F-B161-6F61D19FD6C2</key>
+		<dict>
+			<key>xpos</key>
+			<real>340</real>
+			<key>ypos</key>
+			<real>480</real>
+		</dict>
+		<key>FC68A4E7-7C90-4727-AB35-F5E02F1BEC55</key>
+		<dict>
+			<key>xpos</key>
+			<real>335</real>
+			<key>ypos</key>
+			<real>155</real>
 		</dict>
 		<key>FDAA5B18-06CE-4186-8597-56095AD2420F</key>
 		<dict>
 			<key>xpos</key>
-			<real>625</real>
+			<real>775</real>
 			<key>ypos</key>
 			<real>15</real>
 		</dict>
