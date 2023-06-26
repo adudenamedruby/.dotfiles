@@ -84,7 +84,7 @@ brew install fd # instead of find
 
 brew install sd # instead of sed
 
-brew install choose # instead of cut/awk
+brew install choose-rust # instead of cut/awk
 
 brew install lsd # instead of ls
 
