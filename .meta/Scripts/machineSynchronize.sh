@@ -8,7 +8,9 @@ brewOperation() {
     brew update
     brew upgrade
     brew cleanup
+    echo "\n"
     echo "+++ Finished homebrew operations +++"
+    echo "\n"
 }
 
 dotfilesOperation() {
@@ -16,13 +18,27 @@ dotfilesOperation() {
     cd ~/.dotfiles
     $GIT_SYNC
     $SCRIPTS/stow.sh
+    echo "\n"
     echo "+++ Finished dotfiles operations +++"
+    echo "\n"
 }
 
 reposOperation() {
     echo "+++ Syncing personal repos +++"
     $SCRIPTS/personalRepoSync.sh
+    echo "\n"
     echo "+++ Finished syncing personal repo operations +++"
+    echo "\n"
+}
+
+spacemacsOperation() {
+    echo "+++ Updating Spacemacs +++"
+    cd ~/.emacs.d
+    git pull
+    cd
+    echo "\n"
+    echo "+++ Finished updating Spacemacs +++"
+    echo "\n"
 }
 
 machineSynchronize() {
@@ -30,9 +46,10 @@ machineSynchronize() {
   dotfiles_operation=false
   repos_operation=false
   brew_operation=false
+  spacemacs_operation=false
 
   # Parse the command line arguments
-  while getopts "drba" opt; do
+  while getopts "drbsa" opt; do
     case $opt in
       d)
         dotfiles_operation=true
@@ -43,10 +60,14 @@ machineSynchronize() {
       b)
         brew_operation=true
         ;;
+      s)
+        spacemacs_operation=true
+        ;;
       a)
         dotfiles_operation=true
         repos_operation=true
         brew_operation=true
+        spacemacs_operation=true
         ;;
       \?)
         echo "Invalid option: -$OPTARG" >&2
@@ -62,12 +83,16 @@ machineSynchronize() {
     brewOperation
   fi
 
-  if $dotfiles_operation; then
-    dotfilesOperation
+  if $spacemacs_operation; then
+    spacemacsOperation
   fi
 
   if $repos_operation; then
     reposOperation
+  fi
+
+  if $dotfiles_operation; then
+    dotfilesOperation
   fi
 
   cd

@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-SCRIPTS="$HOME/.dotfiles/.meta/Scripts"
-
 # Directory Shortcuts
 alias docs="cd ~/Documents"
 alias downloads="cd ~/Downloads"
@@ -12,66 +10,20 @@ alias dotfiles="cd ~/.dotfiles"
 # don't use vim
 alias vim="nvim"
 
-# repo sync based things
-synchronize () {
-    cd ..
-    echo "Synchonizing presonal repos"
-    echo "+++++++++ Syncing ~/.dotfiles +++++++++"
-    cd ~/.dotfiles
-    git stash
-    git pull
-    git stash pop
-    # cp ~/Library/Developer/Xcode/UserData/KeyBindings/adudenamedruby.idekeybindings ~/.dotfiles/XcodePreferences/
-    git add .
-    git commit -m "Update dotfiles"
-    git push
-    # mv -f ~/.dotfiles/XcodePreferences/adudenamedruby.idekeybindings ~/Library/Developer/Xcode/UserData/KeyBindings/
-    echo "+++++++++ Syncing ExoCortex +++++++++"
-    cd ~/Developer/ExoCortex
-    git stash
-    git pull
-    git stash pop
-    git add .
-    git commit -m "Update exocortex"
-    git push
-    echo "+++++++++ Syncing Learn2Code +++++++++"
-    cd ~/Developer/Learn2Code
-    git stash
-    git pull
-    git stash pop
-    git add .
-    git commit -m "Update learning repo"
-    git push
-    cd
-    echo "Finished synchonizing presonal repos"
-}
-
-updateBrew() {
-    brew update
-    brew upgrade
-    brew cleanup
-}
-
-updateSpacemacs() {
-    echo "+++++++++ Updating Spacemacs +++++++++"
-    dirs -c
-    pushd ~/.emacs.d
-    git pull
-    popd
-}
-
 syncCall () {
   if [ $# -eq 0 ]; then
     echo "Warning: sync requires at least one argument to run."
     echo "Please provide one of the following arguments:"
-    echo "   -d   syncs & stows dotfiles"
-    echo "   -r   syncs all available personal repos"
     echo "   -b   runs brew update, upgrade, and clean"
+    echo "   -s   updates Spacemacs"
+    echo "   -r   syncs all available personal repos"
+    echo "   -d   syncs & stows dotfiles"
+    echo "   -----------------------------------------"
     echo "   -a   performs all of the above operations"
     return 1
   fi
 
-  $SCRIPTS/machineSynchronize.sh "$@"
+  $HOME/.dotfiles/.meta/Scripts/machineSynchronize.sh "$@"
 }
 
 alias sync='syncCall'
@@ -79,13 +31,12 @@ alias sync='syncCall'
 # Cheatsheet
 cheatsheet() {
     echo "+++ adudenamedruby sys cheatsheet +++"
-    echo " in progress "
-    echo " -> fd # instead of find"
-    echo " -> rg # instead of grep"
-    echo " -> sd # instead of sed"
-    echo " -> choose # instead of cut/awk"
-    echo " -> grex # regex generator of sorts"
-    echo " -> ouch # unarchiver, basically"
+    echo " -> fd      - instead of find"
+    echo " -> rg      - instead of grep"
+    echo " -> sd      - instead of sed"
+    echo " -> choose  - instead of cut/awk"
+    echo " -> ouch    - unarchiver, basically"
+    echo " -> grex    - regex generator of sorts"
 }
 
 alias cheatsheet="cheatsheet"
