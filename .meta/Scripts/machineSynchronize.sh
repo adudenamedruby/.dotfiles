@@ -1,21 +1,28 @@
 #!/bin/bash
 
 SCRIPTS="$HOME/.dotfiles/.meta/Scripts"
+GIT_SYNC="$HOME/.dotfiles/.meta/Scripts/gitSync.sh"
 
 brewOperation() {
     echo "+++ Updating Homebrew +++"
     brew update
     brew upgrade
     brew cleanup
+    echo "+++ Finished homebrew operations +++"
 }
 
 dotfilesOperation() {
     echo "+++ Syncing & stowing .dotfiles repo +++"
+    cd ~/.dotfiles
+    $GIT_SYNC
     $SCRIPTS/stow.sh
+    echo "+++ Finished dotfiles operations +++"
 }
 
 reposOperation() {
     echo "+++ Syncing personal repos +++"
+    $SCRIPTS/personalRepoSync.sh
+    echo "+++ Finished syncing personal repo operations +++"
 }
 
 machineSynchronize() {
@@ -48,6 +55,8 @@ machineSynchronize() {
     esac
   done
 
+  cd
+
   # Do something with the flags
   if $brew_operation; then
     brewOperation
@@ -60,6 +69,8 @@ machineSynchronize() {
   if $repos_operation; then
     reposOperation
   fi
+
+  cd
 }
 
 machineSynchronize "$@"
