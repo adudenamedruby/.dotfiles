@@ -1,5 +1,5 @@
 #!/bin/bash
 
-echo "+++ Managing .dotfiles +++"
+echo "+++ Stowing dotfiles +++"
 cd ~/.dotfiles
-stow --restow .
+stow --restow */
