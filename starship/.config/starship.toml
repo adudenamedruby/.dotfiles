@@ -1,0 +1,275 @@
+# Which is equivalent to
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$git_metrics\
+$fill\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$golang\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$conda\
+$crystal\
+$cmd_duration\
+$jobs\
+$time\
+$line_break\
+$battery\
+$character"""
+
+[fill]
+symbol = " "
+
+[character]
+success_symbol = '[󰘧](bold green) '
+error_symbol = '[󰘧](bold red) '
+vimcmd_symbol = '[](bold green)'
+vimcmd_visual_symbol = '[](bold yellow)'
+
+[username]
+show_always = true
+style_user = 'bold blue'
+
+[directory]
+truncation_length = 2
+truncation_symbol = '…/'
+
+[time]
+disabled = false
+
+[git_metrics]
+disabled = false
+
+[git_status]
+format = '([\[$untracked$conflicted$stashed$deleted$renamed$modified$staged\]](bold purple)[\[$ahead_behind\]]($style) )'
+style = 'bold blue'
+conflicted = '[|C:$count](bold orange)'
+untracked = '[|?:$count](bold white)'
+stashed = '[|$:$count](bold cyan)'
+modified = '[|!:$count](bold yellow)'
+staged = '[|++$count](bold green)'
+renamed = '[|»:$count](bold blue)'
+deleted = '[|--:$count](bold red)'
+up_to_date = '✓'
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+
+[battery]
+charging_symbol = '⚡️ '
+
+[[battery.display]]
+threshold = 10
+style = 'bold red'
+discharging_symbol = '🪫 '
+
+[[battery.display]]
+threshold = 20
+style = 'bold orange'
+discharging_symbol = '🔌 '
+
+# Languages formatted only to symbol
+[c]
+format = '[$symbol]($style)'
+
+[cmake]
+format = '[$symbol]($style)'
+
+[cobol]
+format = '[$symbol]($style)'
+
+[daml]
+format = '[$symbol]($style)'
+
+[dart]
+format = '[$symbol]($style)'
+
+[deno]
+format = '[$symbol]($style)'
+
+[dotnet]
+format = '[$symbol]($style)'
+
+[elixir]
+format = '[$symbol]($style)'
+
+[elm]
+format = '[$symbol]($style)'
+
+[erlang]
+format = '[$symbol]($style)'
+
+[fennel]
+format = '[$symbol]($style)'
+
+[golang]
+format = '[$symbol]($style)'
+
+[guix_shell]
+format = '[$symbol]($style)'
+
+[haskell]
+format = '[$symbol]($style)'
+
+[haxe]
+format = '[$symbol]($style)'
+
+[helm]
+format = '[$symbol]($style)'
+
+[java]
+format = '[$symbol]($style)'
+
+[julia]
+format = '[$symbol]($style)'
+
+[kotlin]
+format = '[$symbol]($style)'
+
+[gradle]
+format = '[$symbol]($style)'
+
+[lua]
+format = '[$symbol]($style)'
+
+[nim]
+format = '[$symbol]($style)'
+
+[nodejs]
+format = '[$symbol]($style)'
+
+[ocaml]
+format = '[$symbol]($style)'
+
+[opa]
+format = '[$symbol]($style)'
+
+[perl]
+format = '[$symbol]($style)'
+
+[php]
+format = '[$symbol]($style)'
+
+[pulumi]
+format = '[$symbol]($style)'
+
+[purescript]
+format = '[$symbol]($style)'
+
+[python]
+format = '[$symbol]($style)'
+
+[raku]
+format = '[$symbol]($style)'
+
+[rlang]
+format = '[$symbol]($style)'
+
+[red]
+format = '[$symbol]($style)'
+
+[ruby]
+format = '[$symbol]($style)'
+
+[rust]
+format = '[$symbol]($style)'
+
+[scala]
+format = '[$symbol]($style)'
+
+[solidity]
+format = '[$symbol]($style)'
+
+[swift]
+format = '[$symbol]($style)'
+symbol = ' '
+
+[terraform]
+format = '[$symbol]($style)'
+
+[vlang]
+format = '[$symbol]($style)'
+
+[vagrant]
+format = '[$symbol]($style)'
+
+[zig]
+format = '[$symbol]($style)'
+
+[buf]
+format = '[$symbol]($style)'
+
+[nix_shell]
+format = '[$symbol]($style)'
+
+[conda]
+format = '[$symbol]($style)'
+
+[meson]
+format = '[$symbol]($style)'
+
+[spack]
+format = '[$symbol]($style)'
+
+[aws]
+format = '[$symbol]($style)'
+
+[gcloud]
+format = '[$symbol]($style)'
+
+[openstack]
+format = '[$symbol]($style)'
+
+[azure]
+format = '[$symbol]($style)'
+
+[env_var]
+format = '[$symbol]($style)'
+
+[crystal]
+format = '[$symbol]($style)'

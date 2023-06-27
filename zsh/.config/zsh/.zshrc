@@ -7,6 +7,7 @@ stty stop undef		# Disable ctrl-s to freeze terminal.
 # menu completion
 autoload -U compinit
 zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
@@ -88,7 +89,7 @@ source $HOME/.dotfiles/zsh/.config/zsh/plugins/colored-man-pages.plugin.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-[ -f ~/.aliases ] && source ~/.dotfiles/aliases/.aliases
+[ -f $HOME/.config/aliases/.aliases ] && source $HOME/.config/aliases/.aliases
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(starship init zsh)"
