@@ -17,6 +17,7 @@ layouts:
   - tall
   # - tall-right
   - fullscreen
+  - shifting-pane
   # - two-pane
   # - wide
   # - middle-wide
@@ -36,7 +37,7 @@ layouts:
 mod1:
   - option
   # - shift
-  - control
+  # - control
   # - command
 
 # Second mod (default option + shift + control).
@@ -186,6 +187,11 @@ select-fullscreen-layout:
   mod: mod1
   key: c
 
+# Select Shifting Pane
+select-shifting-pane-layout:
+  mod: mod1
+  key: r
+
 # Select column layout
 select-column-layout:
   mod: <NONE>
@@ -229,22 +235,22 @@ toggle-focus-follows-mouse:
 # Automatically quit and reopen Amethyst.
 relaunch-amethyst:
   mod: mod1
-  key: /
+  key: z
 
 # disable screen padding on in-built display
-disable-screen-padding-on-inbuilt: false
+disable-screen-padding-on-inbuilt: true
 
 # Boolean flag for whether or not to add margins betwen windows (default false).
-window-margins: false
+window-margins: true
 
 # Boolean flag for whether or not to set window margins if there is only one window on the screen, assuming window margins are enabled (default false).
-smart-window-margins: false
+smart-window-margins: true
 
 # # Add 10px margin between windows
 # window-margins: true
 # window-margin-size: 5
 # The size of the margins between windows (in px, default 0).
-window-margin-size: 0
+window-margin-size: 7
 
 # The max number of windows that may be visible on a screen at one time before
 # additional windows are minimized. A value of 0 disables the feature.
@@ -257,7 +263,7 @@ window-minimum-height: 0
 window-minimum-width: 0
 
 # List of bundle identifiers for applications to either be automatically floating or automatically tiled based on floating-is-blacklist (default []).
-floating: []
+floating: [com.apple.systempreferences]
 
 # Boolean flag determining behavior of the floating list. true if the applications should be floating and all others tiled. false if the applications should be tiled and all others floating (default true).
 floating-is-blacklist: true
@@ -284,7 +290,7 @@ mouse-resizes-windows: false
 enables-layout-hud: true
 
 # true to display the name of the layout when moving to a new space (default true).
-enables-layout-hud-on-space-change: true
+enables-layout-hud-on-space-change: false
 
 # true to get updates to beta versions of the software (default false).
 use-canary-build: false
@@ -299,16 +305,16 @@ follow-space-thrown-windows: true
 window-resize-step: 5
 
 # Padding to apply between windows and the left edge of the screen (in px, default 0).
-screen-padding-left: 0
+screen-padding-left: 20
 
 # Padding to apply between windows and the right edge of the screen (in px, default 0).
-screen-padding-right: 0
+screen-padding-right: 20
 
 # Padding to apply between windows and the top edge of the screen (in px, default 0).
-screen-padding-top: 0
+screen-padding-top: 10
 
 # Padding to apply between windows and the bottom edge of the screen (in px, default 0).
-screen-padding-bottom: 0
+screen-padding-bottom: 10
 
 # true to maintain layout state across application executions (default true).
 restore-layouts-on-launch: true
