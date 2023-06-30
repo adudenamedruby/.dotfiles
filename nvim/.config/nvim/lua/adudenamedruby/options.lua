@@ -1,40 +1,46 @@
 -- :help options
-vim.opt.backup = false                          -- creates a backup file
-vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
-vim.opt.cmdheight = 2                           -- more space in the neovim command line for displaying messages
-vim.opt.colorcolumn = "80"
-vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
-vim.opt.conceallevel = 0                        -- so that `` is visible in markdown files
-vim.opt.cursorline = true                       -- highlight the current line
-vim.opt.expandtab = true                        -- convert tabs to spaces
-vim.opt.fileencoding = "utf-8"                  -- the encoding written to a file
--- vim.opt.guicursor = ""
-vim.opt.hlsearch = true                         -- highlight all matches on previous search pattern
-vim.opt.ignorecase = true                       -- ignore case in search patterns
-vim.opt.incsearch = true
-vim.opt.isfname:append("@-@")
-vim.opt.mouse = "a"                             -- allow the mouse to be used in neovim
-vim.opt.nu = true
-vim.opt.number = true                           -- set numbered lines
-vim.opt.numberwidth = 4                         -- set number column width to 2 {default 4}
-vim.opt.pumheight = 10                          -- pop up menu height
-vim.opt.relativenumber = true                   -- set relative numbered lines
-vim.opt.scrolloff = 8                           -- is one of my fav
-vim.opt.shiftwidth = 4
-vim.opt.showmode = true                         -- we don't need to see things like -- INSERT -- anymore
-vim.opt.showtabline = 2                         -- always show tabs
-vim.opt.sidescrolloff = 8
-vim.opt.signcolumn = "yes"                      -- always show the sign column, otherwise it would shift the text each time
-vim.opt.smartcase = true                        -- smart case
-vim.opt.smartindent = true                      -- make indenting smarter again
-vim.opt.softtabstop = 4
-vim.opt.splitbelow = true                       -- force all horizontal splits to go below current window
-vim.opt.splitright = true                       -- force all vertical splits to go to the right of current window
-vim.opt.swapfile = false                        -- creates a swapfile
-vim.opt.tabstop = 4
-vim.opt.termguicolors = true
-vim.opt.timeoutlen = 1000                       -- time to wait for a mapped sequence to complete (in milliseconds)
-vim.opt.undofile = true                         -- enable persistent undo
-vim.opt.updatetime = 50
-vim.opt.wrap = false                            -- display lines as one long line
-vim.opt.writebackup = false                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+local options = {
+    backup = false,                          -- creates a backup file
+    clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
+    cmdheight = 2,                           -- more space in the neovim command line for displaying messages
+    colorcolumn = "80",
+    completeopt = { "menuone", "noselect" }, -- mostly just for cmp
+    conceallevel = 0,                        -- so that `` is visible in markdown files
+    cursorline = true,                       -- highlight the current line
+    expandtab = true,                        -- convert tabs to spaces
+    fileencoding = "utf-8",                  -- the encoding written to a file
+    hlsearch = true,                         -- highlight all matches on previous search pattern
+    ignorecase = true,                       -- ignore case in search patterns
+    incsearch = true,
+    --isfname:append("@-@"),
+    mouse = "a",                             -- allow the mouse to be used in neovim
+    nu = true,
+    number = true,                           -- set numbered lines
+    numberwidth = 4,                         -- set number column width to 2 {default 4}
+    pumheight = 10,                          -- pop up menu height
+    relativenumber = true,                   -- set relative numbered lines
+    scrolloff = 8,                           -- is one of my fav
+    shiftwidth = 4,
+    showmode = true,                         -- we don't need to see things like -- INSERT -- anymore
+    showtabline = 2,                         -- always show tabs
+    sidescrolloff = 8,
+    signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
+    smartcase = true,                        -- smart case
+    smartindent = true,                      -- make indenting smarter again
+    softtabstop = 4,
+    splitbelow = true,                       -- force all horizontal splits to go below current window
+    splitright = true,                       -- force all vertical splits to go to the right of current window
+    swapfile = false,                        -- creates a swapfile
+    tabstop = 4,
+    termguicolors = true,
+    timeoutlen = 1000,                       -- time to wait for a mapped sequence to complete (in milliseconds)
+    undofile = true,                         -- enable persistent undo
+    updatetime = 50,
+    wrap = false,                            -- display lines as one long line
+    writebackup = false,                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+-- guicursor = ""
+}
+
+for key, value in pairs(options) do
+  vim.opt[key] = value
+end

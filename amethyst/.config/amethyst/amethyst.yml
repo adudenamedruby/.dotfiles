@@ -17,7 +17,7 @@ layouts:
   - tall
   # - tall-right
   - fullscreen
-  - shifting-pane
+    # - shifting-pane
   # - two-pane
   # - wide
   # - middle-wide
