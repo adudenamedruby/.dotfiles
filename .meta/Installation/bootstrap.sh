@@ -9,7 +9,6 @@ init () {
         echo "Geronimooooooooo!!!!"
         developer_mode
         install_tools
-        symlink_setup
         fetch_repos
         macOS_preferences
         install_finished
@@ -27,18 +26,6 @@ developer_mode () {
         echo "Developer mode enabled"
     else
         echo "Developer mode not enabled"
-    fi
-}
-
-symlink_setup () {
-    echo "This utility will symlink the files in this repo to the appropriate directories"
-    echo "Proceed? (y/n)"
-    read resp
-    if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
-        sh symlinks.sh
-        echo "Symlinking process complete."
-    else
-        echo "Symlinking cancelled by user"
     fi
 }
 
