@@ -88,6 +88,7 @@ source $HOME/.dotfiles/zsh/.config/zsh/plugins/vi-mode.plugin.zsh
 source $HOME/.dotfiles/zsh/.config/zsh/plugins/colored-man-pages.plugin.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-you-should-use/you-should-use.plugin.zsh
 
 [ -f $HOME/.config/aliases/.aliases ] && source $HOME/.config/aliases/.aliases
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

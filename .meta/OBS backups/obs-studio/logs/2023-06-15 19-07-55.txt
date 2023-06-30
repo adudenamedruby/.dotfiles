@@ -1,0 +1,711 @@
+19:07:55.436: [macOS] Permission for audio device access granted.
+19:07:55.438: [macOS] Permission for video device access granted.
+19:07:55.444: [macOS] Permission for accessibility denied.
+19:07:55.448: [macOS] Permission for screen capture granted.
+19:07:55.448: CPU Name: Apple M1 Max
+19:07:55.448: Physical Cores: 10, Logical Cores: 10
+19:07:55.448: Physical Memory: 32768MB Total
+19:07:55.448: OS Name: macOS
+19:07:55.448: OS Version: Version 13.4 (Build 22F66)
+19:07:55.448: Rosetta translation used: false
+19:07:55.448: Kernel Version: 22.5.0
+19:07:55.448: hotkeys-cocoa: Using layout 'com.apple.keylayout.Dvorak'
+19:07:55.448: Current Date/Time: 2023-06-15, 19:07:55
+19:07:55.448: Browser Hardware Acceleration: true
+19:07:55.448: Qt Version: 6.4.3 (runtime), 6.4.3 (compiled)
+19:07:55.448: Portable mode: false
+19:07:55.535: OBS 29.1.2 (mac)
+19:07:55.535: ---------------------------------
+19:07:55.535: ---------------------------------
+19:07:55.535: audio settings reset:
+19:07:55.535: 	samples per sec: 48000
+19:07:55.535: 	speakers:        2
+19:07:55.535: 	max buffering:   960 milliseconds
+19:07:55.535: 	buffering type:  dynamically increasing
+19:07:55.536: ---------------------------------
+19:07:55.536: Initializing OpenGL...
+19:07:55.568: Loading up OpenGL on adapter Apple Apple M1 Max
+19:07:55.568: OpenGL loaded successfully, version 4.1 Metal - 83.1, shading language 4.10
+19:07:55.738: ---------------------------------
+19:07:55.739: video settings reset:
+19:07:55.739: 	base resolution:   1920x1080
+19:07:55.739: 	output resolution: 1920x1080
+19:07:55.739: 	downscale filter:  Bicubic
+19:07:55.739: 	fps:               60/1
+19:07:55.739: 	format:            NV12
+19:07:55.739: 	YUV mode:          Rec. 709/Partial
+19:07:55.739: NV12 texture support not available
+19:07:55.739: P010 texture support not available
+19:07:55.739: Audio monitoring device:
+19:07:55.739: 	name: Default
+19:07:55.739: 	id: default
+19:07:55.739: ---------------------------------
+19:07:55.741: Failed to load 'en-GB' text for module: 'aja-output-ui'
+19:07:55.741: No AJA devices found, skipping loading AJA UI plugin
+19:07:55.741: Failed to initialize module 'aja-output-ui'
+19:07:55.743: Failed to load 'en-GB' text for module: 'aja'
+19:07:55.743: No AJA devices found, skipping loading AJA plugin
+19:07:55.743: Failed to initialize module 'aja'
+19:07:55.743: Failed to load 'en-GB' text for module: 'coreaudio-encoder'
+19:07:55.744: Failed to load 'en-US' text for module: 'decklink-captions'
+19:07:55.745: Failed to load 'en-US' text for module: 'decklink-output-ui'
+19:07:55.745: A DeckLink iterator could not be created.  The DeckLink drivers may not be installed
+19:07:55.745: Failed to initialize module 'decklink'
+19:07:55.747: Failed to load 'en-GB' text for module: 'frontend-tools'
+19:07:55.811: Failed to load 'en-GB' text for module: 'mac-capture'
+19:07:55.814: Failed to load 'en-GB' text for module: 'mac-virtualcam'
+19:07:55.834: [obs-browser]: Version 2.21.1
+19:07:55.834: [obs-browser]: CEF Version 103.0.5060.134 (runtime), 103.61.23+g2fe5a76+chromium-103.0.5060.134 (compiled)
+19:07:55.838: Failed to load 'en-GB' text for module: 'obs-vst'
+19:07:55.840: Failed to load 'en-GB' text for module: 'obs-websocket'
+19:07:55.840: [obs-websocket] [obs_module_load] you can haz websockets (Version: 5.2.2 | RPC Version: 1)
+19:07:55.840: [obs-websocket] [obs_module_load] Qt version (compile-time): 6.4.3 | Qt version (run-time): 6.4.3
+19:07:55.840: [obs-websocket] [obs_module_load] Linked ASIO Version: 101201
+19:07:55.842: [obs-websocket] [obs_module_load] Module loaded.
+19:07:55.843: Failed to load 'en-GB' text for module: 'rtmp-services'
+19:07:55.846: [vlc-video]: VLC 3.0.18 Vetinari found, VLC video source enabled
+19:07:55.846: ---------------------------------
+19:07:55.846:   Loaded Modules:
+19:07:55.846:     vlc-video
+19:07:55.846:     text-freetype2
+19:07:55.846:     rtmp-services
+19:07:55.847:     obs-x264
+19:07:55.847:     obs-websocket
+19:07:55.847:     obs-vst
+19:07:55.847:     obs-transitions
+19:07:55.847:     obs-outputs
+19:07:55.847:     obs-filters
+19:07:55.847:     obs-ffmpeg
+19:07:55.847:     obs-browser
+19:07:55.847:     mac-virtualcam
+19:07:55.847:     mac-videotoolbox
+19:07:55.847:     mac-syphon
+19:07:55.847:     mac-capture
+19:07:55.847:     mac-avcapture
+19:07:55.847:     image-source
+19:07:55.847:     frontend-tools
+19:07:55.847:     decklink-output-ui
+19:07:55.847:     decklink-captions
+19:07:55.847:     coreaudio-encoder
+19:07:55.847: ---------------------------------
+19:07:55.847: [obs-websocket] [obs_module_post_load] Post load started.
+19:07:55.847: [obs-websocket] [obs_module_post_load] obs-websocket plugin API version: 2
+19:07:55.847: [obs-websocket] [obs_module_post_load] Called GetVersion. Status Code: 100 | Comment: (null) | Response Data: {"availableRequests":["GetMonitorList","OpenInputInteractDialog","SetMediaInputCursor","ToggleRecordPause","StopRecord","ToggleRecord","GetRecordStatus","SendStreamCaption","TriggerMediaInputAction","StopStream","StartStream","SetOutputSettings","GetOutputSettings","StartOutput","ToggleOutput","SaveReplayBuffer","StopReplayBuffer","StartReplayBuffer","StopVirtualCam","StartVirtualCam","SetSceneItemPrivateSettings","GetStudioModeEnabled","GetSceneItemPrivateSettings","SetSceneItemBlendMode","GetSourceFilterDefaultSettings","SetSceneItemLocked","GetLastReplayBufferReplay","GetSceneItemBlendMode","GetSceneItemTransform","GetGroupSceneItemList","GetSceneItemId","ToggleVirtualCam","GetSceneItemList","GetInputList","GetVideoSettings","DuplicateSceneItem","GetSourcePrivateSettings","GetSourceScreenshot","SetSourceFilterIndex","RemoveScene","GetSceneItemIndex","SetTBarPosition","GetSourceFilter","OpenInputFiltersDialog","SetSourceFilterName","RemoveSourceFilter","GetSourceFilterList","GetMediaInputStatus","TriggerStudioModeTransition","GetCurrentSceneTransitionCursor","SetCurrentSceneTransitionDuration","OffsetMediaInputCursor","GetVirtualCamStatus","CreateSourceFilter","SetCurrentSceneTransition","GetTransitionKindList","SetSceneItemEnabled","SetSceneItemIndex","SetInputAudioTracks","GetInputVolume","GetInputAudioTracks","SetCurrentProgramScene","SetInputAudioMonitorType","SetInputAudioSyncOffset","SetInputAudioBalance","GetCurrentSceneTransition","SetInputSettings","SetSourceFilterEnabled","GetInputSettings","OpenSourceProjector","SetSceneItemTransform","GetInputAudioBalance","BroadcastCustomEvent","GetPersistentData","SetInputName","GetInputKindList","CreateSceneCollection","GetOutputStatus","GetSceneSceneTransitionOverride","SetInputMute","SetCurrentSceneTransitionSettings","GetSceneTransitionList","PauseRecord","SetSceneSceneTransitionOverride","OpenVideoMixProjector","SetCurrentPreviewScene","SetSceneName","CreateScene","GetInputAudioSyncOffset","GetStreamStatus","GetGroupList","GetOutputList","GetSceneList","CreateSceneItem","GetInputMute","GetCurrentProgramScene","SetSourceFilterSettings","CallVendorRequest","SetStreamServiceSettings","SaveSourceScreenshot","GetRecordDirectory","GetInputDefaultSettings","GetStreamServiceSettings","CreateProfile","RemoveProfile","ResumeRecord","GetInputAudioMonitorType","RemoveInput","OpenInputPropertiesDialog","ToggleReplayBuffer","GetHotkeyList","SetCurrentSceneCollection","GetSceneItemLocked","GetSceneCollectionList","GetProfileList","ToggleInputMute","TriggerHotkeyByKeySequence","CreateInput","GetCurrentPreviewScene","TriggerHotkeyByName","SetStudioModeEnabled","GetSourceActive","SetVideoSettings","PressInputPropertiesButton","SetProfileParameter","SetInputVolume","ToggleStream","SetSourcePrivateSettings","Sleep","StartRecord","GetReplayBufferStatus","SetPersistentData","GetProfileParameter","GetInputPropertiesListPropertyItems","GetSpecialInputs","GetStats","RemoveSceneItem","StopOutput","SetCurrentProfile","GetVersion","GetSceneItemEnabled"],"obsVersion":"29.1.2","obsWebSocketVersion":"5.2.2","platform":"macos","platformDescription":"macOS 13.4","rpcVersion":1,"supportedImageFormats":["bmp","cur","heic","heif","icns","ico","jp2","jpeg","jpg","pbm","pgm","png","ppm","tif","tiff","wbmp","webp","xbm","xpm"]}
+19:07:55.847: [obs-websocket] [obs_module_post_load] Post load completed.
+19:07:55.852: [VideoToolbox encoder]: Added VideoToolbox encoders
+19:07:55.852: ==== Startup complete ===============================================
+19:07:55.889: All scene data cleared
+19:07:55.889: ------------------------------------------------
+19:07:55.895: [obs-scripting]: Loaded lua script: advanced-timer.lua
+19:07:55.895: [obs-scripting]: Loaded lua script: advanced-timer2.lua
+19:07:55.896: [obs-scripting]: Loaded lua script: ShortWebcamReload.lua
+19:07:55.897: [obs-scripting]: Loaded lua script: TallWebcamReload.lua
+19:07:56.336: coreaudio: Device 'MacBook Pro Microphone' [48000 Hz] initialized
+19:07:56.336: [Loaded global audio device]: 'Mic/Aux'
+19:07:56.336: [Media Source 'Start Screen']: settings:
+19:07:56.336: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/With Text/Starting.webm
+19:07:56.336: 	input_format:            (null)
+19:07:56.336: 	speed:                   100
+19:07:56.336: 	is_looping:              yes
+19:07:56.336: 	is_linear_alpha:         no
+19:07:56.336: 	is_hw_decoding:          no
+19:07:56.336: 	is_clear_on_media_end:   yes
+19:07:56.336: 	restart_on_activate:     yes
+19:07:56.336: 	close_when_inactive:     yes
+19:07:56.336: 	full_decode:             no
+19:07:56.336: 	ffmpeg_options:          
+19:07:56.476: [Media Source 'BRB Screen']: settings:
+19:07:56.476: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/With Text/BRB.webm
+19:07:56.476: 	input_format:            (null)
+19:07:56.476: 	speed:                   100
+19:07:56.476: 	is_looping:              yes
+19:07:56.476: 	is_linear_alpha:         no
+19:07:56.476: 	is_hw_decoding:          no
+19:07:56.476: 	is_clear_on_media_end:   yes
+19:07:56.476: 	restart_on_activate:     yes
+19:07:56.476: 	close_when_inactive:     yes
+19:07:56.476: 	full_decode:             no
+19:07:56.476: 	ffmpeg_options:          
+19:07:56.476: [Media Source 'END Screen']: settings:
+19:07:56.476: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/With Text/Ending.webm
+19:07:56.476: 	input_format:            (null)
+19:07:56.476: 	speed:                   100
+19:07:56.476: 	is_looping:              yes
+19:07:56.476: 	is_linear_alpha:         no
+19:07:56.476: 	is_hw_decoding:          no
+19:07:56.476: 	is_clear_on_media_end:   yes
+19:07:56.476: 	restart_on_activate:     yes
+19:07:56.476: 	close_when_inactive:     yes
+19:07:56.476: 	full_decode:             no
+19:07:56.476: 	ffmpeg_options:          
+19:07:56.543: adding 85 milliseconds of audio buffering, total audio buffering is now 85 milliseconds (source: macOS Screen Capture)
+19:07:56.543: 
+19:07:56.552: A6400 Wide: Selected device 'Cam Link 4K'
+19:07:56.553: A6400 Wide: Using preset High
+19:07:56.592: A6400 Tall: Selected device 'Cam Link 4K'
+19:07:56.592: A6400 Tall: Using preset High
+19:07:56.602: [Media Source 'Background SQUARE']: settings:
+19:07:56.602: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/Intermission 3.webm
+19:07:56.602: 	input_format:            (null)
+19:07:56.602: 	speed:                   100
+19:07:56.602: 	is_looping:              yes
+19:07:56.602: 	is_linear_alpha:         no
+19:07:56.602: 	is_hw_decoding:          no
+19:07:56.602: 	is_clear_on_media_end:   yes
+19:07:56.602: 	restart_on_activate:     yes
+19:07:56.602: 	close_when_inactive:     yes
+19:07:56.602: 	full_decode:             no
+19:07:56.602: 	ffmpeg_options:          
+19:07:56.602: [Media Source 'Background WIDE']: settings:
+19:07:56.602: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/Intermission 2.webm
+19:07:56.602: 	input_format:            (null)
+19:07:56.602: 	speed:                   100
+19:07:56.602: 	is_looping:              yes
+19:07:56.602: 	is_linear_alpha:         no
+19:07:56.602: 	is_hw_decoding:          no
+19:07:56.602: 	is_clear_on_media_end:   yes
+19:07:56.602: 	restart_on_activate:     yes
+19:07:56.602: 	close_when_inactive:     yes
+19:07:56.602: 	full_decode:             no
+19:07:56.602: 	ffmpeg_options:          
+19:07:56.602: [Media Source 'Background MID']: settings:
+19:07:56.602: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/Intermission.webm
+19:07:56.602: 	input_format:            (null)
+19:07:56.602: 	speed:                   100
+19:07:56.602: 	is_looping:              yes
+19:07:56.602: 	is_linear_alpha:         no
+19:07:56.602: 	is_hw_decoding:          no
+19:07:56.602: 	is_clear_on_media_end:   yes
+19:07:56.602: 	restart_on_activate:     yes
+19:07:56.602: 	close_when_inactive:     yes
+19:07:56.602: 	full_decode:             no
+19:07:56.602: 	ffmpeg_options:          
+19:07:56.602: [Media Source 'Camera Outline Wide']: settings:
+19:07:56.602: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Overlays/Animated/Webcam 16x9.webm
+19:07:56.602: 	input_format:            (null)
+19:07:56.602: 	speed:                   100
+19:07:56.602: 	is_looping:              yes
+19:07:56.602: 	is_linear_alpha:         no
+19:07:56.602: 	is_hw_decoding:          no
+19:07:56.602: 	is_clear_on_media_end:   yes
+19:07:56.602: 	restart_on_activate:     yes
+19:07:56.602: 	close_when_inactive:     yes
+19:07:56.602: 	full_decode:             no
+19:07:56.602: 	ffmpeg_options:          
+19:07:56.603: PS5: Selected device 'Game Capture HD60 S+'
+19:07:56.603: PS5: Using preset High
+19:07:56.931: coreaudio: Device 'Game Capture HD60 S+' [48000 Hz] initialized
+19:07:57.051: coreaudio: Device 'SM7B' [48000 Hz] initialized
+19:07:57.092: coreaudio: Device 'Music!' [48000 Hz] initialized
+19:07:57.189: [Media Source 'Chatbox Outline']: settings:
+19:07:57.189: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Overlays/Animated/Webcam 4x3.webm
+19:07:57.189: 	input_format:            (null)
+19:07:57.189: 	speed:                   100
+19:07:57.189: 	is_looping:              yes
+19:07:57.189: 	is_linear_alpha:         no
+19:07:57.189: 	is_hw_decoding:          no
+19:07:57.189: 	is_clear_on_media_end:   yes
+19:07:57.189: 	restart_on_activate:     yes
+19:07:57.189: 	close_when_inactive:     yes
+19:07:57.189: 	full_decode:             no
+19:07:57.189: 	ffmpeg_options:          
+19:07:57.227: coreaudio: Device 'M12 - Music' [48000 Hz] initialized
+19:07:57.315: Switched to scene '--- display: LG'
+19:07:57.316: ------------------------------------------------
+19:07:57.316: Loaded scenes:
+19:07:57.316: - scene '--- camera: wide':
+19:07:57.316:     - source: 'A6400 Wide' (av_capture_input_v2)
+19:07:57.316:         - filter: 'Image Mask/Blend' (mask_filter_v2)
+19:07:57.316:         - filter: 'Apply LUT' (clut_filter)
+19:07:57.316:         - filter: 'Apply LUT 1.2.1' (clut_filter)
+19:07:57.316:         - filter: 'Apply LUT 2' (clut_filter)
+19:07:57.316:     - source: 'Camera Outline Wide' (ffmpeg_source)
+19:07:57.316: - scene '--- STREAM':
+19:07:57.316: - scene '---- code':
+19:07:57.316: - scene '--- camera: tall':
+19:07:57.316:     - source: 'Tall Camera Shadow' (image_source)
+19:07:57.316:     - source: 'A6400 Tall' (av_capture_input_v2)
+19:07:57.316:         - filter: 'Crop/Pad' (crop_filter)
+19:07:57.316:         - filter: 'Image Mask/Blend' (mask_filter_v2)
+19:07:57.316:         - filter: 'Apply LUT' (clut_filter)
+19:07:57.316: - scene 'START':
+19:07:57.316:     - source: 'Start Screen' (ffmpeg_source)
+19:07:57.316:     - source: 'Music' (coreaudio_input_capture)
+19:07:57.316:     - source: 'M12 Music' (coreaudio_input_capture)
+19:07:57.316:         - monitoring: monitor and output
+19:07:57.316:         - filter: 'Ducking' (compressor_filter)
+19:07:57.316: - scene 'TALKING HEAD':
+19:07:57.316:     - source: '--- camera: wide' (scene)
+19:07:57.316:     - source: '--- canvas: big' (scene)
+19:07:57.316:     - source: '--- audio' (scene)
+19:07:57.316:     - source: '--- chatbox' (scene)
+19:07:57.316:     - source: '--- alerts' (scene)
+19:07:57.316: - scene '--- display: LG':
+19:07:57.317:     - source: 'macOS Screen Capture' (screen_capture)
+19:07:57.317: - scene 'BRB 5':
+19:07:57.317:     - source: 'BRB Screen' (ffmpeg_source)
+19:07:57.317:     - source: 'Timer 5' (text_ft2_source_v2)
+19:07:57.317:     - source: 'Music' (coreaudio_input_capture)
+19:07:57.317:     - source: 'M12 Music' (coreaudio_input_capture)
+19:07:57.317:         - monitoring: monitor and output
+19:07:57.317:         - filter: 'Ducking' (compressor_filter)
+19:07:57.317: - scene 'FULL SCREEN':
+19:07:57.317:     - source: '--- display: LG' (scene)
+19:07:57.317:     - source: '--- camera: tall' (scene)
+19:07:57.317:     - source: '--- audio' (scene)
+19:07:57.317:     - source: '--- chatbox' (scene)
+19:07:57.317:     - source: '--- alerts' (scene)
+19:07:57.317: - scene '--- display: PS5':
+19:07:57.317:     - source: 'PS5' (av_capture_input_v2)
+19:07:57.317: - scene 'BRB 10':
+19:07:57.317:     - source: 'BRB Screen' (ffmpeg_source)
+19:07:57.317:     - source: 'Timer 10' (text_ft2_source_v2)
+19:07:57.317:     - source: 'Music' (coreaudio_input_capture)
+19:07:57.317:     - source: 'M12 Music' (coreaudio_input_capture)
+19:07:57.317:         - monitoring: monitor and output
+19:07:57.317:         - filter: 'Ducking' (compressor_filter)
+19:07:57.317: - scene 'WIDE & BIG CAM':
+19:07:57.317:     - source: '--- audio' (scene)
+19:07:57.317:     - source: '--- display: LG' (scene)
+19:07:57.317:     - source: '--- canvas: medium' (scene)
+19:07:57.317:     - source: '--- camera: wide' (scene)
+19:07:57.317:     - source: '--- alerts' (scene)
+19:07:57.317:     - source: '--- chatbox' (scene)
+19:07:57.317: - scene '--- canvas: square':
+19:07:57.317:     - source: 'Background SQUARE' (ffmpeg_source)
+19:07:57.317: - scene 'END':
+19:07:57.317:     - source: 'END Screen' (ffmpeg_source)
+19:07:57.317:     - source: 'Music' (coreaudio_input_capture)
+19:07:57.317:     - source: 'M12 Music' (coreaudio_input_capture)
+19:07:57.317:         - monitoring: monitor and output
+19:07:57.317:         - filter: 'Ducking' (compressor_filter)
+19:07:57.317: - scene 'PRIVACY':
+19:07:57.317:     - source: 'BLUR' (image_source)
+19:07:57.317:     - source: '--- canvas: medium' (scene)
+19:07:57.317:     - source: '--- canvas: medium' (scene)
+19:07:57.317:     - source: '--- canvas: medium' (scene)
+19:07:57.317:     - source: '--- camera: wide' (scene)
+19:07:57.317:     - source: '--- audio' (scene)
+19:07:57.317:     - source: '--- chatbox' (scene)
+19:07:57.317:     - source: '--- alerts' (scene)
+19:07:57.317: - scene '--- canvas: medium':
+19:07:57.317:     - source: 'Background MID' (ffmpeg_source)
+19:07:57.317: - scene '--- audio':
+19:07:57.317:     - source: 'Music' (coreaudio_input_capture)
+19:07:57.317:     - source: 'Sure SM7B' (coreaudio_input_capture)
+19:07:57.317:         - monitoring: monitor and output
+19:07:57.317:     - source: 'M12 Music' (coreaudio_input_capture)
+19:07:57.317:         - monitoring: monitor and output
+19:07:57.317:         - filter: 'Ducking' (compressor_filter)
+19:07:57.317: - scene 'GAMES':
+19:07:57.317:     - source: '--- display: PS5' (scene)
+19:07:57.317:     - source: '--- camera: tall' (scene)
+19:07:57.317:     - source: 'PS5 Audio' (coreaudio_input_capture)
+19:07:57.317:         - monitoring: monitor and output
+19:07:57.317:     - source: '--- audio' (scene)
+19:07:57.317:     - source: '--- alerts' (scene)
+19:07:57.317: - scene '--- canvas: big':
+19:07:57.317:     - source: 'Background WIDE' (ffmpeg_source)
+19:07:57.317: - scene '--- alerts':
+19:07:57.317:     - source: 'Alerts' (browser_source)
+19:07:57.317: - scene '--- chatbox':
+19:07:57.317:     - source: 'Chatbox BG' (color_source_v3)
+19:07:57.317:         - filter: 'Image Mask/Blend' (mask_filter_v2)
+19:07:57.317:     - source: 'Chatbox Outline' (ffmpeg_source)
+19:07:57.317:     - source: 'CHatbox' (browser_source)
+19:07:57.317: ------------------------------------------------
+19:08:04.267: User switched to scene 'FULL SCREEN'
+19:11:03.723: User switched to scene '--- audio'
+19:12:46.646: User switched to scene 'WIDE & BIG CAM'
+19:13:59.516: User switched to scene 'PRIVACY'
+19:26:13.698: User added source 'Nerd' (image_source) to scene 'PRIVACY'
+19:26:15.571: adding 21 milliseconds of audio buffering, total audio buffering is now 106 milliseconds (source: Camera Outline Wide)
+19:26:15.571: 
+19:27:44.928: User Removed source 'Nerd' (image_source) from scene 'PRIVACY'
+19:30:14.564: User added source 'Nerd' (image_source) to scene 'PRIVACY'
+19:31:42.250: User Removed source '--- canvas: medium' (scene) from scene 'PRIVACY'
+19:31:42.250: User Removed source '--- canvas: medium' (scene) from scene 'PRIVACY'
+19:31:42.250: User Removed source '--- canvas: medium' (scene) from scene 'PRIVACY'
+19:34:03.092: User added source 'Blackout' (color_source_v3) to scene 'PRIVACY'
+19:34:57.367: User switched to scene 'WIDE & BIG CAM'
+19:35:00.951: User switched to scene 'FULL SCREEN'
+19:35:02.968: User switched to scene 'PRIVACY'
+19:35:09.415: User switched to scene 'GAMES'
+19:35:10.248: User switched to scene 'PRIVACY'
+19:35:19.671: User switched to scene '---- code'
+19:35:26.040: User switched to scene '--- camera: tall'
+19:35:26.043: User Removed scene '---- code'
+19:35:29.292: User switched to scene '--- STREAM'
+19:35:32.318: User switched to scene '--- camera: tall'
+19:35:32.320: User Removed scene '--- STREAM'
+19:35:34.370: User switched to scene 'START'
+19:35:35.031: User switched to scene 'TALKING HEAD'
+19:35:35.036: User switched to scene 'START'
+19:35:42.072: User switched to scene 'BRB 5'
+19:35:42.672: User switched to scene 'FULL SCREEN'
+19:35:42.677: User switched to scene 'BRB 5'
+19:35:43.199: User switched to scene 'TALKING HEAD'
+19:35:43.806: User switched to scene 'BRB 5'
+19:35:43.811: User switched to scene 'TALKING HEAD'
+19:35:44.608: User switched to scene 'BRB 5'
+19:35:45.249: User switched to scene '--- display: LG'
+19:35:45.252: User switched to scene 'BRB 5'
+19:35:46.409: User switched to scene '--- camera: tall'
+19:35:48.562: User switched to scene '--- display: LG'
+19:35:48.565: User switched to scene '--- camera: tall'
+19:35:49.528: User switched to scene 'TALKING HEAD'
+19:35:50.342: User switched to scene 'FULL SCREEN'
+19:35:50.352: User switched to scene 'TALKING HEAD'
+19:35:52.239: User switched to scene '--- camera: tall'
+19:35:53.567: User switched to scene 'BRB 5'
+19:35:53.571: User switched to scene '--- camera: tall'
+19:35:55.073: User switched to scene 'BRB 5'
+19:35:55.809: User switched to scene 'FULL SCREEN'
+19:35:55.814: User switched to scene 'BRB 5'
+19:35:57.955: User switched to scene 'FULL SCREEN'
+19:35:59.302: User switched to scene '--- display: PS5'
+19:35:59.304: User switched to scene 'FULL SCREEN'
+19:36:02.113: User switched to scene 'BRB 10'
+19:36:02.791: User switched to scene 'WIDE & BIG CAM'
+19:36:02.798: User switched to scene 'BRB 10'
+19:36:03.968: User switched to scene 'WIDE & BIG CAM'
+19:36:04.795: User switched to scene '--- canvas: square'
+19:36:04.797: User switched to scene 'WIDE & BIG CAM'
+19:36:06.513: User switched to scene 'END'
+19:36:07.309: User switched to scene 'PRIVACY'
+19:36:07.321: User switched to scene 'END'
+19:36:07.793: User switched to scene 'PRIVACY'
+19:36:09.266: User switched to scene '--- canvas: medium'
+19:36:09.268: User switched to scene 'PRIVACY'
+19:36:10.968: User switched to scene 'GAMES'
+19:36:16.097: User switched to scene '--- canvas: big'
+19:36:16.099: User switched to scene 'GAMES'
+19:36:20.233: User switched to scene '--- audio'
+19:36:20.884: User switched to scene '--- canvas: big'
+19:36:20.889: User switched to scene '--- audio'
+19:36:21.591: User switched to scene '--- chatbox'
+19:36:22.358: User switched to scene '--- alerts'
+19:36:22.361: User switched to scene '--- chatbox'
+19:36:24.000: User switched to scene 'GAMES'
+19:36:24.711: User switched to scene '--- canvas: big'
+19:36:24.713: User switched to scene 'GAMES'
+19:36:27.168: User switched to scene '--- canvas: big'
+19:36:28.158: User switched to scene '--- audio'
+19:36:28.172: User switched to scene '--- canvas: big'
+19:36:33.539: User switched to scene '--- alerts'
+19:36:34.264: User switched to scene '--- canvas: big'
+19:36:34.267: User switched to scene '--- alerts'
+19:36:35.411: User switched to scene '--- audio'
+19:36:40.068: User switched to scene 'PRIVACY'
+19:36:41.921: User switched to scene 'TALKING HEAD'
+19:36:47.746: User switched to scene 'FULL SCREEN'
+19:36:49.928: User switched to scene 'WIDE & BIG CAM'
+19:36:54.272: User switched to scene 'PRIVACY'
+19:37:03.500: User switched to scene 'WIDE & BIG CAM'
+19:39:46.892: User changed audio monitoring for source 'Sure SM7B' to: none
+19:40:52.528: [Media Source 'Plasma Bubble (Stinger)']: settings:
+19:40:52.528: 	input:                   
+19:40:52.528: 	input_format:            (null)
+19:40:52.528: 	speed:                   100
+19:40:52.528: 	is_looping:              no
+19:40:52.528: 	is_linear_alpha:         no
+19:40:52.528: 	is_hw_decoding:          yes
+19:40:52.528: 	is_clear_on_media_end:   yes
+19:40:52.528: 	restart_on_activate:     yes
+19:40:52.528: 	close_when_inactive:     no
+19:40:52.528: 	full_decode:             no
+19:40:52.528: 	ffmpeg_options:          
+19:40:52.547: [Media Source 'clone (Stinger)']: settings:
+19:40:52.547: 	input:                   
+19:40:52.547: 	input_format:            (null)
+19:40:52.547: 	speed:                   100
+19:40:52.547: 	is_looping:              no
+19:40:52.547: 	is_linear_alpha:         no
+19:40:52.547: 	is_hw_decoding:          yes
+19:40:52.547: 	is_clear_on_media_end:   yes
+19:40:52.547: 	restart_on_activate:     yes
+19:40:52.547: 	close_when_inactive:     no
+19:40:52.547: 	full_decode:             no
+19:40:52.547: 	ffmpeg_options:          
+19:41:20.861: [Media Source 'clone (Stinger)']: settings:
+19:41:20.861: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Round Transition.webm
+19:41:20.861: 	input_format:            (null)
+19:41:20.861: 	speed:                   100
+19:41:20.861: 	is_looping:              no
+19:41:20.861: 	is_linear_alpha:         no
+19:41:20.861: 	is_hw_decoding:          yes
+19:41:20.861: 	is_clear_on_media_end:   yes
+19:41:20.861: 	restart_on_activate:     yes
+19:41:20.861: 	close_when_inactive:     no
+19:41:20.861: 	full_decode:             no
+19:41:20.861: 	ffmpeg_options:          
+19:41:38.945: [Media Source 'Plasma Bubble (Stinger)']: settings:
+19:41:38.945: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Round Transition.webm
+19:41:38.945: 	input_format:            (null)
+19:41:38.945: 	speed:                   100
+19:41:38.945: 	is_looping:              no
+19:41:38.945: 	is_linear_alpha:         no
+19:41:38.945: 	is_hw_decoding:          yes
+19:41:38.945: 	is_clear_on_media_end:   yes
+19:41:38.945: 	restart_on_activate:     yes
+19:41:38.945: 	close_when_inactive:     no
+19:41:38.945: 	full_decode:             no
+19:41:38.945: 	ffmpeg_options:          
+19:41:42.259: User switched to scene 'FULL SCREEN'
+19:41:49.914: [Media Source 'clone (Stinger)']: settings:
+19:41:49.914: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Round Transition.webm
+19:41:49.914: 	input_format:            (null)
+19:41:49.914: 	speed:                   100
+19:41:49.914: 	is_looping:              no
+19:41:49.914: 	is_linear_alpha:         no
+19:41:49.914: 	is_hw_decoding:          yes
+19:41:49.914: 	is_clear_on_media_end:   yes
+19:41:49.914: 	restart_on_activate:     yes
+19:41:49.914: 	close_when_inactive:     no
+19:41:49.914: 	full_decode:             no
+19:41:49.914: 	ffmpeg_options:          
+19:41:54.861: [Media Source 'clone (Stinger)']: settings:
+19:41:54.861: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Round Transition.webm
+19:41:54.861: 	input_format:            (null)
+19:41:54.861: 	speed:                   100
+19:41:54.861: 	is_looping:              no
+19:41:54.861: 	is_linear_alpha:         no
+19:41:54.861: 	is_hw_decoding:          yes
+19:41:54.861: 	is_clear_on_media_end:   yes
+19:41:54.861: 	restart_on_activate:     yes
+19:41:54.861: 	close_when_inactive:     no
+19:41:54.861: 	full_decode:             no
+19:41:54.861: 	ffmpeg_options:          
+19:41:56.528: [Media Source 'Plasma Bubble (Stinger)']: settings:
+19:41:56.528: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Round Transition.webm
+19:41:56.528: 	input_format:            (null)
+19:41:56.528: 	speed:                   100
+19:41:56.528: 	is_looping:              no
+19:41:56.528: 	is_linear_alpha:         no
+19:41:56.528: 	is_hw_decoding:          yes
+19:41:56.528: 	is_clear_on_media_end:   yes
+19:41:56.528: 	restart_on_activate:     yes
+19:41:56.528: 	close_when_inactive:     no
+19:41:56.528: 	full_decode:             no
+19:41:56.528: 	ffmpeg_options:          
+19:41:57.754: User switched to scene 'WIDE & BIG CAM'
+19:42:07.515: User switched to scene 'FULL SCREEN'
+19:42:13.365: [Media Source 'clone (Stinger)']: settings:
+19:42:13.365: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Round Transition.webm
+19:42:13.365: 	input_format:            (null)
+19:42:13.365: 	speed:                   100
+19:42:13.365: 	is_looping:              no
+19:42:13.365: 	is_linear_alpha:         no
+19:42:13.365: 	is_hw_decoding:          yes
+19:42:13.365: 	is_clear_on_media_end:   yes
+19:42:13.365: 	restart_on_activate:     yes
+19:42:13.365: 	close_when_inactive:     no
+19:42:13.365: 	full_decode:             no
+19:42:13.365: 	ffmpeg_options:          
+19:42:17.078: [Media Source 'clone (Stinger)']: settings:
+19:42:17.078: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Round Transition.webm
+19:42:17.078: 	input_format:            (null)
+19:42:17.078: 	speed:                   100
+19:42:17.078: 	is_looping:              no
+19:42:17.078: 	is_linear_alpha:         no
+19:42:17.078: 	is_hw_decoding:          yes
+19:42:17.078: 	is_clear_on_media_end:   yes
+19:42:17.078: 	restart_on_activate:     yes
+19:42:17.078: 	close_when_inactive:     no
+19:42:17.078: 	full_decode:             no
+19:42:17.078: 	ffmpeg_options:          
+19:42:17.178: [Media Source 'clone (Stinger)']: settings:
+19:42:17.178: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Round Transition.webm
+19:42:17.178: 	input_format:            (null)
+19:42:17.178: 	speed:                   100
+19:42:17.178: 	is_looping:              no
+19:42:17.178: 	is_linear_alpha:         no
+19:42:17.178: 	is_hw_decoding:          yes
+19:42:17.178: 	is_clear_on_media_end:   yes
+19:42:17.178: 	restart_on_activate:     yes
+19:42:17.178: 	close_when_inactive:     no
+19:42:17.178: 	full_decode:             no
+19:42:17.178: 	ffmpeg_options:          
+19:42:18.478: [Media Source 'clone (Stinger)']: settings:
+19:42:18.478: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Round Transition.webm
+19:42:18.478: 	input_format:            (null)
+19:42:18.478: 	speed:                   100
+19:42:18.478: 	is_looping:              no
+19:42:18.478: 	is_linear_alpha:         no
+19:42:18.478: 	is_hw_decoding:          yes
+19:42:18.478: 	is_clear_on_media_end:   yes
+19:42:18.478: 	restart_on_activate:     yes
+19:42:18.478: 	close_when_inactive:     no
+19:42:18.478: 	full_decode:             no
+19:42:18.478: 	ffmpeg_options:          
+19:42:21.060: [Media Source 'Plasma Bubble (Stinger)']: settings:
+19:42:21.060: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Round Transition.webm
+19:42:21.060: 	input_format:            (null)
+19:42:21.060: 	speed:                   100
+19:42:21.060: 	is_looping:              no
+19:42:21.060: 	is_linear_alpha:         no
+19:42:21.060: 	is_hw_decoding:          yes
+19:42:21.060: 	is_clear_on_media_end:   yes
+19:42:21.060: 	restart_on_activate:     yes
+19:42:21.060: 	close_when_inactive:     no
+19:42:21.060: 	full_decode:             no
+19:42:21.060: 	ffmpeg_options:          
+19:42:22.677: User switched to scene 'WIDE & BIG CAM'
+19:42:27.314: [Media Source 'clone (Stinger)']: settings:
+19:42:27.314: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Round Transition.webm
+19:42:27.314: 	input_format:            (null)
+19:42:27.314: 	speed:                   100
+19:42:27.314: 	is_looping:              no
+19:42:27.314: 	is_linear_alpha:         no
+19:42:27.314: 	is_hw_decoding:          yes
+19:42:27.314: 	is_clear_on_media_end:   yes
+19:42:27.314: 	restart_on_activate:     yes
+19:42:27.314: 	close_when_inactive:     no
+19:42:27.314: 	full_decode:             no
+19:42:27.314: 	ffmpeg_options:          
+19:42:32.862: [Media Source 'clone (Stinger)']: settings:
+19:42:32.862: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Triangle Transition.webm
+19:42:32.862: 	input_format:            (null)
+19:42:32.862: 	speed:                   100
+19:42:32.862: 	is_looping:              no
+19:42:32.862: 	is_linear_alpha:         no
+19:42:32.862: 	is_hw_decoding:          yes
+19:42:32.862: 	is_clear_on_media_end:   yes
+19:42:32.862: 	restart_on_activate:     yes
+19:42:32.862: 	close_when_inactive:     no
+19:42:32.862: 	full_decode:             no
+19:42:32.862: 	ffmpeg_options:          
+19:42:36.045: [Media Source 'clone (Stinger)']: settings:
+19:42:36.045: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Triangle Transition.webm
+19:42:36.045: 	input_format:            (null)
+19:42:36.045: 	speed:                   100
+19:42:36.045: 	is_looping:              no
+19:42:36.045: 	is_linear_alpha:         no
+19:42:36.045: 	is_hw_decoding:          yes
+19:42:36.045: 	is_clear_on_media_end:   yes
+19:42:36.045: 	restart_on_activate:     yes
+19:42:36.045: 	close_when_inactive:     no
+19:42:36.045: 	full_decode:             no
+19:42:36.045: 	ffmpeg_options:          
+19:42:36.260: [Media Source 'clone (Stinger)']: settings:
+19:42:36.260: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Triangle Transition.webm
+19:42:36.260: 	input_format:            (null)
+19:42:36.260: 	speed:                   100
+19:42:36.260: 	is_looping:              no
+19:42:36.260: 	is_linear_alpha:         no
+19:42:36.260: 	is_hw_decoding:          yes
+19:42:36.260: 	is_clear_on_media_end:   yes
+19:42:36.260: 	restart_on_activate:     yes
+19:42:36.260: 	close_when_inactive:     no
+19:42:36.260: 	full_decode:             no
+19:42:36.260: 	ffmpeg_options:          
+19:42:37.846: [Media Source 'Plasma Bubble (Stinger)']: settings:
+19:42:37.846: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Triangle Transition.webm
+19:42:37.846: 	input_format:            (null)
+19:42:37.846: 	speed:                   100
+19:42:37.846: 	is_looping:              no
+19:42:37.846: 	is_linear_alpha:         no
+19:42:37.846: 	is_hw_decoding:          yes
+19:42:37.846: 	is_clear_on_media_end:   yes
+19:42:37.846: 	restart_on_activate:     yes
+19:42:37.846: 	close_when_inactive:     no
+19:42:37.846: 	full_decode:             no
+19:42:37.846: 	ffmpeg_options:          
+19:42:39.155: User switched to scene 'FULL SCREEN'
+19:42:43.412: User switched to scene 'PRIVACY'
+19:42:47.246: User switched to scene 'FULL SCREEN'
+19:42:53.081: [Media Source 'clone (Stinger)']: settings:
+19:42:53.081: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Triangle Transition.webm
+19:42:53.081: 	input_format:            (null)
+19:42:53.081: 	speed:                   100
+19:42:53.081: 	is_looping:              no
+19:42:53.081: 	is_linear_alpha:         no
+19:42:53.081: 	is_hw_decoding:          yes
+19:42:53.081: 	is_clear_on_media_end:   yes
+19:42:53.081: 	restart_on_activate:     yes
+19:42:53.081: 	close_when_inactive:     no
+19:42:53.081: 	full_decode:             no
+19:42:53.081: 	ffmpeg_options:          
+19:42:56.677: [Media Source 'clone (Stinger)']: settings:
+19:42:56.677: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Round Transition.webm
+19:42:56.677: 	input_format:            (null)
+19:42:56.677: 	speed:                   100
+19:42:56.677: 	is_looping:              no
+19:42:56.677: 	is_linear_alpha:         no
+19:42:56.677: 	is_hw_decoding:          yes
+19:42:56.677: 	is_clear_on_media_end:   yes
+19:42:56.677: 	restart_on_activate:     yes
+19:42:56.677: 	close_when_inactive:     no
+19:42:56.677: 	full_decode:             no
+19:42:56.677: 	ffmpeg_options:          
+19:42:57.646: [Media Source 'Plasma Bubble (Stinger)']: settings:
+19:42:57.646: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Round Transition.webm
+19:42:57.646: 	input_format:            (null)
+19:42:57.646: 	speed:                   100
+19:42:57.646: 	is_looping:              no
+19:42:57.646: 	is_linear_alpha:         no
+19:42:57.646: 	is_hw_decoding:          yes
+19:42:57.646: 	is_clear_on_media_end:   yes
+19:42:57.646: 	restart_on_activate:     yes
+19:42:57.646: 	close_when_inactive:     no
+19:42:57.646: 	full_decode:             no
+19:42:57.646: 	ffmpeg_options:          
+19:43:00.293: User switched to scene 'TALKING HEAD'
+19:43:03.684: User switched to scene 'FULL SCREEN'
+19:43:05.885: User switched to scene 'TALKING HEAD'
+19:43:10.699: User switched to scene 'FULL SCREEN'
+19:43:14.949: User switched to scene 'PRIVACY'
+19:43:19.435: User switched to scene 'WIDE & BIG CAM'
+19:43:24.507: User switched to scene 'FULL SCREEN'
+19:43:30.416: [Media Source 'clone (Stinger)']: settings:
+19:43:30.416: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Round Transition.webm
+19:43:30.416: 	input_format:            (null)
+19:43:30.416: 	speed:                   100
+19:43:30.416: 	is_looping:              no
+19:43:30.416: 	is_linear_alpha:         no
+19:43:30.416: 	is_hw_decoding:          yes
+19:43:30.416: 	is_clear_on_media_end:   yes
+19:43:30.416: 	restart_on_activate:     yes
+19:43:30.416: 	close_when_inactive:     no
+19:43:30.416: 	full_decode:             no
+19:43:30.416: 	ffmpeg_options:          
+19:43:45.279: [Media Source 'Plasma Bubble (Stinger)']: settings:
+19:43:45.279: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Round Transition.webm
+19:43:45.279: 	input_format:            (null)
+19:43:45.279: 	speed:                   100
+19:43:45.279: 	is_looping:              no
+19:43:45.279: 	is_linear_alpha:         no
+19:43:45.279: 	is_hw_decoding:          yes
+19:43:45.279: 	is_clear_on_media_end:   yes
+19:43:45.279: 	restart_on_activate:     yes
+19:43:45.279: 	close_when_inactive:     no
+19:43:45.279: 	full_decode:             no
+19:43:45.279: 	ffmpeg_options:          
+19:43:47.620: User switched to scene 'WIDE & BIG CAM'
+19:43:57.211: User switched to scene 'BRB 5'
+19:44:31.467: User added source 'Timer 5 2' (text_ft2_source_v2) to scene 'BRB 5'
+19:44:46.677: User switched to scene 'FULL SCREEN'
+19:44:51.564: User switched to scene 'BRB 5'
+19:46:22.564: [obs-scripting]: Loaded lua script: advanced-timer3.lua
+19:46:56.280: [obs-scripting]: Loaded lua script: advanced-timer4.lua
+19:47:18.182: User switched to scene 'BRB 10'
+19:47:25.709: User added source 'Timer 10 2' (text_ft2_source_v2) to scene 'BRB 10'
+19:47:47.422: User switched to scene 'BRB 5'
+19:48:43.727: User switched to scene 'BRB 10'
+19:48:47.703: User switched to scene 'BRB 5'
+19:49:22.271: User switched to scene 'BRB 10'
+19:49:27.583: User switched to scene 'BRB 5'
+19:49:31.650: User switched to scene 'FULL SCREEN'
+19:49:34.384: User switched to scene 'BRB 5'
+19:49:49.471: User switched to scene 'BRB 10'
+19:50:46.375: User switched to scene 'TALKING HEAD'
+19:51:01.865: User switched to scene 'FULL SCREEN'
+19:52:37.952: User switched to scene '--- chatbox'
+19:53:05.310: User switched to scene 'FULL SCREEN'
+19:53:45.658: User switched to scene '--- chatbox'
+19:55:51.211: User switched to scene 'FULL SCREEN'
+19:55:57.402: User switched to scene '--- chatbox'
+19:56:13.063: User switched to scene 'FULL SCREEN'
+19:58:16.473: ==== Shutting down ==================================================
+19:58:16.499: [obs-scripting]: Unloaded lua script: advanced-timer4.lua
+19:58:16.500: [obs-scripting]: Unloaded lua script: advanced-timer3.lua

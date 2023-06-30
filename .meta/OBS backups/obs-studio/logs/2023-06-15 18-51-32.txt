@@ -1,0 +1,408 @@
+18:51:32.448: [macOS] Permission for audio device access granted.
+18:51:32.451: [macOS] Permission for video device access granted.
+18:51:32.456: [macOS] Permission for accessibility denied.
+18:51:32.460: [macOS] Permission for screen capture granted.
+18:51:32.461: CPU Name: Apple M1 Max
+18:51:32.461: Physical Cores: 10, Logical Cores: 10
+18:51:32.461: Physical Memory: 32768MB Total
+18:51:32.461: OS Name: macOS
+18:51:32.461: OS Version: Version 13.4 (Build 22F66)
+18:51:32.461: Rosetta translation used: false
+18:51:32.461: Kernel Version: 22.5.0
+18:51:32.464: hotkeys-cocoa: Using layout 'com.apple.keylayout.Dvorak'
+18:51:32.464: Current Date/Time: 2023-06-15, 18:51:32
+18:51:32.464: Browser Hardware Acceleration: true
+18:51:32.464: Qt Version: 6.4.3 (runtime), 6.4.3 (compiled)
+18:51:32.464: Portable mode: false
+18:51:32.601: OBS 29.1.2 (mac)
+18:51:32.601: ---------------------------------
+18:51:32.602: ---------------------------------
+18:51:32.602: audio settings reset:
+18:51:32.602: 	samples per sec: 48000
+18:51:32.602: 	speakers:        2
+18:51:32.602: 	max buffering:   960 milliseconds
+18:51:32.602: 	buffering type:  dynamically increasing
+18:51:32.607: ---------------------------------
+18:51:32.607: Initializing OpenGL...
+18:51:32.640: Loading up OpenGL on adapter Apple Apple M1 Max
+18:51:32.640: OpenGL loaded successfully, version 4.1 Metal - 83.1, shading language 4.10
+18:51:32.812: ---------------------------------
+18:51:32.812: video settings reset:
+18:51:32.812: 	base resolution:   1920x1080
+18:51:32.812: 	output resolution: 1920x1080
+18:51:32.812: 	downscale filter:  Bicubic
+18:51:32.812: 	fps:               60/1
+18:51:32.812: 	format:            NV12
+18:51:32.812: 	YUV mode:          Rec. 709/Partial
+18:51:32.812: NV12 texture support not available
+18:51:32.812: P010 texture support not available
+18:51:32.815: Audio monitoring device:
+18:51:32.815: 	name: Default
+18:51:32.815: 	id: default
+18:51:32.815: ---------------------------------
+18:51:32.825: Failed to load 'en-GB' text for module: 'aja-output-ui'
+18:51:32.826: No AJA devices found, skipping loading AJA UI plugin
+18:51:32.826: Failed to initialize module 'aja-output-ui'
+18:51:32.834: Failed to load 'en-GB' text for module: 'aja'
+18:51:32.834: No AJA devices found, skipping loading AJA plugin
+18:51:32.834: Failed to initialize module 'aja'
+18:51:32.838: Failed to load 'en-GB' text for module: 'coreaudio-encoder'
+18:51:32.842: Failed to load 'en-US' text for module: 'decklink-captions'
+18:51:32.846: Failed to load 'en-US' text for module: 'decklink-output-ui'
+18:51:32.850: A DeckLink iterator could not be created.  The DeckLink drivers may not be installed
+18:51:32.850: Failed to initialize module 'decklink'
+18:51:32.859: Failed to load 'en-GB' text for module: 'frontend-tools'
+18:51:32.935: Failed to load 'en-GB' text for module: 'mac-capture'
+18:51:32.948: Failed to load 'en-GB' text for module: 'mac-virtualcam'
+18:51:33.005: [obs-browser]: Version 2.21.1
+18:51:33.006: [obs-browser]: CEF Version 103.0.5060.134 (runtime), 103.61.23+g2fe5a76+chromium-103.0.5060.134 (compiled)
+18:51:33.038: Failed to load 'en-GB' text for module: 'obs-vst'
+18:51:33.046: Failed to load 'en-GB' text for module: 'obs-websocket'
+18:51:33.046: [obs-websocket] [obs_module_load] you can haz websockets (Version: 5.2.2 | RPC Version: 1)
+18:51:33.046: [obs-websocket] [obs_module_load] Qt version (compile-time): 6.4.3 | Qt version (run-time): 6.4.3
+18:51:33.046: [obs-websocket] [obs_module_load] Linked ASIO Version: 101201
+18:51:33.050: [obs-websocket] [obs_module_load] Module loaded.
+18:51:33.057: Failed to load 'en-GB' text for module: 'rtmp-services'
+18:51:33.075: [vlc-video]: VLC 3.0.18 Vetinari found, VLC video source enabled
+18:51:33.075: ---------------------------------
+18:51:33.075:   Loaded Modules:
+18:51:33.075:     vlc-video
+18:51:33.075:     text-freetype2
+18:51:33.075:     rtmp-services
+18:51:33.075:     obs-x264
+18:51:33.075:     obs-websocket
+18:51:33.075:     obs-vst
+18:51:33.075:     obs-transitions
+18:51:33.075:     obs-outputs
+18:51:33.075:     obs-filters
+18:51:33.075:     obs-ffmpeg
+18:51:33.075:     obs-browser
+18:51:33.075:     mac-virtualcam
+18:51:33.075:     mac-videotoolbox
+18:51:33.075:     mac-syphon
+18:51:33.075:     mac-capture
+18:51:33.075:     mac-avcapture
+18:51:33.075:     image-source
+18:51:33.075:     frontend-tools
+18:51:33.075:     decklink-output-ui
+18:51:33.075:     decklink-captions
+18:51:33.075:     coreaudio-encoder
+18:51:33.075: ---------------------------------
+18:51:33.075: [obs-websocket] [obs_module_post_load] Post load started.
+18:51:33.075: [obs-websocket] [obs_module_post_load] obs-websocket plugin API version: 2
+18:51:33.075: [obs-websocket] [obs_module_post_load] Called GetVersion. Status Code: 100 | Comment: (null) | Response Data: {"availableRequests":["GetMonitorList","OpenInputInteractDialog","SetMediaInputCursor","ToggleRecordPause","StopRecord","ToggleRecord","GetRecordStatus","SendStreamCaption","TriggerMediaInputAction","StopStream","StartStream","SetOutputSettings","GetOutputSettings","StartOutput","ToggleOutput","SaveReplayBuffer","StopReplayBuffer","StartReplayBuffer","StopVirtualCam","StartVirtualCam","SetSceneItemPrivateSettings","GetStudioModeEnabled","GetSceneItemPrivateSettings","SetSceneItemBlendMode","GetSourceFilterDefaultSettings","SetSceneItemLocked","GetLastReplayBufferReplay","GetSceneItemBlendMode","GetSceneItemTransform","GetGroupSceneItemList","GetSceneItemId","ToggleVirtualCam","GetSceneItemList","GetInputList","GetVideoSettings","DuplicateSceneItem","GetSourcePrivateSettings","GetSourceScreenshot","SetSourceFilterIndex","RemoveScene","GetSceneItemIndex","SetTBarPosition","GetSourceFilter","OpenInputFiltersDialog","SetSourceFilterName","RemoveSourceFilter","GetSourceFilterList","GetMediaInputStatus","TriggerStudioModeTransition","GetCurrentSceneTransitionCursor","SetCurrentSceneTransitionDuration","OffsetMediaInputCursor","GetVirtualCamStatus","CreateSourceFilter","SetCurrentSceneTransition","GetTransitionKindList","SetSceneItemEnabled","SetSceneItemIndex","SetInputAudioTracks","GetInputVolume","GetInputAudioTracks","SetCurrentProgramScene","SetInputAudioMonitorType","SetInputAudioSyncOffset","SetInputAudioBalance","GetCurrentSceneTransition","SetInputSettings","SetSourceFilterEnabled","GetInputSettings","OpenSourceProjector","SetSceneItemTransform","GetInputAudioBalance","BroadcastCustomEvent","GetPersistentData","SetInputName","GetInputKindList","CreateSceneCollection","GetOutputStatus","GetSceneSceneTransitionOverride","SetInputMute","SetCurrentSceneTransitionSettings","GetSceneTransitionList","PauseRecord","SetSceneSceneTransitionOverride","OpenVideoMixProjector","SetCurrentPreviewScene","SetSceneName","CreateScene","GetInputAudioSyncOffset","GetStreamStatus","GetGroupList","GetOutputList","GetSceneList","CreateSceneItem","GetInputMute","GetCurrentProgramScene","SetSourceFilterSettings","CallVendorRequest","SetStreamServiceSettings","SaveSourceScreenshot","GetRecordDirectory","GetInputDefaultSettings","GetStreamServiceSettings","CreateProfile","RemoveProfile","ResumeRecord","GetInputAudioMonitorType","RemoveInput","OpenInputPropertiesDialog","ToggleReplayBuffer","GetHotkeyList","SetCurrentSceneCollection","GetSceneItemLocked","GetSceneCollectionList","GetProfileList","ToggleInputMute","TriggerHotkeyByKeySequence","CreateInput","GetCurrentPreviewScene","TriggerHotkeyByName","SetStudioModeEnabled","GetSourceActive","SetVideoSettings","PressInputPropertiesButton","SetProfileParameter","SetInputVolume","ToggleStream","SetSourcePrivateSettings","Sleep","StartRecord","GetReplayBufferStatus","SetPersistentData","GetProfileParameter","GetInputPropertiesListPropertyItems","GetSpecialInputs","GetStats","RemoveSceneItem","StopOutput","SetCurrentProfile","GetVersion","GetSceneItemEnabled"],"obsVersion":"29.1.2","obsWebSocketVersion":"5.2.2","platform":"macos","platformDescription":"macOS 13.4","rpcVersion":1,"supportedImageFormats":["bmp","cur","heic","heif","icns","ico","jp2","jpeg","jpg","pbm","pgm","png","ppm","tif","tiff","wbmp","webp","xbm","xpm"]}
+18:51:33.075: [obs-websocket] [obs_module_post_load] Post load completed.
+18:51:33.075: [VideoToolbox encoder]: Added VideoToolbox encoders
+18:51:33.076: ==== Startup complete ===============================================
+18:51:33.144: All scene data cleared
+18:51:33.144: ------------------------------------------------
+18:51:33.160: [obs-scripting]: Loaded lua script: advanced-timer.lua
+18:51:33.161: [obs-scripting]: Loaded lua script: advanced-timer2.lua
+18:51:33.162: [obs-scripting]: Loaded lua script: ShortWebcamReload.lua
+18:51:33.162: [obs-scripting]: Loaded lua script: TallWebcamReload.lua
+18:51:33.438: coreaudio: Device 'MacBook Pro Microphone' [48000 Hz] initialized
+18:51:33.439: [Loaded global audio device]: 'Mic/Aux'
+18:51:33.439: [Media Source 'Start Screen']: settings:
+18:51:33.439: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/With Text/Starting.webm
+18:51:33.439: 	input_format:            (null)
+18:51:33.439: 	speed:                   100
+18:51:33.439: 	is_looping:              yes
+18:51:33.439: 	is_linear_alpha:         no
+18:51:33.439: 	is_hw_decoding:          no
+18:51:33.439: 	is_clear_on_media_end:   yes
+18:51:33.439: 	restart_on_activate:     yes
+18:51:33.439: 	close_when_inactive:     yes
+18:51:33.439: 	full_decode:             no
+18:51:33.439: 	ffmpeg_options:          
+18:51:33.548: [Media Source 'BRB Screen']: settings:
+18:51:33.548: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/With Text/BRB.webm
+18:51:33.548: 	input_format:            (null)
+18:51:33.548: 	speed:                   100
+18:51:33.548: 	is_looping:              yes
+18:51:33.548: 	is_linear_alpha:         no
+18:51:33.548: 	is_hw_decoding:          no
+18:51:33.548: 	is_clear_on_media_end:   yes
+18:51:33.548: 	restart_on_activate:     yes
+18:51:33.548: 	close_when_inactive:     yes
+18:51:33.548: 	full_decode:             no
+18:51:33.548: 	ffmpeg_options:          
+18:51:33.548: [Media Source 'END Screen']: settings:
+18:51:33.548: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/With Text/Ending.webm
+18:51:33.548: 	input_format:            (null)
+18:51:33.548: 	speed:                   100
+18:51:33.548: 	is_looping:              yes
+18:51:33.548: 	is_linear_alpha:         no
+18:51:33.548: 	is_hw_decoding:          no
+18:51:33.548: 	is_clear_on_media_end:   yes
+18:51:33.548: 	restart_on_activate:     yes
+18:51:33.548: 	close_when_inactive:     yes
+18:51:33.548: 	full_decode:             no
+18:51:33.548: 	ffmpeg_options:          
+18:51:33.576: A6400 Wide: Could not initialize device with unique ID '0x22200000fd90066'
+18:51:33.577: A6400 Tall: Could not initialize device with unique ID '0x22200000fd90066'
+18:51:33.582: [Media Source 'Background SQUARE']: settings:
+18:51:33.582: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/Intermission 3.webm
+18:51:33.582: 	input_format:            (null)
+18:51:33.582: 	speed:                   100
+18:51:33.582: 	is_looping:              yes
+18:51:33.582: 	is_linear_alpha:         no
+18:51:33.582: 	is_hw_decoding:          no
+18:51:33.582: 	is_clear_on_media_end:   yes
+18:51:33.582: 	restart_on_activate:     yes
+18:51:33.582: 	close_when_inactive:     yes
+18:51:33.582: 	full_decode:             no
+18:51:33.582: 	ffmpeg_options:          
+18:51:33.582: [Media Source 'Background WIDE']: settings:
+18:51:33.582: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/Intermission 2.webm
+18:51:33.582: 	input_format:            (null)
+18:51:33.582: 	speed:                   100
+18:51:33.582: 	is_looping:              yes
+18:51:33.582: 	is_linear_alpha:         no
+18:51:33.582: 	is_hw_decoding:          no
+18:51:33.582: 	is_clear_on_media_end:   yes
+18:51:33.582: 	restart_on_activate:     yes
+18:51:33.582: 	close_when_inactive:     yes
+18:51:33.582: 	full_decode:             no
+18:51:33.582: 	ffmpeg_options:          
+18:51:33.582: [Media Source 'Background MID']: settings:
+18:51:33.582: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/Intermission.webm
+18:51:33.582: 	input_format:            (null)
+18:51:33.582: 	speed:                   100
+18:51:33.582: 	is_looping:              yes
+18:51:33.582: 	is_linear_alpha:         no
+18:51:33.582: 	is_hw_decoding:          no
+18:51:33.582: 	is_clear_on_media_end:   yes
+18:51:33.582: 	restart_on_activate:     yes
+18:51:33.582: 	close_when_inactive:     yes
+18:51:33.582: 	full_decode:             no
+18:51:33.582: 	ffmpeg_options:          
+18:51:33.583: [Media Source 'Camera Outline Wide']: settings:
+18:51:33.583: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Overlays/Animated/Webcam 16x9.webm
+18:51:33.583: 	input_format:            (null)
+18:51:33.583: 	speed:                   100
+18:51:33.583: 	is_looping:              yes
+18:51:33.583: 	is_linear_alpha:         no
+18:51:33.583: 	is_hw_decoding:          no
+18:51:33.583: 	is_clear_on_media_end:   yes
+18:51:33.583: 	restart_on_activate:     yes
+18:51:33.583: 	close_when_inactive:     yes
+18:51:33.583: 	full_decode:             no
+18:51:33.583: 	ffmpeg_options:          
+18:51:33.583: PS5: Could not initialize device with unique ID '0x21331000fd9006b'
+18:51:33.583: [coreaudio_get_device_name] failed to get name: 560947818
+18:51:33.583: coreaudio: failed to find device uid: AppleUSBAudioEngine:Elgato:Game Capture HD60 S+:0004742A2E000:4, waiting for connection
+18:51:33.661: coreaudio: Device 'SM7B' [48000 Hz] initialized
+18:51:33.695: adding 21 milliseconds of audio buffering, total audio buffering is now 21 milliseconds (source: Sure SM7B)
+18:51:33.695: 
+18:51:33.734: coreaudio: Device 'Music!' [48000 Hz] initialized
+18:51:33.866: [Media Source 'Chatbox Outline']: settings:
+18:51:33.866: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Overlays/Animated/Webcam 4x3.webm
+18:51:33.866: 	input_format:            (null)
+18:51:33.866: 	speed:                   100
+18:51:33.866: 	is_looping:              yes
+18:51:33.866: 	is_linear_alpha:         no
+18:51:33.866: 	is_hw_decoding:          no
+18:51:33.866: 	is_clear_on_media_end:   yes
+18:51:33.866: 	restart_on_activate:     yes
+18:51:33.866: 	close_when_inactive:     yes
+18:51:33.866: 	full_decode:             no
+18:51:33.866: 	ffmpeg_options:          
+18:51:33.900: coreaudio: Device 'M12 - Music' [48000 Hz] initialized
+18:51:33.995: Switched to scene '--- camera: tall'
+18:51:33.995: ------------------------------------------------
+18:51:33.995: Loaded scenes:
+18:51:33.995: - scene '--- camera: wide':
+18:51:33.995:     - source: 'A6400 Wide' (av_capture_input_v2)
+18:51:33.995:         - filter: 'Image Mask/Blend' (mask_filter_v2)
+18:51:33.995:         - filter: 'Apply LUT' (clut_filter)
+18:51:33.995:         - filter: 'Apply LUT 1.2.1' (clut_filter)
+18:51:33.995:         - filter: 'Apply LUT 2' (clut_filter)
+18:51:33.995:     - source: 'Camera Outline Wide' (ffmpeg_source)
+18:51:33.995: - scene '--- STREAM':
+18:51:33.995: - scene '---- code':
+18:51:33.995: - scene '--- camera: tall':
+18:51:33.997:     - source: 'Tall Camera Shadow' (image_source)
+18:51:33.997:     - source: 'A6400 Tall' (av_capture_input_v2)
+18:51:33.997:         - filter: 'Crop/Pad' (crop_filter)
+18:51:33.997:         - filter: 'Image Mask/Blend' (mask_filter_v2)
+18:51:33.997:         - filter: 'Apply LUT' (clut_filter)
+18:51:33.997: - scene 'START':
+18:51:33.997:     - source: 'Start Screen' (ffmpeg_source)
+18:51:33.997:     - source: 'Music' (coreaudio_input_capture)
+18:51:33.997:     - source: 'M12 Music' (coreaudio_input_capture)
+18:51:33.997: - scene 'TALKING HEAD':
+18:51:33.997:     - source: '--- camera: wide' (scene)
+18:51:33.997:     - source: '--- canvas: big' (scene)
+18:51:33.997:     - source: '--- audio' (scene)
+18:51:33.997:     - source: '--- chatbox' (scene)
+18:51:33.997:     - source: '--- alerts' (scene)
+18:51:33.997: - scene '--- display: LG':
+18:51:33.997:     - source: 'macOS Screen Capture' (screen_capture)
+18:51:33.997: - scene 'BRB 5':
+18:51:33.997:     - source: 'BRB Screen' (ffmpeg_source)
+18:51:33.997:     - source: 'Timer 5' (text_ft2_source_v2)
+18:51:33.997:     - source: 'Music' (coreaudio_input_capture)
+18:51:33.997:     - source: 'M12 Music' (coreaudio_input_capture)
+18:51:33.997: - scene 'FULL SCREEN':
+18:51:33.997:     - source: '--- display: LG' (scene)
+18:51:33.997:     - source: '--- camera: tall' (scene)
+18:51:33.997:     - source: '--- audio' (scene)
+18:51:33.997:     - source: '--- chatbox' (scene)
+18:51:33.997:     - source: '--- alerts' (scene)
+18:51:33.997: - scene '--- display: PS5':
+18:51:33.997:     - source: 'PS5' (av_capture_input_v2)
+18:51:33.997: - scene 'BRB 10':
+18:51:33.997:     - source: 'BRB Screen' (ffmpeg_source)
+18:51:33.997:     - source: 'Timer 10' (text_ft2_source_v2)
+18:51:33.997:     - source: 'Music' (coreaudio_input_capture)
+18:51:33.997:     - source: 'M12 Music' (coreaudio_input_capture)
+18:51:33.997: - scene 'WIDE & BIG CAM':
+18:51:33.997:     - source: '--- audio' (scene)
+18:51:33.997:     - source: '--- display: LG' (scene)
+18:51:33.997:     - source: '--- canvas: medium' (scene)
+18:51:33.997:     - source: '--- camera: wide' (scene)
+18:51:33.997:     - source: '--- alerts' (scene)
+18:51:33.997:     - source: '--- chatbox' (scene)
+18:51:33.997: - scene '--- canvas: square':
+18:51:33.997:     - source: 'Background SQUARE' (ffmpeg_source)
+18:51:33.997: - scene 'END':
+18:51:33.997:     - source: 'END Screen' (ffmpeg_source)
+18:51:33.997:     - source: 'Music' (coreaudio_input_capture)
+18:51:33.997:     - source: 'M12 Music' (coreaudio_input_capture)
+18:51:33.997: - scene 'PRIVACY':
+18:51:33.997:     - source: 'BLUR' (image_source)
+18:51:33.997:     - source: '--- canvas: medium' (scene)
+18:51:33.997:     - source: '--- canvas: medium' (scene)
+18:51:33.997:     - source: '--- canvas: medium' (scene)
+18:51:33.997:     - source: '--- camera: wide' (scene)
+18:51:33.997:     - source: '--- audio' (scene)
+18:51:33.997:     - source: '--- chatbox' (scene)
+18:51:33.997:     - source: '--- alerts' (scene)
+18:51:33.997: - scene '--- canvas: medium':
+18:51:33.997:     - source: 'Background MID' (ffmpeg_source)
+18:51:33.997: - scene '--- audio':
+18:51:33.997:     - source: 'Music' (coreaudio_input_capture)
+18:51:33.997:     - source: 'Sure SM7B' (coreaudio_input_capture)
+18:51:33.997:     - source: 'M12 Music' (coreaudio_input_capture)
+18:51:33.997: - scene 'GAMES':
+18:51:33.997:     - source: '--- display: PS5' (scene)
+18:51:33.997:     - source: '--- camera: tall' (scene)
+18:51:33.997:     - source: 'PS5 Audio' (coreaudio_input_capture)
+18:51:33.997:         - monitoring: monitor and output
+18:51:33.997:     - source: '--- audio' (scene)
+18:51:33.997:     - source: '--- alerts' (scene)
+18:51:33.997: - scene '--- canvas: big':
+18:51:33.998:     - source: 'Background WIDE' (ffmpeg_source)
+18:51:33.998: - scene '--- alerts':
+18:51:33.998:     - source: 'Alerts' (browser_source)
+18:51:33.998: - scene '--- chatbox':
+18:51:33.998:     - source: 'Chatbox BG' (color_source_v3)
+18:51:33.998:         - filter: 'Image Mask/Blend' (mask_filter_v2)
+18:51:33.998:     - source: 'Chatbox Outline' (ffmpeg_source)
+18:51:33.998:     - source: 'CHatbox' (browser_source)
+18:51:33.998: ------------------------------------------------
+18:51:35.589: [coreaudio_get_device_name] failed to get name: 560947818
+18:51:37.593: [coreaudio_get_device_name] failed to get name: 560947818
+18:51:39.598: [coreaudio_get_device_name] failed to get name: 560947818
+18:51:40.334: User switched to scene '--- audio'
+18:51:41.603: [coreaudio_get_device_name] failed to get name: 560947818
+18:51:43.603: [coreaudio_get_device_name] failed to get name: 560947818
+18:51:45.607: [coreaudio_get_device_name] failed to get name: 560947818
+18:51:47.612: [coreaudio_get_device_name] failed to get name: 560947818
+18:51:49.618: [coreaudio_get_device_name] failed to get name: 560947818
+18:51:51.622: [coreaudio_get_device_name] failed to get name: 560947818
+18:51:53.626: [coreaudio_get_device_name] failed to get name: 560947818
+18:51:55.004: User added filter 'Ducking' (compressor_filter) to source 'Sure SM7B'
+18:51:55.631: [coreaudio_get_device_name] failed to get name: 560947818
+18:51:57.635: [coreaudio_get_device_name] failed to get name: 560947818
+18:51:59.640: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:01.644: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:03.647: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:05.651: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:07.656: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:09.658: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:11.664: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:13.670: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:15.673: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:17.678: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:19.683: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:21.684: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:23.687: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:25.690: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:27.693: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:29.699: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:31.704: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:33.710: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:35.716: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:37.719: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:39.721: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:41.722: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:43.723: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:45.728: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:47.733: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:49.738: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:51.744: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:53.751: [coreaudio_get_device_name] failed to get name: 560947818
+18:52:55.756: [coreaudio_get_device_name] failed to get name: 560947818
+18:59:51.152: Last log entry repeated for 207 more lines
+18:59:51.152: User removed filter 'Ducking' (compressor_filter) from source 'Sure SM7B'
+18:59:52.704: [coreaudio_get_device_name] failed to get name: 560947818
+18:59:54.705: [coreaudio_get_device_name] failed to get name: 560947818
+18:59:56.708: [coreaudio_get_device_name] failed to get name: 560947818
+18:59:58.711: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:00.717: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:02.722: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:04.730: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:06.733: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:08.736: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:10.739: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:11.366: User added filter 'Ducking' (compressor_filter) to source 'M12 Music'
+19:00:12.744: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:14.746: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:16.751: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:18.756: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:20.759: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:22.764: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:24.768: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:26.774: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:28.776: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:30.781: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:32.785: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:34.790: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:36.792: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:38.797: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:40.802: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:42.807: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:44.811: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:46.816: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:48.820: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:50.820: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:52.825: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:54.828: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:56.833: [coreaudio_get_device_name] failed to get name: 560947818
+19:00:58.839: [coreaudio_get_device_name] failed to get name: 560947818
+19:01:00.844: [coreaudio_get_device_name] failed to get name: 560947818
+19:01:02.849: [coreaudio_get_device_name] failed to get name: 560947818
+19:01:04.851: [coreaudio_get_device_name] failed to get name: 560947818
+19:01:06.856: [coreaudio_get_device_name] failed to get name: 560947818
+19:01:08.861: [coreaudio_get_device_name] failed to get name: 560947818
+19:01:10.867: [coreaudio_get_device_name] failed to get name: 560947818
+19:01:12.873: [coreaudio_get_device_name] failed to get name: 560947818
+19:02:40.122: Last log entry repeated for 43 more lines
+19:02:40.122: PS5: Device with unique ID '0x21331000fd9006b' connected, resuming capture
+19:02:40.122: PS5: Selected device 'Game Capture HD60 S+'
+19:02:40.125: PS5: Using preset High
+19:02:40.359: A6400 Wide: Device with unique ID '0x22200000fd90066' connected, resuming capture
+19:02:40.359: A6400 Wide: Selected device 'Cam Link 4K'
+19:02:40.359: A6400 Wide: Using preset High
+19:02:40.378: A6400 Tall: Device with unique ID '0x22200000fd90066' connected, resuming capture
+19:02:40.378: A6400 Tall: Selected device 'Cam Link 4K'
+19:02:40.379: A6400 Tall: Using preset High
+19:02:41.313: coreaudio: Device 'Game Capture HD60 S+' [48000 Hz] initialized
+19:03:44.168: User changed audio monitoring for source 'M12 Music' to: monitor and output
+19:03:46.322: User changed audio monitoring for source 'Sure SM7B' to: monitor and output
+19:07:16.709: User switched to scene 'FULL SCREEN'
+19:07:21.043: User switched to scene 'WIDE & BIG CAM'
+19:07:22.098: User switched to scene 'FULL SCREEN'
+19:07:25.003: User switched to scene '--- display: LG'
+19:07:50.413: ==== Shutting down ==================================================

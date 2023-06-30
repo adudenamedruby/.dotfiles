@@ -1,0 +1,467 @@
+11:47:57.262: [macOS] Permission for audio device access granted.
+11:47:57.265: [macOS] Permission for video device access granted.
+11:47:57.270: [macOS] Permission for accessibility denied.
+11:47:57.273: [macOS] Permission for screen capture granted.
+11:47:57.273: CPU Name: Apple M1 Max
+11:47:57.273: Physical Cores: 10, Logical Cores: 10
+11:47:57.273: Physical Memory: 32768MB Total
+11:47:57.273: OS Name: macOS
+11:47:57.273: OS Version: Version 13.4 (Build 22F66)
+11:47:57.273: Rosetta translation used: false
+11:47:57.273: Kernel Version: 22.5.0
+11:47:57.274: hotkeys-cocoa: Using layout 'com.apple.keylayout.Dvorak'
+11:47:57.274: Current Date/Time: 2023-06-19, 11:47:57
+11:47:57.274: Browser Hardware Acceleration: true
+11:47:57.274: Qt Version: 6.4.3 (runtime), 6.4.3 (compiled)
+11:47:57.274: Portable mode: false
+11:47:57.392: OBS 29.1.3 (mac)
+11:47:57.392: ---------------------------------
+11:47:57.393: ---------------------------------
+11:47:57.393: audio settings reset:
+11:47:57.393: 	samples per sec: 48000
+11:47:57.393: 	speakers:        2
+11:47:57.393: 	max buffering:   960 milliseconds
+11:47:57.393: 	buffering type:  dynamically increasing
+11:47:57.397: ---------------------------------
+11:47:57.397: Initializing OpenGL...
+11:47:57.430: Loading up OpenGL on adapter Apple Apple M1 Max
+11:47:57.430: OpenGL loaded successfully, version 4.1 Metal - 83.1, shading language 4.10
+11:47:57.612: ---------------------------------
+11:47:57.612: video settings reset:
+11:47:57.612: 	base resolution:   1920x1080
+11:47:57.612: 	output resolution: 1920x1080
+11:47:57.612: 	downscale filter:  Bicubic
+11:47:57.612: 	fps:               60/1
+11:47:57.612: 	format:            NV12
+11:47:57.612: 	YUV mode:          Rec. 709/Partial
+11:47:57.612: NV12 texture support not available
+11:47:57.612: P010 texture support not available
+11:47:57.612: Audio monitoring device:
+11:47:57.612: 	name: Default
+11:47:57.612: 	id: default
+11:47:57.612: ---------------------------------
+11:47:57.631: Failed to load 'en-GB' text for module: 'aja-output-ui'
+11:47:57.631: No AJA devices found, skipping loading AJA UI plugin
+11:47:57.631: Failed to initialize module 'aja-output-ui'
+11:47:57.646: Failed to load 'en-GB' text for module: 'aja'
+11:47:57.647: No AJA devices found, skipping loading AJA plugin
+11:47:57.647: Failed to initialize module 'aja'
+11:47:57.657: Failed to load 'en-GB' text for module: 'coreaudio-encoder'
+11:47:57.667: Failed to load 'en-US' text for module: 'decklink-captions'
+11:47:57.677: Failed to load 'en-US' text for module: 'decklink-output-ui'
+11:47:57.686: A DeckLink iterator could not be created.  The DeckLink drivers may not be installed
+11:47:57.686: Failed to initialize module 'decklink'
+11:47:57.702: Failed to load 'en-GB' text for module: 'frontend-tools'
+11:47:57.791: Failed to load 'en-GB' text for module: 'mac-capture'
+11:47:57.826: Failed to load 'en-GB' text for module: 'mac-virtualcam'
+11:47:57.881: [obs-browser]: Version 2.21.1
+11:47:57.881: [obs-browser]: CEF Version 103.0.5060.134 (runtime), 103.61.23+g2fe5a76+chromium-103.0.5060.134 (compiled)
+11:47:57.939: Failed to load 'en-GB' text for module: 'obs-vst'
+11:47:57.950: Failed to load 'en-GB' text for module: 'obs-websocket'
+11:47:57.950: [obs-websocket] [obs_module_load] you can haz websockets (Version: 5.2.3 | RPC Version: 1)
+11:47:57.950: [obs-websocket] [obs_module_load] Qt version (compile-time): 6.4.3 | Qt version (run-time): 6.4.3
+11:47:57.950: [obs-websocket] [obs_module_load] Linked ASIO Version: 101201
+11:47:57.953: [obs-websocket] [obs_module_load] Module loaded.
+11:47:57.973: Failed to load 'en-GB' text for module: 'rtmp-services'
+11:47:57.995: [vlc-video]: VLC 3.0.18 Vetinari found, VLC video source enabled
+11:47:57.995: ---------------------------------
+11:47:57.995:   Loaded Modules:
+11:47:57.995:     vlc-video
+11:47:57.995:     text-freetype2
+11:47:57.995:     rtmp-services
+11:47:57.995:     obs-x264
+11:47:57.995:     obs-websocket
+11:47:57.995:     obs-vst
+11:47:57.995:     obs-transitions
+11:47:57.995:     obs-outputs
+11:47:57.995:     obs-filters
+11:47:57.995:     obs-ffmpeg
+11:47:57.995:     obs-browser
+11:47:57.995:     mac-virtualcam
+11:47:57.995:     mac-videotoolbox
+11:47:57.995:     mac-syphon
+11:47:57.995:     mac-capture
+11:47:57.995:     mac-avcapture
+11:47:57.995:     image-source
+11:47:57.995:     frontend-tools
+11:47:57.995:     decklink-output-ui
+11:47:57.995:     decklink-captions
+11:47:57.995:     coreaudio-encoder
+11:47:57.995: ---------------------------------
+11:47:57.995: [obs-websocket] [obs_module_post_load] Post load started.
+11:47:57.995: [obs-websocket] [obs_module_post_load] obs-websocket plugin API version: 2
+11:47:57.996: [obs-websocket] [obs_module_post_load] Called GetVersion. Status Code: 100 | Comment: (null) | Response Data: {"availableRequests":["GetMonitorList","OpenInputInteractDialog","SetMediaInputCursor","ToggleRecordPause","StopRecord","ToggleRecord","GetRecordStatus","SendStreamCaption","TriggerMediaInputAction","StopStream","StartStream","SetOutputSettings","GetOutputSettings","StartOutput","ToggleOutput","SaveReplayBuffer","StopReplayBuffer","StartReplayBuffer","StopVirtualCam","StartVirtualCam","SetSceneItemPrivateSettings","GetStudioModeEnabled","GetSceneItemPrivateSettings","SetSceneItemBlendMode","GetSourceFilterDefaultSettings","SetSceneItemLocked","GetLastReplayBufferReplay","GetSceneItemBlendMode","GetSceneItemTransform","GetGroupSceneItemList","GetSceneItemId","ToggleVirtualCam","GetSceneItemList","GetInputList","GetVideoSettings","DuplicateSceneItem","GetSourcePrivateSettings","GetSourceScreenshot","SetSourceFilterIndex","RemoveScene","GetSceneItemIndex","SetTBarPosition","GetSourceFilter","OpenInputFiltersDialog","SetSourceFilterName","RemoveSourceFilter","GetSourceFilterList","GetMediaInputStatus","TriggerStudioModeTransition","GetCurrentSceneTransitionCursor","SetCurrentSceneTransitionDuration","OffsetMediaInputCursor","GetVirtualCamStatus","CreateSourceFilter","SetCurrentSceneTransition","GetTransitionKindList","SetSceneItemEnabled","SetSceneItemIndex","SetInputAudioTracks","GetInputVolume","GetInputAudioTracks","SetCurrentProgramScene","SetInputAudioMonitorType","SetInputAudioSyncOffset","SetInputAudioBalance","GetCurrentSceneTransition","SetInputSettings","SetSourceFilterEnabled","GetInputSettings","OpenSourceProjector","SetSceneItemTransform","GetInputAudioBalance","BroadcastCustomEvent","GetPersistentData","SetInputName","GetInputKindList","CreateSceneCollection","GetOutputStatus","GetSceneSceneTransitionOverride","SetInputMute","SetCurrentSceneTransitionSettings","GetSceneTransitionList","PauseRecord","SetSceneSceneTransitionOverride","OpenVideoMixProjector","SetCurrentPreviewScene","SetSceneName","CreateScene","GetInputAudioSyncOffset","GetStreamStatus","GetGroupList","GetOutputList","GetSceneList","CreateSceneItem","GetInputMute","GetCurrentProgramScene","SetSourceFilterSettings","CallVendorRequest","SetStreamServiceSettings","SaveSourceScreenshot","GetRecordDirectory","GetInputDefaultSettings","GetStreamServiceSettings","CreateProfile","RemoveProfile","ResumeRecord","GetInputAudioMonitorType","RemoveInput","OpenInputPropertiesDialog","ToggleReplayBuffer","GetHotkeyList","SetCurrentSceneCollection","GetSceneItemLocked","GetSceneCollectionList","GetProfileList","ToggleInputMute","TriggerHotkeyByKeySequence","CreateInput","GetCurrentPreviewScene","TriggerHotkeyByName","SetStudioModeEnabled","GetSourceActive","SetVideoSettings","PressInputPropertiesButton","SetProfileParameter","SetInputVolume","ToggleStream","SetSourcePrivateSettings","Sleep","StartRecord","GetReplayBufferStatus","SetPersistentData","GetProfileParameter","GetInputPropertiesListPropertyItems","GetSpecialInputs","GetStats","RemoveSceneItem","StopOutput","SetCurrentProfile","GetVersion","GetSceneItemEnabled"],"obsVersion":"29.1.3","obsWebSocketVersion":"5.2.3","platform":"macos","platformDescription":"macOS 13.4","rpcVersion":1,"supportedImageFormats":["bmp","cur","heic","heif","icns","ico","jp2","jpeg","jpg","pbm","pgm","png","ppm","tif","tiff","wbmp","webp","xbm","xpm"]}
+11:47:57.996: [obs-websocket] [obs_module_post_load] Post load completed.
+11:47:57.996: [VideoToolbox encoder]: Added VideoToolbox encoders
+11:47:57.996: ==== Startup complete ===============================================
+11:47:58.046: All scene data cleared
+11:47:58.046: ------------------------------------------------
+11:47:58.066: [obs-scripting]: Loaded lua script: advanced-timer.lua
+11:47:58.067: [obs-scripting]: Loaded lua script: advanced-timer2.lua
+11:47:58.067: [obs-scripting]: Loaded lua script: ShortWebcamReload.lua
+11:47:58.068: [obs-scripting]: Loaded lua script: TallWebcamReload.lua
+11:47:58.069: [obs-scripting]: Loaded lua script: advanced-timer3.lua
+11:47:58.069: [obs-scripting]: Loaded lua script: advanced-timer4.lua
+11:47:58.551: coreaudio: Device 'MacBook Pro Microphone' [48000 Hz] initialized
+11:47:58.551: [Loaded global audio device]: 'Mic/Aux'
+11:47:58.551: [Media Source 'Start Screen']: settings:
+11:47:58.551: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/With Text/Starting.webm
+11:47:58.551: 	input_format:            (null)
+11:47:58.551: 	speed:                   100
+11:47:58.551: 	is_looping:              yes
+11:47:58.551: 	is_linear_alpha:         no
+11:47:58.551: 	is_hw_decoding:          no
+11:47:58.551: 	is_clear_on_media_end:   yes
+11:47:58.551: 	restart_on_activate:     yes
+11:47:58.551: 	close_when_inactive:     yes
+11:47:58.551: 	full_decode:             no
+11:47:58.551: 	ffmpeg_options:          
+11:47:58.682: [Media Source 'BRB Screen']: settings:
+11:47:58.682: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/With Text/BRB.webm
+11:47:58.682: 	input_format:            (null)
+11:47:58.682: 	speed:                   100
+11:47:58.682: 	is_looping:              yes
+11:47:58.682: 	is_linear_alpha:         no
+11:47:58.682: 	is_hw_decoding:          no
+11:47:58.682: 	is_clear_on_media_end:   yes
+11:47:58.682: 	restart_on_activate:     yes
+11:47:58.682: 	close_when_inactive:     yes
+11:47:58.682: 	full_decode:             no
+11:47:58.682: 	ffmpeg_options:          
+11:47:58.682: [Media Source 'END Screen']: settings:
+11:47:58.682: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/With Text/Ending.webm
+11:47:58.682: 	input_format:            (null)
+11:47:58.682: 	speed:                   100
+11:47:58.682: 	is_looping:              yes
+11:47:58.682: 	is_linear_alpha:         no
+11:47:58.682: 	is_hw_decoding:          no
+11:47:58.682: 	is_clear_on_media_end:   yes
+11:47:58.682: 	restart_on_activate:     yes
+11:47:58.682: 	close_when_inactive:     yes
+11:47:58.682: 	full_decode:             no
+11:47:58.682: 	ffmpeg_options:          
+11:47:58.730: A6400 Wide: Selected device 'Cam Link 4K'
+11:47:58.731: A6400 Wide: Using preset High
+11:47:58.768: A6400 Tall: Selected device 'Cam Link 4K'
+11:47:58.768: A6400 Tall: Using preset High
+11:47:58.778: [Media Source 'Background SQUARE']: settings:
+11:47:58.778: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/Intermission 3.webm
+11:47:58.778: 	input_format:            (null)
+11:47:58.778: 	speed:                   100
+11:47:58.778: 	is_looping:              yes
+11:47:58.778: 	is_linear_alpha:         no
+11:47:58.778: 	is_hw_decoding:          no
+11:47:58.778: 	is_clear_on_media_end:   yes
+11:47:58.778: 	restart_on_activate:     yes
+11:47:58.778: 	close_when_inactive:     yes
+11:47:58.778: 	full_decode:             no
+11:47:58.778: 	ffmpeg_options:          
+11:47:58.778: [Media Source 'Background WIDE']: settings:
+11:47:58.778: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/Intermission 2.webm
+11:47:58.778: 	input_format:            (null)
+11:47:58.778: 	speed:                   100
+11:47:58.778: 	is_looping:              yes
+11:47:58.778: 	is_linear_alpha:         no
+11:47:58.778: 	is_hw_decoding:          no
+11:47:58.778: 	is_clear_on_media_end:   yes
+11:47:58.778: 	restart_on_activate:     yes
+11:47:58.778: 	close_when_inactive:     yes
+11:47:58.778: 	full_decode:             no
+11:47:58.778: 	ffmpeg_options:          
+11:47:58.778: [Media Source 'Background MID']: settings:
+11:47:58.778: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Screens/Animated/Intermission.webm
+11:47:58.778: 	input_format:            (null)
+11:47:58.778: 	speed:                   100
+11:47:58.778: 	is_looping:              yes
+11:47:58.778: 	is_linear_alpha:         no
+11:47:58.778: 	is_hw_decoding:          no
+11:47:58.778: 	is_clear_on_media_end:   yes
+11:47:58.778: 	restart_on_activate:     yes
+11:47:58.778: 	close_when_inactive:     yes
+11:47:58.778: 	full_decode:             no
+11:47:58.778: 	ffmpeg_options:          
+11:47:58.779: [Media Source 'Camera Outline Wide']: settings:
+11:47:58.779: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Overlays/Animated/Webcam 16x9.webm
+11:47:58.779: 	input_format:            (null)
+11:47:58.779: 	speed:                   100
+11:47:58.779: 	is_looping:              yes
+11:47:58.779: 	is_linear_alpha:         no
+11:47:58.779: 	is_hw_decoding:          no
+11:47:58.779: 	is_clear_on_media_end:   yes
+11:47:58.779: 	restart_on_activate:     yes
+11:47:58.779: 	close_when_inactive:     yes
+11:47:58.779: 	full_decode:             no
+11:47:58.779: 	ffmpeg_options:          
+11:47:58.779: PS5: Selected device 'Game Capture HD60 S+'
+11:47:58.779: PS5: Using preset High
+11:47:59.105: coreaudio: Device 'Game Capture HD60 S+' [48000 Hz] initialized
+11:47:59.181: coreaudio: Device 'SM7B' [48000 Hz] initialized
+11:47:59.201: coreaudio: Device 'Music!' [48000 Hz] initialized
+11:47:59.211: adding 21 milliseconds of audio buffering, total audio buffering is now 21 milliseconds (source: Sure SM7B)
+11:47:59.211: 
+11:47:59.237: [Media Source 'Chatbox Outline']: settings:
+11:47:59.237: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Overlays/Animated/Webcam 4x3.webm
+11:47:59.237: 	input_format:            (null)
+11:47:59.237: 	speed:                   100
+11:47:59.237: 	is_looping:              yes
+11:47:59.237: 	is_linear_alpha:         no
+11:47:59.237: 	is_hw_decoding:          no
+11:47:59.237: 	is_clear_on_media_end:   yes
+11:47:59.237: 	restart_on_activate:     yes
+11:47:59.237: 	close_when_inactive:     yes
+11:47:59.237: 	full_decode:             no
+11:47:59.237: 	ffmpeg_options:          
+11:47:59.265: coreaudio: Device 'M12 - Music' [48000 Hz] initialized
+11:47:59.275: Switched to scene 'END'
+11:47:59.275: ------------------------------------------------
+11:47:59.275: Loaded scenes:
+11:47:59.275: - scene '--- camera: wide':
+11:47:59.275:     - source: 'A6400 Wide' (av_capture_input_v2)
+11:47:59.275:         - filter: 'Image Mask/Blend' (mask_filter_v2)
+11:47:59.275:         - filter: 'Apply LUT' (clut_filter)
+11:47:59.275:         - filter: 'Apply LUT 1.2.1' (clut_filter)
+11:47:59.275:         - filter: 'Apply LUT 2' (clut_filter)
+11:47:59.275:     - source: 'Camera Outline Wide' (ffmpeg_source)
+11:47:59.275: - scene 'START':
+11:47:59.275:     - source: 'Start Screen' (ffmpeg_source)
+11:47:59.275:     - source: 'Music' (coreaudio_input_capture)
+11:47:59.275:     - source: 'M12 Music' (coreaudio_input_capture)
+11:47:59.275:         - monitoring: monitor and output
+11:47:59.275:         - filter: 'Ducking' (compressor_filter)
+11:47:59.275: - scene 'TALKING HEAD':
+11:47:59.275:     - source: '--- camera: wide' (scene)
+11:47:59.275:     - source: '--- canvas: big' (scene)
+11:47:59.275:     - source: '--- audio' (scene)
+11:47:59.275:     - source: '--- chatbox' (scene)
+11:47:59.275:     - source: '--- alerts' (scene)
+11:47:59.275: - scene '--- camera: tall':
+11:47:59.275:     - source: 'Tall Camera Shadow' (image_source)
+11:47:59.275:     - source: 'A6400 Tall' (av_capture_input_v2)
+11:47:59.275:         - filter: 'Crop/Pad' (crop_filter)
+11:47:59.275:         - filter: 'Image Mask/Blend' (mask_filter_v2)
+11:47:59.275:         - filter: 'Apply LUT' (clut_filter)
+11:47:59.275: - scene 'BRB 5':
+11:47:59.275:     - source: 'BRB Screen' (ffmpeg_source)
+11:47:59.275:     - source: 'Timer 5 2' (text_ft2_source_v2)
+11:47:59.275:     - source: 'Timer 5' (text_ft2_source_v2)
+11:47:59.275:     - source: 'Music' (coreaudio_input_capture)
+11:47:59.275:     - source: 'M12 Music' (coreaudio_input_capture)
+11:47:59.275:         - monitoring: monitor and output
+11:47:59.275:         - filter: 'Ducking' (compressor_filter)
+11:47:59.275: - scene 'FULL SCREEN':
+11:47:59.275:     - source: '--- display: LG' (scene)
+11:47:59.275:     - source: '--- camera: tall' (scene)
+11:47:59.275:     - source: '--- audio' (scene)
+11:47:59.275:     - source: '--- chatbox' (scene)
+11:47:59.276:     - source: '--- alerts' (scene)
+11:47:59.276: - scene '--- display: LG':
+11:47:59.276:     - source: 'macOS Screen Capture' (screen_capture)
+11:47:59.276: - scene 'BRB 10':
+11:47:59.276:     - source: 'BRB Screen' (ffmpeg_source)
+11:47:59.276:     - source: 'Timer 10 2' (text_ft2_source_v2)
+11:47:59.276:     - source: 'Timer 10' (text_ft2_source_v2)
+11:47:59.276:     - source: 'Music' (coreaudio_input_capture)
+11:47:59.276:     - source: 'M12 Music' (coreaudio_input_capture)
+11:47:59.276:         - monitoring: monitor and output
+11:47:59.276:         - filter: 'Ducking' (compressor_filter)
+11:47:59.276: - scene 'WIDE & BIG CAM':
+11:47:59.276:     - source: '--- audio' (scene)
+11:47:59.276:     - source: '--- display: LG' (scene)
+11:47:59.276:     - source: '--- canvas: medium' (scene)
+11:47:59.276:     - source: '--- camera: wide' (scene)
+11:47:59.276:     - source: '--- alerts' (scene)
+11:47:59.276:     - source: '--- chatbox' (scene)
+11:47:59.276: - scene '--- display: PS5':
+11:47:59.276:     - source: 'PS5' (av_capture_input_v2)
+11:47:59.276: - scene 'END':
+11:47:59.276:     - source: 'END Screen' (ffmpeg_source)
+11:47:59.276:     - source: 'Music' (coreaudio_input_capture)
+11:47:59.276:     - source: 'M12 Music' (coreaudio_input_capture)
+11:47:59.276:         - monitoring: monitor and output
+11:47:59.276:         - filter: 'Ducking' (compressor_filter)
+11:47:59.276: - scene 'PRIVACY':
+11:47:59.276:     - source: 'BLUR' (image_source)
+11:47:59.276:     - source: '--- audio' (scene)
+11:47:59.276:     - source: '--- alerts' (scene)
+11:47:59.276:     - source: '--- camera: wide' (scene)
+11:47:59.276:     - source: 'Nerd' (image_source)
+11:47:59.276:     - source: '--- chatbox' (scene)
+11:47:59.276:     - source: 'Blackout' (color_source_v3)
+11:47:59.276: - scene '--- canvas: square':
+11:47:59.276:     - source: 'Background SQUARE' (ffmpeg_source)
+11:47:59.276: - scene '--- chatbox':
+11:47:59.276:     - source: 'Chatbox BG' (color_source_v3)
+11:47:59.276:         - filter: 'Image Mask/Blend' (mask_filter_v2)
+11:47:59.276:     - source: 'Chatbox Outline' (ffmpeg_source)
+11:47:59.276:     - source: 'CHatbox' (browser_source)
+11:47:59.276: - scene 'GAMES':
+11:47:59.276:     - source: '--- display: PS5' (scene)
+11:47:59.276:     - source: '--- camera: tall' (scene)
+11:47:59.276:     - source: 'PS5 Audio' (coreaudio_input_capture)
+11:47:59.276:         - monitoring: monitor and output
+11:47:59.276:     - source: '--- audio' (scene)
+11:47:59.276:     - source: '--- alerts' (scene)
+11:47:59.276: - scene '--- canvas: medium':
+11:47:59.276:     - source: 'Background MID' (ffmpeg_source)
+11:47:59.276: - scene '--- alerts':
+11:47:59.276:     - source: 'Alerts' (browser_source)
+11:47:59.276: - scene '--- audio':
+11:47:59.276:     - source: 'Music' (coreaudio_input_capture)
+11:47:59.276:     - source: 'Sure SM7B' (coreaudio_input_capture)
+11:47:59.276:     - source: 'M12 Music' (coreaudio_input_capture)
+11:47:59.276:         - monitoring: monitor and output
+11:47:59.276:         - filter: 'Ducking' (compressor_filter)
+11:47:59.276: - scene '--- canvas: big':
+11:47:59.276:     - source: 'Background WIDE' (ffmpeg_source)
+11:47:59.276: ------------------------------------------------
+11:47:59.376: [Media Source 'Plasma Bubble (Stinger)']: settings:
+11:47:59.376: 	input:                   /Users/fringefoundation/Library/Mobile Documents/com~apple~CloudDocs/Documents/adudenamedruby/Twitch/Plasma Animated Stream Package/Transitions/Without Sounds/WEBM/Round Transition.webm
+11:47:59.376: 	input_format:            (null)
+11:47:59.376: 	speed:                   100
+11:47:59.376: 	is_looping:              no
+11:47:59.376: 	is_linear_alpha:         no
+11:47:59.376: 	is_hw_decoding:          yes
+11:47:59.376: 	is_clear_on_media_end:   yes
+11:47:59.376: 	restart_on_activate:     yes
+11:47:59.376: 	close_when_inactive:     no
+11:47:59.376: 	full_decode:             no
+11:47:59.376: 	ffmpeg_options:          
+11:48:07.771: User switched to scene 'START'
+11:49:52.469: adding 277 milliseconds of audio buffering, total audio buffering is now 298 milliseconds (source: Start Screen)
+11:49:52.469: 
+11:54:15.717: coreaudio: device 'MacBook Pro Microphone' disconnected or changed.  attempting to reconnect
+11:54:16.205: coreaudio: Device 'Roux’s Beats' [24000 Hz] initialized
+11:57:47.127: [VideoToolbox simple_video_stream: 'h264']: session created with hardware encoding
+11:57:47.136: [VideoToolbox simple_video_stream: 'h264']: settings:
+11:57:47.136: 	vt_encoder_id          com.apple.videotoolbox.videoencoder.ave.avc
+11:57:47.136: 	rate_control:          CBR
+11:57:47.136: 	bitrate:               2500 (kbps)
+11:57:47.136: 	quality:               0.600000
+11:57:47.136: 	fps_num:               60
+11:57:47.136: 	fps_den:               1
+11:57:47.136: 	width:                 1920
+11:57:47.136: 	height:                1080
+11:57:47.136: 	keyint:                2 (s)
+11:57:47.136: 	limit_bitrate:         off
+11:57:47.136: 	rc_max_bitrate:        2500 (kbps)
+11:57:47.136: 	rc_max_bitrate_window: 1.500000 (s)
+11:57:47.136: 	hw_enc:                on
+11:57:47.136: 	profile:               high
+11:57:47.136: 	codec_type:            h264
+11:57:47.136: 
+11:57:47.138: [CoreAudio AAC: 'simple_aac']: settings:
+11:57:47.138: 	mode:          AAC
+11:57:47.138: 	bitrate:       160
+11:57:47.138: 	sample rate:   48000
+11:57:47.138: 	cbr:           on
+11:57:47.138: 	output buffer: 1536
+11:57:47.138: [rtmp stream: 'simple_stream'] Connecting to RTMP URL rtmp://yto.contribute.live-video.net/app...
+11:57:47.802: [rtmp stream: 'simple_stream'] Connection to rtmp://yto.contribute.live-video.net/app successful
+11:57:47.810: ==== Streaming Start ===============================================
+11:58:44.977: User switched to scene 'TALKING HEAD'
+12:00:57.762: User switched to scene 'WIDE & BIG CAM'
+12:01:30.218: User switched to scene '--- display: LG'
+12:01:34.274: [ mac-screencapture ]: destroy_screen_stream: Failed to stop stream with error (null)
+12:01:34.274: 
+12:01:39.523: User switched to scene 'WIDE & BIG CAM'
+12:05:01.313: User switched to scene 'PRIVACY'
+12:05:29.403: User switched to scene 'FULL SCREEN'
+12:29:38.736: User switched to scene 'BRB 5'
+12:34:43.770: User switched to scene 'WIDE & BIG CAM'
+12:48:09.494: User switched to scene 'FULL SCREEN'
+14:03:52.086: User switched to scene 'END'
+14:04:00.297: [rtmp stream: 'simple_stream'] User stopped the stream
+14:04:00.297: Output 'simple_stream': stopping
+14:04:00.297: Output 'simple_stream': Total frames output: 454331
+14:04:00.297: Output 'simple_stream': Total drawn frames: 454373 (454391 attempted)
+14:04:00.297: Output 'simple_stream': Number of lagged frames due to rendering lag/stalls: 18 (0.0%)
+14:04:00.297: Video stopped, number of skipped frames due to encoding lag: 7/454350 (0.0%)
+14:04:00.299: ==== Streaming Stop ================================================
+14:04:05.054: coreaudio: device 'Roux’s Beats' disconnected or changed.  attempting to reconnect
+14:04:05.394: coreaudio: Device 'MacBook Pro Microphone' [48000 Hz] initialized
+14:18:27.858: ==== Shutting down ==================================================
+14:18:27.889: [obs-scripting]: Unloaded lua script: advanced-timer4.lua
+14:18:27.889: [obs-scripting]: Unloaded lua script: advanced-timer3.lua
+14:18:27.890: [obs-scripting]: Unloaded lua script: TallWebcamReload.lua
+14:18:27.890: [obs-scripting]: Unloaded lua script: ShortWebcamReload.lua
+14:18:27.890: [obs-scripting]: Unloaded lua script: advanced-timer2.lua
+14:18:27.890: [obs-scripting]: Unloaded lua script: advanced-timer.lua
+14:18:28.114: All scene data cleared
+14:18:28.114: ------------------------------------------------
+14:18:28.220: [obs-websocket] [obs_module_unload] Shutting down...
+14:18:28.220: [obs-websocket] [obs_module_unload] Finished shutting down.
+14:18:28.720: [Scripting] Total detached callbacks: 622
+14:18:28.721: Freeing OBS context data
+14:18:28.743: == Profiler Results =============================
+14:18:28.743: run_program_init: 2547.28 ms
+14:18:28.743:  ┣OBSApp::AppInit: 4.9 ms
+14:18:28.743:  ┃ ┗OBSApp::InitLocale: 1.096 ms
+14:18:28.743:  ┗OBSApp::OBSInit: 2441.89 ms
+14:18:28.743:    ┣obs_startup: 0.91 ms
+14:18:28.743:    ┗OBSBasic::OBSInit: 2322.3 ms
+14:18:28.743:      ┣OBSBasic::InitBasicConfig: 0.189 ms
+14:18:28.743:      ┣OBSBasic::ResetAudio: 0.1 ms
+14:18:28.743:      ┣OBSBasic::ResetVideo: 218.647 ms
+14:18:28.743:      ┣OBSBasic::InitOBSCallbacks: 0.001 ms
+14:18:28.743:      ┣OBSBasic::InitHotkeys: 0.011 ms
+14:18:28.743:      ┣obs_load_all_modules2: 383.501 ms
+14:18:28.743:      ┃ ┣obs_init_module(aja-output-ui): 0.086 ms
+14:18:28.743:      ┃ ┣obs_init_module(aja): 0.097 ms
+14:18:28.743:      ┃ ┣obs_init_module(coreaudio-encoder): 0.001 ms
+14:18:28.744:      ┃ ┣obs_init_module(decklink-captions): 0 ms
+14:18:28.744:      ┃ ┣obs_init_module(decklink-output-ui): 0 ms
+14:18:28.744:      ┃ ┣obs_init_module(decklink): 0.039 ms
+14:18:28.744:      ┃ ┣obs_init_module(frontend-tools): 2.027 ms
+14:18:28.744:      ┃ ┣obs_init_module(image-source): 0.003 ms
+14:18:28.744:      ┃ ┣obs_init_module(mac-avcapture): 55.749 ms
+14:18:28.744:      ┃ ┣obs_init_module(mac-capture): 0.036 ms
+14:18:28.744:      ┃ ┣obs_init_module(mac-syphon): 0.001 ms
+14:18:28.744:      ┃ ┣obs_init_module(mac-videotoolbox): 0.005 ms
+14:18:28.744:      ┃ ┣obs_init_module(mac-virtualcam): 0.003 ms
+14:18:28.744:      ┃ ┣obs_init_module(obs-browser): 45.509 ms
+14:18:28.744:      ┃ ┣obs_init_module(obs-ffmpeg): 0.267 ms
+14:18:28.744:      ┃ ┣obs_init_module(obs-filters): 0.012 ms
+14:18:28.744:      ┃ ┣obs_init_module(obs-outputs): 0.002 ms
+14:18:28.744:      ┃ ┣obs_init_module(obs-transitions): 0.004 ms
+14:18:28.744:      ┃ ┣obs_init_module(obs-vst): 0.001 ms
+14:18:28.744:      ┃ ┣obs_init_module(obs-websocket): 2.795 ms
+14:18:28.744:      ┃ ┣obs_init_module(obs-x264): 0.001 ms
+14:18:28.744:      ┃ ┣obs_init_module(rtmp-services): 0.607 ms
+14:18:28.744:      ┃ ┣obs_init_module(text-freetype2): 0.021 ms
+14:18:28.744:      ┃ ┗obs_init_module(vlc-video): 1.365 ms
+14:18:28.744:      ┣obs_websocket_request_processing: 0.08 ms
+14:18:28.744:      ┣OBSBasic::InitService: 1.115 ms
+14:18:28.744:      ┣OBSBasic::ResetOutputs: 6.781 ms
+14:18:28.744:      ┣OBSBasic::CreateHotkeys: 0.066 ms
+14:18:28.744:      ┣OBSBasic::InitPrimitives: 0.066 ms
+14:18:28.744:      ┗OBSBasic::Load: 1273.42 ms
+14:18:28.744: obs_hotkey_thread(25 ms): min=0 ms, median=0 ms, max=6.459 ms, 99th percentile=0.001 ms, 100% below 25 ms
+14:18:28.744: audio_thread(Audio): min=0.003 ms, median=0.379 ms, max=116.158 ms, 99th percentile=6.474 ms
+14:18:28.744:  ┗receive_audio: min=0.001 ms, median=0.283 ms, max=27.56 ms, 99th percentile=5.097 ms, 0.838531 calls per parent call
+14:18:28.744:    ┣buffer_audio: min=0 ms, median=0.001 ms, max=9.88 ms, 99th percentile=0.01 ms
+14:18:28.744:    ┗do_encode: min=0.101 ms, median=0.28 ms, max=27.558 ms, 99th percentile=5.065 ms
+14:18:28.744:      ┣encode(simple_aac): min=0.093 ms, median=0.274 ms, max=27.551 ms, 99th percentile=4.992 ms
+14:18:28.744:      ┗send_packet: min=0.001 ms, median=0.005 ms, max=11.211 ms, 99th percentile=0.053 ms
+14:18:28.744: obs_graphics_thread(16.6667 ms): min=0.068 ms, median=5.777 ms, max=813.062 ms, 99th percentile=13.584 ms, 99.7946% below 16.667 ms
+14:18:28.744:  ┣tick_sources: min=0 ms, median=0.114 ms, max=812.857 ms, 99th percentile=3.436 ms
+14:18:28.744:  ┣output_frame: min=0.065 ms, median=3.784 ms, max=36.137 ms, 99th percentile=7.437 ms
+14:18:28.744:  ┃ ┣gs_context(video->graphics): min=0.065 ms, median=3.654 ms, max=36.045 ms, 99th percentile=7.263 ms
+14:18:28.744:  ┃ ┃ ┣render_video: min=0.01 ms, median=1.816 ms, max=35.239 ms, 99th percentile=6.206 ms
+14:18:28.744:  ┃ ┃ ┃ ┣render_main_texture: min=0.01 ms, median=1.415 ms, max=34.962 ms, 99th percentile=5.126 ms
+14:18:28.744:  ┃ ┃ ┃ ┣render_convert_texture: min=0.028 ms, median=0.08 ms, max=6.33 ms, 99th percentile=0.409 ms, 0.838609 calls per parent call
+14:18:28.744:  ┃ ┃ ┃ ┗stage_output_texture: min=0.082 ms, median=0.318 ms, max=14.274 ms, 99th percentile=1.5 ms, 0.838609 calls per parent call
+14:18:28.744:  ┃ ┃ ┣gs_flush: min=0.005 ms, median=0.024 ms, max=4.014 ms, 99th percentile=0.346 ms
+14:18:28.744:  ┃ ┃ ┗download_frame: min=0 ms, median=1.36 ms, max=20.019 ms, 99th percentile=3.313 ms, 0.838609 calls per parent call
+14:18:28.744:  ┃ ┗output_video_data: min=0 ms, median=0.115 ms, max=7.155 ms, 99th percentile=0.436 ms, 0.838607 calls per parent call
+14:18:28.744:  ┗render_displays: min=0 ms, median=1.035 ms, max=83.769 ms, 99th percentile=8.019 ms
+14:18:28.744: video_thread(video): min=0.242 ms, median=0.661 ms, max=149.829 ms, 99th percentile=3.852 ms
+14:18:28.744:  ┗receive_video: min=0.241 ms, median=0.66 ms, max=149.828 ms, 99th percentile=3.846 ms
+14:18:28.744:    ┗do_encode: min=0.241 ms, median=0.659 ms, max=149.828 ms, 99th percentile=3.842 ms
+14:18:28.744:      ┣encode(simple_video_stream): min=0.237 ms, median=0.651 ms, max=149.82 ms, 99th percentile=3.812 ms
+14:18:28.744:      ┗send_packet: min=0 ms, median=0.007 ms, max=10.273 ms, 99th percentile=0.052 ms
+14:18:28.744: =================================================
+14:18:28.744: == Profiler Time Between Calls ==================
+14:18:28.744: obs_hotkey_thread(25 ms): min=25.012 ms, median=29.224 ms, max=124.571 ms, 3.94155% within ±2% of 25 ms (0% lower, 96.0584% higher)
+14:18:28.744: obs_graphics_thread(16.6667 ms): min=3.293 ms, median=16.667 ms, max=813.066 ms, 64.8935% within ±2% of 16.667 ms (17.5597% lower, 17.5468% higher)
+14:18:28.744: =================================================
+14:18:28.876: Number of memory leaks: 0
