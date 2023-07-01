@@ -4,33 +4,33 @@ SCRIPTS="$HOME/.dotfiles/.meta/Scripts"
 GIT_SYNC="$HOME/.dotfiles/.meta/Scripts/gitSync.sh"
 
 brewOperation() {
-    printf "\n+++ Updating Homebrew +++"
+    printf "\n+++ Updating Homebrew +++\n"
     brew update
     brew upgrade
     brew cleanup
-    printf "\n+++ Finished homebrew operations +++\n"
+    printf "+++ Finished homebrew operations +++\n\n"
 }
 
 dotfilesOperation() {
-    printf "\n+++ Syncing & stowing .dotfiles repo +++"
+    printf "+++ Syncing & stowing .dotfiles repo +++"
     cd ~/.dotfiles
     $GIT_SYNC
     $SCRIPTS/stow.sh
-    printf "\n+++ Finished dotfiles operations +++\n"
+    printf "+++ Finished dotfiles operations +++\n\n"
 }
 
 reposOperation() {
-    printf "\n+++ Syncing personal repos +++"
+    printf "+++ Syncing personal repos +++"
     $SCRIPTS/personalRepoSync.sh
-    printf "\n+++ Finished syncing personal repo operations +++\n"
+    printf "+++ Finished syncing personal repo operations +++\n\n"
 }
 
 spacemacsOperation() {
-    printf "\n+++ Updating Spacemacs +++"
+    printf "+++ Updating Spacemacs +++"
     cd ~/.emacs.d
     git pull
     cd
-    printf "\n+++ Finished updating Spacemacs +++\n"
+    printf "+++ Finished updating Spacemacs +++\n\n"
 }
 
 machineSynchronize() {
