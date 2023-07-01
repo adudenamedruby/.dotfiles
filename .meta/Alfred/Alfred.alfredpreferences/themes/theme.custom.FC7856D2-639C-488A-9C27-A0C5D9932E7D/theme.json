@@ -14,10 +14,10 @@
         "font" : "Hack Regular Nerd Font Complete Mono",
         "color" : "#5D502EFF"
       },
-      "backgroundSelected" : "#5D502EFF",
+      "backgroundSelected" : "#373D36D1",
       "text" : {
         "size" : 16,
-        "colorSelected" : "#EFCE73FF",
+        "colorSelected" : "#77EC6EFF",
         "font" : "Hack Regular Nerd Font Complete Mono",
         "color" : "#DED9AABD"
       },
@@ -34,14 +34,14 @@
         "size" : 37,
         "colorSelected" : "#000000FF",
         "font" : "Fira Code",
-        "color" : "#F6CE54FF"
+        "color" : "#00F34BFF"
       },
       "background" : "#0508093B",
       "roundness" : 0,
       "paddingVertical" : 2
     },
     "window" : {
-      "color" : "#070C0EE8",
+      "color" : "#001303D1",
       "paddingHorizontal" : 16,
       "width" : 680,
       "borderPadding" : 0,
@@ -50,6 +50,7 @@
       "roundness" : 8,
       "paddingVertical" : 10
     },
+    "credit" : "adudenamedruby",
     "visualEffectMode" : 2,
     "separator" : {
       "color" : "#282B3500",
@@ -59,6 +60,6 @@
       "color" : "#F6CE54FF",
       "thickness" : 2
     },
-    "name" : "Deus Ex v3"
+    "name" : "matrix"
   }
 }

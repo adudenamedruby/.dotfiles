@@ -25,7 +25,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>7DE16EFE-CD99-4904-B18E-8901AA0660B4</string>
+				<string>CA97BFC0-04DB-4A08-A504-AD56163F82B2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -219,7 +219,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>C4643DF2-EB56-42EA-9B68-255781DE3A66</string>
+				<string>7DE16EFE-CD99-4904-B18E-8901AA0660B4</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -362,7 +362,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>CA97BFC0-04DB-4A08-A504-AD56163F82B2</string>
+				<string>C4643DF2-EB56-42EA-9B68-255781DE3A66</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -438,23 +438,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/Visual Studio Code.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>7DE16EFE-CD99-4904-B18E-8901AA0660B4</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -482,6 +465,23 @@
 			<string>14253085-F66C-4D06-8FCA-EAF6C76F2D8D</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/System/Applications/Books.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>CA97BFC0-04DB-4A08-A504-AD56163F82B2</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -702,23 +702,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>paths</key>
-				<array>
-					<string>/System/Applications/Books.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>CA97BFC0-04DB-4A08-A504-AD56163F82B2</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -746,6 +729,23 @@
 			<string>DC6870D2-D009-4CF5-9ECA-EF88854CB58E</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/opt/homebrew/Cellar/emacs-plus@29/29.0.90/Emacs.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>C4643DF2-EB56-42EA-9B68-255781DE3A66</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1436,6 +1436,23 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/iTerm.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>7DE16EFE-CD99-4904-B18E-8901AA0660B4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -1463,23 +1480,6 @@
 			<string>91E35486-02F0-48A0-B71D-9D59F0EF9064</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array>
-					<string>/opt/homebrew/Cellar/emacs-plus@29/29.0.90/Emacs.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>C4643DF2-EB56-42EA-9B68-255781DE3A66</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1963,9 +1963,9 @@
 		<key>7DE16EFE-CD99-4904-B18E-8901AA0660B4</key>
 		<dict>
 			<key>xpos</key>
-			<real>190</real>
+			<real>195</real>
 			<key>ypos</key>
-			<real>25</real>
+			<real>2000</real>
 		</dict>
 		<key>80A32D7F-E799-47AF-BF24-B1DC15200832</key>
 		<dict>
@@ -2049,7 +2049,7 @@
 			<key>xpos</key>
 			<real>195</real>
 			<key>ypos</key>
-			<real>2000</real>
+			<real>635</real>
 		</dict>
 		<key>C8F07787-AA29-4B16-BBAC-2B79E6B3E776</key>
 		<dict>
@@ -2061,9 +2061,9 @@
 		<key>CA97BFC0-04DB-4A08-A504-AD56163F82B2</key>
 		<dict>
 			<key>xpos</key>
-			<real>195</real>
+			<real>190</real>
 			<key>ypos</key>
-			<real>635</real>
+			<real>25</real>
 		</dict>
 		<key>CBD47FE4-44C4-45C3-8625-D6BC066B8745</key>
 		<dict>
