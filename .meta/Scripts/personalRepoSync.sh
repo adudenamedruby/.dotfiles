@@ -9,9 +9,10 @@ do
   if [ -d "$dir" ]
   then
     cd "$dir"
-    echo "Now updating: $dir"
+    printf "\n+++ Now updating: $dir +++"
     $GIT_SYNC
+    printf "\n+++Finished updating $dir +++"
   else
-    echo "Skipping: $dir - directory not found on this machine"
+    echo "\nSkipping: $dir - directory not found on this machine\n"
   fi
 done
