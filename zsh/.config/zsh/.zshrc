@@ -94,3 +94,5 @@ source $(brew --prefix)/share/zsh-you-should-use/you-should-use.plugin.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(starship init zsh)"
+
+[ -f "/Users/adudenamedruby/.ghcup/env" ] && source "/Users/adudenamedruby/.ghcup/env" # ghcup-env
