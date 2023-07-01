@@ -90,9 +90,14 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-you-should-use/you-should-use.plugin.zsh
 
+# Haskell!
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+
 [ -f $HOME/.config/aliases/.aliases ] && source $HOME/.config/aliases/.aliases
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# stop asking for my my password, git!
+/usr/bin/ssh-add --apple-use-keychain ~/.ssh/id_ed25519 2>/dev/null
+
 eval "$(starship init zsh)"
 
-[ -f "/Users/adudenamedruby/.ghcup/env" ] && source "/Users/adudenamedruby/.ghcup/env" # ghcup-env
