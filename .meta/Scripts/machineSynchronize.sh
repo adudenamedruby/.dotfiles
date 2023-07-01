@@ -8,9 +8,7 @@ brewOperation() {
     brew update
     brew upgrade
     brew cleanup
-    echo "\n"
-    echo "+++ Finished homebrew operations +++"
-    echo "\n"
+    echo "\n+++ Finished homebrew operations +++\n"
 }
 
 dotfilesOperation() {
@@ -18,17 +16,13 @@ dotfilesOperation() {
     cd ~/.dotfiles
     $GIT_SYNC
     $SCRIPTS/stow.sh
-    echo "\n"
-    echo "+++ Finished dotfiles operations +++"
-    echo "\n"
+    echo "\n+++ Finished dotfiles operations +++\n"
 }
 
 reposOperation() {
     echo "+++ Syncing personal repos +++"
     $SCRIPTS/personalRepoSync.sh
-    echo "\n"
-    echo "+++ Finished syncing personal repo operations +++"
-    echo "\n"
+    echo "\n+++ Finished syncing personal repo operations +++\n"
 }
 
 spacemacsOperation() {
@@ -36,9 +30,7 @@ spacemacsOperation() {
     cd ~/.emacs.d
     git pull
     cd
-    echo "\n"
-    echo "+++ Finished updating Spacemacs +++"
-    echo "\n"
+    echo "\n+++ Finished updating Spacemacs +++\n"
 }
 
 machineSynchronize() {
@@ -84,7 +76,7 @@ machineSynchronize() {
   fi
 
   if $spacemacs_operation; then
-    spacemacsOperation
+    #spacemacsOperation
   fi
 
   if $repos_operation; then
