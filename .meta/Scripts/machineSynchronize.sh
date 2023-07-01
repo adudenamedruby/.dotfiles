@@ -77,6 +77,7 @@ machineSynchronize() {
 
   if $spacemacs_operation; then
     #spacemacsOperation
+    echo "Skipping Spacemacs for now"
   fi
 
   if $repos_operation; then
