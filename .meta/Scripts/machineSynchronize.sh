@@ -12,7 +12,7 @@ brewOperation() {
 }
 
 dotfilesOperation() {
-    printf "+++ Syncing & stowing .dotfiles repo +++"
+    printf "+++ Syncing & stowing .dotfiles repo +++\n"
     cd ~/.dotfiles
     $GIT_SYNC
     $SCRIPTS/stow.sh
@@ -20,7 +20,7 @@ dotfilesOperation() {
 }
 
 reposOperation() {
-    printf "+++ Syncing personal repos +++"
+    printf "+++ Syncing personal repos +++\n\n"
     $SCRIPTS/personalRepoSync.sh
     printf "+++ Finished syncing personal repo operations +++\n\n"
 }
@@ -69,6 +69,7 @@ machineSynchronize() {
   done
 
   cd
+  printf "\n+++ Beginning Sync Operations +++\n\n"
 
   # Do something with the flags
   if $brew_operation; then
@@ -77,7 +78,7 @@ machineSynchronize() {
 
   if $spacemacs_operation; then
     #spacemacsOperation
-    echo "Skipping Spacemacs for now"
+    printf "Skipping Spacemacs for now\n\n"
   fi
 
   if $repos_operation; then
@@ -88,6 +89,7 @@ machineSynchronize() {
     dotfilesOperation
   fi
 
+  printf "\n+++ Finished Sync Operations +++\n\n"
   cd
 }
 
