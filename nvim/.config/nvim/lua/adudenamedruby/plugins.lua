@@ -1,4 +1,4 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- This file can be loaded by calling `lua require("plugins")` from your init.vim
 
 local fn = vim.fn
 
@@ -25,7 +25,7 @@ vim.cmd [[
     augroup end
 ]]
 
--- Use a protected call so we don't error out on first use
+-- Use a protected call so we don"t error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
     return
@@ -42,22 +42,19 @@ packer.init {
 
 -- Plugins go here!
 return packer.startup(function(use)
-    use 'wbthomason/packer.nvim' -- Packer can manage itself
+    -- Packer managens itself
+    use "wbthomason/packer.nvim" -- Packer can manage itself
+    -- Widely Used dependencies
     use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
     use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
 
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
-        -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
-    }
-
     -- Theme!
     use { "catppuccin/nvim", as = "catppuccin" }
-    -- vim.cmd('colorscheme catppuccin-mocha')
+    -- vim.cmd("colorscheme catppuccin-mocha")
 
-    --use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-    --use('nvim-treesitter/playground')
+    -- Telescope
+    use { "nvim-telescope/telescope.nvim", tag = "0.1.2" }
+    use "nvim-telescope/telescope-media-files.nvim"
 
     -- Autocompletion plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -68,15 +65,34 @@ return packer.startup(function(use)
     use "hrsh7th/cmp-nvim-lua" -- lua completions
     use "saadparwaiz1/cmp_luasnip" -- snippet completions
 
-    -- snippets
+    -- Snippets
     use "L3MON4D3/LuaSnip" --snippet engine
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
     -- LSP
     use "neovim/nvim-lspconfig" -- enable LSP
-    use "williamboman/mason.nvim" -- simple to use language server installer
+    use {
+        "williamboman/mason.nvim", -- simple to use language server installer
+        run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+    }
     use "williamboman/mason-lspconfig.nvim" -- simple to use language server installer
-    use 'jose-elias-alvarez/null-ls.nvim' -- LSP diagnostics and code actions
+    use "jose-elias-alvarez/null-ls.nvim" -- LSP diagnostics and code actions
+
+    -- Treesitter
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+    }
+    use "JoosepAlviste/nvim-ts-context-commentstring"
+
+    -- Autopairs
+    use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+
+    -- Comments
+    use "numToStr/Comment.nvim" -- Easily comment stuff
+
+     -- Git
+    use "lewis6991/gitsigns.nvim"
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

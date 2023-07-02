@@ -18,12 +18,7 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
--- Normal --
--- Better window navigation
-keymap("n", "<leader>wh", "<C-w>h", opts)
-keymap("n", "<leader>wj", "<C-w>j", opts)
-keymap("n", "<leader>wk", "<C-w>k", opts)
-keymap("n", "<leader>wl", "<C-w>l", opts)
+-- Keymaps Begin Here
 
 vim.keymap.set("n", "<leader>pt", vim.cmd.Ex)
 
@@ -33,10 +28,24 @@ vim.keymap.set("n", "<leader>pt", vim.cmd.Ex)
 -- keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 -- keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
--- Navigate buffers
+-- Buffers --
+-- Better navigation
 keymap("n", "<leader>bn", ":bnext<CR>", opts)
 keymap("n", "<leader>bp", ":bprevious<CR>", opts)
 keymap("n", "<leader>bd", ":bdelete<CR>", opts)
+
+-- Telescope Keybindings --
+local telescope = require('telescope.builtin')
+keymap('n', '<leader>ff', telescope.find_files, {})
+keymap('n', '<leader>pf', telescope.find_files, {})
+keymap('n', '<leader>/', telescope.live_grep, {})
+
+-- Terminal --
+-- Better terminal navigation
+-- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
+-- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
+-- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
+-- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -55,9 +64,12 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
--- Terminal --
--- Better terminal navigation
--- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
--- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
--- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
--- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+-- Window navigation
+keymap("n", "<leader>wh", "<C-w>h", opts)
+keymap("n", "<leader>wj", "<C-w>j", opts)
+keymap("n", "<leader>wk", "<C-w>k", opts)
+keymap("n", "<leader>wl", "<C-w>l", opts)
+
+keymap("n", "<leader>wv", ":vs<CR>", opts)
+keymap("n", "<leader>wh", ":sp<CR>", opts)
+keymap("n", "<leader>wd", ":q<CR>", opts)
