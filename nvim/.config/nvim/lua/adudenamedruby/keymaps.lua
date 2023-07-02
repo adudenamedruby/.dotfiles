@@ -20,7 +20,8 @@ vim.g.maplocalleader = " "
 
 -- Keymaps Begin Here
 
-vim.keymap.set("n", "<leader>pt", vim.cmd.Ex)
+-- Nvimtree
+keymap("n", "<leader>pt", ":NvimTreeToggle<cr>", opts)
 
 -- Resize with arrows
 -- keymap("n", "<C-Up>", ":resize +2<CR>", opts)
@@ -71,5 +72,5 @@ keymap("n", "<leader>wk", "<C-w>k", opts)
 keymap("n", "<leader>wl", "<C-w>l", opts)
 
 keymap("n", "<leader>wv", ":vs<CR>", opts)
-keymap("n", "<leader>wh", ":sp<CR>", opts)
+keymap("n", "<leader>ws", ":sp<CR>", opts)
 keymap("n", "<leader>wd", ":q<CR>", opts)
