@@ -53,7 +53,7 @@ return packer.startup(function(use)
     -- vim.cmd("colorscheme catppuccin-mocha")
 
     -- Telescope
-    use { "nvim-telescope/telescope.nvim", tag = "0.1.2" }
+    use { "nvim-telescope/telescope.nvim", tag = "*" }
     use "nvim-telescope/telescope-media-files.nvim"
 
     -- Autocompletion plugins
@@ -97,6 +97,10 @@ return packer.startup(function(use)
     -- Nvim Tree
     use 'kyazdani42/nvim-web-devicons'
     use 'kyazdani42/nvim-tree.lua'
+
+    -- Bufferline
+    use { "akinsho/bufferline.nvim", tag = "*" }
+    use "moll/vim-bbye"
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

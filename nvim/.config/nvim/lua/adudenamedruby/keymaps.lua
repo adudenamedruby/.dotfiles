@@ -33,7 +33,7 @@ keymap("n", "<leader>pt", ":NvimTreeToggle<cr>", opts)
 -- Better navigation
 keymap("n", "<leader>bn", ":bnext<CR>", opts)
 keymap("n", "<leader>bp", ":bprevious<CR>", opts)
-keymap("n", "<leader>bd", ":bdelete<CR>", opts)
+keymap("n", "<leader>bd", ":Bdelete<CR>", opts)
 
 -- Telescope Keybindings --
 local telescope = require('telescope.builtin')

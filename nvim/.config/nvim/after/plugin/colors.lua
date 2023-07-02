@@ -1,6 +1,6 @@
 
 function ColorMyPencils(color)
-    local catppuccin = "catppuccin-mocha"
+    local catppuccin = "catppuccin"
 	color = color or catppuccin
 
     local status_ok, _ = pcall(vim.cmd, "colorscheme " .. color)
