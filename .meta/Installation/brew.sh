@@ -37,6 +37,7 @@ brew install --cask amethyst
 # zsh related things
 brew install zsh-syntax-highlighting
 brew install zsh-autosuggestions
+brew install zsh-you-should-use
 
 # My preferred fonts
 brew tap homebrew/cask-fonts
@@ -49,6 +50,7 @@ brew install --cask font-hack-nerd-font
 # Keyboard related things
 brew install --cask karabiner-elements
 brew install yqrashawn/goku/goku
+softwareupdate --install-rosetta
 
 # ---------------------------------------------
 # Core Utilities
