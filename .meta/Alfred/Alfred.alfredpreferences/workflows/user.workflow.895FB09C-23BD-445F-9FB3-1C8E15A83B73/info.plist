@@ -219,7 +219,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>7DE16EFE-CD99-4904-B18E-8901AA0660B4</string>
+				<string>C0E3053A-AFB0-4505-9D49-077497264953</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1438,7 +1438,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/iTerm.app</string>
+					<string>/Applications/kitty.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1480,6 +1480,23 @@
 			<string>91E35486-02F0-48A0-B71D-9D59F0EF9064</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/iTerm.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>C0E3053A-AFB0-4505-9D49-077497264953</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1963,7 +1980,7 @@
 		<key>7DE16EFE-CD99-4904-B18E-8901AA0660B4</key>
 		<dict>
 			<key>xpos</key>
-			<real>195</real>
+			<real>335</real>
 			<key>ypos</key>
 			<real>2000</real>
 		</dict>
@@ -2043,6 +2060,13 @@
 			<real>35</real>
 			<key>ypos</key>
 			<real>2325</real>
+		</dict>
+		<key>C0E3053A-AFB0-4505-9D49-077497264953</key>
+		<dict>
+			<key>xpos</key>
+			<real>195</real>
+			<key>ypos</key>
+			<real>2000</real>
 		</dict>
 		<key>C4643DF2-EB56-42EA-9B68-255781DE3A66</key>
 		<dict>
