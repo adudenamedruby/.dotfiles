@@ -49,7 +49,7 @@ cheatsheet() {
 alias cheatsheet="cheatsheet"
 
 # ls aliases
-alias ls="lsd -h"
+alias la="lsd -a"
 alias ll="lsd -lh"
 alias lla="lsd -lha"
 
