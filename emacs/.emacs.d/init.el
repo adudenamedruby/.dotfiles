@@ -1,5 +1,8 @@
 (setq inhibit-startup-message t)
 
+;; Always edit symlinked files under VC
+(setq vc-follow-symlinks t)
+
 ;; UI Stuff
 (scroll-bar-mode -1)    ; Disable
 (tool-bar-mode -1)      ; Disable the toolbar    
@@ -7,7 +10,19 @@
 (set-fringe-mode 10)    ; Give some breathing room    
 (menu-bar-mode -1)      ; Disable the menubar
 
-(global-display-line-numbers-mode 1)
+;; set type of line numbering (global variable)
+(setq display-line-numbers-type 'relative) 
+
+;; Electric indent mode messes up with a bunch of languages indenting.
+;; So disable it.
+(setq electric-indent-inhibit t)
+
+;; activate line numbering in all buffers/modes
+(global-display-line-numbers-mode 1) 
+
+;; Activate line numbering in programming modes
+;; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
 (global-visual-line-mode t)
 
 (set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 140)
@@ -39,6 +54,7 @@
   :custom
   (straight-use-package-by-default t))
 
+(setq evil-want-C-u-scroll t)
 (use-package evil
     :init      ;; tweak evil's configuration before loading it
     (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
@@ -53,62 +69,231 @@
     (setq evil-collection-mode-list '(dashboard dired ibuffer))
     (evil-collection-init))
 
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
+
+(use-package evil-commentary
+  :ensure t
+  :config
+  (evil-commentary-mode))
+
+
+;; LION - https://github.com/edkolev/evil-lion
+;;(use-package evil-lion
+;;  :ensure t
+;;  :config
+;;  (evil-lion-mode))
+
+;; Evil-Vimish-Fold - https://github.com/alexmurray/evil-vimish-fold
+;;(use-package evil-vimish-fold
+;;  :ensure
+;;  :after vimish-fold
+;;  :hook ((prog-mode conf-mode text-mode) . evil-vimish-fold-mode))
+
+;; Keybindings
+;; General
 (use-package general
   :config
   (general-evil-setup)
 
   ;; set up 'SPC' as the global leader key
-  (general-create-definer rgb/leader-keys
+  (general-create-definer rubymacs/leader-keys
     :states '(normal insert visual emacs)
+
     :keymaps 'override
     :prefix "SPC" ;; set leader
     :global-prefix "M-SPC") ;; access leader in insert mode
 
-  (rgb/leader-keys
+  (rubymacs/leader-keys
     "SPC" '(:ignore t :wk "M-x")
-    "SPC" '(execute-extended-command :wk "M-x"))
+    "SPC" '(execute-extended-command :wk "M-x")
+    "TAB" '(rubymacs/alternate-buffer :wk "last buffer")
+    "'" '(execute-extended-command :wk "open shell")
+    "*" '(execute-extended-command :wk "search proj w/ input")
+    "/" '(execute-extended-command :wk "search project"))
 
-  (rgb/leader-keys
+  (rubymacs/leader-keys
+    "a" '(:ignore t :wk "applications")
+    "af" '(find-file :wk "Find file"))
+
+  ;; WhichKey buffers
+  (rubymacs/leader-keys
     "b" '(:ignore t :wk "buffer")
     "bb" '(switch-to-buffer :wk "Switch buffer")
     "bd" '(kill-this-buffer :wk "Kill this buffer")
+    "bm" '((lambda ()
+	     (interactive)
+	     (switch-to-buffer " *Message-Log*"))
+	   :wk "Messages buffer")
     "bn" '(next-buffer :wk "Next buffer")
     "bp" '(previous-buffer :wk "Previous buffer")
-    "br" '(revert-buffer :wk "Reload buffer"))
+    "br" '(revert-buffer :wk "Reload buffer")
+    "bs" '(scratch-buffer :wk "Scratch buffer")
+    "bu" '(rubymacs/reopen-killed-buffer :wk "Reopen last killed buffer"))
 
-  (rgb/leader-keys
+  (rubymacs/leader-keys
+    "c" '(:ignore t :wk "compile")
+    "cf" '(find-file :wk "Find file"))
+
+  (rubymacs/leader-keys
+    "e" '(:ignore t :wk "errors")
+    "ef" '(find-file :wk "Find file"))
+
+  ;; WhichKey files
+  (rubymacs/leader-keys
     "f" '(:ignore t :wk "files")
     "ff" '(find-file :wk "Find file"))
+
+  (rubymacs/leader-keys
+    "fe" '(:ignore t :wk "Emacs Files")
+    "fed" '((lambda ()
+	      (interactive)
+	      (find-file "~/.emacs.d/init.el"))
+	    :wk "init.el")
+    "fei" '(
+	    (lambda ()
+	      (interactive)
+	      (find-file "~/.emacs.d/init.el"))
+	    :wk "early-init.el")
+    )
+
+
+  (rubymacs/leader-keys
+    "g" '(:ignore t :wk "git")
+    "gs" '(find-file :wk "Find file"))
+
+  (rubymacs/leader-keys
+    "h" '(:ignore t :wk "help")
+    "hb" '(describe-bindings :wk "describe-bindings")
+    "hf" '(describe-function :wk "describe-function")
+    "hk" '(describe-key :wk "describe-key")
+    "hp" '(describe-package :wk "describe-package")
+    "hv" '(describe-variable :wk "describe-variable"))
+
+  (rubymacs/leader-keys
+    "hm" '(:ignore t :wk "describe modes")
+    "hmM" '(describe-mode :wk "describe-mode")
+    "hmm" '(describe-mode :wk "describe-minor-mode"))
+
+  (rubymacs/leader-keys
+    "j" '(:ignore t :wk "jump/join/split")
+    "jf" '(find-file :wk "Find file"))
+
+  (rubymacs/leader-keys
+    "m" '(:ignore t :wk "major mode")
+    "mf" '(find-file :wk "Find file"))
+
+  (rubymacs/leader-keys
+    "o" '(:ignore t :wk "org")
+    "of" '(find-file :wk "Find file"))
+
+  (rubymacs/leader-keys
+    "u" '(:ignore t :wk "user bindings")
+    "uf" '(find-file :wk "Find file"))
+
+  (rubymacs/leader-keys
+    "p" '(:ignore t :wk "projects")
+    "pf" '(find-file :wk "Find file"))
+
+  (rubymacs/leader-keys
+    "q" '(:ignore t :wk "quit")
+    "qf" '(find-file :wk "Find file"))
+
+  (rubymacs/leader-keys
+    "s" '(:ignore t :wk "search")
+    "ss" '(consult-line :wk "swoop"))
+
+  (rubymacs/leader-keys
+    "t" '(:ignore t :wk "toggles")
+    "tf" '(find-file :wk "Find file"))
+
+  (rubymacs/leader-keys
+    "w" '(:ignore t :wk "window")
+    ;; Window splits
+    "wd" '(evil-window-delete :wk "Delete window")
+    "wn" '(evil-window-new :wk "New window")
+    "ws" '(evil-window-split :wk "Horizontal split window")
+    "wv" '(evil-window-vsplit :wk "Vertical split window")
+    ;; Window motions
+    "wh" '(evil-window-left :wk "Window left")
+    "wj" '(evil-window-down :wk "Window down")
+    "wk" '(evil-window-up :wk "Window up")
+    "wl" '(evil-window-right :wk "Window right")
+    "wn" '(evil-window-next :wk "Go to next window")
+    "wp" '(evil-window-prev :wk "Go to previous window")
+    ;; Move Windows
+    "wH" '(buf-move-left :wk "Buffer move left")
+    "wJ" '(buf-move-down :wk "Buffer move down")
+    "wK" '(buf-move-up :wk "Buffer move up")
+    "wL" '(buf-move-right :wk "Buffer move right"))
+
+  (rubymacs/leader-keys
+    "z" '(:ignore t :wk "zoom")
+    "zf" '(text-scale-adjust :wk "font size"))
   )
 
+(setq 	which-key-idle-delay 0.4)
 (use-package which-key
   :init
     (which-key-mode 1)
   :config
   (setq which-key-side-window-location 'bottom
-	  which-key-sort-order #'which-key-key-order-alpha
-	  which-key-sort-uppercase-first nil
-	  which-key-add-column-padding 1
-	  which-key-max-display-columns nil
-	  which-key-min-display-lines 6
-	  which-key-side-window-slot -10
-	  which-key-side-window-max-height 0.25
-	  which-key-idle-delay 0.8
-	  which-key-max-description-length 25
-	  which-key-allow-imprecise-window-fit t
-	  which-key-separator " → " ))
+	which-key-sort-order #'which-key-key-order-alpha
+	;; which-key-sort-order #'which-key-prefix-then-key-order
+	which-key-sort-uppercase-first nil
+	which-key-add-column-padding 1
+	which-key-max-display-columns nil
+	which-key-min-display-lines 6
+	which-key-side-window-slot -10
+	which-key-side-window-max-height 0.25
+	which-key-max-description-length 25
+	which-key-allow-imprecise-window-fit t
+	which-key-separator " → "
+	which-key-prefix-prefix "+"))
 
+;; Anzu mode
+(use-package anzu
+  :ensure t
+  :init (global-anzu-mode +1))
+
+(use-package evil-anzu
+  :ensure t
+  :after 'evil)
+
+;; Modeline
 (use-package doom-modeline
   :ensure t
-  :init (doom-modeline-mode 1))
+  :init (doom-modeline-mode 1)
+  :config
+  (setq doom-modeline-height 40
+	doom-modeline-project-detection 'auto
+	doom-modeline-icon t
+	doom-modeline-major-mode-icon t
+	doom-modeline-major-mode-color-icon t
+	doom-modeline-buffer-state-icon t
+	doom-modeline-buffer-modification-icon t
+	doom-modeline-time-icon nil
+	doom-modeline-buffer-encoding t
+	doom-modeline-vcs-max-length 15
+	doom-modeline-lsp t
+	doom-modeline-modal-icon t))
 
+(setq nerd-icons-scale-factor 1.3)
 (use-package nerd-icons
+  :ensure t
   :custom
   ;; The Nerd Font you want to use in GUI
   ;; "Symbols Nerd Font Mono" is the default and is recommended
   ;; but you can use any other Nerd Font if you want
   (nerd-icons-font-family "FiraCode Nerd Font"))
 
+(use-package all-the-icons
+  :ensure t
+  :if (display-graphic-p))
+
+;; Themes
 (use-package doom-themes
   :ensure t
   :config
@@ -142,7 +327,7 @@
   ;; (setq vertico-resize t)
 
   ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
-  ;; (setq vertico-cycle t)
+  (setq vertico-cycle t)
   )
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
@@ -188,12 +373,6 @@
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
 
-
-
-
-
-
-
 ;; Enable rich annotations using the Marginalia package
 (use-package marginalia
   :ensure t
@@ -208,67 +387,61 @@
   ;; package.
   (marginalia-mode))
 
-
-
-
-
-
-
-
 ;; Example configuration for Consult
 (use-package consult
   ;; Replace bindings. Lazily loaded due by `use-package'.
   :bind (;; C-c bindings in `mode-specific-map'
-         ("C-c M-x" . consult-mode-command)
-         ("C-c h" . consult-history)
-         ("C-c k" . consult-kmacro)
-         ("C-c m" . consult-man)
-         ("C-c i" . consult-info)
-         ([remap Info-search] . consult-info)
+         ;; ("C-c M-x" . consult-mode-command)
+         ;; ("C-c h" . consult-history)
+         ;; ("C-c k" . consult-kmacro)
+         ;; ("C-c m" . consult-man)
+         ;; ("C-c i" . consult-info)
+         ;; ([remap Info-search] . consult-info)
          ;; C-x bindings in `ctl-x-map'
-         ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
-         ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
-         ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
-         ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
-         ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
-         ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
+         ;; ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+         ;; ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+         ;; ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+         ;; ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+         ;; ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
+         ;; ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
          ;; Custom M-# bindings for fast register access
-         ("M-#" . consult-register-load)
-         ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
-         ("C-M-#" . consult-register)
-         ;; Other custom bindings
-         ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+         ;; ("M-#" . consult-register-load)
+         ;; ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
+         ;; ("C-M-#" . consult-register)
+         ;; ;; Other custom bindings
+         ;; ("M-y" . consult-yank-pop)                ;; orig. yank-pop
          ;; M-g bindings in `goto-map'
-         ("M-g e" . consult-compile-error)
-         ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
-         ("M-g g" . consult-goto-line)             ;; orig. goto-line
-         ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
-         ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
-         ("M-g m" . consult-mark)
-         ("M-g k" . consult-global-mark)
-         ("M-g i" . consult-imenu)
-         ("M-g I" . consult-imenu-multi)
+         ;; ("M-g e" . consult-compile-error)
+         ;; ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
+         ;; ("M-g g" . consult-goto-line)             ;; orig. goto-line
+         ;; ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+         ;; ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
+         ;; ("M-g m" . consult-mark)
+         ;; ("M-g k" . consult-global-mark)
+         ;; ("M-g i" . consult-imenu)
+         ;; ("M-g I" . consult-imenu-multi)
          ;; M-s bindings in `search-map'
-         ("M-s d" . consult-find)
-         ("M-s D" . consult-locate)
-         ("M-s g" . consult-grep)
-         ("M-s G" . consult-git-grep)
-         ("M-s r" . consult-ripgrep)
-         ("M-s l" . consult-line)
-         ("M-s L" . consult-line-multi)
-         ("M-s k" . consult-keep-lines)
-         ("M-s u" . consult-focus-lines)
+         ;; ("M-s d" . consult-find)
+         ;; ("M-s D" . consult-locate)
+         ;; ("M-s g" . consult-grep)
+         ;; ("M-s G" . consult-git-grep)
+         ;; ("M-s r" . consult-ripgrep)
+         ;; ("M-s l" . consult-line)
+         ;; ("M-s L" . consult-line-multi)
+         ;; ("M-s k" . consult-keep-lines)
+         ;; ("M-s u" . consult-focus-lines)
          ;; Isearch integration
-         ("M-s e" . consult-isearch-history)
-         :map isearch-mode-map
-         ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
-         ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
-         ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
-         ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
+         ;; ("M-s e" . consult-isearch-history)
+         ;; :map isearch-mode-map
+         ;; ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
+         ;; ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
+         ;; ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
+         ;; ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
          ;; Minibuffer history
-         :map minibuffer-local-map
-         ("M-s" . consult-history)                 ;; orig. next-matching-history-element
-         ("M-r" . consult-history))                ;; orig. previous-matching-history-element
+         ;; :map minibuffer-local-map
+         ;; ("M-s" . consult-history)                 ;; orig. next-matching-history-element
+         ;; ("M-r" . consult-history)                 ;; orig. previous-matching-history-element
+	 )
 
   ;; Enable automatic preview at point in the *Completions* buffer. This is
   ;; relevant when you use the default completion UI.
@@ -371,6 +544,128 @@
 ;;   :ensure t ; only need to install it, embark loads it after consult if found
 ;;   :hook
 ;;   (embark-collect-mode . consult-preview-at-point-mode))
+;;
+;; iEdit - https://github.com/victorhge/iedit
+;; avy -  https://github.com/abo-abo/av
+
+
+;; Custom functions
+
+(defun rubymacs/alternate-buffer (&optional window)
+  (interactive)
+  (cl-destructuring-bind (buf start pos)
+      (if (bound-and-true-p nil)
+	  (let ((buffer-list (persp-buffer-list))
+		(my-buffer (window-buffer window)))
+	    (seq-find (lambda (it)
+			(and (not (eq (car it) my-buffer))
+			     (member (car it) buffer-list)))
+		      (window-prev-buffers)
+		      (list nil nil nil)))
+	(or (cl-find (window-buffer window) (window-prev-buffers)
+		     :key #'car :test-not #'eq)
+	    (list (other-buffer) nil nil)))
+    (if (not buf)
+	(message "Last buffer not found.")
+      (set-window-buffer-start-and-point window buf start pos))))
+
+
+
+
+;; Moving windows around
+(require 'windmove)
+
+;;;###autoload
+(defun buf-move-up ()
+  "Swap the current buffer and the buffer above the split.
+If there is no split, ie now window above the current one, an
+error is signaled."
+;;  "Switches between the current buffer, and the buffer above the
+;;  split, if possible."
+  (interactive)
+  (let* ((other-win (windmove-find-other-window 'up))
+	 (buf-this-buf (window-buffer (selected-window))))
+    (if (null other-win)
+        (error "No window above this one")
+      ;; swap top with this one
+      (set-window-buffer (selected-window) (window-buffer other-win))
+      ;; move this one to top
+      (set-window-buffer other-win buf-this-buf)
+      (select-window other-win))))
+
+;;;###autoload
+(defun buf-move-down ()
+"Swap the current buffer and the buffer under the split.
+If there is no split, ie now window under the current one, an
+error is signaled."
+  (interactive)
+  (let* ((other-win (windmove-find-other-window 'down))
+	 (buf-this-buf (window-buffer (selected-window))))
+    (if (or (null other-win) 
+            (string-match "^ \\*Minibuf" (buffer-name (window-buffer other-win))))
+        (error "No window under this one")
+      ;; swap top with this one
+      (set-window-buffer (selected-window) (window-buffer other-win))
+      ;; move this one to top
+      (set-window-buffer other-win buf-this-buf)
+      (select-window other-win))))
+
+;;;###autoload
+(defun buf-move-left ()
+"Swap the current buffer and the buffer on the left of the split.
+If there is no split, ie now window on the left of the current
+one, an error is signaled."
+  (interactive)
+  (let* ((other-win (windmove-find-other-window 'left))
+	 (buf-this-buf (window-buffer (selected-window))))
+    (if (null other-win)
+        (error "No left split")
+      ;; swap top with this one
+      (set-window-buffer (selected-window) (window-buffer other-win))
+      ;; move this one to top
+      (set-window-buffer other-win buf-this-buf)
+      (select-window other-win))))
+
+;;;###autoload
+(defun buf-move-right ()
+"Swap the current buffer and the buffer on the right of the split.
+If there is no split, ie now window on the right of the current
+one, an error is signaled."
+  (interactive)
+  (let* ((other-win (windmove-find-other-window 'right))
+	 (buf-this-buf (window-buffer (selected-window))))
+    (if (null other-win)
+        (error "No right split")
+      ;; swap top with this one
+      (set-window-buffer (selected-window) (window-buffer other-win))
+      ;; move this one to top
+      (set-window-buffer other-win buf-this-buf)
+      (select-window other-win))))
+
+
+;; reopening the last killed buffer
+(defvar rubymacs--killed-buffer-list nil
+  "List of recently killed buffers.")
+
+(defun rubymacs/add-buffer-to-killed-list ()
+  "If buffer is associated with a file name, add that file
+to the `killed-buffer-list` when killing the buffer."
+  (when buffer-file-name
+    (push buffer-file-name rubymacs--killed-buffer-list)))
+
+(add-hook 'kill-buffer-hook #'rubymacs/add-buffer-to-killed-list)
+
+(defun rubymacs/reopen-killed-buffer ()
+  "Reopen the most recently killed file buffer, if one exists."
+  (interactive)
+  (when rubymacs--killed-buffer-list
+    (find-file (pop rubymacs--killed-buffer-list))))
+
+
+
+
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -384,3 +679,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
