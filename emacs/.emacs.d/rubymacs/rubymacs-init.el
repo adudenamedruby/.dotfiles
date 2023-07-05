@@ -158,7 +158,8 @@
   ;; WhichKey files
   (rubymacs/leader-keys
     "f" '(:ignore t :wk "files")
-    "ff" '(find-file :wk "Find file"))
+    "f." '(find-file-at-point :wk "find-file-at-point")
+    "ff" '(find-file :wk "find-file"))
 
   (rubymacs/leader-keys
     "fe" '(:ignore t :wk "Emacs Files")
