@@ -10,15 +10,25 @@
 (set-fringe-mode 10)    ; Give some breathing room    
 (menu-bar-mode -1)      ; Disable the menubar
 
+;; Line Numbering
 ;; set type of line numbering (global variable)
 (setq display-line-numbers-type 'relative) 
+
+;; activate line numbering in all buffers/modes
+(global-display-line-numbers-mode 1) 
+
+(dolist (mode '(;;org-mode-hook
+		term-mode-hook
+		eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+;; Columns!
+(column-number-mode)
 
 ;; Electric indent mode messes up with a bunch of languages indenting.
 ;; So disable it.
 (setq electric-indent-inhibit t)
 
-;; activate line numbering in all buffers/modes
-(global-display-line-numbers-mode 1) 
 
 ;; Activate line numbering in programming modes
 ;; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
@@ -54,6 +64,11 @@
   :custom
   (straight-use-package-by-default t))
 
+(setq use-package-always-ensure t)
+
+(setq evil-ex-search-persistent-highlight t)
+;; (setq evil-search-module 'evil-anzu)
+
 (setq evil-want-C-u-scroll t)
 (use-package evil
     :init      ;; tweak evil's configuration before loading it
@@ -70,25 +85,24 @@
     (evil-collection-init))
 
 (use-package evil-surround
-  :ensure t
+  
   :config
   (global-evil-surround-mode 1))
 
 (use-package evil-commentary
-  :ensure t
+  
   :config
   (evil-commentary-mode))
 
 
 ;; LION - https://github.com/edkolev/evil-lion
 ;;(use-package evil-lion
-;;  :ensure t
+;;  
 ;;  :config
 ;;  (evil-lion-mode))
 
 ;; Evil-Vimish-Fold - https://github.com/alexmurray/evil-vimish-fold
 ;;(use-package evil-vimish-fold
-;;  :ensure
 ;;  :after vimish-fold
 ;;  :hook ((prog-mode conf-mode text-mode) . evil-vimish-fold-mode))
 
@@ -166,11 +180,13 @@
 
   (rubymacs/leader-keys
     "h" '(:ignore t :wk "help")
+    "h." '(helpful-at-point :wk "helpful-at-point")
     "hb" '(describe-bindings :wk "describe-bindings")
-    "hf" '(describe-function :wk "describe-function")
-    "hk" '(describe-key :wk "describe-key")
+    "hc" '(helpful-command :wk "describe-command")
+    "hf" '(helpful-callable :wk "describe-function")
+    "hk" '(helpful-key :wk "describe-key")
     "hp" '(describe-package :wk "describe-package")
-    "hv" '(describe-variable :wk "describe-variable"))
+    "hv" '(helpful-variable :wk "describe-variable"))
 
   (rubymacs/leader-keys
     "hm" '(:ignore t :wk "describe modes")
@@ -255,16 +271,20 @@
 
 ;; Anzu mode
 (use-package anzu
-  :ensure t
+  
   :init (global-anzu-mode +1))
 
 (use-package evil-anzu
-  :ensure t
+  
   :after 'evil)
 
 ;; Modeline
+
+(use-package minions
+  :hook (doom-modeline-mode . minions-mode))
+
 (use-package doom-modeline
-  :ensure t
+  
   :init (doom-modeline-mode 1)
   :config
   (setq doom-modeline-height 40
@@ -282,7 +302,7 @@
 
 (setq nerd-icons-scale-factor 1.3)
 (use-package nerd-icons
-  :ensure t
+  
   :custom
   ;; The Nerd Font you want to use in GUI
   ;; "Symbols Nerd Font Mono" is the default and is recommended
@@ -290,12 +310,11 @@
   (nerd-icons-font-family "FiraCode Nerd Font"))
 
 (use-package all-the-icons
-  :ensure t
+  
   :if (display-graphic-p))
 
 ;; Themes
 (use-package doom-themes
-  :ensure t
   :config
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
@@ -327,8 +346,7 @@
   ;; (setq vertico-resize t)
 
   ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
-  (setq vertico-cycle t)
-  )
+  (setq vertico-cycle t))
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
@@ -360,11 +378,16 @@
   ;;       #'command-completion-default-include-p)
 
   ;; Enable recursive minibuffers
-  (setq enable-recursive-minibuffers t))
+  (setq enable-recursive-minibuffers t)
+
+  ;; Focus the help window when bringing it up, so that I can quit it easily
+  (setq help-window-select t)
+
+  )
 
 ;; Optionally use the `orderless' completion style.
 (use-package orderless
-  :ensure t
+  
   :init
   ;; Configure a custom style dispatcher (see the Consult wiki)
   ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
@@ -375,7 +398,7 @@
 
 ;; Enable rich annotations using the Marginalia package
 (use-package marginalia
-  :ensure t
+  
   ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
   ;; available in the *Completions* buffer, add it to the
   ;; `completion-list-mode-map'.
@@ -514,7 +537,7 @@
 
 
 ;; (use-package embark
-;;   :ensure t
+;;   
 ;;
 ;;   :bind
 ;;   (("C-." . embark-act)         ;; pick some comfortable binding
@@ -541,7 +564,7 @@
 ;;
 ;; ;; Consult users will also want the embark-consult package.
 ;; (use-package embark-consult
-;;   :ensure t ; only need to install it, embark loads it after consult if found
+;;    ; only need to install it, embark loads it after consult if found
 ;;   :hook
 ;;   (embark-collect-mode . consult-preview-at-point-mode))
 ;;
@@ -662,9 +685,12 @@ to the `killed-buffer-list` when killing the buffer."
     (find-file (pop rubymacs--killed-buffer-list))))
 
 
+;; LISP rainbow delimiters!
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
 
-
-
+(use-package helpful
+  )
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
