@@ -28,7 +28,7 @@
                     "-name" "*.eln.tmp" "-size" "0" "-delete"))))
 
 ;; Defer garbage collection further back in the startup process
-(setq gc-cons-threshold most-positive-fixnum)
+;; (setq gc-cons-threshold most-positive-fixnum)
 
 ;; Disable Emacs 27's automatic package.el initialization before the init.el
 ;; file is loaded. I use straight.el instead of package.el.

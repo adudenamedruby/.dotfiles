@@ -164,7 +164,7 @@
     "fe" '(:ignore t :wk "Emacs Files")
     "fed" '((lambda ()
 	      (interactive)
-	      (find-file "~/.emacs.d/init.el"))
+	      (find-file "~/.emacs.d/rubymacs/rubymacs-init.el"))
 	    :wk "init.el")
     "fei" '(
 	    (lambda ()
@@ -689,8 +689,10 @@ to the `killed-buffer-list` when killing the buffer."
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-(use-package helpful
-  )
+(use-package helpful)
+
+;; (setq gc-cons-threshold 16777216
+;;       gc-cons-percentage 0.1)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
