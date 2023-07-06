@@ -71,18 +71,18 @@
 
 (setq evil-want-C-u-scroll t)
 (use-package evil
-    :init      ;; tweak evil's configuration before loading it
-    (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-    (setq evil-want-keybinding nil)
-    (setq evil-vsplit-window-right t)
-    (setq evil-split-window-below t)
-    (evil-mode))
+  :init      ;; tweak evil's configuration before loading it
+  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+  (setq evil-want-keybinding nil)
+  (setq evil-vsplit-window-right t)
+  (setq evil-split-window-below t)
+  (evil-mode))
 
 (use-package evil-collection
-    :after evil
-    :config
-    (setq evil-collection-mode-list '(dashboard dired ibuffer))
-    (evil-collection-init))
+  :after evil
+  :config
+  (setq evil-collection-mode-list '(dashboard dired ibuffer))
+  (evil-collection-init))
 
 (use-package evil-surround
   
@@ -254,7 +254,7 @@
 (setq 	which-key-idle-delay 0.4)
 (use-package which-key
   :init
-    (which-key-mode 1)
+  (which-key-mode 1)
   :config
   (setq which-key-side-window-location 'bottom
 	which-key-sort-order #'which-key-key-order-alpha
@@ -333,7 +333,17 @@
   (doom-themes-org-config))
 
 ;; Enable vertico
- (use-package vertico
+(defun rubymacs/minibuffer-backwards-kill (arg)
+  "When minibuffer is completing a file name, delete up to parent
+folder; otherwise, delete a character backwards."
+  (interactive "p")
+  (if minibuffer-completing-file-name
+      (if (string-match-p "/." (minibuffer-contents))
+	  (zap-up-to-char (- arg) ?/)
+	(delete-minibuffer-contents))
+    (delete-backwards-char arg)))
+
+(use-package vertico
   :init
   (vertico-mode)
 
@@ -347,7 +357,10 @@
   ;; (setq vertico-resize t)
 
   ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
-  (setq vertico-cycle t))
+  (setq vertico-cycle t)
+
+  :bind (:map minibuffer-local-map
+	      ("C-h" . rubymacs/minibuffer-backwards-kill)))
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
@@ -404,7 +417,7 @@
   ;; available in the *Completions* buffer, add it to the
   ;; `completion-list-mode-map'.
   :bind (:map minibuffer-local-map
-         ("M-A" . marginalia-cycle))
+              ("M-A" . marginalia-cycle))
   :init
   ;; Marginalia must be actived in the :init section of use-package such that
   ;; the mode gets enabled right away. Note that this forces loading the
@@ -604,8 +617,8 @@
   "Swap the current buffer and the buffer above the split.
 If there is no split, ie now window above the current one, an
 error is signaled."
-;;  "Switches between the current buffer, and the buffer above the
-;;  split, if possible."
+  ;;  "Switches between the current buffer, and the buffer above the
+  ;;  split, if possible."
   (interactive)
   (let* ((other-win (windmove-find-other-window 'up))
 	 (buf-this-buf (window-buffer (selected-window))))
@@ -619,7 +632,7 @@ error is signaled."
 
 ;;;###autoload
 (defun buf-move-down ()
-"Swap the current buffer and the buffer under the split.
+  "Swap the current buffer and the buffer under the split.
 If there is no split, ie now window under the current one, an
 error is signaled."
   (interactive)
@@ -636,7 +649,7 @@ error is signaled."
 
 ;;;###autoload
 (defun buf-move-left ()
-"Swap the current buffer and the buffer on the left of the split.
+  "Swap the current buffer and the buffer on the left of the split.
 If there is no split, ie now window on the left of the current
 one, an error is signaled."
   (interactive)
@@ -652,7 +665,7 @@ one, an error is signaled."
 
 ;;;###autoload
 (defun buf-move-right ()
-"Swap the current buffer and the buffer on the right of the split.
+  "Swap the current buffer and the buffer on the right of the split.
 If there is no split, ie now window on the right of the current
 one, an error is signaled."
   (interactive)
