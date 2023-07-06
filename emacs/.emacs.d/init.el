@@ -6,5 +6,5 @@
 
 ;; Always load newest byte code
 (setq load-prefer-newer t)
-(load (expand-file-name "rubymacs/rubymacs-init.el"
+(load (expand-file-name "synthmacs/synthmacs-init.el"
                         (file-name-directory load-file-name)))

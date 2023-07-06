@@ -1,103 +1,43 @@
-(setq inhibit-startup-message t)
+(defun display-startup-echo-area-message ()
+  "Display startup echo area message."
+  (message "SynthMacs initialized in %s" (emacs-init-time)))
 
-;; Always edit symlinked files under VC
-(setq vc-follow-symlinks t)
+(message "SynthMacs is powering up, please be patient...")
 
-;; UI Stuff
-(scroll-bar-mode -1)    ; Disable
-(tool-bar-mode -1)      ; Disable the toolbar    
-(tooltip-mode -1)       ; Disable tooltips       
-(set-fringe-mode 10)    ; Give some breathing room    
-(menu-bar-mode -1)      ; Disable the menubar
+(defun synthmacs-recursive-add-to-load-path (dir)
+  "Add DIR and all its sub-directories to `load-path'."
+  (add-to-list 'load-path dir)
+  (dolist (f (directory-files dir))
+    (let ((name (expand-file-name f dir)))
+      (when (and (file-directory-p name)
+                 (not (string-prefix-p "." f)))
+        (synthmacs-recursive-add-to-load-path name)))))
 
-;; Line Numbering
-;; set type of line numbering (global variable)
-(setq display-line-numbers-type 'relative) 
+;; Setup basic paths.
+(defvar synthmacs-dir (expand-file-name (file-name-directory load-file-name))
+  "Root directory of SynthMacs configuration files.")
 
-;; activate line numbering in all buffers/modes
-(global-display-line-numbers-mode 1) 
+(synthmacs-recursive-add-to-load-path synthmacs-dir)
 
-(dolist (mode '(;;org-mode-hook
-		term-mode-hook
-		eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+(require 'synthmacs-general-settings)
+(require 'synthmacs-straight)
+(require 'synthmacs-general)
+(require 'synthmacs-evil)
+(require 'synthmacs-keybindings)
 
-;; Columns!
-(column-number-mode)
-
-;; Electric indent mode messes up with a bunch of languages indenting.
-;; So disable it.
-(setq electric-indent-inhibit t)
+(recentf-mode 1)
+(setq recentf-max-menu-items 10)
+(setq recentf-max-saved-items 10)
 
 
-;; Activate line numbering in programming modes
-;; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
-
-(global-visual-line-mode t)
-
-(set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 140)
-
-;; Make ESC quit prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
-;; Install straight.el
-(setq straight-repository-branch "develop")
-(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      (bootstrap-version 6))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-	(url-retrieve-synchronously
-	 "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-	 'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
-
-;; Install use-package
-(straight-use-package 'use-package)
-
-;; Configure use-package to use straight.el by default so you no
-;; longer have to do :straight t to tell use-pacage to use straight
-(use-package straight
-  :custom
-  (straight-use-package-by-default t))
-
-(setq use-package-always-ensure t)
 
 (setq evil-ex-search-persistent-highlight t)
 ;; (setq evil-search-module 'evil-anzu)
 
-(setq evil-want-C-u-scroll t)
-(use-package evil
-  :init      ;; tweak evil's configuration before loading it
-  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-  (setq evil-want-keybinding nil)
-  (setq evil-vsplit-window-right t)
-  (setq evil-split-window-below t)
-  (evil-mode))
-
-(use-package evil-collection
-  :after evil
-  :config
-  (setq evil-collection-mode-list '(dashboard dired ibuffer))
-  (evil-collection-init))
-
-(use-package evil-surround
-  
-  :config
-  (global-evil-surround-mode 1))
-
-(use-package evil-commentary
-  
-  :config
-  (evil-commentary-mode))
 
 
 ;; LION - https://github.com/edkolev/evil-lion
 ;;(use-package evil-lion
-;;  
 ;;  :config
 ;;  (evil-lion-mode))
 
@@ -107,150 +47,6 @@
 ;;  :hook ((prog-mode conf-mode text-mode) . evil-vimish-fold-mode))
 
 ;; Keybindings
-;; General
-(use-package general
-  :config
-  (general-evil-setup)
-
-  ;; set up 'SPC' as the global leader key
-  (general-create-definer rubymacs/leader-keys
-    :states '(normal insert visual emacs)
-
-    :keymaps 'override
-    :prefix "SPC" ;; set leader
-    :global-prefix "M-SPC") ;; access leader in insert mode
-
-  (rubymacs/leader-keys
-    "SPC" '(:ignore t :wk "M-x")
-    "SPC" '(execute-extended-command :wk "M-x")
-    "TAB" '(rubymacs/alternate-buffer :wk "last buffer")
-    "'" '(execute-extended-command :wk "open shell")
-    "*" '(execute-extended-command :wk "search proj w/ input")
-    "/" '(execute-extended-command :wk "search project"))
-
-  (rubymacs/leader-keys
-    "a" '(:ignore t :wk "applications")
-    "af" '(find-file :wk "Find file"))
-
-  ;; WhichKey buffers
-  (rubymacs/leader-keys
-    "b" '(:ignore t :wk "buffer")
-    "bb" '(switch-to-buffer :wk "Switch buffer")
-    "bd" '(kill-this-buffer :wk "Kill this buffer")
-    "bm" '((lambda ()
-	     (interactive)
-	     (switch-to-buffer " *Message-Log*"))
-	   :wk "Messages buffer")
-    "bn" '(next-buffer :wk "Next buffer")
-    "bp" '(previous-buffer :wk "Previous buffer")
-    "br" '(revert-buffer :wk "Reload buffer")
-    "bs" '(scratch-buffer :wk "Scratch buffer")
-    "bu" '(rubymacs/reopen-killed-buffer :wk "Reopen last killed buffer"))
-
-  (rubymacs/leader-keys
-    "c" '(:ignore t :wk "compile")
-    "cf" '(find-file :wk "Find file"))
-
-  (rubymacs/leader-keys
-    "e" '(:ignore t :wk "errors")
-    "ef" '(find-file :wk "Find file"))
-
-  ;; WhichKey files
-  (rubymacs/leader-keys
-    "f" '(:ignore t :wk "files")
-    "f." '(find-file-at-point :wk "find-file-at-point")
-    "ff" '(find-file :wk "find-file"))
-
-  (rubymacs/leader-keys
-    "fe" '(:ignore t :wk "Emacs Files")
-    "fed" '((lambda ()
-	      (interactive)
-	      (find-file "~/.emacs.d/rubymacs/rubymacs-init.el"))
-	    :wk "init.el")
-    "fei" '(
-	    (lambda ()
-	      (interactive)
-	      (find-file "~/.emacs.d/init.el"))
-	    :wk "early-init.el")
-    )
-
-
-  (rubymacs/leader-keys
-    "g" '(:ignore t :wk "git")
-    "gs" '(find-file :wk "Find file"))
-
-  (rubymacs/leader-keys
-    "h" '(:ignore t :wk "help")
-    "h." '(helpful-at-point :wk "helpful-at-point")
-    "hb" '(describe-bindings :wk "describe-bindings")
-    "hc" '(helpful-command :wk "describe-command")
-    "hf" '(helpful-callable :wk "describe-function")
-    "hk" '(helpful-key :wk "describe-key")
-    "hp" '(describe-package :wk "describe-package")
-    "hv" '(helpful-variable :wk "describe-variable"))
-
-  (rubymacs/leader-keys
-    "hm" '(:ignore t :wk "describe modes")
-    "hmM" '(describe-mode :wk "describe-mode")
-    "hmm" '(describe-mode :wk "describe-minor-mode"))
-
-  (rubymacs/leader-keys
-    "j" '(:ignore t :wk "jump/join/split")
-    "jf" '(find-file :wk "Find file"))
-
-  (rubymacs/leader-keys
-    "m" '(:ignore t :wk "major mode")
-    "mf" '(find-file :wk "Find file"))
-
-  (rubymacs/leader-keys
-    "o" '(:ignore t :wk "org")
-    "of" '(find-file :wk "Find file"))
-
-  (rubymacs/leader-keys
-    "u" '(:ignore t :wk "user bindings")
-    "uf" '(find-file :wk "Find file"))
-
-  (rubymacs/leader-keys
-    "p" '(:ignore t :wk "projects")
-    "pf" '(find-file :wk "Find file"))
-
-  (rubymacs/leader-keys
-    "q" '(:ignore t :wk "quit")
-    "qf" '(find-file :wk "Find file"))
-
-  (rubymacs/leader-keys
-    "s" '(:ignore t :wk "search")
-    "ss" '(consult-line :wk "swoop"))
-
-  (rubymacs/leader-keys
-    "t" '(:ignore t :wk "toggles")
-    "tf" '(find-file :wk "Find file"))
-
-  (rubymacs/leader-keys
-    "w" '(:ignore t :wk "window")
-    ;; Window splits
-    "wd" '(evil-window-delete :wk "Delete window")
-    "wn" '(evil-window-new :wk "New window")
-    "ws" '(evil-window-split :wk "Horizontal split window")
-    "wv" '(evil-window-vsplit :wk "Vertical split window")
-    ;; Window motions
-    "wh" '(evil-window-left :wk "Window left")
-    "wj" '(evil-window-down :wk "Window down")
-    "wk" '(evil-window-up :wk "Window up")
-    "wl" '(evil-window-right :wk "Window right")
-    "wn" '(evil-window-next :wk "Go to next window")
-    "wp" '(evil-window-prev :wk "Go to previous window")
-    ;; Move Windows
-    "wH" '(buf-move-left :wk "Buffer move left")
-    "wJ" '(buf-move-down :wk "Buffer move down")
-    "wK" '(buf-move-up :wk "Buffer move up")
-    "wL" '(buf-move-right :wk "Buffer move right"))
-
-  (rubymacs/leader-keys
-    "z" '(:ignore t :wk "zoom")
-    "zf" '(text-scale-adjust :wk "font size"))
-  )
-
 (setq 	which-key-idle-delay 0.4)
 (use-package which-key
   :init
@@ -272,11 +68,9 @@
 
 ;; Anzu mode
 (use-package anzu
-  
   :init (global-anzu-mode +1))
 
 (use-package evil-anzu
-  
   :after 'evil)
 
 ;; Modeline
@@ -285,7 +79,6 @@
   :hook (doom-modeline-mode . minions-mode))
 
 (use-package doom-modeline
-  
   :init (doom-modeline-mode 1)
   :config
   (setq doom-modeline-height 40
@@ -303,7 +96,6 @@
 
 (setq nerd-icons-scale-factor 1.3)
 (use-package nerd-icons
-  
   :custom
   ;; The Nerd Font you want to use in GUI
   ;; "Symbols Nerd Font Mono" is the default and is recommended
@@ -311,7 +103,6 @@
   (nerd-icons-font-family "FiraCode Nerd Font"))
 
 (use-package all-the-icons
-  
   :if (display-graphic-p))
 
 ;; Themes
@@ -332,8 +123,12 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
+(use-package solaire-mode
+  :init
+  (solaire-global-mode +1))
+
 ;; Enable vertico
-(defun rubymacs/minibuffer-backwards-kill (arg)
+(defun synthmacs/minibuffer-backwards-kill (arg)
   "When minibuffer is completing a file name, delete up to parent
 folder; otherwise, delete a character backwards."
   (interactive "p")
@@ -360,7 +155,7 @@ folder; otherwise, delete a character backwards."
   (setq vertico-cycle t)
 
   :bind (:map minibuffer-local-map
-	      ("C-h" . rubymacs/minibuffer-backwards-kill)))
+	      ("C-h" . synthmacs/minibuffer-backwards-kill)))
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
@@ -401,7 +196,6 @@ folder; otherwise, delete a character backwards."
 
 ;; Optionally use the `orderless' completion style.
 (use-package orderless
-  
   :init
   ;; Configure a custom style dispatcher (see the Consult wiki)
   ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
@@ -412,12 +206,6 @@ folder; otherwise, delete a character backwards."
 
 ;; Enable rich annotations using the Marginalia package
 (use-package marginalia
-  
-  ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
-  ;; available in the *Completions* buffer, add it to the
-  ;; `completion-list-mode-map'.
-  :bind (:map minibuffer-local-map
-              ("M-A" . marginalia-cycle))
   :init
   ;; Marginalia must be actived in the :init section of use-package such that
   ;; the mode gets enabled right away. Note that this forces loading the
@@ -538,12 +326,14 @@ folder; otherwise, delete a character backwards."
   ;;;; 3. locate-dominating-file
   ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
   ;;;; 4. projectile.el (projectile-project-root)
-  ;; (autoload 'projectile-project-root "projectile")
+  (autoload 'projectile-project-root "projectile")
   ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
   ;;;; 5. No project support
   ;; (setq consult-project-function nil)
   )
 
+(synthmacs/leader-keys
+  "fr" '(consult-recent-file :wk "recent files"))
 
 
 
@@ -581,14 +371,80 @@ folder; otherwise, delete a character backwards."
 ;;    ; only need to install it, embark loads it after consult if found
 ;;   :hook
 ;;   (embark-collect-mode . consult-preview-at-point-mode))
-;;
+
+
+
+
+
+
+
+
+
+
+
 ;; iEdit - https://github.com/victorhge/iedit
 ;; avy -  https://github.com/abo-abo/av
 
 
+
+
+
+
+
+
+(use-package hydra)
+
+(defhydra hydra/text-scale (:timeout 7)
+  "scale text"
+  ("+" text-scale-increase "in")
+  ("-" text-scale-decrease "out")
+  ("q" nil "quit" :exit t))
+(synthmacs/leader-keys
+  "tf" '(hydra/text-scale/body :wk "font size"))
+
+;; Buffer menu
+;; (defhydra hydra/buffer-menu (:color pink
+;;                              :hint nil)
+;;   "
+;; ^Mark^             ^Unmark^           ^Actions^          ^Search
+;; ^^^^^^^^-----------------------------------------------------------------
+;; _m_: mark          _u_: unmark        _x_: execute       _R_: re-isearch
+;; _s_: save          _U_: unmark up     _b_: bury          _I_: isearch
+;; _d_: delete        ^ ^                _g_: refresh       _O_: multi-occur
+;; _D_: delete up     ^ ^                _T_: files only: % -28`Buffer-menu-files-only
+;; _~_: modified
+;; "
+;;   ("m" Buffer-menu-mark)
+;;   ("u" Buffer-menu-unmark)
+;;   ("U" Buffer-menu-backup-unmark)
+;;   ("d" Buffer-menu-delete)
+;;   ("D" Buffer-menu-delete-backwards)
+;;   ("s" Buffer-menu-save)
+;;   ("~" Buffer-menu-not-modified)
+;;   ("x" Buffer-menu-execute)
+;;   ("b" Buffer-menu-bury)
+;;   ("g" revert-buffer)
+;;   ("T" Buffer-menu-toggle-files-only)
+;;   ("O" Buffer-menu-multi-occur :color blue)
+;;   ("I" Buffer-menu-isearch-buffers :color blue)
+;;   ("R" Buffer-menu-isearch-buffers-regexp :color blue)
+;;   ("c" nil "cancel")
+;;   ("v" Buffer-menu-select "select" :color blue)
+;;   ("o" Buffer-menu-other-window "other-window" :color blue)
+;;   ("q" quit-window "quit" :color blue))
+
+;; (synthmacs/leader-keys
+;;   "bl" '(buffer-menu :wk "buffer list"))
+
+;; ;; More keymaps
+;; (general-define-key
+;;  :keymaps 'Buffer-menu-mode-map
+;;  "C-?" 'hydra/buffer-menu/body)
+
+
 ;; Custom functions
 
-(defun rubymacs/alternate-buffer (&optional window)
+(defun synthmacs/alternate-buffer (&optional window)
   (interactive)
   (cl-destructuring-bind (buf start pos)
       (if (bound-and-true-p nil)
@@ -607,7 +463,23 @@ folder; otherwise, delete a character backwards."
       (set-window-buffer-start-and-point window buf start pos))))
 
 
-
+;; (defun synthmacs/delete-current-buffer-file ()
+;;   "Removes the file connected to the current buffer, and kills the buffer."
+;;   (interactive)
+;;   (let ((filename (buffer-file-name))
+;; 	(buffer (current-buffer))
+;; 	(name (buffer-name)))
+;;     (if (not (and filename (file-exists-p filename)))
+;; 	(ido-kill-buffer)
+;;       (if (yes-or-no-p (format "Are you sure you want to delet this file: '%s'?" name))
+;; 	  (progn
+;; 	    (delete-file filename t)
+;; 	    (kill-buffer buffer)
+;; 	    (when (and (synthmacs/packaged-used-p 'projectile)
+;; 		       (projectile-project-p))
+;; 	      (call-interactively #'projectile-invalidate-cache))
+;; 	    (message "File deleted: '%s'" filename))
+;; 	(message "Cancelled file deletion")))))
 
 ;; Moving windows around
 (require 'windmove)
@@ -681,44 +553,87 @@ one, an error is signaled."
 
 
 ;; reopening the last killed buffer
-(defvar rubymacs--killed-buffer-list nil
+(defvar synthmacs--killed-buffer-list nil
   "List of recently killed buffers.")
 
-(defun rubymacs/add-buffer-to-killed-list ()
+(defun synthmacs/add-buffer-to-killed-list ()
   "If buffer is associated with a file name, add that file
 to the `killed-buffer-list` when killing the buffer."
   (when buffer-file-name
-    (push buffer-file-name rubymacs--killed-buffer-list)))
+    (push buffer-file-name synthmacs--killed-buffer-list)))
 
-(add-hook 'kill-buffer-hook #'rubymacs/add-buffer-to-killed-list)
+(add-hook 'kill-buffer-hook #'synthmacs/add-buffer-to-killed-list)
 
-(defun rubymacs/reopen-killed-buffer ()
+(defun synthmacs/reopen-killed-buffer ()
   "Reopen the most recently killed file buffer, if one exists."
   (interactive)
-  (when rubymacs--killed-buffer-list
-    (find-file (pop rubymacs--killed-buffer-list))))
+  (when synthmacs--killed-buffer-list
+    (find-file (pop synthmacs--killed-buffer-list))))
 
 
 ;; LISP rainbow delimiters!
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
+
+
+;; Helpful
 (use-package helpful)
+
+(synthmacs/leader-keys
+  "h." '(helpful-at-point :wk "helpful-at-point")
+  "hb" '(describe-bindings :wk "describe-bindings")
+  "hc" '(helpful-command :wk "describe-command")
+  "hf" '(helpful-callable :wk "describe-function")
+  "hk" '(helpful-key :wk "describe-key")
+  "hp" '(describe-package :wk "describe-package")
+  "hv" '(helpful-variable :wk "describe-variable"))
+
+
+
+;; ripgrep
+(use-package rg
+  :ensure-system-package rg)
+
+
+;; Projectile
+(use-package projectile
+  :diminish projectile-mode
+  :custom ((projectile-completion-system 'auto))
+  :init
+  (projectile-mode +1)
+  ;; NOTE: Set this to the folder where you keep your Git repos!
+  (when (file-directory-p "~/Developer")
+    (setq projectile-project-search-path '("~/Developer")))
+  (setq projectile-switch-project-action #'projectile-dired))
+
+(use-package consult-projectile)
+
+(synthmacs/leader-keys
+  "pf" '(projectile-find-file :wk "projectile-find-file")
+  "pk" '(projectile-kill-buffers :wk "projectile-kill-buffers")
+  "pp" '(projectile-switch-project :wk "projectile-switch-project")
+  "pr" '(projectile-recentf :wk "projectile-recentf")
+  "pm" '(projectile-command-map :wk "projectile menu"))
+
+
+
+
+
+
+;; magit
+(use-package magit)
+  ;; :custom
+  ;; (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+
+(synthmacs/leader-keys
+  "gs" '(magit-status :wk "magit-status"))
+
 
 ;; (setq gc-cons-threshold 16777216
 ;;       gc-cons-percentage 0.1)))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("570263442ce6735821600ec74a9b032bc5512ed4539faf61168f2fdf747e0668" default)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
+
+
+(provide 'synthmacs-init)
