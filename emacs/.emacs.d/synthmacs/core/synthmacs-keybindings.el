@@ -4,6 +4,7 @@
 ;; M-x bindingns
 (synthmacs/leader-keys
   "SPC" '(:ignore t :wk "M-x")
+  ;; "1..9" '(:wk "select window 1..9)
   "SPC" '(execute-extended-command :wk "M-x")
   "TAB" '(synthmacs/alternate-buffer :wk "last buffer")
   "'" '(execute-extended-command :wk "open shell")
@@ -109,7 +110,10 @@
 ;; Quit bindings
 (synthmacs/leader-keys
   "q" '(:ignore t :wk "quit")
-  "qf" '(find-file :wk "Find file"))
+  "qq" '(synthmacs/prompt-kill-emacs :wk "prompt-kill-emacs")
+  "qs" '(save-buffers-kill-emacs :wk "save-buffers-kill-emacs")
+  "qQ" '(kill-emacs :wk "kill-emacs")
+  "qR" '(restart-emacs :wk "restart-emacs"))
 
 ;; Search bindings
 (synthmacs/leader-keys
@@ -140,12 +144,5 @@
   "wJ" '(buf-move-down :wk "Buffer move down")
   "wK" '(buf-move-up :wk "Buffer move up")
   "wL" '(buf-move-right :wk "Buffer move right"))
-
-;; Specific keymaps
-(general-define-key
- ;; NOTE: keymaps specified with :keymaps must be quoted
- :keymaps 'minibuffer-local-map
- "M-A" 'marginalia-cycle)
-
 
 (provide 'synthmacs-keybindings)

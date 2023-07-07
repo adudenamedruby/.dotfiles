@@ -1,6 +1,6 @@
 (use-package evil
-  :init      ;; tweak evil's configuration before loading it
-  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+  :init
+  (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
   (setq evil-vsplit-window-right t)
@@ -24,5 +24,25 @@
 (use-package evil-commentary
   :config
   (evil-commentary-mode))
+
+(setq evil-ex-search-persistent-highlight t)
+;; (setq evil-search-module 'evil-anzu)
+
+;; Anzu mode
+(use-package anzu
+  :init (global-anzu-mode +1))
+
+(use-package evil-anzu
+  :after 'evil)
+
+;; LION - https://github.com/edkolev/evil-lion
+;;(use-package evil-lion
+;;  :config
+;;  (evil-lion-mode))
+
+;; Evil-Vimish-Fold - https://github.com/alexmurray/evil-vimish-fold
+;;(use-package evil-vimish-fold
+;;  :after vimish-fold
+;;  :hook ((prog-mode conf-mode text-mode) . evil-vimish-fold-mode))
 
 (provide 'synthmacs-evil)
