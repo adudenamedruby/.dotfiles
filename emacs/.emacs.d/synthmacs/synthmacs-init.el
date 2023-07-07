@@ -629,9 +629,22 @@ to the `killed-buffer-list` when killing the buffer."
 (synthmacs/leader-keys
   "gs" '(magit-status :wk "magit-status"))
 
+;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
+;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started
+;; (use-package forge)
 
 ;; (setq gc-cons-threshold 16777216
 ;;       gc-cons-percentage 0.1)))
+
+
+;; ███████╗██╗   ██╗███╗   ██╗████████╗██╗  ██╗███╗   ███╗ █████╗  ██████╗███████╗
+;; ██╔════╝╚██╗ ██╔╝████╗  ██║╚══██╔══╝██║  ██║████╗ ████║██╔══██╗██╔════╝██╔════╝
+;; ███████╗ ╚████╔╝ ██╔██╗ ██║   ██║   ███████║██╔████╔██║███████║██║     ███████╗
+;; ╚════██║  ╚██╔╝  ██║╚██╗██║   ██║   ██╔══██║██║╚██╔╝██║██╔══██║██║     ╚════██║
+;; ███████║   ██║   ██║ ╚████║   ██║   ██║  ██║██║ ╚═╝ ██║██║  ██║╚██████╗███████║
+;; ╚══════╝   ╚═╝   ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝╚══════╝
+                                                                               
+
 
 
 
