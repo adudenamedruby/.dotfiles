@@ -3,9 +3,9 @@
   :general
   (synthmacs/leader-keys
     "h." '(helpful-at-point :wk "helpful-at-point")
-    "hdc" '(helpful-command :wk "describe-command")
-    "hdf" '(helpful-callable :wk "describe-function")
-    "hdk" '(helpful-key :wk "describe-key")
-    "hdv" '(helpful-variable :wk "describe-variable")))
+    "hc" '(helpful-command :wk "describe-command")
+    "hf" '(helpful-callable :wk "describe-function")
+    "hk" '(helpful-key :wk "describe-key")
+    "hv" '(helpful-variable :wk "describe-variable")))
 
 (provide 'synthmacs-helpful)

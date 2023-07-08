@@ -73,8 +73,7 @@
 ;; Help bindings
 (synthmacs/leader-keys
   "h" '(:ignore t :wk "help")
-  "hd" '(:ignore t :wk "describe")
-  "hdp" '(describe-package :wk "describe-package"))
+  "hp" '(describe-package :wk "describe-package"))
 
 (synthmacs/leader-keys
   "hdm" '(:ignore t :wk "describe modes")
@@ -124,24 +123,27 @@
 ;; Windows bindings
 (synthmacs/leader-keys
   "w" '(:ignore t :wk "window")
-  ;; Window splits
-  "wd" '(evil-window-delete :wk "Delete window")
-  "wn" '(evil-window-new :wk "New window")
-  "ws" '(evil-window-split :wk "Horizontal split window")
-  "wv" '(evil-window-vsplit :wk "Vertical split window")
+
+  "wd" '(evil-window-delete :wk "delete-window")
+  "wD" '(delete-other-windows :wk "delete-other-windows")
+
+  "ws" '(evil-window-split :wk "horizontal split window")
+  "wv" '(evil-window-vsplit :wk "vertical split window")
+
+  "wm" '(maximize-window :wk "maximize-window")
 
   ;; Window motions
-  "wh" '(evil-window-left :wk "Window left")
-  "wj" '(evil-window-down :wk "Window down")
-  "wk" '(evil-window-up :wk "Window up")
-  "wl" '(evil-window-right :wk "Window right")
-  "wn" '(evil-window-next :wk "Go to next window")
-  "wp" '(evil-window-prev :wk "Go to previous window")
+  "wh" '(evil-window-left :wk "window left")
+  "wj" '(evil-window-down :wk "window down")
+  "wk" '(evil-window-up :wk "window up")
+  "wl" '(evil-window-right :wk "window right")
+  "wn" '(evil-window-next :wk "go to next window")
+  "wp" '(evil-window-prev :wk "go to previous window")
 
   ;; Move Windows
-  "wH" '(synthmacs/buf-move-left :wk "Buffer move left")
-  "wJ" '(synthmacs/buf-move-down :wk "Buffer move down")
-  "wK" '(synthmacs/buf-move-up :wk "Buffer move up")
-  "wL" '(synthmacs/buf-move-right :wk "Buffer move right"))
+  "wH" '(synthmacs/buf-move-left :wk "window move left")
+  "wJ" '(synthmacs/buf-move-down :wk "window move down")
+  "wK" '(synthmacs/buf-move-up :wk "window move up")
+  "wL" '(synthmacs/buf-move-right :wk "window move right"))
 
 (provide 'synthmacs-general-keybindings)
