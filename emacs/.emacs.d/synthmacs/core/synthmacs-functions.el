@@ -35,7 +35,7 @@ to the `killed-buffer-list` when killing the buffer."
 (require 'windmove)
 
 ;;;###autoload
-(defun buf-move-up ()
+(defun synthmacs/buf-move-up ()
   "Swap the current buffer and the buffer above the split.
 If there is no split, ie now window above the current one, an
 error is signaled."
@@ -53,7 +53,7 @@ error is signaled."
       (select-window other-win))))
 
 ;;;###autoload
-(defun buf-move-down ()
+(defun synthmacs/buf-move-down ()
   "Swap the current buffer and the buffer under the split.
 If there is no split, ie now window under the current one, an
 error is signaled."
@@ -70,7 +70,7 @@ error is signaled."
       (select-window other-win))))
 
 ;;;###autoload
-(defun buf-move-left ()
+(defun synthmacs/buf-move-left ()
   "Swap the current buffer and the buffer on the left of the split.
 If there is no split, ie now window on the left of the current
 one, an error is signaled."
@@ -86,7 +86,7 @@ one, an error is signaled."
       (select-window other-win))))
 
 ;;;###autoload
-(defun buf-move-right ()
+(defun synthmacs/buf-move-right ()
   "Swap the current buffer and the buffer on the right of the split.
 If there is no split, ie now window on the right of the current
 one, an error is signaled."
@@ -130,12 +130,22 @@ folder; otherwise, delete a character backwards."
 	(delete-minibuffer-contents))
     (delete-backwards-char arg)))
 
-;; --------------------- Searching --------------
+;; ---------------- Searching --------------
 (defun synthmacs/consult-ripgrep ()
   "Search org-roam directory using consult-ripgrep. With live-preview."
   (interactive)
   (let ((consult-ripgrep-command "rg --no-ignore --hidden --ignore-case --line-number"))
     (consult-ripgrep "")))
+
+;; ---------------- Symbols --------------
+(defun synthmacs/my-add-pretty-symbol ()
+  (setq prettify-symbols-alist
+        '(
+          ("lambda" . 955) ; λ
+          ;; ("->" . 8594)    ; →
+          ;; ("=>" . 8658)    ; ⇒
+          ;; ("map" . 8614)   ; ↦
+          )))
 
 ;; ---------------- Quitting -------------------
 (defun synthmacs/prompt-kill-emacs ()

@@ -85,8 +85,24 @@
 
 ;; -------------------- Consult -------------------
 (use-package consult
+  :general
+  (synthmacs/leader-keys
+    "/" '(synthmacs/consult-ripgrep :wk "search project")
+
+    ;; files
+    "fr" '(consult-recent-file :wk "recent files")
+
+    ;; search
+    "sr" '(synthmacs/consult-ripgrep :wk "consult-ripgrep")
+    "ss" '(consult-line :wk "swoop")
+
+    ;; toggles
+    "tT" '(consult-theme :wk "consult-themes")
+    )
+
+
   ;; Replace bindings. Lazily loaded due by `use-package'.
-  :bind (;; C-c bindings in `mode-specific-map'
+  ;; :bind (;; C-c bindings in `mode-specific-map'
          ;; ("C-c M-x" . consult-mode-command)
          ;; ("C-c h" . consult-history)
          ;; ("C-c k" . consult-kmacro)
@@ -137,7 +153,7 @@
          ;; :map minibuffer-local-map
          ;; ("M-s" . consult-history)                 ;; orig. next-matching-history-element
          ;; ("M-r" . consult-history)                 ;; orig. previous-matching-history-element
-	 )
+	 ;; )
 
   ;; Enable automatic preview at point in the *Completions* buffer. This is
   ;; relevant when you use the default completion UI.
@@ -203,46 +219,41 @@
   ;; (setq consult-project-function nil)
   )
 
-(synthmacs/leader-keys
-  "fr" '(consult-recent-file :wk "recent files")
-  "sr" '(synthmacs/consult-ripgrep :wk "consult-ripgrep"))
-
-
-
-
-
 ;; -------------------- Embark -------------------
-;; (use-package embark
-;;   
-;;
-;;   :bind
-;;   (("C-." . embark-act)         ;; pick some comfortable binding
-;;    ("C-;" . embark-dwim)        ;; good alternative: M-.
-;;    ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
-;;
-;;   :init
-;;
-;;   ;; Optionally replace the key help with a completing-read interface
-;;   (setq prefix-help-command #'embark-prefix-help-command)
-;;
-;;   ;; Show the Embark target at point via Eldoc.  You may adjust the Eldoc
-;;   ;; strategy, if you want to see the documentation from multiple providers.
-;;   (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target)
-;;   ;; (setq eldoc-documentation-strategy #'eldoc-documentation-compose-eagerly)
-;;
-;;   :config
-;;
-;;   ;; Hide the mode line of the Embark live/completions buffers
-;;   (add-to-list 'display-buffer-alist
-;;                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
-;;                  nil
-;;                  (window-parameters (mode-line-format . none)))))
-;;
-;; ;; Consult users will also want the embark-consult package.
-;; (use-package embark-consult
-;;    ; only need to install it, embark loads it after consult if found
-;;   :hook
-;;   (embark-collect-mode . consult-preview-at-point-mode))
+;; https://github.com/oantolin/embark
+(use-package embark
+  :init
+
+  ;; Optionally replace the key help with a completing-read interface
+  (setq prefix-help-command #'embark-prefix-help-command)
+
+  ;; Show the Embark target at point via Eldoc.  You may adjust the Eldoc
+  ;; strategy, if you want to see the documentation from multiple providers.
+  (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target)
+  ;; (setq eldoc-documentation-strategy #'eldoc-documentation-compose-eagerly)
+
+  :config
+
+  (setq embark-verbose-indicator-display-action '(display-buffer-at-bottom))
+
+  ;; Hide the mode line of the Embark live/completions buffers
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                 nil
+                 (window-parameters (mode-line-format . none)))))
+
+(general-define-key
+ :states 'normal
+ "C-." nil)
+(general-define-key "C-." 'embark-act)
+(synthmacs/leader-keys
+  ;; help
+  "hdb" '(embark-bindings :wk "embark-bindings"))
+
+(use-package embark-consult
+   ; only need to install it, embark loads it after consult if found
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
 
 
 (provide 'synthmacs-vertico-stack)

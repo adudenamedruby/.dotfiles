@@ -4,12 +4,9 @@
 ;; M-x bindingns
 (synthmacs/leader-keys
   "SPC" '(:ignore t :wk "M-x")
-  ;; "1..9" '(:wk "select window 1..9)
   "SPC" '(execute-extended-command :wk "M-x")
-  "TAB" '(synthmacs/alternate-buffer :wk "last buffer")
-  "'" '(execute-extended-command :wk "open shell")
-  "*" '(execute-extended-command :wk "search proj w/ input")
-  "/" '(execute-extended-command :wk "search project"))
+  "TAB" '(synthmacs/alternate-buffer :wk "last buffer"))
+  ;; "'" '(execute-extended-command :wk "open shell")
 
 ;; Application bindings
 (synthmacs/leader-keys
@@ -71,17 +68,18 @@
 
 ;; Git bindings
 (synthmacs/leader-keys
-  "g" '(:ignore t :wk "git")
-  "gs" '(find-file :wk "Find file"))
+  "g" '(:ignore t :wk "git"))
 
 ;; Help bindings
 (synthmacs/leader-keys
-  "h" '(:ignore t :wk "help"))
+  "h" '(:ignore t :wk "help")
+  "hd" '(:ignore t :wk "describe")
+  "hdp" '(describe-package :wk "describe-package"))
 
 (synthmacs/leader-keys
-  "hm" '(:ignore t :wk "describe modes")
-  "hmM" '(describe-mode :wk "describe-mode (Major)")
-  "hmm" '(describe-mode :wk "describe-minor-mode"))
+  "hdm" '(:ignore t :wk "describe modes")
+  "hdmM" '(describe-mode :wk "describe-mode (Major)")
+  "hdmm" '(describe-minor-mode :wk "describe-minor-mode"))
 
 ;; Jump bindings
 (synthmacs/leader-keys
@@ -117,8 +115,7 @@
 
 ;; Search bindings
 (synthmacs/leader-keys
-  "s" '(:ignore t :wk "search")
-  "ss" '(consult-line :wk "swoop"))
+  "s" '(:ignore t :wk "search"))
 
 ;; Toggles bindings
 (synthmacs/leader-keys
@@ -132,6 +129,7 @@
   "wn" '(evil-window-new :wk "New window")
   "ws" '(evil-window-split :wk "Horizontal split window")
   "wv" '(evil-window-vsplit :wk "Vertical split window")
+
   ;; Window motions
   "wh" '(evil-window-left :wk "Window left")
   "wj" '(evil-window-down :wk "Window down")
@@ -139,10 +137,11 @@
   "wl" '(evil-window-right :wk "Window right")
   "wn" '(evil-window-next :wk "Go to next window")
   "wp" '(evil-window-prev :wk "Go to previous window")
-  ;; Move Windows
-  "wH" '(buf-move-left :wk "Buffer move left")
-  "wJ" '(buf-move-down :wk "Buffer move down")
-  "wK" '(buf-move-up :wk "Buffer move up")
-  "wL" '(buf-move-right :wk "Buffer move right"))
 
-(provide 'synthmacs-keybindings)
+  ;; Move Windows
+  "wH" '(synthmacs/buf-move-left :wk "Buffer move left")
+  "wJ" '(synthmacs/buf-move-down :wk "Buffer move down")
+  "wK" '(synthmacs/buf-move-up :wk "Buffer move up")
+  "wL" '(synthmacs/buf-move-right :wk "Buffer move right"))
+
+(provide 'synthmacs-general-keybindings)

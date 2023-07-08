@@ -1,12 +1,20 @@
-(use-package hydra)
+(use-package hydra
+  :general
+  (synthmacs/leader-keys
+    "tf" '(hydra/text-scale/body :wk "font size")))
 
 (defhydra hydra/text-scale (:timeout 7)
-  "scale text"
-  ("+" text-scale-increase "in")
-  ("-" text-scale-decrease "out")
-  ("q" nil "quit" :exit t))
-(synthmacs/leader-keys
-  "tf" '(hydra/text-scale/body :wk "font size"))
+	  "
+^Zoom Menu
+^^^^^^^^----------------------
+_+_: text-scale-increase
+_-_: text-scale-decrease
+_q_: quit
+"
+  ("+" text-scale-increase)
+  ("-" text-scale-decrease)
+  ("q" nil :exit t))
+
 
 ;; Buffer menu
 ;; (defhydra hydra/buffer-menu (:color pink

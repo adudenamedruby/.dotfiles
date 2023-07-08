@@ -26,10 +26,5 @@
   ;; and for [2-9] in the SPC- Spacemacs root
   (push '((nil . "winum-select-window-[2-9]") . t)
 	which-key-replacement-alist))
-  ;; (dolist (item '(;; rename winum-select-window-1 entry to 1..9
-  ;; 		  (("\\(.*\\)1" . "winum-select-window-1") . ("\\11..9" . "select window 1..9"))
-  ;; 		  ;; hide winum-select-window-[2-9] entries
-  ;; 		  ((nil . "winum-select-window-[2-9]") . t)))
-  ;;   (push item which-key-replacement-alist)))
 
 (provide 'synthmacs-which-key)

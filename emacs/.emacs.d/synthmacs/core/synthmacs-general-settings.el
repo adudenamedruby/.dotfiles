@@ -1,5 +1,6 @@
 ;; ------------------ General Settings ---------------------
 (setq inhibit-startup-message t)
+(setq inhibit-startup-echo-area-message "adudenamedruby")
 
 ;; Always edit symlinked files under VC
 (setq vc-follow-symlinks t)
@@ -41,6 +42,9 @@
 
 ;; ------------------ Fonts ---------------------
 (set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 140)
+
+;; ------------------ Prettify Symbols ---------------------
+(global-prettify-symbols-mode 1)
 
 ;; ------------------ Recent Files ---------------------
 (recentf-mode 1)

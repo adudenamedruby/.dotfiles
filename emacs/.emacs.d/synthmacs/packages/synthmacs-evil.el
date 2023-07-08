@@ -25,7 +25,7 @@
   :config
   (evil-commentary-mode))
 
-(setq evil-ex-search-persistent-highlight t)
+;; (setq evil-ex-search-persistent-highlight t)
 ;; (setq evil-search-module 'evil-anzu)
 
 ;; Anzu mode
