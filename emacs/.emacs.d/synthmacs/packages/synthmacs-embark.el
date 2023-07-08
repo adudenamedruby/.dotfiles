@@ -20,17 +20,18 @@
                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
                  nil
                  (window-parameters (mode-line-format . none))))
-
-  :bind (:map embark-general-map
-	      ("G" . synthmacs/embark-google-search))
   )
 
 ;; Definind keys here, because there's some weird overlaps with an evil mode
 ;; key "C-." that I never use.
 (general-define-key
- :states '(normal insert visual emacs)
+ :states 'normal
  "C-." nil)
-(general-define-key "C-." 'embark-act)
+(general-define-key 
+  "C-." 'embark-act)
+;; (general-define-key
+;;   :keymaps 'embark-general-map
+;;   "G" . synthmacs/embark-google-search)
 (synthmacs/leader-keys
   ;; help
   "hb" '(embark-bindings :wk "embark-bindings"))
@@ -101,5 +102,6 @@ targets."
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
+(use-package wgrep)
 
 (provide 'synthmacs-embark)

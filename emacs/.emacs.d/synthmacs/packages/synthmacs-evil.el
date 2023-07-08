@@ -1,3 +1,5 @@
+(setq evil-search-module 'evil-search)
+
 (use-package evil
   :init
   (setq evil-want-integration t)
