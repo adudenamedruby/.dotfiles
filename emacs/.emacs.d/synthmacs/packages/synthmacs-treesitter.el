@@ -1,4 +1,5 @@
 (require 'treesit)
+
 (setq treesit-language-source-alist
    '((bash "https://github.com/tree-sitter/tree-sitter-bash")
      (c "https://github.com/tree-sitter/tree-sitter-c")
@@ -17,7 +18,7 @@
      (make "https://github.com/alemuller/tree-sitter-make")
      (markdown "https://github.com/ikatyang/tree-sitter-markdown")
      (objc "https://github.com/jiyee/tree-sitter-objc")
-     (ocaml "https://github.com/tree-sitter/tree-sitter-ocaml")
+     ;; (ocaml "https://github.com/tree-sitter/tree-sitter-ocaml")
      (python "https://github.com/tree-sitter/tree-sitter-python")
      (racket "https://github.com/6cdh/tree-sitter-racket")
      (ruby "https://github.com/tree-sitter/tree-sitter-ruby")
@@ -25,16 +26,68 @@
      (scheme "https://github.com/6cdh/tree-sitter-scheme")
      (sqlite "https://github.com/dhcmrlchtdj/tree-sitter-sqlite")
      (sql "https://github.com/m-novikov/tree-sitter-sql")
-     (swift "https://github.com/alex-pinkus/tree-sitter-swift")
+     ;; (swift "https://gitlab.com/woolsweater/tree-sitter-swifter")
      (toml "https://github.com/tree-sitter/tree-sitter-toml")
      (yaml "https://github.com/ikatyang/tree-sitter-yaml")
      (zig "https://github.com/maxxnino/tree-sitter-zig")))
 
+(defun synthmacs/treesit-install-all-languages ()
+    "Install all languages specified by `treesit-language-source-alist'."
+    (interactive)
+    (let ((languages (mapcar 'car treesit-language-source-alist)))
+      (dolist (lang languages)
+	      (treesit-install-language-grammar lang)
+	      (message "`%s' parser was installed." lang)
+	      (sit-for 0.75))))
 
+(add-hook 'c-mode-hook
+	  (lambda () (if (treesit-ready-p 'c t)
+		    (c-ts-mode)
+		  (c-mode))))
 
-(add-to-list 'major-mode-remap-alist
-	     '(c-mode . c-ts-mode)
-	     '(sh-mode . bash-ts-mode))
+(add-hook 'clojure-mode-hook
+	  (lambda () (if (treesit-ready-p 'clojure t)
+		    (clojure-ts-mode)
+		  (clojure-mode))))
 
+(add-hook 'css-mode-hook
+	  (lambda () (if (treesit-ready-p 'css t)
+		    (css-ts-mode)
+		  (css-mode))))
+
+(add-hook 'elixir-mode-hook
+	  (lambda () (if (treesit-ready-p 'elixir t)
+		    (elixir-ts-mode)
+		  (elixir-mode))))
+
+(add-hook 'go-mode-hook
+	  (lambda () (if (treesit-ready-p 'go t)
+		    (go-ts-mode)
+		  (go-mode))))
+
+(add-hook 'html-mode-hook
+	  (lambda () (if (treesit-ready-p 'html t)
+		    (html-ts-mode)
+		  (html-mode))))
+
+(add-hook 'haskell-mode-hook
+	  (lambda () (if (treesit-ready-p 'haskell t)
+		    (haskell-ts-mode)
+		  (haskell-mode))))
+
+(add-hook 'javascript-mode-hook
+	  (lambda () (if (treesit-ready-p 'javascript t)
+		    (javascript-ts-mode)
+		  (javascript-mode))))
+
+(add-hook 'python-mode-hook
+	  (lambda () (if (treesit-ready-p 'python t)
+		    (python-ts-mode)
+		  (python-mode))))
+			      
+(add-hook 'sh-mode-hook
+	  (lambda () (if (treesit-ready-p 'bash t)
+		    (bash-ts-mode)
+		  (sh-mode))))
 
 (provide 'synthmacs-treesitter)
