@@ -20,5 +20,6 @@
 (require 'synthmacs-dashboard)
 ;; (require 'synthmacs-obsidian)
 (require 'synthmacs-avy)
+(require 'synthmacs-treesitter)
 
 (provide 'synthmacs-packages)

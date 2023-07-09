@@ -1,4 +1,6 @@
 (setq evil-search-module 'evil-search)
+;; Don't use the clipboard for base yank/delete ops
+(setq x-select-enable-clipboard nil)
 
 (use-package evil
   :init

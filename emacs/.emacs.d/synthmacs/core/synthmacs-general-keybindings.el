@@ -73,12 +73,16 @@
 ;; Help bindings
 (synthmacs/leader-keys
   "h" '(:ignore t :wk "help")
-  "hp" '(describe-package :wk "describe-package"))
+  "hp" '(describe-package :wk "describe-package")
+  "hM" '(describe-mode :wk "describe-mode (Major)")
+  "hm" '(describe-minor-mode :wk "describe-minor-mode")
 
-(synthmacs/leader-keys
-  "hdm" '(:ignore t :wk "describe modes")
-  "hdmM" '(describe-mode :wk "describe-mode (Major)")
-  "hdmm" '(describe-minor-mode :wk "describe-minor-mode"))
+  "hE" '(:ignore t :wk "Emacs")
+  "hEf" '(view-emacs-FAQ :wk "view-emacs-faq")
+  "hEm" '(info-emacs-manual :wk "info-emacs-manual")
+  "hEn" '(view-emacs-news :wk "view-emacs-news")
+  "hEp" '(view-emacs-problems :wk "view-emacs-problems")
+  "hEt" '(view-emacs-todo :wk "view-emacs-todo"))
 
 ;; Jump bindings
 (synthmacs/leader-keys
