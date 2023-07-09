@@ -91,6 +91,8 @@ brew install swiftlint
 
 brew install the_silver_searcher # AG
 
+brew install tree-sitter
+
 # rust alternatives to utils
 brew install btop # instead of top
 
