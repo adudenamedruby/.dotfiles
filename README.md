@@ -15,30 +15,15 @@ It's a work in progress, however, and is likely to change frequently.
 ### First things first
 - Take a moment and appreciate what an unadulterated, fresh mac looks like. Yeah, it's pretty neat. Let's get to the nitty-gritty.
 - Sign in to Apple accounts; set System Preferences.
-- Download and install the important stuff:
-    - [iTerm 2](https://www.iterm2.com/downloads.html) - set up hotkey shortcut Cmd-Ctrl-T
-    - [Karabiner-Elements](https://pqrs.org/osx/karabiner/)
 - Download apps you want from App Store
     - Xcode
       - Once installed, open to install tools!
     - 1Password
 
-### Let's get phys... no. Let's get automated!
-- In iTerm, in the home directory, copy and paste the following:
-`sh -c "$(curl -fsSL https://raw.githubusercontent.com/electricRGB/.dotfiles/master/setup.sh)"`
-- Once finished running, quit terminal and reboot computer for a good time!
-- Don't forget to run `p10k configure` to configure your prompt.
-
 ### Spacemacs
 - Additional steps, to be done from M-x:
     - LSP: Once Spacemacs is open, run: `package-install lsp-sourcekit`
     - Also: `all-the-icons-fonts`
-
-### Almost done!
-- Run `brew doctor` to see any issues and fix them as needed
-- Xcode themes from [here](https://github.com/hdoria/xcode-themes) and [here](http://www.codethemes.net/themes/popular/all) should go in `~/Library/Developer/Xcode/UserData/FontAndColorThemes/` (FontAndColorThemes may not exist.)
-- [iTerm2 Themes](https://github.com/mbadolato/iTerm2-Color-Schemes)
-- One last restart!
 
 ## Other Software
 This is a list of the software I usually add afterwards that's not sourced from the App Store. It's here so I can just click to go there making my life easier. In no particular order

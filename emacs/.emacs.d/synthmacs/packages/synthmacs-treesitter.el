@@ -77,8 +77,13 @@
 
 (add-hook 'javascript-mode-hook
 	  (lambda () (if (treesit-ready-p 'javascript t)
-		    (javascript-ts-mode)
+		    (js-ts-mode)
 		  (javascript-mode))))
+
+(add-hook 'js-json-mode-hook
+	  (lambda () (if (treesit-ready-p 'json t)
+		    (json-ts-mode)
+		  (js-json-mode))))
 
 (add-hook 'python-mode-hook
 	  (lambda () (if (treesit-ready-p 'python t)

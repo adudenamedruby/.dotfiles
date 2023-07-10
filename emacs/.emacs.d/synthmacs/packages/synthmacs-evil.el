@@ -39,6 +39,12 @@
 (use-package evil-anzu
   :after 'evil)
 
+(use-package undo-tree
+  :init
+  (global-undo-tree-mode))
+
+(setq evil-undo-system 'undo-tree)
+
 ;; LION - https://github.com/edkolev/evil-lion
 ;;(use-package evil-lion
 ;;  :config
