@@ -29,11 +29,38 @@
 
 (synthmacs-recursive-add-to-load-path synthmacs-dir)
 
-(require 'synthmacs-core)
-(require 'synthmacs-packages)
-(require 'synthmacs-modules)
+;; Load core configs
+(require 'synthmacs-general-settings)
+(require 'synthmacs-variables)
+(require 'synthmacs-functions)
+(require 'synthmacs-straight)
 
-;; iEdit - https://github.com/victorhge/iedit
+;; Load packages
+(require 'synthmacs-general)
+(require 'synthmacs-evil)
+(require 'synthmacs-general-keybindings)
+(require 'synthmacs-winum)
+(require 'synthmacs-vertico)
+(require 'synthmacs-orderless)
+(require 'synthmacs-consult)
+(require 'synthmacs-marginalia)
+(require 'synthmacs-embark)
+(require 'synthmacs-icons)
+(require 'synthmacs-modeline)
+(require 'synthmacs-themes)
+(require 'synthmacs-hydra)
+(require 'synthmacs-which-key)
+(require 'synthmacs-rainbow)
+(require 'synthmacs-helpful)
+(require 'synthmacs-rg)
+(require 'synthmacs-projectile)
+(require 'synthmacs-magit)
+(require 'synthmacs-dashboard)
+;; (require 'synthmacs-obsidian)
+(require 'synthmacs-avy)
+(require 'synthmacs-treesitter)
+
+;; Load modules
 
 
 ;; (setq gc-cons-threshold 16777216

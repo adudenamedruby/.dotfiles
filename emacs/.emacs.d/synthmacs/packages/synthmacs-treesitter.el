@@ -45,6 +45,11 @@
 		    (c-ts-mode)
 		  (c-mode))))
 
+(add-hook 'common-lisp-mode-hook
+	  (lambda () (if (treesit-ready-p 'commonlisp t)
+		    (common-lisp-ts-mode)
+		  (common-lisp-mode))))
+
 (add-hook 'clojure-mode-hook
 	  (lambda () (if (treesit-ready-p 'clojure t)
 		    (clojure-ts-mode)
@@ -54,16 +59,6 @@
 	  (lambda () (if (treesit-ready-p 'css t)
 		    (css-ts-mode)
 		  (css-mode))))
-
-(add-hook 'elixir-mode-hook
-	  (lambda () (if (treesit-ready-p 'elixir t)
-		    (elixir-ts-mode)
-		  (elixir-mode))))
-
-(add-hook 'go-mode-hook
-	  (lambda () (if (treesit-ready-p 'go t)
-		    (go-ts-mode)
-		  (go-mode))))
 
 (add-hook 'html-mode-hook
 	  (lambda () (if (treesit-ready-p 'html t)
