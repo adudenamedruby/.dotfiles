@@ -179,6 +179,8 @@ brew install --cask devcleaner
 
 brew install --cask devutils
 
+brew install --cask discord
+
 brew install --cask fantastical
 
 brew install --cask keycastr

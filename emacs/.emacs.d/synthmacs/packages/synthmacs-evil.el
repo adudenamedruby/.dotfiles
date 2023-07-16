@@ -14,7 +14,9 @@
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-  (evil-set-initial-state 'messages-buffer-mode 'normal))
+  (evil-set-initial-state 'messages-buffer-mode 'normal)
+  (evil-select-search-module 'evil-search-module 'evil-search)
+  )
 
 (use-package evil-collection
  :after evil
