@@ -59,6 +59,9 @@
 ;; (require 'synthmacs-obsidian)
 (require 'synthmacs-avy)
 (require 'synthmacs-treesitter)
+(require 'synthmacs-lsp)
+(require 'synthmacs-corfu)
+(require 'synthmacs-flycheck)
 
 ;; Load modules
 
