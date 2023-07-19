@@ -18,6 +18,7 @@
   "b" '(:ignore t :wk "buffer")
   "bb" '(switch-to-buffer :wk "Switch buffer")
   "bd" '(kill-this-buffer :wk "Kill this buffer")
+  "bh" '(dashboard-refresh-buffer :wk "Home buffer")
   "bm" '((lambda ()
 	   (interactive)
 	   (switch-to-buffer " *Message-Log*"))
@@ -28,10 +29,15 @@
   "bs" '(scratch-buffer :wk "Scratch buffer")
   "bu" '(synthmacs/reopen-killed-buffer :wk "Reopen last killed buffer"))
 
-;; Compilation bindingns
+;; Compilation bindings
 (synthmacs/leader-keys
   "c" '(:ignore t :wk "compile")
   "cf" '(find-file :wk "Find file"))
+
+;; Compilation bindings
+(synthmacs/leader-keys
+  "d" '(:ignore t :wk "debug")
+  "df" '(find-file :wk "Find file"))
 
 ;; Error bindings
 (synthmacs/leader-keys

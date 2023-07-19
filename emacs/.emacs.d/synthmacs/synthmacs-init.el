@@ -54,16 +54,17 @@
 (require 'synthmacs-helpful)
 (require 'synthmacs-rg)
 (require 'synthmacs-projectile)
-(require 'synthmacs-magit)
+(require 'synthmacs-git)
 (require 'synthmacs-dashboard)
 ;; (require 'synthmacs-obsidian)
 (require 'synthmacs-avy)
 (require 'synthmacs-treesitter)
-(require 'synthmacs-lsp)
-(require 'synthmacs-corfu)
-(require 'synthmacs-flycheck)
+;; (require 'synthmacs-lsp)
+;; (require 'synthmacs-corfu)
+;; (require 'synthmacs-flycheck)
 
 ;; Load modules
+;; (require 'synthmacs-swift)
 
 
 ;; (setq gc-cons-threshold 16777216
