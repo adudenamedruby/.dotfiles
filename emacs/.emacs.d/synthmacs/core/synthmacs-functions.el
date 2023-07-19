@@ -138,7 +138,7 @@ initialized with the current directory instead of filename."
 	(synthmacs/rename-buffer-visiting-a-file arg)
       (synthmacs/rename-buffer-or-save-new-file))))
 
-(defun spacemacs/rename-buffer-visiting-a-file (&optional arg)
+(defun synthmacs/rename-buffer-visiting-a-file (&optional arg)
   (let* ((old-filename (buffer-file-name))
          (old-short-name (file-name-nondirectory (buffer-file-name)))
          (old-dir (file-name-directory old-filename))
