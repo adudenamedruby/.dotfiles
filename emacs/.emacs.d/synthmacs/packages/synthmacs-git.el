@@ -23,10 +23,10 @@
 
 (synthmacs/leader-keys
   "gb" '(magit-blame-addition :wk "magit-blame")
-  "gc" '(magit-clone :wk "magit-blame")
+  "gc" '(magit-clone :wk "magit-clone")
   "gd" '(magit-dispatch :wk "magit-dispatch")
+  "gf" '(magit-file-dispatch :wk "magit-file-dispatch")
   "gh" '(magit-info :wk "magit-help")
-  "gi" '(magit-init :wk "magit-init")
-  "gf" '(magit-file-dispatch :wk "magit-file-dispatch"))
+  "gi" '(magit-init :wk "magit-init"))
 
 (provide 'synthmacs-git)
