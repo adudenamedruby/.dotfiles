@@ -11,8 +11,7 @@
     "ss" '(consult-line :wk "swoop")
 
     ;; toggles
-    "tT" '(consult-theme :wk "consult-themes")
-    )
+    "tT" '(consult-theme :wk "consult-themes"))
 
 
   ;; Replace bindings. Lazily loaded due by `use-package'.
@@ -113,6 +112,7 @@
   ;; Optionally configure the narrowing key.
   ;; Both < and C-+ work reasonably well.
   (setq consult-narrow-key "<") ;; "C-+"
+  (setq consult-ripgrep-args "rg --null --line-buffered --no-ignore --hidden --color=never --max-columns=1000 --path-separator / --smart-case --no-heading --with-filename --line-number --search-zip")
 
   ;; Optionally make narrowing help available in the minibuffer.
   ;; You may want to use `embark-prefix-help-command' or which-key instead.

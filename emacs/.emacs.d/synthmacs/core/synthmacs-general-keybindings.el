@@ -54,6 +54,15 @@
   "fR" '(synthmacs/rename-current-buffer-file :wk "Rename file")
   "fs" '(save-buffer :wk "save file"))
 
+(synthmacs/leader-keys
+  "fy" '(:ignore t :wk "yank")
+  "fyb" '(synthmacs/copy-buffer-name :wk "buffer name")
+  "fyd" '(synthmacs/copy-directory-path :wk "directory path")
+  "fyf" '(synthmacs/copy-file-path :wk "file path")
+  "fyl" '(synthmacs/copy-file-path-with-line :wk "file path with line number")
+  "fyn" '(synthmacs/copy-file-name :wk "file name")
+  "fyN" '(synthmacs/copy-file-name-base :wk "file name without extension"))
+
 ;; Files (Emacs) bindings
 (synthmacs/leader-keys
   "fe" '(:ignore t :wk "Emacs Files")
@@ -73,6 +82,12 @@
 	  :wk "early-init.el")
   )
 
+;; Frame bindings
+(synthmacs/leader-keys
+  "F" '(:ignore t :wk "Frames")
+  "Fd" '(delete-frame :wk "delete-frame")
+  "FD" '(delete-other-frames :wk "delete-other-frames")
+  "Fn" '(make-frame :wk "make-frame"))
 
 ;; Git bindings
 (synthmacs/leader-keys
@@ -124,13 +139,24 @@
   "qQ" '(kill-emacs :wk "kill-emacs")
   "qR" '(restart-emacs :wk "restart-emacs"))
 
+;; Register bindings
+(synthmacs/leader-keys
+  "r" '(:ignore t :wk "registers")
+  "re" '(evil-show-registers :wk "evil-show-registers")
+  "rk" '(consult-yank-from-kill-ring :wk "consult-yank-from-kill-ring"))
+
 ;; Search bindings
 (synthmacs/leader-keys
-  "s" '(:ignore t :wk "search"))
+  "s" '(:ignore t :wk "search")
+  "sc" '(evil-ex-nohighlight :wk "clear-search-highlights"))
 
 ;; Toggles bindings
 (synthmacs/leader-keys
-  "t" '(:ignore t :wk "toggles"))
+  "t" '(:ignore t :wk "toggles")
+  "tc" '(global-display-fill-column-indicator-mode :wk "fill-column")
+  "tt" '(toggle-truncate-lines :wk "truncate-lines")
+  "tv" '(visual-line-mode :wk "visual-line-mode")
+  "tw" '(whitespace-mode :wk "whitespace-mode"))
 
 ;; Windows bindings
 (synthmacs/leader-keys

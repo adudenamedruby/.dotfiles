@@ -125,6 +125,99 @@ one, an error is signaled."
 ;; 	    (message "File deleted: '%s'" filename))
 ;; 	(message "Cancelled file deletion")))))
 
+;; Copy file path
+
+(defun synthmacs--directory-path ()
+  "Retrieve the directory path of the current buffer.
+
+If the buffer is not visiting a file, use the `list-buffers-directory' variable
+as a fallback to display the directory, useful in buffers like the ones created
+by `magit' and `dired'.
+
+Returns:
+  - A string containing the directory path in case of success.
+  - `nil' in case the current buffer does not have a directory."
+  (when-let (directory-name (if-let (file-name (buffer-file-name))
+                                (file-name-directory file-name)
+                              list-buffers-directory))
+    (file-truename directory-name)))
+
+(defun synthmacs--file-path ()
+  "Retrieve the file path of the current buffer.
+
+Returns:
+  - A string containing the file path in case of success.
+  - `nil' in case the current buffer does not have a directory."
+  (when-let (file-path (buffer-file-name))
+    (file-truename file-path)))
+
+(defun synthmacs--file-path-with-line ()
+  "Retrieve the file path of the current buffer, including line number.
+
+Returns:
+  - A string containing the file path in case of success.
+  - `nil' in case the current buffer does not have a directory."
+  (when-let (file-path (synthmacs--file-path))
+    (concat file-path ":" (number-to-string (line-number-at-pos)))))
+
+(defun synthmacs/copy-directory-path ()
+  "Copy and show the directory path of the current buffer.
+
+If the buffer is not visiting a file, use the `list-buffers-directory'
+variable as a fallback to display the directory, useful in buffers like the
+ones created by `magit' and `dired'."
+  (interactive)
+  (if-let (directory-path (synthmacs--directory-path))
+      (progn
+        (kill-new directory-path)
+        (message "%s" directory-path))
+    (message "WARNING: Current buffer does not have a directory!")))
+
+(defun synthmacs/copy-file-path ()
+  "Copy and show the file path of the current buffer."
+  (interactive)
+  (if-let (file-path (synthmacs--file-path))
+      (progn
+        (kill-new file-path)
+        (message "%s" file-path))
+    (message "WARNING: Current buffer is not attached to a file!")))
+
+(defun synthmacs/copy-file-name ()
+  "Copy and show the file name of the current buffer."
+  (interactive)
+  (if-let* ((file-path (synthmacs--file-path))
+            (file-name (file-name-nondirectory file-path)))
+      (progn
+        (kill-new file-name)
+        (message "%s" file-name))
+    (message "WARNING: Current buffer is not attached to a file!")))
+
+(defun synthmacs/copy-buffer-name ()
+  "Copy and show the name of the current buffer."
+  (interactive)
+  (kill-new (buffer-name))
+  (message "%s" (buffer-name)))
+
+(defun synthmacs/copy-file-name-base ()
+  "Copy and show the file name without its final extension of the current
+buffer."
+  (interactive)
+  (if-let (file-name (file-name-base (synthmacs--file-path)))
+      (progn
+        (kill-new file-name)
+        (message "%s" file-name))
+    (message "WARNING: Current buffer is not attached to a file!")))
+
+(defun synthmacs/copy-file-path-with-line ()
+  "Copy and show the file path of the current buffer, including line number."
+  (interactive)
+  (if-let (file-path (synthmacs--file-path-with-line))
+      (progn
+        (kill-new file-path)
+        (message "%s" file-path))
+    (message "WARNING: Current buffer is not attached to a file!")))
+
+;; Rename a buffer
 (defun synthmacs/rename-current-buffer-file (&optional arg)
   "Rename the current buffer and the file it is visiting.
 If the buffer isn't visiting a file, ask if it should
@@ -231,7 +324,10 @@ folder; otherwise, delete a character backwards."
   "Search org-roam directory using consult-ripgrep. With live-preview."
   (interactive)
   (let ((consult-ripgrep-command "rg --no-ignore --hidden --ignore-case --line-number"))
-    (consult-ripgrep "")))
+    (consult-ripgrep
+     (if (projectile-project-p)
+	 (projectile-project-root)
+       ""))))
 
 ;; ---------------- Symbols --------------
 (defun synthmacs/my-add-pretty-symbol ()
