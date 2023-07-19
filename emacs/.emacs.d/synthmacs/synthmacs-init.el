@@ -59,9 +59,9 @@
 ;; (require 'synthmacs-obsidian)
 (require 'synthmacs-avy)
 (require 'synthmacs-treesitter)
-;; (require 'synthmacs-lsp)
-;; (require 'synthmacs-corfu)
-;; (require 'synthmacs-flycheck)
+(require 'synthmacs-lsp)
+(require 'synthmacs-corfu)
+(require 'synthmacs-flycheck)
 
 ;; Load modules
 ;; (require 'synthmacs-swift)
@@ -71,3 +71,5 @@
 ;;       gc-cons-percentage 0.1)))
 
 (provide 'synthmacs-init)
+
+;;; synthmacs-init.el ends here

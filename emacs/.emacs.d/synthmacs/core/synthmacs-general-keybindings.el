@@ -49,7 +49,9 @@
   "f" '(:ignore t :wk "files")
   "f." '(find-file-at-point :wk "find-file-at-point")
   "ff" '(find-file :wk "find-file")
-  "fl" '(find-file-literally :wk "find-file")
+  "fl" '(find-file-literally :wk "find-file-literally")
+  "fr" '(consult-recent-file :wk "recent file")
+  "fR" '(synthmacs/rename-current-buffer-file :wk "Rename file")
   "fs" '(save-buffer :wk "save file"))
 
 ;; Files (Emacs) bindings

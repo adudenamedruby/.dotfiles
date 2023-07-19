@@ -21,5 +21,12 @@
 (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
 (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
 
+(synthmacs/leader-keys
+  "gb" '(magit-blame-addition :wk "magit-blame")
+  "gc" '(magit-clone :wk "magit-blame")
+  "gd" '(magit-dispatch :wk "magit-dispatch")
+  "gh" '(magit-info :wk "magit-help")
+  "gi" '(magit-init :wk "magit-init")
+  "gf" '(magit-file-dispatch :wk "magit-file-dispatch"))
 
 (provide 'synthmacs-git)
