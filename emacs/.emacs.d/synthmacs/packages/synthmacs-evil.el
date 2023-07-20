@@ -1,5 +1,5 @@
-;; (evil-select-search-module 'evil-search-module 'evil-search)
 (setq evil-search-module 'evil-search)
+(setq evil-ex-search-persistent-highlight t)
 
 ;; Don't use the clipboard for base yank/delete ops
 (setq x-select-enable-clipboard nil)
@@ -17,7 +17,6 @@
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
   (evil-set-initial-state 'messages-buffer-mode 'normal)
-  (evil-select-search-module 'evil-search-module 'evil-search)
   )
 
 (use-package evil-collection
@@ -33,15 +32,12 @@
   :config
   (evil-commentary-mode))
 
-;; (setq evil-ex-search-persistent-highlight t)
-;; (setq evil-search-module 'evil-anzu)
-
 ;; Anzu mode
-(use-package anzu
-  :init (global-anzu-mode +1))
-
 (use-package evil-anzu
-  :after 'evil)
+  :init (global-anzu-mode t)
+  :config
+  (setq anzu-search-threshold 1000
+	anzu-cons-mode-line-p nil))
 
 ;; LION - https://github.com/edkolev/evil-lion
 ;;(use-package evil-lion

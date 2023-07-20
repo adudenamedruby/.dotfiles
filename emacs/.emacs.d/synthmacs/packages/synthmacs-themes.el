@@ -1,3 +1,8 @@
+;;;  package --- Summary
+
+;;; Commentary:
+
+;;; Code:
 (use-package doom-themes
   :config
   ;; Global settings (defaults)
@@ -19,4 +24,8 @@
   :init
   (solaire-global-mode +1))
 
+
+
 (provide 'synthmacs-themes)
+
+;;; synthmacs-themes.el ends here

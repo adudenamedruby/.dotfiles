@@ -17,8 +17,6 @@
 ;; ------------------ Line Numbering ---------------------
 ;; set type of line numbering (global variable)
 (setq display-line-numbers-type 'relative) 
-(setq fill-column 85)
-
 ;; activate line numbering in all buffers/modes
 (global-display-line-numbers-mode 1) 
 
@@ -32,6 +30,9 @@
 
 ;; Columns number in the modeline
 (column-number-mode)
+
+(setq-default fill-column 85)
+(global-display-fill-column-indicator-mode)
 
 ;; ------------------ Indent Behaviours ---------------------
 ;; Electric indent mode messes up with a bunch of languages indenting.

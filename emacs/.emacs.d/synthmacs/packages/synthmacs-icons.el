@@ -1,4 +1,4 @@
-(setq nerd-icons-scale-factor 1.3)
+(setq nerd-icons-scale-factor 1.2)
 
 (use-package nerd-icons
   :custom
