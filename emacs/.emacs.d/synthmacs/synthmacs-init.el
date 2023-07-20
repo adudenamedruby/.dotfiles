@@ -46,6 +46,7 @@
 (require 'synthmacs-consult)
 (require 'synthmacs-marginalia)
 (require 'synthmacs-embark)
+(require 'synthmacs-dervish)
 (require 'synthmacs-icons)
 (require 'synthmacs-modeline)
 (require 'synthmacs-themes)

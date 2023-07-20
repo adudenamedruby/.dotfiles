@@ -66,12 +66,18 @@ brew install cmake
 
 brew install coreutils
 
+brew install ffmpegthumbnailer
+
 brew install fzf
 $(brew --prefix)/opt/fzf/install
 
 brew install git
 
+brew install gls
+
 brew install grep
+
+brew install imagemagick
 
 brew install librsvg
 
@@ -82,6 +88,8 @@ brew install node
 brew install openssh
 
 brew install pandoc
+
+brew install poppler
 
 brew install stow
 
