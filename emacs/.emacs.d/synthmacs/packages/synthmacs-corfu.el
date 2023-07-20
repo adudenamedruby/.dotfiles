@@ -1,12 +1,15 @@
 (use-package corfu
+  :straight (corfu :files (:defaults "extensions/*")
+		   :includes (corfu-popupinfo))
+  :hook (corfu-mode . corfu-popupinfo-mode)
   ;; Optional customizations
   :custom
   (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto t)                 ;; Enable auto completion
   ;; (corfu-auto-delay 0.0)
   ;; (corfu-auto-prefix 0)
-  ;; (corfu-separator ?\s)          ;; Orderless field separator
-  ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
+  (corfu-separator ?\s)          ;; Orderless field separator
+  (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
   ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
   ;; (corfu-preview-current nil)    ;; Disable current candidate preview
   ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
@@ -18,11 +21,17 @@
   ;;        (shell-mode . corfu-mode)
   ;;        (eshell-mode . corfu-mode))
 
+  (corfu-popupinfo-delay 0.1)
+  (corfu-popupinfo-max-height 15)
   ;; Recommended: Enable Corfu globally.
   ;; This is recommended since Dabbrev can be used globally (M-/).
   ;; See also `corfu-exclude-modes'.
   :init
-  (global-corfu-mode))
+  (global-corfu-mode)
+  :config
+  (keymap-set corfu-map "C-d" 'corfu-popupinfo-scroll-down)
+  (keymap-set corfu-map "C-u" 'corfu-popupinfo-scroll-up)
+  (keymap-set corfu-map "C-i" 'corfu-popupinfo-toggle))
 
 ;; A few more useful configurations...
 (use-package emacs
@@ -38,5 +47,12 @@
   ;; Enable indentation+completion using the TAB key.
   ;; `completion-at-point' is often bound to M-TAB.
   (setq tab-always-indent 'complete))
+
+(use-package kind-icon
+  :after corfu
+  :custom
+  (kind-icon-default-face 'corfu-default) ; to compute blended backgrounds correctly
+  :config
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 (provide 'synthmacs-corfu)

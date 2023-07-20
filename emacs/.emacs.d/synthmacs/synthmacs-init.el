@@ -70,7 +70,7 @@
 (require 'synthmacs-flycheck)
 
 ;; Load modules
-;; (require 'synthmacs-swift)
+(require 'synthmacs-swift)
 
 
 ;; (setq gc-cons-threshold 16777216
