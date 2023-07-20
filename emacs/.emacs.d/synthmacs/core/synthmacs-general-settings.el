@@ -9,16 +9,16 @@
 
 ;; ------------------ Basic UI Settings ---------------------
 (scroll-bar-mode -1)    ; Disable
-(tool-bar-mode -1)      ; Disable the toolbar    
-(tooltip-mode -1)       ; Disable tooltips       
-(set-fringe-mode 10)    ; Give some breathing room    
+(tool-bar-mode -1)      ; Disable the toolbar
+(tooltip-mode -1)       ; Disable tooltips
+(set-fringe-mode 10)    ; Give some breathing room
 (menu-bar-mode -1)      ; Disable the menubar
 
 ;; ------------------ Line Numbering ---------------------
 ;; set type of line numbering (global variable)
-(setq display-line-numbers-type 'relative) 
+(setq display-line-numbers-type 'relative)
 ;; activate line numbering in all buffers/modes
-(global-display-line-numbers-mode 1) 
+(global-display-line-numbers-mode 1)
 
 (dolist (mode '(org-mode-hook
 		term-mode-hook

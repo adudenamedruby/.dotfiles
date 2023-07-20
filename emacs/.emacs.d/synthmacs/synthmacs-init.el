@@ -56,7 +56,7 @@
 (require 'synthmacs-projectile)
 (require 'synthmacs-git)
 (require 'synthmacs-dashboard)
-;; (require 'synthmacs-obsidian)
+(require 'synthmacs-org)
 (require 'synthmacs-avy)
 (require 'synthmacs-treesitter)
 (require 'synthmacs-lsp)

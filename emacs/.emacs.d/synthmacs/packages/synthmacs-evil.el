@@ -1,9 +1,6 @@
 (setq evil-search-module 'evil-search)
 (setq evil-ex-search-persistent-highlight t)
 
-;; Don't use the clipboard for base yank/delete ops
-(setq x-select-enable-clipboard nil)
-
 (use-package evil
   :init
   (setq evil-want-integration t)
@@ -16,33 +13,131 @@
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-  (evil-set-initial-state 'messages-buffer-mode 'normal)
-  )
+  (evil-set-initial-state 'messages-buffer-mode 'normal))
 
-(use-package evil-collection
- :after evil
- :config
- (evil-collection-init))
-
-(use-package evil-surround
-  :config
-  (global-evil-surround-mode 1))
-
-(use-package evil-commentary
-  :config
-  (evil-commentary-mode))
-
-;; Anzu mode
 (use-package evil-anzu
   :init (global-anzu-mode t)
   :config
   (setq anzu-search-threshold 1000
 	anzu-cons-mode-line-p nil))
 
+(use-package evil-args
+  :defer t
+  :init
+  (progn
+    (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
+    (define-key evil-outer-text-objects-map "a" 'evil-outer-arg)))
+
+(use-package evil-cleverparens
+  :defer t
+  :init
+    (setq evil-cleverparens-use-regular-insert t)
+  :config
+  ;; `evil-cp-change` should move to point
+  (evil-set-command-properties 'evil-cp-change :move-point t))
+
+(use-package evil-collection
+ :after evil
+ :config
+ (evil-collection-init))
+
+
+(use-package evil-commentary
+  :config
+  (evil-commentary-mode))
+
+(use-package evil-exchange
+  :defer t
+  :init
+  (let ((evil-exchange-key (kbd "gx"))
+	(evil-exchange-cancel-key (kbd "gX")))
+    (define-key evil-normal-state-map evil-exchange-key 'evil-exchange)
+    (define-key evil-visual-state-map evil-exchange-key 'evil-exchange)
+    (define-key evil-normal-state-map evil-exchange-cancel-key
+		'evil-exchange-cancel)
+    (define-key evil-visual-state-map evil-exchange-cancel-key
+		'evil-exchange-cancel)))
+  
+(use-package evil-goggles
+  :init
+  ;; disable pulses as it is more distracting than useful and
+  ;; less readable.
+  (setq evil-goggles-pulse nil
+	evil-goggles-async-duration 0.1
+	evil-goggles-blocking-duration 0.05)
+  :config
+  (evil-goggles-mode))
+
+(use-package evil-lion
+    :defer t
+    :init
+    (evil-define-key '(normal visual) 'global
+      "gl" #'evil-lion-left
+      "gL" #'evil-lion-right)
+    :config (evil-lion-mode))
+
+;; https://github.com/syl20bnr/evil-lisp-state
+;; (use-package evil-lisp-state
+  ;; :defer t
+  ;; :init
+  ;; (add-hook 'prog-mode-hook 'synthmacs/load-evil-lisp-state)
+  ;; (setq evil-lisp-state-global t))
+
+;; (synthmacs/leader-keys
+;;   "l" '(evil-lisp-state-map :wk "lisp-state"))
+    ;; (spacemacs/declare-prefix
+    ;;   "l" "lisp"
+    ;;   "ld" "delete"
+    ;;   "lD" "delete-backward"
+    ;;   "l`" "hybrid")))
+
+;; (defun synthmacs/load-evil-lisp-state ()
+;;     "Loads evil-lisp-state lazily"
+;;   (remove-hook 'prog-mode-hook #'synthmacs/load-evil-lisp-state))
+
+(use-package evil-matchit
+  :init
+  (global-evil-matchit-mode 1))
+
+(use-package evil-numbers
+    :init
+    ;; (spacemacs|define-transient-state evil-numbers
+    ;;   :title "Evil Numbers Transient State"
+    ;;   :doc
+    ;;   "\n[_+_/_=_/_k_] increase number  [_-_/___/_j_] decrease  [0..9] prefix  [_q_] quit"
+    ;;   :foreign-keys run
+    ;;   :bindings
+    ;;   ("+" evil-numbers/inc-at-pt)
+    ;;   ("=" evil-numbers/inc-at-pt)
+    ;;   ("k" evil-numbers/inc-at-pt)
+    ;;   ("-" evil-numbers/dec-at-pt)
+    ;;   ("_" evil-numbers/dec-at-pt)
+    ;;   ("j" evil-numbers/dec-at-pt)
+    ;;   ("q" nil :exit t))
+    (synthmacs/leader-keys
+      "n" '(synthmacs/hydra/numbers-state/body :wk "numbers")))
+
+;; (defhydra synthmacs/hydra/numbers-state (:timeout 7)
+;; 	  "
+;; ^Numbers Menu
+;; ^^^^^^^^----------------------
+;; _+_: increment-at-point
+;; _-_: decrement-at-point
+;; _q_: quit
+;; "
+;;   ("+" evil-numbers/inc-at-pt)
+;;   ("-" evil-numbers/dec-at-pt)
+;;   ("q" nil :exit t))
+
+(use-package evil-surround
+  :config
+  (global-evil-surround-mode 1))
+
 ;; LION - https://github.com/edkolev/evil-lion
 ;;(use-package evil-lion
 ;;  :config
 ;;  (evil-lion-mode))
+
 
 ;; Evil-Vimish-Fold - https://github.com/alexmurray/evil-vimish-fold
 ;;(use-package evil-vimish-fold
