@@ -153,10 +153,12 @@
 ;; Toggles bindings
 (synthmacs/leader-keys
   "t" '(:ignore t :wk "toggles")
+  "ta" '(global-corfu-mode :wk "auto-completion")
   "tc" '(global-display-fill-column-indicator-mode :wk "fill-column")
+  "tp" '(smartparens-global-mode :wk "smartparens-global-mode")
   "tt" '(toggle-truncate-lines :wk "truncate-lines")
   "tv" '(visual-line-mode :wk "visual-line-mode")
-  "tw" '(whitespace-mode :wk "whitespace-mode"))
+  "tw" '(global-whitespace-mode :wk "global-whitespace-mode"))
 
 ;; Windows bindings
 (synthmacs/leader-keys

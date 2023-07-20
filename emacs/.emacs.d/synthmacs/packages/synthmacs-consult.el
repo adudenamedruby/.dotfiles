@@ -7,7 +7,7 @@
     "fr" '(consult-recent-file :wk "recent files")
 
     ;; search
-    "sr" '(synthmacs/consult-ripgrep :wk "consult-ripgrep")
+    "sp" '(synthmacs/consult-ripgrep :wk "search project (consult-ripgrep)")
     "ss" '(consult-line :wk "swoop")
 
     ;; toggles

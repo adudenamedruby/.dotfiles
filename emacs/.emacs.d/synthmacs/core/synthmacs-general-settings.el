@@ -14,6 +14,11 @@
 (set-fringe-mode 10)    ; Give some breathing room
 (menu-bar-mode -1)      ; Disable the menubar
 
+;; Set scroll margin, but emulate vim scroll behaviour
+(setq scroll-conservatively 101
+      scroll-margin 5
+      scroll-preserve-screen-position 't)
+
 ;; ------------------ Line Numbering ---------------------
 ;; set type of line numbering (global variable)
 (setq display-line-numbers-type 'relative)
