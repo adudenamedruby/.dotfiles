@@ -11,6 +11,9 @@
   :config
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+  (define-key evil-normal-state-map "`" 'evil-goto-mark-line)
+  (define-key evil-normal-state-map "'" 'evil-goto-mark)
+  (define-key evil-visual-state-map "'" 'evil-goto-mark)
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
   (evil-set-initial-state 'messages-buffer-mode 'normal))
@@ -31,15 +34,15 @@
 (use-package evil-cleverparens
   :defer t
   :init
-    (setq evil-cleverparens-use-regular-insert t)
+  (setq evil-cleverparens-use-regular-insert t)
   :config
   ;; `evil-cp-change` should move to point
   (evil-set-command-properties 'evil-cp-change :move-point t))
 
 (use-package evil-collection
- :after evil
- :config
- (evil-collection-init))
+  :after evil
+  :config
+  (evil-collection-init))
 
 
 (use-package evil-commentary
@@ -57,7 +60,7 @@
 		'evil-exchange-cancel)
     (define-key evil-visual-state-map evil-exchange-cancel-key
 		'evil-exchange-cancel)))
-  
+
 (use-package evil-goggles
   :init
   ;; disable pulses as it is more distracting than useful and
@@ -69,27 +72,27 @@
   (evil-goggles-mode))
 
 (use-package evil-lion
-    :defer t
-    :init
-    (evil-define-key '(normal visual) 'global
-      "gl" #'evil-lion-left
-      "gL" #'evil-lion-right)
-    :config (evil-lion-mode))
+  :defer t
+  :init
+  (evil-define-key '(normal visual) 'global
+    "gl" #'evil-lion-left
+    "gL" #'evil-lion-right)
+  :config (evil-lion-mode))
 
 ;; https://github.com/syl20bnr/evil-lisp-state
 ;; (use-package evil-lisp-state
-  ;; :defer t
-  ;; :init
-  ;; (add-hook 'prog-mode-hook 'synthmacs/load-evil-lisp-state)
-  ;; (setq evil-lisp-state-global t))
+;; :defer t
+;; :init
+;; (add-hook 'prog-mode-hook 'synthmacs/load-evil-lisp-state)
+;; (setq evil-lisp-state-global t))
 
 ;; (synthmacs/leader-keys
 ;;   "l" '(evil-lisp-state-map :wk "lisp-state"))
-    ;; (spacemacs/declare-prefix
-    ;;   "l" "lisp"
-    ;;   "ld" "delete"
-    ;;   "lD" "delete-backward"
-    ;;   "l`" "hybrid")))
+;; (spacemacs/declare-prefix
+;;   "l" "lisp"
+;;   "ld" "delete"
+;;   "lD" "delete-backward"
+;;   "l`" "hybrid")))
 
 ;; (defun synthmacs/load-evil-lisp-state ()
 ;;     "Loads evil-lisp-state lazily"
@@ -100,48 +103,54 @@
   (global-evil-matchit-mode 1))
 
 (use-package evil-numbers
-    :init
-    ;; (spacemacs|define-transient-state evil-numbers
-    ;;   :title "Evil Numbers Transient State"
-    ;;   :doc
-    ;;   "\n[_+_/_=_/_k_] increase number  [_-_/___/_j_] decrease  [0..9] prefix  [_q_] quit"
-    ;;   :foreign-keys run
-    ;;   :bindings
-    ;;   ("+" evil-numbers/inc-at-pt)
-    ;;   ("=" evil-numbers/inc-at-pt)
-    ;;   ("k" evil-numbers/inc-at-pt)
-    ;;   ("-" evil-numbers/dec-at-pt)
-    ;;   ("_" evil-numbers/dec-at-pt)
-    ;;   ("j" evil-numbers/dec-at-pt)
-    ;;   ("q" nil :exit t))
-    (synthmacs/leader-keys
-      "n" '(synthmacs/hydra/numbers-state/body :wk "numbers")))
+  :defer t
+  :general
+  (synthmacs/leader-keys
+    "n" '(synthmacs/hydra/numbers-state/body :wk "numbers")))
 
-;; (defhydra synthmacs/hydra/numbers-state (:timeout 7)
-;; 	  "
-;; ^Numbers Menu
-;; ^^^^^^^^----------------------
-;; _+_: increment-at-point
-;; _-_: decrement-at-point
-;; _q_: quit
-;; "
-;;   ("+" evil-numbers/inc-at-pt)
-;;   ("-" evil-numbers/dec-at-pt)
-;;   ("q" nil :exit t))
+(defhydra synthmacs/hydra/numbers-state (:timeout 7)
+  "
+^Numbers Menu
+^^^^^^^^----------------------
+_+_: increment-at-point
+_-_: decrement-at-point
+_q_: quit
+"
+  ("+" evil-numbers/inc-at-pt)
+  ("-" evil-numbers/dec-at-pt)
+  ("q" nil :exit t))
 
 (use-package evil-surround
+  :init
+  ;; `s' for surround instead of `substitute'
+  ;; see motivation here:
+  ;; https://github.com/syl20bnr/spacemacs/blob/develop/doc/DOCUMENTATION.org#the-vim-surround-case
+  (evil-define-key 'visual evil-surround-mode-map "s" 'evil-surround-region)
+  (evil-define-key 'visual evil-surround-mode-map "S" 'evil-substitute)
   :config
   (global-evil-surround-mode 1))
 
-;; LION - https://github.com/edkolev/evil-lion
-;;(use-package evil-lion
-;;  :config
-;;  (evil-lion-mode))
+(use-package evil-textobj-line)
 
+(use-package evil-visual-mark-mode
+  :defer t
+  :general
+  (synthmacs/leader-keys
+    "t`" '(evil-visual-mark-mode :wk "visual-mark-mode")))
 
+(use-package evil-visualstar
+  :commands (evil-visualstar/begin-search-forward
+             evil-visualstar/begin-search-backward)
+  :init
+  (define-key evil-visual-state-map (kbd "*") 'evil-visualstar/begin-search-forward)
+  (define-key evil-visual-state-map (kbd "#") 'evil-visualstar/begin-search-backward))
 ;; Evil-Vimish-Fold - https://github.com/alexmurray/evil-vimish-fold
 ;;(use-package evil-vimish-fold
 ;;  :after vimish-fold
 ;;  :hook ((prog-mode conf-mode text-mode) . evil-vimish-fold-mode))
+
+(use-package ws-butler
+  :init
+  (add-hook 'prog-mode-hook #'ws-butler-mode))
 
 (provide 'synthmacs-evil)

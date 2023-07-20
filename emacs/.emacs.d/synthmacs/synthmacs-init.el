@@ -37,6 +37,7 @@
 
 ;; Load packages
 (require 'synthmacs-general)
+(require 'synthmacs-hydra)
 (require 'synthmacs-evil)
 (require 'synthmacs-general-keybindings)
 (require 'synthmacs-winum)
@@ -48,7 +49,6 @@
 (require 'synthmacs-icons)
 (require 'synthmacs-modeline)
 (require 'synthmacs-themes)
-(require 'synthmacs-hydra)
 (require 'synthmacs-which-key)
 (require 'synthmacs-rainbow)
 (require 'synthmacs-helpful)
