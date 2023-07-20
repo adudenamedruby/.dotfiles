@@ -151,6 +151,8 @@ _q_: quit
 
 (use-package ws-butler
   :init
+  ;; (ws-butler-global-mode 1)
   (add-hook 'prog-mode-hook #'ws-butler-mode))
+
 
 (provide 'synthmacs-evil)
