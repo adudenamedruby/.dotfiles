@@ -1,4 +1,7 @@
-;; The main file that handles the startup.
+;;; packages --- Summary
+
+;;; Commentary:
+;; The main file that handles the startup
 
 ;; Everything else is esentially inside their respective folders
 ;; - core        Files essential to running Emacs, excluding packages
@@ -12,6 +15,8 @@
 ;; - modules     These are sets of things
 ;;
 ;; - assets      Miscellaneous files.
+
+;;; Code:
 
 (message "SynthMacs is powering up, please be patient...")
 

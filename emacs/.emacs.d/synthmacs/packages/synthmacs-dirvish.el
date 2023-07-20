@@ -1,17 +1,23 @@
 ;;; package --- Summary
 
-;;; Commentary
+;;; Commentary:
 
-;;; Code
+;;; Code:
 
 (use-package dirvish
   :init
   (dirvish-override-dired-mode)
   :config
-  (setq delete-by-moving-to-trash t))
+  (setq delete-by-moving-to-trash t
+	dirvish-attributes
+	'(all-the-icons file-size collapse subtree-state vc-state)
+	dirvish-side-width 45
+	dirvish-side-follow-mode t
+	))
 
 (synthmacs/leader-keys
-  "fm" '(dirvish :wk "file manager"))
+  "fm" '(dirvish :wk "file manager")
+  "ft" '(dirvish-side :wk "file tree"))
 
 ;; Addtional syntax highlighting for dired
 (use-package diredfl

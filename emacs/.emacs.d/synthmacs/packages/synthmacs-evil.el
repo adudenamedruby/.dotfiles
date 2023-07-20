@@ -71,6 +71,16 @@
   :config
   (evil-goggles-mode))
 
+(use-package evil-iedit-state
+    :commands (evil-iedit-state evil-iedit-state/iedit-mode)
+    :init
+    (setq iedit-current-symbol-default t
+          iedit-only-at-symbol-boundaries t
+          iedit-toggle-key-default nil)
+    :general
+    (synthmacs/leader-keys
+      "se" '(evil-iedit-state/iedit-mode :wk "iedit-mode")))
+
 (use-package evil-lion
   :defer t
   :init
