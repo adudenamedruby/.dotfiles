@@ -158,7 +158,8 @@
   "tp" '(smartparens-global-mode :wk "smartparens-global-mode")
   "tt" '(toggle-truncate-lines :wk "truncate-lines")
   "tv" '(visual-line-mode :wk "visual-line-mode")
-  "tw" '(global-whitespace-mode :wk "global-whitespace-mode"))
+  "tw" '(global-whitespace-mode :wk "global-whitespace-mode")
+  "tz" '(zone :wk "zone"))
 
 ;; Windows bindings
 (synthmacs/leader-keys
