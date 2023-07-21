@@ -156,7 +156,7 @@
   "ta" '(global-corfu-mode :wk "auto-completion")
   "tc" '(global-display-fill-column-indicator-mode :wk "fill-column")
   "tp" '(smartparens-global-mode :wk "smartparens-global-mode")
-  "tt" '(toggle-truncate-lines :wk "truncate-lines")
+  "tl" '(toggle-truncate-lines :wk "truncate-lines")
   "tv" '(visual-line-mode :wk "visual-line-mode")
   "tw" '(global-whitespace-mode :wk "global-whitespace-mode")
   "tz" '(zone :wk "zone"))

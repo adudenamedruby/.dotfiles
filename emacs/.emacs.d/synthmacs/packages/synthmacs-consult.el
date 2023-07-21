@@ -11,7 +11,7 @@
     "ss" '(consult-line :wk "swoop")
 
     ;; toggles
-    "tT" '(consult-theme :wk "consult-themes"))
+    "ttt" '(consult-theme :wk "consult-themes"))
 
 
   ;; Replace bindings. Lazily loaded due by `use-package'.

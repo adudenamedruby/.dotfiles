@@ -1,5 +1,6 @@
 (setq evil-search-module 'evil-search)
 (setq evil-ex-search-persistent-highlight t)
+(setq evil-undo-system 'undo-redo)
 
 (use-package evil
   :init
