@@ -22,6 +22,30 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
+(use-package afternoon-theme)
+(use-package alect-themes)
+(use-package ample-theme)
+(use-package ample-zen-theme)
+(use-package badwolf-theme)
+(use-package catppuccin-theme)
+(use-package clues-theme)
+(use-package color-theme-sanityinc-solarized)
+(use-package color-theme-sanityinc-tomorrow)
+(use-package cyberpunk-theme)
+(use-package darktooth-theme)
+(use-package dracula-theme)
+(use-package flatland-theme)
+(use-package gruvbox-theme)
+(use-package jazz-theme)
+(use-package kaolin-themes)
+(use-package material-theme)
+(use-package modus-themes)
+(use-package monokai-theme)
+(use-package seti-theme)
+(use-package sooth-theme)
+(use-package subatomic-theme)
+(use-package sublime-themes)
+
 (use-package solaire-mode
   :init
   (solaire-global-mode +1))

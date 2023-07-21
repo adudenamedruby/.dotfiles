@@ -21,7 +21,7 @@
   ;;        (shell-mode . corfu-mode)
   ;;        (eshell-mode . corfu-mode))
 
-  (corfu-popupinfo-delay 0.1)
+  (corfu-popupinfo-delay 1)
   (corfu-popupinfo-max-height 15)
   ;; Recommended: Enable Corfu globally.
   ;; This is recommended since Dabbrev can be used globally (M-/).
