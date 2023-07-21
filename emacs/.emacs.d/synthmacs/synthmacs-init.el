@@ -46,7 +46,7 @@
 (require 'synthmacs-evil)
 (require 'synthmacs-general-keybindings)
 (require 'synthmacs-themes)
-(require 'synthmacs-winum)
+(require 'synthmacs-windows)
 (require 'synthmacs-vertico)
 (require 'synthmacs-orderless)
 (require 'synthmacs-consult)
@@ -68,6 +68,7 @@
 (require 'synthmacs-lsp)
 (require 'synthmacs-corfu)
 (require 'synthmacs-flycheck)
+(require 'synthmacs-imenu)
 
 ;; Load modules
 (require 'synthmacs-swift)

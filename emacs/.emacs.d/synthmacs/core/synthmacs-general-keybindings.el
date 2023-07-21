@@ -153,7 +153,6 @@
 ;; Toggles bindings
 (synthmacs/leader-keys
   "t" '(:ignore t :wk "toggles")
-  "ta" '(global-corfu-mode :wk "auto-completion")
   "tc" '(global-display-fill-column-indicator-mode :wk "fill-column")
   "tp" '(smartparens-global-mode :wk "smartparens-global-mode")
   "tl" '(toggle-truncate-lines :wk "truncate-lines")
@@ -185,6 +184,11 @@
   "wH" '(synthmacs/buf-move-left :wk "window move left")
   "wJ" '(synthmacs/buf-move-down :wk "window move down")
   "wK" '(synthmacs/buf-move-up :wk "window move up")
-  "wL" '(synthmacs/buf-move-right :wk "window move right"))
+  "wL" '(synthmacs/buf-move-right :wk "window move right")
+
+  "w{" '(shrink-window :wk "shrink-window")
+  "w[" '(synthmacs/buf-move-down :wk "shrink-window-horizontally")
+  "w}" '(synthmacs/buf-move-up :wk "expand-window")
+  "w]" '(synthmacs/buf-move-right :wk "expand-window-horizontally"))
 
 (provide 'synthmacs-general-keybindings)

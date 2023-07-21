@@ -15,4 +15,13 @@
 	winum-ignored-buffers '(" *which-key*"))
   (winum-mode))
 
-(provide 'synthmacs-winum)
+(use-package ace-window
+  :general
+  (synthmacs/leader-keys
+    "wD" '(ace-delete-window :wk "ace-delete-window")
+    "wM" '(ace-swap-window :wk "ace-swap-window")
+    "wD" '(ace-delete-window :wk "ace-delete-window")
+    "wD" '(ace-delete-window :wk "ace-delete-window")
+    ))
+
+(provide 'synthmacs-windows)

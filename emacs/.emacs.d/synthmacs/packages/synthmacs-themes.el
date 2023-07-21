@@ -33,7 +33,6 @@
 (use-package color-theme-sanityinc-tomorrow)
 (use-package cyberpunk-theme)
 (use-package darktooth-theme)
-(use-package dracula-theme)
 (use-package flatland-theme)
 (use-package gruvbox-theme)
 (use-package jazz-theme)
@@ -42,7 +41,7 @@
 (use-package modus-themes)
 (use-package monokai-theme)
 (use-package seti-theme)
-(use-package sooth-theme)
+(use-package soothe-theme)
 (use-package subatomic-theme)
 (use-package sublime-themes)
 
