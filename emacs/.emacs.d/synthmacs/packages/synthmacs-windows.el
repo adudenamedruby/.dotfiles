@@ -19,9 +19,7 @@
   :general
   (synthmacs/leader-keys
     "wD" '(ace-delete-window :wk "ace-delete-window")
-    "wM" '(ace-swap-window :wk "ace-swap-window")
-    "wD" '(ace-delete-window :wk "ace-delete-window")
-    "wD" '(ace-delete-window :wk "ace-delete-window")
+    "wS" '(ace-swap-window :wk "ace-swap-window")
     ))
 
 (provide 'synthmacs-windows)

@@ -69,9 +69,11 @@
 (require 'synthmacs-corfu)
 (require 'synthmacs-flycheck)
 (require 'synthmacs-imenu)
+(require 'synthmacs-snippets)
 
 ;; Load modules
 (require 'synthmacs-swift)
+(require 'synthmacs-lisp)
 
 
 ;; (setq gc-cons-threshold 16777216

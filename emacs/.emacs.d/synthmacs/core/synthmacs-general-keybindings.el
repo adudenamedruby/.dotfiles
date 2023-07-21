@@ -165,7 +165,6 @@
   "w" '(:ignore t :wk "window")
 
   "wd" '(evil-window-delete :wk "delete-window")
-  "wD" '(delete-other-windows :wk "delete-other-windows")
 
   "ws" '(evil-window-split :wk "horizontal split window")
   "wv" '(evil-window-vsplit :wk "vertical split window")
