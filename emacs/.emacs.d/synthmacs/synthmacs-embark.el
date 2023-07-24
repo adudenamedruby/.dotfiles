@@ -82,19 +82,19 @@ targets."
 ;;             :around #'embark-hide-which-key-indicator)
 
 ;; -------- Package actions using Straight -------------
-(defvar-keymap embark-straight-map
-  :parent embark-general-map
-  "u" #'straight-visit-package-website
-  "r" #'straight-get-recipe
-  "i" #'straight-use-package
-  "c" #'straight-check-package
-  "F" #'straight-pull-package
-  "f" #'straight-fetch-package
-  "p" #'straight-push-package
-  "n" #'straight-normalize-package
-  "m" #'straight-merge-package)
+;; (defvar-keymap embark-straight-map
+;;   :parent embark-general-map
+;;   "u" #'straight-visit-package-website
+;;   "r" #'straight-get-recipe
+;;   "i" #'straight-use-package
+;;   "c" #'straight-check-package
+;;   "F" #'straight-pull-package
+;;   "f" #'straight-fetch-package
+;;   "p" #'straight-push-package
+;;   "n" #'straight-normalize-package
+;;   "m" #'straight-merge-package)
 
-(add-to-list 'embark-keymap-alist '(straight . embark-straight-map))
+;; (add-to-list 'embark-keymap-alist '(straight . embark-straight-map))
 
 (add-to-list 'marginalia-prompt-categories '("recipe\\|package" . straight))
 (use-package embark-consult

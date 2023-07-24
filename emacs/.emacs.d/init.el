@@ -52,7 +52,7 @@
   (require 'synthmacs-consult)
   (require 'synthmacs-marginalia)
   (require 'synthmacs-embark)
-  (require 'synthmacs-dirvish)
+  ;; (require 'synthmacs-dirvish)
   (require 'synthmacs-icons)
   (require 'synthmacs-modeline)
   (require 'synthmacs-which-key)
@@ -64,7 +64,7 @@
   (require 'synthmacs-dashboard)
   (require 'synthmacs-org)
   (require 'synthmacs-avy)
-  (require 'synthmacs-treesitter)
+  ;; (require 'synthmacs-treesitter)
   (require 'synthmacs-lsp)
   (require 'synthmacs-corfu)
   (require 'synthmacs-flycheck)
@@ -72,8 +72,9 @@
   (require 'synthmacs-snippets)
 
   ;; Load modules
-  (require 'synthmacs-swift)
-  (require 'synthmacs-lisp)
+  ;; (require 'synthmacs-swift)
+  ;; (require 'synthmacs-lisp)
+
   ;; (require 'init-core)
   ;; (require 'init-ui-extra)
   ;; (require 'init-org-roam)

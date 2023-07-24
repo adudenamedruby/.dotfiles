@@ -25,15 +25,13 @@
   (setq anzu-search-threshold 1000
 	anzu-cons-mode-line-p nil))
 
-(use-package evil-args
-  :defer t
-  :init
-  (progn
-    (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
-    (define-key evil-outer-text-objects-map "a" 'evil-outer-arg)))
+;; (use-package evil-args
+;;   :init
+;;   (progn
+;;     (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
+;;     (define-key evil-outer-text-objects-map "a" 'evil-outer-arg)))
 
 (use-package evil-cleverparens
-  :defer t
   :init
   (setq evil-cleverparens-use-regular-insert t)
   :config
@@ -50,17 +48,16 @@
   :config
   (evil-commentary-mode))
 
-(use-package evil-exchange
-  :defer t
-  :init
-  (let ((evil-exchange-key (kbd "gx"))
-	(evil-exchange-cancel-key (kbd "gX")))
-    (define-key evil-normal-state-map evil-exchange-key 'evil-exchange)
-    (define-key evil-visual-state-map evil-exchange-key 'evil-exchange)
-    (define-key evil-normal-state-map evil-exchange-cancel-key
-		'evil-exchange-cancel)
-    (define-key evil-visual-state-map evil-exchange-cancel-key
-		'evil-exchange-cancel)))
+;; (use-package evil-exchange
+;;   :init
+;;   (let ((evil-exchange-key (kbd "gx"))
+;; 	(evil-exchange-cancel-key (kbd "gX")))
+;;     (define-key evil-normal-state-map evil-exchange-key 'evil-exchange)
+;;     (define-key evil-visual-state-map evil-exchange-key 'evil-exchange)
+;;     (define-key evil-normal-state-map evil-exchange-cancel-key
+;; 		'evil-exchange-cancel)
+;;     (define-key evil-visual-state-map evil-exchange-cancel-key
+;; 		'evil-exchange-cancel)))
 
 (use-package evil-goggles
   :init
@@ -82,13 +79,12 @@
     (synthmacs/leader-keys
       "se" '(evil-iedit-state/iedit-mode :wk "iedit-mode")))
 
-(use-package evil-lion
-  :defer t
-  :init
-  (evil-define-key '(normal visual) 'global
-    "gl" #'evil-lion-left
-    "gL" #'evil-lion-right)
-  :config (evil-lion-mode))
+;; (use-package evil-lion
+;;   :init
+;;   (evil-define-key '(normal visual) 'global
+;;     "gl" #'evil-lion-left
+;;     "gL" #'evil-lion-right)
+;;   :config (evil-lion-mode))
 
 ;; https://github.com/syl20bnr/evil-lisp-state
 ;; (use-package evil-lisp-state
@@ -167,3 +163,4 @@ _q_: quit
 
 
 (provide 'synthmacs-evil)
+;; synthmacs-evil.el ends here

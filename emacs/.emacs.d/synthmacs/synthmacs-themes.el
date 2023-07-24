@@ -11,6 +11,7 @@
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
+
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
   ;; Enable custom neotree theme (all-the-icons must be installed!)
@@ -51,13 +52,32 @@
 
 
 ;;; Functions:
-(defvar synthmacs--fallback-theme 'doom-challenger-deep
+(defvar synthmacs--fallback-theme 'kaolin-bubblegum
   "Fallback theme if user theme cannot be applied.")
 
 (defvar synthmacs--cur-theme nil
   "Internal variable storing currently loaded theme.")
 
-(defvar synthmacs--user-themes '(leuven doom-challenger-deep wombat))
+(defvar synthmacs--user-themes '(kaolin-bubblegum
+				 doom-challenger-deep
+				 cyberpunk
+				 jazz
+				 afternoon
+				 ample-zen
+				 doom-1337
+				 catppuccin
+				 manoj-dark
+				 doom-snazzy
+				 kaolin-dark
+				 doom-gruvbox
+				 doom-old-hope
+				 kaolin-aurora
+				 doom-acario-dark
+				 gruvbox-dark-hard
+				 modus-vivendi
+				 alect-black
+				 modus-operandi
+				 gruvbox-light-hard))
 
 (defun synthmacs/load-theme (&optional theme)
   "Apply user theme."
@@ -68,6 +88,13 @@
     (progn
       (load-theme synthmacs--fallback-theme t)
       (setq-default spacemacs--cur-theme synthmacs--fallback-theme))))
+
+(defun synthmacs/load-random-theme ()
+  (interactive)
+  (let* ((size (length synthmacs--user-themes))
+         (index (random size))
+         (randomTheme (nth index synthmacs--user-themes)))
+    (synthmacs/load-theme randomTheme)))
 
 (defun synthmacs/cycle-synthmacs-theme (&optional backward)
   "Cycle through themes defined in `synthmacs-themes'.
@@ -98,8 +125,9 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 
 (synthmacs/leader-keys
   "tt" '(:ignore t :wk "themes")
-  "ttn" '(synthmacs/hydra-theme-cycle :wk "cycle-synthmacs-themes")
-  "ttN" '(synthmacs/hydra-theme-cycle-backward :wk "cycle-synthmacs-themes-backwards"))
+  "ttn" '(synthmacs/hydra-theme-cycle :wk "cycle-themes")
+  "ttN" '(synthmacs/hydra-theme-cycle-backward :wk "cycle-themes-backwards")
+  "ttr" '(synthmacs/hydra-theme-random :wk "random-theme"))
 
 (defun synthmacs/hydra-theme-cycle ()
   (interactive)
@@ -111,20 +139,27 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   (synthmacs/cycle-synthmacs-theme t)
   (synthmacs/hydra/cycle-themes/body))
 
+(defun synthmacs/hydra-theme-random ()
+  (interactive)
+  (synthmacs/load-random-theme)
+  (synthmacs/hydra/cycle-themes/body))
+
 (defhydra synthmacs/hydra/cycle-themes (:timeout 20)
 	  "
 ^Themes Menu
 ^^^^^^^^------------------------
 [_n_]     cycle-theme
 [_p_/_N_]   cycle-theme-backward
+[_r_]     random-theme
 [_q_] quit
 "
   ("n" synthmacs/cycle-synthmacs-theme)
   ("p" synthmacs/cycle-synthmacs-theme-backward)
   ("N" synthmacs/cycle-synthmacs-theme-backward)
+  ("r" synthmacs/load-random-theme)
   ("q" nil :exit t))
 
-(synthmacs/load-theme)
+(synthmacs/load-random-theme)
 
 (provide 'synthmacs-themes)
 
