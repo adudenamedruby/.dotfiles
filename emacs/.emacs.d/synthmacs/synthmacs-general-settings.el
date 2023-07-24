@@ -19,6 +19,8 @@
       scroll-margin 5
       scroll-preserve-screen-position 't)
 
+(global-hl-line-mode 1)
+
 ;; ------------------ Line Numbering ---------------------
 ;; set type of line numbering (global variable)
 (setq display-line-numbers-type 'relative)

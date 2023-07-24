@@ -68,8 +68,8 @@
   "fe" '(:ignore t :wk "Emacs Files")
   "fed" '((lambda ()
 	    (interactive)
-	    (find-file "~/.emacs.d/synthmacs/synthmacs-init.el"))
-	  :wk "synthmacs-init.el")
+	    (find-file "~/.emacs.d/synthmacs.org"))
+	  :wk "synthmacs.org")
   "fei" '(
 	  (lambda ()
 	    (interactive)

@@ -1,0 +1,367 @@
+#+TITLE: SYNTHMACS Config
+#+AUTHOR: roux g. buciu
+#+STARTUP: show3levels
+#+OPTIONS: auto-id:t
+#+OPTIONS: broken-links:t
+#+OPTIONS: tags:nil
+#+PROPERTY: header-args:emacs-lisp :comments link
+
+* Introduction
+:PROPERTIES:
+:CUSTOM_ID: h:49282F28-9E13-48D2-A565-1605B1CC57B8
+:END:
+"#+HTML_HEAD: <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101260027);</script>"
+"#+HTML_HEAD: <script async src="//static.getclicky.com/js"></script>"
+
+** This file
+:PROPERTIES:
+:CUSTOM_ID: h:D9ED3ADB-810A-4A1C-A1D3-5397874AFAC7
+:END:
+This file (~readme.org~) is my literate emacs configuration. 
+Every time I save the file, the code blocks get tangled.
+By default, they get tangled (in sequence) to ~./init.el~.
+Some blocks override this default (e.g. see the section [[*early-init.el][early-init.el]]).
+* early-init.el and init.el
+:PROPERTIES:
+:CUSTOM_ID: h:EC68944C-F745-45D8-9905-420E0813DBAF
+:END:
+** early-init.el
+:PROPERTIES:
+:CUSTOM_ID: h:7DBC58C1-3944-437C-87F9-95C9202BD34E
+:END:
+Taken from DOOM's early init
+#+BEGIN_SRC emacs-lisp :tangle early-init.el
+  ;;; early-init.el --- Early Init File -*- lexical-binding: t; no-byte-compile: t -*-
+  ;; NOTE: early-init.el is now generated from synthmacs.org.  Please edit that file instead
+
+  ;; Defer garbage collection further back in the startup process
+  ;; (setq gc-cons-threshold most-positive-fixnum
+  ;;       gc-cons-percentage 0.6)
+
+  ;; In Emacs 27+, package initialization occurs before `user-init-file' is
+  ;; loaded, but after `early-init-file'. Doom handles package initialization, so
+  ;; we must prevent Emacs from doing it early!
+  (setq package-enable-at-startup nil)
+  ;; Do not allow loading from the package cache (same reason).
+  (setq package-quickstart nil)
+
+  ;; Prevent the glimpse of un-styled Emacs by disabling these UI elements early.
+  (push '(menu-bar-lines . 0) default-frame-alist)
+  (push '(tool-bar-lines . 0) default-frame-alist)
+  (push '(vertical-scroll-bars) default-frame-alist)
+
+  ;; Resizing the Emacs frame can be a terribly expensive part of changing the
+  ;; font. By inhibiting this, we easily halve startup times with fonts that are
+  ;; larger than the system default.
+  (setq frame-inhibit-implied-resize t)
+
+  ;; Disable GUI elements
+  (setq menu-bar-mode -1)
+  (setq tool-bar-mode -1)
+  (when (fboundp 'set-scroll-bar-mode)
+    (set-scroll-bar-mode nil))
+  (setq inhibit-splash-screen t)
+  (setq use-file-dialog nil)
+
+  ;; Native-Comp
+  (setq native-comp-speed 2
+        comp-speed 2)
+  (setq native-comp-async-report-warnings-errors nil
+        comp-async-report-warnings-errors nil)
+  (setq native-comp-async-query-on-exit t
+        comp-async-query-on-exit t)
+
+  ;;; early-init.el ends here
+#+END_SRC
+
+** init.el: startup optimization
+:PROPERTIES:
+:CUSTOM_ID: h:E6162DC2-7E1C-4843-8448-FF104A444B40
+:END:
+Taken from DOOM's init
+#+BEGIN_SRC emacs-lisp :tangle init.el
+  ;;; init.el --- Personal configuration file -*- lexical-binding: t; no-byte-compile: t; -*-
+  ;; NOTE: init.el is now generated from synthmacs.org.  Please edit that file instead
+
+  ;; `file-name-handler-alist' is consulted on every `require', `load' and various
+  ;; path/io functions. You get a minor speed up by nooping this. However, this
+  ;; may cause problems on builds of Emacs where its site lisp files aren't
+  ;; byte-compiled and we're forced to load the *.el.gz files (e.g. on Alpine)
+  (unless (daemonp)
+    (defvar doom--initial-file-name-handler-alist file-name-handler-alist)
+    (setq file-name-handler-alist nil)
+    ;; Restore `file-name-handler-alist' later, because it is needed for handling
+    ;; encrypted or compressed files, among other things.
+    (defun doom-reset-file-handler-alist-h ()
+      ;; Re-add rather than `setq', because changes to `file-name-handler-alist'
+      ;; since startup ought to be preserved.
+      (dolist (handler file-name-handler-alist)
+	(add-to-list 'doom--initial-file-name-handler-alist handler))
+      (setq file-name-handler-alist doom--initial-file-name-handler-alist))
+    (add-hook 'emacs-startup-hook #'doom-reset-file-handler-alist-h)
+    (add-hook 'after-init-hook '(lambda ()
+				   ;; restore after startup
+				   (setq gc-cons-threshold 16777216
+					 gc-cons-percentage 0.1)))
+    )
+  ;; Ensure Doom is running out of this file's directory
+  (setq user-emacs-directory (file-truename (file-name-directory load-file-name)))
+#+END_SRC
+
+** init.el: load modules
+:PROPERTIES:
+:CUSTOM_ID: h:7B22A4F3-49A1-4848-A185-B4EEA060EECE
+:END:
+#+begin_src emacs-lisp :tangle init.el
+  (message "SynthMacs is powering up, please be patient...")
+
+  ;; (add-to-list 'load-path "~/.emacs.d/synthmacs/")
+  (add-to-list 'load-path (expand-file-name "synthmacs" user-emacs-directory))
+
+  (let ((file-name-handler-alist nil)
+	(gc-cons-threshold 100000000))
+    (require 'synthmacs-general-settings)
+    (require 'synthmacs-variables)
+    (require 'synthmacs-functions)
+    (require 'synthmacs-straight)
+
+    ;; Load packages
+    (require 'synthmacs-general)
+    (require 'synthmacs-hydra)
+    (require 'synthmacs-evil)
+    (require 'synthmacs-general-keybindings)
+    (require 'synthmacs-themes)
+    (require 'synthmacs-windows)
+    (require 'synthmacs-vertico)
+    (require 'synthmacs-orderless)
+    (require 'synthmacs-consult)
+    (require 'synthmacs-marginalia)
+    (require 'synthmacs-embark)
+    (require 'synthmacs-dirvish)
+    (require 'synthmacs-icons)
+    (require 'synthmacs-modeline)
+    (require 'synthmacs-which-key)
+    (require 'synthmacs-rainbow)
+    (require 'synthmacs-helpful)
+    (require 'synthmacs-rg)
+    (require 'synthmacs-projectile)
+    (require 'synthmacs-git)
+    (require 'synthmacs-dashboard)
+    (require 'synthmacs-org)
+    (require 'synthmacs-avy)
+    (require 'synthmacs-treesitter)
+    (require 'synthmacs-lsp)
+    (require 'synthmacs-corfu)
+    (require 'synthmacs-flycheck)
+    (require 'synthmacs-imenu)
+    (require 'synthmacs-snippets)
+
+    ;; Load modules
+    (require 'synthmacs-swift)
+    (require 'synthmacs-lisp)
+    ;; (require 'init-core)
+    ;; (require 'init-ui-extra)
+    ;; (require 'init-org-roam)
+    ;; (require 'init-org-export)
+    ;; (require 'init-prog-vterm)
+    ;; (require 'init-prog-nix)
+    ;; (require 'init-prog-lsp)
+    ;; (require 'init-prog-python)
+    ;; (require 'init-prog-jupyter)
+    ;; (require 'init-prog-elisp)
+    ;; (require 'init-prog-markdown)
+    ;; (require 'init-prog-stan)
+    ;; (require 'init-prog-r)
+    ;; (require 'init-prog-clojure)
+    ;; (require 'init-prog-tree-sitter)
+    ;; (require 'init-extra-focus)
+    ;; (require 'init-extra-web)
+    ;; (require 'init-extra-rss)
+    ;; (require 'init-extra)
+    )
+
+    ;;; init.el ends here
+#+end_src
+
+* Core
+** Package manager
+:PROPERTIES:
+:CUSTOM_ID: h:376622D2-A6B7-4050-97C6-413B0D77B89C
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-straight.el
+:END:
+** bootstrap straight and straight-use-package
+:PROPERTIES:
+:CUSTOM_ID: h:686F7A63-013E-48ED-AC56-DF39BD398E20
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-straight.el
+:END:
+Some rules/conventions:
+- Prefer ~:init~ to ~:custom~. Prefer multiple ~setq~ expressions to one.
+- Default to ~:defer t~, use ~:demand~ to force loading
+- When packages do not require installation e.g. ~dired~, we need ~:straight (:type built-in)~ 
+- If you specify ~:commands~, they will be autoloaded and the package will be loaded when the commands are first executed
+    + If you use ~:general~ and bind commands to keys it will automatically load the package on first invokation
+
+#+BEGIN_SRC emacs-lisp
+  (setq straight-repository-branch "develop")
+  (setq straight-use-package-by-default t)
+  ;; (setq straight-recipes-gnu-elpa-use-mirror t)
+  ;; (setq straight-check-for-modifications '(check-on-save find-when-checking))
+  ;;(setq straight-check-for-modifications nil)
+  (setq use-package-always-ensure t)
+  (setq use-package-always-defer t)
+
+  (setq straight-repository-branch "develop")
+  (defvar bootstrap-version)
+  (let ((bootstrap-file
+	 (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+	(bootstrap-version 6))
+    (unless (file-exists-p bootstrap-file)
+      (with-current-buffer
+	  (url-retrieve-synchronously
+	   "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+	   'silent 'inhibit-cookies)
+	(goto-char (point-max))
+	(eval-print-last-sexp)))
+    (load bootstrap-file nil 'nomessage))
+
+  ;; Install use-package
+  (straight-use-package 'use-package)
+
+#+END_SRC
+* Tangling
+** async tangle
+:PROPERTIES:
+:CUSTOM_ID: h:16B948EA-5375-44DE-ACD7-3664D4A9CE5F
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-org.el
+:END:
+Taken from https://github.com/KaratasFurkan/.emacs.d
+
+#+begin_src emacs-lisp
+  (use-package org
+    :config
+    (require 's)
+    (defun synthmacs/async-process (command &optional name filter)
+      "Start an async process by running the COMMAND string with bash. Return the
+  process object for it.
+
+  NAME is name for the process. Default is \"async-process\".
+
+  FILTER is function that runs after the process is finished, its args should be
+  \"(process output)\". Default is just messages the output."
+      (make-process
+       :command `("bash" "-c" ,command)
+       :name (if name name
+	       "async-process")
+       :filter (if filter filter
+		 (lambda (process output) (message (s-trim output))))))
+
+
+    (defun synthmacs/tangle-config ()
+      "Export code blocks from the literate config file
+  asynchronously."
+      (interactive)
+      (let ((command (if (file-directory-p "/Applications/Emacs.app")
+			 "/Applications/Emacs.app/Contents/MacOS/Emacs %s --batch --eval '(org-babel-tangle nil \"%s\")'"
+		       ;; on iPad
+		       "emacs %s --batch --eval '(org-babel-tangle nil \"%s\")'"
+		       ;; "emacs %s --batch --eval '(org-babel-tangle nil \"%s\")'  2>&1 | grep -v '^Loading.*\.\.\.$' | grep -v '^Using ' | grep -v '^dump '| grep -v '^Finding '"
+		       )))
+	;; prevent emacs from killing until tangle-process finished
+	;; (add-to-list 'kill-emacs-query-functions
+	;;              (lambda ()
+	;;                (or (not (process-live-p (get-process "tangle-process")))
+	;;                    (y-or-n-p "\"fk/tangle-config\" is running; kill it? "))))
+	;; tangle config asynchronously
+	(synthmacs/async-process
+	 (format command
+		 (expand-file-name "readme.org" user-emacs-directory)
+		 (expand-file-name "init.el" user-emacs-directory))
+	 "tangle-process")
+	)
+
+      )
+    )
+#+end_src
+* Org Mode
+** use org-id in links
+:PROPERTIES:
+:CUSTOM_ID: h:AC175A47-E576-4AA6-A9C7-709129F4C56F
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-org.el
+:END:
+Taken from https://writequit.org/articles/emacs-org-mode-generate-ids.html
+
+Problem: when exporting org files to HTML, the header anchors are volatile.
+Once I publish a new HTML version of this file, the previous version's links are no longer valid.
+
+This function adds ~CUSTOM_ID~ property to all headings in a file (one-time).
+We can then use this to link to that heading forever.
+
+Adding it as a ~after-save-hook~  automatically adds a ~CUSTOM_ID~ to newly created headers.
+
+#+begin_src emacs-lisp
+(use-package org
+  :init
+  (defun synthmacs/org-custom-id-get (&optional pom create prefix)
+    "Get the CUSTOM_ID property of the entry at point-or-marker POM.
+   If POM is nil, refer to the entry at point. If the entry does
+   not have an CUSTOM_ID, the function returns nil. However, when
+   CREATE is non nil, create a CUSTOM_ID if none is present
+   already. PREFIX will be passed through to `org-id-new'. In any
+   case, the CUSTOM_ID of the entry is returned."
+    (interactive)
+    (org-with-point-at pom
+      (let ((id (org-entry-get nil "CUSTOM_ID")))
+        (cond
+         ((and id (stringp id) (string-match "\\S-" id))
+          id)
+         (create
+          (setq id (org-id-new (concat prefix "h")))
+          (org-entry-put pom "CUSTOM_ID" id)
+          (org-id-add-location id (buffer-file-name (buffer-base-buffer)))
+          id)))))
+  
+  (defun synchmacs/org-add-ids-to-headlines-in-file ()
+    "Add CUSTOM_ID properties to all headlines in the current
+   file which do not already have one. Only adds ids if the
+   `auto-id' option is set to `t' in the file somewhere. ie,
+   ,#+OPTIONS: auto-id:t"
+    (interactive)
+    (save-excursion
+      (widen)
+      (goto-char (point-min))
+      (when (re-search-forward "^#\\+OPTIONS:.*auto-id:t" 10000 t)
+        (org-map-entries (lambda () (synthmacs/org-custom-id-get (point) 'create))))))
+  :config
+  (require 'org-id)
+  (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+  )
+#+end_src
+* Provide modules
+:PROPERTIES:
+:CUSTOM_ID: h:754DFB20-B2AB-4750-9BDA-D24E8014C504
+:END:
+** synthmacs-org
+:PROPERTIES:
+:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-org.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-org)
+;;; synthmacs-org.el ends here
+#+end_src
+** synthmacs-straight
+:PROPERTIES:
+:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-straight.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-straight)
+;;; synthmacs-straight.el ends here
+#+end_src
+* COMMENT Local variables
+:PROPERTIES:
+:CUSTOM_ID: h:8CE072CD-CA85-4E53-B672-E0AC74E4E4EC
+:END:
+# Local Variables:
+# eval: (add-hook 'after-save-hook (lambda ()(progn (synthmacs/org-add-ids-to-headlines-in-file) (synthmacs/tangle-config))) nil t)
+# End:
