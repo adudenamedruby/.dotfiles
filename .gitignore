@@ -2,4 +2,4 @@
 /zsh/.config/zsh/.zsh_history
 /emacs/.emacs.d/*
 !/emacs/.emacs.d/synthmacs.org
-!/emacs/.emacs.d/synthmacs/*
+!/emacs/.emacs.d/synthmacs/*.el

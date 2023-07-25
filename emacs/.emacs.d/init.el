@@ -107,6 +107,7 @@
    '((eval add-hook 'after-save-hook
 	   (lambda nil
 	     (progn
+	       (synthmacs/org-add-ids-to-headlines-in-file)
 	       (synthmacs/tangle-config)))
 	   nil t))))
 (custom-set-faces

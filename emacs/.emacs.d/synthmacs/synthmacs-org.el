@@ -1,47 +1,3 @@
-;; [[file:../synthmacs.org::*async tangle][async tangle:1]]
-(use-package org
-  :config
-  (require 's)
-  (defun synthmacs/async-process (command &optional name filter)
-    "Start an async process by running the COMMAND string with bash. Return the
-process object for it.
-
-NAME is name for the process. Default is \"async-process\".
-
-FILTER is function that runs after the process is finished, its args should be
-\"(process output)\". Default is just messages the output."
-    (make-process
-     :command `("bash" "-c" ,command)
-     :name (if name name
-	     "async-process")
-     :filter (if filter filter
-	       (lambda (process output) (message (s-trim output))))))
-
-
-  (defun synthmacs/tangle-config ()
-    "Export code blocks from the literate config file
-asynchronously."
-    (interactive)
-    (let ((command (if (file-directory-p "/opt/homebrew/opt/emacs-plus@29/Emacs.app")
-		       "/opt/homebrew/opt/emacs-plus@29/Emacs.app/Contents/MacOS/Emacs %s --batch --eval '(org-babel-tangle nil \"%s\")'"
-		     )))
-      ;; prevent emacs from killing until tangle-process finished
-      ;; (add-to-list 'kill-emacs-query-functions
-      ;;              (lambda ()
-      ;;                (or (not (process-live-p (get-process "tangle-process")))
-      ;;                    (y-or-n-p "\"fk/tangle-config\" is running; kill it? "))))
-      ;; tangle config asynchronously
-      (synthmacs/async-process
-       (format command
-	       (expand-file-name "synthmacs.org" user-emacs-directory)
-	       (expand-file-name "init.el" user-emacs-directory))
-       "tangle-process")
-      )
-
-    )
-  )
-;; async tangle:1 ends here
-
 ;; [[file:../synthmacs.org::*org mode][org mode:1]]
 (use-package org
   ;; :straight org-plus-contrib
@@ -151,7 +107,13 @@ asynchronously."
   )
 ;; org mode:1 ends here
 
-;; [[file:../synthmacs.org::*use org-id in links][use org-id in links:1]]
+;; [[file:../synthmacs.org::*Enabling the Table of Contents][Enabling the Table of Contents:1]]
+(use-package toc-org
+    :commands toc-org-enable
+    :init (add-hook 'org-mode-hook 'toc-org-enable))
+;; Enabling the Table of Contents:1 ends here
+
+;; [[file:../synthmacs.org::*Using org-id in links][Using org-id in links:1]]
 (use-package org
   :init
   (defun synthmacs/org-custom-id-get (&optional pom create prefix)
@@ -188,7 +150,51 @@ asynchronously."
   (require 'org-id)
   (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
   )
-;; use org-id in links:1 ends here
+;; Using org-id in links:1 ends here
+
+;; [[file:../synthmacs.org::*Tangling this file][Tangling this file:1]]
+(use-package org
+  :config
+  (require 's)
+  (defun synthmacs/async-process (command &optional name filter)
+    "Start an async process by running the COMMAND string with bash. Return the
+process object for it.
+
+NAME is name for the process. Default is \"async-process\".
+
+FILTER is function that runs after the process is finished, its args should be
+\"(process output)\". Default is just messages the output."
+    (make-process
+     :command `("bash" "-c" ,command)
+     :name (if name name
+	     "async-process")
+     :filter (if filter filter
+	       (lambda (process output) (message (s-trim output))))))
+
+
+  (defun synthmacs/tangle-config ()
+    "Export code blocks from the literate config file
+asynchronously."
+    (interactive)
+    (let ((command (if (file-directory-p "/opt/homebrew/opt/emacs-plus@29/Emacs.app")
+		       "/opt/homebrew/opt/emacs-plus@29/Emacs.app/Contents/MacOS/Emacs %s --batch --eval '(org-babel-tangle nil \"%s\")'"
+		     )))
+      ;; prevent emacs from killing until tangle-process finished
+      ;; (add-to-list 'kill-emacs-query-functions
+      ;;              (lambda ()
+      ;;                (or (not (process-live-p (get-process "tangle-process")))
+      ;;                    (y-or-n-p "\"fk/tangle-config\" is running; kill it? "))))
+      ;; tangle config asynchronously
+      (synthmacs/async-process
+       (format command
+	       (expand-file-name "synthmacs.org" user-emacs-directory)
+	       (expand-file-name "init.el" user-emacs-directory))
+       "tangle-process")
+      )
+
+    )
+  )
+;; Tangling this file:1 ends here
 
 ;; [[file:../synthmacs.org::*synthmacs-org][synthmacs-org:1]]
 (provide 'synthmacs-org)
