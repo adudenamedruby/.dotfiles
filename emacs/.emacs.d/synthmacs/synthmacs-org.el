@@ -51,13 +51,12 @@
           org-default-notes-file "~/Developer/ExoCortex/org/notes.org"
           org-id-locations-file "~/Developer/ExoCortex/org/.orgids"
           ))	
-  (setq
-   ;; org-export-in-background t
-   org-src-preserve-indentation t ;; do not put two spaces on the left
-   org-startup-indented t
-   ;; org-startup-with-inline-images t
-   org-hide-emphasis-markers nil
-   org-catch-invisible-edits 'smart)
+  ;; (setq org-export-in-background t)
+  (setq org-src-preserve-indentation t) ;; do not put two spaces on the left
+  (setq org-startup-indented t)
+   ;;(setq org-startup-with-inline-images t)
+  (setq org-hide-emphasis-markers nil)
+  (setq org-catch-invisible-edits 'smart)
   (setq org-image-actual-width nil)
   (setq org-indent-indentation-per-level 1)
   (setq org-list-demote-modify-bullet '(("-" . "+") ("+" . "*")))
@@ -67,13 +66,13 @@
   ;;         org-habit))
   ;; (setq org-todo-keywords
   ;;       '((sequence "TODO(t)" "NEXT(n)" "PROG(p)" "|" "HOLD(h)" "DONE(d)")))
-  ;; (setq-default prettify-symbols-alist '(("#+BEGIN_SRC" . "»")
-  ;;                                        ("#+END_SRC" . "«")
-  ;;                                        ("#+begin_src" . "»")
-  ;;                                        ("#+end_src" . "«")
-  ;;                                        ("lambda"  . "λ")
-  ;;                                        ("->" . "→")
-  ;;                                        ("->>" . "↠")))
+  (setq-default prettify-symbols-alist '(("#+BEGIN_SRC" . "»")
+                                         ("#+END_SRC" . "«")
+                                         ("#+begin_src" . "»")
+                                         ("#+end_src" . "«")
+                                         ("lambda"  . "λ")
+                                         ("->" . "→")
+                                         ("->>" . "↠")))
   ;; (setq prettify-symbols-unprettify-at-point 'right-edge)
 ;;   (defun lc/org-indent-or-complete ()
 ;;     "Complete 
@@ -134,17 +133,17 @@
           (org-entry-put pom "CUSTOM_ID" id)
           (org-id-add-location id (buffer-file-name (buffer-base-buffer)))
           id)))))
-  
-  (defun synchmacs/org-add-ids-to-headlines-in-file ()
-    "Add CUSTOM_ID properties to all headlines in the current
-   file which do not already have one. Only adds ids if the
-   `auto-id' option is set to `t' in the file somewhere. ie,
+
+  (defun synthmacs/org-add-ids-to-headlines-in-file ()
+    "Add CUSTOM_ID properties to all headlines in the current file.
+   Only do so for those which do not already have one. Only adds ids
+   if the `auto-id' option is set to `t' in the file somewhere. ie,
    #+OPTIONS: auto-id:t"
     (interactive)
     (save-excursion
       (widen)
       (goto-char (point-min))
-      (when (re-search-forward "^#\\+OPTIONS:.*auto-id:t" 10000 t)
+      (when (re-search-forward "^#\\+OPTIONS:.*auto-id:t" (point-max) t)
         (org-map-entries (lambda () (synthmacs/org-custom-id-get (point) 'create))))))
   :config
   (require 'org-id)

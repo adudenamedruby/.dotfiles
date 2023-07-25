@@ -9,6 +9,9 @@
 #+PROPERTY: header-args:emacs-lisp :comments link
 
 * TABLE OF CONTENTS :toc:
+:PROPERTIES:
+:CUSTOM_ID: h:D9FC65D1-4FFB-4344-B8A7-9FAA9D1AC040
+:END:
 - [[#introduction][Introduction]]
   - [[#what-is-a-synthmacs][What is a ~Synthmacs~?]]
   - [[#about-synthmacsorg][About ~synthmacs.org~]]
@@ -22,7 +25,7 @@
   - [[#initel-load-modules][init.el: load modules]]
 - [[#core][Core]]
   - [[#package-manager][Package manager]]
-  - [[#bootstrap-straight-and-straight-use-package][bootstrap straight and straight-use-package]]
+  - [[#bootstrap-straight-and-straight-use-package][Bootstrap Straight and straight-use-package]]
 - [[#org-mode][Org Mode]]
   - [[#org-mode-1][org mode]]
   - [[#enabling-the-table-of-contents][Enabling the Table of Contents]]
@@ -38,6 +41,9 @@
 :END:
 
 ** What is a ~Synthmacs~?
+:PROPERTIES:
+:CUSTOM_ID: h:945224F8-D3DC-44B3-BC29-FB815F13E971
+:END:
 ~Synthmacs~ is what I've decided to call my Emacs config. It's a portmanteau of Sythesized and Emacs. But it's also inspired by "Synthwave" and "Synthesizers". Anyway, it's not a big deal, and you shouldn't worry about it!
 
 ** About ~synthmacs.org~
@@ -110,7 +116,7 @@ I then have a lean ~init.el~ (written in [[#h:7B22A4F3-49A1-4848-A185-B4EEA060EE
 
 ** Structure of this configuration
 :PROPERTIES:
-:CUSTOM_ID: h:CEDB99C8-27AD-4118-8C8D-29A5882E47AE
+:CUSTOM_ID: h:0FFBBB41-3AD1-4C09-A15D-FA9A03B6C2CB
 :END:
 In general, the config tries to manintain a pretty cohesive idea.
 - In the second section some optimization of startup time, mostly stolen from smart people.
@@ -285,12 +291,16 @@ Taken from DOOM's init
 #+end_src
 
 * Core
+:PROPERTIES:
+:CUSTOM_ID: h:F8B6E0EE-7BBD-4F7F-B31E-44DE7B43AA39
+:END:
 ** Package manager
 :PROPERTIES:
 :CUSTOM_ID: h:376622D2-A6B7-4050-97C6-413B0D77B89C
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-straight.el
 :END:
-** bootstrap straight and straight-use-package
+
+** Bootstrap Straight and straight-use-package
 :PROPERTIES:
 :CUSTOM_ID: h:686F7A63-013E-48ED-AC56-DF39BD398E20
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-straight.el
@@ -309,7 +319,7 @@ Some rules/conventions:
   ;; (setq straight-check-for-modifications '(check-on-save find-when-checking))
   ;;(setq straight-check-for-modifications nil)
   (setq use-package-always-ensure t)
-  (setq use-package-always-defer t)
+  ;; (setq use-package-always-defer t)
 
   (setq straight-repository-branch "develop")
   (defvar bootstrap-version)
@@ -343,7 +353,7 @@ Interesting bits:
   + subitem
 - you can cycle to next TODO state with ~org-shiftright~
 - You can access custom agenda views with ~org-agenda~, mapped to =SPC o A=
-- Yo insert a src block use =, i= and then type initials e.g. ~jp~  for ~jupyter-python~
+- You insert a src block use =, i= and then type initials e.g. ~jp~  for ~jupyter-python~
 
 #+BEGIN_SRC emacs-lisp
   (use-package org
@@ -454,6 +464,9 @@ Interesting bits:
 #+END_SRC
 
 ** Enabling the Table of Contents
+:PROPERTIES:
+:CUSTOM_ID: h:5415BD51-CBCC-46BD-85C2-7355CB5F88CE
+:END:
 #+begin_src emacs-lisp
   (use-package toc-org
       :commands toc-org-enable
@@ -495,11 +508,6 @@ Adding it as a ~after-save-hook~  automatically adds a ~CUSTOM_ID~ to newly crea
           (org-entry-put pom "CUSTOM_ID" id)
           (org-id-add-location id (buffer-file-name (buffer-base-buffer)))
           id)))))
-
-(defun synthmacs/test-function ()
-"Uh, does this show up?"
-(interactive)
-(+ 2 3))
 
   (defun synthmacs/org-add-ids-to-headlines-in-file ()
     "Add CUSTOM_ID properties to all headlines in the current file.

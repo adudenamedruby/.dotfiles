@@ -25,11 +25,10 @@
   (setq anzu-search-threshold 1000
 	anzu-cons-mode-line-p nil))
 
-;; (use-package evil-args
-;;   :init
-;;   (progn
-;;     (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
-;;     (define-key evil-outer-text-objects-map "a" 'evil-outer-arg)))
+(use-package evil-args
+  :config
+  (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
+  (define-key evil-outer-text-objects-map "a" 'evil-outer-arg))
 
 (use-package evil-cleverparens
   :init
@@ -43,21 +42,21 @@
   :config
   (evil-collection-init))
 
-
 (use-package evil-commentary
+  :defer nil
   :config
   (evil-commentary-mode))
 
-;; (use-package evil-exchange
-;;   :init
-;;   (let ((evil-exchange-key (kbd "gx"))
-;; 	(evil-exchange-cancel-key (kbd "gX")))
-;;     (define-key evil-normal-state-map evil-exchange-key 'evil-exchange)
-;;     (define-key evil-visual-state-map evil-exchange-key 'evil-exchange)
-;;     (define-key evil-normal-state-map evil-exchange-cancel-key
-;; 		'evil-exchange-cancel)
-;;     (define-key evil-visual-state-map evil-exchange-cancel-key
-;; 		'evil-exchange-cancel)))
+(use-package evil-exchange
+  :config
+  (setq evil-exchange-key (kbd "gx"))
+  (setq evil-exchange-cancel-key (kbd "gX"))
+  (define-key evil-normal-state-map evil-exchange-key 'evil-exchange)
+  (define-key evil-visual-state-map evil-exchange-key 'evil-exchange)
+  (define-key evil-normal-state-map evil-exchange-cancel-key
+              'evil-exchange-cancel)
+  (define-key evil-visual-state-map evil-exchange-cancel-key
+              'evil-exchange-cancel))
 
 (use-package evil-goggles
   :init
@@ -151,6 +150,7 @@ _q_: quit
   :init
   (define-key evil-visual-state-map (kbd "*") 'evil-visualstar/begin-search-forward)
   (define-key evil-visual-state-map (kbd "#") 'evil-visualstar/begin-search-backward))
+
 ;; Evil-Vimish-Fold - https://github.com/alexmurray/evil-vimish-fold
 ;;(use-package evil-vimish-fold
 ;;  :after vimish-fold
