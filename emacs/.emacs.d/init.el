@@ -19,11 +19,12 @@
     (setq file-name-handler-alist doom--initial-file-name-handler-alist))
   (add-hook 'emacs-startup-hook #'doom-reset-file-handler-alist-h)
   (add-hook 'after-init-hook '(lambda ()
-				 ;; restore after startup
-				 (setq gc-cons-threshold 16777216
-				       gc-cons-percentage 0.1)))
+				;; restore after startup
+				(setq gc-cons-threshold 16777216
+				      gc-cons-percentage 0.1)))
   )
-;; Ensure Doom is running out of this file's directory
+
+;; Ensure Synthmacs is running out of this file's directory
 (setq user-emacs-directory (file-truename (file-name-directory load-file-name)))
 ;; init.el: startup optimization:1 ends here
 
@@ -38,13 +39,29 @@
   (require 'synthmacs-general-settings)
   (require 'synthmacs-variables)
   (require 'synthmacs-functions)
-  (require 'synthmacs-straight)
+
+  (require 'synthmacs-core)
+  (require 'synthmacs-package-management)
+  (require 'synthmacs-general-evil)
+  ;;(require 'synthmacs-org)
+  ;;(require 'synthmacs-ui)
+  ;;(require 'synthmacs-completion-framework)
+  ;;(require 'synthmacs-tools)
+  ;;(require 'synthmacs-programming)
+  ;;(require 'synthmacs-lang-clojure)
+  ;;(require 'synthmacs-lang-haskell)
+  ;;(require 'synthmacs-lang-html)
+  ;;(require 'synthmacs-lang-lisp)
+  ;;(require 'synthmacs-lang-markdown)
+  ;;(require 'synthmacs-lang-rust)
+  ;;(require 'synthmacs-lang-swift)
+  ;;(require 'synthmacs-lang-yaml)
 
   ;; Load packages
-  (require 'synthmacs-general)
+  ;;(require 'synthmacs-general)
   (require 'synthmacs-hydra)
   (require 'synthmacs-evil)
-  (require 'synthmacs-general-keybindings)
+  ;;(require 'synthmacs-general-keybindings)
   (require 'synthmacs-themes)
   (require 'synthmacs-windows)
   (require 'synthmacs-vertico)
@@ -75,26 +92,25 @@
   ;; (require 'synthmacs-swift)
   ;; (require 'synthmacs-lisp)
 
-  ;; (require 'init-core)
-  ;; (require 'init-ui-extra)
-  ;; (require 'init-org-roam)
-  ;; (require 'init-org-export)
-  ;; (require 'init-prog-vterm)
-  ;; (require 'init-prog-nix)
-  ;; (require 'init-prog-lsp)
-  ;; (require 'init-prog-python)
-  ;; (require 'init-prog-jupyter)
-  ;; (require 'init-prog-elisp)
-  ;; (require 'init-prog-markdown)
-  ;; (require 'init-prog-stan)
-  ;; (require 'init-prog-r)
-  ;; (require 'init-prog-clojure)
-  ;; (require 'init-prog-tree-sitter)
-  ;; (require 'init-extra-focus)
-  ;; (require 'init-extra-web)
-  ;; (require 'init-extra-rss)
-  ;; (require 'init-extra)
   )
 
-  ;;; init.el ends here
+    ;;; init.el ends here
 ;; init.el: load modules:1 ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values
+   '((eval add-hook 'after-save-hook
+	   (lambda nil
+	     (progn
+	       (synthmacs/org-add-ids-to-headlines-in-file)
+	       (synthmacs/tangle-config)))
+	   nil t))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

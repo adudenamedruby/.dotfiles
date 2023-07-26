@@ -27,6 +27,8 @@
   - [[#bootstrap-straight-and-straight-use-package][Bootstrap Straight and straight-use-package]]
 - [[#sane-emacs-setup][Sane Emacs Setup]]
 - [[#keybindings-general--evil-mode][Keybindings: General & EVIL mode]]
+  - [[#general][General]]
+  - [[#general-keybindings][General keybindings]]
 - [[#org-mode][Org Mode]]
   - [[#org-mode-1][org mode]]
   - [[#enabling-the-table-of-contents][Enabling the Table of Contents]]
@@ -37,9 +39,31 @@
 - [[#useful-tools][Useful Tools]]
 - [[#programming-environment][Programming Environment]]
 - [[#programming-languages][Programming Languages]]
+  - [[#clojure][Clojure]]
+  - [[#haskell][Haskell]]
+  - [[#html][HTML]]
+  - [[#lisp][LISP]]
+  - [[#markdown][Markdown]]
+  - [[#rust][Rust]]
+  - [[#swift][Swift]]
+  - [[#yaml][YAML]]
 - [[#provide-modules][Provide modules]]
+  - [[#synthmacs-core][synthmacs-core]]
+  - [[#synthmacs-package-management][synthmacs-package-management]]
+  - [[#synthmacs-general-evil][synthmacs-general-evil]]
   - [[#synthmacs-org][synthmacs-org]]
-  - [[#synthmacs-straight][synthmacs-straight]]
+  - [[#synthmacs-ui][synthmacs-ui]]
+  - [[#synthmacs-completion-framework][synthmacs-completion-framework]]
+  - [[#synthmacs-tools][synthmacs-tools]]
+  - [[#synthmacs-programming][synthmacs-programming]]
+  - [[#synthmacs-lang-clojure][synthmacs-lang-clojure]]
+  - [[#synthmacs-lang-haskell][synthmacs-lang-haskell]]
+  - [[#synthmacs-lang-html][synthmacs-lang-html]]
+  - [[#synthmacs-lang-lisp][synthmacs-lang-lisp]]
+  - [[#synthmacs-lang-markdown][synthmacs-lang-markdown]]
+  - [[#synthmacs-lang-rust][synthmacs-lang-rust]]
+  - [[#synthmacs-lang-swift][synthmacs-lang-swift]]
+  - [[#synthmacs-lang-yaml][synthmacs-lang-yaml]]
 
 * Introduction
 :PROPERTIES:
@@ -50,7 +74,7 @@
 :PROPERTIES:
 :CUSTOM_ID: h:945224F8-D3DC-44B3-BC29-FB815F13E971
 :END:
-~Synthmacs~ is what I've decided to call my Emacs config. It's a portmanteau of Sythesized and Emacs. But it's also inspired by "Synthwave" and "Synthesizers". Anyway, it's not a big deal, and you shouldn't worry about it!
+~Synthmacs~ is what I've decided to call my Emacs config. It's a portmanteau of Sythesized and Emacs. But it's also inspired by "Synthwave" and "Synthesizers". Anyway, it's not a big deal, and you shouldn't worry about it!!
 
 ** About ~synthmacs.org~
 :PROPERTIES:
@@ -62,7 +86,7 @@ This file (~synthmacs.org~) is the literate Synthmacs configuration. Every time 
 :PROPERTIES:
 :CUSTOM_ID: h:40A8BDAE-F8E3-4DB3-AC8C-7E5067B7EE4D
 :END:
-My introduction to Emacs was... Vim? I love Vim. But what I really wanted was to use those keybindings throughout many of the things I'm doing, and not just in Vim. So I switched over to Vimium in my browser. I started using Xvim in Xcode. Basically wherever I could have vim keybindings, I did. But I also wanted to be able to customize certain behaviours of my editor to the extent that just wasn't possible with Vim, and I knew that Emacs was the thing that would let me do that. But I didn't know anything about Emacs, and I didn't know anything about E-Lisp, and I didn't have the time to set everything up myself (knowing how big that entry learning curve is from having learned to use Vim). So, I tried a distribution of Emacs, and ended up using [[https://www.spacemacs.org/][Spacemacs]] for several years.
+My introduction to Emacs was... Vim? I love Vim. Or rather, I love language for text manipulation that comprise Vim's composable motions and commands. But what I really wanted was to use those keybindings throughout many of the things I'm doing, and not just in Vim. So I switched over to Vimium in my browser. I started using Xvim in Xcode. Basically wherever I could have Vim keybindings, I did. But I also wanted to be able to customize certain behaviours of my editor to the extent that just wasn't possible with Vim, and I knew that Emacs was the thing that would let me do that. Minor problem: I didn't know anything about Emacs, and I didn't know anything about E-Lisp, and I didn't have the time to set everything up myself (knowing how big that entry learning curve is from having learned to use Vim). So, I tried a distribution of Emacs, and ended up using [[https://www.spacemacs.org/][Spacemacs]] for several years.
 
 I was mostly happy.
 
@@ -223,31 +247,32 @@ Taken from DOOM's early init
 Taken from DOOM's init
 #+BEGIN_SRC emacs-lisp
   ;;; init.el --- Personal configuration file -*- lexical-binding: t; no-byte-compile: t; -*-
-  ;; NOTE: init.el is now generated from synthmacs.org.  Please edit that file instead
+;; NOTE: init.el is now generated from synthmacs.org.  Please edit that file instead
 
-  ;; `file-name-handler-alist' is consulted on every `require', `load' and various
-  ;; path/io functions. You get a minor speed up by nooping this. However, this
-  ;; may cause problems on builds of Emacs where its site lisp files aren't
-  ;; byte-compiled and we're forced to load the *.el.gz files (e.g. on Alpine)
-  (unless (daemonp)
-    (defvar doom--initial-file-name-handler-alist file-name-handler-alist)
-    (setq file-name-handler-alist nil)
-    ;; Restore `file-name-handler-alist' later, because it is needed for handling
-    ;; encrypted or compressed files, among other things.
-    (defun doom-reset-file-handler-alist-h ()
-      ;; Re-add rather than `setq', because changes to `file-name-handler-alist'
-      ;; since startup ought to be preserved.
-      (dolist (handler file-name-handler-alist)
-	(add-to-list 'doom--initial-file-name-handler-alist handler))
-      (setq file-name-handler-alist doom--initial-file-name-handler-alist))
-    (add-hook 'emacs-startup-hook #'doom-reset-file-handler-alist-h)
-    (add-hook 'after-init-hook '(lambda ()
-				   ;; restore after startup
-				   (setq gc-cons-threshold 16777216
-					 gc-cons-percentage 0.1)))
-    )
-  ;; Ensure Doom is running out of this file's directory
-  (setq user-emacs-directory (file-truename (file-name-directory load-file-name)))
+;; `file-name-handler-alist' is consulted on every `require', `load' and various
+;; path/io functions. You get a minor speed up by nooping this. However, this
+;; may cause problems on builds of Emacs where its site lisp files aren't
+;; byte-compiled and we're forced to load the *.el.gz files (e.g. on Alpine)
+(unless (daemonp)
+  (defvar doom--initial-file-name-handler-alist file-name-handler-alist)
+  (setq file-name-handler-alist nil)
+  ;; Restore `file-name-handler-alist' later, because it is needed for handling
+  ;; encrypted or compressed files, among other things.
+  (defun doom-reset-file-handler-alist-h ()
+    ;; Re-add rather than `setq', because changes to `file-name-handler-alist'
+    ;; since startup ought to be preserved.
+    (dolist (handler file-name-handler-alist)
+      (add-to-list 'doom--initial-file-name-handler-alist handler))
+    (setq file-name-handler-alist doom--initial-file-name-handler-alist))
+  (add-hook 'emacs-startup-hook #'doom-reset-file-handler-alist-h)
+  (add-hook 'after-init-hook '(lambda ()
+				;; restore after startup
+				(setq gc-cons-threshold 16777216
+				      gc-cons-percentage 0.1)))
+  )
+
+;; Ensure Synthmacs is running out of this file's directory
+(setq user-emacs-directory (file-truename (file-name-directory load-file-name)))
 #+END_SRC
 
 ** init.el: load modules
@@ -262,17 +287,33 @@ Taken from DOOM's init
   (add-to-list 'load-path (expand-file-name "synthmacs" user-emacs-directory))
 
   (let ((file-name-handler-alist nil)
-  	(gc-cons-threshold 100000000))
+        (gc-cons-threshold 100000000))
     (require 'synthmacs-general-settings)
     (require 'synthmacs-variables)
     (require 'synthmacs-functions)
-    (require 'synthmacs-straight)
+
+    (require 'synthmacs-core)
+    (require 'synthmacs-package-management)
+    (require 'synthmacs-general-evil)
+    ;;(require 'synthmacs-org)
+    ;;(require 'synthmacs-ui)
+    ;;(require 'synthmacs-completion-framework)
+    ;;(require 'synthmacs-tools)
+    ;;(require 'synthmacs-programming)
+    ;;(require 'synthmacs-lang-clojure)
+    ;;(require 'synthmacs-lang-haskell)
+    ;;(require 'synthmacs-lang-html)
+    ;;(require 'synthmacs-lang-lisp)
+    ;;(require 'synthmacs-lang-markdown)
+    ;;(require 'synthmacs-lang-rust)
+    ;;(require 'synthmacs-lang-swift)
+    ;;(require 'synthmacs-lang-yaml)
 
     ;; Load packages
-    (require 'synthmacs-general)
+    ;;(require 'synthmacs-general)
     (require 'synthmacs-hydra)
     (require 'synthmacs-evil)
-    (require 'synthmacs-general-keybindings)
+    ;;(require 'synthmacs-general-keybindings)
     (require 'synthmacs-themes)
     (require 'synthmacs-windows)
     (require 'synthmacs-vertico)
@@ -303,28 +344,9 @@ Taken from DOOM's init
     ;; (require 'synthmacs-swift)
     ;; (require 'synthmacs-lisp)
 
-    ;; (require 'init-core)
-    ;; (require 'init-ui-extra)
-    ;; (require 'init-org-roam)
-    ;; (require 'init-org-export)
-    ;; (require 'init-prog-vterm)
-    ;; (require 'init-prog-nix)
-    ;; (require 'init-prog-lsp)
-    ;; (require 'init-prog-python)
-    ;; (require 'init-prog-jupyter)
-    ;; (require 'init-prog-elisp)
-    ;; (require 'init-prog-markdown)
-    ;; (require 'init-prog-stan)
-    ;; (require 'init-prog-r)
-    ;; (require 'init-prog-clojure)
-    ;; (require 'init-prog-tree-sitter)
-    ;; (require 'init-extra-focus)
-    ;; (require 'init-extra-web)
-    ;; (require 'init-extra-rss)
-    ;; (require 'init-extra)
     )
 
-    ;;; init.el ends here
+      ;;; init.el ends here
 #+end_src
 
 * Package Management
@@ -335,7 +357,7 @@ Taken from DOOM's init
 ** Bootstrap Straight and straight-use-package
 :PROPERTIES:
 :CUSTOM_ID: h:686F7A63-013E-48ED-AC56-DF39BD398E20
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-straight.el
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-package-management.el
 :END:
 Some rules/conventions:
 - Prefer ~:init~ to ~:custom~. Prefer multiple ~setq~ expressions to one.
@@ -374,11 +396,321 @@ Some rules/conventions:
 * Sane Emacs Setup
 :PROPERTIES:
 :CUSTOM_ID: h:3D38D8F0-1B85-4265-9941-77A3A2FA235B
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-core.el
 :END:
 * Keybindings: General & EVIL mode
 :PROPERTIES:
 :CUSTOM_ID: h:D7FB11B6-67B4-4275-B0CC-E218C65C411E
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-general-evil.el
 :END:
+
+** General
+:PROPERTIES:
+:CUSTOM_ID: h:871AF14C-473E-4227-B4BF-13E984BE1E7D
+:END:
+#+begin_src emacs-lisp
+(use-package general
+  :config
+  (general-evil-setup)
+
+  ;; set up 'SPC' as the global leader key
+  (general-create-definer synthmacs/leader-keys
+    :states '(normal insert visual emacs)
+    :keymaps 'override
+    :prefix "SPC" ;; set leader
+    :global-prefix "M-SPC") ;; access leader in insert mode
+
+  (general-create-definer synthmacs/local-leader-keys
+    :states '(normal visual)
+    :keymaps 'override
+    :prefix ","
+    :global-prefix "SPC m")
+  )
+#+end_src
+
+** General keybindings
+:PROPERTIES:
+:CUSTOM_ID: h:F8198789-D8ED-49CF-88F5-C6619539211E
+:END:
+#+begin_src emacs-lisp
+;; Make ESC quit prompts
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+#+end_src
+
+*** Application bindings
+:PROPERTIES:
+:CUSTOM_ID: h:919D720B-1ACC-441F-9822-8FAB69EB625F
+:END:
+#+begin_src emacs-lisp
+;; Application bindings
+(synthmacs/leader-keys
+  "a" '(:ignore t :wk "applications")
+  "af" '(find-file :wk "Find file"))
+#+end_src
+
+*** Buffer bindings
+:PROPERTIES:
+:CUSTOM_ID: h:9624A127-D219-4FAA-A4B6-582996655F01
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "b" '(:ignore t :wk "buffer")
+  "bb" '(switch-to-buffer :wk "Switch buffer")
+  "bd" '(kill-this-buffer :wk "Kill this buffer")
+  "bh" '(dashboard-refresh-buffer :wk "Home buffer")
+  "bm" '((lambda ()
+	   (interactive)
+	   (switch-to-buffer " *Message-Log*"))
+	 :wk "Messages buffer")
+  "bn" '(next-buffer :wk "Next buffer")
+  "bp" '(previous-buffer :wk "Previous buffer")
+  "br" '(revert-buffer :wk "Reload buffer")
+  "bs" '(scratch-buffer :wk "Scratch buffer")
+  "bu" '(synthmacs/reopen-killed-buffer :wk "Reopen last killed buffer"))
+#+end_src
+
+*** Compilation bindings
+:PROPERTIES:
+:CUSTOM_ID: h:BC80000B-14BD-435B-AF41-69ECCE16AC08
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "c" '(:ignore t :wk "compile")
+  "cf" '(find-file :wk "Find file"))
+#+end_src
+
+*** Debug bindings
+:PROPERTIES:
+:CUSTOM_ID: h:FF739FE8-70DB-4DBB-B009-1ABE294AB393
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "d" '(:ignore t :wk "debug")
+  "df" '(find-file :wk "Find file"))
+#+end_src
+
+*** Error bindings
+:PROPERTIES:
+:CUSTOM_ID: h:AC006610-1BD5-4962-8319-FE8B08D0DFC5
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "e" '(:ignore t :wk "errors")
+  "ef" '(find-file :wk "Find file"))
+#+end_src
+
+*** Files bindings
+:PROPERTIES:
+:CUSTOM_ID: h:AD60DD6B-FDFB-4D31-BE5B-B984E2944598
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "f" '(:ignore t :wk "files")
+  "f." '(find-file-at-point :wk "find-file-at-point")
+  "ff" '(find-file :wk "find-file")
+  "fl" '(find-file-literally :wk "find-file-literally")
+  "fr" '(consult-recent-file :wk "recent file")
+  "fR" '(synthmacs/rename-current-buffer-file :wk "Rename file")
+  "fs" '(save-buffer :wk "save file"))
+
+(synthmacs/leader-keys
+  "fy" '(:ignore t :wk "yank")
+  "fyb" '(synthmacs/copy-buffer-name :wk "buffer name")
+  "fyd" '(synthmacs/copy-directory-path :wk "directory path")
+  "fyf" '(synthmacs/copy-file-path :wk "file path")
+  "fyl" '(synthmacs/copy-file-path-with-line :wk "file path with line number")
+  "fyn" '(synthmacs/copy-file-name :wk "file name")
+  "fyN" '(synthmacs/copy-file-name-base :wk "file name without extension"))
+
+(synthmacs/leader-keys
+  "fe" '(:ignore t :wk "Emacs Files")
+  "fed" '((lambda ()
+	    (interactive)
+	    (find-file "~/.emacs.d/synthmacs.org"))
+	  :wk "synthmacs.org"))
+#+end_src
+
+*** Frame bindings
+:PROPERTIES:
+:CUSTOM_ID: h:4C073FB0-DDD2-4648-98CF-A108B7733096
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "F" '(:ignore t :wk "Frames")
+  "Fd" '(delete-frame :wk "delete-frame")
+  "FD" '(delete-other-frames :wk "delete-other-frames")
+  "Fn" '(make-frame :wk "make-frame"))
+#+end_src
+
+*** Git/VCS bindings
+:PROPERTIES:
+:CUSTOM_ID: h:DA032070-22DA-4C6D-815E-147617662953
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "g" '(:ignore t :wk "git"))
+#+end_src
+
+*** Help bindings
+:PROPERTIES:
+:CUSTOM_ID: h:7D9257A5-58D9-4B53-93EC-D1962282E1AA
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "h" '(:ignore t :wk "help")
+  "hp" '(describe-package :wk "describe-package")
+  "hM" '(describe-mode :wk "describe-mode (Major)")
+  "hm" '(describe-minor-mode :wk "describe-minor-mode")
+
+  "hE" '(:ignore t :wk "Emacs")
+  "hEf" '(view-emacs-FAQ :wk "view-emacs-faq")
+  "hEm" '(info-emacs-manual :wk "info-emacs-manual")
+  "hEn" '(view-emacs-news :wk "view-emacs-news")
+  "hEp" '(view-emacs-problems :wk "view-emacs-problems")
+  "hEt" '(view-emacs-todo :wk "view-emacs-todo"))
+#+end_src
+
+*** Jump bindings
+:PROPERTIES:
+:CUSTOM_ID: h:8EE273DF-ECFF-4C88-9F43-D5CDA596BE74
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "j" '(:ignore t :wk "jump/join/split"))
+#+end_src
+
+*** M-x bindings
+:PROPERTIES:
+:CUSTOM_ID: h:B2BB706A-87A6-48AD-8B8D-5D514A3722AB
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "SPC" '(:ignore t :wk "M-x")
+  "SPC" '(execute-extended-command :wk "M-x")
+  "TAB" '(synthmacs/alternate-buffer :wk "last buffer"))
+  ;; "'" '(execute-extended-command :wk "open shell")
+#+end_src
+
+*** Major-mode bindings
+:PROPERTIES:
+:CUSTOM_ID: h:6004A24A-C951-41FB-A2D3-42AAD6DC2143
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "m" '(:ignore t :wk "major mode"))
+#+end_src
+
+*** Org bindings
+:PROPERTIES:
+:CUSTOM_ID: h:FF0E16D7-1239-4A2D-A81D-CB45A1019ED0
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "o" '(:ignore t :wk "org"))
+#+end_src
+
+*** Project bindings
+:PROPERTIES:
+:CUSTOM_ID: h:492B2741-254E-4FFC-BB18-C79AEF74D7A1
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "p" '(:ignore t :wk "projects"))
+#+end_src
+
+*** Quit bindings
+:PROPERTIES:
+:CUSTOM_ID: h:01C7280C-69EF-47D6-B50B-6362A9D82BDF
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "q" '(:ignore t :wk "quit")
+  "qq" '(synthmacs/prompt-kill-emacs :wk "prompt-kill-emacs")
+  "qs" '(save-buffers-kill-emacs :wk "save-buffers-kill-emacs")
+  "qQ" '(kill-emacs :wk "kill-emacs")
+  "qR" '(restart-emacs :wk "restart-emacs"))
+#+end_src
+
+*** Registers bindings
+:PROPERTIES:
+:CUSTOM_ID: h:4603106A-5ABD-4FD3-8EA0-F67A598CCB02
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "r" '(:ignore t :wk "registers")
+  "re" '(evil-show-registers :wk "evil-show-registers")
+  "rk" '(consult-yank-from-kill-ring :wk "consult-yank-from-kill-ring"))
+#+end_src
+
+*** Search bindings
+:PROPERTIES:
+:CUSTOM_ID: h:1EB3AA9F-8F66-427D-A2B8-FE65730DF6A5
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "s" '(:ignore t :wk "search")
+  "sc" '(evil-ex-nohighlight :wk "clear-search-highlights"))
+#+end_src
+
+*** Toggles bindings
+:PROPERTIES:
+:CUSTOM_ID: h:5A330DCC-5B77-4C92-ACF1-5195ECBBDC32
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "t" '(:ignore t :wk "toggles")
+  "tc" '(global-display-fill-column-indicator-mode :wk "fill-column")
+  "tp" '(smartparens-global-mode :wk "smartparens-global-mode")
+  "tl" '(toggle-truncate-lines :wk "truncate-lines")
+  "tv" '(visual-line-mode :wk "visual-line-mode")
+  "tw" '(global-whitespace-mode :wk "global-whitespace-mode")
+  "tz" '(zone :wk "zone"))
+#+end_src
+
+*** User bindings
+:PROPERTIES:
+:CUSTOM_ID: h:0F5F8697-278F-4363-B3DD-72E80F010402
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "u" '(:ignore t :wk "user bindings"))
+#+end_src
+
+*** Window bindings
+:PROPERTIES:
+:CUSTOM_ID: h:7D0252BE-EDAD-42EE-837B-D216E21197BE
+:END:
+#+begin_src emacs-lisp
+(synthmacs/leader-keys
+  "w" '(:ignore t :wk "window")
+
+  "wd" '(evil-window-delete :wk "delete-window")
+
+  "ws" '(evil-window-split :wk "horizontal split window")
+  "wv" '(evil-window-vsplit :wk "vertical split window")
+
+  "wm" '(maximize-window :wk "maximize-window")
+
+  ;; Window motions
+  "wh" '(evil-window-left :wk "window left")
+  "wj" '(evil-window-down :wk "window down")
+  "wk" '(evil-window-up :wk "window up")
+  "wl" '(evil-window-right :wk "window right")
+  "wn" '(evil-window-next :wk "go to next window")
+  "wp" '(evil-window-prev :wk "go to previous window")
+
+  ;; Move Windows
+  "wH" '(synthmacs/buf-move-left :wk "window move left")
+  "wJ" '(synthmacs/buf-move-down :wk "window move down")
+  "wK" '(synthmacs/buf-move-up :wk "window move up")
+  "wL" '(synthmacs/buf-move-right :wk "window move right")
+
+  "w{" '(shrink-window :wk "shrink-window")
+  "w[" '(synthmacs/buf-move-down :wk "shrink-window-horizontally")
+  "w}" '(synthmacs/buf-move-up :wk "expand-window")
+  "w]" '(synthmacs/buf-move-right :wk "expand-window-horizontally"))
+#+end_src
+
 * Org Mode
 :PROPERTIES:
 :CUSTOM_ID: h:B1DBE90D-B6C9-4BD4-B15B-185FE238D236
@@ -618,27 +950,102 @@ Taken from https://github.com/KaratasFurkan/.emacs.d
 * UI
 :PROPERTIES:
 :CUSTOM_ID: h:EA84335B-2A51-4B4A-9392-F116289EDB10
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-ui.el
 :END:
 * Completion framework
 :PROPERTIES:
 :CUSTOM_ID: h:FB3661CB-A573-40B6-B331-449D77DBD199
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-completion-framework.el
 :END:
 * Useful Tools
 :PROPERTIES:
 :CUSTOM_ID: h:B57C03F6-2111-489A-9303-B1A06C95EFF5
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-tools.el
 :END:
 * Programming Environment
 :PROPERTIES:
 :CUSTOM_ID: h:2E967F87-8304-4262-B5BF-3286ACA7211B
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-programming.el
 :END:
 * Programming Languages
 :PROPERTIES:
 :CUSTOM_ID: h:732BA080-834D-49E0-967E-0D37CE1C6BA0
 :END:
+
+** Clojure
+:PROPERTIES:
+:CUSTOM_ID: h:FF09BB1E-5437-4AFF-A4F5-367B92AF76CC
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clojure.el
+:END:
+** Haskell
+:PROPERTIES:
+:CUSTOM_ID: h:28BA5E9F-6893-4E40-9F42-246F8731948C
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-haskell.el
+:END:
+** HTML
+:PROPERTIES:
+:CUSTOM_ID: h:5561B91C-C61D-47D5-8320-9A559032C762
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-html.el
+:END:
+** LISP
+:PROPERTIES:
+:CUSTOM_ID: h:2171FA3F-D9BC-4058-9442-6827BABFC2CE
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-lisp.el
+:END:
+** Markdown
+:PROPERTIES:
+:CUSTOM_ID: h:80E9702A-E2B6-44B5-A139-AD16C9B5D92F
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-markdown.el
+:END:
+** Rust
+:PROPERTIES:
+:CUSTOM_ID: h:6355CFE4-6BA5-4134-BA38-74634F9FF919
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-rust.el
+:END:
+** Swift
+:PROPERTIES:
+:CUSTOM_ID: h:4C66614A-ED5B-4771-96C3-E2C789282DC1
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-swift.el
+:END:
+** YAML
+:PROPERTIES:
+:CUSTOM_ID: h:0AB88184-7AE8-4232-B4A7-B8C4714B91D3
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-yaml.el
+:END:
 * Provide modules
 :PROPERTIES:
 :CUSTOM_ID: h:754DFB20-B2AB-4750-9BDA-D24E8014C504
 :END:
+
+** synthmacs-core
+:PROPERTIES:
+:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-core.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-core)
+;;; synthmacs-core.el ends here
+#+end_src
+
+** synthmacs-package-management
+:PROPERTIES:
+:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-package-management.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-package-management)
+;;; synthmacs-package-management.el ends here
+#+end_src
+
+** synthmacs-general-evil
+:PROPERTIES:
+:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-general-evil.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-general-evil)
+;;; synthmacs-general-evil.el ends here
+#+end_src
 
 ** synthmacs-org
 :PROPERTIES:
@@ -650,14 +1057,124 @@ Taken from https://github.com/KaratasFurkan/.emacs.d
 ;;; synthmacs-org.el ends here
 #+end_src
 
-** synthmacs-straight
+** synthmacs-ui
 :PROPERTIES:
 :CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-straight.el
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-ui.el
 :END:
 #+begin_src emacs-lisp
-(provide 'synthmacs-straight)
-;;; synthmacs-straight.el ends here
+(provide 'synthmacs-ui)
+;;; synthmacs-ui.el ends here
+#+end_src
+
+** synthmacs-completion-framework
+:PROPERTIES:
+:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-completion-framework.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-completion-framework)
+;;; synthmacs-completion-framework.el ends here
+#+end_src
+
+** synthmacs-tools
+:PROPERTIES:
+:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-tools.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-tools)
+;;; synthmacs-tools.el ends here
+#+end_src
+
+** synthmacs-programming
+:PROPERTIES:
+:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-programming.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-programming)
+;;; synthmacs-programming.el ends here
+#+end_src
+
+** synthmacs-lang-clojure
+:PROPERTIES:
+:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clojure.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-lang-clojure)
+;;; synthmacs-lang-clojure.el ends here
+#+end_src
+
+** synthmacs-lang-haskell
+:PROPERTIES:
+:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-haskell.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-lang-haskell)
+;;; synthmacs-lang-haskell.el ends here
+#+end_src
+
+** synthmacs-lang-html
+:PROPERTIES:
+:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-html.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-lang-html)
+;;; synthmacs-lang-html.el ends here
+#+end_src
+
+** synthmacs-lang-lisp
+:PROPERTIES:
+:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-lisp.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-lang-lisp)
+;;; synthmacs-lang-lisp.el ends here
+#+end_src
+
+** synthmacs-lang-markdown
+:PROPERTIES:
+:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-markdown.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-lang-markdown)
+;;; synthmacs-lang-markdown.el ends here
+#+end_src
+
+** synthmacs-lang-rust
+:PROPERTIES:
+:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-rust.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-lang-rust)
+;;; synthmacs-lang-rust.el ends here
+#+end_src
+
+** synthmacs-lang-swift
+:PROPERTIES:
+:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-swift.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-lang-swift)
+;;; synthmacs-lang-swift.el ends here
+#+end_src
+
+** synthmacs-lang-yaml
+:PROPERTIES:
+:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-yaml.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-lang-yaml)
+;;; synthmacs-lang-yaml.el ends here
 #+end_src
 
 * COMMENT Local variables
