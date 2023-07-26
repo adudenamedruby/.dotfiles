@@ -17,25 +17,22 @@
   - [[#about-synthmacsorg][About ~synthmacs.org~]]
   - [[#why-vanilla-emacs][Why vanilla Emacs?]]
   - [[#why-a-literate-config][Why a literate config?]]
-  - [[#synthmacs-modules][Synthmacs Modules]]
+  - [[#synthmacs-modules][Synthmacs "modules"]]
   - [[#structure-of-this-configuration][Structure of this configuration]]
 - [[#startup-optimization][Startup Optimization]]
   - [[#early-initel][early-init.el]]
   - [[#initel-startup-optimization][init.el: startup optimization]]
   - [[#initel-load-modules][init.el: load modules]]
 - [[#package-management][Package Management]]
-  - [[#package-manager][Package manager]]
   - [[#bootstrap-straight-and-straight-use-package][Bootstrap Straight and straight-use-package]]
 - [[#sane-emacs-setup][Sane Emacs Setup]]
 - [[#keybindings-general--evil-mode][Keybindings: General & EVIL mode]]
-- [[#navigation][Navigation]]
 - [[#org-mode][Org Mode]]
   - [[#org-mode-1][org mode]]
   - [[#enabling-the-table-of-contents][Enabling the Table of Contents]]
   - [[#using-org-id-in-links][Using org-id in links]]
   - [[#tangling-this-file][Tangling this file]]
 - [[#ui][UI]]
-- [[#git][Git]]
 - [[#completion-framework][Completion framework]]
 - [[#useful-tools][Useful Tools]]
 - [[#programming-environment][Programming Environment]]
@@ -65,14 +62,16 @@ This file (~synthmacs.org~) is the literate Synthmacs configuration. Every time 
 :PROPERTIES:
 :CUSTOM_ID: h:40A8BDAE-F8E3-4DB3-AC8C-7E5067B7EE4D
 :END:
-My introduction to Emacs was... Vim? I love Vim. But what I really wanted was to use those keybindings throughout many of the things I'm doing, and not just in Vim. So I switched over to Vimium in my browser. I started using Xvim in Xcode. Basically wherever I could have vim keybindings, I did. But I also wanted to be able to customize certain behaviours of my editor to the extent that just wasn't possible with Vim, and I knew that Emacs was the thing that would let me do that. But I didn't know anything about Emacs, and I didn't know anything about E-Lisp, and I didn't have the time to set everything up myself (knowing how big that entry learning curve is from having learned to use Vim). So, I tried a distribution of Emacs, and ended up using [[https://www.spacemacs.org/][Spacemacs]] for several years. I was mostly happy.
+My introduction to Emacs was... Vim? I love Vim. But what I really wanted was to use those keybindings throughout many of the things I'm doing, and not just in Vim. So I switched over to Vimium in my browser. I started using Xvim in Xcode. Basically wherever I could have vim keybindings, I did. But I also wanted to be able to customize certain behaviours of my editor to the extent that just wasn't possible with Vim, and I knew that Emacs was the thing that would let me do that. But I didn't know anything about Emacs, and I didn't know anything about E-Lisp, and I didn't have the time to set everything up myself (knowing how big that entry learning curve is from having learned to use Vim). So, I tried a distribution of Emacs, and ended up using [[https://www.spacemacs.org/][Spacemacs]] for several years.
+
+I was mostly happy.
 
 Three things changed:
 1. I started to learn LISP
-2. And that made me want to understand Emacs a little more
-3. Spacemacs is really great... but the one thing that always bothered me was that the way it's put together makes it very different to how a normal config looks like, so often, changing some things by looking at other's people's configs was.... challenging
+2. That made me want to understand Emacs a little more
+3. Spacemacs is really great... but the one thing that always bothered me was that the way it's put together makes it very different to how a normal config looks. So often, changing some things by looking at other's people's configs was.... challenging
 
-Over the process of the next few weeks, I started experimenting with my own config. I took a ton of inspiration from a ton of people, shamelessly stealing ideas to make my config better... or just make Emacs have the behaviour I wanted. I've tried to credit code sources where possible. However, in my haste from earlier efforts, I don't have credits for everything. For anything that's not original, here's a non-exhaustive list of some of the places I was inspired by:
+Over the next few weeks, I started the process of experimenting with my own config. I took a lot of inspiration from a ton of people, shamelessly stealing ideas to make my config better... or just make Emacs have the behaviour I wanted. I've tried to credit code sources where possible. However, in my haste from earlier efforts, I don't have credits for everything. For anything that's not original, here's a non-exhaustive list of some of the main places I was inspired by:
 - [[https://github.com/abougouffa/minemacs/blob/ab9084efe27191fd0ab5f94eee5502766fce16c1/modules/me-lisp.el#L43][abougouffa]]
 - [[https://github.com/daedreth/UncleDavesEmacs/blob/master/config.org][daedreth]]
 - [[https://writequit.org/org/#2daddf2c-228b-40ae-90b1-cd0b8c39f061][dakrone]]
@@ -95,9 +94,9 @@ It is a long journey, and I still have a long way to go, but I am glad I started
 :PROPERTIES:
 :CUSTOM_ID: h:B5231F9E-07D2-4738-97FD-78EC648B3F3D
 :END:
-Having your configuration in ~org-mode~ has some benefits and some drawbacks, and it adds a layer of abstraction between me and my ~init.el~ file. So, is it worth it?
+Having your configuration in ~org-mode~ has some benefits and some drawbacks. Further, it adds a layer of abstraction between me and my ~init.el~ file. So, is it worth it?
 
-The main, biggest drawback is that it can happen that the ~org-mode~ file has a mistake and tangles an incorrect ~init.el~ file. In that case you can't use your nice bindings but you are thrown in barebones emacs and you have to =C-x C-f= your way to the ~init.el~ and run ~check-parens~.
+The main, and biggest, drawback is that it can happen that the ~org-mode~ file has a mistake and tangles an incorrect ~*.el~ file. In that case you can't use your nice bindings but you are thrown in barebones Emacs and you have to =C-x C-f= your way to the ~init.el~ and run ~M-x check-parens~.
 
 You can also run ~org-babel-tangle-jump-to-org~ from the tangled file if you add:
 #+begin_src org
@@ -111,12 +110,11 @@ Let's consider some of the benefits:
 - I can comfortably document my configuration (and not from within comments), include links, ~sh~ code blocks, etc.
 - I can organize my configuration blocks in sections, easily disable some headings with ~COMMENT~, and other ~org-mode~ nicieties.
 
-** Synthmacs Modules
+** Synthmacs "modules"
 :PROPERTIES:
 :CUSTOM_ID: h:C522D670-C206-44F7-96CE-17D01E578287
 :END:
-I tangle this file with the function ~synthmacs/tangle-config~, you can read source code in [[#h:16B948EA-5375-44DE-ACD7-3664D4A9CE5F][this]] section.
-Every time I save the ~synthmacs.org~ file, it is tangled to multiple ~.el~ files.
+I tangle this file with the function ~synthmacs/tangle-config~, you can read source code in [[#h:16B948EA-5375-44DE-ACD7-3664D4A9CE5F][this]] section. Every time I save the ~synthmacs.org~ file, it is tangled to multiple ~.el~ files.
 
 I achieve that by means of this file's "local variables", which I put at the end of the ~synthmacs.org~ file:
 #+begin_src org
@@ -125,8 +123,8 @@ I achieve that by means of this file's "local variables", which I put at the end
 # End:
 #+end_src
 
-To design modules, I look at blocks in my config that I might want to toggle on and off.
-I assign org properties to each heading. These are what determine which ~.el~ file they will be written to.
+To design modules, I look at blocks in my config that I might want to toggle on and off. I assign org properties to each heading. These are what determine which ~.el~ file they will be written to.
+
 For example the header of the section concerning ~lsp-mode~ has the following properties:
 #+begin_src org
 :PROPERTIES:
@@ -149,17 +147,18 @@ In general, the config tries to manintain a pretty cohesive modularization while
 - As much as possible, functions should not be free-floating, but should be part of the init or general module of whatever thing they're most related to 
 
 With that out of the way, the general outline of this file aims to be:
-- The first section is some information about ~synthmacs.org~ and other comments for my future self or anyone else who happens to be reading this. Hello!
-- In the second section, we have some optimization to startup time. Most of these things are from other people, because I am not as wise in the Emacs ways.
-- In the third section, we setup our package managers, ~straight~ and  ~use-package~
-- In the fourth section, we configure ~emacs~ with some better defaults and extend some some of its core features (e.g. ~help-mode~)
-- In the fifth section, we set up ~general~, which we use to manage our keybindings and lazy loading of packages. Afterwards we configure ~evil~, for modal editing.
-- In the sixth section, we define some standards for the invaluable ~org-mode~ with several extensions
-- In the seventh section, we configure UI related things: themes, icons, window management, navigation, etc
-- In the eighth section, we configure useful Emacs tools that aren't big enough to fit in their own header, but don't necessarily fit elsewhere either: git integration with ~magit~, terminal setup, projectile, etc.
-- In the ninth section, we set up the tools for programming
-- In the tenth section, we then configure different languages I use for programming to use those tools
-- The final section will be providing the ~provide~ statement for each module
+- The [[#h:49282F28-9E13-48D2-A565-1605B1CC57B8][first section]] is some information about ~synthmacs.org~ and other comments for my future self or anyone else who happens to be reading this. Hello!
+- In the [[#h:EC68944C-F745-45D8-9905-420E0813DBAF][second section]], we have some optimization to startup time. Most of these things are from other people, because I am not as wise in the Emacs ways.
+- In the [[#h:F8B6E0EE-7BBD-4F7F-B31E-44DE7B43AA39][third section]], we setup our package managers, ~straight~ and  ~use-package~
+- In the [[#h:3D38D8F0-1B85-4265-9941-77A3A2FA235B][fourth section]], we configure ~emacs~ with some better defaults and extend some some of its core features (e.g. ~help-mode~)
+- In the [[#h:D7FB11B6-67B4-4275-B0CC-E218C65C411E][fifth section]], we set up ~general~, which we use to manage our keybindings and lazy loading of packages. Afterwards we configure ~evil~, for modal editing.
+- In the [[#h:B1DBE90D-B6C9-4BD4-B15B-185FE238D236][sixth section]], we define some standards for the invaluable ~org-mode~ with several extensions
+- In the [[#h:EA84335B-2A51-4B4A-9392-F116289EDB10][seventh section]], we configure UI related things: themes, icons, window management, navigation, etc
+- In the [[#h:FB3661CB-A573-40B6-B331-449D77DBD199][eighth section]], we configure useful our completion frameworks.
+- In the [[#h:B57C03F6-2111-489A-9303-B1A06C95EFF5][ninth section]], we configure useful Emacs tools that aren't big enough to fit in their own header, but don't necessarily fit elsewhere either: git integration with ~magit~, terminal setup, projectile, etc.
+- In the [[#h:2E967F87-8304-4262-B5BF-3286ACA7211B][tenth section]], we set up the tools for programming
+- In the [[#h:732BA080-834D-49E0-967E-0D37CE1C6BA0][eleventh section]], we then configure different languages I use for programming to use those tools
+- The [[#h:754DFB20-B2AB-4750-9BDA-D24E8014C504][twelfth, and final, section]] will be providing the ~provide~ statement for each module without which things would fall apart.
 
 * Startup Optimization
 :PROPERTIES:
@@ -169,9 +168,10 @@ With that out of the way, the general outline of this file aims to be:
 ** early-init.el
 :PROPERTIES:
 :CUSTOM_ID: h:7DBC58C1-3944-437C-87F9-95C9202BD34E
+:header-args:    :emacs-lisp :tangle early-init.el
 :END:
 Taken from DOOM's early init
-#+BEGIN_SRC emacs-lisp :tangle early-init.el
+#+BEGIN_SRC emacs-lisp
   ;;; early-init.el --- Early Init File -*- lexical-binding: t; no-byte-compile: t -*-
   ;; NOTE: early-init.el is now generated from synthmacs.org.  Please edit that file instead
 
@@ -218,9 +218,10 @@ Taken from DOOM's early init
 ** init.el: startup optimization
 :PROPERTIES:
 :CUSTOM_ID: h:E6162DC2-7E1C-4843-8448-FF104A444B40
+:header-args:    :emacs-lisp :tangle init.el
 :END:
 Taken from DOOM's init
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp
   ;;; init.el --- Personal configuration file -*- lexical-binding: t; no-byte-compile: t; -*-
   ;; NOTE: init.el is now generated from synthmacs.org.  Please edit that file instead
 
@@ -252,8 +253,9 @@ Taken from DOOM's init
 ** init.el: load modules
 :PROPERTIES:
 :CUSTOM_ID: h:7B22A4F3-49A1-4848-A185-B4EEA060EECE
+:header-args:    :emacs-lisp :tangle init.el
 :END:
-#+begin_src emacs-lisp :tangle init.el
+#+begin_src emacs-lisp
   (message "SynthMacs is powering up, please be patient...")
 
   ;; (add-to-list 'load-path "~/.emacs.d/synthmacs/")
@@ -329,11 +331,6 @@ Taken from DOOM's init
 :PROPERTIES:
 :CUSTOM_ID: h:F8B6E0EE-7BBD-4F7F-B31E-44DE7B43AA39
 :END:
-** Package manager
-:PROPERTIES:
-:CUSTOM_ID: h:376622D2-A6B7-4050-97C6-413B0D77B89C
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-straight.el
-:END:
 
 ** Bootstrap Straight and straight-use-package
 :PROPERTIES:
@@ -381,10 +378,6 @@ Some rules/conventions:
 * Keybindings: General & EVIL mode
 :PROPERTIES:
 :CUSTOM_ID: h:D7FB11B6-67B4-4275-B0CC-E218C65C411E
-:END:
-* Navigation
-:PROPERTIES:
-:CUSTOM_ID: h:67671B92-A773-434A-936A-91443E37E063
 :END:
 * Org Mode
 :PROPERTIES:
@@ -625,10 +618,6 @@ Taken from https://github.com/KaratasFurkan/.emacs.d
 * UI
 :PROPERTIES:
 :CUSTOM_ID: h:EA84335B-2A51-4B4A-9392-F116289EDB10
-:END:
-* Git
-:PROPERTIES:
-:CUSTOM_ID: h:F6754E84-5067-4565-AF5F-7EFA656DD281
 :END:
 * Completion framework
 :PROPERTIES:
