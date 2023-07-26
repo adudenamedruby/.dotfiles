@@ -19,18 +19,27 @@
   - [[#why-a-literate-config][Why a literate config?]]
   - [[#synthmacs-modules][Synthmacs Modules]]
   - [[#structure-of-this-configuration][Structure of this configuration]]
-- [[#early-initel-and-initel][early-init.el and init.el]]
+- [[#startup-optimization][Startup Optimization]]
   - [[#early-initel][early-init.el]]
   - [[#initel-startup-optimization][init.el: startup optimization]]
   - [[#initel-load-modules][init.el: load modules]]
-- [[#core][Core]]
+- [[#package-management][Package Management]]
   - [[#package-manager][Package manager]]
   - [[#bootstrap-straight-and-straight-use-package][Bootstrap Straight and straight-use-package]]
+- [[#sane-emacs-setup][Sane Emacs Setup]]
+- [[#keybindings-general--evil-mode][Keybindings: General & EVIL mode]]
+- [[#navigation][Navigation]]
 - [[#org-mode][Org Mode]]
   - [[#org-mode-1][org mode]]
   - [[#enabling-the-table-of-contents][Enabling the Table of Contents]]
   - [[#using-org-id-in-links][Using org-id in links]]
   - [[#tangling-this-file][Tangling this file]]
+- [[#ui][UI]]
+- [[#git][Git]]
+- [[#completion-framework][Completion framework]]
+- [[#useful-tools][Useful Tools]]
+- [[#programming-environment][Programming Environment]]
+- [[#programming-languages][Programming Languages]]
 - [[#provide-modules][Provide modules]]
   - [[#synthmacs-org][synthmacs-org]]
   - [[#synthmacs-straight][synthmacs-straight]]
@@ -50,19 +59,35 @@
 :PROPERTIES:
 :CUSTOM_ID: h:D9ED3ADB-810A-4A1C-A1D3-5397874AFAC7
 :END:
-This file (~synthmacs.org~) is the literate Synthmacs configuration. Every time I save the file, the code blocks get tangled, asynchronously. By default, they get tangled (in sequence) to ~./init.el~. However, some blocks override this default (e.g. see the section [[*early-init.el][early-init.el]]), meaning that I end up with what are, essentially, modules in which things are organized in some way that makes sense to me
+This file (~synthmacs.org~) is the literate Synthmacs configuration. Every time I save the file, the code blocks get tangled, asynchronously. By default, they get tangled (in sequence) to ~./init.el~. However, some blocks override this default (e.g. see the section [[*early-init.el][early-init.el]]), meaning that I end up with what are, essentially, modules in which things are organized in some way that makes sense to me. More on that [[#h:C522D670-C206-44F7-96CE-17D01E578287][here]].
 
 ** Why vanilla Emacs?
 :PROPERTIES:
 :CUSTOM_ID: h:40A8BDAE-F8E3-4DB3-AC8C-7E5067B7EE4D
 :END:
-My introduction to Emacs was... Vim? I love Vim. But what I really wanted was to use those keybindings throughout many of the things I'm doing, and not just in Vim. So I switched over to Vimium in my browser. I also wanted to be able to customize certain behaviours of my editor. And I knew that Emacs was the place. But I didn't know anything about Emacs, and I didn't know anything about E-Lisp, and I didn't have the time to set everything up myself (knowing how big that entry learning curve is from having learned to use Vim). So, I tried a distribution of Emacs, and ended up using [[https://www.spacemacs.org/][Spacemacs]] for several years. I was mostly happy. Three things changed:
+My introduction to Emacs was... Vim? I love Vim. But what I really wanted was to use those keybindings throughout many of the things I'm doing, and not just in Vim. So I switched over to Vimium in my browser. I started using Xvim in Xcode. Basically wherever I could have vim keybindings, I did. But I also wanted to be able to customize certain behaviours of my editor to the extent that just wasn't possible with Vim, and I knew that Emacs was the thing that would let me do that. But I didn't know anything about Emacs, and I didn't know anything about E-Lisp, and I didn't have the time to set everything up myself (knowing how big that entry learning curve is from having learned to use Vim). So, I tried a distribution of Emacs, and ended up using [[https://www.spacemacs.org/][Spacemacs]] for several years. I was mostly happy.
+
+Three things changed:
 1. I started to learn LISP
 2. And that made me want to understand Emacs a little more
-3. Spacemacs is really great... but the way it's put together is very different to how a normal config looks like, so often, changing some things was.... challenging
+3. Spacemacs is really great... but the one thing that always bothered me was that the way it's put together makes it very different to how a normal config looks like, so often, changing some things by looking at other's people's configs was.... challenging
 
-Over the process of the next few weeks, I started experimenting with my own config. I took a ton of inspiration from a ton of people, shamelessly stealing ideas to make my config better. I've tried to credit code sources where possible. However, in my haste from earlier efforts, I don't have credits for everything. For anything that's not original, here's a non-exhaustive list of some of the places I was inspired by:
-- 
+Over the process of the next few weeks, I started experimenting with my own config. I took a ton of inspiration from a ton of people, shamelessly stealing ideas to make my config better... or just make Emacs have the behaviour I wanted. I've tried to credit code sources where possible. However, in my haste from earlier efforts, I don't have credits for everything. For anything that's not original, here's a non-exhaustive list of some of the places I was inspired by:
+- [[https://github.com/abougouffa/minemacs/blob/ab9084efe27191fd0ab5f94eee5502766fce16c1/modules/me-lisp.el#L43][abougouffa]]
+- [[https://github.com/daedreth/UncleDavesEmacs/blob/master/config.org][daedreth]]
+- [[https://writequit.org/org/#2daddf2c-228b-40ae-90b1-cd0b8c39f061][dakrone]]
+- [[https://gitlab.com/dwt1/dotfiles/-/blob/2a687641af1fa4e31e080960e0b6a5f3d21d759d/.emacs.d.gnu/config.org][DistroTube Config]] & [[https://gitlab.com/dwt1/dotfiles/-/blob/1e82fff55a15bbff605789cbb412ea43efb924f0/.config/doom/config.org][Distro Tube Doom Config]]
+- [[https://github.com/howardabrams/dot-files][HowardAbrams]]
+- [[https://github.com/jimeh/.emacs.d/tree/master/core][jimeh]]
+- [[https://github.com/jinnovation/.emacs.d][jinnovation]]
+- [[https://www.lucacambiaghi.com/vanilla-emacs/readme.html#h:4C37CFFC-D045-47B4-BFDC-801977247199][Luca Cambiaghi]]
+- [[https://github.com/meatcar/emacs.d/blob/377c5abc4d45927d5badbf5f32debc9162a465fa/config.org#L1320][meatcar]]
+- [[https://protesilaos.com/emacs/dotemacs][Prot]]
+- [[https://github.com/renzmann/.emacs.d/blob/main/README.org][renzmann]]
+- [[https://github.com/r0man/.emacs.d/blob/b344a9bed55421e2288a1c135ccb9cf9b7591de4/init.el.org#L2019][r0man]]
+- [[https://robbmann.io/emacsd/][robbmann]]
+- [[https://config.daviwil.com/emacs][System Crafters]]
+- [[https://github.com/vale981/dotfiles/blob/7d7971b91356b271dd08afbaf9979fba33d471ed/dots/emacs/emacs.org#L1020][vale981]]
   
 It is a long journey, and I still have a long way to go, but I am glad I started it.
 
@@ -110,7 +135,7 @@ For example the header of the section concerning ~lsp-mode~ has the following pr
 :END:
 #+end_src
 
-All subheadings under it will "inherit" those properties and will be tangled to the same file. We also need to write some ~emacs-lisp~ at the end of the tanged file to "provide" those modules. [[#h:E80DEB4B-6AC9-415D-AF36-0044479D1B5A][Here]] an example of one of these "footer" headers.
+All subheadings under it will "inherit" those properties and will be tangled to the same file. We also need to write some ~emacs-lisp~ at the end of the tanged file to "provide" those modules. [[#h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD][Here]] an example of one of these "footer" headers.
 
 I then have a lean ~init.el~ (written in [[#h:7B22A4F3-49A1-4848-A185-B4EEA060EECE][this]] section) which I use to control which modules I want to use. Why turn off modules? Maybe something's acting up? Maybe I'm setting something up brand new and, while I'm still figuring things out, I want it enabled when I'm working on my config, but I don't want it enabled when I'm actually using Emacs for doing actual work.
 
@@ -118,15 +143,25 @@ I then have a lean ~init.el~ (written in [[#h:7B22A4F3-49A1-4848-A185-B4EEA060EE
 :PROPERTIES:
 :CUSTOM_ID: h:0FFBBB41-3AD1-4C09-A15D-FA9A03B6C2CB
 :END:
-In general, the config tries to manintain a pretty cohesive idea.
-- In the second section some optimization of startup time, mostly stolen from smart people.
-- In the third section we bootstrap ~straight~ and  ~use-package~, our package managers
-- In the fourth section we configure ~emacs~ with sane defaults and extend some its core features (e.g. ~help-mode~)
-- In the fifth section we set up ~general~, which we use to manage our keybindings and lazy loading of packages. Afterwards we configure ~evil~, for modal editing.
-- In the sixth section the invaluable ~org-mode~ with several extensions
-- The remaining sections declare my personal configuration of UI and core packages, leveraging the great tools described in this list.
+In general, the config tries to manintain a pretty cohesive modularization while observing a few guidelines. In no particular order, these are:
+- Things should be loosely organized according to function where possible
+- Keybindings should try to stay, as closely as possible, to the various modules they belong to. Thus, if I disable a module, its keys aren't still listed in which-key
+- As much as possible, functions should not be free-floating, but should be part of the init or general module of whatever thing they're most related to 
 
-* early-init.el and init.el
+With that out of the way, the general outline of this file aims to be:
+- The first section is some information about ~synthmacs.org~ and other comments for my future self or anyone else who happens to be reading this. Hello!
+- In the second section, we have some optimization to startup time. Most of these things are from other people, because I am not as wise in the Emacs ways.
+- In the third section, we setup our package managers, ~straight~ and  ~use-package~
+- In the fourth section, we configure ~emacs~ with some better defaults and extend some some of its core features (e.g. ~help-mode~)
+- In the fifth section, we set up ~general~, which we use to manage our keybindings and lazy loading of packages. Afterwards we configure ~evil~, for modal editing.
+- In the sixth section, we define some standards for the invaluable ~org-mode~ with several extensions
+- In the seventh section, we configure UI related things: themes, icons, window management, navigation, etc
+- In the eighth section, we configure useful Emacs tools that aren't big enough to fit in their own header, but don't necessarily fit elsewhere either: git integration with ~magit~, terminal setup, projectile, etc.
+- In the ninth section, we set up the tools for programming
+- In the tenth section, we then configure different languages I use for programming to use those tools
+- The final section will be providing the ~provide~ statement for each module
+
+* Startup Optimization
 :PROPERTIES:
 :CUSTOM_ID: h:EC68944C-F745-45D8-9905-420E0813DBAF
 :END:
@@ -290,7 +325,7 @@ Taken from DOOM's init
     ;;; init.el ends here
 #+end_src
 
-* Core
+* Package Management
 :PROPERTIES:
 :CUSTOM_ID: h:F8B6E0EE-7BBD-4F7F-B31E-44DE7B43AA39
 :END:
@@ -339,6 +374,18 @@ Some rules/conventions:
   (straight-use-package 'use-package)
 
 #+END_SRC
+* Sane Emacs Setup
+:PROPERTIES:
+:CUSTOM_ID: h:3D38D8F0-1B85-4265-9941-77A3A2FA235B
+:END:
+* Keybindings: General & EVIL mode
+:PROPERTIES:
+:CUSTOM_ID: h:D7FB11B6-67B4-4275-B0CC-E218C65C411E
+:END:
+* Navigation
+:PROPERTIES:
+:CUSTOM_ID: h:67671B92-A773-434A-936A-91443E37E063
+:END:
 * Org Mode
 :PROPERTIES:
 :CUSTOM_ID: h:B1DBE90D-B6C9-4BD4-B15B-185FE238D236
@@ -361,7 +408,7 @@ Interesting bits:
     ;; :straight (:type built-in)
     :hook ((org-mode . prettify-symbols-mode)
            (org-mode . visual-line-mode))
-    ;; :general
+    :general
     ;; (lc/leader-keys
     ;;   "f t" '(org-babel-tangle :wk "tangle")
     ;;   "o C" '(org-capture :wk "capture")
@@ -372,13 +419,13 @@ Interesting bits:
     ;;             (find-file (concat user-emacs-directory "readme.org")))
     ;;           :wk "open config")
     ;;   )
-    ;; (lc/local-leader-keys
+    (synthmacs/leader-keys
     ;;   :keymaps 'org-mode-map
     ;;   "a" '(org-archive-subtree :wk "archive subtree")
     ;;   "E" '(org-export-dispatch :wk "export")
-    ;;   "i" '(org-insert-structure-template :wk "insert src")
+      "ui" '(org-insert-structure-template :wk "insert src")
     ;;   "l" '(:ignore true :wk "link")
-    ;;   "l l" '(org-insert-link :wk "insert link")
+      "ul" '(org-insert-link :wk "insert link")
     ;;   "l s" '(org-store-link :wk "store link")
     ;;   "L" '((lambda () (interactive) (org-latex-preview)) :wk "latex preview")
     ;;   ;; "L" '((lambda () (interactive) (org--latex-preview-region (point-min) (point-max))) :wk "latex")
@@ -392,7 +439,7 @@ Interesting bits:
     ;;   "t s" '(org-schedule :wk "schedule")
     ;;   "t d" '(org-deadline :wk "deadline")
     ;;   "x" '(org-toggle-checkbox :wk "toggle checkbox")
-    ;;   )
+      )
     ;; (org-mode-map
     ;;  :states 'insert
     ;;  "TAB" 'lc/org-indent-or-complete
@@ -441,14 +488,12 @@ Interesting bits:
   ;;       ))
     ;; (setq warning-
     ;; 	suppress-types (append warning-suppress-types '((org-element-cache))))
-    ;; :config
+    :config
     ;; ;; (efs/org-font-setup)
-    ;; (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
-    ;; (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
-    ;; (add-to-list 'org-structure-template-alist '("py" . "src python"))
-    ;; (add-to-list 'org-structure-template-alist '("clj" . "src clojure"))
-    ;; (add-to-list 'org-structure-template-alist '("jp" . "src jupyter-python"))
-    ;; (add-to-list 'org-structure-template-alist '("jr" . "src jupyter-R"))
+    (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+    (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+    (add-to-list 'org-structure-template-alist '("py" . "src python"))
+    (add-to-list 'org-structure-template-alist '("clj" . "src clojure"))
     ;; ;; fontification
     ;; (add-to-list 'org-src-lang-modes '("jupyter-python" . python))
     ;; (add-to-list 'org-src-lang-modes '("jupyter-R" . R))
@@ -577,6 +622,30 @@ Taken from https://github.com/KaratasFurkan/.emacs.d
     )
 #+end_src
 
+* UI
+:PROPERTIES:
+:CUSTOM_ID: h:EA84335B-2A51-4B4A-9392-F116289EDB10
+:END:
+* Git
+:PROPERTIES:
+:CUSTOM_ID: h:F6754E84-5067-4565-AF5F-7EFA656DD281
+:END:
+* Completion framework
+:PROPERTIES:
+:CUSTOM_ID: h:FB3661CB-A573-40B6-B331-449D77DBD199
+:END:
+* Useful Tools
+:PROPERTIES:
+:CUSTOM_ID: h:B57C03F6-2111-489A-9303-B1A06C95EFF5
+:END:
+* Programming Environment
+:PROPERTIES:
+:CUSTOM_ID: h:2E967F87-8304-4262-B5BF-3286ACA7211B
+:END:
+* Programming Languages
+:PROPERTIES:
+:CUSTOM_ID: h:732BA080-834D-49E0-967E-0D37CE1C6BA0
+:END:
 * Provide modules
 :PROPERTIES:
 :CUSTOM_ID: h:754DFB20-B2AB-4750-9BDA-D24E8014C504

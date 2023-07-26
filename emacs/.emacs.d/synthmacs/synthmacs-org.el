@@ -4,7 +4,7 @@
   ;; :straight (:type built-in)
   :hook ((org-mode . prettify-symbols-mode)
          (org-mode . visual-line-mode))
-  ;; :general
+  :general
   ;; (lc/leader-keys
   ;;   "f t" '(org-babel-tangle :wk "tangle")
   ;;   "o C" '(org-capture :wk "capture")
@@ -15,13 +15,13 @@
   ;;             (find-file (concat user-emacs-directory "readme.org")))
   ;;           :wk "open config")
   ;;   )
-  ;; (lc/local-leader-keys
+  (synthmacs/leader-keys
   ;;   :keymaps 'org-mode-map
   ;;   "a" '(org-archive-subtree :wk "archive subtree")
   ;;   "E" '(org-export-dispatch :wk "export")
-  ;;   "i" '(org-insert-structure-template :wk "insert src")
+    "ui" '(org-insert-structure-template :wk "insert src")
   ;;   "l" '(:ignore true :wk "link")
-  ;;   "l l" '(org-insert-link :wk "insert link")
+    "ul" '(org-insert-link :wk "insert link")
   ;;   "l s" '(org-store-link :wk "store link")
   ;;   "L" '((lambda () (interactive) (org-latex-preview)) :wk "latex preview")
   ;;   ;; "L" '((lambda () (interactive) (org--latex-preview-region (point-min) (point-max))) :wk "latex")
@@ -35,7 +35,7 @@
   ;;   "t s" '(org-schedule :wk "schedule")
   ;;   "t d" '(org-deadline :wk "deadline")
   ;;   "x" '(org-toggle-checkbox :wk "toggle checkbox")
-  ;;   )
+    )
   ;; (org-mode-map
   ;;  :states 'insert
   ;;  "TAB" 'lc/org-indent-or-complete
@@ -84,14 +84,12 @@
 ;;       ))
   ;; (setq warning-
   ;; 	suppress-types (append warning-suppress-types '((org-element-cache))))
-  ;; :config
+  :config
   ;; ;; (efs/org-font-setup)
-  ;; (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
-  ;; (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
-  ;; (add-to-list 'org-structure-template-alist '("py" . "src python"))
-  ;; (add-to-list 'org-structure-template-alist '("clj" . "src clojure"))
-  ;; (add-to-list 'org-structure-template-alist '("jp" . "src jupyter-python"))
-  ;; (add-to-list 'org-structure-template-alist '("jr" . "src jupyter-R"))
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("py" . "src python"))
+  (add-to-list 'org-structure-template-alist '("clj" . "src clojure"))
   ;; ;; fontification
   ;; (add-to-list 'org-src-lang-modes '("jupyter-python" . python))
   ;; (add-to-list 'org-src-lang-modes '("jupyter-R" . R))
