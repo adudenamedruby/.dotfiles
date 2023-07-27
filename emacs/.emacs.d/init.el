@@ -36,9 +36,6 @@
 
 (let ((file-name-handler-alist nil)
       (gc-cons-threshold 100000000))
-  (require 'synthmacs-general-settings)
-  (require 'synthmacs-variables)
-  (require 'synthmacs-functions)
 
   (require 'synthmacs-core)
   (require 'synthmacs-package-management)
@@ -46,7 +43,7 @@
   ;;(require 'synthmacs-org)
   ;;(require 'synthmacs-ui)
   ;;(require 'synthmacs-completion-framework)
-  ;;(require 'synthmacs-tools)
+  (require 'synthmacs-tools)
   ;;(require 'synthmacs-programming)
   ;;(require 'synthmacs-lang-clojure)
   ;;(require 'synthmacs-lang-haskell)
@@ -59,8 +56,8 @@
 
   ;; Load packages
   ;;(require 'synthmacs-general)
-  (require 'synthmacs-hydra)
-  (require 'synthmacs-evil)
+  ;;(require 'synthmacs-hydra)
+  ;;(require 'synthmacs-evil)
   ;;(require 'synthmacs-general-keybindings)
   (require 'synthmacs-themes)
   (require 'synthmacs-windows)
@@ -96,21 +93,3 @@
 
     ;;; init.el ends here
 ;; init.el: load modules:1 ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(safe-local-variable-values
-   '((eval add-hook 'after-save-hook
-	   (lambda nil
-	     (progn
-	       (synthmacs/org-add-ids-to-headlines-in-file)
-	       (synthmacs/tangle-config)))
-	   nil t))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
