@@ -1,12 +1,35 @@
+;; [[file:../synthmacs.org::*nerd-icons][nerd-icons:1]]
+(setq nerd-icons-scale-factor 1.2)
+
+(use-package nerd-icons
+  :custom
+  ;; The Nerd Font you want to use in GUI
+  ;; "Symbols Nerd Font Mono" is the default and is recommended
+  ;; but you can use any other Nerd Font if you want
+  (nerd-icons-font-family "FiraCode Nerd Font"))
+;; nerd-icons:1 ends here
+
+;; [[file:../synthmacs.org::*all-the-icons][all-the-icons:1]]
+(use-package all-the-icons
+  :if (display-graphic-p)
+  :demand
+  )
+;; all-the-icons:1 ends here
+
+;; [[file:../synthmacs.org::*all-the-icons-completion][all-the-icons-completion:1]]
+(use-package all-the-icons-completion
+  :after (marginalia all-the-icons)
+  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+  :init
+  (all-the-icons-completion-mode))
+;; all-the-icons-completion:1 ends here
+
 ;; [[file:../synthmacs.org::*Themes][Themes:1]]
 (use-package doom-themes
   :config
   ;; Global settings (defaults)
-
-
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
@@ -195,20 +218,6 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
     "jl" '(avy-goto-line :wk "avy-goto-line")
     ))
 ;; Avy:1 ends here
-
-;; [[file:../synthmacs.org::*Icons][Icons:1]]
-(setq nerd-icons-scale-factor 1.2)
-
-(use-package nerd-icons
-  :custom
-  ;; The Nerd Font you want to use in GUI
-  ;; "Symbols Nerd Font Mono" is the default and is recommended
-  ;; but you can use any other Nerd Font if you want
-  (nerd-icons-font-family "FiraCode Nerd Font"))
-
-(use-package all-the-icons
-  :if (display-graphic-p))
-;; Icons:1 ends here
 
 ;; [[file:../synthmacs.org::*Modeline][Modeline:1]]
 (use-package minions

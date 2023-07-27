@@ -45,10 +45,12 @@
   - [[#using-org-id-in-links][Using org-id in links]]
   - [[#org-babel][org-babel]]
   - [[#tangling-this-file][Tangling this file]]
+  - [[#evil-org-mode][evil-org-mode]]
+  - [[#org-appear][org-appear]]
 - [[#ui][UI]]
+  - [[#icons][Icons]]
   - [[#themes][Themes]]
   - [[#navigation][Navigation]]
-  - [[#icons][Icons]]
   - [[#modeline][Modeline]]
   - [[#which-key][which-key]]
   - [[#rainbow][rainbow]]
@@ -521,6 +523,7 @@ Autosaving is great, but stop littering the file system with backup files all ov
 :CUSTOM_ID: h:D92031FF-2EE5-4894-B10E-7E3B36E5876D
 :END:
 I work with symlinks a fair bit of the time. Let's make sure that when I am working with them, I'm going to the actual file, because, really, that's what I want to edit.
+
 #+begin_src emacs-lisp
 (use-package emacs
   :init
@@ -533,6 +536,7 @@ I work with symlinks a fair bit of the time. Let's make sure that when I am work
 :CUSTOM_ID: h:B186EAC9-0310-4C0D-93A4-3F3B9D9C96A8
 :END:
 Hide it if we're in a window. I go back and forth on hiding the menu. I like it being there, but I've never used it, so why is it there?
+
 #+begin_src emacs-lisp
 (use-package emacs
   :init
@@ -1822,7 +1826,7 @@ Interesting bits:
   (setq org-src-preserve-indentation t) ;; do not put two spaces on the left
   (setq org-startup-indented t)
   ;;(setq org-startup-with-inline-images t)
-  (setq org-hide-emphasis-markers nil)
+  (setq org-hide-emphasis-markers t)
   (setq org-catch-invisible-edits 'smart)
   (setq org-image-actual-width nil)
   (setq org-indent-indentation-per-level 1)
@@ -1990,7 +1994,7 @@ Adding it as a ~after-save-hook~  automatically adds a ~CUSTOM_ID~ to newly crea
   :general
   (synthmacs/local-leader-keys
     :keymaps 'org-mode-map
-    "'" '(org-edit-special :wk "edit")
+    "e" '(org-edit-special :wk "edit")
     "-" '(org-babel-demarcate-block :wk "split block")
     "z" '(org-babel-hide-result-toggle :wk "fold result"))
 
@@ -2000,6 +2004,7 @@ Adding it as a ~after-save-hook~  automatically adds a ~CUSTOM_ID~ to newly crea
 
   :init
   (setq org-confirm-babel-evaluate nil)
+
   :config
   (org-babel-do-load-languages
    'org-babel-load-languages
@@ -2060,11 +2065,302 @@ Taken from https://github.com/KaratasFurkan/.emacs.d
   )
 #+end_src
 
+** COMMENT org-tree-slide
+:PROPERTIES:
+:CUSTOM_ID: h:A404F880-F610-43AB-BD53-7E5C7A026B43
+:END:
+A presentation mode for org-mode
+
+#+begin_src emacs-lisp
+(use-package org-tree-slide
+  :after org
+  :hook ((org-tree-slide-play . (lambda () (+remap-faces-at-start-present)))
+         (org-tree-slide-stop . (lambda () (+remap-faces-at-stop-present))))
+  :general
+  (lc/leader-keys
+    "t p" '(org-tree-slide-mode :wk "present"))
+  (general-nmap
+    :keymaps '(org-tree-slide-mode-map org-mode-map)
+    "C-j" 'org-tree-slide-move-next-tree
+    "C-k" 'org-tree-slide-move-previous-tree)
+  :init
+  (setq org-tree-slide-activate-message "Presentation mode ON")
+  (setq org-tree-slide-deactivate-message "Presentation mode OFF")
+  (setq org-tree-slide-indicator nil)
+  (setq org-tree-slide-breadcrumbs "    >    ")
+  (setq org-tree-slide-heading-emphasis t)
+  (setq org-tree-slide-slide-in-waiting 0.025)
+  (setq org-tree-slide-content-margin-top 4)
+  (defun +remap-faces-at-start-present ()
+    (setq-local face-remapping-alist '((default (:height 1.50) variable-pitch)
+                                       (fixed-pitch (:height 1.2) fixed-pitch)
+                                       ;; (org-verbatim (:height 1.2) org-verbatim)
+                                       ;; (org-block (:height 1.2) org-block)
+                                       ))
+    ;; (setq-local olivetti-body-width 95)
+    (olivetti-mode 1)
+    (display-fill-column-indicator-mode 0)
+    (hide-mode-line-mode 1)
+    (diff-hl-mode 0)
+    (centaur-tabs-mode 0))
+  (defun +remap-faces-at-stop-present ()
+    (setq-local face-remapping-alist '((default variable-pitch default)))
+    ;; (setq-local olivetti-body-width 120)
+    (olivetti-mode 0)
+    (display-fill-column-indicator-mode 1)
+    (hide-mode-line-mode 0)
+    (doom-modeline-mode 1)
+    (diff-hl-mode 1)
+    (centaur-tabs-mode 1))
+  (setq org-tree-slide-breadcrumbs nil)
+  (setq org-tree-slide-header nil)
+  (setq org-tree-slide-slide-in-effect nil)
+  (setq org-tree-slide-heading-emphasis nil)
+  (setq org-tree-slide-cursor-init t)
+  (setq org-tree-slide-modeline-display nil)
+  (setq org-tree-slide-skip-done nil)
+  (setq org-tree-slide-skip-comments t)
+  (setq org-tree-slide-fold-subtrees-skipped t)
+  (setq org-tree-slide-skip-outline-level 8) ;; or 0?
+  (setq org-tree-slide-never-touch-face t)
+  ;; :config
+  ;; (org-tree-slide-presentation-profile)
+  ;; :custom-face
+  ;; (org-tree-slide-heading-level-1 ((t (:height 1.8 :weight bold))))
+  ;; (org-tree-slide-heading-level-2 ((t (:height 1.5 :weight bold))))
+  ;; (org-tree-slide-heading-level-3 ((t (:height 1.5 :weight bold))))
+  ;; (org-tree-slide-heading-level-4 ((t (:height 1.5 :weight bold))))
+  )
+#+end_src
+
+** evil-org-mode
+:PROPERTIES:
+:CUSTOM_ID: h:C9161126-81DB-480B-B4A5-49E7651368A1
+:END:
+Taken from DOOM:
+
+- nice ~+org/insert-item-below~ function
+- evil bindings for ~org-agenda~
+- text objects:
+  - use ~vie~ to select everything inside a src block
+  - use ~vir~ to select everything inside a heading
+  - use ~=ie~ to format a code block
+
+#+begin_src emacs-lisp
+(use-package evil-org-mode
+  :straight (evil-org-mode
+	     :type git
+	     :host github
+	     :repo "hlissner/evil-org-mode")
+  :hook ((org-mode . evil-org-mode)
+         (org-mode . (lambda () 
+                       (require 'evil-org)
+                       (evil-normalize-keymaps)
+                       (evil-org-set-key-theme '(textobjects))
+                       (require 'evil-org-agenda)
+                       (evil-org-agenda-set-keys))))
+  :bind
+  ([remap evil-org-org-insert-heading-respect-content-below] . +org/insert-item-below) ;; "<C-return>" 
+  ([remap evil-org-org-insert-todo-heading-respect-content-below] . +org/insert-item-above) ;; "<C-S-return>" 
+
+  :general
+  (general-nmap
+    :keymaps 'org-mode-map
+    :states 'normal
+    "RET"   #'org-open-at-point
+    ;; "RET"   #'+org/dwim-at-point
+    )
+
+  :init
+  (defun +org--insert-item (direction)
+    (let ((context (org-element-lineage
+                    (org-element-context)
+                    '(table table-row headline inlinetask item plain-list)
+                    t)))
+      (pcase (org-element-type context)
+        ;; Add a new list item (carrying over checkboxes if necessary)
+        ((or `item `plain-list)
+         ;; Position determines where org-insert-todo-heading and org-insert-item
+         ;; insert the new list item.
+         (if (eq direction 'above)
+             (org-beginning-of-item)
+           (org-end-of-item)
+           (backward-char))
+         (org-insert-item (org-element-property :checkbox context))
+         ;; Handle edge case where current item is empty and bottom of list is
+         ;; flush against a new heading.
+         (when (and (eq direction 'below)
+                    (eq (org-element-property :contents-begin context)
+                        (org-element-property :contents-end context)))
+           (org-end-of-item)
+           (org-end-of-line)))
+
+        ;; Add a new table row
+        ((or `table `table-row)
+         (pcase direction
+           ('below (save-excursion (org-table-insert-row t))
+                   (org-table-next-row))
+           ('above (save-excursion (org-shiftmetadown))
+                   (+org/table-previous-row))))
+
+        ;; Otherwise, add a new heading, carrying over any todo state, if
+        ;; necessary.
+        (_
+         (let ((level (or (org-current-level) 1)))
+           ;; I intentionally avoid `org-insert-heading' and the like because they
+           ;; impose unpredictable whitespace rules depending on the cursor
+           ;; position. It's simpler to express this command's responsibility at a
+           ;; lower level than work around all the quirks in org's API.
+           (pcase direction
+             (`below
+              (let (org-insert-heading-respect-content)
+                (goto-char (line-end-position))
+                (org-end-of-subtree)
+                (insert "\n" (make-string level ?*) " ")))
+             (`above
+              (org-back-to-heading)
+              (insert (make-string level ?*) " ")
+              (save-excursion (insert "\n"))))
+           (when-let* ((todo-keyword (org-element-property :todo-keyword context))
+                       (todo-type    (org-element-property :todo-type context)))
+             (org-todo
+              (cond ((eq todo-type 'done)
+                     ;; Doesn't make sense to create more "DONE" headings
+                     (car (+org-get-todo-keywords-for todo-keyword)))
+                    (todo-keyword)
+                    ('todo)))))))
+
+      (when (org-invisible-p)
+        (org-show-hidden-entry))
+      (when (and (bound-and-true-p evil-local-mode)
+                 (not (evil-emacs-state-p)))
+        (evil-insert 1))))
+
+  (defun +org/insert-item-below (count)
+    "Inserts a new heading, table cell or item below the current one."
+    (interactive "p")
+    (dotimes (_ count) (+org--insert-item 'below)))
+
+  (defun +org/insert-item-above (count)
+    "Inserts a new heading, table cell or item above the current one."
+    (interactive "p")
+    (dotimes (_ count) (+org--insert-item 'above)))
+  )
+#+end_src
+
+** org-appear
+:PROPERTIES:
+:CUSTOM_ID: h:6E97D1D8-3E9B-455B-B126-413A707E7539
+:END:
+Automatically displays emphasis markers and links when the cursor is on them.
+
+~things~ 
+#+begin_src emacs-lisp
+(use-package org-appear
+  :straight (org-appear :type git :host github :repo "awth13/org-appear")
+  :hook (org-mode . org-appear-mode)
+  :init
+  (setq org-appear-autoemphasis  t)
+  (setq org-appear-autolinks t)
+  (setq org-appear-autosubmarkers t)
+  )
+#+end_src
+
+** COMMENT org-roam
+:PROPERTIES:
+:CUSTOM_ID: h:37777EDB-7144-42DF-907B-506383270BA0
+:END:
+Instead of Obsidian, let's use org roam?
+
+#+begin_src emacs-lisp
+(use-package org-roam
+  :after org
+  :init
+  (setq org-roam-directory (file-truename "~/roam"))
+  (setq org-roam-v2-ack t)
+  (setq org-roam-capture-templates
+        '(("d" "default" plain "%?" :target
+           (file+head "personal/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n") :unnarrowed t)
+          ("w" "work" plain "%?" :target
+           (file+head "work/%<%Y%m%d%H%M%S>-${slug}.org"  "#+title: ${title}\n") :unnarrowed t)))
+  :general
+  (synthmacs/leader-keys
+    "or" '(:ignore t :wk "org-roam")
+    "orb" 'org-roam-buffer-toggle
+    "orf" 'org-roam-node-find
+    "org" 'org-roam-graph
+    "ori" 'org-roam-node-insert
+    "orc" 'org-roam-capture
+    "ort" 'org-roam-tag-add
+    "orr" 'org-roam-ref-add
+    "ora" 'org-roam-alias-add
+    ;; Dailies
+    "orj" 'org-roam-dailies-capture-today
+    "orJ" 'org-roam-dailies-goto-today
+    )
+  :config
+  (org-roam-setup)
+  ;; If using org-roam-protocol
+  ;; (require 'org-roam-protocol)
+  (add-to-list 'display-buffer-alist
+               '(("*org-roam*"
+                  (display-buffer-in-direction)
+                  (direction . right)
+                  (window-width . 0.33)
+                  (window-height . fit-window-to-buffer))))
+  
+  )
+#+end_src
+
 * UI
 :PROPERTIES:
 :CUSTOM_ID: h:EA84335B-2A51-4B4A-9392-F116289EDB10
 :header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-ui.el
 :END:
+
+** Icons
+:PROPERTIES:
+:CUSTOM_ID: h:F4A9DF01-4EDA-4775-AAFD-C10B5C66CBED
+:END:
+
+*** nerd-icons
+:PROPERTIES:
+:CUSTOM_ID: h:1D9C5C8C-C62C-4932-A78B-64872690FA64
+:END:
+#+begin_src emacs-lisp
+(setq nerd-icons-scale-factor 1.2)
+
+(use-package nerd-icons
+  :custom
+  ;; The Nerd Font you want to use in GUI
+  ;; "Symbols Nerd Font Mono" is the default and is recommended
+  ;; but you can use any other Nerd Font if you want
+  (nerd-icons-font-family "FiraCode Nerd Font"))
+#+end_src
+
+*** all-the-icons
+:PROPERTIES:
+:CUSTOM_ID: h:3A8C1F48-071A-41FF-A4D6-E8B860D1AD6E
+:END:
+#+begin_src emacs-lisp
+(use-package all-the-icons
+  :if (display-graphic-p)
+  :demand
+  )
+#+end_src
+
+*** all-the-icons-completion
+:PROPERTIES:
+:CUSTOM_ID: h:6C8030B7-C36D-44E7-9267-6CF6B11639A6
+:END:
+
+#+begin_src emacs-lisp
+(use-package all-the-icons-completion
+  :after (marginalia all-the-icons)
+  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+  :init
+  (all-the-icons-completion-mode))
+#+end_src
 
 ** Themes
 :PROPERTIES:
@@ -2074,11 +2370,8 @@ Taken from https://github.com/KaratasFurkan/.emacs.d
 (use-package doom-themes
   :config
   ;; Global settings (defaults)
-
-
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
@@ -2280,24 +2573,6 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
     "jc" '(avy-goto-char :wk "avy-goto-char")
     "jl" '(avy-goto-line :wk "avy-goto-line")
     ))
-#+end_src
-
-** Icons
-:PROPERTIES:
-:CUSTOM_ID: h:F4A9DF01-4EDA-4775-AAFD-C10B5C66CBED
-:END:
-#+begin_src emacs-lisp
-(setq nerd-icons-scale-factor 1.2)
-
-(use-package nerd-icons
-  :custom
-  ;; The Nerd Font you want to use in GUI
-  ;; "Symbols Nerd Font Mono" is the default and is recommended
-  ;; but you can use any other Nerd Font if you want
-  (nerd-icons-font-family "FiraCode Nerd Font"))
-
-(use-package all-the-icons
-  :if (display-graphic-p))
 #+end_src
 
 ** Modeline
