@@ -28,7 +28,9 @@
 - [[#core-emacs-setup][Core Emacs Setup]]
   - [[#emacs-setup][Emacs Setup]]
   - [[#custom-variables][Custom variables]]
+  - [[#fonts][Fonts]]
   - [[#free-functions][Free Functions]]
+  - [[#auto-pair-paranthesis][Auto-pair paranthesis]]
 - [[#keybindings-general--evil-mode][Keybindings: General & EVIL mode]]
   - [[#general][General]]
   - [[#general-keybindings][General keybindings]]
@@ -318,7 +320,7 @@ Taken from DOOM's init
   (require 'synthmacs-completion-framework)
   (require 'synthmacs-tools)
   (require 'synthmacs-programming)
-  ;(require 'synthmacs-lang-clojure)
+  ;;(require 'synthmacs-lang-clojure)
   ;;(require 'synthmacs-lang-haskell)
   ;;(require 'synthmacs-lang-html)
   ;;(require 'synthmacs-lang-lisp)
@@ -385,6 +387,8 @@ Some rules/conventions:
 :PROPERTIES:
 :CUSTOM_ID: h:51921EE3-AFC6-44A1-A700-316815CBFF49
 :END:
+Some general things to set up:
+
 #+begin_src emacs-lisp
 (use-package emacs
   :init
@@ -395,15 +399,51 @@ Some rules/conventions:
         ring-bell-function 'ignore
         frame-resize-pixelwise t)
 
-  (setq user-full-name "roux g. buciu"
-        user-mail-address "roux@fringe.foundation")
-
   (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
-  ;; always allow 'y' instead of 'yes'.
-  (defalias 'yes-or-no-p 'y-or-n-p)
+  ;; less noise when compiling elisp
+  (setq byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
+  (setq native-comp-async-report-warnings-errors nil)
+  (setq load-prefer-newer t)
 
-  ;; default to utf-8 for all the things
+  ;; write over selected text on input... like all modern editors do
+  ;;(delete-selection-mode t)
+  )
+#+end_src
+
+*** User setup
+:PROPERTIES:
+:CUSTOM_ID: h:C6B442E5-589B-43CA-B3F5-FE0A53CDBA66
+:END:
+Who is using Synthmacs?
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
+  (setq user-full-name "roux g. buciu"
+        user-mail-address "roux@fringe.foundation"))
+#+end_src
+
+*** "Yes or no" prompts
+:PROPERTIES:
+:CUSTOM_ID: h:1FFE6051-E84B-438A-9FA9-BB6A6EFBE77F
+:END:
+They are annoying and it's much more idiomatic to type y or n for these types of things anyway. So let's make sure Synthmacs confornms to this.
+
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
+  (defalias 'yes-or-no-p 'y-or-n-p))
+#+end_src
+
+*** UTF-8 file encoding
+:PROPERTIES:
+:CUSTOM_ID: h:6E819D29-764F-4F26-B5CB-20766CE6579D
+:END:
+Sometimes file encoding is really messed up, so we make sure to default to UTF-8 for everything!
+
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
   (set-charset-priority 'unicode)
   (setq locale-coding-system 'utf-8
         coding-system-for-read 'utf-8
@@ -412,12 +452,17 @@ Some rules/conventions:
   (set-keyboard-coding-system 'utf-8)
   (set-selection-coding-system 'utf-8)
   (prefer-coding-system 'utf-8)
-  (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+  (setq default-process-coding-system '(utf-8-unix . utf-8-unix)))
+#+end_src
 
-  ;; write over selected text on input... like all modern editors do
-  ;;(delete-selection-mode t)
-
-  ;; enable recent files mode.
+*** Recent files
+:PROPERTIES:
+:CUSTOM_ID: h:9E1EAAC3-9A7D-48C6-95D3-B98A8D8C1861
+:END:
+Recent files. Enable them for nice navigation from the dashboard, ~consult-recent-files~, and so on.
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
   (recentf-mode t)
   (setq recentf-exclude `(,(expand-file-name "straight/build/" user-emacs-directory)
                           ,(expand-file-name "eln-cache/" user-emacs-directory)
@@ -425,25 +470,68 @@ Some rules/conventions:
                           ,(expand-file-name "var/" user-emacs-directory)))
   (setq recentf-max-menu-items 10)
   (setq recentf-max-saved-items 10)
+  )
+#+end_src
 
+*** ESC key!
+:PROPERTIES:
+:CUSTOM_ID: h:2A391835-2D45-4E8E-87C1-823E3B5402A8
+:END:
+The ESC key should not be a modifier, but should behave as per its namesake.
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
+  (global-set-key (kbd "<escape>") 'keyboard-escape-quit))
+#+end_src
 
-  ;; don't want ESC as a modifier
-  (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+*** Custom file
+:PROPERTIES:
+:CUSTOM_ID: h:7569FED9-DB11-4C0A-972A-9AD1AC3E1667
+:END:
+Don't persist a custom file, this bites me more than it helps, honestly.
 
-  ;; Don't persist a custom file, this bites me more than it helps
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
   (setq custom-file (make-temp-file "")) ; use a temp file as a placeholder
   (setq custom-safe-themes t)            ; mark all themes as safe, since we can't persist now
   (setq enable-local-variables :all)     ; fix =defvar= warnings
+  )
+#+end_src
 
-  ;; stop emacs from littering the file system with backup files
+*** Autosaves
+:PROPERTIES:
+:CUSTOM_ID: h:DD2D8AFF-4FB3-4157-8A5E-F8A71509C869
+:END:
+Autosaving is great, but stop littering the file system with backup files all over the place. Maybe I'll really want this in the future. For now, it's a hard no.
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
   (setq make-backup-files nil
-        auto-save-default nil
-        create-lockfiles nil)
+        auto-save-default t
+        create-lockfiles nil))
+#+end_src
 
+*** Symlinks
+:PROPERTIES:
+:CUSTOM_ID: h:D92031FF-2EE5-4894-B10E-7E3B36E5876D
+:END:
+I work with symlinks a fair bit of the time. Let's make sure that when I am working with them, I'm going to the actual file, because, really, that's what I want to edit.
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
   ;; follow symlinks 
-  (setq vc-follow-symlinks t)
+  (setq vc-follow-symlinks t))
+#+end_src
 
-  ;; don't show any extra window chrome
+*** Window chrome
+:PROPERTIES:
+:CUSTOM_ID: h:B186EAC9-0310-4C0D-93A4-3F3B9D9C96A8
+:END:
+Hide it if we're in a window. I go back and forth on hiding the menu. I like it being there, but I've never used it, so why is it there?
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
   (when (window-system)
     (tool-bar-mode -1)
     (tooltip-mode -1)
@@ -451,7 +539,16 @@ Some rules/conventions:
     (set-fringe-mode 10)
     ;; (menu-bar-mode -1)
     )
+  )
+    #+end_src
 
+*** Scrolling behaviours
+:PROPERTIES:
+:CUSTOM_ID: h:7B6C9DD0-B689-471C-904B-299C56F20AC7
+:END:
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
   ;; Set scroll margin, but emulate vim scroll behaviour
   (setq scroll-conservatively 101
 	scroll-margin 5
@@ -464,13 +561,17 @@ Some rules/conventions:
   (winner-mode t)
 
   (show-paren-mode t)
+  )
 
-  ;; less noise when compiling elisp
-  (setq byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
-  (setq native-comp-async-report-warnings-errors nil)
-  (setq load-prefer-newer t)
+#+end_src
 
-
+*** Line numbers
+:PROPERTIES:
+:CUSTOM_ID: h:AEE6BF5E-C716-41A4-80E6-45512D31F9B5
+:END:
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
   ;; ------------------ Line Numbering ---------------------
   ;; set type of line numbering (global variable)
   (setq display-line-numbers-type 'relative)
@@ -484,13 +585,31 @@ Some rules/conventions:
 
   ;; Activate line numbering in programming modes
   ;; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+  )
+#+end_src
 
+*** Fill column & modeline column info
+:PROPERTIES:
+:CUSTOM_ID: h:9F8FCA21-383E-42FA-BA7D-59DD3ECEB950
+:END:
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
   (setq-default fill-column 85)
   (global-display-fill-column-indicator-mode)
 
   ;; Columns number in the modeline
   (setq column-number-mode t)
-  
+  )
+#+end_src
+
+*** Other
+:PROPERTIES:
+:CUSTOM_ID: h:5C66A615-DF0F-43EC-8446-28ADEBF553F8
+:END:
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
   ;; use common convention for indentation by default
   ;;(setq-default indent-tabs-mode t)
   ;;(setq-default tab-width 2)
@@ -508,8 +627,6 @@ Some rules/conventions:
 
   (global-visual-line-mode t)
 
-  ;; ------------------ Fonts ---------------------
-  (set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 140)
   )
 #+end_src
 
@@ -536,12 +653,32 @@ Some rules/conventions:
   )
 #+end_src
 
+** Fonts
+:PROPERTIES:
+:CUSTOM_ID: h:07E35458-939C-4B52-B065-778D5F4D9F52
+:END:
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
+  ;; Main typeface
+  (set-face-attribute 'default nil :font synthmacs/default-font-family :height 140)
+  ;; Set the fixed pitch face (monospace)
+  (set-face-attribute 'fixed-pitch nil :font synthmacs/default-font-family)
+  ;; Set the variable pitch face
+  (set-face-attribute 'variable-pitch nil :font synthmacs/variable-pitch-font-family)
+  )
+#+end_src
+
 ** Free Functions
 :PROPERTIES:
 :CUSTOM_ID: h:7C608EDA-7A99-49BB-BBCD-65E4CFCA0ED0
 :END:
+
+*** Buffers
+:PROPERTIES:
+:CUSTOM_ID: h:12AFFF8B-9081-4088-BA95-996206DA01AA
+:END:
 #+begin_src emacs-lisp
-;; -------------- Buffers --------------------
 (defun synthmacs/add-buffer-to-killed-list ()
   "Add killed buffer to list for undo functionality.
 If buffer is associated with a file name, add that file
@@ -662,10 +799,15 @@ one, an error is signaled."
 ;; 	      (call-interactively #'projectile-invalidate-cache))
 ;; 	    (message "File deleted: '%s'" filename))
 ;; 	(message "Cancelled file deletion")))))
+#+end_src
 
-;; Copy file path
+*** Copying file paths
+:PROPERTIES:
+:CUSTOM_ID: h:B0981CAF-B4C2-499E-A218-788F1491D0A3
+:END:
 
-(defun synthmacs--directory-path ()
+#+begin_src emacs-lisp
+(defun synthmacs//directory-path ()
   "Retrieve the directory path of the current buffer.
 
 If the buffer is not visiting a file, use the `list-buffers-directory' variable
@@ -680,7 +822,7 @@ Returns:
                               list-buffers-directory))
     (file-truename directory-name)))
 
-(defun synthmacs--file-path ()
+(defun synthmacs//file-path ()
   "Retrieve the file path of the current buffer.
 
 Returns:
@@ -689,73 +831,79 @@ Returns:
   (when-let (file-path (buffer-file-name))
     (file-truename file-path)))
 
-(defun synthmacs--file-path-with-line ()
+(defun synthmacs//file-path-with-line ()
   "Retrieve the file path of the current buffer, including line number.
 
 Returns:
   - A string containing the file path in case of success.
   - `nil' in case the current buffer does not have a directory."
-  (when-let (file-path (synthmacs--file-path))
+  (when-let (file-path (synthmacs//file-path))
     (concat file-path ":" (number-to-string (line-number-at-pos)))))
 
-(defun synthmacs/copy-directory-path ()
+(defun synthmacs//copy-directory-path ()
   "Copy and show the directory path of the current buffer.
 
 If the buffer is not visiting a file, use the `list-buffers-directory'
 variable as a fallback to display the directory, useful in buffers like the
 ones created by `magit' and `dired'."
   (interactive)
-  (if-let (directory-path (synthmacs--directory-path))
+  (if-let (directory-path (synthmacs//directory-path))
       (progn
         (kill-new directory-path)
         (message "%s" directory-path))
     (message "WARNING: Current buffer does not have a directory!")))
 
-(defun synthmacs/copy-file-path ()
+(defun synthmacs//copy-file-path ()
   "Copy and show the file path of the current buffer."
   (interactive)
-  (if-let (file-path (synthmacs--file-path))
+  (if-let (file-path (synthmacs//file-path))
       (progn
         (kill-new file-path)
         (message "%s" file-path))
     (message "WARNING: Current buffer is not attached to a file!")))
 
-(defun synthmacs/copy-file-name ()
+(defun synthmacs//copy-file-name ()
   "Copy and show the file name of the current buffer."
   (interactive)
-  (if-let* ((file-path (synthmacs--file-path))
+  (if-let* ((file-path (synthmacs//file-path))
             (file-name (file-name-nondirectory file-path)))
       (progn
         (kill-new file-name)
         (message "%s" file-name))
     (message "WARNING: Current buffer is not attached to a file!")))
 
-(defun synthmacs/copy-buffer-name ()
+(defun synthmacs//copy-buffer-name ()
   "Copy and show the name of the current buffer."
   (interactive)
   (kill-new (buffer-name))
   (message "%s" (buffer-name)))
 
-(defun synthmacs/copy-file-name-base ()
+(defun synthmacs//copy-file-name-base ()
   "Copy and show the file name without its final extension of the current
 buffer."
   (interactive)
-  (if-let (file-name (file-name-base (synthmacs--file-path)))
+  (if-let (file-name (file-name-base (synthmacs//file-path)))
       (progn
         (kill-new file-name)
         (message "%s" file-name))
     (message "WARNING: Current buffer is not attached to a file!")))
 
-(defun synthmacs/copy-file-path-with-line ()
+(defun synthmacs//copy-file-path-with-line ()
   "Copy and show the file path of the current buffer, including line number."
   (interactive)
-  (if-let (file-path (synthmacs--file-path-with-line))
+  (if-let (file-path (synthmacs//file-path-with-line))
       (progn
         (kill-new file-path)
         (message "%s" file-path))
     (message "WARNING: Current buffer is not attached to a file!")))
+#+end_src
 
-;; Rename a buffer
+*** Renaming files & buffers
+:PROPERTIES:
+:CUSTOM_ID: h:394285B9-12FD-4DB8-B82F-3FDAE36AECDC
+:END:
+From Spacemacs.
+#+begin_src emacs-lisp
 (defun synthmacs/rename-current-buffer-file (&optional arg)
   "Rename the current buffer and the file it is visiting.
 If the buffer isn't visiting a file, ask if it should
@@ -846,7 +994,15 @@ initialized with the current directory instead of filename."
 	    ;; ?\a = C-g, ?\e = Esc and C-[
 	    ((memq key '(?\a ?\e)) (keyboard-quit))))))
 
-;; ----------- Minibuffer ------------------------
+#+end_src
+
+*** <C-h> in the minibuffer while completing a file name
+:PROPERTIES:
+:CUSTOM_ID: h:14B4AD1F-CC7B-42BF-8C28-33019F387080
+:END:
+From SystemCrafters
+
+#+begin_src emacs-lisp
 (defun synthmacs/minibuffer-backwards-kill (arg)
   "When minibuffer is completing a file name, delete up to parent
 folder; otherwise, delete a character backwards."
@@ -856,18 +1012,13 @@ folder; otherwise, delete a character backwards."
 	  (zap-up-to-char (- arg) ?/)
 	(delete-minibuffer-contents))
     (delete-backwards-char arg)))
+#+end_src
 
-;; ---------------- Searching --------------
-(defun synthmacs/consult-ripgrep ()
-  "Search org-roam directory using consult-ripgrep. With live-preview."
-  (interactive)
-  (let ((consult-ripgrep-command "rg --no-ignore --hidden --ignore-case --line-number"))
-    (consult-ripgrep
-     (if (projectile-project-p)
-	 (projectile-project-root)
-       ""))))
-
-;; ---------------- Symbols --------------
+*** Symbols
+:PROPERTIES:
+:CUSTOM_ID: h:86C4D8A2-9E75-46C9-AE4B-F4DBBDC9AA61
+:END:
+#+begin_src emacs-lisp
 (defun synthmacs/my-add-pretty-symbol ()
   (setq prettify-symbols-alist
         '(
@@ -876,14 +1027,96 @@ folder; otherwise, delete a character backwards."
           ;; ("=>" . 8658)    ; ⇒
           ;; ("map" . 8614)   ; ↦
           )))
+#+end_src
 
-;; ---------------- Quitting -------------------
+*** Quit (but save before doing so!)
+:PROPERTIES:
+:CUSTOM_ID: h:12B3E275-99FC-4184-9314-44B02CD78861
+:END:
+#+begin_src emacs-lisp
 (defun synthmacs/prompt-kill-emacs ()
   "Prompt to save changed buffers and exit Synthmacs"
   (interactive)
   (save-some-buffers nil t)
   (kill-emacs))
 
+#+end_src
+
+** COMMENT Garbage collector magic hack
+:PROPERTIES:
+:CUSTOM_ID: h:42E8D107-2954-49CB-8E38-33CF300BABDE
+:END:
+Inspired by DOOMs use of this to manage garbage collection
+
+#+begin_src emacs-lisp
+(use-package gcmh
+  :demand
+  :config
+  (gcmh-mode 1))
+#+end_src
+
+** COMMENT no-littering
+:PROPERTIES:
+:CUSTOM_ID: h:23600A76-1CDE-48FE-9024-163E861F2F0C
+:END:
+Basically tries to clean up the ~emacs.d~ directory by creating consistent placement for files.
+
+#+begin_src emacs-lisp
+(use-package no-littering
+  :demand
+  :config
+  (with-eval-after-load 'recentf
+    (add-to-list 'recentf-exclude no-littering-var-directory)
+    (add-to-list 'recentf-exclude no-littering-etc-directory))
+  )
+#+end_src
+
+** Auto-pair paranthesis
+:PROPERTIES:
+:CUSTOM_ID: h:7B34AC43-8F07-4754-9360-0592CBDBAF9F
+:END:
+In programming, missing parens and the like are a pain to track down. Let's automate some of that to decrease the likely hood of this actually happening.
+
+#+begin_src emacs-lisp
+(use-package emacs
+  :hook
+  ((org-mode . (lambda () (synthmacs/add-local-electric-pairs '(;(?= . ?=)
+                                                         (?~ . ?~))))))
+  :init
+  (electric-pair-mode +1)
+  (setq electric-pair-preserve-balance nil)
+
+  ;; mode-specific local-electric pairs
+  (defconst synthmacs/default-electric-pairs electric-pair-pairs)
+  (defun synthmacs/add-local-electric-pairs (pairs)
+    "Example usage: 
+    (add-hook 'jupyter-org-interaction-mode '(lambda () (set-local-electric-pairs '())))
+    "
+    (setq-local electric-pair-pairs (append synthmacs/default-electric-pairs pairs))
+    (setq-local electric-pair-text-pairs electric-pair-pairs))
+
+  ;; disable auto pairing for <  >
+  (add-function :before-until electric-pair-inhibit-predicate
+                (lambda (c) (eq c ?<   ;; >
+                                )))
+  )  
+#+end_src
+
+** COMMENT xref
+:PROPERTIES:
+:CUSTOM_ID: h:088A31CF-3AEF-4AF4-B60D-B2793FCDDB94
+:END:
+#+begin_src emacs-lisp
+(use-package xref
+  :straight (:type built-in)
+  :init
+  (setq xref-prompt-for-identifier nil) ;; always find references of symbol at point
+  ;; configured in consult
+  ;; (setq xref-show-definitions-function #'xref-show-definitions-completing-read)
+  ;; (setq xref-show-xrefs-function #'xref-show-definitions-buffer) ; for grep and the like
+  ;; (setq xref-file-name-display 'project-relative)
+  ;; (setq xref-search-program 'grep)
+  )
 #+end_src
 
 * Keybindings: General & EVIL mode
@@ -896,8 +1129,13 @@ folder; otherwise, delete a character backwards."
 :PROPERTIES:
 :CUSTOM_ID: h:871AF14C-473E-4227-B4BF-13E984BE1E7D
 :END:
+Here, we load ~general~ and define bindings for generic commands (~find-file~ for example). The commands provided by packages should be binded in the ~use-package~ block, thanks to the ~:general~ keyword.
+
+NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword in the use-package blocks won't work.
+
 #+begin_src emacs-lisp
 (use-package general
+  :demand t
   :config
   (general-evil-setup)
 
@@ -926,10 +1164,8 @@ folder; otherwise, delete a character backwards."
 :CUSTOM_ID: h:919D720B-1ACC-441F-9822-8FAB69EB625F
 :END:
 #+begin_src emacs-lisp
-;; Application bindings
 (synthmacs/leader-keys
-  "a" '(:ignore t :wk "applications")
-  "af" '(find-file :wk "Find file"))
+  "a" '(:ignore t :wk "applications"))
 #+end_src
 
 *** Buffer bindings
@@ -999,12 +1235,12 @@ folder; otherwise, delete a character backwards."
 
 (synthmacs/leader-keys
   "fy" '(:ignore t :wk "yank")
-  "fyb" '(synthmacs/copy-buffer-name :wk "buffer name")
-  "fyd" '(synthmacs/copy-directory-path :wk "directory path")
-  "fyf" '(synthmacs/copy-file-path :wk "file path")
-  "fyl" '(synthmacs/copy-file-path-with-line :wk "file path with line number")
-  "fyn" '(synthmacs/copy-file-name :wk "file name")
-  "fyN" '(synthmacs/copy-file-name-base :wk "file name without extension"))
+  "fyb" '(synthmacs//copy-buffer-name :wk "buffer name")
+  "fyd" '(synthmacs//copy-directory-path :wk "directory path")
+  "fyf" '(synthmacs//copy-file-path :wk "file path")
+  "fyl" '(synthmacs//copy-file-path-with-line :wk "file path with line number")
+  "fyn" '(synthmacs//copy-file-name :wk "file name")
+  "fyN" '(synthmacs//copy-file-name-base :wk "file name without extension"))
 
 (synthmacs/leader-keys
   "fe" '(:ignore t :wk "Emacs Files")
@@ -2058,81 +2294,21 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 :END:
 #+begin_src emacs-lisp
 (use-package consult
-  :general
-  (synthmacs/leader-keys
-    "/" '(synthmacs/consult-ripgrep :wk "search project")
-
-    ;; files
-    "fr" '(consult-recent-file :wk "recent files")
-
-    ;; search
-    "sp" '(synthmacs/consult-ripgrep :wk "search project (consult-ripgrep)")
-    "ss" '(consult-line :wk "swoop")
-
-    ;; toggles
-    "ttt" '(consult-theme :wk "consult-themes"))
-
-
-  ;; Replace bindings. Lazily loaded due by `use-package'.
-  ;; :bind (;; C-c bindings in `mode-specific-map'
-         ;; ("C-c M-x" . consult-mode-command)
-         ;; ("C-c h" . consult-history)
-         ;; ("C-c k" . consult-kmacro)
-         ;; ("C-c m" . consult-man)
-         ;; ("C-c i" . consult-info)
-         ;; ([remap Info-search] . consult-info)
-         ;; C-x bindings in `ctl-x-map'
-         ;; ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
-         ;; ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
-         ;; ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
-         ;; ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
-         ;; ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
-         ;; ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
-         ;; Custom M-# bindings for fast register access
-         ;; ("M-#" . consult-register-load)
-         ;; ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
-         ;; ("C-M-#" . consult-register)
-         ;; ;; Other custom bindings
-         ;; ("M-y" . consult-yank-pop)                ;; orig. yank-pop
-         ;; M-g bindings in `goto-map'
-         ;; ("M-g e" . consult-compile-error)
-         ;; ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
-         ;; ("M-g g" . consult-goto-line)             ;; orig. goto-line
-         ;; ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
-         ;; ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
-         ;; ("M-g m" . consult-mark)
-         ;; ("M-g k" . consult-global-mark)
-         ;; ("M-g i" . consult-imenu)
-         ;; ("M-g I" . consult-imenu-multi)
-         ;; M-s bindings in `search-map'
-         ;; ("M-s d" . consult-find)
-         ;; ("M-s D" . consult-locate)
-         ;; ("M-s g" . consult-grep)
-         ;; ("M-s G" . consult-git-grep)
-         ;; ("M-s r" . consult-ripgrep)
-         ;; ("M-s l" . consult-line)
-         ;; ("M-s L" . consult-line-multi)
-         ;; ("M-s k" . consult-keep-lines)
-         ;; ("M-s u" . consult-focus-lines)
-         ;; Isearch integration
-         ;; ("M-s e" . consult-isearch-history)
-         ;; :map isearch-mode-map
-         ;; ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
-         ;; ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
-         ;; ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
-         ;; ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
-         ;; Minibuffer history
-         ;; :map minibuffer-local-map
-         ;; ("M-s" . consult-history)                 ;; orig. next-matching-history-element
-         ;; ("M-r" . consult-history)                 ;; orig. previous-matching-history-element
-	 ;; )
-
   ;; Enable automatic preview at point in the *Completions* buffer. This is
   ;; relevant when you use the default completion UI.
   :hook (completion-list-mode . consult-preview-at-point-mode)
 
   ;; The :init configuration is always executed (Not lazy)
   :init
+(defun synthmacs/consult-ripgrep ()
+  "Search org-roam directory using consult-ripgrep. With live-preview."
+  (interactive)
+  (let ((consult-ripgrep-command "rg --no-ignore --hidden --ignore-case --line-number"))
+    (consult-ripgrep
+     (if (projectile-project-p)
+	 (projectile-project-root)
+       ""))))
+
 
   ;; Optionally configure the register formatting. This improves the register
   ;; preview for `consult-register', `consult-register-load',
@@ -2190,6 +2366,73 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
   ;;;; 5. No project support
   ;; (setq consult-project-function nil)
+
+  :general
+  (synthmacs/leader-keys
+    "/" '(synthmacs/consult-ripgrep :wk "search project")
+
+    ;; files
+    "fr" '(consult-recent-file :wk "recent files")
+
+    ;; search
+    "sp" '(synthmacs/consult-ripgrep :wk "search project (consult-ripgrep)")
+    "ss" '(consult-line :wk "swoop")
+
+    ;; toggles
+    "ttt" '(consult-theme :wk "consult-themes"))
+  ;; Replace bindings. Lazily loaded due by `use-package'.
+  ;; :bind (;; C-c bindings in `mode-specific-map'
+         ;; ("C-c M-x" . consult-mode-command)
+         ;; ("C-c h" . consult-history)
+         ;; ("C-c k" . consult-kmacro)
+         ;; ("C-c m" . consult-man)
+         ;; ("C-c i" . consult-info)
+         ;; ([remap Info-search] . consult-info)
+         ;; C-x bindings in `ctl-x-map'
+         ;; ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+         ;; ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+         ;; ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+         ;; ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+         ;; ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
+         ;; ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
+         ;; Custom M-# bindings for fast register access
+         ;; ("M-#" . consult-register-load)
+         ;; ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
+         ;; ("C-M-#" . consult-register)
+         ;; ;; Other custom bindings
+         ;; ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+         ;; M-g bindings in `goto-map'
+         ;; ("M-g e" . consult-compile-error)
+         ;; ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
+         ;; ("M-g g" . consult-goto-line)             ;; orig. goto-line
+         ;; ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+         ;; ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
+         ;; ("M-g m" . consult-mark)
+         ;; ("M-g k" . consult-global-mark)
+         ;; ("M-g i" . consult-imenu)
+         ;; ("M-g I" . consult-imenu-multi)
+         ;; M-s bindings in `search-map'
+         ;; ("M-s d" . consult-find)
+         ;; ("M-s D" . consult-locate)
+         ;; ("M-s g" . consult-grep)
+         ;; ("M-s G" . consult-git-grep)
+         ;; ("M-s r" . consult-ripgrep)
+         ;; ("M-s l" . consult-line)
+         ;; ("M-s L" . consult-line-multi)
+         ;; ("M-s k" . consult-keep-lines)
+         ;; ("M-s u" . consult-focus-lines)
+         ;; Isearch integration
+         ;; ("M-s e" . consult-isearch-history)
+         ;; :map isearch-mode-map
+         ;; ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
+         ;; ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
+         ;; ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
+         ;; ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
+         ;; Minibuffer history
+         ;; :map minibuffer-local-map
+         ;; ("M-s" . consult-history)                 ;; orig. next-matching-history-element
+         ;; ("M-r" . consult-history)                 ;; orig. previous-matching-history-element
+	 ;; )
   )
 #+end_src
 

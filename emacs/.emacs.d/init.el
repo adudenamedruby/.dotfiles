@@ -1,5 +1,5 @@
 ;; [[file:synthmacs.org::*init.el: startup optimization][init.el: startup optimization:1]]
-  ;;; init.el --- Personal configuration file -*- lexical-binding: t; no-byte-compile: t; -*-
+;;; init.el --- Personal configuration file -*- lexical-binding: t; no-byte-compile: t; -*-
 ;; NOTE: init.el is now generated from synthmacs.org.  Please edit that file instead
 
 ;; `file-name-handler-alist' is consulted on every `require', `load' and various
@@ -45,7 +45,7 @@
   (require 'synthmacs-completion-framework)
   (require 'synthmacs-tools)
   (require 'synthmacs-programming)
-  ;(require 'synthmacs-lang-clojure)
+  ;;(require 'synthmacs-lang-clojure)
   ;;(require 'synthmacs-lang-haskell)
   ;;(require 'synthmacs-lang-html)
   ;;(require 'synthmacs-lang-lisp)

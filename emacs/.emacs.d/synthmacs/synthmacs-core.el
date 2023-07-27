@@ -8,15 +8,34 @@
         ring-bell-function 'ignore
         frame-resize-pixelwise t)
 
-  (setq user-full-name "roux g. buciu"
-        user-mail-address "roux@fringe.foundation")
-
   (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
-  ;; always allow 'y' instead of 'yes'.
-  (defalias 'yes-or-no-p 'y-or-n-p)
+  ;; less noise when compiling elisp
+  (setq byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
+  (setq native-comp-async-report-warnings-errors nil)
+  (setq load-prefer-newer t)
 
-  ;; default to utf-8 for all the things
+  ;; write over selected text on input... like all modern editors do
+  ;;(delete-selection-mode t)
+  )
+;; Emacs Setup:1 ends here
+
+;; [[file:../synthmacs.org::*User setup][User setup:1]]
+(use-package emacs
+  :init
+  (setq user-full-name "roux g. buciu"
+        user-mail-address "roux@fringe.foundation"))
+;; User setup:1 ends here
+
+;; [[file:../synthmacs.org::*"Yes or no" prompts]["Yes or no" prompts:1]]
+(use-package emacs
+  :init
+  (defalias 'yes-or-no-p 'y-or-n-p))
+;; "Yes or no" prompts:1 ends here
+
+;; [[file:../synthmacs.org::*UTF-8 file encoding][UTF-8 file encoding:1]]
+(use-package emacs
+  :init
   (set-charset-priority 'unicode)
   (setq locale-coding-system 'utf-8
         coding-system-for-read 'utf-8
@@ -25,12 +44,12 @@
   (set-keyboard-coding-system 'utf-8)
   (set-selection-coding-system 'utf-8)
   (prefer-coding-system 'utf-8)
-  (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+  (setq default-process-coding-system '(utf-8-unix . utf-8-unix)))
+;; UTF-8 file encoding:1 ends here
 
-  ;; write over selected text on input... like all modern editors do
-  ;;(delete-selection-mode t)
-
-  ;; enable recent files mode.
+;; [[file:../synthmacs.org::*Recent files][Recent files:1]]
+(use-package emacs
+  :init
   (recentf-mode t)
   (setq recentf-exclude `(,(expand-file-name "straight/build/" user-emacs-directory)
                           ,(expand-file-name "eln-cache/" user-emacs-directory)
@@ -38,25 +57,42 @@
                           ,(expand-file-name "var/" user-emacs-directory)))
   (setq recentf-max-menu-items 10)
   (setq recentf-max-saved-items 10)
+  )
+;; Recent files:1 ends here
 
+;; [[file:../synthmacs.org::*ESC key!][ESC key!:1]]
+(use-package emacs
+  :init
+  (global-set-key (kbd "<escape>") 'keyboard-escape-quit))
+;; ESC key!:1 ends here
 
-  ;; don't want ESC as a modifier
-  (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
-  ;; Don't persist a custom file, this bites me more than it helps
+;; [[file:../synthmacs.org::*Custom file][Custom file:1]]
+(use-package emacs
+  :init
   (setq custom-file (make-temp-file "")) ; use a temp file as a placeholder
   (setq custom-safe-themes t)            ; mark all themes as safe, since we can't persist now
   (setq enable-local-variables :all)     ; fix =defvar= warnings
+  )
+;; Custom file:1 ends here
 
-  ;; stop emacs from littering the file system with backup files
+;; [[file:../synthmacs.org::*Autosaves][Autosaves:1]]
+(use-package emacs
+  :init
   (setq make-backup-files nil
-        auto-save-default nil
-        create-lockfiles nil)
+        auto-save-default t
+        create-lockfiles nil))
+;; Autosaves:1 ends here
 
+;; [[file:../synthmacs.org::*Symlinks][Symlinks:1]]
+(use-package emacs
+  :init
   ;; follow symlinks 
-  (setq vc-follow-symlinks t)
+  (setq vc-follow-symlinks t))
+;; Symlinks:1 ends here
 
-  ;; don't show any extra window chrome
+;; [[file:../synthmacs.org::*Window chrome][Window chrome:1]]
+(use-package emacs
+  :init
   (when (window-system)
     (tool-bar-mode -1)
     (tooltip-mode -1)
@@ -64,7 +100,12 @@
     (set-fringe-mode 10)
     ;; (menu-bar-mode -1)
     )
+  )
+;; Window chrome:1 ends here
 
+;; [[file:../synthmacs.org::*Scrolling behaviours][Scrolling behaviours:1]]
+(use-package emacs
+  :init
   ;; Set scroll margin, but emulate vim scroll behaviour
   (setq scroll-conservatively 101
 	scroll-margin 5
@@ -77,13 +118,12 @@
   (winner-mode t)
 
   (show-paren-mode t)
+  )
+;; Scrolling behaviours:1 ends here
 
-  ;; less noise when compiling elisp
-  (setq byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
-  (setq native-comp-async-report-warnings-errors nil)
-  (setq load-prefer-newer t)
-
-
+;; [[file:../synthmacs.org::*Line numbers][Line numbers:1]]
+(use-package emacs
+  :init
   ;; ------------------ Line Numbering ---------------------
   ;; set type of line numbering (global variable)
   (setq display-line-numbers-type 'relative)
@@ -97,13 +137,23 @@
 
   ;; Activate line numbering in programming modes
   ;; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+  )
+;; Line numbers:1 ends here
 
+;; [[file:../synthmacs.org::*Fill column & modeline column info][Fill column & modeline column info:1]]
+(use-package emacs
+  :init
   (setq-default fill-column 85)
   (global-display-fill-column-indicator-mode)
 
   ;; Columns number in the modeline
   (setq column-number-mode t)
-  
+  )
+;; Fill column & modeline column info:1 ends here
+
+;; [[file:../synthmacs.org::*Other][Other:1]]
+(use-package emacs
+  :init
   ;; use common convention for indentation by default
   ;;(setq-default indent-tabs-mode t)
   ;;(setq-default tab-width 2)
@@ -121,10 +171,8 @@
 
   (global-visual-line-mode t)
 
-  ;; ------------------ Fonts ---------------------
-  (set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 140)
   )
-;; Emacs Setup:1 ends here
+;; Other:1 ends here
 
 ;; [[file:../synthmacs.org::*Custom variables][Custom variables:1]]
 ;; reopening the last killed buffer
@@ -145,8 +193,19 @@
   )
 ;; Custom variables:1 ends here
 
-;; [[file:../synthmacs.org::*Free Functions][Free Functions:1]]
-;; -------------- Buffers --------------------
+;; [[file:../synthmacs.org::*Fonts][Fonts:1]]
+(use-package emacs
+  :init
+  ;; Main typeface
+  (set-face-attribute 'default nil :font synthmacs/default-font-family :height 140)
+  ;; Set the fixed pitch face (monospace)
+  (set-face-attribute 'fixed-pitch nil :font synthmacs/default-font-family)
+  ;; Set the variable pitch face
+  (set-face-attribute 'variable-pitch nil :font synthmacs/variable-pitch-font-family)
+  )
+;; Fonts:1 ends here
+
+;; [[file:../synthmacs.org::*Buffers][Buffers:1]]
 (defun synthmacs/add-buffer-to-killed-list ()
   "Add killed buffer to list for undo functionality.
 If buffer is associated with a file name, add that file
@@ -267,10 +326,10 @@ one, an error is signaled."
 ;; 	      (call-interactively #'projectile-invalidate-cache))
 ;; 	    (message "File deleted: '%s'" filename))
 ;; 	(message "Cancelled file deletion")))))
+;; Buffers:1 ends here
 
-;; Copy file path
-
-(defun synthmacs--directory-path ()
+;; [[file:../synthmacs.org::*Copying file paths][Copying file paths:1]]
+(defun synthmacs//directory-path ()
   "Retrieve the directory path of the current buffer.
 
 If the buffer is not visiting a file, use the `list-buffers-directory' variable
@@ -285,7 +344,7 @@ Returns:
                               list-buffers-directory))
     (file-truename directory-name)))
 
-(defun synthmacs--file-path ()
+(defun synthmacs//file-path ()
   "Retrieve the file path of the current buffer.
 
 Returns:
@@ -294,73 +353,74 @@ Returns:
   (when-let (file-path (buffer-file-name))
     (file-truename file-path)))
 
-(defun synthmacs--file-path-with-line ()
+(defun synthmacs//file-path-with-line ()
   "Retrieve the file path of the current buffer, including line number.
 
 Returns:
   - A string containing the file path in case of success.
   - `nil' in case the current buffer does not have a directory."
-  (when-let (file-path (synthmacs--file-path))
+  (when-let (file-path (synthmacs//file-path))
     (concat file-path ":" (number-to-string (line-number-at-pos)))))
 
-(defun synthmacs/copy-directory-path ()
+(defun synthmacs//copy-directory-path ()
   "Copy and show the directory path of the current buffer.
 
 If the buffer is not visiting a file, use the `list-buffers-directory'
 variable as a fallback to display the directory, useful in buffers like the
 ones created by `magit' and `dired'."
   (interactive)
-  (if-let (directory-path (synthmacs--directory-path))
+  (if-let (directory-path (synthmacs//directory-path))
       (progn
         (kill-new directory-path)
         (message "%s" directory-path))
     (message "WARNING: Current buffer does not have a directory!")))
 
-(defun synthmacs/copy-file-path ()
+(defun synthmacs//copy-file-path ()
   "Copy and show the file path of the current buffer."
   (interactive)
-  (if-let (file-path (synthmacs--file-path))
+  (if-let (file-path (synthmacs//file-path))
       (progn
         (kill-new file-path)
         (message "%s" file-path))
     (message "WARNING: Current buffer is not attached to a file!")))
 
-(defun synthmacs/copy-file-name ()
+(defun synthmacs//copy-file-name ()
   "Copy and show the file name of the current buffer."
   (interactive)
-  (if-let* ((file-path (synthmacs--file-path))
+  (if-let* ((file-path (synthmacs//file-path))
             (file-name (file-name-nondirectory file-path)))
       (progn
         (kill-new file-name)
         (message "%s" file-name))
     (message "WARNING: Current buffer is not attached to a file!")))
 
-(defun synthmacs/copy-buffer-name ()
+(defun synthmacs//copy-buffer-name ()
   "Copy and show the name of the current buffer."
   (interactive)
   (kill-new (buffer-name))
   (message "%s" (buffer-name)))
 
-(defun synthmacs/copy-file-name-base ()
+(defun synthmacs//copy-file-name-base ()
   "Copy and show the file name without its final extension of the current
 buffer."
   (interactive)
-  (if-let (file-name (file-name-base (synthmacs--file-path)))
+  (if-let (file-name (file-name-base (synthmacs//file-path)))
       (progn
         (kill-new file-name)
         (message "%s" file-name))
     (message "WARNING: Current buffer is not attached to a file!")))
 
-(defun synthmacs/copy-file-path-with-line ()
+(defun synthmacs//copy-file-path-with-line ()
   "Copy and show the file path of the current buffer, including line number."
   (interactive)
-  (if-let (file-path (synthmacs--file-path-with-line))
+  (if-let (file-path (synthmacs//file-path-with-line))
       (progn
         (kill-new file-path)
         (message "%s" file-path))
     (message "WARNING: Current buffer is not attached to a file!")))
+;; Copying file paths:1 ends here
 
-;; Rename a buffer
+;; [[file:../synthmacs.org::*Renaming files & buffers][Renaming files & buffers:1]]
 (defun synthmacs/rename-current-buffer-file (&optional arg)
   "Rename the current buffer and the file it is visiting.
 If the buffer isn't visiting a file, ask if it should
@@ -450,8 +510,9 @@ initialized with the current directory instead of filename."
 				"To:   " new-buffer-name ))))
 	    ;; ?\a = C-g, ?\e = Esc and C-[
 	    ((memq key '(?\a ?\e)) (keyboard-quit))))))
+;; Renaming files & buffers:1 ends here
 
-;; ----------- Minibuffer ------------------------
+;; [[file:../synthmacs.org::*<C-h> in the minibuffer while completing a file name][<C-h> in the minibuffer while completing a file name:1]]
 (defun synthmacs/minibuffer-backwards-kill (arg)
   "When minibuffer is completing a file name, delete up to parent
 folder; otherwise, delete a character backwards."
@@ -461,18 +522,9 @@ folder; otherwise, delete a character backwards."
 	  (zap-up-to-char (- arg) ?/)
 	(delete-minibuffer-contents))
     (delete-backwards-char arg)))
+;; <C-h> in the minibuffer while completing a file name:1 ends here
 
-;; ---------------- Searching --------------
-(defun synthmacs/consult-ripgrep ()
-  "Search org-roam directory using consult-ripgrep. With live-preview."
-  (interactive)
-  (let ((consult-ripgrep-command "rg --no-ignore --hidden --ignore-case --line-number"))
-    (consult-ripgrep
-     (if (projectile-project-p)
-	 (projectile-project-root)
-       ""))))
-
-;; ---------------- Symbols --------------
+;; [[file:../synthmacs.org::*Symbols][Symbols:1]]
 (defun synthmacs/my-add-pretty-symbol ()
   (setq prettify-symbols-alist
         '(
@@ -481,14 +533,40 @@ folder; otherwise, delete a character backwards."
           ;; ("=>" . 8658)    ; ⇒
           ;; ("map" . 8614)   ; ↦
           )))
+;; Symbols:1 ends here
 
-;; ---------------- Quitting -------------------
+;; [[file:../synthmacs.org::*Quit (but save before doing so!)][Quit (but save before doing so!):1]]
 (defun synthmacs/prompt-kill-emacs ()
   "Prompt to save changed buffers and exit Synthmacs"
   (interactive)
   (save-some-buffers nil t)
   (kill-emacs))
-;; Free Functions:1 ends here
+;; Quit (but save before doing so!):1 ends here
+
+;; [[file:../synthmacs.org::*Auto-pair paranthesis][Auto-pair paranthesis:1]]
+(use-package emacs
+  :hook
+  ((org-mode . (lambda () (synthmacs/add-local-electric-pairs '(;(?= . ?=)
+                                                         (?~ . ?~))))))
+  :init
+  (electric-pair-mode +1)
+  (setq electric-pair-preserve-balance nil)
+
+  ;; mode-specific local-electric pairs
+  (defconst synthmacs/default-electric-pairs electric-pair-pairs)
+  (defun synthmacs/add-local-electric-pairs (pairs)
+    "Example usage: 
+    (add-hook 'jupyter-org-interaction-mode '(lambda () (set-local-electric-pairs '())))
+    "
+    (setq-local electric-pair-pairs (append synthmacs/default-electric-pairs pairs))
+    (setq-local electric-pair-text-pairs electric-pair-pairs))
+
+  ;; disable auto pairing for <  >
+  (add-function :before-until electric-pair-inhibit-predicate
+                (lambda (c) (eq c ?<   ;; >
+                                )))
+  )
+;; Auto-pair paranthesis:1 ends here
 
 ;; [[file:../synthmacs.org::*synthmacs-core][synthmacs-core:1]]
 (provide 'synthmacs-core)

@@ -1,5 +1,6 @@
 ;; [[file:../synthmacs.org::*General][General:1]]
 (use-package general
+  :demand t
   :config
   (general-evil-setup)
 
@@ -19,10 +20,8 @@
 ;; General:1 ends here
 
 ;; [[file:../synthmacs.org::*Application bindings][Application bindings:1]]
-;; Application bindings
 (synthmacs/leader-keys
-  "a" '(:ignore t :wk "applications")
-  "af" '(find-file :wk "Find file"))
+  "a" '(:ignore t :wk "applications"))
 ;; Application bindings:1 ends here
 
 ;; [[file:../synthmacs.org::*Buffer bindings][Buffer bindings:1]]
@@ -72,12 +71,12 @@
 
 (synthmacs/leader-keys
   "fy" '(:ignore t :wk "yank")
-  "fyb" '(synthmacs/copy-buffer-name :wk "buffer name")
-  "fyd" '(synthmacs/copy-directory-path :wk "directory path")
-  "fyf" '(synthmacs/copy-file-path :wk "file path")
-  "fyl" '(synthmacs/copy-file-path-with-line :wk "file path with line number")
-  "fyn" '(synthmacs/copy-file-name :wk "file name")
-  "fyN" '(synthmacs/copy-file-name-base :wk "file name without extension"))
+  "fyb" '(synthmacs//copy-buffer-name :wk "buffer name")
+  "fyd" '(synthmacs//copy-directory-path :wk "directory path")
+  "fyf" '(synthmacs//copy-file-path :wk "file path")
+  "fyl" '(synthmacs//copy-file-path-with-line :wk "file path with line number")
+  "fyn" '(synthmacs//copy-file-name :wk "file name")
+  "fyN" '(synthmacs//copy-file-name-base :wk "file name without extension"))
 
 (synthmacs/leader-keys
   "fe" '(:ignore t :wk "Emacs Files")
