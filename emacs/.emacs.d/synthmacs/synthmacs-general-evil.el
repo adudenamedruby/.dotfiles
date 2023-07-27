@@ -147,8 +147,6 @@
 ;; [[file:../synthmacs.org::*Org bindings][Org bindings:1]]
 (synthmacs/leader-keys
   "o" '(:ignore t :wk "org")
-  "oi" 'org-indent-region
-  "ot" 'org-babel-tangle
   )
 ;; Org bindings:1 ends here
 

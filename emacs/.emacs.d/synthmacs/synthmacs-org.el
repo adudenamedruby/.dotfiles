@@ -5,44 +5,48 @@
   :hook ((org-mode . prettify-symbols-mode)
          (org-mode . visual-line-mode))
   :general
-  ;; (lc/leader-keys
-  ;;   "f t" '(org-babel-tangle :wk "tangle")
-  ;;   "o C" '(org-capture :wk "capture")
-  ;;   "o l" '(org-todo-list :wk "todo list")
-  
-  ;;   "o c" '((lambda () (interactive)
-  ;;             (persp-switch "main")
-  ;;             (find-file (concat user-emacs-directory "readme.org")))
-  ;;           :wk "open config")
-  ;;   )
   (synthmacs/leader-keys
-    ;;   :keymaps 'org-mode-map
-    ;;   "a" '(org-archive-subtree :wk "archive subtree")
-    ;;   "E" '(org-export-dispatch :wk "export")
-    "ui" '(org-insert-structure-template :wk "insert src")
-    ;;   "l" '(:ignore true :wk "link")
-    "ul" '(org-insert-link :wk "insert link")
-    ;;   "l s" '(org-store-link :wk "store link")
+    "oc" 'org-capture
+    ;;"ol" '(org-todo-list :wk "todo list")
+
+    "ft" 'org-babel-tangle
+    )
+
+  (synthmacs/local-leader-keys
+    :keymaps 'org-mode-map
+    "a" '(org-archive-subtree :wk "archive subtree")
+    "E" '(org-export-dispatch :wk "org-export")
+    "i" 'org-indent-region
+    "s" '(org-insert-structure-template :wk "insert src")
+    "S" 'org-sort
+    "x" 'org-toggle-checkbox
+
+    "t" '(:ignore true :wk "todo")
+    "tt" 'org-todo
+    "ts" 'org-schedule
+    "td" 'org-deadline
+
+    "l" '(:ignore true :wk "link")
+    "li" 'org-insert-link
+    "ls" 'org-store-link
+
     ;;   "L" '((lambda () (interactive) (org-latex-preview)) :wk "latex preview")
     ;;   ;; "L" '((lambda () (interactive) (org--latex-preview-region (point-min) (point-max))) :wk "latex")
     ;;   "r" '(org-refile :wk "refile")
     ;;   "n" '(org-toggle-narrow-to-subtree :wk "narrow subtree")
     ;;   "p" '(org-priority :wk "priority")
     ;;   "q" '(org-set-tags-command :wk "tag")
-    ;;   "s" '(org-sort :wk "sort")
-    ;;   "t" '(:ignore true :wk "todo")
-    ;;   "t t" '(org-todo :wk "heading todo")
-    ;;   "t s" '(org-schedule :wk "schedule")
-    ;;   "t d" '(org-deadline :wk "deadline")
-    ;;   "x" '(org-toggle-checkbox :wk "toggle checkbox")
     )
-  ;; (org-mode-map
-  ;;  :states 'insert
-  ;;  "TAB" 'lc/org-indent-or-complete
-  ;;  "S-TAB" nil)
-  ;; (org-mode-map
-  ;;  :states 'normal
-  ;;  "z i" '(org-toggle-inline-images :wk "inline images"))
+
+  (org-mode-map
+   :states 'insert
+   "TAB" 'lc/org-indent-or-complete
+   "S-TAB" nil)
+
+  (org-mode-map
+   :states 'normal
+   "z i" '(org-toggle-inline-images :wk "inline images"))
+
   :init
   ;; general settings
   (when (file-directory-p "~/Developer/ExoCortex/org")
@@ -73,30 +77,14 @@
                                          ("lambda"  . "λ")
                                          ("->" . "→")
                                          ("->>" . "↠")))
-  ;; (setq prettify-symbols-unprettify-at-point 'right-edge)
-  ;;   (defun lc/org-indent-or-complete ()
-  ;;     "Complete 
-  ;; if point is at end of a word, otherwise indent line."
-  ;;     (interactive)
-  ;;     (if (looking-at "\\>")
-  ;;         (dabbrev-expand nil)
-  ;;       (org-cycle)
-  ;;       ))
-  ;; (setq warning-
-  ;; 	suppress-types (append warning-suppress-types '((org-element-cache))))
+  (setq prettify-symbols-unprettify-at-point 'right-edge)
+
   :config
   ;; ;; (efs/org-font-setup)
   (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
   (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
   (add-to-list 'org-structure-template-alist '("py" . "src python"))
   (add-to-list 'org-structure-template-alist '("clj" . "src clojure"))
-  ;; ;; fontification
-  ;; (add-to-list 'org-src-lang-modes '("jupyter-python" . python))
-  ;; (add-to-list 'org-src-lang-modes '("jupyter-R" . R))
-  ;; ;; latex
-  ;; ;; (setq org-latex-compiler "xelatex")
-  ;; ;; see https://www.reddit.com/r/emacs/comments/l45528/questions_about_mving_from_standard_latex_to_org/gkp4f96/?utm_source=reddit&utm_medium=web2x&context=3
-  ;; ;; (setq org-latex-pdf-process '("TEXINPUTS=:$HOME/git/AltaCV//: tectonic %f"))
   ;; (setq org-latex-pdf-process '("tectonic %f"))
   ;; (setq org-export-backends '(html))
   ;; ;; (add-to-list 'org-export-backends 'beamer)
@@ -107,8 +95,25 @@
 ;; [[file:../synthmacs.org::*Enabling the Table of Contents][Enabling the Table of Contents:1]]
 (use-package toc-org
   :commands toc-org-enable
-  :init (add-hook 'org-mode-hook 'toc-org-enable))
+  :init
+  (add-hook 'org-mode-hook 'toc-org-enable))
 ;; Enabling the Table of Contents:1 ends here
+
+;; [[file:../synthmacs.org::*org reverse datetree][org reverse datetree:1]]
+(use-package org-reverse-datetree
+  :after org
+  :demand)
+;; org reverse datetree:1 ends here
+
+;; [[file:../synthmacs.org::*org-superstar][org-superstar:1]]
+(use-package org-superstar
+  :hook (org-mode . org-superstar-mode)
+  :init
+  (setq org-superstar-headline-bullets-list '("✖" "✚" "◉" "○" "▶")
+        ;; org-superstar-special-todo-items t
+        org-ellipsis " ↴ ")
+  )
+;; org-superstar:1 ends here
 
 ;; [[file:../synthmacs.org::*Using org-id in links][Using org-id in links:1]]
 (use-package org
@@ -149,6 +154,31 @@
   )
 ;; Using org-id in links:1 ends here
 
+;; [[file:../synthmacs.org::*org-babel][org-babel:1]]
+(use-package org
+  :general
+  (synthmacs/local-leader-keys
+    :keymaps 'org-mode-map
+    "'" '(org-edit-special :wk "edit")
+    "-" '(org-babel-demarcate-block :wk "split block")
+    "z" '(org-babel-hide-result-toggle :wk "fold result"))
+
+  (synthmacs/local-leader-keys
+    :keymaps 'org-src-mode-map
+    "'" '(org-edit-src-exit :wk "exit")) ;;FIXME
+
+  :init
+  (setq org-confirm-babel-evaluate nil)
+  :config
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     ;; (ledger . t)
+     (shell . t)))
+  (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
+  )
+;; org-babel:1 ends here
+
 ;; [[file:../synthmacs.org::*Tangling this file][Tangling this file:1]]
 (use-package org
   :config
@@ -188,7 +218,6 @@
 	       (expand-file-name "init.el" user-emacs-directory))
        "tangle-process")
       )
-
     )
   )
 ;; Tangling this file:1 ends here
