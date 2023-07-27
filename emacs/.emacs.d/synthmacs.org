@@ -30,7 +30,7 @@
   - [[#custom-variables][Custom variables]]
   - [[#fonts][Fonts]]
   - [[#free-functions][Free Functions]]
-  - [[#auto-pair-paranthesis][Auto-pair paranthesis]]
+  - [[#xref][xref]]
 - [[#keybindings-general--evil-mode][Keybindings: General & EVIL mode]]
   - [[#general][General]]
   - [[#general-keybindings][General keybindings]]
@@ -1071,7 +1071,7 @@ Basically tries to clean up the ~emacs.d~ directory by creating consistent place
   )
 #+end_src
 
-** Auto-pair paranthesis
+** COMMENT Auto-pair paranthesis
 :PROPERTIES:
 :CUSTOM_ID: h:7B34AC43-8F07-4754-9360-0592CBDBAF9F
 :END:
@@ -1102,13 +1102,12 @@ In programming, missing parens and the like are a pain to track down. Let's auto
   )  
 #+end_src
 
-** COMMENT xref
+** xref
 :PROPERTIES:
 :CUSTOM_ID: h:088A31CF-3AEF-4AF4-B60D-B2793FCDDB94
 :END:
 #+begin_src emacs-lisp
 (use-package xref
-  :straight (:type built-in)
   :init
   (setq xref-prompt-for-identifier nil) ;; always find references of symbol at point
   ;; configured in consult
@@ -1151,6 +1150,9 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
     :keymaps 'override
     :prefix ","
     :global-prefix "SPC m")
+  (general-nmap
+    :states 'nermal
+    "gD" '(xref-find-references :wk "xref-references"))
   )
 #+end_src
 
@@ -1175,18 +1177,19 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
 #+begin_src emacs-lisp
 (synthmacs/leader-keys
   "b" '(:ignore t :wk "buffer")
-  "bb" '(switch-to-buffer :wk "Switch buffer")
-  "bd" '(kill-this-buffer :wk "Kill this buffer")
-  "bh" '(dashboard-refresh-buffer :wk "Home buffer")
+  "bb" 'switch-to-buffer
+  "bd" 'kill-current-buffer
+  "bh" 'dashboard-refresh-buffer
   "bm" '((lambda ()
 	   (interactive)
 	   (switch-to-buffer " *Message-Log*"))
 	 :wk "Messages buffer")
-  "bn" '(next-buffer :wk "Next buffer")
-  "bp" '(previous-buffer :wk "Previous buffer")
-  "br" '(revert-buffer :wk "Reload buffer")
-  "bs" '(scratch-buffer :wk "Scratch buffer")
-  "bu" '(synthmacs/reopen-killed-buffer :wk "Reopen last killed buffer"))
+  "bn" 'next-buffer
+  "bp" 'previous-buffer
+  "br" 'revert-buffer
+  "bs" 'scratch-buffer
+  "bu" '(synthmacs/reopen-killed-buffer :wk "Reopen last killed buffer")
+)
 #+end_src
 
 *** Compilation bindings
@@ -1195,8 +1198,8 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
 :END:
 #+begin_src emacs-lisp
 (synthmacs/leader-keys
-  "c" '(:ignore t :wk "compile")
-  "cf" '(find-file :wk "Find file"))
+  "c" '(:ignore t :wk "code/compile")
+  )
 #+end_src
 
 *** Debug bindings
@@ -1278,16 +1281,22 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
 #+begin_src emacs-lisp
 (synthmacs/leader-keys
   "h" '(:ignore t :wk "help")
-  "hp" '(describe-package :wk "describe-package")
+  "hp" 'describe-package
   "hM" '(describe-mode :wk "describe-mode (Major)")
-  "hm" '(describe-minor-mode :wk "describe-minor-mode")
+  "hm" 'describe-minor-mode
+  "he" 'view-echo-area-messages
+  "hF" 'describe-face
+  "hl" 'view-lossage
+  "hL" 'find-library
+  "hK" 'describe-keymap
 
   "hE" '(:ignore t :wk "Emacs")
-  "hEf" '(view-emacs-FAQ :wk "view-emacs-faq")
-  "hEm" '(info-emacs-manual :wk "info-emacs-manual")
-  "hEn" '(view-emacs-news :wk "view-emacs-news")
-  "hEp" '(view-emacs-problems :wk "view-emacs-problems")
-  "hEt" '(view-emacs-todo :wk "view-emacs-todo"))
+  "hEf" 'view-emacs-FAQ
+  "hEm" 'info-emacs-manual
+  "hEn" 'view-emacs-news
+  "hEp" 'view-emacs-problems
+  "hEt" 'view-emacs-todo
+  )
 #+end_src
 
 *** Jump bindings
@@ -1307,7 +1316,9 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
 (synthmacs/leader-keys
   "SPC" '(:ignore t :wk "M-x")
   "SPC" '(execute-extended-command :wk "M-x")
-  "TAB" '(synthmacs/alternate-buffer :wk "last buffer"))
+  "TAB" '(synthmacs/alternate-buffer :wk "last buffer")
+  "<escape>" 'keyboard-escape-quit
+  )
 ;; "'" '(execute-extended-command :wk "open shell")
 #+end_src
 
@@ -1326,7 +1337,10 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
 :END:
 #+begin_src emacs-lisp
 (synthmacs/leader-keys
-  "o" '(:ignore t :wk "org"))
+  "o" '(:ignore t :wk "org")
+  "oi" 'org-indent-region
+  "ot" 'org-babel-tangle
+  )
 #+end_src
 
 *** Project bindings
@@ -1335,7 +1349,7 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
 :END:
 #+begin_src emacs-lisp
 (synthmacs/leader-keys
-  "p" '(:ignore t :wk "projects"))
+  "p" '(:ignore t :wk "project"))
 #+end_src
 
 *** Quit bindings
@@ -1380,11 +1394,12 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
 (synthmacs/leader-keys
   "t" '(:ignore t :wk "toggles")
   "tc" '(global-display-fill-column-indicator-mode :wk "fill-column")
-  "tp" '(smartparens-global-mode :wk "smartparens-global-mode")
+  "tp" 'smartparens-global-mode
   "tl" '(toggle-truncate-lines :wk "truncate-lines")
-  "tv" '(visual-line-mode :wk "visual-line-mode")
-  "tw" '(global-whitespace-mode :wk "global-whitespace-mode")
-  "tz" '(zone :wk "zone"))
+  "tv" 'visual-line-mode
+  "tw" 'global-whitespace-mode
+  "tz" 'zone
+)
 #+end_src
 
 *** User bindings
@@ -1406,29 +1421,24 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
 
   "wd" '(evil-window-delete :wk "delete-window")
 
-  "ws" '(evil-window-split :wk "horizontal split window")
-  "wv" '(evil-window-vsplit :wk "vertical split window")
+  "ws" 'evil-window-split
+  "wv" 'evil-window-vsplit
 
-  "wm" '(maximize-window :wk "maximize-window")
+  "wm" 'maximize-window
 
   ;; Window motions
-  "wh" '(evil-window-left :wk "window left")
-  "wj" '(evil-window-down :wk "window down")
-  "wk" '(evil-window-up :wk "window up")
-  "wl" '(evil-window-right :wk "window right")
-  "wn" '(evil-window-next :wk "go to next window")
-  "wp" '(evil-window-prev :wk "go to previous window")
+  "wh" 'evil-window-left 
+  "wj" 'evil-window-down
+  "wk" 'evil-window-up
+  "wl" 'evil-window-right
+  "wn" 'evil-window-next 
+  "wp" 'evil-window-prev 
 
-  ;; Move Windows
-  "wH" '(synthmacs/buf-move-left :wk "window move left")
-  "wJ" '(synthmacs/buf-move-down :wk "window move down")
-  "wK" '(synthmacs/buf-move-up :wk "window move up")
-  "wL" '(synthmacs/buf-move-right :wk "window move right")
-
-  "w{" '(shrink-window :wk "shrink-window")
-  "w[" '(synthmacs/buf-move-down :wk "shrink-window-horizontally")
-  "w}" '(synthmacs/buf-move-up :wk "expand-window")
-  "w]" '(synthmacs/buf-move-right :wk "expand-window-horizontally"))
+  "w{" 'shrink-window
+  "w[" 'shrink-window-horizontally
+  "w}" 'expand-window
+  "w]" 'expand-window-horizontally
+  )
 #+end_src
 
 ** Hydra
@@ -2207,7 +2217,7 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 * Completion framework
 :PROPERTIES:
 :CUSTOM_ID: h:FB3661CB-A573-40B6-B331-449D77DBD199
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-completion-framework.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-completion-framework.el
 :END:
 
 ** Vertico
@@ -2300,14 +2310,14 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 
   ;; The :init configuration is always executed (Not lazy)
   :init
-(defun synthmacs/consult-ripgrep ()
-  "Search org-roam directory using consult-ripgrep. With live-preview."
-  (interactive)
-  (let ((consult-ripgrep-command "rg --no-ignore --hidden --ignore-case --line-number"))
-    (consult-ripgrep
-     (if (projectile-project-p)
-	 (projectile-project-root)
-       ""))))
+  (defun synthmacs/consult-ripgrep ()
+    "Search org-roam directory using consult-ripgrep. With live-preview."
+    (interactive)
+    (let ((consult-ripgrep-command "rg --no-ignore --hidden --ignore-case --line-number"))
+      (consult-ripgrep
+       (if (projectile-project-p)
+	   (projectile-project-root)
+	 ""))))
 
 
   ;; Optionally configure the register formatting. This improves the register
@@ -2382,57 +2392,57 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
     "ttt" '(consult-theme :wk "consult-themes"))
   ;; Replace bindings. Lazily loaded due by `use-package'.
   ;; :bind (;; C-c bindings in `mode-specific-map'
-         ;; ("C-c M-x" . consult-mode-command)
-         ;; ("C-c h" . consult-history)
-         ;; ("C-c k" . consult-kmacro)
-         ;; ("C-c m" . consult-man)
-         ;; ("C-c i" . consult-info)
-         ;; ([remap Info-search] . consult-info)
-         ;; C-x bindings in `ctl-x-map'
-         ;; ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
-         ;; ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
-         ;; ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
-         ;; ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
-         ;; ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
-         ;; ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
-         ;; Custom M-# bindings for fast register access
-         ;; ("M-#" . consult-register-load)
-         ;; ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
-         ;; ("C-M-#" . consult-register)
-         ;; ;; Other custom bindings
-         ;; ("M-y" . consult-yank-pop)                ;; orig. yank-pop
-         ;; M-g bindings in `goto-map'
-         ;; ("M-g e" . consult-compile-error)
-         ;; ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
-         ;; ("M-g g" . consult-goto-line)             ;; orig. goto-line
-         ;; ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
-         ;; ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
-         ;; ("M-g m" . consult-mark)
-         ;; ("M-g k" . consult-global-mark)
-         ;; ("M-g i" . consult-imenu)
-         ;; ("M-g I" . consult-imenu-multi)
-         ;; M-s bindings in `search-map'
-         ;; ("M-s d" . consult-find)
-         ;; ("M-s D" . consult-locate)
-         ;; ("M-s g" . consult-grep)
-         ;; ("M-s G" . consult-git-grep)
-         ;; ("M-s r" . consult-ripgrep)
-         ;; ("M-s l" . consult-line)
-         ;; ("M-s L" . consult-line-multi)
-         ;; ("M-s k" . consult-keep-lines)
-         ;; ("M-s u" . consult-focus-lines)
-         ;; Isearch integration
-         ;; ("M-s e" . consult-isearch-history)
-         ;; :map isearch-mode-map
-         ;; ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
-         ;; ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
-         ;; ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
-         ;; ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
-         ;; Minibuffer history
-         ;; :map minibuffer-local-map
-         ;; ("M-s" . consult-history)                 ;; orig. next-matching-history-element
-         ;; ("M-r" . consult-history)                 ;; orig. previous-matching-history-element
-	 ;; )
+  ;; ("C-c M-x" . consult-mode-command)
+  ;; ("C-c h" . consult-history)
+  ;; ("C-c k" . consult-kmacro)
+  ;; ("C-c m" . consult-man)
+  ;; ("C-c i" . consult-info)
+  ;; ([remap Info-search] . consult-info)
+  ;; C-x bindings in `ctl-x-map'
+  ;; ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+  ;; ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+  ;; ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+  ;; ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+  ;; ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
+  ;; ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
+  ;; Custom M-# bindings for fast register access
+  ;; ("M-#" . consult-register-load)
+  ;; ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
+  ;; ("C-M-#" . consult-register)
+  ;; ;; Other custom bindings
+  ;; ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+  ;; M-g bindings in `goto-map'
+  ;; ("M-g e" . consult-compile-error)
+  ;; ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
+  ;; ("M-g g" . consult-goto-line)             ;; orig. goto-line
+  ;; ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+  ;; ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
+  ;; ("M-g m" . consult-mark)
+  ;; ("M-g k" . consult-global-mark)
+  ;; ("M-g i" . consult-imenu)
+  ;; ("M-g I" . consult-imenu-multi)
+  ;; M-s bindings in `search-map'
+  ;; ("M-s d" . consult-find)
+  ;; ("M-s D" . consult-locate)
+  ;; ("M-s g" . consult-grep)
+  ;; ("M-s G" . consult-git-grep)
+  ;; ("M-s r" . consult-ripgrep)
+  ;; ("M-s l" . consult-line)
+  ;; ("M-s L" . consult-line-multi)
+  ;; ("M-s k" . consult-keep-lines)
+  ;; ("M-s u" . consult-focus-lines)
+  ;; Isearch integration
+  ;; ("M-s e" . consult-isearch-history)
+  ;; :map isearch-mode-map
+  ;; ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
+  ;; ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
+  ;; ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
+  ;; ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
+  ;; Minibuffer history
+  ;; :map minibuffer-local-map
+  ;; ("M-s" . consult-history)                 ;; orig. next-matching-history-element
+  ;; ("M-r" . consult-history)                 ;; orig. previous-matching-history-element
+  ;; )
   )
 #+end_src
 
@@ -2489,7 +2499,7 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
  :states 'normal
  "C-." nil)
 (general-define-key 
-  "C-." 'embark-act)
+ "C-." 'embark-act)
 ;; (general-define-key
 ;;   :keymaps 'embark-general-map
 ;;   "G" . synthmacs/embark-google-search)
@@ -2499,9 +2509,9 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 
 (defun synthmacs/embark-google-search (term)
   "An action to search for anything at point in Google."
-    (interactive "sSearch Term: ")
-    (browse-url
-     (format "http://google.com/search?q=%s" term)))
+  (interactive "sSearch Term: ")
+  (browse-url
+   (format "http://google.com/search?q=%s" term)))
 
 ;; --------------- Use Embark in WhichKey -------------
 (defun embark-which-key-indicator ()
@@ -2537,7 +2547,7 @@ targets."
   (which-key--hide-popup-ignore-command)
   (let ((embark-indicators
          (remq #'embark-which-key-indicator embark-indicators)))
-      (apply fn args)))
+    (apply fn args)))
 
 ;; (advice-add #'embark-completing-read-prompter
 ;;             :around #'embark-hide-which-key-indicator)
@@ -2559,7 +2569,7 @@ targets."
 
 (add-to-list 'marginalia-prompt-categories '("recipe\\|package" . straight))
 (use-package embark-consult
-   ; only need to install it, embark loads it after consult if found
+					; only need to install it, embark loads it after consult if found
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
@@ -2570,7 +2580,7 @@ targets."
 * Useful Tools
 :PROPERTIES:
 :CUSTOM_ID: h:B57C03F6-2111-489A-9303-B1A06C95EFF5
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-tools.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-tools.el
 :END:
 
 ** Helpful

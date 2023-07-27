@@ -16,6 +16,9 @@
     :keymaps 'override
     :prefix ","
     :global-prefix "SPC m")
+  (general-nmap
+    :states 'nermal
+    "gD" '(xref-find-references :wk "xref-references"))
   )
 ;; General:1 ends here
 
@@ -27,24 +30,25 @@
 ;; [[file:../synthmacs.org::*Buffer bindings][Buffer bindings:1]]
 (synthmacs/leader-keys
   "b" '(:ignore t :wk "buffer")
-  "bb" '(switch-to-buffer :wk "Switch buffer")
-  "bd" '(kill-this-buffer :wk "Kill this buffer")
-  "bh" '(dashboard-refresh-buffer :wk "Home buffer")
+  "bb" 'switch-to-buffer
+  "bd" 'kill-current-buffer
+  "bh" 'dashboard-refresh-buffer
   "bm" '((lambda ()
 	   (interactive)
 	   (switch-to-buffer " *Message-Log*"))
 	 :wk "Messages buffer")
-  "bn" '(next-buffer :wk "Next buffer")
-  "bp" '(previous-buffer :wk "Previous buffer")
-  "br" '(revert-buffer :wk "Reload buffer")
-  "bs" '(scratch-buffer :wk "Scratch buffer")
-  "bu" '(synthmacs/reopen-killed-buffer :wk "Reopen last killed buffer"))
+  "bn" 'next-buffer
+  "bp" 'previous-buffer
+  "br" 'revert-buffer
+  "bs" 'scratch-buffer
+  "bu" '(synthmacs/reopen-killed-buffer :wk "Reopen last killed buffer")
+)
 ;; Buffer bindings:1 ends here
 
 ;; [[file:../synthmacs.org::*Compilation bindings][Compilation bindings:1]]
 (synthmacs/leader-keys
-  "c" '(:ignore t :wk "compile")
-  "cf" '(find-file :wk "Find file"))
+  "c" '(:ignore t :wk "code/compile")
+  )
 ;; Compilation bindings:1 ends here
 
 ;; [[file:../synthmacs.org::*Debug bindings][Debug bindings:1]]
@@ -102,16 +106,22 @@
 ;; [[file:../synthmacs.org::*Help bindings][Help bindings:1]]
 (synthmacs/leader-keys
   "h" '(:ignore t :wk "help")
-  "hp" '(describe-package :wk "describe-package")
+  "hp" 'describe-package
   "hM" '(describe-mode :wk "describe-mode (Major)")
-  "hm" '(describe-minor-mode :wk "describe-minor-mode")
+  "hm" 'describe-minor-mode
+  "he" 'view-echo-area-messages
+  "hF" 'describe-face
+  "hl" 'view-lossage
+  "hL" 'find-library
+  "hK" 'describe-keymap
 
   "hE" '(:ignore t :wk "Emacs")
-  "hEf" '(view-emacs-FAQ :wk "view-emacs-faq")
-  "hEm" '(info-emacs-manual :wk "info-emacs-manual")
-  "hEn" '(view-emacs-news :wk "view-emacs-news")
-  "hEp" '(view-emacs-problems :wk "view-emacs-problems")
-  "hEt" '(view-emacs-todo :wk "view-emacs-todo"))
+  "hEf" 'view-emacs-FAQ
+  "hEm" 'info-emacs-manual
+  "hEn" 'view-emacs-news
+  "hEp" 'view-emacs-problems
+  "hEt" 'view-emacs-todo
+  )
 ;; Help bindings:1 ends here
 
 ;; [[file:../synthmacs.org::*Jump bindings][Jump bindings:1]]
@@ -123,7 +133,9 @@
 (synthmacs/leader-keys
   "SPC" '(:ignore t :wk "M-x")
   "SPC" '(execute-extended-command :wk "M-x")
-  "TAB" '(synthmacs/alternate-buffer :wk "last buffer"))
+  "TAB" '(synthmacs/alternate-buffer :wk "last buffer")
+  "<escape>" 'keyboard-escape-quit
+  )
 ;; "'" '(execute-extended-command :wk "open shell")
 ;; M-x bindings:1 ends here
 
@@ -134,12 +146,15 @@
 
 ;; [[file:../synthmacs.org::*Org bindings][Org bindings:1]]
 (synthmacs/leader-keys
-  "o" '(:ignore t :wk "org"))
+  "o" '(:ignore t :wk "org")
+  "oi" 'org-indent-region
+  "ot" 'org-babel-tangle
+  )
 ;; Org bindings:1 ends here
 
 ;; [[file:../synthmacs.org::*Project bindings][Project bindings:1]]
 (synthmacs/leader-keys
-  "p" '(:ignore t :wk "projects"))
+  "p" '(:ignore t :wk "project"))
 ;; Project bindings:1 ends here
 
 ;; [[file:../synthmacs.org::*Quit bindings][Quit bindings:1]]
@@ -168,11 +183,12 @@
 (synthmacs/leader-keys
   "t" '(:ignore t :wk "toggles")
   "tc" '(global-display-fill-column-indicator-mode :wk "fill-column")
-  "tp" '(smartparens-global-mode :wk "smartparens-global-mode")
+  "tp" 'smartparens-global-mode
   "tl" '(toggle-truncate-lines :wk "truncate-lines")
-  "tv" '(visual-line-mode :wk "visual-line-mode")
-  "tw" '(global-whitespace-mode :wk "global-whitespace-mode")
-  "tz" '(zone :wk "zone"))
+  "tv" 'visual-line-mode
+  "tw" 'global-whitespace-mode
+  "tz" 'zone
+)
 ;; Toggles bindings:1 ends here
 
 ;; [[file:../synthmacs.org::*User bindings][User bindings:1]]
@@ -186,29 +202,24 @@
 
   "wd" '(evil-window-delete :wk "delete-window")
 
-  "ws" '(evil-window-split :wk "horizontal split window")
-  "wv" '(evil-window-vsplit :wk "vertical split window")
+  "ws" 'evil-window-split
+  "wv" 'evil-window-vsplit
 
-  "wm" '(maximize-window :wk "maximize-window")
+  "wm" 'maximize-window
 
   ;; Window motions
-  "wh" '(evil-window-left :wk "window left")
-  "wj" '(evil-window-down :wk "window down")
-  "wk" '(evil-window-up :wk "window up")
-  "wl" '(evil-window-right :wk "window right")
-  "wn" '(evil-window-next :wk "go to next window")
-  "wp" '(evil-window-prev :wk "go to previous window")
+  "wh" 'evil-window-left 
+  "wj" 'evil-window-down
+  "wk" 'evil-window-up
+  "wl" 'evil-window-right
+  "wn" 'evil-window-next 
+  "wp" 'evil-window-prev 
 
-  ;; Move Windows
-  "wH" '(synthmacs/buf-move-left :wk "window move left")
-  "wJ" '(synthmacs/buf-move-down :wk "window move down")
-  "wK" '(synthmacs/buf-move-up :wk "window move up")
-  "wL" '(synthmacs/buf-move-right :wk "window move right")
-
-  "w{" '(shrink-window :wk "shrink-window")
-  "w[" '(synthmacs/buf-move-down :wk "shrink-window-horizontally")
-  "w}" '(synthmacs/buf-move-up :wk "expand-window")
-  "w]" '(synthmacs/buf-move-right :wk "expand-window-horizontally"))
+  "w{" 'shrink-window
+  "w[" 'shrink-window-horizontally
+  "w}" 'expand-window
+  "w]" 'expand-window-horizontally
+  )
 ;; Window bindings:1 ends here
 
 ;; [[file:../synthmacs.org::*Hydra][Hydra:1]]

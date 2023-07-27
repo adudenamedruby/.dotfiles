@@ -543,30 +543,17 @@ folder; otherwise, delete a character backwards."
   (kill-emacs))
 ;; Quit (but save before doing so!):1 ends here
 
-;; [[file:../synthmacs.org::*Auto-pair paranthesis][Auto-pair paranthesis:1]]
-(use-package emacs
-  :hook
-  ((org-mode . (lambda () (synthmacs/add-local-electric-pairs '(;(?= . ?=)
-                                                         (?~ . ?~))))))
+;; [[file:../synthmacs.org::*xref][xref:1]]
+(use-package xref
   :init
-  (electric-pair-mode +1)
-  (setq electric-pair-preserve-balance nil)
-
-  ;; mode-specific local-electric pairs
-  (defconst synthmacs/default-electric-pairs electric-pair-pairs)
-  (defun synthmacs/add-local-electric-pairs (pairs)
-    "Example usage: 
-    (add-hook 'jupyter-org-interaction-mode '(lambda () (set-local-electric-pairs '())))
-    "
-    (setq-local electric-pair-pairs (append synthmacs/default-electric-pairs pairs))
-    (setq-local electric-pair-text-pairs electric-pair-pairs))
-
-  ;; disable auto pairing for <  >
-  (add-function :before-until electric-pair-inhibit-predicate
-                (lambda (c) (eq c ?<   ;; >
-                                )))
+  (setq xref-prompt-for-identifier nil) ;; always find references of symbol at point
+  ;; configured in consult
+  ;; (setq xref-show-definitions-function #'xref-show-definitions-completing-read)
+  ;; (setq xref-show-xrefs-function #'xref-show-definitions-buffer) ; for grep and the like
+  ;; (setq xref-file-name-display 'project-relative)
+  ;; (setq xref-search-program 'grep)
   )
-;; Auto-pair paranthesis:1 ends here
+;; xref:1 ends here
 
 ;; [[file:../synthmacs.org::*synthmacs-core][synthmacs-core:1]]
 (provide 'synthmacs-core)
