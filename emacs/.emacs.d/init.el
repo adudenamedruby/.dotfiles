@@ -41,7 +41,7 @@
   (require 'synthmacs-package-management)
   (require 'synthmacs-general-evil)
   ;;(require 'synthmacs-org)
-  ;;(require 'synthmacs-ui)
+  (require 'synthmacs-ui)
   ;;(require 'synthmacs-completion-framework)
   (require 'synthmacs-tools)
   ;;(require 'synthmacs-programming)
@@ -59,7 +59,7 @@
   ;;(require 'synthmacs-hydra)
   ;;(require 'synthmacs-evil)
   ;;(require 'synthmacs-general-keybindings)
-  (require 'synthmacs-themes)
+  ;;(require 'synthmacs-themes)
   (require 'synthmacs-windows)
   (require 'synthmacs-vertico)
   (require 'synthmacs-orderless)
@@ -91,5 +91,5 @@
 
   )
 
-    ;;; init.el ends here
+      ;;; init.el ends here
 ;; init.el: load modules:1 ends here

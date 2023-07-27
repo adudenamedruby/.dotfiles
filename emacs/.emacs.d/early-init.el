@@ -39,5 +39,5 @@
 (setq native-comp-async-query-on-exit t
       comp-async-query-on-exit t)
 
-;;; early-init.el ends here
+  ;;; early-init.el ends here
 ;; early-init.el:1 ends here

@@ -125,7 +125,7 @@
   "SPC" '(:ignore t :wk "M-x")
   "SPC" '(execute-extended-command :wk "M-x")
   "TAB" '(synthmacs/alternate-buffer :wk "last buffer"))
-  ;; "'" '(execute-extended-command :wk "open shell")
+;; "'" '(execute-extended-command :wk "open shell")
 ;; M-x bindings:1 ends here
 
 ;; [[file:../synthmacs.org::*Major-mode bindings][Major-mode bindings:1]]
@@ -219,7 +219,7 @@
     "tf" '(hydra/text-scale/body :wk "font size")))
 
 (defhydra hydra/text-scale (:timeout 7)
-	  "
+  "
 ^Zoom Menu
 ^^^^^^^^----------------------
 _+_: text-scale-increase
@@ -343,14 +343,14 @@ _q_: quit
   (evil-goggles-mode))
 
 (use-package evil-iedit-state
-    :commands (evil-iedit-state evil-iedit-state/iedit-mode)
-    :init
-    (setq iedit-current-symbol-default t
-          iedit-only-at-symbol-boundaries t
-          iedit-toggle-key-default nil)
-    :general
-    (synthmacs/leader-keys
-      "se" '(evil-iedit-state/iedit-mode :wk "iedit-mode")))
+  :commands (evil-iedit-state evil-iedit-state/iedit-mode)
+  :init
+  (setq iedit-current-symbol-default t
+        iedit-only-at-symbol-boundaries t
+        iedit-toggle-key-default nil)
+  :general
+  (synthmacs/leader-keys
+    "se" '(evil-iedit-state/iedit-mode :wk "iedit-mode")))
 
 ;; (use-package evil-lion
 ;;   :init

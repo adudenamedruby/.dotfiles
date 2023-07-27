@@ -40,6 +40,7 @@
   - [[#using-org-id-in-links][Using org-id in links]]
   - [[#tangling-this-file][Tangling this file]]
 - [[#ui][UI]]
+  - [[#themes][Themes]]
 - [[#completion-framework][Completion framework]]
 - [[#useful-tools][Useful Tools]]
   - [[#ws-butler][WS-Butler]]
@@ -152,7 +153,7 @@ For example the header of the section concerning ~lsp-mode~ has the following pr
 #+begin_src org
 :PROPERTIES:
 :CUSTOM_ID: h:6BC08822-D2B3-4BE9-9EBE-C42F89F0E688
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lsp.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lsp.el
 :END:
 #+end_src
 
@@ -191,49 +192,49 @@ With that out of the way, the general outline of this file aims to be:
 ** early-init.el
 :PROPERTIES:
 :CUSTOM_ID: h:7DBC58C1-3944-437C-87F9-95C9202BD34E
-:header-args:    :emacs-lisp :tangle early-init.el
+:header-args: :emacs-lisp :tangle early-init.el
 :END:
 Taken from DOOM's early init
 #+BEGIN_SRC emacs-lisp
   ;;; early-init.el --- Early Init File -*- lexical-binding: t; no-byte-compile: t -*-
-  ;; NOTE: early-init.el is now generated from synthmacs.org.  Please edit that file instead
+;; NOTE: early-init.el is now generated from synthmacs.org.  Please edit that file instead
 
-  ;; Defer garbage collection further back in the startup process
-  ;; (setq gc-cons-threshold most-positive-fixnum
-  ;;       gc-cons-percentage 0.6)
+;; Defer garbage collection further back in the startup process
+;; (setq gc-cons-threshold most-positive-fixnum
+;;       gc-cons-percentage 0.6)
 
-  ;; In Emacs 27+, package initialization occurs before `user-init-file' is
-  ;; loaded, but after `early-init-file'. Doom handles package initialization, so
-  ;; we must prevent Emacs from doing it early!
-  (setq package-enable-at-startup nil)
-  ;; Do not allow loading from the package cache (same reason).
-  (setq package-quickstart nil)
+;; In Emacs 27+, package initialization occurs before `user-init-file' is
+;; loaded, but after `early-init-file'. Doom handles package initialization, so
+;; we must prevent Emacs from doing it early!
+(setq package-enable-at-startup nil)
+;; Do not allow loading from the package cache (same reason).
+(setq package-quickstart nil)
 
-  ;; Prevent the glimpse of un-styled Emacs by disabling these UI elements early.
-  (push '(menu-bar-lines . 0) default-frame-alist)
-  (push '(tool-bar-lines . 0) default-frame-alist)
-  (push '(vertical-scroll-bars) default-frame-alist)
+;; Prevent the glimpse of un-styled Emacs by disabling these UI elements early.
+(push '(menu-bar-lines . 0) default-frame-alist)
+(push '(tool-bar-lines . 0) default-frame-alist)
+(push '(vertical-scroll-bars) default-frame-alist)
 
-  ;; Resizing the Emacs frame can be a terribly expensive part of changing the
-  ;; font. By inhibiting this, we easily halve startup times with fonts that are
-  ;; larger than the system default.
-  (setq frame-inhibit-implied-resize t)
+;; Resizing the Emacs frame can be a terribly expensive part of changing the
+;; font. By inhibiting this, we easily halve startup times with fonts that are
+;; larger than the system default.
+(setq frame-inhibit-implied-resize t)
 
-  ;; Disable GUI elements
-  (setq menu-bar-mode -1)
-  (setq tool-bar-mode -1)
-  (when (fboundp 'set-scroll-bar-mode)
-    (set-scroll-bar-mode nil))
-  (setq inhibit-splash-screen t)
-  (setq use-file-dialog nil)
+;; Disable GUI elements
+(setq menu-bar-mode -1)
+(setq tool-bar-mode -1)
+(when (fboundp 'set-scroll-bar-mode)
+  (set-scroll-bar-mode nil))
+(setq inhibit-splash-screen t)
+(setq use-file-dialog nil)
 
-  ;; Native-Comp
-  (setq native-comp-speed 2
-        comp-speed 2)
-  (setq native-comp-async-report-warnings-errors nil
-        comp-async-report-warnings-errors nil)
-  (setq native-comp-async-query-on-exit t
-        comp-async-query-on-exit t)
+;; Native-Comp
+(setq native-comp-speed 2
+      comp-speed 2)
+(setq native-comp-async-report-warnings-errors nil
+      comp-async-report-warnings-errors nil)
+(setq native-comp-async-query-on-exit t
+      comp-async-query-on-exit t)
 
   ;;; early-init.el ends here
 #+END_SRC
@@ -241,7 +242,7 @@ Taken from DOOM's early init
 ** init.el: startup optimization
 :PROPERTIES:
 :CUSTOM_ID: h:E6162DC2-7E1C-4843-8448-FF104A444B40
-:header-args:    :emacs-lisp :tangle init.el
+:header-args: :emacs-lisp :tangle init.el
 :END:
 Taken from DOOM's init
 #+BEGIN_SRC emacs-lisp
@@ -277,70 +278,70 @@ Taken from DOOM's init
 ** init.el: load modules
 :PROPERTIES:
 :CUSTOM_ID: h:7B22A4F3-49A1-4848-A185-B4EEA060EECE
-:header-args:    :emacs-lisp :tangle init.el
+:header-args: :emacs-lisp :tangle init.el
 :END:
 #+begin_src emacs-lisp
-  (message "SynthMacs is powering up, please be patient...")
+(message "SynthMacs is powering up, please be patient...")
 
-  ;; (add-to-list 'load-path "~/.emacs.d/synthmacs/")
-  (add-to-list 'load-path (expand-file-name "synthmacs" user-emacs-directory))
+;; (add-to-list 'load-path "~/.emacs.d/synthmacs/")
+(add-to-list 'load-path (expand-file-name "synthmacs" user-emacs-directory))
 
-  (let ((file-name-handler-alist nil)
-        (gc-cons-threshold 100000000))
+(let ((file-name-handler-alist nil)
+      (gc-cons-threshold 100000000))
 
-    (require 'synthmacs-core)
-    (require 'synthmacs-package-management)
-    (require 'synthmacs-general-evil)
-    ;;(require 'synthmacs-org)
-    ;;(require 'synthmacs-ui)
-    ;;(require 'synthmacs-completion-framework)
-    (require 'synthmacs-tools)
-    ;;(require 'synthmacs-programming)
-    ;;(require 'synthmacs-lang-clojure)
-    ;;(require 'synthmacs-lang-haskell)
-    ;;(require 'synthmacs-lang-html)
-    ;;(require 'synthmacs-lang-lisp)
-    ;;(require 'synthmacs-lang-markdown)
-    ;;(require 'synthmacs-lang-rust)
-    ;;(require 'synthmacs-lang-swift)
-    ;;(require 'synthmacs-lang-yaml)
+  (require 'synthmacs-core)
+  (require 'synthmacs-package-management)
+  (require 'synthmacs-general-evil)
+  ;;(require 'synthmacs-org)
+  (require 'synthmacs-ui)
+  ;;(require 'synthmacs-completion-framework)
+  (require 'synthmacs-tools)
+  ;;(require 'synthmacs-programming)
+  ;;(require 'synthmacs-lang-clojure)
+  ;;(require 'synthmacs-lang-haskell)
+  ;;(require 'synthmacs-lang-html)
+  ;;(require 'synthmacs-lang-lisp)
+  ;;(require 'synthmacs-lang-markdown)
+  ;;(require 'synthmacs-lang-rust)
+  ;;(require 'synthmacs-lang-swift)
+  ;;(require 'synthmacs-lang-yaml)
 
-    ;; Load packages
-    ;;(require 'synthmacs-general)
-    ;;(require 'synthmacs-hydra)
-    ;;(require 'synthmacs-evil)
-    ;;(require 'synthmacs-general-keybindings)
-    (require 'synthmacs-themes)
-    (require 'synthmacs-windows)
-    (require 'synthmacs-vertico)
-    (require 'synthmacs-orderless)
-    (require 'synthmacs-consult)
-    (require 'synthmacs-marginalia)
-    (require 'synthmacs-embark)
-    ;; (require 'synthmacs-dirvish)
-    (require 'synthmacs-icons)
-    (require 'synthmacs-modeline)
-    (require 'synthmacs-which-key)
-    (require 'synthmacs-rainbow)
-    (require 'synthmacs-helpful)
-    (require 'synthmacs-rg)
-    (require 'synthmacs-projectile)
-    (require 'synthmacs-git)
-    (require 'synthmacs-dashboard)
-    (require 'synthmacs-org)
-    (require 'synthmacs-avy)
-    ;; (require 'synthmacs-treesitter)
-    (require 'synthmacs-lsp)
-    (require 'synthmacs-corfu)
-    (require 'synthmacs-flycheck)
-    (require 'synthmacs-imenu)
-    (require 'synthmacs-snippets)
+  ;; Load packages
+  ;;(require 'synthmacs-general)
+  ;;(require 'synthmacs-hydra)
+  ;;(require 'synthmacs-evil)
+  ;;(require 'synthmacs-general-keybindings)
+  ;;(require 'synthmacs-themes)
+  (require 'synthmacs-windows)
+  (require 'synthmacs-vertico)
+  (require 'synthmacs-orderless)
+  (require 'synthmacs-consult)
+  (require 'synthmacs-marginalia)
+  (require 'synthmacs-embark)
+  ;; (require 'synthmacs-dirvish)
+  (require 'synthmacs-icons)
+  (require 'synthmacs-modeline)
+  (require 'synthmacs-which-key)
+  (require 'synthmacs-rainbow)
+  (require 'synthmacs-helpful)
+  (require 'synthmacs-rg)
+  (require 'synthmacs-projectile)
+  (require 'synthmacs-git)
+  (require 'synthmacs-dashboard)
+  (require 'synthmacs-org)
+  (require 'synthmacs-avy)
+  ;; (require 'synthmacs-treesitter)
+  (require 'synthmacs-lsp)
+  (require 'synthmacs-corfu)
+  (require 'synthmacs-flycheck)
+  (require 'synthmacs-imenu)
+  (require 'synthmacs-snippets)
 
-    ;; Load modules
-    ;; (require 'synthmacs-swift)
-    ;; (require 'synthmacs-lisp)
+  ;; Load modules
+  ;; (require 'synthmacs-swift)
+  ;; (require 'synthmacs-lisp)
 
-    )
+  )
 
       ;;; init.el ends here
 #+end_src
@@ -353,46 +354,46 @@ Taken from DOOM's init
 ** Bootstrap Straight and straight-use-package
 :PROPERTIES:
 :CUSTOM_ID: h:686F7A63-013E-48ED-AC56-DF39BD398E20
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-package-management.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-package-management.el
 :END:
 Some rules/conventions:
 - Prefer ~:init~ to ~:custom~. Prefer multiple ~setq~ expressions to one.
 - Default to ~:defer t~, use ~:demand~ to force loading
 - When packages do not require installation e.g. ~dired~, we need ~:straight (:type built-in)~ 
 - If you specify ~:commands~, they will be autoloaded and the package will be loaded when the commands are first executed
-    + If you use ~:general~ and bind commands to keys it will automatically load the package on first invokation
+  + If you use ~:general~ and bind commands to keys it will automatically load the package on first invokation
 
 #+BEGIN_SRC emacs-lisp
-  (setq straight-repository-branch "develop")
-  (setq straight-use-package-by-default t)
-  ;; (setq straight-recipes-gnu-elpa-use-mirror t)
-  ;; (setq straight-check-for-modifications '(check-on-save find-when-checking))
-  ;;(setq straight-check-for-modifications nil)
-  (setq use-package-always-ensure t)
-  ;; (setq use-package-always-defer t)
+(setq straight-repository-branch "develop")
+(setq straight-use-package-by-default t)
+;; (setq straight-recipes-gnu-elpa-use-mirror t)
+;; (setq straight-check-for-modifications '(check-on-save find-when-checking))
+;;(setq straight-check-for-modifications nil)
+(setq use-package-always-ensure t)
+;; (setq use-package-always-defer t)
 
-  (setq straight-repository-branch "develop")
-  (defvar bootstrap-version)
-  (let ((bootstrap-file
-	 (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-	(bootstrap-version 6))
-    (unless (file-exists-p bootstrap-file)
-      (with-current-buffer
-	  (url-retrieve-synchronously
-	   "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-	   'silent 'inhibit-cookies)
-	(goto-char (point-max))
-	(eval-print-last-sexp)))
-    (load bootstrap-file nil 'nomessage))
+(setq straight-repository-branch "develop")
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 6))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+	(url-retrieve-synchronously
+	 "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+	 'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-  ;; Install use-package
-  (straight-use-package 'use-package)
+;; Install use-package
+(straight-use-package 'use-package)
 #+END_SRC
 
 * Core Emacs Setup
 :PROPERTIES:
 :CUSTOM_ID: h:3D38D8F0-1B85-4265-9941-77A3A2FA235B
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-core.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-core.el
 :END:
 
 ** Emacs Setup
@@ -903,7 +904,7 @@ folder; otherwise, delete a character backwards."
 * Keybindings: General & EVIL mode
 :PROPERTIES:
 :CUSTOM_ID: h:D7FB11B6-67B4-4275-B0CC-E218C65C411E
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-general-evil.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-general-evil.el
 :END:
 
 ** General
@@ -1086,7 +1087,7 @@ folder; otherwise, delete a character backwards."
   "SPC" '(:ignore t :wk "M-x")
   "SPC" '(execute-extended-command :wk "M-x")
   "TAB" '(synthmacs/alternate-buffer :wk "last buffer"))
-  ;; "'" '(execute-extended-command :wk "open shell")
+;; "'" '(execute-extended-command :wk "open shell")
 #+end_src
 
 *** Major-mode bindings
@@ -1220,7 +1221,7 @@ folder; otherwise, delete a character backwards."
     "tf" '(hydra/text-scale/body :wk "font size")))
 
 (defhydra hydra/text-scale (:timeout 7)
-	  "
+  "
 ^Zoom Menu
 ^^^^^^^^----------------------
 _+_: text-scale-increase
@@ -1348,14 +1349,14 @@ _q_: quit
   (evil-goggles-mode))
 
 (use-package evil-iedit-state
-    :commands (evil-iedit-state evil-iedit-state/iedit-mode)
-    :init
-    (setq iedit-current-symbol-default t
-          iedit-only-at-symbol-boundaries t
-          iedit-toggle-key-default nil)
-    :general
-    (synthmacs/leader-keys
-      "se" '(evil-iedit-state/iedit-mode :wk "iedit-mode")))
+  :commands (evil-iedit-state evil-iedit-state/iedit-mode)
+  :init
+  (setq iedit-current-symbol-default t
+        iedit-only-at-symbol-boundaries t
+        iedit-toggle-key-default nil)
+  :general
+  (synthmacs/leader-keys
+    "se" '(evil-iedit-state/iedit-mode :wk "iedit-mode")))
 
 ;; (use-package evil-lion
 ;;   :init
@@ -1439,7 +1440,7 @@ _q_: quit
 * Org Mode
 :PROPERTIES:
 :CUSTOM_ID: h:B1DBE90D-B6C9-4BD4-B15B-185FE238D236
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-org.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-org.el
 :END:
 ** org mode
 :PROPERTIES:
@@ -1453,29 +1454,29 @@ Interesting bits:
 - You insert a src block use =, i= and then type initials e.g. ~jp~  for ~jupyter-python~
 
 #+BEGIN_SRC emacs-lisp
-  (use-package org
-    ;; :straight org-plus-contrib
-    ;; :straight (:type built-in)
-    :hook ((org-mode . prettify-symbols-mode)
-           (org-mode . visual-line-mode))
-    :general
-    ;; (lc/leader-keys
-    ;;   "f t" '(org-babel-tangle :wk "tangle")
-    ;;   "o C" '(org-capture :wk "capture")
-    ;;   "o l" '(org-todo-list :wk "todo list")
-      
-    ;;   "o c" '((lambda () (interactive)
-    ;;             (persp-switch "main")
-    ;;             (find-file (concat user-emacs-directory "readme.org")))
-    ;;           :wk "open config")
-    ;;   )
-    (synthmacs/leader-keys
+(use-package org
+  ;; :straight org-plus-contrib
+  ;; :straight (:type built-in)
+  :hook ((org-mode . prettify-symbols-mode)
+         (org-mode . visual-line-mode))
+  :general
+  ;; (lc/leader-keys
+  ;;   "f t" '(org-babel-tangle :wk "tangle")
+  ;;   "o C" '(org-capture :wk "capture")
+  ;;   "o l" '(org-todo-list :wk "todo list")
+  
+  ;;   "o c" '((lambda () (interactive)
+  ;;             (persp-switch "main")
+  ;;             (find-file (concat user-emacs-directory "readme.org")))
+  ;;           :wk "open config")
+  ;;   )
+  (synthmacs/leader-keys
     ;;   :keymaps 'org-mode-map
     ;;   "a" '(org-archive-subtree :wk "archive subtree")
     ;;   "E" '(org-export-dispatch :wk "export")
-      "ui" '(org-insert-structure-template :wk "insert src")
+    "ui" '(org-insert-structure-template :wk "insert src")
     ;;   "l" '(:ignore true :wk "link")
-      "ul" '(org-insert-link :wk "insert link")
+    "ul" '(org-insert-link :wk "insert link")
     ;;   "l s" '(org-store-link :wk "store link")
     ;;   "L" '((lambda () (interactive) (org-latex-preview)) :wk "latex preview")
     ;;   ;; "L" '((lambda () (interactive) (org--latex-preview-region (point-min) (point-max))) :wk "latex")
@@ -1489,45 +1490,45 @@ Interesting bits:
     ;;   "t s" '(org-schedule :wk "schedule")
     ;;   "t d" '(org-deadline :wk "deadline")
     ;;   "x" '(org-toggle-checkbox :wk "toggle checkbox")
-      )
-    ;; (org-mode-map
-    ;;  :states 'insert
-    ;;  "TAB" 'lc/org-indent-or-complete
-    ;;  "S-TAB" nil)
-    ;; (org-mode-map
-    ;;  :states 'normal
-    ;;  "z i" '(org-toggle-inline-images :wk "inline images"))
-    :init
-    ;; general settings
-    (when (file-directory-p "~/Developer/ExoCortex/org")
-      (setq org-directory "~/Developer/ExoCortex/org"
-            +org-export-directory "~/Developer/ExoCortex/org/export"
-            org-default-notes-file "~/Developer/ExoCortex/org/notes.org"
-            org-id-locations-file "~/Developer/ExoCortex/org/.orgids"
-            ))	
-    ;; (setq org-export-in-background t)
-    (setq org-src-preserve-indentation t) ;; do not put two spaces on the left
-    (setq org-startup-indented t)
-     ;;(setq org-startup-with-inline-images t)
-    (setq org-hide-emphasis-markers nil)
-    (setq org-catch-invisible-edits 'smart)
-    (setq org-image-actual-width nil)
-    (setq org-indent-indentation-per-level 1)
-    (setq org-list-demote-modify-bullet '(("-" . "+") ("+" . "*")))
-    ;; disable modules for faster startup
-    ;; (setq org-modules
-    ;;       '(ol-docview
-    ;;         org-habit))
-    ;; (setq org-todo-keywords
-    ;;       '((sequence "TODO(t)" "NEXT(n)" "PROG(p)" "|" "HOLD(h)" "DONE(d)")))
-    (setq-default prettify-symbols-alist '(("#+BEGIN_SRC" . "»")
-                                           ("#+END_SRC" . "«")
-                                           ("#+begin_src" . "»")
-                                           ("#+end_src" . "«")
-                                           ("lambda"  . "λ")
-                                           ("->" . "→")
-                                           ("->>" . "↠")))
-    ;; (setq prettify-symbols-unprettify-at-point 'right-edge)
+    )
+  ;; (org-mode-map
+  ;;  :states 'insert
+  ;;  "TAB" 'lc/org-indent-or-complete
+  ;;  "S-TAB" nil)
+  ;; (org-mode-map
+  ;;  :states 'normal
+  ;;  "z i" '(org-toggle-inline-images :wk "inline images"))
+  :init
+  ;; general settings
+  (when (file-directory-p "~/Developer/ExoCortex/org")
+    (setq org-directory "~/Developer/ExoCortex/org"
+          +org-export-directory "~/Developer/ExoCortex/org/export"
+          org-default-notes-file "~/Developer/ExoCortex/org/notes.org"
+          org-id-locations-file "~/Developer/ExoCortex/org/.orgids"
+          ))	
+  ;; (setq org-export-in-background t)
+  (setq org-src-preserve-indentation t) ;; do not put two spaces on the left
+  (setq org-startup-indented t)
+  ;;(setq org-startup-with-inline-images t)
+  (setq org-hide-emphasis-markers nil)
+  (setq org-catch-invisible-edits 'smart)
+  (setq org-image-actual-width nil)
+  (setq org-indent-indentation-per-level 1)
+  (setq org-list-demote-modify-bullet '(("-" . "+") ("+" . "*")))
+  ;; disable modules for faster startup
+  ;; (setq org-modules
+  ;;       '(ol-docview
+  ;;         org-habit))
+  ;; (setq org-todo-keywords
+  ;;       '((sequence "TODO(t)" "NEXT(n)" "PROG(p)" "|" "HOLD(h)" "DONE(d)")))
+  (setq-default prettify-symbols-alist '(("#+BEGIN_SRC" . "»")
+                                         ("#+END_SRC" . "«")
+                                         ("#+begin_src" . "»")
+                                         ("#+end_src" . "«")
+                                         ("lambda"  . "λ")
+                                         ("->" . "→")
+                                         ("->>" . "↠")))
+  ;; (setq prettify-symbols-unprettify-at-point 'right-edge)
   ;;   (defun lc/org-indent-or-complete ()
   ;;     "Complete 
   ;; if point is at end of a word, otherwise indent line."
@@ -1536,26 +1537,26 @@ Interesting bits:
   ;;         (dabbrev-expand nil)
   ;;       (org-cycle)
   ;;       ))
-    ;; (setq warning-
-    ;; 	suppress-types (append warning-suppress-types '((org-element-cache))))
-    :config
-    ;; ;; (efs/org-font-setup)
-    (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
-    (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
-    (add-to-list 'org-structure-template-alist '("py" . "src python"))
-    (add-to-list 'org-structure-template-alist '("clj" . "src clojure"))
-    ;; ;; fontification
-    ;; (add-to-list 'org-src-lang-modes '("jupyter-python" . python))
-    ;; (add-to-list 'org-src-lang-modes '("jupyter-R" . R))
-    ;; ;; latex
-    ;; ;; (setq org-latex-compiler "xelatex")
-    ;; ;; see https://www.reddit.com/r/emacs/comments/l45528/questions_about_mving_from_standard_latex_to_org/gkp4f96/?utm_source=reddit&utm_medium=web2x&context=3
-    ;; ;; (setq org-latex-pdf-process '("TEXINPUTS=:$HOME/git/AltaCV//: tectonic %f"))
-    ;; (setq org-latex-pdf-process '("tectonic %f"))
-    ;; (setq org-export-backends '(html))
-    ;; ;; (add-to-list 'org-export-backends 'beamer)
-    ;; (plist-put org-format-latex-options :scale 1.2)
-    )
+  ;; (setq warning-
+  ;; 	suppress-types (append warning-suppress-types '((org-element-cache))))
+  :config
+  ;; ;; (efs/org-font-setup)
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("py" . "src python"))
+  (add-to-list 'org-structure-template-alist '("clj" . "src clojure"))
+  ;; ;; fontification
+  ;; (add-to-list 'org-src-lang-modes '("jupyter-python" . python))
+  ;; (add-to-list 'org-src-lang-modes '("jupyter-R" . R))
+  ;; ;; latex
+  ;; ;; (setq org-latex-compiler "xelatex")
+  ;; ;; see https://www.reddit.com/r/emacs/comments/l45528/questions_about_mving_from_standard_latex_to_org/gkp4f96/?utm_source=reddit&utm_medium=web2x&context=3
+  ;; ;; (setq org-latex-pdf-process '("TEXINPUTS=:$HOME/git/AltaCV//: tectonic %f"))
+  ;; (setq org-latex-pdf-process '("tectonic %f"))
+  ;; (setq org-export-backends '(html))
+  ;; ;; (add-to-list 'org-export-backends 'beamer)
+  ;; (plist-put org-format-latex-options :scale 1.2)
+  )
 #+END_SRC
 
 ** Enabling the Table of Contents
@@ -1563,15 +1564,15 @@ Interesting bits:
 :CUSTOM_ID: h:5415BD51-CBCC-46BD-85C2-7355CB5F88CE
 :END:
 #+begin_src emacs-lisp
-  (use-package toc-org
-      :commands toc-org-enable
-      :init (add-hook 'org-mode-hook 'toc-org-enable))
+(use-package toc-org
+  :commands toc-org-enable
+  :init (add-hook 'org-mode-hook 'toc-org-enable))
 #+end_src
 
 ** Using org-id in links
 :PROPERTIES:
 :CUSTOM_ID: h:AC175A47-E576-4AA6-A9C7-709129F4C56F
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-org.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-org.el
 :END:
 Taken from https://writequit.org/articles/emacs-org-mode-generate-ids.html
 
@@ -1624,59 +1625,224 @@ Adding it as a ~after-save-hook~  automatically adds a ~CUSTOM_ID~ to newly crea
 ** Tangling this file
 :PROPERTIES:
 :CUSTOM_ID: h:16B948EA-5375-44DE-ACD7-3664D4A9CE5F
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-org.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-org.el
 :END:
 Taken from https://github.com/KaratasFurkan/.emacs.d
 
 #+begin_src emacs-lisp
-  (use-package org
-    :config
-    (require 's)
-    (defun synthmacs/async-process (command &optional name filter)
-      "Start an async process by running the COMMAND string with bash. Return the
+(use-package org
+  :config
+  (require 's)
+  (defun synthmacs/async-process (command &optional name filter)
+    "Start an async process by running the COMMAND string with bash. Return the
   process object for it.
 
   NAME is name for the process. Default is \"async-process\".
 
   FILTER is function that runs after the process is finished, its args should be
   \"(process output)\". Default is just messages the output."
-      (make-process
-       :command `("bash" "-c" ,command)
-       :name (if name name
-	       "async-process")
-       :filter (if filter filter
-		 (lambda (process output) (message (s-trim output))))))
+    (make-process
+     :command `("bash" "-c" ,command)
+     :name (if name name
+	     "async-process")
+     :filter (if filter filter
+	       (lambda (process output) (message (s-trim output))))))
 
 
-    (defun synthmacs/tangle-config ()
-      "Export code blocks from the literate config file
+  (defun synthmacs/tangle-config ()
+    "Export code blocks from the literate config file
   asynchronously."
-      (interactive)
-      (let ((command (if (file-directory-p "/opt/homebrew/opt/emacs-plus@29/Emacs.app")
-			 "/opt/homebrew/opt/emacs-plus@29/Emacs.app/Contents/MacOS/Emacs %s --batch --eval '(org-babel-tangle nil \"%s\")'"
-		       )))
-	;; prevent emacs from killing until tangle-process finished
-	;; (add-to-list 'kill-emacs-query-functions
-	;;              (lambda ()
-	;;                (or (not (process-live-p (get-process "tangle-process")))
-	;;                    (y-or-n-p "\"fk/tangle-config\" is running; kill it? "))))
-	;; tangle config asynchronously
-	(synthmacs/async-process
-	 (format command
-		 (expand-file-name "synthmacs.org" user-emacs-directory)
-		 (expand-file-name "init.el" user-emacs-directory))
-	 "tangle-process")
-	)
-
+    (interactive)
+    (let ((command (if (file-directory-p "/opt/homebrew/opt/emacs-plus@29/Emacs.app")
+		       "/opt/homebrew/opt/emacs-plus@29/Emacs.app/Contents/MacOS/Emacs %s --batch --eval '(org-babel-tangle nil \"%s\")'"
+		     )))
+      ;; prevent emacs from killing until tangle-process finished
+      ;; (add-to-list 'kill-emacs-query-functions
+      ;;              (lambda ()
+      ;;                (or (not (process-live-p (get-process "tangle-process")))
+      ;;                    (y-or-n-p "\"fk/tangle-config\" is running; kill it? "))))
+      ;; tangle config asynchronously
+      (synthmacs/async-process
+       (format command
+	       (expand-file-name "synthmacs.org" user-emacs-directory)
+	       (expand-file-name "init.el" user-emacs-directory))
+       "tangle-process")
       )
+
     )
+  )
 #+end_src
 
 * UI
 :PROPERTIES:
 :CUSTOM_ID: h:EA84335B-2A51-4B4A-9392-F116289EDB10
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-ui.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-ui.el
 :END:
+
+** Themes
+:PROPERTIES:
+:CUSTOM_ID: h:07174251-A9E9-47E8-8AF3-AD5013CAC793
+:END:
+#+begin_src emacs-lisp
+(use-package doom-themes
+  :config
+  ;; Global settings (defaults)
+
+
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+
+
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
+
+(use-package afternoon-theme)
+(use-package alect-themes)
+(use-package ample-theme)
+(use-package ample-zen-theme)
+(use-package badwolf-theme)
+(use-package catppuccin-theme)
+(use-package clues-theme)
+(use-package color-theme-sanityinc-solarized)
+(use-package color-theme-sanityinc-tomorrow)
+(use-package cyberpunk-theme)
+(use-package darktooth-theme)
+(use-package flatland-theme)
+(use-package gruvbox-theme)
+(use-package jazz-theme)
+(use-package kaolin-themes)
+(use-package material-theme)
+(use-package modus-themes)
+(use-package monokai-theme)
+(use-package seti-theme)
+(use-package soothe-theme)
+(use-package subatomic-theme)
+(use-package sublime-themes)
+
+(use-package solaire-mode
+  :init
+  (solaire-global-mode +1))
+
+
+;;; Functions:
+(defvar synthmacs--fallback-theme 'kaolin-bubblegum
+  "Fallback theme if user theme cannot be applied.")
+
+(defvar synthmacs--cur-theme nil
+  "Internal variable storing currently loaded theme.")
+
+(defvar synthmacs--user-themes '(kaolin-bubblegum
+				 doom-challenger-deep
+				 cyberpunk
+				 jazz
+				 afternoon
+				 ample-zen
+				 doom-1337
+				 catppuccin
+				 manoj-dark
+				 doom-snazzy
+				 kaolin-dark
+				 doom-gruvbox
+				 doom-old-hope
+				 kaolin-aurora
+				 doom-acario-dark
+				 gruvbox-dark-hard
+				 modus-vivendi
+				 alect-black
+				 modus-operandi
+				 gruvbox-light-hard))
+
+(defun synthmacs/load-theme (&optional theme)
+  "Apply user theme."
+  (if theme
+      (progn
+	(load-theme theme t)
+	(setq-default synthmacs--cur-theme theme))
+    (progn
+      (load-theme synthmacs--fallback-theme t)
+      (setq-default spacemacs--cur-theme synthmacs--fallback-theme))))
+
+(defun synthmacs/load-random-theme ()
+  (interactive)
+  (let* ((size (length synthmacs--user-themes))
+         (index (random size))
+         (randomTheme (nth index synthmacs--user-themes)))
+    (synthmacs/load-theme randomTheme)))
+
+(defun synthmacs/cycle-synthmacs-theme (&optional backward)
+  "Cycle through themes defined in `synthmacs-themes'.
+When BACKWARD is non-nil, or with universal-argument, cycle backwards."
+  (interactive "P")
+  (let* (
+	 ;; (theme-names (mapcar 'synthmacs--user-themes)
+         (themes (if backward
+		     (reverse synthmacs--user-themes)
+		   synthmacs--user-themes))
+         (next-theme
+	  (car (or (cdr (memq synthmacs--cur-theme themes))
+		   ;; if current theme isn't in cycleable themes, start
+		   ;; over
+		   themes))))
+    (when synthmacs--cur-theme
+      (disable-theme synthmacs--cur-theme))
+    (let ((progress-reporter
+           (make-progress-reporter
+            (format "Loading theme %s..." next-theme))))
+      (synthmacs/load-theme next-theme)
+      (progress-reporter-done progress-reporter))))
+
+(defun synthmacs/cycle-synthmacs-theme-backward ()
+  "Cycle through themes defined in `dotsynthmacs-themes' backward."
+  (interactive)
+  (synthmacs/cycle-synthmacs-theme t))
+
+(synthmacs/leader-keys
+  "tt" '(:ignore t :wk "themes")
+  "ttn" '(synthmacs/hydra-theme-cycle :wk "cycle-themes")
+  "ttN" '(synthmacs/hydra-theme-cycle-backward :wk "cycle-themes-backwards")
+  "ttr" '(synthmacs/hydra-theme-random :wk "random-theme"))
+
+(defun synthmacs/hydra-theme-cycle ()
+  (interactive)
+  (synthmacs/cycle-synthmacs-theme)
+  (synthmacs/hydra/cycle-themes/body))
+
+(defun synthmacs/hydra-theme-cycle-backward ()
+  (interactive)
+  (synthmacs/cycle-synthmacs-theme t)
+  (synthmacs/hydra/cycle-themes/body))
+
+(defun synthmacs/hydra-theme-random ()
+  (interactive)
+  (synthmacs/load-random-theme)
+  (synthmacs/hydra/cycle-themes/body))
+
+(defhydra synthmacs/hydra/cycle-themes (:timeout 20)
+  "
+^Themes Menu
+^^^^^^^^------------------------
+[_n_]     cycle-theme
+[_p_/_N_]   cycle-theme-backward
+[_r_]     random-theme
+[_q_] quit
+"
+  ("n" synthmacs/cycle-synthmacs-theme)
+  ("p" synthmacs/cycle-synthmacs-theme-backward)
+  ("N" synthmacs/cycle-synthmacs-theme-backward)
+  ("r" synthmacs/load-random-theme)
+  ("q" nil :exit t))
+
+(synthmacs/load-random-theme)
+
+#+end_src
 * Completion framework
 :PROPERTIES:
 :CUSTOM_ID: h:FB3661CB-A573-40B6-B331-449D77DBD199

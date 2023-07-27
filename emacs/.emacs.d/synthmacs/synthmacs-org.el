@@ -9,32 +9,32 @@
   ;;   "f t" '(org-babel-tangle :wk "tangle")
   ;;   "o C" '(org-capture :wk "capture")
   ;;   "o l" '(org-todo-list :wk "todo list")
-
+  
   ;;   "o c" '((lambda () (interactive)
   ;;             (persp-switch "main")
   ;;             (find-file (concat user-emacs-directory "readme.org")))
   ;;           :wk "open config")
   ;;   )
   (synthmacs/leader-keys
-  ;;   :keymaps 'org-mode-map
-  ;;   "a" '(org-archive-subtree :wk "archive subtree")
-  ;;   "E" '(org-export-dispatch :wk "export")
+    ;;   :keymaps 'org-mode-map
+    ;;   "a" '(org-archive-subtree :wk "archive subtree")
+    ;;   "E" '(org-export-dispatch :wk "export")
     "ui" '(org-insert-structure-template :wk "insert src")
-  ;;   "l" '(:ignore true :wk "link")
+    ;;   "l" '(:ignore true :wk "link")
     "ul" '(org-insert-link :wk "insert link")
-  ;;   "l s" '(org-store-link :wk "store link")
-  ;;   "L" '((lambda () (interactive) (org-latex-preview)) :wk "latex preview")
-  ;;   ;; "L" '((lambda () (interactive) (org--latex-preview-region (point-min) (point-max))) :wk "latex")
-  ;;   "r" '(org-refile :wk "refile")
-  ;;   "n" '(org-toggle-narrow-to-subtree :wk "narrow subtree")
-  ;;   "p" '(org-priority :wk "priority")
-  ;;   "q" '(org-set-tags-command :wk "tag")
-  ;;   "s" '(org-sort :wk "sort")
-  ;;   "t" '(:ignore true :wk "todo")
-  ;;   "t t" '(org-todo :wk "heading todo")
-  ;;   "t s" '(org-schedule :wk "schedule")
-  ;;   "t d" '(org-deadline :wk "deadline")
-  ;;   "x" '(org-toggle-checkbox :wk "toggle checkbox")
+    ;;   "l s" '(org-store-link :wk "store link")
+    ;;   "L" '((lambda () (interactive) (org-latex-preview)) :wk "latex preview")
+    ;;   ;; "L" '((lambda () (interactive) (org--latex-preview-region (point-min) (point-max))) :wk "latex")
+    ;;   "r" '(org-refile :wk "refile")
+    ;;   "n" '(org-toggle-narrow-to-subtree :wk "narrow subtree")
+    ;;   "p" '(org-priority :wk "priority")
+    ;;   "q" '(org-set-tags-command :wk "tag")
+    ;;   "s" '(org-sort :wk "sort")
+    ;;   "t" '(:ignore true :wk "todo")
+    ;;   "t t" '(org-todo :wk "heading todo")
+    ;;   "t s" '(org-schedule :wk "schedule")
+    ;;   "t d" '(org-deadline :wk "deadline")
+    ;;   "x" '(org-toggle-checkbox :wk "toggle checkbox")
     )
   ;; (org-mode-map
   ;;  :states 'insert
@@ -54,7 +54,7 @@
   ;; (setq org-export-in-background t)
   (setq org-src-preserve-indentation t) ;; do not put two spaces on the left
   (setq org-startup-indented t)
-   ;;(setq org-startup-with-inline-images t)
+  ;;(setq org-startup-with-inline-images t)
   (setq org-hide-emphasis-markers nil)
   (setq org-catch-invisible-edits 'smart)
   (setq org-image-actual-width nil)
@@ -74,14 +74,14 @@
                                          ("->" . "→")
                                          ("->>" . "↠")))
   ;; (setq prettify-symbols-unprettify-at-point 'right-edge)
-;;   (defun lc/org-indent-or-complete ()
-;;     "Complete 
-;; if point is at end of a word, otherwise indent line."
-;;     (interactive)
-;;     (if (looking-at "\\>")
-;;         (dabbrev-expand nil)
-;;       (org-cycle)
-;;       ))
+  ;;   (defun lc/org-indent-or-complete ()
+  ;;     "Complete 
+  ;; if point is at end of a word, otherwise indent line."
+  ;;     (interactive)
+  ;;     (if (looking-at "\\>")
+  ;;         (dabbrev-expand nil)
+  ;;       (org-cycle)
+  ;;       ))
   ;; (setq warning-
   ;; 	suppress-types (append warning-suppress-types '((org-element-cache))))
   :config
@@ -106,8 +106,8 @@
 
 ;; [[file:../synthmacs.org::*Enabling the Table of Contents][Enabling the Table of Contents:1]]
 (use-package toc-org
-    :commands toc-org-enable
-    :init (add-hook 'org-mode-hook 'toc-org-enable))
+  :commands toc-org-enable
+  :init (add-hook 'org-mode-hook 'toc-org-enable))
 ;; Enabling the Table of Contents:1 ends here
 
 ;; [[file:../synthmacs.org::*Using org-id in links][Using org-id in links:1]]
@@ -155,12 +155,12 @@
   (require 's)
   (defun synthmacs/async-process (command &optional name filter)
     "Start an async process by running the COMMAND string with bash. Return the
-process object for it.
+  process object for it.
 
-NAME is name for the process. Default is \"async-process\".
+  NAME is name for the process. Default is \"async-process\".
 
-FILTER is function that runs after the process is finished, its args should be
-\"(process output)\". Default is just messages the output."
+  FILTER is function that runs after the process is finished, its args should be
+  \"(process output)\". Default is just messages the output."
     (make-process
      :command `("bash" "-c" ,command)
      :name (if name name
@@ -171,7 +171,7 @@ FILTER is function that runs after the process is finished, its args should be
 
   (defun synthmacs/tangle-config ()
     "Export code blocks from the literate config file
-asynchronously."
+  asynchronously."
     (interactive)
     (let ((command (if (file-directory-p "/opt/homebrew/opt/emacs-plus@29/Emacs.app")
 		       "/opt/homebrew/opt/emacs-plus@29/Emacs.app/Contents/MacOS/Emacs %s --batch --eval '(org-babel-tangle nil \"%s\")'"
