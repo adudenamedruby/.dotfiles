@@ -158,6 +158,116 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 (synthmacs/load-random-theme)
 ;; Themes:1 ends here
 
+;; [[file:../synthmacs.org::*Navigation][Navigation:1]]
+(use-package winum
+  :general
+  (synthmacs/leader-keys
+    "1" '(winum-select-window-1 :wk "winum-select-window-1")
+    "2" '(winum-select-window-2 :wk "winum-select-window-2")
+    "3" '(winum-select-window-3 :wk "winum-select-window-3")
+    "4" '(winum-select-window-4 :wk "winum-select-window-4")
+    "5" '(winum-select-window-5 :wk "winum-select-window-5")
+    "6" '(winum-select-window-6 :wk "winum-select-window-6")
+    "7" '(winum-select-window-7 :wk "winum-select-window-7")
+    "8" '(winum-select-window-8 :wk "winum-select-window-8")
+    "9" '(winum-select-window-9 :wk "winum-select-window-9"))
+  :init
+  (setq winum-auto-setup-mode-line nil
+	winum-ignored-buffers '(" *which-key*"))
+  (winum-mode))
+;; Navigation:1 ends here
+
+;; [[file:../synthmacs.org::*ace-window][ace-window:1]]
+(use-package ace-window
+  :general
+  (synthmacs/leader-keys
+    "wD" '(ace-delete-window :wk "ace-delete-window")
+    "wS" '(ace-swap-window :wk "ace-swap-window")
+    ))
+;; ace-window:1 ends here
+
+;; [[file:../synthmacs.org::*Avy][Avy:1]]
+(use-package avy
+  :general
+  (synthmacs/leader-keys
+    "jj" '(avy-goto-char-timer :wk "avy-goto-char-timer")
+    "jc" '(avy-goto-char :wk "avy-goto-char")
+    "jl" '(avy-goto-line :wk "avy-goto-line")
+    ))
+;; Avy:1 ends here
+
+;; [[file:../synthmacs.org::*Icons][Icons:1]]
+(setq nerd-icons-scale-factor 1.2)
+
+(use-package nerd-icons
+  :custom
+  ;; The Nerd Font you want to use in GUI
+  ;; "Symbols Nerd Font Mono" is the default and is recommended
+  ;; but you can use any other Nerd Font if you want
+  (nerd-icons-font-family "FiraCode Nerd Font"))
+
+(use-package all-the-icons
+  :if (display-graphic-p))
+;; Icons:1 ends here
+
+;; [[file:../synthmacs.org::*Modeline][Modeline:1]]
+(use-package minions
+  :hook (doom-modeline-mode . minions-mode))
+
+(use-package doom-modeline
+  :init (doom-modeline-mode 1)
+  :config
+  (setq doom-modeline-height 45
+	doom-modeline-project-detection 'auto
+	doom-modeline-icon t
+	doom-modeline-major-mode-icon t
+	doom-modeline-major-mode-color-icon t
+	doom-modeline-buffer-state-icon t
+	doom-modeline-buffer-modification-icon t
+	doom-modeline-time-icon nil
+	doom-modeline-buffer-encoding t
+	doom-modeline-vcs-max-length 15
+	doom-modeline-lsp t
+	doom-modeline-modal-icon t))
+;; Modeline:1 ends here
+
+;; [[file:../synthmacs.org::*which-key][which-key:1]]
+(setq which-key-idle-delay 0.4)
+(use-package which-key
+  :init
+  (which-key-mode 1)
+  :config
+  (setq which-key-side-window-location 'bottom
+	which-key-sort-order #'which-key-key-order-alpha
+	;; which-key-sort-order #'which-key-prefix-then-key-order
+	which-key-sort-uppercase-first nil
+	which-key-add-column-padding 1
+	which-key-max-display-columns nil
+	which-key-min-display-lines 6
+	which-key-side-window-slot -10
+	which-key-side-window-max-height 0.25
+	which-key-max-description-length 25
+	which-key-allow-imprecise-window-fit t
+	which-key-separator " → "
+	which-key-prefix-prefix "+")
+  ;; Rename the entry for M-1 in the SPC h k Top-level bindings,
+  ;; and for 1 in the SPC- Spacemacs root, to 1..9
+  (push '(("\\(.*\\)1" . "winum-select-window-1") .
+	  ("\\11..9" . "select window 1..9"))
+	which-key-replacement-alist)
+
+  ;; Hide the entries for M-[2-9] in the SPC h k Top-level bindings,
+  ;; and for [2-9] in the SPC- Spacemacs root
+  (push '((nil . "winum-select-window-[2-9]") . t)
+	which-key-replacement-alist))
+;; which-key:1 ends here
+
+;; [[file:../synthmacs.org::*rainbow][rainbow:1]]
+;; https://github.com/Fanael/rainbow-delimiters
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+;; rainbow:1 ends here
+
 ;; [[file:../synthmacs.org::*synthmacs-ui][synthmacs-ui:1]]
 (provide 'synthmacs-ui)
 ;;; synthmacs-ui.el ends here
