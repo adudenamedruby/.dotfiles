@@ -234,22 +234,26 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 ;; [[file:../synthmacs.org::*which-key][which-key:1]]
 (setq which-key-idle-delay 0.4)
 (use-package which-key
+  :demand
+  :general
+  (synthmacs/leader-keys
+    "?" 'which-key-show-top-level)
   :init
-  (which-key-mode 1)
+  (setq which-key-side-window-location 'bottom)
+  (setq which-key-sort-order #'which-key-key-order-alpha)
+  ;;(setq which-key-sort-order #'which-key-prefix-then-key-order)
+  (setq which-key-sort-uppercase-first nil)
+  (setq which-key-add-column-padding 1)
+  (setq which-key-max-display-columns nil)
+  (setq which-key-min-display-lines 6)
+  (setq which-key-side-window-slot -10)
+  (setq which-key-side-window-max-height 0.25)
+  (setq which-key-max-description-length 25)
+  (setq which-key-allow-imprecise-window-fit t)
+  (setq which-key-separator " → ")
+  (setq which-key-prefix-prefix "+")
   :config
-  (setq which-key-side-window-location 'bottom
-	which-key-sort-order #'which-key-key-order-alpha
-	;; which-key-sort-order #'which-key-prefix-then-key-order
-	which-key-sort-uppercase-first nil
-	which-key-add-column-padding 1
-	which-key-max-display-columns nil
-	which-key-min-display-lines 6
-	which-key-side-window-slot -10
-	which-key-side-window-max-height 0.25
-	which-key-max-description-length 25
-	which-key-allow-imprecise-window-fit t
-	which-key-separator " → "
-	which-key-prefix-prefix "+")
+  (which-key-mode 1)
   ;; Rename the entry for M-1 in the SPC h k Top-level bindings,
   ;; and for 1 in the SPC- Spacemacs root, to 1..9
   (push '(("\\(.*\\)1" . "winum-select-window-1") .

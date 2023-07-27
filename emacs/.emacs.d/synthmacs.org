@@ -35,7 +35,8 @@
   - [[#general][General]]
   - [[#general-keybindings][General keybindings]]
   - [[#hydra][Hydra]]
-  - [[#evil][Evil]]
+  - [[#evil-mode][EVIL mode]]
+  -  [[#evil-textobj-line][evil-textobj-line]]
 - [[#org-mode][Org Mode]]
   - [[#org-mode-1][org mode]]
   - [[#enabling-the-table-of-contents][Enabling the Table of Contents]]
@@ -540,7 +541,7 @@ Hide it if we're in a window. I go back and forth on hiding the menu. I like it 
     ;; (menu-bar-mode -1)
     )
   )
-    #+end_src
+#+end_src
 
 *** Scrolling behaviours
 :PROPERTIES:
@@ -711,76 +712,6 @@ to the `killed-buffer-list` when killing the buffer."
   (interactive)
   (when synthmacs--killed-buffer-list
     (find-file (pop synthmacs--killed-buffer-list))))
-
-;; Moving windows around
-(require 'windmove)
-
-;;;###autoload
-(defun synthmacs/buf-move-up ()
-  "Swap the current buffer and the buffer above the split.
-If there is no split, ie now window above the current one, an
-error is signaled."
-  ;;  "Switches between the current buffer, and the buffer above the
-  ;;  split, if possible."
-  (interactive)
-  (let* ((other-win (windmove-find-other-window 'up))
-	 (buf-this-buf (window-buffer (selected-window))))
-    (if (null other-win)
-        (error "No window above this one")
-      ;; swap top with this one
-      (set-window-buffer (selected-window) (window-buffer other-win))
-      ;; move this one to top
-      (set-window-buffer other-win buf-this-buf)
-      (select-window other-win))))
-
-;;;###autoload
-(defun synthmacs/buf-move-down ()
-  "Swap the current buffer and the buffer under the split.
-If there is no split, ie now window under the current one, an
-error is signaled."
-  (interactive)
-  (let* ((other-win (windmove-find-other-window 'down))
-	 (buf-this-buf (window-buffer (selected-window))))
-    (if (or (null other-win) 
-            (string-match "^ \\*Minibuf" (buffer-name (window-buffer other-win))))
-        (error "No window under this one")
-      ;; swap top with this one
-      (set-window-buffer (selected-window) (window-buffer other-win))
-      ;; move this one to top
-      (set-window-buffer other-win buf-this-buf)
-      (select-window other-win))))
-
-;;;###autoload
-(defun synthmacs/buf-move-left ()
-  "Swap the current buffer and the buffer on the left of the split.
-If there is no split, ie now window on the left of the current
-one, an error is signaled."
-  (interactive)
-  (let* ((other-win (windmove-find-other-window 'left))
-	 (buf-this-buf (window-buffer (selected-window))))
-    (if (null other-win)
-        (error "No left split")
-      ;; swap top with this one
-      (set-window-buffer (selected-window) (window-buffer other-win))
-      ;; move this one to top
-      (set-window-buffer other-win buf-this-buf)
-      (select-window other-win))))
-
-;;;###autoload
-(defun synthmacs/buf-move-right ()
-  "Swap the current buffer and the buffer on the right of the split.
-If there is no split, ie now window on the right of the current
-one, an error is signaled."
-  (interactive)
-  (let* ((other-win (windmove-find-other-window 'right))
-	 (buf-this-buf (window-buffer (selected-window))))
-    (if (null other-win)
-        (error "No right split")
-      ;; swap top with this one
-      (set-window-buffer (selected-window) (window-buffer other-win))
-      ;; move this one to top
-      (set-window-buffer other-win buf-this-buf)
-      (select-window other-win))))
 
 ;; (defun synthmacs/delete-current-buffer-file ()
 ;;   "Removes the file connected to the current buffer, and kills the buffer."
@@ -1081,7 +1012,7 @@ In programming, missing parens and the like are a pain to track down. Let's auto
 (use-package emacs
   :hook
   ((org-mode . (lambda () (synthmacs/add-local-electric-pairs '(;(?= . ?=)
-                                                         (?~ . ?~))))))
+								(?~ . ?~))))))
   :init
   (electric-pair-mode +1)
   (setq electric-pair-preserve-balance nil)
@@ -1189,7 +1120,7 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
   "br" 'revert-buffer
   "bs" 'scratch-buffer
   "bu" '(synthmacs/reopen-killed-buffer :wk "Reopen last killed buffer")
-)
+  )
 #+end_src
 
 *** Compilation bindings
@@ -1399,7 +1330,7 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
   "tv" 'visual-line-mode
   "tw" 'global-whitespace-mode
   "tz" 'zone
-)
+  )
 #+end_src
 
 *** User bindings
@@ -1419,20 +1350,7 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
 (synthmacs/leader-keys
   "w" '(:ignore t :wk "window")
 
-  "wd" '(evil-window-delete :wk "delete-window")
-
-  "ws" 'evil-window-split
-  "wv" 'evil-window-vsplit
-
   "wm" 'maximize-window
-
-  ;; Window motions
-  "wh" 'evil-window-left 
-  "wj" 'evil-window-down
-  "wk" 'evil-window-up
-  "wl" 'evil-window-right
-  "wn" 'evil-window-next 
-  "wp" 'evil-window-prev 
 
   "w{" 'shrink-window
   "w[" 'shrink-window-horizontally
@@ -1504,20 +1422,38 @@ _q_: quit
 ;;  "C-?" 'hydra/buffer-menu/body)
 #+end_src
 
-** Evil
+** EVIL mode
 :PROPERTIES:
 :CUSTOM_ID: h:D64CA666-A9A1-4DE2-900D-32E3726F6792
 :END:
-#+begin_src emacs-lisp
-(setq evil-search-module 'evil-search)
-(setq evil-ex-search-persistent-highlight t)
-(setq evil-undo-system 'undo-redo)
+I'm a Vim motion devotee. Thus, we'll make Synthmacs behave like Vim, when it comes to text editing.
 
+*** evil
+:PROPERTIES:
+:CUSTOM_ID: h:E03B3DCB-697A-4FD2-8C32-51BF96A5DF8B
+:END:
+#+begin_src emacs-lisp
 (use-package evil
+  :demand
+  :general
+  (synthmacs/leader-keys
+    "wd" '(evil-window-delete :wk "delete-window")
+    "ws" 'evil-window-split
+    "wv" 'evil-window-vsplit
+    "wh" 'evil-window-left 
+    "wj" 'evil-window-down
+    "wk" 'evil-window-up
+    "wl" 'evil-window-right
+    "wn" 'evil-window-next 
+    "wp" 'evil-window-prev)
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
+  (setq evil-want-C-i-jump t)
+  (setq evil-undo-system 'undo-redo)
+  (setq evil-search-module 'evil-search)
+  (setq evil-ex-search-persistent-highlight t)
   (setq evil-vsplit-window-right t)
   (setq evil-split-window-below t)
   :config
@@ -1528,19 +1464,41 @@ _q_: quit
   (define-key evil-visual-state-map "'" 'evil-goto-mark)
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-  (evil-set-initial-state 'messages-buffer-mode 'normal))
+  (evil-set-initial-state 'messages-buffer-mode 'normal)
+  (evil-set-initial-state 'dashboard-mode 'normal)
+  )
+#+end_src
 
+*** evil-anzu
+:PROPERTIES:
+:CUSTOM_ID: h:D9672083-EF2E-4DB5-B911-6A6CD2D2C2BE
+:END:
+#+begin_src emacs-lisp
 (use-package evil-anzu
   :init (global-anzu-mode t)
   :config
   (setq anzu-search-threshold 1000
 	anzu-cons-mode-line-p nil))
+#+end_src
 
+*** evil-args
+:PROPERTIES:
+:CUSTOM_ID: h:75BED2EC-1802-4E57-9B56-1B3FBA9460D7
+:END:
+#+begin_src emacs-lisp
 (use-package evil-args
+  :demand
   :config
   (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
   (define-key evil-outer-text-objects-map "a" 'evil-outer-arg))
 
+#+end_src
+
+*** evil-cleverparens
+:PROPERTIES:
+:CUSTOM_ID: h:12253229-6F1D-4CB5-B009-CD228B194727
+:END:
+#+begin_src emacs-lisp
 (use-package evil-cleverparens
   :init
   (setq evil-cleverparens-use-regular-insert t)
@@ -1548,16 +1506,41 @@ _q_: quit
   ;; `evil-cp-change` should move to point
   (evil-set-command-properties 'evil-cp-change :move-point t))
 
+#+end_src
+
+*** evil-collection
+:PROPERTIES:
+:CUSTOM_ID: h:32288E4F-A859-4285-94CF-6774A18BFDC4
+:END:
+#+begin_src emacs-lisp
 (use-package evil-collection
   :after evil
+  :demand
+  :init
+  (setq evil-collection-magit-use-z-for-folds nil)
   :config
   (evil-collection-init))
+#+end_src
 
+*** evil-commentary
+:PROPERTIES:
+:CUSTOM_ID: h:9C0CCF5B-61A2-47FD-85FF-EF9C512551DC
+:END:
+~gcc~ to comment to your heart's content!
+#+begin_src emacs-lisp
 (use-package evil-commentary
-  :defer nil
+  :demand
   :config
   (evil-commentary-mode))
+#+end_src
 
+*** evil-exchange
+:PROPERTIES:
+:CUSTOM_ID: h:D90743DD-05E8-4B00-919D-2031B4D16E09
+:END:
+Cool little package that allows you to exchange/swap text objects using ~gx~ in this case. Niche, but handy.
+
+#+begin_src emacs-lisp
 (use-package evil-exchange
   :config
   (setq evil-exchange-key (kbd "gx"))
@@ -1568,8 +1551,18 @@ _q_: quit
               'evil-exchange-cancel)
   (define-key evil-visual-state-map evil-exchange-cancel-key
               'evil-exchange-cancel))
+#+end_src
 
+*** evil-goggles
+:PROPERTIES:
+:CUSTOM_ID: h:A12684FB-4CCE-49E2-BDA6-AE5D864DCC3A
+:END:
+Fun visual tweak. When yanking, joining, deleting, changing, etc, it will briefly highlight what you're actually operating on.
+
+#+begin_src emacs-lisp
 (use-package evil-goggles
+  :after evil
+  :demand
   :init
   ;; disable pulses as it is more distracting than useful and
   ;; less readable.
@@ -1577,8 +1570,29 @@ _q_: quit
 	evil-goggles-async-duration 0.1
 	evil-goggles-blocking-duration 0.05)
   :config
-  (evil-goggles-mode))
+  (push '(evil-operator-eval
+	  :face evil-goggles-yank-face
+	  :switch evil-goggles-enable-yank
+	  :advice evil-goggles--generic-async-advice)
+	evil-goggles--commands)
+  (evil-goggles-mode)
+  (evil-goggles-use-diff-faces))
 
+#+end_src
+
+*** evil-iedit-state
+:PROPERTIES:
+:CUSTOM_ID: h:EFDDB64A-5F12-4643-B5EF-9A069B3BCCEE
+:END:
+Handly refactoring! Key bindings:
+
+~TAB~     : toggle occurance
+~n~ / ~N~ : next / previous occurance
+~F~       : restrict scope to function
+~J~ / ~K~ : extend scope of match down/up
+~V~       : toggle visibility of matches
+
+#+begin_src emacs-lisp
 (use-package evil-iedit-state
   :commands (evil-iedit-state evil-iedit-state/iedit-mode)
   :init
@@ -1587,15 +1601,34 @@ _q_: quit
         iedit-toggle-key-default nil)
   :general
   (synthmacs/leader-keys
-    "se" '(evil-iedit-state/iedit-mode :wk "iedit-mode")))
+    "se" '(evil-iedit-state/iedit-mode :wk "iedit-mode")
+    "sq" '(evil-iedit-state/quit-iedit-mode :wk "quit-iedit-mode"))
+  )
+#+end_src
 
-;; (use-package evil-lion
-;;   :init
-;;   (evil-define-key '(normal visual) 'global
-;;     "gl" #'evil-lion-left
-;;     "gL" #'evil-lion-right)
-;;   :config (evil-lion-mode))
+*** evil-lion
+:PROPERTIES:
+:CUSTOM_ID: h:63845AD9-32AF-4F75-B467-DCFC9D05EEC0
+:END:
+~gl~ and ~gL~ alignment operators for ~gl MOTION CHAR~ and right-align ~gL MOTION CHAR~
 
+Example: ~glip=~ will left align inner paragraph on the ~=~ separator
+
+#+begin_src emacs-lisp
+(use-package evil-lion
+  :init
+  (evil-define-key '(normal visual) 'global
+    "gl" #'evil-lion-left
+    "gL" #'evil-lion-right)
+  :config
+  (evil-lion-mode))
+#+end_src
+
+*** evil-lisp-state
+:PROPERTIES:
+:CUSTOM_ID: h:60EB5AD8-2664-4548-80F8-6FCF9A68BFDE
+:END:
+#+begin_src emacs-lisp
 ;; https://github.com/syl20bnr/evil-lisp-state
 ;; (use-package evil-lisp-state
 ;; :defer t
@@ -1615,10 +1648,24 @@ _q_: quit
 ;;     "Loads evil-lisp-state lazily"
 ;;   (remove-hook 'prog-mode-hook #'synthmacs/load-evil-lisp-state))
 
+#+end_src
+
+*** evil-matchit
+:PROPERTIES:
+:CUSTOM_ID: h:321F3473-01E4-404B-A27C-25C8810FFA78
+:END:
+#+begin_src emacs-lisp
 (use-package evil-matchit
   :init
   (global-evil-matchit-mode 1))
 
+#+end_src
+
+*** evil-numbers
+:PROPERTIES:
+:CUSTOM_ID: h:5BE63DE6-2538-4A7E-977E-376310B9ED58
+:END:
+#+begin_src emacs-lisp
 (use-package evil-numbers
   :defer t
   :general
@@ -1637,31 +1684,62 @@ _q_: quit
   ("-" evil-numbers/dec-at-pt)
   ("q" nil :exit t))
 
+#+end_src
+
+*** evil-surround
+:PROPERTIES:
+:CUSTOM_ID: h:EC06A735-21C9-4237-B842-B9E2C4D609D8
+:END:
+Port of T.Pope's vim-surround. ~s~ for surround and ~S~ becomes substitute.
+Why? [[https://github.com/syl20bnr/spacemacs/blob/develop/doc/DOCUMENTATION.org#the-vim-surround-case][Find out here!]]
+
+#+begin_src emacs-lisp
 (use-package evil-surround
   :init
-  ;; `s' for surround instead of `substitute'
-  ;; see motivation here:
-  ;; https://github.com/syl20bnr/spacemacs/blob/develop/doc/DOCUMENTATION.org#the-vim-surround-case
   (evil-define-key 'visual evil-surround-mode-map "s" 'evil-surround-region)
   (evil-define-key 'visual evil-surround-mode-map "S" 'evil-substitute)
   :config
   (global-evil-surround-mode 1))
+#+end_src
 
+**  evil-textobj-line
+:PROPERTIES:
+:CUSTOM_ID: h:FDCDA4B0-65C1-40B2-AA6E-28CF92A10919
+:END:
+#+begin_src emacs-lisp
 (use-package evil-textobj-line)
+#+end_src
 
+*** evil-visual-mark-mode
+:PROPERTIES:
+:CUSTOM_ID: h:8D2E96E1-BEAC-4E27-A518-477E331D63C6
+:END:
+#+begin_src emacs-lisp
 (use-package evil-visual-mark-mode
   :defer t
   :general
   (synthmacs/leader-keys
     "t`" '(evil-visual-mark-mode :wk "visual-mark-mode")))
+#+end_src
 
+*** evil-visualstar
+:PROPERTIES:
+:CUSTOM_ID: h:EFCF2F7F-D9C1-41DD-A8E7-8839868C12A7
+:END:
+#+begin_src emacs-lisp
 (use-package evil-visualstar
   :commands (evil-visualstar/begin-search-forward
              evil-visualstar/begin-search-backward)
   :init
   (define-key evil-visual-state-map (kbd "*") 'evil-visualstar/begin-search-forward)
   (define-key evil-visual-state-map (kbd "#") 'evil-visualstar/begin-search-backward))
+#+end_src
 
+*** evil-vimish-fold
+:PROPERTIES:
+:CUSTOM_ID: h:C015C98C-E459-4D55-93E8-9954EF450144
+:END:
+#+begin_src emacs-lisp
 ;; Evil-Vimish-Fold - https://github.com/alexmurray/evil-vimish-fold
 ;;(use-package evil-vimish-fold
 ;;  :after vimish-fold
@@ -2176,22 +2254,26 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 #+begin_src emacs-lisp
 (setq which-key-idle-delay 0.4)
 (use-package which-key
+  :demand
+  :general
+  (synthmacs/leader-keys
+    "?" 'which-key-show-top-level)
   :init
-  (which-key-mode 1)
+  (setq which-key-side-window-location 'bottom)
+  (setq which-key-sort-order #'which-key-key-order-alpha)
+  ;;(setq which-key-sort-order #'which-key-prefix-then-key-order)
+  (setq which-key-sort-uppercase-first nil)
+  (setq which-key-add-column-padding 1)
+  (setq which-key-max-display-columns nil)
+  (setq which-key-min-display-lines 6)
+  (setq which-key-side-window-slot -10)
+  (setq which-key-side-window-max-height 0.25)
+  (setq which-key-max-description-length 25)
+  (setq which-key-allow-imprecise-window-fit t)
+  (setq which-key-separator " → ")
+  (setq which-key-prefix-prefix "+")
   :config
-  (setq which-key-side-window-location 'bottom
-	which-key-sort-order #'which-key-key-order-alpha
-	;; which-key-sort-order #'which-key-prefix-then-key-order
-	which-key-sort-uppercase-first nil
-	which-key-add-column-padding 1
-	which-key-max-display-columns nil
-	which-key-min-display-lines 6
-	which-key-side-window-slot -10
-	which-key-side-window-max-height 0.25
-	which-key-max-description-length 25
-	which-key-allow-imprecise-window-fit t
-	which-key-separator " → "
-	which-key-prefix-prefix "+")
+  (which-key-mode 1)
   ;; Rename the entry for M-1 in the SPC h k Top-level bindings,
   ;; and for 1 in the SPC- Spacemacs root, to 1..9
   (push '(("\\(.*\\)1" . "winum-select-window-1") .

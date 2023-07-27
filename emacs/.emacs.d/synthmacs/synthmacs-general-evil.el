@@ -42,7 +42,7 @@
   "br" 'revert-buffer
   "bs" 'scratch-buffer
   "bu" '(synthmacs/reopen-killed-buffer :wk "Reopen last killed buffer")
-)
+  )
 ;; Buffer bindings:1 ends here
 
 ;; [[file:../synthmacs.org::*Compilation bindings][Compilation bindings:1]]
@@ -188,7 +188,7 @@
   "tv" 'visual-line-mode
   "tw" 'global-whitespace-mode
   "tz" 'zone
-)
+  )
 ;; Toggles bindings:1 ends here
 
 ;; [[file:../synthmacs.org::*User bindings][User bindings:1]]
@@ -200,20 +200,7 @@
 (synthmacs/leader-keys
   "w" '(:ignore t :wk "window")
 
-  "wd" '(evil-window-delete :wk "delete-window")
-
-  "ws" 'evil-window-split
-  "wv" 'evil-window-vsplit
-
   "wm" 'maximize-window
-
-  ;; Window motions
-  "wh" 'evil-window-left 
-  "wj" 'evil-window-down
-  "wk" 'evil-window-up
-  "wl" 'evil-window-right
-  "wn" 'evil-window-next 
-  "wp" 'evil-window-prev 
 
   "w{" 'shrink-window
   "w[" 'shrink-window-horizontally
@@ -281,16 +268,28 @@ _q_: quit
 ;;  "C-?" 'hydra/buffer-menu/body)
 ;; Hydra:1 ends here
 
-;; [[file:../synthmacs.org::*Evil][Evil:1]]
-(setq evil-search-module 'evil-search)
-(setq evil-ex-search-persistent-highlight t)
-(setq evil-undo-system 'undo-redo)
-
+;; [[file:../synthmacs.org::*evil][evil:1]]
 (use-package evil
+  :demand
+  :general
+  (synthmacs/leader-keys
+    "wd" '(evil-window-delete :wk "delete-window")
+    "ws" 'evil-window-split
+    "wv" 'evil-window-vsplit
+    "wh" 'evil-window-left 
+    "wj" 'evil-window-down
+    "wk" 'evil-window-up
+    "wl" 'evil-window-right
+    "wn" 'evil-window-next 
+    "wp" 'evil-window-prev)
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
+  (setq evil-want-C-i-jump t)
+  (setq evil-undo-system 'undo-redo)
+  (setq evil-search-module 'evil-search)
+  (setq evil-ex-search-persistent-highlight t)
   (setq evil-vsplit-window-right t)
   (setq evil-split-window-below t)
   :config
@@ -301,36 +300,54 @@ _q_: quit
   (define-key evil-visual-state-map "'" 'evil-goto-mark)
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-  (evil-set-initial-state 'messages-buffer-mode 'normal))
+  (evil-set-initial-state 'messages-buffer-mode 'normal)
+  (evil-set-initial-state 'dashboard-mode 'normal)
+  )
+;; evil:1 ends here
 
+;; [[file:../synthmacs.org::*evil-anzu][evil-anzu:1]]
 (use-package evil-anzu
   :init (global-anzu-mode t)
   :config
   (setq anzu-search-threshold 1000
 	anzu-cons-mode-line-p nil))
+;; evil-anzu:1 ends here
 
+;; [[file:../synthmacs.org::*evil-args][evil-args:1]]
 (use-package evil-args
+  :demand
   :config
   (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
   (define-key evil-outer-text-objects-map "a" 'evil-outer-arg))
+;; evil-args:1 ends here
 
+;; [[file:../synthmacs.org::*evil-cleverparens][evil-cleverparens:1]]
 (use-package evil-cleverparens
   :init
   (setq evil-cleverparens-use-regular-insert t)
   :config
   ;; `evil-cp-change` should move to point
   (evil-set-command-properties 'evil-cp-change :move-point t))
+;; evil-cleverparens:1 ends here
 
+;; [[file:../synthmacs.org::*evil-collection][evil-collection:1]]
 (use-package evil-collection
   :after evil
+  :demand
+  :init
+  (setq evil-collection-magit-use-z-for-folds nil)
   :config
   (evil-collection-init))
+;; evil-collection:1 ends here
 
+;; [[file:../synthmacs.org::*evil-commentary][evil-commentary:1]]
 (use-package evil-commentary
-  :defer nil
+  :demand
   :config
   (evil-commentary-mode))
+;; evil-commentary:1 ends here
 
+;; [[file:../synthmacs.org::*evil-exchange][evil-exchange:1]]
 (use-package evil-exchange
   :config
   (setq evil-exchange-key (kbd "gx"))
@@ -341,8 +358,12 @@ _q_: quit
               'evil-exchange-cancel)
   (define-key evil-visual-state-map evil-exchange-cancel-key
               'evil-exchange-cancel))
+;; evil-exchange:1 ends here
 
+;; [[file:../synthmacs.org::*evil-goggles][evil-goggles:1]]
 (use-package evil-goggles
+  :after evil
+  :demand
   :init
   ;; disable pulses as it is more distracting than useful and
   ;; less readable.
@@ -350,8 +371,16 @@ _q_: quit
 	evil-goggles-async-duration 0.1
 	evil-goggles-blocking-duration 0.05)
   :config
-  (evil-goggles-mode))
+  (push '(evil-operator-eval
+	  :face evil-goggles-yank-face
+	  :switch evil-goggles-enable-yank
+	  :advice evil-goggles--generic-async-advice)
+	evil-goggles--commands)
+  (evil-goggles-mode)
+  (evil-goggles-use-diff-faces))
+;; evil-goggles:1 ends here
 
+;; [[file:../synthmacs.org::*evil-iedit-state][evil-iedit-state:1]]
 (use-package evil-iedit-state
   :commands (evil-iedit-state evil-iedit-state/iedit-mode)
   :init
@@ -360,15 +389,22 @@ _q_: quit
         iedit-toggle-key-default nil)
   :general
   (synthmacs/leader-keys
-    "se" '(evil-iedit-state/iedit-mode :wk "iedit-mode")))
+    "se" '(evil-iedit-state/iedit-mode :wk "iedit-mode")
+    "sq" '(evil-iedit-state/quit-iedit-mode :wk "quit-iedit-mode"))
+  )
+;; evil-iedit-state:1 ends here
 
-;; (use-package evil-lion
-;;   :init
-;;   (evil-define-key '(normal visual) 'global
-;;     "gl" #'evil-lion-left
-;;     "gL" #'evil-lion-right)
-;;   :config (evil-lion-mode))
+;; [[file:../synthmacs.org::*evil-lion][evil-lion:1]]
+(use-package evil-lion
+  :init
+  (evil-define-key '(normal visual) 'global
+    "gl" #'evil-lion-left
+    "gL" #'evil-lion-right)
+  :config
+  (evil-lion-mode))
+;; evil-lion:1 ends here
 
+;; [[file:../synthmacs.org::*evil-lisp-state][evil-lisp-state:1]]
 ;; https://github.com/syl20bnr/evil-lisp-state
 ;; (use-package evil-lisp-state
 ;; :defer t
@@ -387,11 +423,15 @@ _q_: quit
 ;; (defun synthmacs/load-evil-lisp-state ()
 ;;     "Loads evil-lisp-state lazily"
 ;;   (remove-hook 'prog-mode-hook #'synthmacs/load-evil-lisp-state))
+;; evil-lisp-state:1 ends here
 
+;; [[file:../synthmacs.org::*evil-matchit][evil-matchit:1]]
 (use-package evil-matchit
   :init
   (global-evil-matchit-mode 1))
+;; evil-matchit:1 ends here
 
+;; [[file:../synthmacs.org::*evil-numbers][evil-numbers:1]]
 (use-package evil-numbers
   :defer t
   :general
@@ -409,37 +449,44 @@ _q_: quit
   ("+" evil-numbers/inc-at-pt)
   ("-" evil-numbers/dec-at-pt)
   ("q" nil :exit t))
+;; evil-numbers:1 ends here
 
+;; [[file:../synthmacs.org::*evil-surround][evil-surround:1]]
 (use-package evil-surround
   :init
-  ;; `s' for surround instead of `substitute'
-  ;; see motivation here:
-  ;; https://github.com/syl20bnr/spacemacs/blob/develop/doc/DOCUMENTATION.org#the-vim-surround-case
   (evil-define-key 'visual evil-surround-mode-map "s" 'evil-surround-region)
   (evil-define-key 'visual evil-surround-mode-map "S" 'evil-substitute)
   :config
   (global-evil-surround-mode 1))
+;; evil-surround:1 ends here
 
+;; [[file:../synthmacs.org::*evil-textobj-line][evil-textobj-line:1]]
 (use-package evil-textobj-line)
+;; evil-textobj-line:1 ends here
 
+;; [[file:../synthmacs.org::*evil-visual-mark-mode][evil-visual-mark-mode:1]]
 (use-package evil-visual-mark-mode
   :defer t
   :general
   (synthmacs/leader-keys
     "t`" '(evil-visual-mark-mode :wk "visual-mark-mode")))
+;; evil-visual-mark-mode:1 ends here
 
+;; [[file:../synthmacs.org::*evil-visualstar][evil-visualstar:1]]
 (use-package evil-visualstar
   :commands (evil-visualstar/begin-search-forward
              evil-visualstar/begin-search-backward)
   :init
   (define-key evil-visual-state-map (kbd "*") 'evil-visualstar/begin-search-forward)
   (define-key evil-visual-state-map (kbd "#") 'evil-visualstar/begin-search-backward))
+;; evil-visualstar:1 ends here
 
+;; [[file:../synthmacs.org::*evil-vimish-fold][evil-vimish-fold:1]]
 ;; Evil-Vimish-Fold - https://github.com/alexmurray/evil-vimish-fold
 ;;(use-package evil-vimish-fold
 ;;  :after vimish-fold
 ;;  :hook ((prog-mode conf-mode text-mode) . evil-vimish-fold-mode))
-;; Evil:1 ends here
+;; evil-vimish-fold:1 ends here
 
 ;; [[file:../synthmacs.org::*synthmacs-general-evil][synthmacs-general-evil:1]]
 (provide 'synthmacs-general-evil)
