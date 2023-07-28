@@ -1,4 +1,3 @@
-;; [[file:../synthmacs.org::*LSP][LSP:1]]
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :init
@@ -18,9 +17,7 @@
 ;; optionally if you want to use debugger
 ;; (use-package dap-mode)
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
-;; LSP:1 ends here
 
-;; [[file:../synthmacs.org::*Corfu][Corfu:1]]
 (use-package corfu
   :straight (corfu :files (:defaults "extensions/*")
 		   :includes (corfu-popupinfo))
@@ -80,21 +77,15 @@
   (kind-icon-default-face 'corfu-default) ; to compute blended backgrounds correctly
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
-;; Corfu:1 ends here
 
-;; [[file:../synthmacs.org::*Flycheck][Flycheck:1]]
 (use-package flycheck
   :init (global-flycheck-mode))
-;; Flycheck:1 ends here
 
-;; [[file:../synthmacs.org::*iMenu][iMenu:1]]
 (use-package imenu-list)
 
 (synthmacs/leader-keys
   "ti" '(imenu-list-smart-toggle :wx "imenu-list-smart-toggle"))
-;; iMenu:1 ends here
 
-;; [[file:../synthmacs.org::*Snippets][Snippets:1]]
 (use-package yasnippet)
 
 ;; (yas-reload-all)
@@ -102,9 +93,7 @@
 
 (use-package yasnippet-snippets)
 (use-package common-lisp-snippets)
-;; Snippets:1 ends here
 
-;; [[file:../synthmacs.org::*Treesitter][Treesitter:1]]
 (require 'treesit)
 
 (use-package tree-sitter-langs)
@@ -201,9 +190,6 @@
 ;; 	  (lambda () (if (treesit-ready-p 'bash t)
 ;; 		    (bash-ts-mode)
 ;; 		  (sh-mode))))
-;; Treesitter:1 ends here
 
-;; [[file:../synthmacs.org::*synthmacs-programming][synthmacs-programming:1]]
 (provide 'synthmacs-programming)
 ;;; synthmacs-programming.el ends here
-;; synthmacs-programming:1 ends here

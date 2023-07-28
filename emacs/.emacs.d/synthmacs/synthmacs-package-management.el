@@ -1,4 +1,3 @@
-;; [[file:../synthmacs.org::*Bootstrap Straight and straight-use-package][Bootstrap Straight and straight-use-package:1]]
 (setq straight-repository-branch "develop")
 (setq straight-use-package-by-default t)
 ;; (setq straight-recipes-gnu-elpa-use-mirror t)
@@ -23,9 +22,6 @@
 
 ;; Install use-package
 (straight-use-package 'use-package)
-;; Bootstrap Straight and straight-use-package:1 ends here
 
-;; [[file:../synthmacs.org::*synthmacs-package-management][synthmacs-package-management:1]]
 (provide 'synthmacs-package-management)
 ;;; synthmacs-package-management.el ends here
-;; synthmacs-package-management:1 ends here

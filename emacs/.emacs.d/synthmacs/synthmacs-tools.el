@@ -1,4 +1,3 @@
-;; [[file:../synthmacs.org::*Helpful][Helpful:1]]
 (use-package helpful
   :general
   (synthmacs/leader-keys
@@ -7,14 +6,10 @@
     "hf" '(helpful-callable :wk "describe-function")
     "hk" '(helpful-key :wk "describe-key")
     "hv" '(helpful-variable :wk "describe-variable")))
-;; Helpful:1 ends here
 
-;; [[file:../synthmacs.org::*Rg][Rg:1]]
 (use-package rg
   :ensure-system-package rg)
-;; Rg:1 ends here
 
-;; [[file:../synthmacs.org::*Projectile][Projectile:1]]
 (use-package projectile
   :diminish
   :general
@@ -33,9 +28,7 @@
   (setq projectile-switch-project-action #'projectile-dired))
 
 (use-package consult-projectile)
-;; Projectile:1 ends here
 
-;; [[file:../synthmacs.org::*Git/VCS Integration][Git/VCS Integration:1]]
 (use-package magit
   ;; :custom
   ;; (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
@@ -65,16 +58,11 @@
   "gf" '(magit-file-dispatch :wk "magit-file-dispatch")
   "gh" '(magit-info :wk "magit-help")
   "gi" '(magit-init :wk "magit-init"))
-;; Git/VCS Integration:1 ends here
 
-;; [[file:../synthmacs.org::*WS-Butler][WS-Butler:1]]
 (use-package ws-butler
   :init
   ;; (ws-butler-global-mode 1)
   (add-hook 'prog-mode-hook #'ws-butler-mode))
-;; WS-Butler:1 ends here
 
-;; [[file:../synthmacs.org::*synthmacs-tools][synthmacs-tools:1]]
 (provide 'synthmacs-tools)
 ;;; synthmacs-tools.el ends here
-;; synthmacs-tools:1 ends here
