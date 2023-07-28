@@ -5,13 +5,14 @@
 #+OPTIONS: auto-id:t
 #+OPTIONS: broken-links:t
 #+OPTIONS: tags:nil
-#+OPTIONS: toc
+#+OPTIONS: toc:3
 #+ROPERTY: header-args:emacs-lisp :comments link
 
 * TABLE OF CONTENTS :toc:
 :PROPERTIES:
 :CUSTOM_ID: h:D9FC65D1-4FFB-4344-B8A7-9FAA9D1AC040
 :END:
+
 - [[#introduction][Introduction]]
   - [[#what-is-a-synthmacs][What is a ~Synthmacs~?]]
   - [[#about-synthmacsorg][About ~synthmacs.org~]]
@@ -80,6 +81,7 @@
   - [[#helpful][Helpful]]
   - [[#projectile][Projectile]]
   - [[#rg][Rg]]
+  - [[#undo-fu][undo-fu]]
   - [[#ws-butler][WS-Butler]]
 - [[#programming-environment][Programming Environment]]
   - [[#lsp][LSP]]
@@ -1478,7 +1480,7 @@ I'm a Vim motion devotee. Thus, we'll make Synthmacs behave like Vim, when it co
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
   (setq evil-want-C-i-jump t)
-  (setq evil-undo-system 'undo-redo)
+  (setq evil-undo-system 'undo-fu)
   (setq evil-search-module 'evil-search)
   (setq evil-ex-search-persistent-highlight t)
   (setq evil-vsplit-window-right t)
@@ -3260,15 +3262,34 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
 :PROPERTIES:
 :CUSTOM_ID: h:4B6D88C2-0393-4462-9C06-37BD9160B415
 :END:
+
+*** corfu
+:PROPERTIES:
+:CUSTOM_ID: h:D4533EA4-E94F-4A6D-98D9-4B02123AC78B
+:END:
+Corfu is the completion framework while writing code.
 #+begin_src emacs-lisp
 (use-package corfu
   :straight (corfu :files (:defaults "extensions/*")
 		   :includes (corfu-popupinfo))
-  :hook (corfu-mode . corfu-popupinfo-mode)
-  ;; Optional customizations
+  :hook ((prog-mode . corfu-mode)
+	 (org-mode . corfu-mode)
+	 (corfu-mode . corfu-popupinfo-mode))
+  :bind
+  (:map corfu-map
+	("C-d" . corfu-popupinfo-scroll-down)
+	("C-u" . corfu-popupinfo-scroll-up)
+	("C-i" . corfu-popupinfo-toggle))
+  :general
+  (synthmacs/leader-keys
+    "ta" '(global-corfu-mode :wk "auto-completion"))
+  :init
+  (setq corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
+  (setq corfu-auto t)                 ;; Enable auto completion
+  (setq corfu-min-width 80)
+  (setq corfu-max-width corfu-min-width)
+  
   :custom
-  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
-  (corfu-auto t)                 ;; Enable auto completion
   ;; (corfu-auto-delay 0.0)
   ;; (corfu-auto-prefix 0)
   (corfu-separator ?\s)          ;; Orderless field separator
@@ -3278,27 +3299,19 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
   ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
   ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
   ;; (corfu-scroll-margin 5)        ;; Use scroll margin
-
-  ;; Enable Corfu only for certain modes.
-  ;; :hook ((prog-mode . corfu-mode)
-  ;;        (shell-mode . corfu-mode)
-  ;;        (eshell-mode . corfu-mode))
-
   (corfu-popupinfo-delay 1)
   (corfu-popupinfo-max-height 15)
   ;; Recommended: Enable Corfu globally.
   ;; This is recommended since Dabbrev can be used globally (M-/).
   ;; See also `corfu-exclude-modes'.
-  :general
-  (synthmacs/leader-keys
-  "ta" '(global-corfu-mode :wk "auto-completion"))
-  :init
-  (global-corfu-mode)
-  :config
-  (keymap-set corfu-map "C-d" 'corfu-popupinfo-scroll-down)
-  (keymap-set corfu-map "C-u" 'corfu-popupinfo-scroll-up)
-  (keymap-set corfu-map "C-i" 'corfu-popupinfo-toggle))
+  )
+#+end_src
 
+*** Emacs & Corfu
+:PROPERTIES:
+:CUSTOM_ID: h:5B941926-1EC3-46AC-BBF9-B50C51D7950F
+:END:
+#+begin_src emacs-lisp
 ;; A few more useful configurations...
 (use-package emacs
   :init
@@ -3314,10 +3327,21 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
   ;; `completion-at-point' is often bound to M-TAB.
   (setq tab-always-indent 'complete))
 
+#+end_src
+
+*** kind-icon
+:PROPERTIES:
+:CUSTOM_ID: h:EC56AC02-E4A3-4EC1-9CA2-8FD69A2DC6B7
+:END:
+Icons in corfu? Yes please.
+#+begin_src emacs-lisp
 (use-package kind-icon
   :after corfu
-  :custom
-  (kind-icon-default-face 'corfu-default) ; to compute blended backgrounds correctly
+  :demand
+  :init
+  (setq kind-icon-default-face 'corfu-default) ; to compute blended backgrounds correctly
+  (setq kind-icon-blend-background nil)
+  (setq kind-icon-blend-frac 0.08)
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 #+end_src
@@ -3364,36 +3388,76 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
 :PROPERTIES:
 :CUSTOM_ID: h:38F6723F-CA92-401B-BE94-8130078BAD7E
 :END:
+
+*** Magit
+:PROPERTIES:
+:CUSTOM_ID: h:A8A112D1-5F39-4624-993C-FCB9945BFA3E
+:END:
+*The* killer feature for Emacs?
 #+begin_src emacs-lisp
 (use-package magit
   ;; :custom
   ;; (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
   :general
   (synthmacs/leader-keys
-    "gs" '(magit-status :wk "magit-status")))
+    "gb" 'magit-blame-addition
+    "gc" 'magit-clone
+    "gd" 'magit-dispatch
+    "gf" 'magit-file-dispatch
+    "gh" 'magit-info
+    "gi" 'magit-init
+    "gl" 'magit-log
+    "gs" 'magit-status)
+  (general-nmap
+    :keymaps '(magit-status-mode-map
+	       magit-stash-mode-map
+               magit-revision-mode-map
+               magit-process-mode-map
+               magit-diff-mode-map)
+    "TAB" #'magit-section-toggle
+    "<escape>" #'transient-quit-one)
+  :init
+  (setq magit-log-arguments '("--graph" "--decorate" "--color"))
+  (setq git-commit-fill-column 72)
+  :config
+  (evil-define-key* '(normal visual) magit-mode-map
+    "zz" #'evil-scroll-line-to-center)
+  )
+  #+end_src
+
+*** Forge
+:PROPERTIES:
+:CUSTOM_ID: h:1F20D642-C0E7-4390-A881-9E9EE153D2E8
+:END:
+#+begin_src emacs-lisp
 
 ;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
 ;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started
 ;; (use-package forge)
+#+end_src
 
+*** git-gutter
+:PROPERTIES:
+:CUSTOM_ID: h:38246314-1E80-406F-A981-53092B7DF6FC
+:END:
+#+begin_src emacs-lisp
 (use-package git-gutter
   :hook (prog-mode . git-gutter-mode)
   :config
   (setq git-gutter:update-interval 0.02))
+#+end_src
 
+*** git-gutter-fringe
+:PROPERTIES:
+:CUSTOM_ID: h:82BEAA64-6A3D-4416-8886-F4C4137722E4
+:END:
+#+begin_src emacs-lisp
 (use-package git-gutter-fringe
   :config
-(define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
-(define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
-(define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
+  (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
 
-(synthmacs/leader-keys
-  "gb" '(magit-blame-addition :wk "magit-blame")
-  "gc" '(magit-clone :wk "magit-clone")
-  "gd" '(magit-dispatch :wk "magit-dispatch")
-  "gf" '(magit-file-dispatch :wk "magit-file-dispatch")
-  "gh" '(magit-info :wk "magit-help")
-  "gi" '(magit-init :wk "magit-init"))
 #+end_src
 
 ** Helpful
@@ -3417,6 +3481,7 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
 :END:
 #+begin_src emacs-lisp
 (use-package projectile
+  :demand
   :diminish
   :general
   (synthmacs/leader-keys
@@ -3425,13 +3490,51 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
     "pp" '(projectile-switch-project :wk "projectile-switch-project")
     "pr" '(projectile-recentf :wk "projectile-recentf")
     "pm" '(projectile-command-map :wk "projectile menu"))
-  :custom ((projectile-completion-system 'auto))
   :init
+  (setq projectile-completion-system 'auto)
+  (setq projectile-project-root-files '(".envrc" ".projectile" "project.clj" "deps.edn"))
+  (setq projectile-switch-project-action 'projectile-commander)
+  ;; Do not include straight repos (emacs packages) to project list
+  (setq projectile-ignored-project-function
+        (lambda (project-root)
+          (string-prefix-p (expand-file-name "straight/" user-emacs-directory) project-root)))
+  :config
   (projectile-mode +1)
   ;; NOTE: Set this to the folder where you keep your Git repos!
   (when (file-directory-p "~/Developer")
     (setq projectile-project-search-path '("~/Developer")))
-  (setq projectile-switch-project-action #'projectile-dired))
+  (setq projectile-switch-project-action #'projectile-dired)
+  ;; projectile commander methods
+  (setq projectile-commander-methods nil)
+  (def-projectile-commander-method ?? "Commander help buffer."
+				   (ignore-errors (kill-buffer projectile-commander-help-buffer))
+				   (with-current-buffer (get-buffer-create projectile-commander-help-buffer)
+				     (insert "Projectile Commander Methods:\n\n")
+				     (dolist (met projectile-commander-methods)
+				       (insert (format "%c:\t%s\n" (car met) (cadr met))))
+				     (goto-char (point-min))
+				     (help-mode)
+				     (display-buffer (current-buffer) t))
+				   (projectile-commander))
+  (def-projectile-commander-method ?t
+				   "Open a *shell* buffer for the project."
+				   (projectile-run-vterm))
+  (def-projectile-commander-method ?\C-? ;; backspace
+				   "Go back to project selection."
+				   (projectile-switch-project))
+  (def-projectile-commander-method ?d
+				   "Open project root in dired."
+				   (projectile-dired))
+  (def-projectile-commander-method ?f
+				   "Find file in project."
+				   (projectile-find-file))
+  (def-projectile-commander-method ?s
+				   "Ripgrep in project."
+				   (consult-ripgrep))
+  (def-projectile-commander-method ?g
+				   "Git status in project."
+				   (projectile-vc))
+  )
 
 (use-package consult-projectile)
 #+end_src
@@ -3443,6 +3546,20 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
 #+begin_src emacs-lisp
 (use-package rg
   :ensure-system-package rg)
+#+end_src
+
+** undo-fu
+:PROPERTIES:
+:CUSTOM_ID: h:89E5605D-6D37-4912-850A-3B10C21F6F0A
+:END:
+#+begin_src emacs-lisp
+(use-package undo-fu
+  :demand
+  :general
+  (:states 'normal
+           "u" 'undo-fu-only-undo
+           "s-z" 'undo-fu-only-undo
+           "\C-r" 'undo-fu-only-redo))
 #+end_src
 
 ** WS-Butler
@@ -3530,7 +3647,14 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
 :END:
 #+begin_src emacs-lisp
 (require 'treesit)
+#+end_src
 
+*** Treesitter languages
+:PROPERTIES:
+:CUSTOM_ID: h:3AF9D17A-2060-42DA-8F0E-BD28BA742A2A
+:END:
+You can either build your own languages, or you can use pre-built. For now, let's use pre-built ones.
+#+begin_src emacs-lisp
 (use-package tree-sitter-langs)
 
 ;; Load the language bundle
