@@ -67,23 +67,6 @@
   "gi" '(magit-init :wk "magit-init"))
 ;; Git/VCS Integration:1 ends here
 
-;; [[file:../synthmacs.org::*Dashboard][Dashboard:1]]
-(use-package dashboard
-  :init
-  (setq dashboard-startup-banner "~/.dotfiles/emacs/.emacs.d/synthmacs/assets/logo.txt")
-  (setq dashboard-banner-logo-title "adudenamedruby's Emacs")
-  (setq dashboard-center-content t)
-  ;; (setq dashboard-icon-type 'all-the-icons)
-  (setq dashboard-set-heading-icons t)
-  (setq dashboard-set-file-icons t)
-  (setq dashboard-set-init-info t)
-  (setq dashboard-items '((recents  . 5)
-			  (projects . 5)))
-  :config
-  (dashboard-setup-startup-hook)
-  (setq dashboard-projects-backend 'projectile))
-;; Dashboard:1 ends here
-
 ;; [[file:../synthmacs.org::*WS-Butler][WS-Butler:1]]
 (use-package ws-butler
   :init

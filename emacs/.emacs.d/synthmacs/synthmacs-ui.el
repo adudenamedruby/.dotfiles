@@ -1,7 +1,7 @@
 ;; [[file:../synthmacs.org::*nerd-icons][nerd-icons:1]]
-(setq nerd-icons-scale-factor 1.2)
-
 (use-package nerd-icons
+  :init
+  (setq nerd-icons-scale-factor 1.2)
   :custom
   ;; The Nerd Font you want to use in GUI
   ;; "Symbols Nerd Font Mono" is the default and is recommended
@@ -24,7 +24,7 @@
   (all-the-icons-completion-mode))
 ;; all-the-icons-completion:1 ends here
 
-;; [[file:../synthmacs.org::*Themes][Themes:1]]
+;; [[file:../synthmacs.org::*A variety of themes][A variety of themes:1]]
 (use-package doom-themes
   :config
   ;; Global settings (defaults)
@@ -64,13 +64,15 @@
 (use-package soothe-theme)
 (use-package subatomic-theme)
 (use-package sublime-themes)
+;; A variety of themes:1 ends here
 
+;; [[file:../synthmacs.org::*solaire-mode][solaire-mode:1]]
 (use-package solaire-mode
   :init
   (solaire-global-mode +1))
+;; solaire-mode:1 ends here
 
-
-;;; Functions:
+;; [[file:../synthmacs.org::*Theme functions][Theme functions:1]]
 (defvar synthmacs--fallback-theme 'kaolin-bubblegum
   "Fallback theme if user theme cannot be applied.")
 
@@ -179,7 +181,7 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   ("q" nil :exit t))
 
 (synthmacs/load-random-theme)
-;; Themes:1 ends here
+;; Theme functions:1 ends here
 
 ;; [[file:../synthmacs.org::*Navigation][Navigation:1]]
 (use-package winum
@@ -224,21 +226,44 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   :hook (doom-modeline-mode . minions-mode))
 
 (use-package doom-modeline
+  :demand
   :init (doom-modeline-mode 1)
   :config
-  (setq doom-modeline-height 45
-	doom-modeline-project-detection 'auto
-	doom-modeline-icon t
-	doom-modeline-major-mode-icon t
-	doom-modeline-major-mode-color-icon t
-	doom-modeline-buffer-state-icon t
-	doom-modeline-buffer-modification-icon t
-	doom-modeline-time-icon nil
-	doom-modeline-buffer-encoding t
-	doom-modeline-vcs-max-length 15
-	doom-modeline-lsp t
-	doom-modeline-modal-icon t))
+  (setq doom-modeline-height 45)
+  (setq doom-modeline-project-detection 'projectile)
+  (setq doom-modeline-icon t)
+  (setq doom-modeline-major-mode-icon t)
+  (setq doom-modeline-major-mode-color-icon t)
+  (setq doom-modeline-buffer-state-icon t)
+  (setq doom-modeline-buffer-modification-icon t)
+  (setq doom-modeline-time-icon nil)
+  (setq doom-modeline-buffer-encoding t)
+  (setq doom-modeline-vcs-max-length 15)
+  (setq doom-modeline-lsp t)
+  (setq doom-modeline-modal-icon t)
+  )
 ;; Modeline:1 ends here
+
+;; [[file:../synthmacs.org::*Dashboard][Dashboard:1]]
+(use-package dashboard
+  :demand
+  :init
+  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+  (setq dashboard-center-content t)
+  (setq dashboard-startup-banner "~/.dotfiles/emacs/.emacs.d/synthmacs/assets/logo.txt")
+  (setq dashboard-banner-logo-title "adudenamedruby's Emacs")
+  ;; (setq dashboard-icon-type 'all-the-icons)
+  (setq dashboard-projects-backend 'projectile)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-set-init-info t)
+  (setq dashboard-items '((recents  . 5)
+			  (projects . 5)))
+  (setq dashboard-set-navigator t)
+  :config
+  (dashboard-setup-startup-hook)
+)
+;; Dashboard:1 ends here
 
 ;; [[file:../synthmacs.org::*which-key][which-key:1]]
 (setq which-key-idle-delay 0.4)
@@ -275,11 +300,30 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 	which-key-replacement-alist))
 ;; which-key:1 ends here
 
-;; [[file:../synthmacs.org::*rainbow][rainbow:1]]
-;; https://github.com/Fanael/rainbow-delimiters
+;; [[file:../synthmacs.org::*rainbow-delimiters][rainbow-delimiters:1]]
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
-;; rainbow:1 ends here
+;; rainbow-delimiters:1 ends here
+
+;; [[file:../synthmacs.org::*Popup management][Popup management:1]]
+(use-package emacs
+  :init
+  (setq display-buffer-alist
+        `((,(rx bos (or "*Apropos*" "*Help*" "*helpful" "*info*" "*Summary*") (0+ not-newline))
+           (display-buffer-reuse-mode-window display-buffer-below-selected)
+           (window-height . 0.33)
+           (mode apropos-mode help-mode helpful-mode Info-mode Man-mode))))
+  )
+;; Popup management:1 ends here
+
+;; [[file:../synthmacs.org::*centered-cursor-mode][centered-cursor-mode:1]]
+(use-package centered-cursor-mode
+  :general
+  (synthmacs/leader-keys
+   "t=" '((lambda () (interactive) (centered-cursor-mode 'toggle)) :wk "center cursor")
+   )
+  )
+;; centered-cursor-mode:1 ends here
 
 ;; [[file:../synthmacs.org::*synthmacs-ui][synthmacs-ui:1]]
 (provide 'synthmacs-ui)

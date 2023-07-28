@@ -30,6 +30,9 @@
   - [[#custom-variables][Custom variables]]
   - [[#fonts][Fonts]]
   - [[#free-functions][Free Functions]]
+  - [[#garbage-collector-magic-hack][Garbage collector magic hack]]
+  - [[#no-littering][no-littering]]
+  - [[#auto-pair-paranthesis][Auto-pair paranthesis]]
   - [[#xref][xref]]
 - [[#keybindings-general--evil-mode][Keybindings: General & EVIL mode]]
   - [[#general][General]]
@@ -42,18 +45,24 @@
   - [[#enabling-the-table-of-contents][Enabling the Table of Contents]]
   - [[#org-reverse-datetree][org reverse datetree]]
   - [[#org-superstar][org-superstar]]
+  - [[#cycle-only-one-heading][Cycle only one heading]]
   - [[#using-org-id-in-links][Using org-id in links]]
   - [[#org-babel][org-babel]]
   - [[#tangling-this-file][Tangling this file]]
+  - [[#org-tree-slide][org-tree-slide]]
   - [[#evil-org-mode][evil-org-mode]]
   - [[#org-appear][org-appear]]
+  - [[#org-roam][org-roam]]
 - [[#ui][UI]]
   - [[#icons][Icons]]
   - [[#themes][Themes]]
   - [[#navigation][Navigation]]
   - [[#modeline][Modeline]]
+  - [[#dashboard][Dashboard]]
   - [[#which-key][which-key]]
-  - [[#rainbow][rainbow]]
+  - [[#rainbow-delimiters][rainbow-delimiters]]
+  - [[#popup-management][Popup management]]
+  - [[#centered-cursor-mode][centered-cursor-mode]]
 - [[#completion-framework][Completion framework]]
   - [[#vertico][Vertico]]
   - [[#orderless][Orderless]]
@@ -65,11 +74,11 @@
   - [[#rg][Rg]]
   - [[#projectile][Projectile]]
   - [[#gitvcs-integration][Git/VCS Integration]]
-  - [[#dashboard][Dashboard]]
   - [[#ws-butler][WS-Butler]]
 - [[#programming-environment][Programming Environment]]
   - [[#lsp][LSP]]
   - [[#corfu][Corfu]]
+  - [[#dirvish][Dirvish]]
   - [[#flycheck][Flycheck]]
   - [[#imenu][iMenu]]
   - [[#snippets][Snippets]]
@@ -161,7 +170,7 @@ Another drawback is that a big configuration can be slow to tangle and tangling 
 Let's consider some of the benefits:
 - People can read this file on Github pretty easily. It's how I learned a lot about Emacs, and I think the trade is worthwhile to give back.
 - I can comfortably document my configuration (and not from within comments), include links, ~sh~ code blocks, etc.
-- I can organize my configuration blocks in sections, easily disable some headings with ~COMMENT~, and other ~org-mode~ nicieties.
+- I can organize my configuration blocks in sections, easily disable some headings with ~COMMENT~ if I so need, as well as prevent some block from tangling if I have ~:tangle no~ added to the source block
 
 ** Synthmacs "modules"
 :PROPERTIES:
@@ -980,26 +989,26 @@ folder; otherwise, delete a character backwards."
 
 #+end_src
 
-** COMMENT Garbage collector magic hack
+** Garbage collector magic hack
 :PROPERTIES:
 :CUSTOM_ID: h:42E8D107-2954-49CB-8E38-33CF300BABDE
 :END:
 Inspired by DOOMs use of this to manage garbage collection
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (use-package gcmh
   :demand
   :config
   (gcmh-mode 1))
 #+end_src
 
-** COMMENT no-littering
+** no-littering
 :PROPERTIES:
 :CUSTOM_ID: h:23600A76-1CDE-48FE-9024-163E861F2F0C
 :END:
 Basically tries to clean up the ~emacs.d~ directory by creating consistent placement for files.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (use-package no-littering
   :demand
   :config
@@ -1009,13 +1018,13 @@ Basically tries to clean up the ~emacs.d~ directory by creating consistent place
   )
 #+end_src
 
-** COMMENT Auto-pair paranthesis
+** Auto-pair paranthesis
 :PROPERTIES:
 :CUSTOM_ID: h:7B34AC43-8F07-4754-9360-0592CBDBAF9F
 :END:
 In programming, missing parens and the like are a pain to track down. Let's automate some of that to decrease the likely hood of this actually happening.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (use-package emacs
   :hook
   ((org-mode . (lambda () (synthmacs/add-local-electric-pairs '(;(?= . ?=)
@@ -1896,11 +1905,12 @@ Make stars for headings into fun symbols!
   )
 #+end_src
 
-** COMMENT Cycle only one heading
+** Cycle only one heading
 :PROPERTIES:
 :CUSTOM_ID: h:681606B7-B88E-48E9-911E-D5D398D89049
 :END:
-#+begin_src emacs-lisp
+
+#+begin_src emacs-lisp :tangle no
 (use-package org
   :init
   (defun +org-cycle-only-current-subtree-h (&optional arg)
@@ -1908,7 +1918,7 @@ Make stars for headings into fun symbols!
 `org-cycle's standard behavior is to cycle between three levels: collapsed,
 subtree and whole document. This is slow, especially in larger org buffer. Most
 of the time I just want to peek into the current subtree -- at most, expand
-*only* the current subtree.
+,*only* the current subtree.
 
 All my (performant) foldings needs are met between this and `org-show-subtree'
 (on zO for evil users), and `org-cycle' on shift-TAB if I need it."
@@ -2065,20 +2075,20 @@ Taken from https://github.com/KaratasFurkan/.emacs.d
   )
 #+end_src
 
-** COMMENT org-tree-slide
+** org-tree-slide
 :PROPERTIES:
 :CUSTOM_ID: h:A404F880-F610-43AB-BD53-7E5C7A026B43
 :END:
 A presentation mode for org-mode
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (use-package org-tree-slide
   :after org
   :hook ((org-tree-slide-play . (lambda () (+remap-faces-at-start-present)))
          (org-tree-slide-stop . (lambda () (+remap-faces-at-stop-present))))
   :general
   (lc/leader-keys
-    "t p" '(org-tree-slide-mode :wk "present"))
+   "t p" '(org-tree-slide-mode :wk "present"))
   (general-nmap
     :keymaps '(org-tree-slide-mode-map org-mode-map)
     "C-j" 'org-tree-slide-move-next-tree
@@ -2266,13 +2276,13 @@ Automatically displays emphasis markers and links when the cursor is on them.
   )
 #+end_src
 
-** COMMENT org-roam
+** org-roam
 :PROPERTIES:
 :CUSTOM_ID: h:37777EDB-7144-42DF-907B-506383270BA0
 :END:
 Instead of Obsidian, let's use org roam?
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (use-package org-roam
   :after org
   :init
@@ -2317,6 +2327,7 @@ Instead of Obsidian, let's use org roam?
 :CUSTOM_ID: h:EA84335B-2A51-4B4A-9392-F116289EDB10
 :header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-ui.el
 :END:
+Here I'll be setting up my UI stuff. These are UI nicities, really, and not "needed". The basic setup of UI stuff took place in the [[#h:3D38D8F0-1B85-4265-9941-77A3A2FA235B][Core Emacs Setup]] section.
 
 ** Icons
 :PROPERTIES:
@@ -2327,10 +2338,11 @@ Instead of Obsidian, let's use org roam?
 :PROPERTIES:
 :CUSTOM_ID: h:1D9C5C8C-C62C-4932-A78B-64872690FA64
 :END:
-#+begin_src emacs-lisp
-(setq nerd-icons-scale-factor 1.2)
 
+#+begin_src emacs-lisp
 (use-package nerd-icons
+  :init
+  (setq nerd-icons-scale-factor 1.2)
   :custom
   ;; The Nerd Font you want to use in GUI
   ;; "Symbols Nerd Font Mono" is the default and is recommended
@@ -2342,6 +2354,7 @@ Instead of Obsidian, let's use org roam?
 :PROPERTIES:
 :CUSTOM_ID: h:3A8C1F48-071A-41FF-A4D6-E8B860D1AD6E
 :END:
+
 #+begin_src emacs-lisp
 (use-package all-the-icons
   :if (display-graphic-p)
@@ -2365,6 +2378,11 @@ Instead of Obsidian, let's use org roam?
 ** Themes
 :PROPERTIES:
 :CUSTOM_ID: h:07174251-A9E9-47E8-8AF3-AD5013CAC793
+:END:
+
+*** A variety of themes
+:PROPERTIES:
+:CUSTOM_ID: h:E8C6687E-0721-4F9C-AB46-D091401C3312
 :END:
 #+begin_src emacs-lisp
 (use-package doom-themes
@@ -2406,13 +2424,24 @@ Instead of Obsidian, let's use org roam?
 (use-package soothe-theme)
 (use-package subatomic-theme)
 (use-package sublime-themes)
+#+end_src
 
+*** solaire-mode
+:PROPERTIES:
+:CUSTOM_ID: h:49441D6C-6408-484B-91C9-8516B9A33B0B
+:END:
+
+#+begin_src emacs-lisp
 (use-package solaire-mode
   :init
   (solaire-global-mode +1))
+#+end_src
 
-
-;;; Functions:
+*** Theme functions
+:PROPERTIES:
+:CUSTOM_ID: h:BD6AA932-6150-4DD5-B27D-B35286DD7230
+:END:
+#+begin_src emacs-lisp
 (defvar synthmacs--fallback-theme 'kaolin-bubblegum
   "Fallback theme if user theme cannot be applied.")
 
@@ -2521,7 +2550,6 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   ("q" nil :exit t))
 
 (synthmacs/load-random-theme)
-
 #+end_src
 
 ** Navigation
@@ -2545,7 +2573,6 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   (setq winum-auto-setup-mode-line nil
 	winum-ignored-buffers '(" *which-key*"))
   (winum-mode))
-
 #+end_src
 
 *** ace-window
@@ -2584,20 +2611,49 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   :hook (doom-modeline-mode . minions-mode))
 
 (use-package doom-modeline
+  :demand
   :init (doom-modeline-mode 1)
   :config
-  (setq doom-modeline-height 45
-	doom-modeline-project-detection 'auto
-	doom-modeline-icon t
-	doom-modeline-major-mode-icon t
-	doom-modeline-major-mode-color-icon t
-	doom-modeline-buffer-state-icon t
-	doom-modeline-buffer-modification-icon t
-	doom-modeline-time-icon nil
-	doom-modeline-buffer-encoding t
-	doom-modeline-vcs-max-length 15
-	doom-modeline-lsp t
-	doom-modeline-modal-icon t))
+  (setq doom-modeline-height 45)
+  (setq doom-modeline-project-detection 'projectile)
+  (setq doom-modeline-icon t)
+  (setq doom-modeline-major-mode-icon t)
+  (setq doom-modeline-major-mode-color-icon t)
+  (setq doom-modeline-buffer-state-icon t)
+  (setq doom-modeline-buffer-modification-icon t)
+  (setq doom-modeline-time-icon nil)
+  (setq doom-modeline-buffer-encoding t)
+  (setq doom-modeline-vcs-max-length 15)
+  (setq doom-modeline-lsp t)
+  (setq doom-modeline-modal-icon t)
+  )
+#+end_src
+
+** Dashboard
+:PROPERTIES:
+:CUSTOM_ID: h:108BED42-7912-45EE-B0BD-364D4479319A
+:END:
+A nicer startup experience than just an empty buffer. Includes a nice useful list of files/projects.
+
+#+begin_src emacs-lisp
+(use-package dashboard
+  :demand
+  :init
+  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+  (setq dashboard-center-content t)
+  (setq dashboard-startup-banner "~/.dotfiles/emacs/.emacs.d/synthmacs/assets/logo.txt")
+  (setq dashboard-banner-logo-title "adudenamedruby's Emacs")
+  ;; (setq dashboard-icon-type 'all-the-icons)
+  (setq dashboard-projects-backend 'projectile)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-set-init-info t)
+  (setq dashboard-items '((recents  . 5)
+			  (projects . 5)))
+  (setq dashboard-set-navigator t)
+  :config
+  (dashboard-setup-startup-hook)
+)
 #+end_src
 
 ** which-key
@@ -2639,14 +2695,45 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 	which-key-replacement-alist))
 #+end_src
 
-** rainbow
+** rainbow-delimiters
 :PROPERTIES:
 :CUSTOM_ID: h:67838E6E-FA0F-4C8A-A56B-1939A6940C6E
 :END:
+
 #+begin_src emacs-lisp
-;; https://github.com/Fanael/rainbow-delimiters
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
+#+end_src
+
+** Popup management
+:PROPERTIES:
+:CUSTOM_ID: h:EA42A190-FB24-4B06-9E3E-C6EBDD23BD5B
+:END:
+Taken from [[https://emacs.stackexchange.com/questions/46210/reuse-help-window][this stackexchange answer]].
+
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
+  (setq display-buffer-alist
+        `((,(rx bos (or "*Apropos*" "*Help*" "*helpful" "*info*" "*Summary*") (0+ not-newline))
+           (display-buffer-reuse-mode-window display-buffer-below-selected)
+           (window-height . 0.33)
+           (mode apropos-mode help-mode helpful-mode Info-mode Man-mode))))
+  )
+#+end_src
+
+** centered-cursor-mode
+:PROPERTIES:
+:CUSTOM_ID: h:097E7F3B-CCB0-4B8F-887F-01A6101AB77E
+:END:
+Sometimes, I want my cursor to be stuck in the center!
+#+begin_src emacs-lisp
+(use-package centered-cursor-mode
+  :general
+  (synthmacs/leader-keys
+   "t=" '((lambda () (interactive) (centered-cursor-mode 'toggle)) :wk "center cursor")
+   )
+  )
 #+end_src
 
 * Completion framework
@@ -3103,31 +3190,11 @@ targets."
   "gi" '(magit-init :wk "magit-init"))
 #+end_src
 
-** Dashboard
-:PROPERTIES:
-:CUSTOM_ID: h:108BED42-7912-45EE-B0BD-364D4479319A
-:END:
-#+begin_src emacs-lisp
-(use-package dashboard
-  :init
-  (setq dashboard-startup-banner "~/.dotfiles/emacs/.emacs.d/synthmacs/assets/logo.txt")
-  (setq dashboard-banner-logo-title "adudenamedruby's Emacs")
-  (setq dashboard-center-content t)
-  ;; (setq dashboard-icon-type 'all-the-icons)
-  (setq dashboard-set-heading-icons t)
-  (setq dashboard-set-file-icons t)
-  (setq dashboard-set-init-info t)
-  (setq dashboard-items '((recents  . 5)
-			  (projects . 5)))
-  :config
-  (dashboard-setup-startup-hook)
-  (setq dashboard-projects-backend 'projectile))
-#+end_src
-
 ** WS-Butler
 :PROPERTIES:
 :CUSTOM_ID: h:C8E39F4E-D75F-4031-8205-F1A7F865B91A
 :END:
+
 #+begin_src emacs-lisp
 (use-package ws-butler
   :init
@@ -3233,11 +3300,12 @@ targets."
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 #+end_src
 
-** COMMENT Dirvish
+** Dirvish
 :PROPERTIES:
 :CUSTOM_ID: h:895ADECA-8F1A-4FBB-A930-871EE0B6D4D8
 :END:
-#+begin_src emacs-lisp
+
+#+begin_src emacs-lisp :tangle no
 (use-package dirvish
   :init
   (dirvish-override-dired-mode)
