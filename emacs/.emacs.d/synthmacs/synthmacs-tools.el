@@ -1,34 +1,3 @@
-(use-package helpful
-  :general
-  (synthmacs/leader-keys
-    "h." '(helpful-at-point :wk "helpful-at-point")
-    "hc" '(helpful-command :wk "describe-command")
-    "hf" '(helpful-callable :wk "describe-function")
-    "hk" '(helpful-key :wk "describe-key")
-    "hv" '(helpful-variable :wk "describe-variable")))
-
-(use-package rg
-  :ensure-system-package rg)
-
-(use-package projectile
-  :diminish
-  :general
-  (synthmacs/leader-keys
-    "pf" '(projectile-find-file :wk "projectile-find-file")
-    "pk" '(projectile-kill-buffers :wk "projectile-kill-buffers")
-    "pp" '(projectile-switch-project :wk "projectile-switch-project")
-    "pr" '(projectile-recentf :wk "projectile-recentf")
-    "pm" '(projectile-command-map :wk "projectile menu"))
-  :custom ((projectile-completion-system 'auto))
-  :init
-  (projectile-mode +1)
-  ;; NOTE: Set this to the folder where you keep your Git repos!
-  (when (file-directory-p "~/Developer")
-    (setq projectile-project-search-path '("~/Developer")))
-  (setq projectile-switch-project-action #'projectile-dired))
-
-(use-package consult-projectile)
-
 (use-package magit
   ;; :custom
   ;; (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
@@ -58,6 +27,37 @@
   "gf" '(magit-file-dispatch :wk "magit-file-dispatch")
   "gh" '(magit-info :wk "magit-help")
   "gi" '(magit-init :wk "magit-init"))
+
+(use-package helpful
+  :general
+  (synthmacs/leader-keys
+    "h." '(helpful-at-point :wk "helpful-at-point")
+    "hc" '(helpful-command :wk "describe-command")
+    "hf" '(helpful-callable :wk "describe-function")
+    "hk" '(helpful-key :wk "describe-key")
+    "hv" '(helpful-variable :wk "describe-variable")))
+
+(use-package projectile
+  :diminish
+  :general
+  (synthmacs/leader-keys
+    "pf" '(projectile-find-file :wk "projectile-find-file")
+    "pk" '(projectile-kill-buffers :wk "projectile-kill-buffers")
+    "pp" '(projectile-switch-project :wk "projectile-switch-project")
+    "pr" '(projectile-recentf :wk "projectile-recentf")
+    "pm" '(projectile-command-map :wk "projectile menu"))
+  :custom ((projectile-completion-system 'auto))
+  :init
+  (projectile-mode +1)
+  ;; NOTE: Set this to the folder where you keep your Git repos!
+  (when (file-directory-p "~/Developer")
+    (setq projectile-project-search-path '("~/Developer")))
+  (setq projectile-switch-project-action #'projectile-dired))
+
+(use-package consult-projectile)
+
+(use-package rg
+  :ensure-system-package rg)
 
 (use-package ws-butler
   :init

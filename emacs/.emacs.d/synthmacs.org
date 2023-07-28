@@ -68,21 +68,21 @@
   - [[#fill-column--modeline-column-info][Fill column & modeline column info]]
 - [[#completion-framework][Completion framework]]
   - [[#vertico][Vertico]]
-  - [[#orderless][Orderless]]
+  - [[#consult][Consult]]
   - [[#marginalia][Marginalia]]
   - [[#embark][Embark]]
   - [[#embark-consult][embark-consult]]
   - [[#wgrep][wgrep]]
+  - [[#corfu][Corfu]]
 - [[#useful-tools][Useful Tools]]
-  - [[#helpful][Helpful]]
-  - [[#rg][Rg]]
-  - [[#projectile][Projectile]]
+  - [[#dirvish][Dirvish]]
   - [[#gitvcs-integration][Git/VCS Integration]]
+  - [[#helpful][Helpful]]
+  - [[#projectile][Projectile]]
+  - [[#rg][Rg]]
   - [[#ws-butler][WS-Butler]]
 - [[#programming-environment][Programming Environment]]
   - [[#lsp][LSP]]
-  - [[#corfu][Corfu]]
-  - [[#dirvish][Dirvish]]
   - [[#flycheck][Flycheck]]
   - [[#imenu][iMenu]]
   - [[#snippets][Snippets]]
@@ -2933,7 +2933,7 @@ A few more useful Emacs configs for Vectico
   )
 #+end_src
 
-** Orderless
+*** Orderless
 :PROPERTIES:
 :CUSTOM_ID: h:CF8C8DA3-23A3-4CF0-80A9-3DB977BB0182
 :END:
@@ -2948,13 +2948,13 @@ A few more useful Emacs configs for Vectico
         completion-category-overrides '((file (styles partial-completion)))))
 #+end_src
 
-** COMMENT Consult
+** Consult
 :PROPERTIES:
 :CUSTOM_ID: h:AFC23C2A-A17F-4151-A2E7-66D57A2590C2
 :END:
 #+begin_src emacs-lisp
 (use-package consult
-  :command (consult-ripgrep)
+  :commands (consult-ripgrep)
   :general
   (synthmacs/leader-keys
     "/" '(synthmacs/consult-ripgrep :wk "search project")
@@ -3256,141 +3256,6 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
   )
 #+end_src
 
-* Useful Tools
-:PROPERTIES:
-:CUSTOM_ID: h:B57C03F6-2111-489A-9303-B1A06C95EFF5
-:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-tools.el
-:END:
-
-** Helpful
-:PROPERTIES:
-:CUSTOM_ID: h:949B41C1-C4A4-484B-9A6A-76A07DBBFCB1
-:END:
-#+begin_src emacs-lisp
-(use-package helpful
-  :general
-  (synthmacs/leader-keys
-    "h." '(helpful-at-point :wk "helpful-at-point")
-    "hc" '(helpful-command :wk "describe-command")
-    "hf" '(helpful-callable :wk "describe-function")
-    "hk" '(helpful-key :wk "describe-key")
-    "hv" '(helpful-variable :wk "describe-variable")))
-#+end_src
-
-** Rg
-:PROPERTIES:
-:CUSTOM_ID: h:BFB3F21C-B7E7-4057-AF46-5B9C1A6DEF0C
-:END:
-#+begin_src emacs-lisp
-(use-package rg
-  :ensure-system-package rg)
-#+end_src
-
-** Projectile
-:PROPERTIES:
-:CUSTOM_ID: h:1653A50A-82D1-416F-830C-00B886B5A241
-:END:
-#+begin_src emacs-lisp
-(use-package projectile
-  :diminish
-  :general
-  (synthmacs/leader-keys
-    "pf" '(projectile-find-file :wk "projectile-find-file")
-    "pk" '(projectile-kill-buffers :wk "projectile-kill-buffers")
-    "pp" '(projectile-switch-project :wk "projectile-switch-project")
-    "pr" '(projectile-recentf :wk "projectile-recentf")
-    "pm" '(projectile-command-map :wk "projectile menu"))
-  :custom ((projectile-completion-system 'auto))
-  :init
-  (projectile-mode +1)
-  ;; NOTE: Set this to the folder where you keep your Git repos!
-  (when (file-directory-p "~/Developer")
-    (setq projectile-project-search-path '("~/Developer")))
-  (setq projectile-switch-project-action #'projectile-dired))
-
-(use-package consult-projectile)
-#+end_src
-
-** Git/VCS Integration
-:PROPERTIES:
-:CUSTOM_ID: h:38F6723F-CA92-401B-BE94-8130078BAD7E
-:END:
-#+begin_src emacs-lisp
-(use-package magit
-  ;; :custom
-  ;; (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
-  :general
-  (synthmacs/leader-keys
-    "gs" '(magit-status :wk "magit-status")))
-
-;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
-;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started
-;; (use-package forge)
-
-(use-package git-gutter
-  :hook (prog-mode . git-gutter-mode)
-  :config
-  (setq git-gutter:update-interval 0.02))
-
-(use-package git-gutter-fringe
-  :config
-(define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
-(define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
-(define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
-
-(synthmacs/leader-keys
-  "gb" '(magit-blame-addition :wk "magit-blame")
-  "gc" '(magit-clone :wk "magit-clone")
-  "gd" '(magit-dispatch :wk "magit-dispatch")
-  "gf" '(magit-file-dispatch :wk "magit-file-dispatch")
-  "gh" '(magit-info :wk "magit-help")
-  "gi" '(magit-init :wk "magit-init"))
-#+end_src
-
-** WS-Butler
-:PROPERTIES:
-:CUSTOM_ID: h:C8E39F4E-D75F-4031-8205-F1A7F865B91A
-:END:
-
-#+begin_src emacs-lisp
-(use-package ws-butler
-  :init
-  ;; (ws-butler-global-mode 1)
-  (add-hook 'prog-mode-hook #'ws-butler-mode))
-#+end_src
-
-* Programming Environment
-:PROPERTIES:
-:CUSTOM_ID: h:2E967F87-8304-4262-B5BF-3286ACA7211B
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-programming.el
-:END:
-
-** LSP
-:PROPERTIES:
-:CUSTOM_ID: h:222F2EE3-FD70-4274-AABC-759B5F7556C5
-:END:
-#+begin_src emacs-lisp
-(use-package lsp-mode
-  :commands (lsp lsp-deferred)
-  :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-  (setq lsp-keymap-prefix "C-c l")
-  :hook
-  (lsp-mode . lsp-enable-which-key-integration))
-
-(use-package lsp-ui
-  :hook (lsp-mode . lsp-ui-mode)
-  :custom
-  (lsp-ui-doc-position 'bottom))
-
-(use-package lsp-treemacs
-  :after lsp)
-
-;; optionally if you want to use debugger
-;; (use-package dap-mode)
-;; (use-package dap-LANGUAGE) to load the dap adapter for your language
-#+end_src
-
 ** Corfu
 :PROPERTIES:
 :CUSTOM_ID: h:4B6D88C2-0393-4462-9C06-37BD9160B415
@@ -3457,6 +3322,13 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 #+end_src
 
+
+* Useful Tools
+:PROPERTIES:
+:CUSTOM_ID: h:B57C03F6-2111-489A-9303-B1A06C95EFF5
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-tools.el
+:END:
+
 ** Dirvish
 :PROPERTIES:
 :CUSTOM_ID: h:895ADECA-8F1A-4FBB-A930-871EE0B6D4D8
@@ -3486,6 +3358,135 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
    (dirvish-directory-view-mode . diredfl-mode))
   :config
   (set-face-attribute 'diredfl-dir-name nil :bold t))
+#+end_src
+
+** Git/VCS Integration
+:PROPERTIES:
+:CUSTOM_ID: h:38F6723F-CA92-401B-BE94-8130078BAD7E
+:END:
+#+begin_src emacs-lisp
+(use-package magit
+  ;; :custom
+  ;; (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+  :general
+  (synthmacs/leader-keys
+    "gs" '(magit-status :wk "magit-status")))
+
+;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
+;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started
+;; (use-package forge)
+
+(use-package git-gutter
+  :hook (prog-mode . git-gutter-mode)
+  :config
+  (setq git-gutter:update-interval 0.02))
+
+(use-package git-gutter-fringe
+  :config
+(define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
+(define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
+(define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
+
+(synthmacs/leader-keys
+  "gb" '(magit-blame-addition :wk "magit-blame")
+  "gc" '(magit-clone :wk "magit-clone")
+  "gd" '(magit-dispatch :wk "magit-dispatch")
+  "gf" '(magit-file-dispatch :wk "magit-file-dispatch")
+  "gh" '(magit-info :wk "magit-help")
+  "gi" '(magit-init :wk "magit-init"))
+#+end_src
+
+** Helpful
+:PROPERTIES:
+:CUSTOM_ID: h:949B41C1-C4A4-484B-9A6A-76A07DBBFCB1
+:END:
+#+begin_src emacs-lisp
+(use-package helpful
+  :general
+  (synthmacs/leader-keys
+    "h." '(helpful-at-point :wk "helpful-at-point")
+    "hc" '(helpful-command :wk "describe-command")
+    "hf" '(helpful-callable :wk "describe-function")
+    "hk" '(helpful-key :wk "describe-key")
+    "hv" '(helpful-variable :wk "describe-variable")))
+#+end_src
+
+** Projectile
+:PROPERTIES:
+:CUSTOM_ID: h:1653A50A-82D1-416F-830C-00B886B5A241
+:END:
+#+begin_src emacs-lisp
+(use-package projectile
+  :diminish
+  :general
+  (synthmacs/leader-keys
+    "pf" '(projectile-find-file :wk "projectile-find-file")
+    "pk" '(projectile-kill-buffers :wk "projectile-kill-buffers")
+    "pp" '(projectile-switch-project :wk "projectile-switch-project")
+    "pr" '(projectile-recentf :wk "projectile-recentf")
+    "pm" '(projectile-command-map :wk "projectile menu"))
+  :custom ((projectile-completion-system 'auto))
+  :init
+  (projectile-mode +1)
+  ;; NOTE: Set this to the folder where you keep your Git repos!
+  (when (file-directory-p "~/Developer")
+    (setq projectile-project-search-path '("~/Developer")))
+  (setq projectile-switch-project-action #'projectile-dired))
+
+(use-package consult-projectile)
+#+end_src
+
+** Rg
+:PROPERTIES:
+:CUSTOM_ID: h:BFB3F21C-B7E7-4057-AF46-5B9C1A6DEF0C
+:END:
+#+begin_src emacs-lisp
+(use-package rg
+  :ensure-system-package rg)
+#+end_src
+
+** WS-Butler
+:PROPERTIES:
+:CUSTOM_ID: h:C8E39F4E-D75F-4031-8205-F1A7F865B91A
+:END:
+
+#+begin_src emacs-lisp
+(use-package ws-butler
+  :init
+  ;; (ws-butler-global-mode 1)
+  (add-hook 'prog-mode-hook #'ws-butler-mode))
+#+end_src
+
+* Programming Environment
+:PROPERTIES:
+:CUSTOM_ID: h:2E967F87-8304-4262-B5BF-3286ACA7211B
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-programming.el
+:END:
+
+** LSP
+:PROPERTIES:
+:CUSTOM_ID: h:222F2EE3-FD70-4274-AABC-759B5F7556C5
+:END:
+#+begin_src emacs-lisp
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+  :hook
+  (lsp-mode . lsp-enable-which-key-integration))
+
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :custom
+  (lsp-ui-doc-position 'bottom))
+
+(use-package lsp-treemacs
+  :after lsp)
+
+;; optionally if you want to use debugger
+;; (use-package dap-mode)
+;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 #+end_src
 
 ** Flycheck
