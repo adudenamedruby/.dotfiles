@@ -344,14 +344,16 @@ Taken from DOOM's init
   (require 'synthmacs-completion-framework)
   (require 'synthmacs-tools)
   (require 'synthmacs-programming)
-  ;;(require 'synthmacs-lang-clojure)
-  ;;(require 'synthmacs-lang-haskell)
-  ;;(require 'synthmacs-lang-html)
-  ;;(require 'synthmacs-lang-lisp)
-  ;;(require 'synthmacs-lang-markdown)
-  ;;(require 'synthmacs-lang-rust)
-  ;;(require 'synthmacs-lang-swift)
-  ;;(require 'synthmacs-lang-yaml)
+  (require 'synthmacs-lang-clojure)
+  (require 'synthmacs-lang-haskell)
+  (require 'synthmacs-lang-html)
+  (require 'synthmacs-lang-lisp)
+  (require 'synthmacs-lang-clisp)
+  (require 'synthmacs-lang-elisp)
+  (require 'synthmacs-lang-markdown)
+  (require 'synthmacs-lang-rust)
+  (require 'synthmacs-lang-swift)
+  (require 'synthmacs-lang-yaml)
   )
 
 ;;; init.el ends here
@@ -4309,6 +4311,7 @@ You can either build your own languages, or you can use pre-built. For now, let'
 :PROPERTIES:
 :CUSTOM_ID: h:C6E789DD-6E2F-4CC4-A80B-236D86204624
 :END:
+
 #+begin_src emacs-lisp
 (use-package clojure-mode
   :mode "\\.clj$"
