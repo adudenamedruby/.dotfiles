@@ -10,6 +10,6 @@
 ;; Emacs-lisp:1 ends here
 
 ;; [[file:../synthmacs.org::*synthmacs-lang-elisp][synthmacs-lang-elisp:1]]
-(provide 'synthmacs-lang-clojure)
-;;; synthmacs-lang-clojure.el ends here
+(provide 'synthmacs-lang-elisp)
+;;; synthmacs-lang-elisp.el ends here
 ;; synthmacs-lang-elisp:1 ends here

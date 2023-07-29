@@ -4644,8 +4644,8 @@ Keeps the file indented nicely, but, this might clash with lsp stuff, so we only
 :CUSTOM_ID: h:771E15AF-C8A5-49CD-B224-AE4103FD2822
 :END:
 #+begin_src emacs-lisp
-(provide 'synthmacs-lang-clojure)
-;;; synthmacs-lang-clojure.el ends here
+(provide 'synthmacs-lang-clisp)
+;;; synthmacs-lang-clisp.el ends here
 #+end_src
 
 *** synthmacs-lang-elisp
@@ -4654,8 +4654,8 @@ Keeps the file indented nicely, but, this might clash with lsp stuff, so we only
 :CUSTOM_ID: h:29743F9F-3D7F-44A6-9CD6-369EB609D4E0
 :END:
 #+begin_src emacs-lisp
-(provide 'synthmacs-lang-clojure)
-;;; synthmacs-lang-clojure.el ends here
+(provide 'synthmacs-lang-elisp)
+;;; synthmacs-lang-elisp.el ends here
 #+end_src
 
 *** synthmacs-lang-lisp
