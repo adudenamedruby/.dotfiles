@@ -54,6 +54,7 @@
   - [[#evil-org-mode][evil-org-mode]]
   - [[#org-appear][org-appear]]
   - [[#org-roam][org-roam]]
+  - [[#obsidian][Obsidian]]
 - [[#ui][UI]]
   - [[#icons][Icons]]
   - [[#themes][Themes]]
@@ -89,6 +90,7 @@
   - [[#imenu][iMenu]]
   - [[#snippets][Snippets]]
   - [[#treesitter][Treesitter]]
+  - [[#vterm][Vterm]]
 - [[#programming-languages][Programming Languages]]
   - [[#clojure][Clojure]]
   - [[#haskell][Haskell]]
@@ -2337,6 +2339,31 @@ Instead of Obsidian, let's use org roam?
   )
 #+end_src
 
+** Obsidian
+:PROPERTIES:
+:CUSTOM_ID: h:490BB449-AB50-45E5-BB09-1DD9341D0C52
+:END:
+But we could also use obsidian style in emacs, and then have it appear in the actual vault. Neato?!
+
+#+begin_src emacs-lisp :tangle no
+(use-package obsidian
+  :ensure t
+  :demand t
+  :config
+  (obsidian-specify-path "~/MY_OBSIDIAN_FOLDER")
+  (global-obsidian-mode t)
+  :custom
+  ;; This directory will be used for `obsidian-capture' if set.
+  (obsidian-inbox-directory "Inbox")
+  :bind (:map obsidian-mode-map
+  ;; Replace C-c C-o with Obsidian.el's implementation. It's ok to use another key binding.
+  ("C-c C-o" . obsidian-follow-link-at-point)
+  ;; Jump to backlinks
+  ("C-c C-b" . obsidian-backlink-jump)
+  ;; If you prefer you can use `obsidian-insert-link'
+  ("C-c C-l" . obsidian-insert-wikilink)))
+#+end_src
+
 * UI
 :PROPERTIES:
 :CUSTOM_ID: h:EA84335B-2A51-4B4A-9392-F116289EDB10
@@ -3237,7 +3264,7 @@ targets."
 #+begin_src emacs-lisp
 (use-package embark-consult
   :after (embark consult)
-    ; only need to install it, embark loads it after consult if found
+					; only need to install it, embark loads it after consult if found
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 #+end_src
@@ -3423,7 +3450,7 @@ Icons in corfu? Yes please.
   (evil-define-key* '(normal visual) magit-mode-map
     "zz" #'evil-scroll-line-to-center)
   )
-  #+end_src
+#+end_src
 
 *** Forge
 :PROPERTIES:
@@ -3442,7 +3469,8 @@ Icons in corfu? Yes please.
 :END:
 #+begin_src emacs-lisp
 (use-package git-gutter
-  :hook (prog-mode . git-gutter-mode)
+  :init
+  (global-git-gutter-mode +1)
   :config
   (setq git-gutter:update-interval 0.02))
 #+end_src
@@ -3631,14 +3659,134 @@ Icons in corfu? Yes please.
 :PROPERTIES:
 :CUSTOM_ID: h:36F5A754-136E-4AA5-967D-358D69599D01
 :END:
-#+begin_src emacs-lisp
-(use-package yasnippet)
 
-;; (yas-reload-all)
-(add-hook 'prog-mode-hook #'yas-minor-mode)
+*** yasnippet
+:PROPERTIES:
+:CUSTOM_ID: h:B8EE84BD-F052-4F12-AB13-6DDDC8F3606D
+:END:
+#+begin_src emacs-lisp
+(use-package yasnippet
+  ;; :general
+  ;; (yas-minor-mode-map
+  ;; :states 'insert
+  ;; "TAB" 'nil
+  ;; "C-TAB" 'yas-expand)
+  :hook
+  ((prog-mode org-mode dap-ui-repl-mode vterm-mode) . yas-minor-mode)
+  :init
+  (defun synthmacs/yas-try-expanding-auto-snippets ()
+    (when (and (boundp 'yas-minor-mode) yas-minor-mode)
+      (let ((yas-buffer-local-condition ''(require-snippet-condition . auto)))
+        (yas-expand))))
+  :config
+  (yas-reload-all)
+  (add-hook 'post-command-hook #'synthmacs/yas-try-expanding-auto-snippets)
+  )
 
 (use-package yasnippet-snippets)
+#+end_src
+
+*** commond-lisp-snippets
+:PROPERTIES:
+:CUSTOM_ID: h:0987E887-8EFF-4E43-A9D7-092FAF2B2B2C
+:END:
+#+begin_src emacs-lisp
 (use-package common-lisp-snippets)
+#+end_src
+
+*** LaTeX snippets
+:PROPERTIES:
+:CUSTOM_ID: h:55F5E584-47AC-49FF-93A2-ED7E3D30B4EE
+:END:
+#+begin_src emacs-lisp :tangle no
+(use-package yasnippet
+  :config
+  (setq lc/greek-alphabet
+        '(("a" . "\\alpha")
+          ("b" . "\\beta" )
+          ("g" . "\\gamma")
+          ("d" . "\\delta")
+          ("e" . "\\epsilon")
+          ("z" . "\\zeta")
+          ("h" . "\\eta")
+          ("t" . "\\theta")
+          ("i" . "\\iota")
+          ("k" . "\\kappa")
+          ("l" . "\\lambda")
+          ("m" . "\\mu")
+          ("n" . "\\nu")
+          ("x" . "\\xi")
+          ("p" . "\\pi")
+          ("r" . "\\rho")
+          ("s" . "\\sigma")
+          ("t" . "\\tau")
+          ("u" . "\\upsilon")
+          ("f" . "\\phi")
+          ("c" . "\\chi")
+          ("v" . "\\psi")
+          ("g" . "\\omega")))
+
+  (setq lc/latex-greek-prefix "'")
+
+  ;; The same for capitalized letters
+  (dolist (elem lc/greek-alphabet)
+    (let ((key (car elem))
+          (value (cdr elem)))
+      (when (string-equal key (downcase key))
+        (add-to-list 'lc/greek-alphabet
+                     (cons
+                      (capitalize (car elem))
+                      (concat
+                       (substring value 0 1)
+                       (capitalize (substring value 1 2))
+                       (substring value 2)))))))
+
+  (yas-define-snippets
+   'latex-mode
+   (mapcar
+    (lambda (elem)
+      (list (concat lc/latex-greek-prefix (car elem)) (cdr elem) (concat "Greek letter " (car elem))))
+    lc/greek-alphabet))
+  
+  (setq lc/english-alphabet
+        '("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"))
+
+  (dolist (elem lc/english-alphabet)
+    (when (string-equal elem (downcase elem))
+      (add-to-list 'lc/english-alphabet (upcase elem))))
+
+  (setq lc/latex-mathbb-prefix "`")
+
+  (yas-define-snippets
+   'latex-mode
+   (mapcar
+    (lambda (elem)
+      (list (concat lc/latex-mathbb-prefix elem) (concat "\\mathbb{" elem "}") (concat "Mathbb letter " elem)))
+    lc/english-alphabet))
+
+  (setq lc/latex-math-symbols
+        '(("x" . "\\times")
+          ("." . "\\cdot")
+          ("v" . "\\forall")
+          ("s" . "\\sum_{$1}^{$2}$0")
+          ("p" . "\\prod_{$1}^{$2}$0")
+          ("e" . "\\exists")
+          ("i" . "\\int_{$1}^{$2}$0")
+          ("c" . "\\cap")
+          ("u" . "\\cup")
+          ("0" . "\\emptyset")))
+
+  (setq lc/latex-math-prefix "''")
+
+  (yas-define-snippets
+   'latex-mode
+   (mapcar
+    (lambda (elem)
+      (let ((key (car elem))
+            (value (cdr elem)))
+        (list (concat lc/latex-math-prefix key) value (concat "Math symbol " value))))
+    lc/latex-math-symbols))
+  )
 #+end_src
 
 ** Treesitter
@@ -3749,6 +3897,39 @@ You can either build your own languages, or you can use pre-built. For now, let'
 ;; 	  (lambda () (if (treesit-ready-p 'bash t)
 ;; 		    (bash-ts-mode)
 ;; 		  (sh-mode))))
+#+end_src
+
+** Vterm
+:PROPERTIES:
+:CUSTOM_ID: h:AAAB0E92-4955-4DC6-840A-9A10B727248F
+:END:
+
+*** vterm
+:PROPERTIES:
+:CUSTOM_ID: h:D95937AD-2693-4819-8CB5-DCE2BA47F1E0
+:END:
+#+begin_src emacs-lisp
+(use-package vterm
+  :general
+  (general-imap
+    :keymaps 'vterm-mode-map
+    "M-l" 'vterm-send-right
+    "M-h" 'vterm-send-left)
+  :config
+  (setq vterm-shell (executable-find "zsh")
+        vterm-max-scrollback 10000))
+#+end_src
+
+*** vterm-toggle
+:PROPERTIES:
+:CUSTOM_ID: h:9F540D5F-5081-4D3A-BC30-F63498CB63DF
+:END:
+#+begin_src emacs-lisp
+(use-package vterm-toggle
+  :general
+  (synthmacs/leader-keys
+    "'" 'vterm-toggle)
+  )
 #+end_src
 
 * Programming Languages

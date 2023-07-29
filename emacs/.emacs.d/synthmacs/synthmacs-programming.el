@@ -26,12 +26,26 @@
 (synthmacs/leader-keys
   "ti" '(imenu-list-smart-toggle :wx "imenu-list-smart-toggle"))
 
-(use-package yasnippet)
-
-;; (yas-reload-all)
-(add-hook 'prog-mode-hook #'yas-minor-mode)
+(use-package yasnippet
+  ;; :general
+  ;; (yas-minor-mode-map
+  ;; :states 'insert
+  ;; "TAB" 'nil
+  ;; "C-TAB" 'yas-expand)
+  :hook
+  ((prog-mode org-mode dap-ui-repl-mode vterm-mode) . yas-minor-mode)
+  :init
+  (defun synthmacs/yas-try-expanding-auto-snippets ()
+    (when (and (boundp 'yas-minor-mode) yas-minor-mode)
+      (let ((yas-buffer-local-condition ''(require-snippet-condition . auto)))
+        (yas-expand))))
+  :config
+  (yas-reload-all)
+  (add-hook 'post-command-hook #'synthmacs/yas-try-expanding-auto-snippets)
+  )
 
 (use-package yasnippet-snippets)
+
 (use-package common-lisp-snippets)
 
 (require 'treesit)
@@ -130,6 +144,22 @@
 ;; 	  (lambda () (if (treesit-ready-p 'bash t)
 ;; 		    (bash-ts-mode)
 ;; 		  (sh-mode))))
+
+(use-package vterm
+  :general
+  (general-imap
+    :keymaps 'vterm-mode-map
+    "M-l" 'vterm-send-right
+    "M-h" 'vterm-send-left)
+  :config
+  (setq vterm-shell (executable-find "zsh")
+        vterm-max-scrollback 10000))
+
+(use-package vterm-toggle
+  :general
+  (synthmacs/leader-keys
+    "'" 'vterm-toggle)
+  )
 
 (provide 'synthmacs-programming)
 ;;; synthmacs-programming.el ends here

@@ -32,7 +32,8 @@
 ;; (use-package forge)
 
 (use-package git-gutter
-  :hook (prog-mode . git-gutter-mode)
+  :init
+  (global-git-gutter-mode +1)
   :config
   (setq git-gutter:update-interval 0.02))
 
