@@ -221,10 +221,20 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
     ))
 ;; Avy:1 ends here
 
-;; [[file:../synthmacs.org::*Modeline][Modeline:1]]
+;; [[file:../synthmacs.org::*evil-anzu][evil-anzu:1]]
+(use-package evil-anzu
+  :init (global-anzu-mode t)
+  :config
+  (setq anzu-search-threshold 1000
+	anzu-cons-mode-line-p nil))
+;; evil-anzu:1 ends here
+
+;; [[file:../synthmacs.org::*minions][minions:1]]
 (use-package minions
   :hook (doom-modeline-mode . minions-mode))
+;; minions:1 ends here
 
+;; [[file:../synthmacs.org::*doom-modeline][doom-modeline:1]]
 (use-package doom-modeline
   :demand
   :init (doom-modeline-mode 1)
@@ -242,7 +252,7 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   (setq doom-modeline-lsp t)
   (setq doom-modeline-modal-icon t)
   )
-;; Modeline:1 ends here
+;; doom-modeline:1 ends here
 
 ;; [[file:../synthmacs.org::*Dashboard][Dashboard:1]]
 (use-package dashboard
@@ -274,8 +284,8 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
     "?" 'which-key-show-top-level)
   :init
   (setq which-key-side-window-location 'bottom)
-  (setq which-key-sort-order #'which-key-key-order-alpha)
-  ;;(setq which-key-sort-order #'which-key-prefix-then-key-order)
+  ;; (setq which-key-sort-order #'which-key-key-order-alpha)
+  (setq which-key-sort-order #'which-key-prefix-then-key-order)
   (setq which-key-sort-uppercase-first nil)
   (setq which-key-add-column-padding 1)
   (setq which-key-max-display-columns nil)
@@ -288,6 +298,7 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   (setq which-key-prefix-prefix "+")
   :config
   (which-key-mode 1)
+  (which-key-setup-minibuffer)
   ;; Rename the entry for M-1 in the SPC h k Top-level bindings,
   ;; and for 1 in the SPC- Spacemacs root, to 1..9
   (push '(("\\(.*\\)1" . "winum-select-window-1") .

@@ -1,20 +1,23 @@
 ;; [[file:../synthmacs.org::*Emacs Setup][Emacs Setup:1]]
 (use-package emacs
   :init
-  (setq inhibit-startup-message t
-	inhibit-startup-screen t
-        initial-scratch-message nil
-        sentence-end-double-space nil
-        ring-bell-function 'ignore
-        frame-resize-pixelwise t)
+  (setq default-directory "~/")
+  ;; quiet startup
+  (setq inhibit-startup-message t)
+  (setq inhibit-startup-screen t)
+  (setq initial-scratch-message nil)
+  (setq sentence-end-double-space nil)
+  (setq ring-bell-function 'ignore)
+  (setq frame-resize-pixelwise t)
+  ;; write over selected text on input... like all modern editors do
+  (setq delete-selection-mode t)
+  ;; clean up dired buffers
+  (setq dired-kill-when-opening-new-dired-buffer t)
 
   ;; less noise when compiling elisp
   (setq byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
   (setq native-comp-async-report-warnings-errors nil)
   (setq load-prefer-newer t)
-
-  ;; write over selected text on input... like all modern editors do
-  ;;(delete-selection-mode t)
   )
 ;; Emacs Setup:1 ends here
 
@@ -41,6 +44,8 @@
   (set-terminal-coding-system 'utf-8)
   (set-keyboard-coding-system 'utf-8)
   (set-selection-coding-system 'utf-8)
+  (set-file-name-coding-system 'utf-8)
+  (set-clipboard-coding-system 'utf-8)
   (prefer-coding-system 'utf-8)
   (setq default-process-coding-system '(utf-8-unix . utf-8-unix)))
 ;; UTF-8 file encoding:1 ends here

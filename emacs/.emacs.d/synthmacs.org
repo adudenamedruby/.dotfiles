@@ -355,10 +355,14 @@ Following DOOM, we max the garbage collection threshold on startup, and reset it
 :header-args: :emacs-lisp :tangle init.el
 :END:
 
-*** Header
+*** Header & Lexical Binding
 :PROPERTIES:
 :CUSTOM_ID: h:470961E9-E775-4F50-861D-CC1A2616B4A1
 :END:
+Make elisp in this file behave like we expect these days. Everyone has this set, but no one explains why.
+
+In non-elisp speak, it adds proper scoping and “closure” behaviour to variables. This [[https://www.emacswiki.org/emacs/DynamicBindingVsLexicalBinding][Emacswiki article]] explains it well.
+
 #+BEGIN_SRC emacs-lisp
   ;;; init.el --- Personal configuration file -*- lexical-binding: t; no-byte-compile: t; -*-
 ;; NOTE: init.el is now generated from synthmacs.org.  Please edit that file instead
@@ -514,20 +518,23 @@ Some general things to set up:
 #+begin_src emacs-lisp
 (use-package emacs
   :init
-  (setq inhibit-startup-message t
-	inhibit-startup-screen t
-        initial-scratch-message nil
-        sentence-end-double-space nil
-        ring-bell-function 'ignore
-        frame-resize-pixelwise t)
+  (setq default-directory "~/")
+  ;; quiet startup
+  (setq inhibit-startup-message t)
+  (setq inhibit-startup-screen t)
+  (setq initial-scratch-message nil)
+  (setq sentence-end-double-space nil)
+  (setq ring-bell-function 'ignore)
+  (setq frame-resize-pixelwise t)
+  ;; write over selected text on input... like all modern editors do
+  (setq delete-selection-mode t)
+  ;; clean up dired buffers
+  (setq dired-kill-when-opening-new-dired-buffer t)
 
   ;; less noise when compiling elisp
   (setq byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
   (setq native-comp-async-report-warnings-errors nil)
   (setq load-prefer-newer t)
-
-  ;; write over selected text on input... like all modern editors do
-  ;;(delete-selection-mode t)
   )
 #+end_src
 
@@ -559,7 +566,7 @@ They are annoying and it's much more idiomatic to type y or n for these types of
 :PROPERTIES:
 :CUSTOM_ID: h:6E819D29-764F-4F26-B5CB-20766CE6579D
 :END:
-Sometimes file encoding is really messed up, so we make sure to default to UTF-8 for everything!
+Emacs is very conservative about assuming encoding. Everything is utf-8 these days, lets have that as the default.
 
 #+begin_src emacs-lisp
 (use-package emacs
@@ -571,6 +578,8 @@ Sometimes file encoding is really messed up, so we make sure to default to UTF-8
   (set-terminal-coding-system 'utf-8)
   (set-keyboard-coding-system 'utf-8)
   (set-selection-coding-system 'utf-8)
+  (set-file-name-coding-system 'utf-8)
+  (set-clipboard-coding-system 'utf-8)
   (prefer-coding-system 'utf-8)
   (setq default-process-coding-system '(utf-8-unix . utf-8-unix)))
 #+end_src
@@ -1124,12 +1133,14 @@ Basically tries to clean up the ~emacs.d~ directory by creating consistent place
 
 #+begin_src emacs-lisp :tangle no
 (use-package no-littering
-  :demand
+  :demand t
   :config
-  (with-eval-after-load 'recentf
-    (add-to-list 'recentf-exclude no-littering-var-directory)
-    (add-to-list 'recentf-exclude no-littering-etc-directory))
-  )
+  (setq
+   auto-save-file-name-transforms
+   `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+  (setq custom-file (no-littering-expand-etc-file-name "custom.el"))
+  (when (file-exists-p custom-file)
+    (load custom-file)))
 #+end_src
 
 ** Auto-pair paranthesis
@@ -1554,7 +1565,9 @@ _q_: quit
 :PROPERTIES:
 :CUSTOM_ID: h:D64CA666-A9A1-4DE2-900D-32E3726F6792
 :END:
-I'm a Vim motion devotee. Thus, we'll make Synthmacs behave like Vim, when it comes to text editing.
+We're in agreement that Vim motions are *the way*. Thus, we'll make Synthmacs behave like Vim, when it comes to text editing. There are a number of other evil packages which add vim-like bindings to various modes, and they're all (ie, the ones we use) added here.
+
+NOTE: other evil packages (like [[#h:29AD92F1-04AB-4CE5-91F4-A1E4B187F0CE][evil-lisp-state]]) may exist in the config, but be placed in more appropriate locations.
 
 *** evil
 :PROPERTIES:
@@ -1579,7 +1592,9 @@ I'm a Vim motion devotee. Thus, we'll make Synthmacs behave like Vim, when it co
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
   (setq evil-want-C-i-jump t)
+  (setq evil-want-Y-yank-to-eol t)
   (setq evil-undo-system 'undo-fu)
+  (setq evil-respect-visual-line-mode t)
   (setq evil-search-module 'evil-search)
   (setq evil-ex-search-persistent-highlight t)
   (setq evil-vsplit-window-right t)
@@ -1595,18 +1610,6 @@ I'm a Vim motion devotee. Thus, we'll make Synthmacs behave like Vim, when it co
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'normal)
   )
-#+end_src
-
-*** evil-anzu
-:PROPERTIES:
-:CUSTOM_ID: h:D9672083-EF2E-4DB5-B911-6A6CD2D2C2BE
-:END:
-#+begin_src emacs-lisp
-(use-package evil-anzu
-  :init (global-anzu-mode t)
-  :config
-  (setq anzu-search-threshold 1000
-	anzu-cons-mode-line-p nil))
 #+end_src
 
 *** evil-args
@@ -1659,7 +1662,7 @@ I'm a Vim motion devotee. Thus, we'll make Synthmacs behave like Vim, when it co
 (use-package evil-commentary
   :demand
   :config
-  (evil-commentary-mode))
+  (evil-commentary-mode 1))
 #+end_src
 
 *** evil-exchange
@@ -1750,32 +1753,6 @@ Example: ~glip=~ will left align inner paragraph on the ~=~ separator
     "gL" #'evil-lion-right)
   :config
   (evil-lion-mode))
-#+end_src
-
-*** evil-lisp-state
-:PROPERTIES:
-:CUSTOM_ID: h:60EB5AD8-2664-4548-80F8-6FCF9A68BFDE
-:END:
-#+begin_src emacs-lisp
-;; https://github.com/syl20bnr/evil-lisp-state
-;; (use-package evil-lisp-state
-;; :defer t
-;; :init
-;; (add-hook 'prog-mode-hook 'synthmacs/load-evil-lisp-state)
-;; (setq evil-lisp-state-global t))
-
-;; (synthmacs/leader-keys
-;;   "l" '(evil-lisp-state-map :wk "lisp-state"))
-;; (spacemacs/declare-prefix
-;;   "l" "lisp"
-;;   "ld" "delete"
-;;   "lD" "delete-backward"
-;;   "l`" "hybrid")))
-
-;; (defun synthmacs/load-evil-lisp-state ()
-;;     "Loads evil-lisp-state lazily"
-;;   (remove-hook 'prog-mode-hook #'synthmacs/load-evil-lisp-state))
-
 #+end_src
 
 *** evil-matchit
@@ -2466,7 +2443,7 @@ But we could also use obsidian style in emacs, and then have it appear in the ac
 :CUSTOM_ID: h:EA84335B-2A51-4B4A-9392-F116289EDB10
 :header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-ui.el
 :END:
-Here I'll be setting up my UI stuff. These are UI nicities, really, and not "needed". The basic setup of UI stuff took place in the [[#h:3D38D8F0-1B85-4265-9941-77A3A2FA235B][Core Emacs Setup]] section.
+People sometimes say that making your editor look good is pointless. I disagree: a good-looking tool is a pleasure to work with. Here we'll be tweaking all the dials Emacs gives us to make it pretty and ~A E S T H E T I C~.
 
 ** Icons
 :PROPERTIES:
@@ -2569,7 +2546,7 @@ Here I'll be setting up my UI stuff. These are UI nicities, really, and not "nee
 :PROPERTIES:
 :CUSTOM_ID: h:49441D6C-6408-484B-91C9-8516B9A33B0B
 :END:
-
+Basically, a nice visual flare to make "other" windows not stand out. Or, rather, make the main window stand out.
 #+begin_src emacs-lisp
 (use-package solaire-mode
   :init
@@ -2745,10 +2722,34 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 :PROPERTIES:
 :CUSTOM_ID: h:F2FD58B7-0A8E-423A-896D-7FDBFF2554F3
 :END:
+[[https://github.com/seagle0128/doom-modeline][doom-modeline]] provides a clean and simple modeline (bottom bar) for each buffer. We pair it with the [[https://github.com/tarsius/minions][minions]] minor mode to collect all minor modes into a single menu. [[https://github.com/emacsorphanage/evil-anzu][evil-anzu]] is used to show the number of matches when we search in a file.
+
+*** evil-anzu
+:PROPERTIES:
+:CUSTOM_ID: h:D9672083-EF2E-4DB5-B911-6A6CD2D2C2BE
+:END:
+#+begin_src emacs-lisp
+(use-package evil-anzu
+  :init (global-anzu-mode t)
+  :config
+  (setq anzu-search-threshold 1000
+	anzu-cons-mode-line-p nil))
+#+end_src
+
+*** minions
+:PROPERTIES:
+:CUSTOM_ID: h:9380A452-DEA7-428C-BC88-F52FDDC6EF94
+:END:
 #+begin_src emacs-lisp
 (use-package minions
   :hook (doom-modeline-mode . minions-mode))
+#+end_src
 
+*** doom-modeline
+:PROPERTIES:
+:CUSTOM_ID: h:FEF74820-7411-40BF-A7F2-4411EBFC3717
+:END:
+#+begin_src emacs-lisp
 (use-package doom-modeline
   :demand
   :init (doom-modeline-mode 1)
@@ -2799,6 +2800,8 @@ A nicer startup experience than just an empty buffer. Includes a nice useful lis
 :PROPERTIES:
 :CUSTOM_ID: h:40130D60-680F-44CF-B7CD-FF38E97CB2EF
 :END:
+[[https://github.com/justbur/emacs-which-key][which-key]] pops up a nice window whenever we hesitate about a keyboard shortcut, and shows all the possible keys we can press. Popularized by Spacemacs and Doom-Emacs, we can now configure absurd key combinations, forget about them, and then be delighted to discover them again!
+
 #+begin_src emacs-lisp
 (setq which-key-idle-delay 0.4)
 (use-package which-key
@@ -2808,8 +2811,8 @@ A nicer startup experience than just an empty buffer. Includes a nice useful lis
     "?" 'which-key-show-top-level)
   :init
   (setq which-key-side-window-location 'bottom)
-  (setq which-key-sort-order #'which-key-key-order-alpha)
-  ;;(setq which-key-sort-order #'which-key-prefix-then-key-order)
+  ;; (setq which-key-sort-order #'which-key-key-order-alpha)
+  (setq which-key-sort-order #'which-key-prefix-then-key-order)
   (setq which-key-sort-uppercase-first nil)
   (setq which-key-add-column-padding 1)
   (setq which-key-max-display-columns nil)
@@ -2822,6 +2825,7 @@ A nicer startup experience than just an empty buffer. Includes a nice useful lis
   (setq which-key-prefix-prefix "+")
   :config
   (which-key-mode 1)
+  (which-key-setup-minibuffer)
   ;; Rename the entry for M-1 in the SPC h k Top-level bindings,
   ;; and for 1 in the SPC- Spacemacs root, to 1..9
   (push '(("\\(.*\\)1" . "winum-select-window-1") .

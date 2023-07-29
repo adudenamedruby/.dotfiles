@@ -284,7 +284,9 @@ _q_: quit
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
   (setq evil-want-C-i-jump t)
+  (setq evil-want-Y-yank-to-eol t)
   (setq evil-undo-system 'undo-fu)
+  (setq evil-respect-visual-line-mode t)
   (setq evil-search-module 'evil-search)
   (setq evil-ex-search-persistent-highlight t)
   (setq evil-vsplit-window-right t)
@@ -301,14 +303,6 @@ _q_: quit
   (evil-set-initial-state 'dashboard-mode 'normal)
   )
 ;; evil:1 ends here
-
-;; [[file:../synthmacs.org::*evil-anzu][evil-anzu:1]]
-(use-package evil-anzu
-  :init (global-anzu-mode t)
-  :config
-  (setq anzu-search-threshold 1000
-	anzu-cons-mode-line-p nil))
-;; evil-anzu:1 ends here
 
 ;; [[file:../synthmacs.org::*evil-args][evil-args:1]]
 (use-package evil-args
@@ -341,7 +335,7 @@ _q_: quit
 (use-package evil-commentary
   :demand
   :config
-  (evil-commentary-mode))
+  (evil-commentary-mode 1))
 ;; evil-commentary:1 ends here
 
 ;; [[file:../synthmacs.org::*evil-exchange][evil-exchange:1]]
@@ -400,27 +394,6 @@ _q_: quit
   :config
   (evil-lion-mode))
 ;; evil-lion:1 ends here
-
-;; [[file:../synthmacs.org::*evil-lisp-state][evil-lisp-state:1]]
-;; https://github.com/syl20bnr/evil-lisp-state
-;; (use-package evil-lisp-state
-;; :defer t
-;; :init
-;; (add-hook 'prog-mode-hook 'synthmacs/load-evil-lisp-state)
-;; (setq evil-lisp-state-global t))
-
-;; (synthmacs/leader-keys
-;;   "l" '(evil-lisp-state-map :wk "lisp-state"))
-;; (spacemacs/declare-prefix
-;;   "l" "lisp"
-;;   "ld" "delete"
-;;   "lD" "delete-backward"
-;;   "l`" "hybrid")))
-
-;; (defun synthmacs/load-evil-lisp-state ()
-;;     "Loads evil-lisp-state lazily"
-;;   (remove-hook 'prog-mode-hook #'synthmacs/load-evil-lisp-state))
-;; evil-lisp-state:1 ends here
 
 ;; [[file:../synthmacs.org::*evil-matchit][evil-matchit:1]]
 (use-package evil-matchit

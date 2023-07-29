@@ -1,7 +1,7 @@
-;; [[file:synthmacs.org::*Header][Header:1]]
+;; [[file:synthmacs.org::*Header & Lexical Binding][Header & Lexical Binding:1]]
 ;;; init.el --- Personal configuration file -*- lexical-binding: t; no-byte-compile: t; -*-
 ;; NOTE: init.el is now generated from synthmacs.org.  Please edit that file instead
-;; Header:1 ends here
+;; Header & Lexical Binding:1 ends here
 
 ;; [[file:synthmacs.org::*Improve I/O][Improve I/O:1]]
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
