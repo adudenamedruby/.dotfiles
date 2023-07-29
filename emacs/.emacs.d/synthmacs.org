@@ -362,7 +362,7 @@ Taken from DOOM's init
 ** Bootstrap Straight and straight-use-package
 :PROPERTIES:
 :CUSTOM_ID: h:686F7A63-013E-48ED-AC56-DF39BD398E20
-:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-package-management.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-package-management.el :mkdirp yes
 :END:
 Some rules/conventions:
 - Prefer ~:init~ to ~:custom~. Prefer multiple ~setq~ expressions to one.
@@ -401,7 +401,7 @@ Some rules/conventions:
 * Core Emacs Setup
 :PROPERTIES:
 :CUSTOM_ID: h:3D38D8F0-1B85-4265-9941-77A3A2FA235B
-:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-core.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-core.el :mkdirp yes
 :END:
 
 ** Emacs Setup
@@ -1083,7 +1083,7 @@ In programming, missing parens and the like are a pain to track down. Let's auto
 * Keybindings: General & EVIL mode
 :PROPERTIES:
 :CUSTOM_ID: h:D7FB11B6-67B4-4275-B0CC-E218C65C411E
-:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-general-evil.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-general-evil.el :mkdirp yes
 :END:
 
 ** General
@@ -1778,7 +1778,7 @@ Why? [[https://github.com/syl20bnr/spacemacs/blob/develop/doc/DOCUMENTATION.org#
 * Org Mode
 :PROPERTIES:
 :CUSTOM_ID: h:B1DBE90D-B6C9-4BD4-B15B-185FE238D236
-:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-org.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-org.el :mkdirp yes
 :END:
 ** org mode
 :PROPERTIES:
@@ -1960,7 +1960,7 @@ All my (performant) foldings needs are met between this and `org-show-subtree'
 ** Using org-id in links
 :PROPERTIES:
 :CUSTOM_ID: h:AC175A47-E576-4AA6-A9C7-709129F4C56F
-:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-org.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-org.el :mkdirp yes
 :END:
 Taken from https://writequit.org/articles/emacs-org-mode-generate-ids.html
 
