@@ -1,22 +1,57 @@
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
+  :hook
+  ((lsp-mode . (lambda () (setq-local evil-lookup-func #'lsp-describe-thing-at-point)))
+   (lsp-mode . lsp-enable-which-key-integration))
+  ;; :general
+  ;; (synthmacs/local-leader-keys
+  ;;   :states 'normal
+  ;;   :keymaps 'lsp-mode-map
+  ;;   "i" '(:ignore t :which-key "import")
+  ;;   "io" '(lsp-organize-imports :wk "optimize")
+  ;;   "l" '(:keymap lsp-command-map :wk "lsp")
+  ;;   "a" '(lsp-execute-code-action :wk "code action")  
+  ;;   "r" '(lsp-rename :wk "rename"))
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l")
-  :hook
-  (lsp-mode . lsp-enable-which-key-integration))
+  ;; (setq lsp-restart 'ignore)
+  ;;   (setq lsp-eldoc-enable-hover nil)
+  ;;   (setq lsp-enable-file-watchers nil)
+  ;;   (setq lsp-signature-auto-activate nil)
+  ;;   (setq lsp-modeline-diagnostics-enable nil)
+  ;;   (setq lsp-keep-workspace-alive nil)
+  ;;   (setq lsp-auto-execute-action nil)
+  ;;   (setq lsp-before-save-edits nil)
+  ;;   (setq lsp-headerline-breadcrumb-enable nil)
+  ;;   (setq lsp-diagnostics-provider :none)
+  )
 
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
+  :general
+  (synthmacs/local-leader-keys
+    "h" 'lsp-ui-doc-show
+    "H" 'lsp-ui-doc-hide)
+  (lsp-ui-peek-mode-map
+   :states 'normal
+   "C-n" 'lsp-ui-peek--select-next
+   "C-p" 'lsp-ui-peek--select-prev)
+  (outline-mode-map
+   :states 'normal
+   "C-j" 'nil
+   "C-k" 'nil)
+  :init
+  (setq lsp-ui-doc-show-with-cursor nil)
+  (setq lsp-ui-doc-show-with-mouse nil)
+  (setq lsp-ui-peek-always-show t)
+  (setq lsp-ui-peek-fontify 'always)
   :custom
-  (lsp-ui-doc-position 'bottom))
+  (lsp-ui-doc-position 'bottom)
+  )
 
 (use-package lsp-treemacs
   :after lsp)
-
-;; optionally if you want to use debugger
-;; (use-package dap-mode)
-;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
 (use-package flycheck
   :init (global-flycheck-mode))

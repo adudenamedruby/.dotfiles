@@ -39,7 +39,7 @@
 
   (org-mode-map
    :states 'insert
-   "TAB" 'lc/org-indent-or-complete
+   "TAB" 'synthmacs/org-indent-or-complete
    "S-TAB" nil)
 
   (org-mode-map

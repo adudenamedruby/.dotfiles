@@ -89,15 +89,15 @@
   - [[#transient][Transient]]
 - [[#programming-environment][Programming Environment]]
   - [[#lsp][LSP]]
+  - [[#dap][DAP]]
   - [[#flycheck][Flycheck]]
   - [[#imenu][iMenu]]
   - [[#snippets][Snippets]]
   - [[#treesitter][Treesitter]]
 - [[#programming-languages][Programming Languages]]
-  - [[#clojure][Clojure]]
   - [[#haskell][Haskell]]
   - [[#html][HTML]]
-  - [[#lisp][LISP]]
+  - [[#lisps][LISPs]]
   - [[#markdown][Markdown]]
   - [[#rust][Rust]]
   - [[#swift][Swift]]
@@ -1835,7 +1835,7 @@ Interesting bits:
 
   (org-mode-map
    :states 'insert
-   "TAB" 'lc/org-indent-or-complete
+   "TAB" 'synthmacs/org-indent-or-complete
    "S-TAB" nil)
 
   (org-mode-map
@@ -2106,7 +2106,7 @@ A presentation mode for org-mode
   :hook ((org-tree-slide-play . (lambda () (+remap-faces-at-start-present)))
          (org-tree-slide-stop . (lambda () (+remap-faces-at-stop-present))))
   :general
-  (lc/leader-keys
+  (synthmacs/leader-keys
    "t p" '(org-tree-slide-mode :wk "present"))
   (general-nmap
     :keymaps '(org-tree-slide-mode-map org-mode-map)
@@ -3769,25 +3769,247 @@ Olivetti mode is a nice alignment of emacs for prose writing.
 :PROPERTIES:
 :CUSTOM_ID: h:222F2EE3-FD70-4274-AABC-759B5F7556C5
 :END:
+
+*** lsp-mode
+:PROPERTIES:
+:CUSTOM_ID: h:72DF6BA8-0E4C-4292-9D6D-B28248978A9F
+:END:
 #+begin_src emacs-lisp
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
+  :hook
+  ((lsp-mode . (lambda () (setq-local evil-lookup-func #'lsp-describe-thing-at-point)))
+   (lsp-mode . lsp-enable-which-key-integration))
+  ;; :general
+  ;; (synthmacs/local-leader-keys
+  ;;   :states 'normal
+  ;;   :keymaps 'lsp-mode-map
+  ;;   "i" '(:ignore t :which-key "import")
+  ;;   "io" '(lsp-organize-imports :wk "optimize")
+  ;;   "l" '(:keymap lsp-command-map :wk "lsp")
+  ;;   "a" '(lsp-execute-code-action :wk "code action")  
+  ;;   "r" '(lsp-rename :wk "rename"))
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l")
-  :hook
-  (lsp-mode . lsp-enable-which-key-integration))
+  ;; (setq lsp-restart 'ignore)
+  ;;   (setq lsp-eldoc-enable-hover nil)
+  ;;   (setq lsp-enable-file-watchers nil)
+  ;;   (setq lsp-signature-auto-activate nil)
+  ;;   (setq lsp-modeline-diagnostics-enable nil)
+  ;;   (setq lsp-keep-workspace-alive nil)
+  ;;   (setq lsp-auto-execute-action nil)
+  ;;   (setq lsp-before-save-edits nil)
+  ;;   (setq lsp-headerline-breadcrumb-enable nil)
+  ;;   (setq lsp-diagnostics-provider :none)
+  )
+#+end_src
 
+*** lsp-ui
+:PROPERTIES:
+:CUSTOM_ID: h:5F80D574-943C-4E55-B3E7-7BFFC02A74CA
+:END:
+#+begin_src emacs-lisp
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
+  :general
+  (synthmacs/local-leader-keys
+    "h" 'lsp-ui-doc-show
+    "H" 'lsp-ui-doc-hide)
+  (lsp-ui-peek-mode-map
+   :states 'normal
+   "C-n" 'lsp-ui-peek--select-next
+   "C-p" 'lsp-ui-peek--select-prev)
+  (outline-mode-map
+   :states 'normal
+   "C-j" 'nil
+   "C-k" 'nil)
+  :init
+  (setq lsp-ui-doc-show-with-cursor nil)
+  (setq lsp-ui-doc-show-with-mouse nil)
+  (setq lsp-ui-peek-always-show t)
+  (setq lsp-ui-peek-fontify 'always)
   :custom
-  (lsp-ui-doc-position 'bottom))
+  (lsp-ui-doc-position 'bottom)
+  )
+#+end_src
 
+#+begin_src emacs-lisp
 (use-package lsp-treemacs
   :after lsp)
+#+end_src
 
-;; optionally if you want to use debugger
-;; (use-package dap-mode)
+** DAP
+:PROPERTIES:
+:CUSTOM_ID: h:B978949E-16C8-45D1-B8DE-7A47D10FFDCA
+:END:
+
+#+begin_src emacs-lisp :tangle no
+(use-package dap-mode
+  :hook
+  ((dap-mode . corfu-mode)
+   (dap-terminated . synthmacs/hide-debug-windows)
+   (dap-session-created . (lambda (_arg) (projectile-save-project-buffers)))
+   (dap-ui-repl-mode . (lambda () (setq-local truncate-lines t))))
+  :general
+  (synthmacs/local-leader-keys
+    :states '(normal)
+    :keymaps '(python-mode-map dap-ui-repl-mode-map)
+    "d d" '(dap-debug :wk "debug")
+    "d b" '(dap-breakpoint-toggle :wk "breakpoint toggle")
+    "d B" '(dap-ui-breakpoints-list :wk "breakpoint list")
+    "d c" '(dap-continue :wk "continue")
+    "d n" '(dap-next :wk "next")
+    "d e" '(dap-eval-thing-at-point :wk "eval")
+    "d i" '(dap-step-in :wk "step in")
+    "d l" '(dap-debug-last :wk "step in")
+    "d q" '(dap-disconnect :wk "quit")
+    "d r" '(dap-ui-repl :wk "repl")
+    "d h" '(dap-hydra :wk "hydra")
+    "d i" '(synthmacs/dap-inspect-df :wk "view df")
+    "d I" '(synthmacs/dap-inspect-df2 :wk "view df2")
+    ;; "d t" '(synthmacs/dap-dtale-df :wk "dtale df")
+    )
+  (:keymaps 'dap-ui-repl-mode-map
+            "<backtab>" 'dabbrev-completion
+            "TAB" 'synthmacs/py-indent-or-complete)
+  :init
+  ;; (defun synthmacs/dap-dtale-df (dataframe)
+  ;;   "Show df in tale in default browser"
+  ;;   (interactive (list (read-from-minibuffer "DataFrame: " (evil-find-symbol nil))))
+  ;;   (dap-eval (concat "import dtale; dtale.show(" dataframe ", open_browser=True)")))
+  (setq synthmacs/dap-temp-dataframe-buffer  "*inspect-df*")
+  (setq synthmacs/dap-temp-dataframe-path "~/tmp-inspect-df.csv")
+  (defun synthmacs/dap-inspect-df (dataframe)
+    "Save the df to csv and open the file with csv-mode"
+    (interactive (list (read-from-minibuffer "DataFrame: " (evil-find-symbol nil))))
+    (dap-eval (format  "%s.to_csv('%s', index=False)" dataframe synthmacs/dap-temp-dataframe-path))
+    (sleep-for 1)
+    (find-file-other-window synthmacs/dap-temp-dataframe-path)
+    )
+  (defun synthmacs/dap-inspect-df2 (dataframe)
+    "Save the df to csv and open the file with csv-mode"
+    (interactive (list (read-from-minibuffer "DataFrame: " (evil-find-symbol nil))))
+    (dap-eval (concat dataframe ".to_csv('~/tmp-inspect-df2.csv', index=False)"))
+    (sleep-for 1)
+    (with-current-buffer 
+        (display-buffer
+         (with-current-buffer (find-file-noselect "~/tmp-inspect-df2.csv")
+           (rename-buffer "*inspect-df2*"))
+         '((;display-buffer-in-side-window
+            display-buffer-reuse-window)
+           (side . right)
+           (window-width . 0.5)
+           )))
+    )
+  ;; prevent minibuffer prompt about reloading from disk
+  (setq revert-without-query '("~/tmp-inspect-df.csv"))
+  ;; (setq dap-auto-configure-features '(locals repl))
+  (setq dap-auto-configure-features '(sessions repl))
+  (setq dap-python-debugger 'debugpy)
+  ;; show stdout
+  (setq dap-auto-show-output t)
+  (setq dap-output-window-min-height 10)
+  (setq dap-output-window-max-height 200)
+  (setq dap-overlays-use-overlays nil)
+  ;; hide stdout window  when done
+  (defun synthmacs/hide-debug-windows (session)
+    "Hide debug windows when all debug sessions are dead."
+    (unless (-filter 'dap--session-running (dap--get-sessions))
+      ;; delete output buffer
+      (when-let (window (get-buffer-window (dap--debug-session-output-buffer (dap--cur-session-or-die))))
+        (delete-window window))
+      ;; delete dataframe inspector window
+      (when-let
+          (window (get-buffer-window (get-file-buffer synthmacs/dap-temp-dataframe-path)))
+        (delete-window window)))
+    )
+  (defun synthmacs/dap-python--executable-find (orig-fun &rest args)
+    (executable-find "python"))
+  :config
+  ;; configure windows
+  (require 'dap-ui)
+  (setq dap-ui-buffer-configurations
+        '(("*dap-ui-sessions*"
+           (side . bottom)
+           (slot . 1)
+           (window-height . 0.33))
+          ("*debug-window*"
+           (side . bottom)
+           (slot . 2)
+           (window-height . 0.33))
+          ("*dap-ui-repl*"
+           (side . bottom)
+           (slot . 3)
+           (window-height . 0.33))))
+  (dap-ui-mode 1)
+  ;; python virtualenv
+  (require 'dap-python)
+  (advice-add 'dap-python--pyenv-executable-find :around #'synthmacs/dap-python--executable-find)
+  ;; debug templates
+  (defvar dap-script-args (list :type "python"
+                                :args []
+                                :cwd "${workspaceFolder}"
+                                :justMyCode :json-false
+                                :request "launch"
+                                :debugger 'debugpy
+                                :name "dap-debug-script"))
+  (defvar dap-test-args (list :type "python-test-at-point"
+                              :args ""
+                              :justMyCode :json-false
+                              ;; :cwd "${workspaceFolder}"
+                              :request "launch"
+                              :module "pytest"
+                              :debugger 'debugpy
+                              :name "dap-debug-test-at-point"))
+  (defvar flight-tower-mill (list
+                             :name "mill"
+                             :type "python"
+                             :request "launch"
+                             :program (expand-file-name "~/git/Sodra.Common.FlightTower/flight_tower/__main__.py")
+                             ;; :env '(("NO_JSON_LOG" . "true"))
+                             :args ["-m" "mill" "--config" "user_luca"]))
+  (defvar flight-tower-calibration (list
+                                    :name "mill"
+                                    :type "python"
+                                    :request "launch"
+                                    :program (expand-file-name "~/git/Sodra.Common.FlightTower/flight_tower/__main__.py")
+                                    ;; :env '(("NO_JSON_LOG" . "true"))
+                                    :args ["-m" "mill"
+                                           ;; "--config" "user_luca"
+                                           ;; "--config" "calibration_g292imp_41x185"
+                                           ;; "--config" "calibration_41x185_38x89"
+                                           "--config" "calibration_jan22"
+                                           ]
+                                    ))
+  (defvar flight-tower-e2e (list
+                            :name "mill"
+                            :type "python"
+                            :request "launch"
+                            :program (expand-file-name "~/git/Sodra.Common.FlightTower/flight_tower/__main__.py")
+                            ;; :env '(("NO_JSON_LOG" . "true"))
+                            :args ["-m" "wood_processing_e2e"
+                                   "--config" "user_luca"]
+                            ))
+  (dap-register-debug-template "dap-debug-script" dap-script-args)
+  (dap-register-debug-template "dap-debug-test-at-point" dap-test-args)
+  (dap-register-debug-template "flight-tower-mill" flight-tower-mill)
+  (dap-register-debug-template "flight-tower-e2e" flight-tower-e2e)
+  (dap-register-debug-template "flight-tower-calibration" flight-tower-calibration)
+  ;; bind the templates
+  (synthmacs/local-leader-keys
+    :keymaps 'python-mode-map
+    "d t" '((lambda () (interactive) (dap-debug dap-test-args)) :wk "test")
+    "d s" '((lambda () (interactive) (dap-debug dap-script-args)) :wk "script")
+    )
+  )
+#+end_src
+
+*** DAP Languages
+:PROPERTIES:
+:CUSTOM_ID: h:DEB733DA-3C46-4317-B6AB-13BAE08AAA05
+:END:
+#+begin_src emacs-lisp :tangle no
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 #+end_src
 
@@ -3858,7 +4080,7 @@ Olivetti mode is a nice alignment of emacs for prose writing.
 #+begin_src emacs-lisp :tangle no
 (use-package yasnippet
   :config
-  (setq lc/greek-alphabet
+  (setq synthmacs/greek-alphabet
         '(("a" . "\\alpha")
           ("b" . "\\beta" )
           ("g" . "\\gamma")
@@ -3883,14 +4105,14 @@ Olivetti mode is a nice alignment of emacs for prose writing.
           ("v" . "\\psi")
           ("g" . "\\omega")))
 
-  (setq lc/latex-greek-prefix "'")
+  (setq synthmacs/latex-greek-prefix "'")
 
   ;; The same for capitalized letters
-  (dolist (elem lc/greek-alphabet)
+  (dolist (elem synthmacs/greek-alphabet)
     (let ((key (car elem))
           (value (cdr elem)))
       (when (string-equal key (downcase key))
-        (add-to-list 'lc/greek-alphabet
+        (add-to-list 'synthmacs/greek-alphabet
                      (cons
                       (capitalize (car elem))
                       (concat
@@ -3902,26 +4124,26 @@ Olivetti mode is a nice alignment of emacs for prose writing.
    'latex-mode
    (mapcar
     (lambda (elem)
-      (list (concat lc/latex-greek-prefix (car elem)) (cdr elem) (concat "Greek letter " (car elem))))
-    lc/greek-alphabet))
+      (list (concat synthmacs/latex-greek-prefix (car elem)) (cdr elem) (concat "Greek letter " (car elem))))
+    synthmacs/greek-alphabet))
   
-  (setq lc/english-alphabet
+  (setq synthmacs/english-alphabet
         '("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"))
 
-  (dolist (elem lc/english-alphabet)
+  (dolist (elem synthmacs/english-alphabet)
     (when (string-equal elem (downcase elem))
-      (add-to-list 'lc/english-alphabet (upcase elem))))
+      (add-to-list 'synthmacs/english-alphabet (upcase elem))))
 
-  (setq lc/latex-mathbb-prefix "`")
+  (setq synthmacs/latex-mathbb-prefix "`")
 
   (yas-define-snippets
    'latex-mode
    (mapcar
     (lambda (elem)
-      (list (concat lc/latex-mathbb-prefix elem) (concat "\\mathbb{" elem "}") (concat "Mathbb letter " elem)))
-    lc/english-alphabet))
+      (list (concat synthmacs/latex-mathbb-prefix elem) (concat "\\mathbb{" elem "}") (concat "Mathbb letter " elem)))
+    synthmacs/english-alphabet))
 
-  (setq lc/latex-math-symbols
+  (setq synthmacs/latex-math-symbols
         '(("x" . "\\times")
           ("." . "\\cdot")
           ("v" . "\\forall")
@@ -3933,7 +4155,7 @@ Olivetti mode is a nice alignment of emacs for prose writing.
           ("u" . "\\cup")
           ("0" . "\\emptyset")))
 
-  (setq lc/latex-math-prefix "''")
+  (setq synthmacs/latex-math-prefix "''")
 
   (yas-define-snippets
    'latex-mode
@@ -3941,8 +4163,8 @@ Olivetti mode is a nice alignment of emacs for prose writing.
     (lambda (elem)
       (let ((key (car elem))
             (value (cdr elem)))
-        (list (concat lc/latex-math-prefix key) value (concat "Math symbol " value))))
-    lc/latex-math-symbols))
+        (list (concat synthmacs/latex-math-prefix key) value (concat "Math symbol " value))))
+    synthmacs/latex-math-symbols))
   )
 #+end_src
 
@@ -4061,11 +4283,6 @@ You can either build your own languages, or you can use pre-built. For now, let'
 :CUSTOM_ID: h:732BA080-834D-49E0-967E-0D37CE1C6BA0
 :END:
 
-** Clojure
-:PROPERTIES:
-:CUSTOM_ID: h:FF09BB1E-5437-4AFF-A4F5-367B92AF76CC
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clojure.el
-:END:
 ** Haskell
 :PROPERTIES:
 :CUSTOM_ID: h:28BA5E9F-6893-4E40-9F42-246F8731948C
@@ -4076,11 +4293,102 @@ You can either build your own languages, or you can use pre-built. For now, let'
 :CUSTOM_ID: h:5561B91C-C61D-47D5-8320-9A559032C762
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-html.el
 :END:
-** LISP
+
+** LISPs
 :PROPERTIES:
 :CUSTOM_ID: h:2171FA3F-D9BC-4058-9442-6827BABFC2CE
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-lisp.el
 :END:
+
+*** Clojure
+:PROPERTIES:
+:CUSTOM_ID: h:FF09BB1E-5437-4AFF-A4F5-367B92AF76CC
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clojure.el
+:END:
+
+**** clojure-mode
+:PROPERTIES:
+:CUSTOM_ID: h:C6E789DD-6E2F-4CC4-A80B-236D86204624
+:END:
+#+begin_src emacs-lisp
+(use-package clojure-mode
+  :mode "\\.clj$"
+  :init
+  (setq clojure-align-forms-automatically t))
+#+end_src
+
+**** clojure-lsp
+:PROPERTIES:
+:CUSTOM_ID: h:A8775FBA-62ED-45B6-B069-55F008EC4A0F
+:END:
+#+begin_src emacs-lisp
+(use-package clojure-mode
+  :hook
+  ((clojure-mode clojurescript-mode)
+   . (lambda ()
+       (setq-local lsp-enable-indentation nil ; cider indentation
+                   lsp-enable-completion-at-point nil ; cider completion
+                   )
+       (lsp-deferred)))
+  )
+#+end_src
+
+**** Cider
+:PROPERTIES:
+:CUSTOM_ID: h:E86F6D87-1832-4635-91A9-7556C9CF0939
+:END:
+
+#+begin_src emacs-lisp
+(use-package cider
+  :hook ((cider-repl-mode . evil-normalize-keymaps)
+         (cider-mode . (lambda ()
+                           (setq-local evil-lookup-func #'cider-doc)))
+         (cider-mode . eldoc-mode))
+  :general
+  (synthmacs/local-leader-keys
+    :keymaps 'clojure-mode-map
+    "c" '(cider-connect-clj :wk "connect")
+    "C" '(cider-connect-cljs :wk "connect (cljs)")
+    "j" '(cider-jack-in :wk "jack in")
+    "J" '(cider-jack-in-cljs :wk "jack in (cljs)")
+    "d d" 'cider-debug-defun-at-point 
+    "e b" 'cider-eval-buffer
+    "e l" 'cider-eval-last-sexp
+    "e L" 'cider-pprint-eval-last-sexp-to-comment
+    "e d" '(cider-eval-defun-at-point :wk "defun")
+    "e D" 'cider-pprint-eval-defun-to-comment
+    "h" 'cider-clojuredocs-web 
+    "K" 'cider-doc
+    "q" '(cider-quit :qk "quit")
+    )
+  (synthmacs/local-leader-keys
+    :keymaps 'clojure-mode-map
+    :states 'visual
+    "e" 'cider-eval-region)
+  :init
+  (setq nrepl-hide-special-buffers t)
+  (setq nrepl-sync-request-timeout nil)
+  (setq cider-repl-display-help-banner nil)
+  )
+#+end_src
+
+**** ob-clojure
+:PROPERTIES:
+:CUSTOM_ID: h:E3F9FFBA-EE07-4399-A761-A28115AB2031
+:END:
+
+#+begin_src emacs-lisp
+(use-package org
+  :config
+  (require 'ob-clojure)
+  (setq org-babel-clojure-backend 'cider))
+#+end_src
+
+*** Common Lisp
+:PROPERTIES:
+:CUSTOM_ID: h:32C00231-247B-4BB8-9DF7-A733338041A0
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clisp.el
+:END:
+  
 #+begin_src emacs-lisp
 (use-package sly)
 
@@ -4091,11 +4399,83 @@ You can either build your own languages, or you can use pre-built. For now, let'
   (add-to-list 'sly-contribs 'sly-repl-ansi-color))
 #+end_src
 
+*** Emacs-lisp
+:PROPERTIES:
+:CUSTOM_ID: h:D036C70A-011B-49DD-82B7-8B077BB1123C
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-elisp.el
+:END:
+
+#+begin_src emacs-lisp
+(use-package emacs
+  :straight (:type built-in)
+  :general
+  (general-nmap
+    :keymaps 'emacs-lisp-mode-map
+    :states 'normal
+   "gr" nil) ;; interferes with eval-operator
+  )
+#+end_src
+
+*** General Lisp Tools
+:PROPERTIES:
+:CUSTOM_ID: h:DD59307A-C59B-4CF6-87CF-0C5D425E3F91
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-lisp.el
+:END:
+
+**** aggressive-indent
+:PROPERTIES:
+:CUSTOM_ID: h:BB3EB984-53C4-480A-9FD5-1EFBD6BA4D3F
+:END:
+Keeps the file indented nicely, but, this might clash with lsp stuff, so we only use it for Lisp stuff.
+#+begin_src emacs-lisp
+(use-package aggressive-indent
+    :hook ((clojure-mode . aggressive-indent-mode)
+           (lisp-mode . aggressive-indent-mode)
+           (emacs-lisp-mode . aggressive-indent-mode)))
+#+end_src
+
+**** evil-lisp-state
+:PROPERTIES:
+:CUSTOM_ID: h:29AD92F1-04AB-4CE5-91F4-A1E4B187F0CE
+:END:
+- Wrap with ~SPC l w~
+- Raise with ~SPC l r~
+- Enter lisp-state with ~SPC l .~
+- Navigate symbols with ~j~ and ~k~
+- Navigate forms with ~h~ and ~l~
+- Go to parent sexp with ~U~
+- 
+#+begin_src emacs-lisp
+(use-package evil-lisp-state
+  :after evil
+  :demand
+  :init
+  (setq evil-lisp-state-enter-lisp-state-on-command nil)
+  (setq evil-lisp-state-global t)
+  ;; (setq evil-lisp-state-major-modes '(org-mode emacs-lisp-mode clojure-mode clojurescript-mode lisp-interaction-mode))
+  :config
+  (evil-lisp-state-leader "SPC l")
+  )
+  #+end_src
+
+
 ** Markdown
 :PROPERTIES:
 :CUSTOM_ID: h:80E9702A-E2B6-44B5-A139-AD16C9B5D92F
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-markdown.el
 :END:
+
+#+begin_src emacs-lisp
+(use-package markdown-mode
+  :commands (markdown-mode gfm-mode)
+  :mode
+  (("README\\.md\\'" . gfm-mode)
+   ("\\.md\\'" . markdown-mode)
+   ("\\.markdown\\'" . markdown-mode))
+  :init
+  (setq markdown-command "multimarkdown"))
+#+end_src
+
 ** Rust
 :PROPERTIES:
 :CUSTOM_ID: h:6355CFE4-6BA5-4134-BA38-74634F9FF919
@@ -4121,15 +4501,21 @@ You can either build your own languages, or you can use pre-built. For now, let'
 :CUSTOM_ID: h:0AB88184-7AE8-4232-B4A7-B8C4714B91D3
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-yaml.el
 :END:
+
+#+begin_src emacs-lisp
+(use-package yaml-mode
+  :mode ((rx ".yml" eos) . yaml-mode))
+#+end_src
+
 * Provide modules
 :PROPERTIES:
-:CUSTOM_ID: h:754DFB20-B2AB-4750-9BDA-D24E8014C504
+:CUSTOM_ID: h:79F3414D-6DBD-420A-A955-913ACCB5A17B
 :END:
 
 ** synthmacs-core
 :PROPERTIES:
-:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-core.el
+:CUSTOM_ID: h:6C65C946-EAFF-4F1D-9501-0DC155A3719A
 :END:
 #+begin_src emacs-lisp
 (provide 'synthmacs-core)
@@ -4138,8 +4524,8 @@ You can either build your own languages, or you can use pre-built. For now, let'
 
 ** synthmacs-package-management
 :PROPERTIES:
-:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-package-management.el
+:CUSTOM_ID: h:BECD851C-F8A3-42DF-947E-9BDA87337575
 :END:
 #+begin_src emacs-lisp
 (provide 'synthmacs-package-management)
@@ -4148,8 +4534,8 @@ You can either build your own languages, or you can use pre-built. For now, let'
 
 ** synthmacs-general-evil
 :PROPERTIES:
-:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-general-evil.el
+:CUSTOM_ID: h:3CCD39F9-C228-4767-BBA8-0AA80322C01E
 :END:
 #+begin_src emacs-lisp
 (provide 'synthmacs-general-evil)
@@ -4158,8 +4544,8 @@ You can either build your own languages, or you can use pre-built. For now, let'
 
 ** synthmacs-org
 :PROPERTIES:
-:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-org.el
+:CUSTOM_ID: h:3C05F9B9-F006-44AC-8DEE-F9EA2E6E3DB2
 :END:
 #+begin_src emacs-lisp
 (provide 'synthmacs-org)
@@ -4168,8 +4554,8 @@ You can either build your own languages, or you can use pre-built. For now, let'
 
 ** synthmacs-ui
 :PROPERTIES:
-:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-ui.el
+:CUSTOM_ID: h:46D11F9E-6108-4A88-888B-4DDBA1AD316A
 :END:
 #+begin_src emacs-lisp
 (provide 'synthmacs-ui)
@@ -4178,8 +4564,8 @@ You can either build your own languages, or you can use pre-built. For now, let'
 
 ** synthmacs-completion-framework
 :PROPERTIES:
-:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-completion-framework.el
+:CUSTOM_ID: h:D7BA43FA-DCD5-49A8-A972-13FCE0465438
 :END:
 #+begin_src emacs-lisp
 (provide 'synthmacs-completion-framework)
@@ -4188,8 +4574,8 @@ You can either build your own languages, or you can use pre-built. For now, let'
 
 ** synthmacs-tools
 :PROPERTIES:
-:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-tools.el
+:CUSTOM_ID: h:3DE0D1E2-51E9-4DCC-96BD-227464214C7C
 :END:
 #+begin_src emacs-lisp
 (provide 'synthmacs-tools)
@@ -4198,8 +4584,8 @@ You can either build your own languages, or you can use pre-built. For now, let'
 
 ** synthmacs-programming
 :PROPERTIES:
-:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-programming.el
+:CUSTOM_ID: h:CE800ACA-533D-4E20-8E62-75AB021FE36A
 :END:
 #+begin_src emacs-lisp
 (provide 'synthmacs-programming)
@@ -4211,20 +4597,10 @@ You can either build your own languages, or you can use pre-built. For now, let'
 :CUSTOM_ID: h:320148C4-896F-4FFF-90CD-08E91DCCED9E
 :END:
 
-*** synthmacs-lang-clojure
-:PROPERTIES:
-:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clojure.el
-:END:
-#+begin_src emacs-lisp
-(provide 'synthmacs-lang-clojure)
-;;; synthmacs-lang-clojure.el ends here
-#+end_src
-
 *** synthmacs-lang-haskell
 :PROPERTIES:
-:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-haskell.el
+:CUSTOM_ID: h:6E27FD00-65D6-421C-9C96-B4A8877CA5BB
 :END:
 #+begin_src emacs-lisp
 (provide 'synthmacs-lang-haskell)
@@ -4233,18 +4609,53 @@ You can either build your own languages, or you can use pre-built. For now, let'
 
 *** synthmacs-lang-html
 :PROPERTIES:
-:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-html.el
+:CUSTOM_ID: h:F0DD1F2F-A930-4C32-81AE-1D4730BF5FEF
 :END:
 #+begin_src emacs-lisp
 (provide 'synthmacs-lang-html)
 ;;; synthmacs-lang-html.el ends here
 #+end_src
 
+*** LISPs
+:PROPERTIES:
+:CUSTOM_ID: h:FD16520D-EDBD-44ED-BFAE-8F8E6B9ED790
+:END:
+
+*** synthmacs-lang-clojure
+:PROPERTIES:
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clojure.el
+:CUSTOM_ID: h:F6A9AC39-89F2-41DA-84DD-5AF7A01F351B
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-lang-clojure)
+;;; synthmacs-lang-clojure.el ends here
+#+end_src
+
+*** synthmacs-lang-clisp
+:PROPERTIES:
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clisp.el
+:CUSTOM_ID: h:771E15AF-C8A5-49CD-B224-AE4103FD2822
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-lang-clojure)
+;;; synthmacs-lang-clojure.el ends here
+#+end_src
+
+*** synthmacs-lang-elisp
+:PROPERTIES:
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-elisp.el
+:CUSTOM_ID: h:29743F9F-3D7F-44A6-9CD6-369EB609D4E0
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-lang-clojure)
+;;; synthmacs-lang-clojure.el ends here
+#+end_src
+
 *** synthmacs-lang-lisp
 :PROPERTIES:
-:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-lisp.el
+:CUSTOM_ID: h:08483E03-F91B-4E81-8DAF-8C710A9AD0F8
 :END:
 #+begin_src emacs-lisp
 (provide 'synthmacs-lang-lisp)
@@ -4253,8 +4664,8 @@ You can either build your own languages, or you can use pre-built. For now, let'
 
 *** synthmacs-lang-markdown
 :PROPERTIES:
-:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-markdown.el
+:CUSTOM_ID: h:4DC1FE56-048B-42E5-BBC0-C7D8C97A394A
 :END:
 #+begin_src emacs-lisp
 (provide 'synthmacs-lang-markdown)
@@ -4263,8 +4674,8 @@ You can either build your own languages, or you can use pre-built. For now, let'
 
 *** synthmacs-lang-rust
 :PROPERTIES:
-:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-rust.el
+:CUSTOM_ID: h:B3C70973-504D-407A-A865-579F5A3DC1C1
 :END:
 #+begin_src emacs-lisp
 (provide 'synthmacs-lang-rust)
@@ -4273,8 +4684,8 @@ You can either build your own languages, or you can use pre-built. For now, let'
 
 *** synthmacs-lang-swift
 :PROPERTIES:
-:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-swift.el
+:CUSTOM_ID: h:778CF1D8-D2CA-4920-90BA-768D5C6EDC0E
 :END:
 #+begin_src emacs-lisp
 (provide 'synthmacs-lang-swift)
@@ -4283,8 +4694,8 @@ You can either build your own languages, or you can use pre-built. For now, let'
 
 *** synthmacs-lang-yaml
 :PROPERTIES:
-:CUSTOM_ID: h:24A7FE78-E6B9-4C81-A2BE-6A049A8209AD
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-yaml.el
+:CUSTOM_ID: h:B2672AC2-5D01-4636-9064-E9D313BB65D8
 :END:
 #+begin_src emacs-lisp
 (provide 'synthmacs-lang-yaml)
@@ -4293,7 +4704,7 @@ You can either build your own languages, or you can use pre-built. For now, let'
 
 * COMMENT Local variables
 :PROPERTIES:
-:CUSTOM_ID: h:8CE072CD-CA85-4E53-B672-E0AC74E4E4EC
+:CUSTOM_ID: h:ADD147A9-382A-4D85-8A9A-7533E71BA96A
 :END:
 # Local Variables:
 # eval: (add-hook 'after-save-hook (lambda ()(progn (synthmacs/org-add-ids-to-headlines-in-file) (synthmacs/tangle-config))) nil t)
