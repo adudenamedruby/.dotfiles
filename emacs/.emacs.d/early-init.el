@@ -42,12 +42,12 @@
 
 ;; [[file:synthmacs.org::*Reduce garbage collection][Reduce garbage collection:1]]
 ;; max memory available for gc on startup
-(defvar me/gc-cons-threshold 16777216)
+(defvar synthmacs/gc-cons-threshold 16777216)
 (setq gc-cons-threshold most-positive-fixnum
       gc-cons-percentage 0.6)
 (add-hook 'emacs-startup-hook
           (lambda ()
-            (setq gc-cons-threshold me/gc-cons-threshold
+            (setq gc-cons-threshold synthmacs/gc-cons-threshold
                   gc-cons-percentage 0.1)))
 
 ;; max memory available for gc when opening minibuffer

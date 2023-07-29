@@ -483,13 +483,6 @@ folder; otherwise, delete a character backwards."
   (kill-emacs))
 ;; Quit (but save before doing so!):1 ends here
 
-;; [[file:../synthmacs.org::*Garbage collector magic hack][Garbage collector magic hack:1]]
-(use-package gcmh
-  :demand t
-  :config
-  (gcmh-mode 1))
-;; Garbage collector magic hack:1 ends here
-
 ;; [[file:../synthmacs.org::*xref][xref:1]]
 (use-package xref
   :init
