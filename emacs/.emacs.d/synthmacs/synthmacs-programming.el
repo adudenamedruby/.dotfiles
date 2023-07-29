@@ -145,21 +145,5 @@
 ;; 		    (bash-ts-mode)
 ;; 		  (sh-mode))))
 
-(use-package vterm
-  :general
-  (general-imap
-    :keymaps 'vterm-mode-map
-    "M-l" 'vterm-send-right
-    "M-h" 'vterm-send-left)
-  :config
-  (setq vterm-shell (executable-find "zsh")
-        vterm-max-scrollback 10000))
-
-(use-package vterm-toggle
-  :general
-  (synthmacs/leader-keys
-    "'" 'vterm-toggle)
-  )
-
 (provide 'synthmacs-programming)
 ;;; synthmacs-programming.el ends here

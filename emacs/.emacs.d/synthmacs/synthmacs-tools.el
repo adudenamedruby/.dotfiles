@@ -44,13 +44,22 @@
   (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
 
 (use-package helpful
+  :after evil
   :general
   (synthmacs/leader-keys
     "h." '(helpful-at-point :wk "helpful-at-point")
     "hc" '(helpful-command :wk "describe-command")
     "hf" '(helpful-callable :wk "describe-function")
     "hk" '(helpful-key :wk "describe-key")
-    "hv" '(helpful-variable :wk "describe-variable")))
+    "hv" '(helpful-variable :wk "describe-variable"))
+  :init
+  (setq evil-lookup-func #'helpfus-at-point)
+  :bind
+  ([remap describe-function] . helpful-callable)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . helpful-variable)
+  ([remap describe-key] . helpful-key)
+  )
 
 (use-package projectile
   :demand
@@ -125,6 +134,113 @@
   :init
   ;; (ws-butler-global-mode 1)
   (add-hook 'prog-mode-hook #'ws-butler-mode))
+
+(use-package olivetti
+  :general
+  (synthmacs/leader-keys
+    "to" 'olivetti-mode)
+  :init
+  (setq olivetti-body-width 100)
+  (setq olivetti-recall-visual-line-mode-entry-state t))
+
+(use-package vterm
+  :general
+  (general-imap
+    :keymaps 'vterm-mode-map
+    "M-l" 'vterm-send-right
+    "M-h" 'vterm-send-left)
+  :config
+  (setq vterm-shell (executable-find "zsh")
+        vterm-max-scrollback 10000))
+
+(use-package vterm-toggle
+  :general
+  (synthmacs/leader-keys
+    "'" 'vterm-toggle)
+  )
+
+(use-package transient
+  :general
+  (synthmacs/leader-keys
+    "h h" 'synthmacs/help-transient)
+  :config
+  (transient-define-prefix synthmacs/help-transient ()
+    ["Help Commands"
+     ["Mode & Bindings"
+      ("m" "Mode" describe-mode)
+      ("b" "Major Bindings" which-key-show-full-major-mode)
+      ("B" "Minor Bindings" which-key-show-full-minor-mode-keymap)
+      ("d" "Descbinds" describe-bindings)
+      ]
+     ["Describe"
+      ("c" "Command" helpful-command)
+      ("f" "Function" helpful-callable)
+      ("v" "Variable" helpful-variable)
+      ("k" "Key" helpful-key)
+      ]
+     ["Info on"
+      ("C-c" "Emacs Command" Info-goto-emacs-command-node)
+      ("C-f" "Function" info-lookup-symbol) 
+      ("C-v" "Variable" info-lookup-symbol)
+      ("C-k" "Emacs Key" Info-goto-emacs-key-command-node)
+      ]
+     ["Goto Source"
+      ("L" "Library" find-library)
+      ("F" "Function" find-function)
+      ("V" "Variable" find-variable)
+      ("K" "Key" find-function-on-key)
+      ]
+     ]
+    [
+     ["Internals"
+      ("e" "Echo Messages" view-echo-area-messages)
+      ("l" "Lossage" view-lossage)
+      ]
+     ["Describe"
+      ("s" "Symbol" helpful-symbol)
+      ("." "At Point" helpful-at-point)
+      ;; ("C-f" "Face" counsel-describe-face)
+      ("w" "Where Is" where-is)
+      ("=" "Position" what-cursor-position)
+      ]
+     ["Info Manuals"
+      ("C-i" "Info" info)
+      ("C-4" "Other Window" info-other-window)
+      ("C-e" "Emacs" info-emacs-manual)
+      ;; ("C-l" "Elisp" info-elisp-manual)
+      ]
+     ["Exit"
+      ("q" "Quit" transient-quit-one)
+      ("<escape>" "Quit" transient-quit-one)
+      ]
+     ;; ["External"
+     ;;  ("W" "Dictionary" lookup-word-at-point)
+     ;;  ("D" "Dash" dash-at-point)
+     ;;  ]
+     ]
+    )
+  )
+
+(use-package transient
+  :general
+  (synthmacs/leader-keys
+    "tx" 'synthmacs/font-size-transient)
+  :config
+  (transient-define-prefix synthmacs/font-size-transient ()
+    "Change font size"
+    ["Font size"
+     ("+" "Increase" (lambda ()
+		       (interactive)
+		       (progn
+			 (text-scale-increase)
+			 (synthmacs/font-size-transient))))
+     ("-" "Decrease" (lambda ()
+		       (interactive)
+		       (progn
+			 (text-scale-decrease)
+			 (synthmacs/font-size-transient))))
+     ])
+  )
 
 (provide 'synthmacs-tools)
 ;;; synthmacs-tools.el ends here
