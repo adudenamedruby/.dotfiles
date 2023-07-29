@@ -1,8 +1,11 @@
+;; [[file:../synthmacs.org::*clojure-mode][clojure-mode:1]]
 (use-package clojure-mode
   :mode "\\.clj$"
   :init
   (setq clojure-align-forms-automatically t))
+;; clojure-mode:1 ends here
 
+;; [[file:../synthmacs.org::*clojure-lsp][clojure-lsp:1]]
 (use-package clojure-mode
   :hook
   ((clojure-mode clojurescript-mode)
@@ -12,7 +15,9 @@
                    )
        (lsp-deferred)))
   )
+;; clojure-lsp:1 ends here
 
+;; [[file:../synthmacs.org::*Cider][Cider:1]]
 (use-package cider
   :hook ((cider-repl-mode . evil-normalize-keymaps)
          (cider-mode . (lambda ()
@@ -44,11 +49,16 @@
   (setq nrepl-sync-request-timeout nil)
   (setq cider-repl-display-help-banner nil)
   )
+;; Cider:1 ends here
 
+;; [[file:../synthmacs.org::*ob-clojure][ob-clojure:1]]
 (use-package org
   :config
   (require 'ob-clojure)
   (setq org-babel-clojure-backend 'cider))
+;; ob-clojure:1 ends here
 
+;; [[file:../synthmacs.org::*synthmacs-lang-clojure][synthmacs-lang-clojure:1]]
 (provide 'synthmacs-lang-clojure)
 ;;; synthmacs-lang-clojure.el ends here
+;; synthmacs-lang-clojure:1 ends here

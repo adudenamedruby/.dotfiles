@@ -1,3 +1,4 @@
+;; [[file:synthmacs.org::*early-init.el][early-init.el:1]]
 ;;; early-init.el --- Early Init File -*- lexical-binding: t; no-byte-compile: t -*-
 ;; NOTE: early-init.el is now generated from synthmacs.org.  Please edit that file instead
 
@@ -39,3 +40,4 @@
       comp-async-query-on-exit t)
 
   ;;; early-init.el ends here
+;; early-init.el:1 ends here

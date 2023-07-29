@@ -1,3 +1,4 @@
+;; [[file:../synthmacs.org::*vertico][vertico:1]]
 (use-package vertico
   :straight (vertico :files (:defaults "extensions/*")
                      :includes (vertico-indexed
@@ -51,11 +52,15 @@
                    "  ")
                  cand)))
   )
+;; vertico:1 ends here
 
+;; [[file:../synthmacs.org::*savehist][savehist:1]]
 (use-package savehist
   :init
   (savehist-mode))
+;; savehist:1 ends here
 
+;; [[file:../synthmacs.org::*Emacs & Vertico][Emacs & Vertico:1]]
 (use-package emacs
   :init
   ;; Add prompt indicator to `completing-read-multiple'.
@@ -85,7 +90,9 @@
   ;; Focus the help window when bringing it up, so that I can quit it easily
   (setq help-window-select t)
   )
+;; Emacs & Vertico:1 ends here
 
+;; [[file:../synthmacs.org::*Orderless][Orderless:1]]
 (use-package orderless
   :init
   ;; Configure a custom style dispatcher (see the Consult wiki)
@@ -94,7 +101,9 @@
   (setq completion-styles '(orderless basic)
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
+;; Orderless:1 ends here
 
+;; [[file:../synthmacs.org::*Consult][Consult:1]]
 (use-package consult
   :commands (consult-ripgrep)
   :general
@@ -239,7 +248,9 @@
   ;; (setq consult-project-function nil)
 
   )
+;; Consult:1 ends here
 
+;; [[file:../synthmacs.org::*Marginalia][Marginalia:1]]
 (use-package marginalia
   :after vertico
   :general
@@ -253,7 +264,9 @@
   (with-eval-after-load 'projectile
     (add-to-list 'marginalia-command-categories '(projectile-find-file . file)))
   )
+;; Marginalia:1 ends here
 
+;; [[file:../synthmacs.org::*Embark][Embark:1]]
 (use-package embark
   :after vertico
   :general
@@ -352,13 +365,17 @@ targets."
 ;; (add-to-list 'embark-keymap-alist '(straight . embark-straight-map))
 
 (add-to-list 'marginalia-prompt-categories '("recipe\\|package" . straight))
+;; Embark:1 ends here
 
+;; [[file:../synthmacs.org::*embark-consult][embark-consult:1]]
 (use-package embark-consult
   :after (embark consult)
 					; only need to install it, embark loads it after consult if found
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
+;; embark-consult:1 ends here
 
+;; [[file:../synthmacs.org::*wgrep][wgrep:1]]
 (use-package wgrep
   ;; :general
   ;; (grep-mode-may "W" 'wgrep-change-to-wgrep-mode)
@@ -366,7 +383,9 @@ targets."
   (setq wgrep-auto-save-buffer t)
   (setq wgrep-change-readonly-file t)
   )
+;; wgrep:1 ends here
 
+;; [[file:../synthmacs.org::*corfu][corfu:1]]
 (use-package corfu
   :straight (corfu :files (:defaults "extensions/*")
 		   :includes (corfu-popupinfo))
@@ -403,7 +422,9 @@ targets."
   ;; This is recommended since Dabbrev can be used globally (M-/).
   ;; See also `corfu-exclude-modes'.
   )
+;; corfu:1 ends here
 
+;; [[file:../synthmacs.org::*Emacs & Corfu][Emacs & Corfu:1]]
 ;; A few more useful configurations...
 (use-package emacs
   :init
@@ -418,7 +439,9 @@ targets."
   ;; Enable indentation+completion using the TAB key.
   ;; `completion-at-point' is often bound to M-TAB.
   (setq tab-always-indent 'complete))
+;; Emacs & Corfu:1 ends here
 
+;; [[file:../synthmacs.org::*kind-icon][kind-icon:1]]
 (use-package kind-icon
   :after corfu
   :demand
@@ -428,6 +451,9 @@ targets."
   (setq kind-icon-blend-frac 0.08)
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+;; kind-icon:1 ends here
 
+;; [[file:../synthmacs.org::*synthmacs-completion-framework][synthmacs-completion-framework:1]]
 (provide 'synthmacs-completion-framework)
 ;;; synthmacs-completion-framework.el ends here
+;; synthmacs-completion-framework:1 ends here

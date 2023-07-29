@@ -1,3 +1,4 @@
+;; [[file:../synthmacs.org::*org mode][org mode:1]]
 (use-package org
   ;; :straight org-plus-contrib
   ;; :straight (:type built-in)
@@ -89,16 +90,22 @@
   ;; ;; (add-to-list 'org-export-backends 'beamer)
   ;; (plist-put org-format-latex-options :scale 1.2)
   )
+;; org mode:1 ends here
 
+;; [[file:../synthmacs.org::*Enabling the Table of Contents][Enabling the Table of Contents:1]]
 (use-package toc-org
   :commands toc-org-enable
   :init
   (add-hook 'org-mode-hook 'toc-org-enable))
+;; Enabling the Table of Contents:1 ends here
 
+;; [[file:../synthmacs.org::*org reverse datetree][org reverse datetree:1]]
 (use-package org-reverse-datetree
   :after org
   :demand)
+;; org reverse datetree:1 ends here
 
+;; [[file:../synthmacs.org::*org-superstar][org-superstar:1]]
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode)
   :init
@@ -106,7 +113,9 @@
         ;; org-superstar-special-todo-items t
         org-ellipsis " ↴ ")
   )
+;; org-superstar:1 ends here
 
+;; [[file:../synthmacs.org::*Using org-id in links][Using org-id in links:1]]
 (use-package org
   :init
   (defun synthmacs/org-custom-id-get (&optional pom create prefix)
@@ -143,7 +152,9 @@
   (require 'org-id)
   (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
   )
+;; Using org-id in links:1 ends here
 
+;; [[file:../synthmacs.org::*org-babel][org-babel:1]]
 (use-package org
   :general
   (synthmacs/local-leader-keys
@@ -167,7 +178,9 @@
      (shell . t)))
   (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
   )
+;; org-babel:1 ends here
 
+;; [[file:../synthmacs.org::*Tangling this file][Tangling this file:1]]
 (use-package org
   :config
   (require 's)
@@ -208,7 +221,9 @@
       )
     )
   )
+;; Tangling this file:1 ends here
 
+;; [[file:../synthmacs.org::*evil-org-mode][evil-org-mode:1]]
 (use-package evil-org-mode
   :straight (evil-org-mode
 	     :type git
@@ -308,7 +323,9 @@
     (interactive "p")
     (dotimes (_ count) (+org--insert-item 'above)))
   )
+;; evil-org-mode:1 ends here
 
+;; [[file:../synthmacs.org::*org-appear][org-appear:1]]
 (use-package org-appear
   :straight (org-appear :type git :host github :repo "awth13/org-appear")
   :hook (org-mode . org-appear-mode)
@@ -317,6 +334,9 @@
   (setq org-appear-autolinks t)
   (setq org-appear-autosubmarkers t)
   )
+;; org-appear:1 ends here
 
+;; [[file:../synthmacs.org::*synthmacs-org][synthmacs-org:1]]
 (provide 'synthmacs-org)
 ;;; synthmacs-org.el ends here
+;; synthmacs-org:1 ends here

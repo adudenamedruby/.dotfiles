@@ -1,8 +1,11 @@
+;; [[file:../synthmacs.org::*aggressive-indent][aggressive-indent:1]]
 (use-package aggressive-indent
     :hook ((clojure-mode . aggressive-indent-mode)
            (lisp-mode . aggressive-indent-mode)
            (emacs-lisp-mode . aggressive-indent-mode)))
+;; aggressive-indent:1 ends here
 
+;; [[file:../synthmacs.org::*evil-lisp-state][evil-lisp-state:1]]
 (use-package evil-lisp-state
   :after evil
   :demand
@@ -13,6 +16,9 @@
   :config
   (evil-lisp-state-leader "SPC l")
   )
+;; evil-lisp-state:1 ends here
 
+;; [[file:../synthmacs.org::*synthmacs-lang-lisp][synthmacs-lang-lisp:1]]
 (provide 'synthmacs-lang-lisp)
 ;;; synthmacs-lang-lisp.el ends here
+;; synthmacs-lang-lisp:1 ends here

@@ -1,3 +1,4 @@
+;; [[file:../synthmacs.org::*nerd-icons][nerd-icons:1]]
 (use-package nerd-icons
   :init
   (setq nerd-icons-scale-factor 1.2)
@@ -6,18 +7,24 @@
   ;; "Symbols Nerd Font Mono" is the default and is recommended
   ;; but you can use any other Nerd Font if you want
   (nerd-icons-font-family "FiraCode Nerd Font"))
+;; nerd-icons:1 ends here
 
+;; [[file:../synthmacs.org::*all-the-icons][all-the-icons:1]]
 (use-package all-the-icons
   :if (display-graphic-p)
   :demand
   )
+;; all-the-icons:1 ends here
 
+;; [[file:../synthmacs.org::*all-the-icons-completion][all-the-icons-completion:1]]
 (use-package all-the-icons-completion
   :after (marginalia all-the-icons)
   :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
   :init
   (all-the-icons-completion-mode))
+;; all-the-icons-completion:1 ends here
 
+;; [[file:../synthmacs.org::*A variety of themes][A variety of themes:1]]
 (use-package doom-themes
   :config
   ;; Global settings (defaults)
@@ -57,11 +64,15 @@
 (use-package soothe-theme)
 (use-package subatomic-theme)
 (use-package sublime-themes)
+;; A variety of themes:1 ends here
 
+;; [[file:../synthmacs.org::*solaire-mode][solaire-mode:1]]
 (use-package solaire-mode
   :init
   (solaire-global-mode +1))
+;; solaire-mode:1 ends here
 
+;; [[file:../synthmacs.org::*Theme functions][Theme functions:1]]
 (defvar synthmacs--fallback-theme 'kaolin-bubblegum
   "Fallback theme if user theme cannot be applied.")
 
@@ -170,7 +181,9 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   ("q" nil :exit t))
 
 (synthmacs/load-random-theme)
+;; Theme functions:1 ends here
 
+;; [[file:../synthmacs.org::*Navigation][Navigation:1]]
 (use-package winum
   :general
   (synthmacs/leader-keys
@@ -187,14 +200,18 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   (setq winum-auto-setup-mode-line nil
 	winum-ignored-buffers '(" *which-key*"))
   (winum-mode))
+;; Navigation:1 ends here
 
+;; [[file:../synthmacs.org::*ace-window][ace-window:1]]
 (use-package ace-window
   :general
   (synthmacs/leader-keys
     "wD" '(ace-delete-window :wk "ace-delete-window")
     "wS" '(ace-swap-window :wk "ace-swap-window")
     ))
+;; ace-window:1 ends here
 
+;; [[file:../synthmacs.org::*Avy][Avy:1]]
 (use-package avy
   :general
   (synthmacs/leader-keys
@@ -202,7 +219,9 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
     "jc" '(avy-goto-char :wk "avy-goto-char")
     "jl" '(avy-goto-line :wk "avy-goto-line")
     ))
+;; Avy:1 ends here
 
+;; [[file:../synthmacs.org::*Modeline][Modeline:1]]
 (use-package minions
   :hook (doom-modeline-mode . minions-mode))
 
@@ -223,7 +242,9 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   (setq doom-modeline-lsp t)
   (setq doom-modeline-modal-icon t)
   )
+;; Modeline:1 ends here
 
+;; [[file:../synthmacs.org::*Dashboard][Dashboard:1]]
 (use-package dashboard
   :demand
   :init
@@ -242,7 +263,9 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   :config
   (dashboard-setup-startup-hook)
   )
+;; Dashboard:1 ends here
 
+;; [[file:../synthmacs.org::*which-key][which-key:1]]
 (setq which-key-idle-delay 0.4)
 (use-package which-key
   :demand
@@ -275,10 +298,14 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   ;; and for [2-9] in the SPC- Spacemacs root
   (push '((nil . "winum-select-window-[2-9]") . t)
 	which-key-replacement-alist))
+;; which-key:1 ends here
 
+;; [[file:../synthmacs.org::*rainbow-delimiters][rainbow-delimiters:1]]
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
+;; rainbow-delimiters:1 ends here
 
+;; [[file:../synthmacs.org::*Popup management][Popup management:1]]
 (use-package emacs
   :init
   (setq display-buffer-alist
@@ -287,14 +314,18 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
            (window-height . 0.33)
            (mode apropos-mode help-mode helpful-mode Info-mode Man-mode))))
   )
+;; Popup management:1 ends here
 
+;; [[file:../synthmacs.org::*centered-cursor-mode][centered-cursor-mode:1]]
 (use-package centered-cursor-mode
   :general
   (synthmacs/leader-keys
     "t=" '((lambda () (interactive) (centered-cursor-mode 'toggle)) :wk "center cursor")
     )
   )
+;; centered-cursor-mode:1 ends here
 
+;; [[file:../synthmacs.org::*highlight-indent-guides][highlight-indent-guides:1]]
 (use-package highlight-indent-guides
   :hook (prog-mode . highlight-indent-guides-mode)
   :init
@@ -309,7 +340,9 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   ;; (set-face-background 'highlight-indent-guides-even-face "dimgray")
   ;; (set-face-foreground 'highlight-indent-guides-character-face "dimgray")
   )
+;; highlight-indent-guides:1 ends here
 
+;; [[file:../synthmacs.org::*Line numbers][Line numbers:1]]
 (use-package emacs
   :init
   ;; ------------------ Line Numbering ---------------------
@@ -326,7 +359,9 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   ;; Activate line numbering in programming modes
   ;; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
   )
+;; Line numbers:1 ends here
 
+;; [[file:../synthmacs.org::*Fill column & modeline column info][Fill column & modeline column info:1]]
 (use-package emacs
   ;; :hook (prog-mode . display-fill-column-indicator-mode)
   :init
@@ -336,6 +371,9 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   ;; Columns number in the modeline
   (setq column-number-mode t)
   )
+;; Fill column & modeline column info:1 ends here
 
+;; [[file:../synthmacs.org::*synthmacs-ui][synthmacs-ui:1]]
 (provide 'synthmacs-ui)
 ;;; synthmacs-ui.el ends here
+;; synthmacs-ui:1 ends here

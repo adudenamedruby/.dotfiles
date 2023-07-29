@@ -5,8 +5,8 @@
 #+OPTIONS: auto-id:t
 #+OPTIONS: broken-links:t
 #+OPTIONS: tags:nil
-#+OPTIONS: toc:3
-#+ROPERTY: header-args:emacs-lisp :comments link
+#+OPTIONS: toc:4
+#+PROPERTY: header-args:emacs-lisp :comments link
 
 * TABLE OF CONTENTS :toc:
 :PROPERTIES:
@@ -40,7 +40,6 @@
   - [[#general-keybindings][General keybindings]]
   - [[#hydra][Hydra]]
   - [[#evil-mode][EVIL mode]]
-  -  [[#evil-textobj-line][evil-textobj-line]]
 - [[#org-mode][Org Mode]]
   - [[#org-mode-1][org mode]]
   - [[#enabling-the-table-of-contents][Enabling the Table of Contents]]
@@ -1735,7 +1734,7 @@ Why? [[https://github.com/syl20bnr/spacemacs/blob/develop/doc/DOCUMENTATION.org#
   (global-evil-surround-mode 1))
 #+end_src
 
-**  evil-textobj-line
+*** evil-textobj-line
 :PROPERTIES:
 :CUSTOM_ID: h:FDCDA4B0-65C1-40B2-AA6E-28CF92A10919
 :END:
@@ -4288,6 +4287,7 @@ You can either build your own languages, or you can use pre-built. For now, let'
 :CUSTOM_ID: h:28BA5E9F-6893-4E40-9F42-246F8731948C
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-haskell.el
 :END:
+
 ** HTML
 :PROPERTIES:
 :CUSTOM_ID: h:5561B91C-C61D-47D5-8320-9A559032C762
@@ -4456,8 +4456,7 @@ Keeps the file indented nicely, but, this might clash with lsp stuff, so we only
   :config
   (evil-lisp-state-leader "SPC l")
   )
-  #+end_src
-
+#+end_src
 
 ** Markdown
 :PROPERTIES:
@@ -4481,6 +4480,10 @@ Keeps the file indented nicely, but, this might clash with lsp stuff, so we only
 :CUSTOM_ID: h:6355CFE4-6BA5-4134-BA38-74634F9FF919
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-rust.el
 :END:
+
+#+begin_src emacs-lisp
+#+end_src
+
 ** Swift
 :PROPERTIES:
 :CUSTOM_ID: h:4C66614A-ED5B-4771-96C3-E2C789282DC1

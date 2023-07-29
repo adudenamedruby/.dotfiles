@@ -1,3 +1,4 @@
+;; [[file:../synthmacs.org::*Emacs Setup][Emacs Setup:1]]
 (use-package emacs
   :init
   (setq inhibit-startup-message t
@@ -17,16 +18,22 @@
   ;; write over selected text on input... like all modern editors do
   ;;(delete-selection-mode t)
   )
+;; Emacs Setup:1 ends here
 
+;; [[file:../synthmacs.org::*User setup][User setup:1]]
 (use-package emacs
   :init
   (setq user-full-name "roux g. buciu"
         user-mail-address "roux@fringe.foundation"))
+;; User setup:1 ends here
 
+;; [[file:../synthmacs.org::*"Yes or no" prompts]["Yes or no" prompts:1]]
 (use-package emacs
   :init
   (defalias 'yes-or-no-p 'y-or-n-p))
+;; "Yes or no" prompts:1 ends here
 
+;; [[file:../synthmacs.org::*UTF-8 file encoding][UTF-8 file encoding:1]]
 (use-package emacs
   :init
   (set-charset-priority 'unicode)
@@ -38,7 +45,9 @@
   (set-selection-coding-system 'utf-8)
   (prefer-coding-system 'utf-8)
   (setq default-process-coding-system '(utf-8-unix . utf-8-unix)))
+;; UTF-8 file encoding:1 ends here
 
+;; [[file:../synthmacs.org::*Recent files][Recent files:1]]
 (use-package emacs
   :init
   (recentf-mode t)
@@ -49,29 +58,39 @@
   (setq recentf-max-menu-items 10)
   (setq recentf-max-saved-items 10)
   )
+;; Recent files:1 ends here
 
+;; [[file:../synthmacs.org::*ESC key!][ESC key!:1]]
 (use-package emacs
   :init
   (global-set-key (kbd "<escape>") 'keyboard-escape-quit))
+;; ESC key!:1 ends here
 
+;; [[file:../synthmacs.org::*Custom file][Custom file:1]]
 (use-package emacs
   :init
   (setq custom-file (make-temp-file "")) ; use a temp file as a placeholder
   (setq custom-safe-themes t)            ; mark all themes as safe, since we can't persist now
   (setq enable-local-variables :all)     ; fix =defvar= warnings
   )
+;; Custom file:1 ends here
 
+;; [[file:../synthmacs.org::*Autosaves][Autosaves:1]]
 (use-package emacs
   :init
   (setq make-backup-files nil
         auto-save-default t
         create-lockfiles nil))
+;; Autosaves:1 ends here
 
+;; [[file:../synthmacs.org::*Symlinks][Symlinks:1]]
 (use-package emacs
   :init
   ;; follow symlinks 
   (setq vc-follow-symlinks t))
+;; Symlinks:1 ends here
 
+;; [[file:../synthmacs.org::*Window chrome][Window chrome:1]]
 (use-package emacs
   :init
   (when (window-system)
@@ -82,7 +101,9 @@
     ;; (menu-bar-mode -1)
     )
   )
+;; Window chrome:1 ends here
 
+;; [[file:../synthmacs.org::*Scrolling behaviours][Scrolling behaviours:1]]
 (use-package emacs
   :init
   ;; Set scroll margin, but emulate vim scroll behaviour
@@ -98,7 +119,9 @@
 
   (show-paren-mode t)
   )
+;; Scrolling behaviours:1 ends here
 
+;; [[file:../synthmacs.org::*Other][Other:1]]
 (use-package emacs
   :init
   ;; use common convention for indentation by default
@@ -119,7 +142,9 @@
   (global-visual-line-mode t)
 
   )
+;; Other:1 ends here
 
+;; [[file:../synthmacs.org::*Custom variables][Custom variables:1]]
 ;; reopening the last killed buffer
 (use-package emacs
   :init
@@ -136,7 +161,9 @@
   (defcustom synthmacs--killed-buffer-list nil
     "List of recently killed buffers.")
   )
+;; Custom variables:1 ends here
 
+;; [[file:../synthmacs.org::*Fonts][Fonts:1]]
 (use-package emacs
   :init
   ;; Main typeface
@@ -146,7 +173,9 @@
   ;; Set the variable pitch face
   (set-face-attribute 'variable-pitch nil :font synthmacs/variable-pitch-font-family)
   )
+;; Fonts:1 ends here
 
+;; [[file:../synthmacs.org::*Buffers][Buffers:1]]
 (defun synthmacs/add-buffer-to-killed-list ()
   "Add killed buffer to list for undo functionality.
 If buffer is associated with a file name, add that file
@@ -197,7 +226,9 @@ to the `killed-buffer-list` when killing the buffer."
 ;; 	      (call-interactively #'projectile-invalidate-cache))
 ;; 	    (message "File deleted: '%s'" filename))
 ;; 	(message "Cancelled file deletion")))))
+;; Buffers:1 ends here
 
+;; [[file:../synthmacs.org::*Copying file paths][Copying file paths:1]]
 (defun synthmacs//directory-path ()
   "Retrieve the directory path of the current buffer.
 
@@ -287,7 +318,9 @@ buffer."
         (kill-new file-path)
         (message "%s" file-path))
     (message "WARNING: Current buffer is not attached to a file!")))
+;; Copying file paths:1 ends here
 
+;; [[file:../synthmacs.org::*Enlarge window][Enlarge window:1]]
 (use-package emacs
   :init
   (defun synthmacs/window-enlargen (&optional arg)
@@ -327,7 +360,9 @@ windows (unlike `doom/window-maximize-buffer'). Activate again to undo."
                    (set-window-parameter window 'window-preserved-size preserved-p))
                  (add-hook 'doom-switch-window-hook #'doom--enlargened-forget-last-wconf-h)))))))))
   )
+;; Enlarge window:1 ends here
 
+;; [[file:../synthmacs.org::*Renaming files & buffers][Renaming files & buffers:1]]
 (defun synthmacs/rename-current-buffer-file (&optional arg)
   "Rename the current buffer and the file it is visiting.
 If the buffer isn't visiting a file, ask if it should
@@ -417,7 +452,9 @@ initialized with the current directory instead of filename."
 				"To:   " new-buffer-name ))))
 	    ;; ?\a = C-g, ?\e = Esc and C-[
 	    ((memq key '(?\a ?\e)) (keyboard-quit))))))
+;; Renaming files & buffers:1 ends here
 
+;; [[file:../synthmacs.org::*<C-h> in the minibuffer while completing a file name][<C-h> in the minibuffer while completing a file name:1]]
 (defun synthmacs/minibuffer-backwards-kill (arg)
   "When minibuffer is completing a file name, delete up to parent
 folder; otherwise, delete a character backwards."
@@ -427,7 +464,9 @@ folder; otherwise, delete a character backwards."
 	  (zap-up-to-char (- arg) ?/)
 	(delete-minibuffer-contents))
     (delete-backwards-char arg)))
+;; <C-h> in the minibuffer while completing a file name:1 ends here
 
+;; [[file:../synthmacs.org::*Symbols][Symbols:1]]
 (defun synthmacs/my-add-pretty-symbol ()
   (setq prettify-symbols-alist
         '(
@@ -436,13 +475,17 @@ folder; otherwise, delete a character backwards."
           ;; ("=>" . 8658)    ; ⇒
           ;; ("map" . 8614)   ; ↦
           )))
+;; Symbols:1 ends here
 
+;; [[file:../synthmacs.org::*Quit (but save before doing so!)][Quit (but save before doing so!):1]]
 (defun synthmacs/prompt-kill-emacs ()
   "Prompt to save changed buffers and exit Synthmacs"
   (interactive)
   (save-some-buffers nil t)
   (kill-emacs))
+;; Quit (but save before doing so!):1 ends here
 
+;; [[file:../synthmacs.org::*xref][xref:1]]
 (use-package xref
   :init
   (setq xref-prompt-for-identifier nil) ;; always find references of symbol at point
@@ -452,6 +495,9 @@ folder; otherwise, delete a character backwards."
   ;; (setq xref-file-name-display 'project-relative)
   ;; (setq xref-search-program 'grep)
   )
+;; xref:1 ends here
 
+;; [[file:../synthmacs.org::*synthmacs-core][synthmacs-core:1]]
 (provide 'synthmacs-core)
 ;;; synthmacs-core.el ends here
+;; synthmacs-core:1 ends here

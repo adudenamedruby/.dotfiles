@@ -1,3 +1,4 @@
+;; [[file:synthmacs.org::*init.el: startup optimization][init.el: startup optimization:1]]
 ;;; init.el --- Personal configuration file -*- lexical-binding: t; no-byte-compile: t; -*-
 ;; NOTE: init.el is now generated from synthmacs.org.  Please edit that file instead
 
@@ -25,7 +26,9 @@
 
 ;; Ensure Synthmacs is running out of this file's directory
 (setq user-emacs-directory (file-truename (file-name-directory load-file-name)))
+;; init.el: startup optimization:1 ends here
 
+;; [[file:synthmacs.org::*init.el: load modules][init.el: load modules:1]]
 (message "SynthMacs is powering up, please be patient...")
 
 ;; (add-to-list 'load-path "~/.emacs.d/synthmacs/")
@@ -53,3 +56,4 @@
   )
 
 ;;; init.el ends here
+;; init.el: load modules:1 ends here

@@ -1,3 +1,4 @@
+;; [[file:../synthmacs.org::*lsp-mode][lsp-mode:1]]
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :hook
@@ -26,7 +27,9 @@
   ;;   (setq lsp-headerline-breadcrumb-enable nil)
   ;;   (setq lsp-diagnostics-provider :none)
   )
+;; lsp-mode:1 ends here
 
+;; [[file:../synthmacs.org::*lsp-ui][lsp-ui:1]]
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
   :general
@@ -49,18 +52,26 @@
   :custom
   (lsp-ui-doc-position 'bottom)
   )
+;; lsp-ui:1 ends here
 
+;; [[file:../synthmacs.org::*lsp-ui][lsp-ui:2]]
 (use-package lsp-treemacs
   :after lsp)
+;; lsp-ui:2 ends here
 
+;; [[file:../synthmacs.org::*Flycheck][Flycheck:1]]
 (use-package flycheck
   :init (global-flycheck-mode))
+;; Flycheck:1 ends here
 
+;; [[file:../synthmacs.org::*iMenu][iMenu:1]]
 (use-package imenu-list)
 
 (synthmacs/leader-keys
   "ti" '(imenu-list-smart-toggle :wx "imenu-list-smart-toggle"))
+;; iMenu:1 ends here
 
+;; [[file:../synthmacs.org::*yasnippet][yasnippet:1]]
 (use-package yasnippet
   ;; :general
   ;; (yas-minor-mode-map
@@ -80,11 +91,17 @@
   )
 
 (use-package yasnippet-snippets)
+;; yasnippet:1 ends here
 
+;; [[file:../synthmacs.org::*commond-lisp-snippets][commond-lisp-snippets:1]]
 (use-package common-lisp-snippets)
+;; commond-lisp-snippets:1 ends here
 
+;; [[file:../synthmacs.org::*Treesitter][Treesitter:1]]
 (require 'treesit)
+;; Treesitter:1 ends here
 
+;; [[file:../synthmacs.org::*Treesitter languages][Treesitter languages:1]]
 (use-package tree-sitter-langs)
 
 ;; Load the language bundle
@@ -179,6 +196,9 @@
 ;; 	  (lambda () (if (treesit-ready-p 'bash t)
 ;; 		    (bash-ts-mode)
 ;; 		  (sh-mode))))
+;; Treesitter languages:1 ends here
 
+;; [[file:../synthmacs.org::*synthmacs-programming][synthmacs-programming:1]]
 (provide 'synthmacs-programming)
 ;;; synthmacs-programming.el ends here
+;; synthmacs-programming:1 ends here

@@ -1,3 +1,4 @@
+;; [[file:../synthmacs.org::*Magit][Magit:1]]
 (use-package magit
   ;; :custom
   ;; (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
@@ -26,23 +27,31 @@
   (evil-define-key* '(normal visual) magit-mode-map
     "zz" #'evil-scroll-line-to-center)
   )
+;; Magit:1 ends here
 
+;; [[file:../synthmacs.org::*Forge][Forge:1]]
 ;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
 ;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started
 ;; (use-package forge)
+;; Forge:1 ends here
 
+;; [[file:../synthmacs.org::*git-gutter][git-gutter:1]]
 (use-package git-gutter
   :init
   (global-git-gutter-mode +1)
   :config
   (setq git-gutter:update-interval 0.02))
+;; git-gutter:1 ends here
 
+;; [[file:../synthmacs.org::*git-gutter-fringe][git-gutter-fringe:1]]
 (use-package git-gutter-fringe
   :config
   (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
   (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
   (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
+;; git-gutter-fringe:1 ends here
 
+;; [[file:../synthmacs.org::*Helpful][Helpful:1]]
 (use-package helpful
   :after evil
   :general
@@ -60,7 +69,9 @@
   ([remap describe-variable] . helpful-variable)
   ([remap describe-key] . helpful-key)
   )
+;; Helpful:1 ends here
 
+;; [[file:../synthmacs.org::*Projectile][Projectile:1]]
 (use-package projectile
   :demand
   :diminish
@@ -118,10 +129,14 @@
   )
 
 (use-package consult-projectile)
+;; Projectile:1 ends here
 
+;; [[file:../synthmacs.org::*Rg][Rg:1]]
 (use-package rg
   :ensure-system-package rg)
+;; Rg:1 ends here
 
+;; [[file:../synthmacs.org::*undo-fu][undo-fu:1]]
 (use-package undo-fu
   :demand
   :general
@@ -129,12 +144,16 @@
            "u" 'undo-fu-only-undo
            "s-z" 'undo-fu-only-undo
            "\C-r" 'undo-fu-only-redo))
+;; undo-fu:1 ends here
 
+;; [[file:../synthmacs.org::*WS-Butler][WS-Butler:1]]
 (use-package ws-butler
   :init
   ;; (ws-butler-global-mode 1)
   (add-hook 'prog-mode-hook #'ws-butler-mode))
+;; WS-Butler:1 ends here
 
+;; [[file:../synthmacs.org::*Olivetti Mode][Olivetti Mode:1]]
 (use-package olivetti
   :general
   (synthmacs/leader-keys
@@ -142,7 +161,9 @@
   :init
   (setq olivetti-body-width 100)
   (setq olivetti-recall-visual-line-mode-entry-state t))
+;; Olivetti Mode:1 ends here
 
+;; [[file:../synthmacs.org::*vterm][vterm:1]]
 (use-package vterm
   :general
   (general-imap
@@ -152,13 +173,17 @@
   :config
   (setq vterm-shell (executable-find "zsh")
         vterm-max-scrollback 10000))
+;; vterm:1 ends here
 
+;; [[file:../synthmacs.org::*vterm-toggle][vterm-toggle:1]]
 (use-package vterm-toggle
   :general
   (synthmacs/leader-keys
     "'" 'vterm-toggle)
   )
+;; vterm-toggle:1 ends here
 
+;; [[file:../synthmacs.org::*Transient][Transient:1]]
 (use-package transient
   :general
   (synthmacs/leader-keys
@@ -220,7 +245,9 @@
      ]
     )
   )
+;; Transient:1 ends here
 
+;; [[file:../synthmacs.org::*Transient increase/decrease font size][Transient increase/decrease font size:1]]
 (use-package transient
   :general
   (synthmacs/leader-keys
@@ -241,6 +268,9 @@
 			 (synthmacs/font-size-transient))))
      ])
   )
+;; Transient increase/decrease font size:1 ends here
 
+;; [[file:../synthmacs.org::*synthmacs-tools][synthmacs-tools:1]]
 (provide 'synthmacs-tools)
 ;;; synthmacs-tools.el ends here
+;; synthmacs-tools:1 ends here
