@@ -29,6 +29,14 @@
   )
 ;; Magit:1 ends here
 
+;; [[file:../synthmacs.org::*magit-delta][magit-delta:1]]
+(use-package magit-delta
+  :after magit
+  :commands magit-delta-mode
+  :hook (magit-mode . magit-delta-mode)
+  )
+;; magit-delta:1 ends here
+
 ;; [[file:../synthmacs.org::*Forge][Forge:1]]
 ;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
 ;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started
@@ -77,15 +85,17 @@
   :diminish
   :general
   (synthmacs/leader-keys
-    "pf" '(projectile-find-file :wk "projectile-find-file")
-    "pk" '(projectile-kill-buffers :wk "projectile-kill-buffers")
-    "pp" '(projectile-switch-project :wk "projectile-switch-project")
-    "pr" '(projectile-recentf :wk "projectile-recentf")
+    "pf" 'projectile-find-file
+    "pk" 'projectile-kill-buffers
+    "pp" 'projectile-switch-project
+    "pd" 'projectile-dired
+    "pr" 'projectile-recentf
     "pm" '(projectile-command-map :wk "projectile menu"))
   :init
   (setq projectile-completion-system 'auto)
   (setq projectile-project-root-files '(".envrc" ".projectile" "project.clj" "deps.edn"))
   (setq projectile-switch-project-action 'projectile-commander)
+  (setq projectile-sort-order 'recently-active)
   ;; Do not include straight repos (emacs packages) to project list
   (setq projectile-ignored-project-function
         (lambda (project-root)
@@ -128,7 +138,13 @@
 				   (projectile-vc))
   )
 
-(use-package consult-projectile)
+(use-package consult-projectile
+  :after consult projectile
+  :demand t
+  :general
+  (synthmacs/leader-keys
+    "pP" 'consult-projectile)
+    )
 ;; Projectile:1 ends here
 
 ;; [[file:../synthmacs.org::*Rg][Rg:1]]
@@ -198,7 +214,7 @@
     "qR" 'restart-emacs
     "qn" 'restart-emacs-start-new-emacs
     "qr" 'synthmacs/reload-init)
-)
+  )
 ;; restart-emacs:1 ends here
 
 ;; [[file:../synthmacs.org::*Transient][Transient:1]]

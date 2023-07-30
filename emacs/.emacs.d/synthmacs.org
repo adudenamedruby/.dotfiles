@@ -3060,6 +3060,8 @@ It's useful to know indents, and I like seeing it, so let's do it!
 :PROPERTIES:
 :CUSTOM_ID: h:305A854E-184C-49CC-A5D5-7BD424A36F82
 :END:
+[[https://github.com/minad/vertico][vertico]] is a replacement/improvement of emacs’ default icomplete. It provides a pop-up menu to narrow down a list of choices.
+
 #+begin_src emacs-lisp
 (use-package vertico
   :straight (vertico :files (:defaults "extensions/*")
@@ -3124,6 +3126,7 @@ Persist history over Emacs restarts. Vertico sorts by history position.
 
 #+begin_src emacs-lisp
 (use-package savehist
+  :demand
   :init
   (savehist-mode))
 #+end_src
@@ -3170,21 +3173,27 @@ A few more useful Emacs configs for Vectico
 :PROPERTIES:
 :CUSTOM_ID: h:CF8C8DA3-23A3-4CF0-80A9-3DB977BB0182
 :END:
+[[https://github.com/oantolin/orderless][orderless]] teaches icomplete to match mutliple patterns in any order.
+
 #+begin_src emacs-lisp
 (use-package orderless
+  :demand
   :init
   ;; Configure a custom style dispatcher (see the Consult wiki)
   ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
   ;;       orderless-component-separator #'orderless-escapable-split-on-space)
-  (setq completion-styles '(orderless basic)
-        completion-category-defaults nil
-        completion-category-overrides '((file (styles partial-completion)))))
+  (setq completion-styles '(orderless basic))
+  (setq completion-category-defaults nil)
+  (setq completion-category-overrides '((file (styles partial-completion))))
+  )
 #+end_src
 
 ** Consult
 :PROPERTIES:
 :CUSTOM_ID: h:AFC23C2A-A17F-4151-A2E7-66D57A2590C2
 :END:
+[[https://github.com/minad/consult][consult]] provides fancy commands for icomplete
+
 #+begin_src emacs-lisp
 (use-package consult
   :commands (consult-ripgrep)
@@ -3336,6 +3345,8 @@ A few more useful Emacs configs for Vectico
 :PROPERTIES:
 :CUSTOM_ID: h:FBAFE981-A3D6-4CE7-B9EE-E4BC74F56B1F
 :END:
+[[https://github.com/minad/marginalia][marginalia]] adds annotations to minibuffer completions
+
 #+begin_src emacs-lisp
 (use-package marginalia
   :after vertico
@@ -3356,12 +3367,12 @@ A few more useful Emacs configs for Vectico
 :PROPERTIES:
 :CUSTOM_ID: h:0CEA8416-E61B-4CF2-9DD3-51F79BE7EE4F
 :END:
-
-test
+[[https://github.com/oantolin/embark/][embark]] lets us capture minibuffer output in a buffer, and act on items/contexts. Kind of like a right-click.
 
 #+begin_src emacs-lisp
 (use-package embark
   :after vertico
+  :demand
   :general
   (general-define-key
    :states 'normal
@@ -3498,7 +3509,7 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
 :PROPERTIES:
 :CUSTOM_ID: h:D4533EA4-E94F-4A6D-98D9-4B02123AC78B
 :END:
-Corfu is the completion framework while writing code.
+[[https://github.com/minad/corfu][Corfu]] is a mimalist package to complement ~completion-in-region~ completion framework while writing code.
 #+begin_src emacs-lisp
 (use-package corfu
   :straight (corfu :files (:defaults "extensions/*")
@@ -3519,6 +3530,7 @@ Corfu is the completion framework while writing code.
   (setq corfu-auto t)                 ;; Enable auto completion
   (setq corfu-min-width 80)
   (setq corfu-max-width corfu-min-width)
+  (global-corfu-mode)
   
   :custom
   ;; (corfu-auto-delay 0.0)
@@ -3536,6 +3548,28 @@ Corfu is the completion framework while writing code.
   ;; This is recommended since Dabbrev can be used globally (M-/).
   ;; See also `corfu-exclude-modes'.
   )
+
+(use-package corfu-echo
+  :straight nil
+  :after corfu
+  :commands corfu-echo-mode
+  :init
+  (corfu-echo-mode 1))
+
+(use-package corfu-history
+  :straight nil
+  :after (corfu savehist)
+  :commands corfu-history-mode
+  :init
+  (add-to-list 'savehist-additional-variables 'corfu-history)
+  (corfu-history-mode 1))
+
+(use-package corfu-popupinfo
+  :straight nil
+  :after corfu
+  :commands corfu-popupinfo-mode
+  :init
+  (corfu-popupinfo-mode 1))
 #+end_src
 
 *** Emacs & Corfu
@@ -3656,6 +3690,20 @@ Icons in corfu? Yes please.
   )
 #+end_src
 
+*** magit-delta
+:PROPERTIES:
+:CUSTOM_ID: h:6E4105EB-0ABA-4FD4-921C-3A3AB712043E
+:END:
+[[https://github.com/dandavison/magit-delta][magit-delta]] improves the coloring of diffs in magit using [[https://github.com/dandavison/delta][delta]]
+
+#+begin_src emacs-lisp
+(use-package magit-delta
+  :after magit
+  :commands magit-delta-mode
+  :hook (magit-mode . magit-delta-mode)
+  )
+#+end_src
+
 *** Forge
 :PROPERTIES:
 :CUSTOM_ID: h:1F20D642-C0E7-4390-A881-9E9EE153D2E8
@@ -3720,21 +3768,25 @@ Icons in corfu? Yes please.
 :PROPERTIES:
 :CUSTOM_ID: h:1653A50A-82D1-416F-830C-00B886B5A241
 :END:
+[[https://github.com/bbatsov/projectile][projectile]] teaches Emacs to be aware of different ways a “project” folder can be recognized, and enables easy jumping and using of multiple projects in the same instance of emacs.
+
 #+begin_src emacs-lisp
 (use-package projectile
   :demand
   :diminish
   :general
   (synthmacs/leader-keys
-    "pf" '(projectile-find-file :wk "projectile-find-file")
-    "pk" '(projectile-kill-buffers :wk "projectile-kill-buffers")
-    "pp" '(projectile-switch-project :wk "projectile-switch-project")
-    "pr" '(projectile-recentf :wk "projectile-recentf")
+    "pf" 'projectile-find-file
+    "pk" 'projectile-kill-buffers
+    "pp" 'projectile-switch-project
+    "pd" 'projectile-dired
+    "pr" 'projectile-recentf
     "pm" '(projectile-command-map :wk "projectile menu"))
   :init
   (setq projectile-completion-system 'auto)
   (setq projectile-project-root-files '(".envrc" ".projectile" "project.clj" "deps.edn"))
   (setq projectile-switch-project-action 'projectile-commander)
+  (setq projectile-sort-order 'recently-active)
   ;; Do not include straight repos (emacs packages) to project list
   (setq projectile-ignored-project-function
         (lambda (project-root)
@@ -3777,7 +3829,13 @@ Icons in corfu? Yes please.
 				   (projectile-vc))
   )
 
-(use-package consult-projectile)
+(use-package consult-projectile
+  :after consult projectile
+  :demand t
+  :general
+  (synthmacs/leader-keys
+    "pP" 'consult-projectile)
+    )
 #+end_src
 
 ** Rg
@@ -3850,7 +3908,7 @@ Olivetti mode is a nice alignment of emacs for prose writing.
   :config
   (setq vterm-shell (executable-find "zsh")
         vterm-max-scrollback 10000))
-#+end_src
+  #+end_src
 
 *** vterm-toggle
 :PROPERTIES:
@@ -3885,7 +3943,7 @@ restart-emacs teaches Emacs to restart itself. I added a me/reload-init command 
     "qR" 'restart-emacs
     "qn" 'restart-emacs-start-new-emacs
     "qr" 'synthmacs/reload-init)
-)
+  )
 #+end_src
 
 ** Prescient
@@ -4021,7 +4079,8 @@ restart-emacs teaches Emacs to restart itself. I added a me/reload-init command 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :hook
-  ((lsp-mode . (lambda () (setq-local evil-lookup-func #'lsp-describe-thing-at-point)))
+  ((prog-mode . lsp-deferred)
+   (lsp-mode . (lambda () (setq-local evil-lookup-func #'lsp-describe-thing-at-point)))
    (lsp-mode . lsp-enable-which-key-integration))
   ;; :general
   ;; (synthmacs/local-leader-keys

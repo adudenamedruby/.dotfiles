@@ -2,7 +2,8 @@
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :hook
-  ((lsp-mode . (lambda () (setq-local evil-lookup-func #'lsp-describe-thing-at-point)))
+  ((prog-mode . lsp-deferred)
+   (lsp-mode . (lambda () (setq-local evil-lookup-func #'lsp-describe-thing-at-point)))
    (lsp-mode . lsp-enable-which-key-integration))
   ;; :general
   ;; (synthmacs/local-leader-keys

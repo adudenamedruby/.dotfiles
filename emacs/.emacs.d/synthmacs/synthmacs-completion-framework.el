@@ -56,6 +56,7 @@
 
 ;; [[file:../synthmacs.org::*savehist][savehist:1]]
 (use-package savehist
+  :demand
   :init
   (savehist-mode))
 ;; savehist:1 ends here
@@ -94,13 +95,15 @@
 
 ;; [[file:../synthmacs.org::*Orderless][Orderless:1]]
 (use-package orderless
+  :demand
   :init
   ;; Configure a custom style dispatcher (see the Consult wiki)
   ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
   ;;       orderless-component-separator #'orderless-escapable-split-on-space)
-  (setq completion-styles '(orderless basic)
-        completion-category-defaults nil
-        completion-category-overrides '((file (styles partial-completion)))))
+  (setq completion-styles '(orderless basic))
+  (setq completion-category-defaults nil)
+  (setq completion-category-overrides '((file (styles partial-completion))))
+  )
 ;; Orderless:1 ends here
 
 ;; [[file:../synthmacs.org::*Consult][Consult:1]]
@@ -269,6 +272,7 @@
 ;; [[file:../synthmacs.org::*Embark][Embark:1]]
 (use-package embark
   :after vertico
+  :demand
   :general
   (general-define-key
    :states 'normal
@@ -405,6 +409,7 @@ targets."
   (setq corfu-auto t)                 ;; Enable auto completion
   (setq corfu-min-width 80)
   (setq corfu-max-width corfu-min-width)
+  (global-corfu-mode)
   
   :custom
   ;; (corfu-auto-delay 0.0)
@@ -422,6 +427,28 @@ targets."
   ;; This is recommended since Dabbrev can be used globally (M-/).
   ;; See also `corfu-exclude-modes'.
   )
+
+(use-package corfu-echo
+  :straight nil
+  :after corfu
+  :commands corfu-echo-mode
+  :init
+  (corfu-echo-mode 1))
+
+(use-package corfu-history
+  :straight nil
+  :after (corfu savehist)
+  :commands corfu-history-mode
+  :init
+  (add-to-list 'savehist-additional-variables 'corfu-history)
+  (corfu-history-mode 1))
+
+(use-package corfu-popupinfo
+  :straight nil
+  :after corfu
+  :commands corfu-popupinfo-mode
+  :init
+  (corfu-popupinfo-mode 1))
 ;; corfu:1 ends here
 
 ;; [[file:../synthmacs.org::*Emacs & Corfu][Emacs & Corfu:1]]
