@@ -144,7 +144,7 @@
   :general
   (synthmacs/leader-keys
     "pP" 'consult-projectile)
-    )
+  )
 ;; Projectile:1 ends here
 
 ;; [[file:../synthmacs.org::*Rg][Rg:1]]

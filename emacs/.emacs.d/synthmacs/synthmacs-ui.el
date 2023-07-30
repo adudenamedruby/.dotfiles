@@ -264,17 +264,6 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   )
 ;; doom-modeline:1 ends here
 
-;; [[file:../synthmacs.org::*Fast scroll][Fast scroll:1]]
-(use-package fast-scroll
-  :defer 1
-  :hook
-  (fast-scroll-start . (lambda () (flycheck-mode -1)))
-  (fast-scroll-end . (lambda () (flycheck-mode 1)))
-  :config
-  (fast-scroll-config)
-  (fast-scroll-mode 1))
-;; Fast scroll:1 ends here
-
 ;; [[file:../synthmacs.org::*Dashboard][Dashboard:1]]
 (use-package dashboard
   :demand

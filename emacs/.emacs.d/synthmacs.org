@@ -61,7 +61,6 @@
   - [[#info-colors][info-colors]]
   - [[#navigation][Navigation]]
   - [[#modeline][Modeline]]
-  - [[#fast-scroll][Fast scroll]]
   - [[#dashboard][Dashboard]]
   - [[#wrap-long-lines][Wrap long lines]]
   - [[#ligatures][Ligatures]]
@@ -101,8 +100,11 @@
   - [[#snippets][Snippets]]
   - [[#treesitter][Treesitter]]
 - [[#programming-languages][Programming Languages]]
+  - [[#css][CSS]]
+  - [[#git-modes][Git-Modes]]
   - [[#haskell][Haskell]]
   - [[#html][HTML]]
+  - [[#json][JSON]]
   - [[#lisps][LISPs]]
   - [[#markdown][Markdown]]
   - [[#rust][Rust]]
@@ -411,7 +413,11 @@ Optimizations for improving I/O performance. Increase max bytes read from a sub-
   (require 'synthmacs-completion-framework)
   (require 'synthmacs-tools)
   (require 'synthmacs-programming)
+
+  ;; programming languages
   (require 'synthmacs-lang-clojure)
+  (require 'synthmacs-lang-css)
+  (require 'synthmacs-lang-gitModes)
   (require 'synthmacs-lang-haskell)
   (require 'synthmacs-lang-html)
   (require 'synthmacs-lang-lisp)
@@ -1632,7 +1638,7 @@ NOTE: other evil packages (like [[#h:29AD92F1-04AB-4CE5-91F4-A1E4B187F0CE][evil-
   :config
   (setq anzu-search-threshold 1000)
   (setq anzu-cons-mode-line-p nil))
-  #+end_src
+#+end_src
 
 *** evil-args
 :PROPERTIES:
@@ -2804,22 +2810,6 @@ Basically, [[https://github.com/hlissner/emacs-solaire-mode][solaire-mode]] dark
   )
 #+end_src
 
-** Fast scroll
-:PROPERTIES:
-:CUSTOM_ID: h:2B3E62E1-9F7E-40FF-B66D-2AA006AF1EB0
-:END:
-[[https://github.com/ahungry/fast-scroll][fast-scroll]] “works by temporarily disabling font-lock and switching to a barebones mode-line, until you stop scrolling (at which point it re-enables)”. It only does this when scrolling super fast, to keep everything responsive.
-#+begin_src emacs-lisp
-(use-package fast-scroll
-  :defer 1
-  :hook
-  (fast-scroll-start . (lambda () (flycheck-mode -1)))
-  (fast-scroll-end . (lambda () (flycheck-mode 1)))
-  :config
-  (fast-scroll-config)
-  (fast-scroll-mode 1))
-#+end_src
-
 ** Dashboard
 :PROPERTIES:
 :CUSTOM_ID: h:108BED42-7912-45EE-B0BD-364D4479319A
@@ -3835,7 +3825,7 @@ Icons in corfu? Yes please.
   :general
   (synthmacs/leader-keys
     "pP" 'consult-projectile)
-    )
+  )
 #+end_src
 
 ** Rg
@@ -3880,13 +3870,13 @@ Icons in corfu? Yes please.
 Olivetti mode is a nice alignment of emacs for prose writing.
 
 #+begin_src emacs-lisp
-  (use-package olivetti
-    :general
-    (synthmacs/leader-keys
-      "to" 'olivetti-mode)
-    :init
-    (setq olivetti-body-width 100)
-    (setq olivetti-recall-visual-line-mode-entry-state t))
+(use-package olivetti
+  :general
+  (synthmacs/leader-keys
+    "to" 'olivetti-mode)
+  :init
+  (setq olivetti-body-width 100)
+  (setq olivetti-recall-visual-line-mode-entry-state t))
 #+end_src
 
 ** Vterm
@@ -3908,7 +3898,7 @@ Olivetti mode is a nice alignment of emacs for prose writing.
   :config
   (setq vterm-shell (executable-find "zsh")
         vterm-max-scrollback 10000))
-  #+end_src
+#+end_src
 
 *** vterm-toggle
 :PROPERTIES:
@@ -4488,8 +4478,14 @@ restart-emacs teaches Emacs to restart itself. I added a me/reload-init command 
 :PROPERTIES:
 :CUSTOM_ID: h:1A1DAD25-321C-4F90-A226-1C14A4F7A79F
 :END:
+Emacs 29 added native TreeSitter support. TreeSitter is a new way of incrementally parsing source code that offers superior navigation and syntax highlighting. To fully realize this benefit, however, it requires that we install tree-sitter grammars independently from Emacs. Right now, I’m using [[https://github.com/casouri/tree-sitter-module][casouri’s modules]], which I build and install under ~/.emacs.d/tree-sitter, if they don’t already exist under /usr/local/lib/ or ~/.local/lib. In case of the latter, I just add extra paths to treesit-extra-load-path explicitly.
+
 #+begin_src emacs-lisp
 (require 'treesit)
+
+(when (boundp 'treesit-extra-load-path)
+  (add-to-list 'treesit-extra-load-path "/usr/local/lib/")
+  (add-to-list 'treesit-extra-load-path "~/.local/lib/"))
 #+end_src
 
 *** Treesitter languages
@@ -4594,22 +4590,67 @@ You can either build your own languages, or you can use pre-built. For now, let'
 ;; 		  (sh-mode))))
 #+end_src
 
+
+
 * Programming Languages
 :PROPERTIES:
 :CUSTOM_ID: h:732BA080-834D-49E0-967E-0D37CE1C6BA0
 :END:
 
+** CSS
+:PROPERTIES:
+:CUSTOM_ID: h:538E2BA8-BB96-4424-939F-3F56E0E88D08
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-css.el
+:END:
+
+#+begin_src emacs-lisp
+(use-package css-mode
+  :mode "\\.css\\'"
+  :hook
+  (css-mode . siren-css-mode-setup)
+  :custom
+  (css-indent-offset 2)
+  )
+#+end_src
+
+** Git-Modes
+:PROPERTIES:
+:CUSTOM_ID: h:6661E55B-9B07-433E-A913-B7BDEA5B7B3C
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-gitModes.el
+:END:
+#+begin_src emacs-lisp
+(use-package git-modes
+  :defer t)
+#+end_src
+
 ** Haskell
 :PROPERTIES:
 :CUSTOM_ID: h:28BA5E9F-6893-4E40-9F42-246F8731948C
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-haskell.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-haskell.el
 :END:
 
 ** HTML
 :PROPERTIES:
 :CUSTOM_ID: h:5561B91C-C61D-47D5-8320-9A559032C762
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-html.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-html.el
 :END:
+
+#+begin_src emacs-lisp
+(use-package web-mode
+  :mode "(\\.\\(html?\\|ejs\\|tsx\\|jsx\\)\\'"
+  :config
+  (setq-default web-mode-code-indent-offset 2)
+  (setq-default web-mode-markup-indent-offset 2)
+  (setq-default web-mode-attribute-indent-offset 2))
+#+end_src
+
+** JSON
+:PROPERTIES:
+:CUSTOM_ID: h:4E57EA77-924F-484E-B76E-AFB813E10B9C
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-json.el
+:END:
+#+begin_src emacs-lisp
+#+end_src
 
 ** LISPs
 :PROPERTIES:
@@ -4619,7 +4660,7 @@ You can either build your own languages, or you can use pre-built. For now, let'
 *** Clojure
 :PROPERTIES:
 :CUSTOM_ID: h:FF09BB1E-5437-4AFF-A4F5-367B92AF76CC
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clojure.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clojure.el
 :END:
 
 **** clojure-mode
@@ -4659,7 +4700,7 @@ You can either build your own languages, or you can use pre-built. For now, let'
 (use-package cider
   :hook ((cider-repl-mode . evil-normalize-keymaps)
          (cider-mode . (lambda ()
-                           (setq-local evil-lookup-func #'cider-doc)))
+                         (setq-local evil-lookup-func #'cider-doc)))
          (cider-mode . eldoc-mode))
   :general
   (synthmacs/local-leader-keys
@@ -4668,20 +4709,25 @@ You can either build your own languages, or you can use pre-built. For now, let'
     "C" '(cider-connect-cljs :wk "connect (cljs)")
     "j" '(cider-jack-in :wk "jack in")
     "J" '(cider-jack-in-cljs :wk "jack in (cljs)")
-    "d d" 'cider-debug-defun-at-point 
-    "e b" 'cider-eval-buffer
-    "e l" 'cider-eval-last-sexp
-    "e L" 'cider-pprint-eval-last-sexp-to-comment
-    "e d" '(cider-eval-defun-at-point :wk "defun")
-    "e D" 'cider-pprint-eval-defun-to-comment
+    "d" 'cider-debug-defun-at-point 
+    
+    "e" '(:ignore t :wk "evaluate")
+    "eb" 'cider-eval-buffer
+    "el" 'cider-eval-last-sexp
+    "eL" 'cider-pprint-eval-last-sexp-to-comment
+    "ed" '(cider-eval-defun-at-point :wk "defun")
+    "eD" 'cider-pprint-eval-defun-to-comment
+    
     "h" 'cider-clojuredocs-web 
-    "K" 'cider-doc
-    "q" '(cider-quit :qk "quit")
+    "D" 'cider-doc
+    "q" '(cider-quit :wk "quit")
     )
+  
   (synthmacs/local-leader-keys
     :keymaps 'clojure-mode-map
     :states 'visual
     "e" 'cider-eval-region)
+  
   :init
   (setq nrepl-hide-special-buffers t)
   (setq nrepl-sync-request-timeout nil)
@@ -4704,15 +4750,92 @@ You can either build your own languages, or you can use pre-built. For now, let'
 *** Common Lisp
 :PROPERTIES:
 :CUSTOM_ID: h:32C00231-247B-4BB8-9DF7-A733338041A0
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clisp.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clisp.el
 :END:
   
 #+begin_src emacs-lisp
-(use-package sly)
+(defvar inferior-lisp-program "sbcl")
+(use-package sly
+  :general
+  (synthmacs/local-leader-keys
+    :keymaps 'lisp-mode-map
+    "'" 'sly
+    "m" 'macrostep-expand
+    
+    "c" '(:ignore t :wk "compile")
+    "cc" 'sly-compile-file
+    "cC" 'sly-compile-and-load-file
+    "cf" 'sly-compile-defun
+    "cl" 'sly-load-file
+    "cn" 'sly-remove-notes
+    "cr" 'sly-compile-region
+    
+    "e" '(:ignore t :wk "evaluate")
+    "eb" '(sly-eval-buffer :wk "Evaluate buffer")
+    "ee" '(sly-eval-last-expression :wk "Evaluate last")
+    "eE" '(sly-eval-print-last-expression :wk "Evaluate/print last")
+    "ef" '(sly-eval-defun :wk "Evaluate defun")
+    "eF" '(sly-undefine-function :wk "Undefine function")
+    "er" '(sly-eval-region :wk "Evaluate region")
+    
+    "g" '(:ignore t :wk "goto")
+    "gb" '(sly-pop-find-definition-stack :wk "Go back")
+    "gd" '(sly-edit-definition :wk "Go to")
+    "gD" '(sly-edit-definition-other-window :wk "Go to (other window)")
+    "gn" '(sly-next-note :wk "Next note")
+    "gN" '(sly-previous-note :wk "Previous note")
+    "gs" '(sly-stickers-next-sticker :wk "Next sticker")
+    "gS" '(sly-stickers-prev-sticker :wk "Previous sticker")
+    
+    "h" '(:ignore :wk "help")
+    "h<" '(sly-who-calls :wk "Who calls")
+    "h>" '(sly-calls-who :wk "Calls who")
+    "h~" '(hyperspec-lookup-format :wk "Lookup format directive")
+    "h#" '(hyperspec-lookup-reader-macro :wk "Lookup reader macro")
+    "ha" '(sly-apropos :wk "Apropos")
+    "hb" '(sly-who-binds :wk "Who binds")
+    "hd" '(sly-disassemble-symbol :wk "Disassemble symbol")
+    "hh" '(sly-describe-symbol :wk "Describe symbol")
+    "hH" '(sly-hyperspec-lookup :wk "HyperSpec lookup")
+    "hm" '(sly-who-macroexpands :wk "Who macro-expands")
+    "hp" '(sly-apropos-package :wk "Apropos package")
+    "hr" '(sly-who-references :wk "Who references")
+    "hs" '(sly-who-specializes :wk "Who specializes")
+    "hS" '(sly-who-sets :wk "Who sets")
+    
+    "r" '(:ignore :wk "repl")
+    "rc" '(sly-mrepl-clear-repl :wk "Clear REPL")
+    "rl" '(+lisp/load-project-systems :wk "Load Project")
+    "rq" '(sly-quit-lisp :wk "Quit connection")
+    "rr" '(sly-restart-inferior-lisp :wk "Restart connection")
+    "rR" '(+lisp/reload-project :wk "Reload Project")
+    "rs" '(sly-mrepl-sync :wk "Sync REPL")
+    
+    "s" '(:ignore :wk "stickers")
+    "sb" '(sly-stickers-toggle-break-on-stickers :wk "Toggle breaking stickers")
+    "sc" '(sly-stickers-clear-defun-stickers :wk "Clear defun stickers")
+    "sC" '(sly-stickers-clear-buffer-stickers :wk "Clear buffer stickers")
+    "sf" '(sly-stickers-fetch :wk "Fetch stickers")
+    "sr" '(sly-stickers-replay :wk "Replay stickers")
+    "ss" '(sly-stickers-dwim :wk "Add/remove sticker")
+    
+    "t" '(:ignore t :wk "test")
+    "ts" '(+lisp/test-system :wk "Test System")
+    
+    "T" '(:ignore t :wk "trace")
+    "Tt" '(sly-toggle-trace-fdefinition :wk "Toggle")
+    "TT" '(sly-toggle-fancy-trace :wk "Toggle (fancy)")
+    "Tu" '(sly-untrace-all :wk "Untrace all")
+    )
+  :hook (lisp-mode-local-vars . sly-editing-mode)
+  :config
+  (setq sly-complete-symbol-function 'sly-flex-completions)
+  )
 
 (use-package sly-macrostep)
 
 (use-package sly-repl-ansi-color
+  :defer t
   :init
   (add-to-list 'sly-contribs 'sly-repl-ansi-color))
 #+end_src
@@ -4730,7 +4853,7 @@ You can either build your own languages, or you can use pre-built. For now, let'
   (general-nmap
     :keymaps 'emacs-lisp-mode-map
     :states 'normal
-   "gr" nil) ;; interferes with eval-operator
+    "gr" nil) ;; interferes with eval-operator
   )
 #+end_src
 
@@ -4935,6 +5058,26 @@ Keeps the file indented nicely, but, this might clash with lsp stuff, so we only
 :PROPERTIES:
 :CUSTOM_ID: h:320148C4-896F-4FFF-90CD-08E91DCCED9E
 :END:
+
+*** synthmacs-lang-css
+:PROPERTIES:
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-css.el
+:CUSTOM_ID: h:07FF0441-BACD-40DE-A350-CE4973D19F44
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-lang-css)
+;;; synthmacs-lang-css.el ends here
+#+end_src
+
+*** synchmacs-lang-gitModes
+:PROPERTIES:
+:CUSTOM_ID: h:8ABA1185-A8B8-47D0-BF61-A3CA50528389
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-gitModes.el
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-lang-gitModes)
+;;; synthmacs-lang-gitModes.el ends here
+#+end_src
 
 *** synthmacs-lang-haskell
 :PROPERTIES:

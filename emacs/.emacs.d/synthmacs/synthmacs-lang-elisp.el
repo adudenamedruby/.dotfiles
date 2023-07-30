@@ -5,7 +5,7 @@
   (general-nmap
     :keymaps 'emacs-lisp-mode-map
     :states 'normal
-   "gr" nil) ;; interferes with eval-operator
+    "gr" nil) ;; interferes with eval-operator
   )
 ;; Emacs-lisp:1 ends here
 

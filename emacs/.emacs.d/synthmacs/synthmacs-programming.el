@@ -112,6 +112,10 @@
 
 ;; [[file:../synthmacs.org::*Treesitter][Treesitter:1]]
 (require 'treesit)
+
+(when (boundp 'treesit-extra-load-path)
+  (add-to-list 'treesit-extra-load-path "/usr/local/lib/")
+  (add-to-list 'treesit-extra-load-path "~/.local/lib/"))
 ;; Treesitter:1 ends here
 
 ;; [[file:../synthmacs.org::*Treesitter languages][Treesitter languages:1]]
