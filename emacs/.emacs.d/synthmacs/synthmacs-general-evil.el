@@ -159,7 +159,7 @@
   "qq" '(synthmacs/prompt-kill-emacs :wk "prompt-kill-emacs")
   "qs" '(save-buffers-kill-emacs :wk "save-buffers-kill-emacs")
   "qQ" '(kill-emacs :wk "kill-emacs")
-  "qR" '(restart-emacs :wk "restart-emacs"))
+  )
 ;; Quit bindings:1 ends here
 
 ;; [[file:../synthmacs.org::*Registers bindings][Registers bindings:1]]
@@ -303,6 +303,17 @@ _q_: quit
   (evil-set-initial-state 'dashboard-mode 'normal)
   )
 ;; evil:1 ends here
+
+;; [[file:../synthmacs.org::*evil-anzu][evil-anzu:1]]
+(use-package evil-anzu
+  :demand
+  :after isearch
+  :init
+  (global-anzu-mode t)
+  :config
+  (setq anzu-search-threshold 1000)
+  (setq anzu-cons-mode-line-p nil))
+;; evil-anzu:1 ends here
 
 ;; [[file:../synthmacs.org::*evil-args][evil-args:1]]
 (use-package evil-args

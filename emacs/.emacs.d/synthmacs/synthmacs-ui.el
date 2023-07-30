@@ -66,12 +66,6 @@
 (use-package sublime-themes)
 ;; A variety of themes:1 ends here
 
-;; [[file:../synthmacs.org::*solaire-mode][solaire-mode:1]]
-(use-package solaire-mode
-  :init
-  (solaire-global-mode +1))
-;; solaire-mode:1 ends here
-
 ;; [[file:../synthmacs.org::*Theme functions][Theme functions:1]]
 (defvar synthmacs--fallback-theme 'kaolin-bubblegum
   "Fallback theme if user theme cannot be applied.")
@@ -183,6 +177,30 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 (synthmacs/load-random-theme)
 ;; Theme functions:1 ends here
 
+;; [[file:../synthmacs.org::*solaire-mode][solaire-mode:1]]
+(use-package solaire-mode
+  :defer 1
+  :hook
+  ;; Ensure solaire-mode is running in all solaire-mode buffers
+  (change-major-mode . turn-on-solaire-mode)
+  ;; ...if you use auto-revert-mode, this prevents solaire-mode from turning
+  ;; itself off every time Emacs reverts the file
+  (after-revert . turn-on-solaire-mode)
+  ;; To enable solaire-mode unconditionally for certain modes:
+  (ediff-prepare-buffer . solaire-mode)
+  :custom
+  (solaire-mode-auto-swap-bg t)
+  :config
+  (solaire-global-mode +1))
+;; solaire-mode:1 ends here
+
+;; [[file:../synthmacs.org::*info-colors][info-colors:1]]
+(use-package info-colors
+  :defer 1
+  :config
+  (add-hook 'Info-selection-hook 'info-colors-fontify-node))
+;; info-colors:1 ends here
+
 ;; [[file:../synthmacs.org::*Navigation][Navigation:1]]
 (use-package winum
   :general
@@ -221,14 +239,6 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
     ))
 ;; Avy:1 ends here
 
-;; [[file:../synthmacs.org::*evil-anzu][evil-anzu:1]]
-(use-package evil-anzu
-  :init (global-anzu-mode t)
-  :config
-  (setq anzu-search-threshold 1000
-	anzu-cons-mode-line-p nil))
-;; evil-anzu:1 ends here
-
 ;; [[file:../synthmacs.org::*minions][minions:1]]
 (use-package minions
   :hook (doom-modeline-mode . minions-mode))
@@ -254,6 +264,17 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   )
 ;; doom-modeline:1 ends here
 
+;; [[file:../synthmacs.org::*Fast scroll][Fast scroll:1]]
+(use-package fast-scroll
+  :defer 1
+  :hook
+  (fast-scroll-start . (lambda () (flycheck-mode -1)))
+  (fast-scroll-end . (lambda () (flycheck-mode 1)))
+  :config
+  (fast-scroll-config)
+  (fast-scroll-mode 1))
+;; Fast scroll:1 ends here
+
 ;; [[file:../synthmacs.org::*Dashboard][Dashboard:1]]
 (use-package dashboard
   :demand
@@ -274,6 +295,31 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   (dashboard-setup-startup-hook)
   )
 ;; Dashboard:1 ends here
+
+;; [[file:../synthmacs.org::*Ligatures][Ligatures:1]]
+(use-package ligature
+  :straight (:host github :repo "mickeynp/ligature.el")
+  :defer 1
+  :config
+  (ligature-set-ligatures 't '("www"))
+  (ligature-set-ligatures
+   'prog-mode
+   '("-->" "//" "/**" "/*" "*/" "<!--" ":=" "->>" "<<-" "->" "<-"
+     "<=>" "==" "!=" "<=" ">=" "=:=" "!==" "&&" "||" "..." ".."
+     "|||" "///" "&&&" "===" "++" "--" "=>" "|>" "<|" "||>" "<||"
+     "|||>" "<|||" ">>" "<<" "::=" "|]" "[|" "{|" "|}"
+     "[<" ">]" ":?>" ":?" "/=" "[||]" "!!" "?:" "?." "::"
+     "+++" "??" "###" "##" ":::" "####" ".?" "?=" "=!=" "<|>"
+     "<:" ":<" ":>" ">:" "<>" "***" ";;" "/==" ".=" ".-" "__"
+     "=/=" "<-<" "<<<" ">>>" "<=<" "<<=" "<==" "<==>" "==>" "=>>"
+     ">=>" ">>=" ">>-" ">-" "<~>" "-<" "-<<" "=<<" "---" "<-|"
+     "<=|" "/\\" "\\/" "|=>" "|~>" "<~~" "<~" "~~" "~~>" "~>"
+     "<$>" "<$" "$>" "<+>" "<+" "+>" "<*>" "<*" "*>" "</>" "</" "/>"
+     "<->" "..<" "~=" "~-" "-~" "~@" "^=" "-|" "_|_" "|-" "||-"
+     "|=" "||=" "#{" "#[" "]#" "#(" "#?" "#_" "#_(" "#:" "#!" "#="
+     "&="))
+  (global-ligature-mode t))
+;; Ligatures:1 ends here
 
 ;; [[file:../synthmacs.org::*which-key][which-key:1]]
 (setq which-key-idle-delay 0.4)
@@ -356,7 +402,6 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 ;; [[file:../synthmacs.org::*Line numbers][Line numbers:1]]
 (use-package emacs
   :init
-  ;; ------------------ Line Numbering ---------------------
   ;; set type of line numbering (global variable)
   (setq display-line-numbers-type 'relative)
   ;; activate line numbering in all buffers/modes

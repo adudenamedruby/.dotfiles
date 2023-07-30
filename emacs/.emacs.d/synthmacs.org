@@ -57,9 +57,14 @@
 - [[#ui][UI]]
   - [[#icons][Icons]]
   - [[#themes][Themes]]
+  - [[#solaire-mode][solaire-mode]]
+  - [[#info-colors][info-colors]]
   - [[#navigation][Navigation]]
   - [[#modeline][Modeline]]
+  - [[#fast-scroll][Fast scroll]]
   - [[#dashboard][Dashboard]]
+  - [[#wrap-long-lines][Wrap long lines]]
+  - [[#ligatures][Ligatures]]
   - [[#which-key][which-key]]
   - [[#rainbow-delimiters][rainbow-delimiters]]
   - [[#popup-management][Popup management]]
@@ -85,6 +90,8 @@
   - [[#ws-butler][WS-Butler]]
   - [[#olivetti-mode][Olivetti Mode]]
   - [[#vterm][Vterm]]
+  - [[#restart-emacs][restart-emacs]]
+  - [[#prescient][Prescient]]
   - [[#transient][Transient]]
 - [[#programming-environment][Programming Environment]]
   - [[#lsp][LSP]]
@@ -1430,7 +1437,7 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
   "qq" '(synthmacs/prompt-kill-emacs :wk "prompt-kill-emacs")
   "qs" '(save-buffers-kill-emacs :wk "save-buffers-kill-emacs")
   "qQ" '(kill-emacs :wk "kill-emacs")
-  "qR" '(restart-emacs :wk "restart-emacs"))
+  )
 #+end_src
 
 *** Registers bindings
@@ -1611,6 +1618,21 @@ NOTE: other evil packages (like [[#h:29AD92F1-04AB-4CE5-91F4-A1E4B187F0CE][evil-
   (evil-set-initial-state 'dashboard-mode 'normal)
   )
 #+end_src
+
+*** evil-anzu
+:PROPERTIES:
+:CUSTOM_ID: h:D9672083-EF2E-4DB5-B911-6A6CD2D2C2BE
+:END:
+#+begin_src emacs-lisp
+(use-package evil-anzu
+  :demand
+  :after isearch
+  :init
+  (global-anzu-mode t)
+  :config
+  (setq anzu-search-threshold 1000)
+  (setq anzu-cons-mode-line-p nil))
+  #+end_src
 
 *** evil-args
 :PROPERTIES:
@@ -2179,7 +2201,7 @@ A presentation mode for org-mode
          (org-tree-slide-stop . (lambda () (+remap-faces-at-stop-present))))
   :general
   (synthmacs/leader-keys
-   "t p" '(org-tree-slide-mode :wk "present"))
+    "t p" '(org-tree-slide-mode :wk "present"))
   (general-nmap
     :keymaps '(org-tree-slide-mode-map org-mode-map)
     "C-j" 'org-tree-slide-move-next-tree
@@ -2542,17 +2564,6 @@ People sometimes say that making your editor look good is pointless. I disagree:
 (use-package sublime-themes)
 #+end_src
 
-*** solaire-mode
-:PROPERTIES:
-:CUSTOM_ID: h:49441D6C-6408-484B-91C9-8516B9A33B0B
-:END:
-Basically, a nice visual flare to make "other" windows not stand out. Or, rather, make the main window stand out.
-#+begin_src emacs-lisp
-(use-package solaire-mode
-  :init
-  (solaire-global-mode +1))
-#+end_src
-
 *** Theme functions
 :PROPERTIES:
 :CUSTOM_ID: h:BD6AA932-6150-4DD5-B27D-B35286DD7230
@@ -2668,6 +2679,42 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 (synthmacs/load-random-theme)
 #+end_src
 
+** solaire-mode
+:PROPERTIES:
+:CUSTOM_ID: h:49441D6C-6408-484B-91C9-8516B9A33B0B
+:END:
+Basically, [[https://github.com/hlissner/emacs-solaire-mode][solaire-mode]] darkens non-important buffers. It's a nice visual flare to make "other" windows not stand out. Or, rather, make the main window stand out so you can focus on what matters
+
+#+begin_src emacs-lisp
+(use-package solaire-mode
+  :defer 1
+  :hook
+  ;; Ensure solaire-mode is running in all solaire-mode buffers
+  (change-major-mode . turn-on-solaire-mode)
+  ;; ...if you use auto-revert-mode, this prevents solaire-mode from turning
+  ;; itself off every time Emacs reverts the file
+  (after-revert . turn-on-solaire-mode)
+  ;; To enable solaire-mode unconditionally for certain modes:
+  (ediff-prepare-buffer . solaire-mode)
+  :custom
+  (solaire-mode-auto-swap-bg t)
+  :config
+  (solaire-global-mode +1))
+#+end_src
+
+** info-colors
+:PROPERTIES:
+:CUSTOM_ID: h:31C0E857-FC74-44D7-8F37-F7EF308E06CA
+:END:
+[[https://github.com/ubolonton/info-colors][info-colors]] adds pretty colours to info panels
+
+#+begin_src emacs-lisp
+(use-package info-colors
+  :defer 1
+  :config
+  (add-hook 'Info-selection-hook 'info-colors-fontify-node))
+#+end_src
+
 ** Navigation
 :PROPERTIES:
 :CUSTOM_ID: h:F723A922-5198-47CE-859C-F0643B7F3F85
@@ -2724,18 +2771,6 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 :END:
 [[https://github.com/seagle0128/doom-modeline][doom-modeline]] provides a clean and simple modeline (bottom bar) for each buffer. We pair it with the [[https://github.com/tarsius/minions][minions]] minor mode to collect all minor modes into a single menu. [[https://github.com/emacsorphanage/evil-anzu][evil-anzu]] is used to show the number of matches when we search in a file.
 
-*** evil-anzu
-:PROPERTIES:
-:CUSTOM_ID: h:D9672083-EF2E-4DB5-B911-6A6CD2D2C2BE
-:END:
-#+begin_src emacs-lisp
-(use-package evil-anzu
-  :init (global-anzu-mode t)
-  :config
-  (setq anzu-search-threshold 1000
-	anzu-cons-mode-line-p nil))
-#+end_src
-
 *** minions
 :PROPERTIES:
 :CUSTOM_ID: h:9380A452-DEA7-428C-BC88-F52FDDC6EF94
@@ -2769,6 +2804,22 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   )
 #+end_src
 
+** Fast scroll
+:PROPERTIES:
+:CUSTOM_ID: h:2B3E62E1-9F7E-40FF-B66D-2AA006AF1EB0
+:END:
+[[https://github.com/ahungry/fast-scroll][fast-scroll]] “works by temporarily disabling font-lock and switching to a barebones mode-line, until you stop scrolling (at which point it re-enables)”. It only does this when scrolling super fast, to keep everything responsive.
+#+begin_src emacs-lisp
+(use-package fast-scroll
+  :defer 1
+  :hook
+  (fast-scroll-start . (lambda () (flycheck-mode -1)))
+  (fast-scroll-end . (lambda () (flycheck-mode 1)))
+  :config
+  (fast-scroll-config)
+  (fast-scroll-mode 1))
+#+end_src
+
 ** Dashboard
 :PROPERTIES:
 :CUSTOM_ID: h:108BED42-7912-45EE-B0BD-364D4479319A
@@ -2794,6 +2845,59 @@ A nicer startup experience than just an empty buffer. Includes a nice useful lis
   :config
   (dashboard-setup-startup-hook)
   )
+#+end_src
+
+** Wrap long lines
+:PROPERTIES:
+:CUSTOM_ID: h:EE9571D7-7F40-45FB-9294-75C53612AD64
+:END:
+[[https://github.com/joostkremers/visual-fill-column][visual-fill-column]] wraps lines at fill-column, and makes it easier to read long lines of code. It is preferred over the built-in visual-line-mode because it doesn’t break words.
+
+#+begin_src emacs-lisp :tangle no
+(use-package visual-fill-column
+  :defer 1
+  :hook (org-src . visual-fill-column-mode)
+  :custom
+  (visual-line-fringe-indicators
+   '(left-curly-arrow right-curly-arrow))
+  (split-window-preferred-function
+   'visual-fill-column-split-window-sensibly)
+  :config
+  (advice-add 'text-scale-adjust
+              :after #'visual-fill-column-adjust)
+  (global-visual-fill-column-mode 1)
+  (global-visual-line-mode 1))
+#+end_src
+
+** Ligatures
+:PROPERTIES:
+:CUSTOM_ID: h:698B7A99-288E-4473-8EDD-605CDAF4B8B2
+:END:
+I like ligatures. Some people don't. That's ok.
+
+#+begin_src emacs-lisp
+(use-package ligature
+  :straight (:host github :repo "mickeynp/ligature.el")
+  :defer 1
+  :config
+  (ligature-set-ligatures 't '("www"))
+  (ligature-set-ligatures
+   'prog-mode
+   '("-->" "//" "/**" "/*" "*/" "<!--" ":=" "->>" "<<-" "->" "<-"
+     "<=>" "==" "!=" "<=" ">=" "=:=" "!==" "&&" "||" "..." ".."
+     "|||" "///" "&&&" "===" "++" "--" "=>" "|>" "<|" "||>" "<||"
+     "|||>" "<|||" ">>" "<<" "::=" "|]" "[|" "{|" "|}"
+     "[<" ">]" ":?>" ":?" "/=" "[||]" "!!" "?:" "?." "::"
+     "+++" "??" "###" "##" ":::" "####" ".?" "?=" "=!=" "<|>"
+     "<:" ":<" ":>" ">:" "<>" "***" ";;" "/==" ".=" ".-" "__"
+     "=/=" "<-<" "<<<" ">>>" "<=<" "<<=" "<==" "<==>" "==>" "=>>"
+     ">=>" ">>=" ">>-" ">-" "<~>" "-<" "-<<" "=<<" "---" "<-|"
+     "<=|" "/\\" "\\/" "|=>" "|~>" "<~~" "<~" "~~" "~~>" "~>"
+     "<$>" "<$" "$>" "<+>" "<+" "+>" "<*>" "<*" "*>" "</>" "</" "/>"
+     "<->" "..<" "~=" "~-" "-~" "~@" "^=" "-|" "_|_" "|-" "||-"
+     "|=" "||=" "#{" "#[" "]#" "#(" "#?" "#_" "#_(" "#:" "#!" "#="
+     "&="))
+  (global-ligature-mode t))
 #+end_src
 
 ** which-key
@@ -2910,7 +3014,6 @@ It's useful to know indents, and I like seeing it, so let's do it!
 #+begin_src emacs-lisp
 (use-package emacs
   :init
-  ;; ------------------ Line Numbering ---------------------
   ;; set type of line numbering (global variable)
   (setq display-line-numbers-type 'relative)
   ;; activate line numbering in all buffers/modes
@@ -3761,6 +3864,47 @@ Olivetti mode is a nice alignment of emacs for prose writing.
   )
 #+end_src
 
+** restart-emacs
+:PROPERTIES:
+:CUSTOM_ID: h:75DF0D22-E76B-4DFF-AD93-A21C6949EE25
+:END:
+restart-emacs teaches Emacs to restart itself. I added a me/reload-init command as well to just reload the init.el file without a full restart.
+
+#+begin_src emacs-lisp
+(defun synthmacs/reload-init ()
+  "Reload init.el."
+  (interactive)
+  (message "Reloading init.el...")
+  (load user-init-file nil 'nomessage)
+  (message "Reloading init.el... done."))
+
+(use-package restart-emacs
+  :commands restart-emacs
+  :general
+  (synthmacs/leader-keys
+    "qR" 'restart-emacs
+    "qn" 'restart-emacs-start-new-emacs
+    "qr" 'synthmacs/reload-init)
+)
+#+end_src
+
+** Prescient
+:PROPERTIES:
+:CUSTOM_ID: h:C459385B-118C-49AF-84D9-02762BDE30EF
+:END:
+[[https://github.com/radian-software/prescient.el][prescient.el]] teaches corfu and vertico better sorting and filtering.
+
+#+begin_src emacs-lisp :tangle no
+(use-package prescient
+  :defer 1
+  :config
+  (prescient-persist-mode 1))
+
+(use-package corfu-prescient)
+
+(use-package vertico-prescient)
+#+end_src
+
 ** Transient
 :PROPERTIES:
 :CUSTOM_ID: h:99427354-9962-497A-B0F7-0BB54EC5D10F
@@ -4116,9 +4260,23 @@ Olivetti mode is a nice alignment of emacs for prose writing.
 :PROPERTIES:
 :CUSTOM_ID: h:337359CD-0A1C-48AE-A141-36BFC0FE4641
 :END:
+[[https://github.com/flycheck/flycheck][flycheck]] gathers syntax errors and warnings on-the-fly. We use [[https://github.com/alexmurray/flycheck-posframe][flycheck-posframe]] to show them if the cursor is on a flycheck warning.
+
 #+begin_src emacs-lisp
 (use-package flycheck
-  :init (global-flycheck-mode))
+  :defer 1
+  :init
+  (global-flycheck-mode t))
+
+(use-package flycheck-posframe
+  :defer 1
+  :after flycheck
+  :hook (flycheck-mode . flycheck-posframe-mode)
+  :config
+  (flycheck-posframe-configure-pretty-defaults)
+  (add-hook 'flycheck-posframe-inhibit-functions #'company--active-p)
+  (add-hook 'flycheck-posframe-inhibit-functions #'evil-insert-state-p)
+  (add-hook 'flycheck-posframe-inhibit-functions #'evil-replace-state-p))
 #+end_src
 
 ** iMenu

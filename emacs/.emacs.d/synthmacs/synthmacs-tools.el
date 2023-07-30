@@ -183,6 +183,24 @@
   )
 ;; vterm-toggle:1 ends here
 
+;; [[file:../synthmacs.org::*restart-emacs][restart-emacs:1]]
+(defun synthmacs/reload-init ()
+  "Reload init.el."
+  (interactive)
+  (message "Reloading init.el...")
+  (load user-init-file nil 'nomessage)
+  (message "Reloading init.el... done."))
+
+(use-package restart-emacs
+  :commands restart-emacs
+  :general
+  (synthmacs/leader-keys
+    "qR" 'restart-emacs
+    "qn" 'restart-emacs-start-new-emacs
+    "qr" 'synthmacs/reload-init)
+)
+;; restart-emacs:1 ends here
+
 ;; [[file:../synthmacs.org::*Transient][Transient:1]]
 (use-package transient
   :general

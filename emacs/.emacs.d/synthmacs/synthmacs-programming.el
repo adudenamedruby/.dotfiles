@@ -61,7 +61,19 @@
 
 ;; [[file:../synthmacs.org::*Flycheck][Flycheck:1]]
 (use-package flycheck
-  :init (global-flycheck-mode))
+  :defer 1
+  :init
+  (global-flycheck-mode t))
+
+(use-package flycheck-posframe
+  :defer 1
+  :after flycheck
+  :hook (flycheck-mode . flycheck-posframe-mode)
+  :config
+  (flycheck-posframe-configure-pretty-defaults)
+  (add-hook 'flycheck-posframe-inhibit-functions #'company--active-p)
+  (add-hook 'flycheck-posframe-inhibit-functions #'evil-insert-state-p)
+  (add-hook 'flycheck-posframe-inhibit-functions #'evil-replace-state-p))
 ;; Flycheck:1 ends here
 
 ;; [[file:../synthmacs.org::*iMenu][iMenu:1]]
