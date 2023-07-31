@@ -82,5 +82,5 @@
 ;; Temporarily avoid special handling of files:1 ends here
 
 ;; [[file:synthmacs.org::*early-init.el][early-init.el:1]]
-  ;;; early-init.el ends here
+;;; early-init.el ends here
 ;; early-init.el:1 ends here

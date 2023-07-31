@@ -1,5 +1,5 @@
 ;; [[file:synthmacs.org::*Header & Lexical Binding][Header & Lexical Binding:1]]
-  ;;; init.el --- Personal configuration file -*- lexical-binding: t; no-byte-compile: t; -*-
+;;; init.el --- Personal configuration file -*- lexical-binding: t; no-byte-compile: t; -*-
 ;; NOTE: init.el is now generated from synthmacs.org.  Please edit that file instead
 ;; Header & Lexical Binding:1 ends here
 

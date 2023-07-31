@@ -1,4 +1,9 @@
 ;; [[file:../synthmacs.org::*org mode][org mode:1]]
+(defmacro synthmacs/org-emphasize (fname char)
+  "Make function for setting the emphasis in org mode"
+  `(defun ,fname () (interactive)
+          (org-emphasize ,char)))
+
 (use-package org
   ;; :straight org-plus-contrib
   ;; :straight (:type built-in)
@@ -6,90 +11,259 @@
          (org-mode . visual-line-mode))
   :general
   (synthmacs/leader-keys
+    "o[" 'org-agenda-file-to-front
+    "o]" 'org-remove-file
+    "oa" 'org-agenda
     "oc" 'org-capture
-    ;;"ol" '(org-todo-list :wk "todo list")
+    
+    ;; More cycling options (timestamps, headlines, items, properties)
+    "oL" 'org-shiftright
+    "oH" 'org-shiftleft
+    "oJ" 'org-shiftdown
+    "oK" 'org-shiftup
 
-    "ft" 'org-babel-tangle
-    )
+    "oI" 'org-indent-region
+    "op" 'org-priority
+    "oS" '(org-insert-structure-template :wk "insert src")
+    "oX" 'org-toggle-checkbox
+    "o*" 'org-ctrl-c-star
+    "o-" 'org-ctrl-c-minus
+    "o#" 'org-update-statistics-cookies
+    "o RET"   'org-ctrl-c-ret
+    "o M-RET" 'org-meta-return
+    "oA" 'org-attach
 
-  (synthmacs/local-leader-keys
-    :keymaps 'org-mode-map
-    "a" '(org-archive-subtree :wk "archive subtree")
-    "E" '(org-export-dispatch :wk "org-export")
-    "i" 'org-indent-region
-    "s" '(org-insert-structure-template :wk "insert src")
-    "S" 'org-sort
-    "x" 'org-toggle-checkbox
+    "ob" '(:ignore t :wk "babel")
+    "oba"     'org-babel-sha1-hash
+    "obp"     'org-babel-previous-src-block
+    "obn"     'org-babel-next-src-block
+    "obe"     'org-babel-execute-maybe
+    "obo"     'org-babel-open-src-block-result
+    "obv"     'org-babel-expand-src-block
+    "obu"     'org-babel-goto-src-block-head
+    "obg"     'org-babel-goto-named-src-block
+    "obr"     'org-babel-goto-named-result
+    "obb"     'org-babel-execute-buffer
+    "obs"     'org-babel-execute-subtree
+    "obd"     'org-babel-demarcate-block
+    "obt"     'org-babel-tangle
+    "obf"     'org-babel-tangle-file
+    "obc"     'org-babel-check-src-block
+    "obj"     'org-babel-insert-header-arg
+    "obl"     'org-babel-load-in-session
+    "obi"     'org-babel-lob-ingest
+    "obI"     'org-babel-view-src-block-info
+    "obz"     'org-babel-switch-to-session
+    "obZ"     'org-babel-switch-to-session-with-code
+    "obx"     'org-babel-do-key-sequence-in-edit-buffer
 
-    "t" '(:ignore true :wk "todo")
-    "tt" 'org-todo
-    "ts" 'org-schedule
-    "td" 'org-deadline
+    "ol" '(:ignore true :wk "link")
+    "oli" 'org-insert-link
+    "ols" 'org-store-link
 
-    "l" '(:ignore true :wk "link")
-    "li" 'org-insert-link
-    "ls" 'org-store-link
+    "oC" '(:ignore t :wk "Clock")
+    "oCc" 'org-clock-cancel
+    "oCd" 'org-clock-display
+    "oCe" 'org-evaluate-time-range
+    "oCg" 'org-clock-goto
+    "oCi" 'org-clock-in
+    "oCI" 'org-clock-in-last
+    "oCo" 'org-clock-out
+    "oCR" 'org-clock-report
+    "oCr" 'org-resolve-clocks
 
-    ;;   "L" '((lambda () (interactive) (org-latex-preview)) :wk "latex preview")
-    ;;   ;; "L" '((lambda () (interactive) (org--latex-preview-region (point-min) (point-max))) :wk "latex")
-    ;;   "r" '(org-refile :wk "refile")
-    ;;   "n" '(org-toggle-narrow-to-subtree :wk "narrow subtree")
-    ;;   "p" '(org-priority :wk "priority")
-    ;;   "q" '(org-set-tags-command :wk "tag")
-    )
+    "od" '(:ignore t :wk "dates")
+    "odd" 'org-deadline
+    "ods" 'org-schedule
+    "odt" 'org-time-stamp
+    "odT" 'org-time-stamp-inactive
+    
+    "oe" '(:ignore t :wk "export")
+    "oee" 'org-export-dispatch
+    
+    "of" '(:ignore t :wk "feed")
+    "ofi" 'org-feed-goto-inbox
+    "ofu" 'org-feed-update-all
 
-  (org-mode-map
-   :states 'insert
-   "TAB" 'synthmacs/org-indent-or-complete
-   "S-TAB" nil)
+    "oT" '(:ignore t :wk "Toggles")
+    "oTc" 'org-toggle-checkbox
+    "oTe" 'org-toggle-pretty-entities
+    "oTi" 'org-toggle-inline-images
+    "oTn" 'org-num-mode
+    "oTl" 'org-toggle-link-display
+    "oTt" 'org-show-todo-tree
+    "oTT" 'org-todo
+    "oTV" 'space-doc-mode
+    "oTx" 'org-latex-preview
 
-  (org-mode-map
-   :states 'normal
-   "z i" '(org-toggle-inline-images :wk "inline images"))
+    "os" '(:ignore t :wk "trees/subtrees")
+    "osa" 'org-toggle-archive-tag
+    "osA" 'org-archive-subtree-default
+    "osb" 'org-tree-to-indirect-buffer
+    "osd" 'org-cut-subtree
+    "osy" 'org-copy-subtree
+    "osp" 'org-paste-subtree
+    "osh" 'org-promote-subtree
+    "osj" 'org-move-subtree-down
+    "osk" 'org-move-subtree-up
+    "osl" 'org-demote-subtree
+    "osn" 'org-narrow-to-subtree
+    "osw" 'widen
+    "osr" 'org-refile
+    "oss" 'org-sparse-tree
+    "osS" 'org-sort
 
-  :init
-  ;; general settings
-  (when (file-directory-p "~/Developer/ExoCortex/org")
-    (setq org-directory "~/Developer/ExoCortex/org"
-          +org-export-directory "~/Developer/ExoCortex/org/export"
-          org-default-notes-file "~/Developer/ExoCortex/org/notes.org"
-          org-id-locations-file "~/Developer/ExoCortex/org/.orgids"
-          ))	
-  ;; (setq org-export-in-background t)
-  (setq org-src-preserve-indentation t) ;; do not put two spaces on the left
-  (setq org-startup-indented t)
-  ;;(setq org-startup-with-inline-images t)
-  (setq org-hide-emphasis-markers t)
-  (setq org-catch-invisible-edits 'smart)
-  (setq org-image-actual-width nil)
-  (setq org-indent-indentation-per-level 1)
-  (setq org-list-demote-modify-bullet '(("-" . "+") ("+" . "*")))
-  ;; disable modules for faster startup
-  ;; (setq org-modules
-  ;;       '(ol-docview
-  ;;         org-habit))
-  ;; (setq org-todo-keywords
-  ;;       '((sequence "TODO(t)" "NEXT(n)" "PROG(p)" "|" "HOLD(h)" "DONE(d)")))
-  (setq-default prettify-symbols-alist '(("#+BEGIN_SRC" . "»")
-                                         ("#+END_SRC" . "«")
-                                         ("#+begin_src" . "»")
-                                         ("#+end_src" . "«")
-                                         ("lambda"  . "λ")
-                                         ("->" . "→")
-                                         ("->>" . "↠")))
-  (setq prettify-symbols-unprettify-at-point 'right-edge)
+    "ot" '(:ignore t :wk "Tables")
+    "ota" 'org-table-align
+    "otb" 'org-table-blank-field
+    "otc" 'org-table-convert
+    "ote" 'org-table-eval-formula
+    "otE" 'org-table-export
+    "otf" 'org-table-field-info
+    "oth" 'org-table-previous-field
+    "otH" 'org-table-move-column-left
+    
+    "otd" '(:ignore t :wk "delete")
+    "otdc" 'org-table-delete-column
+    "otdr" 'org-table-kill-row
+    
+    "oti" '(:ignore t :wk "insert")
+    "otic" 'org-table-insert-column
+    "otih" 'org-table-insert-hline
+    "otiH" 'org-table-hline-and-move
+    "otir" 'org-table-insert-row
+    
+    "otI" 'org-table-import
+    "otj" 'org-table-next-row
+    "otJ" 'org-table-move-row-down
+    "otK" 'org-table-move-row-up
+    "otl" 'org-table-next-field
+    "otL" 'org-table-move-column-right
+    "otn" 'org-table-create
+    "otN" 'org-table-create-with-table.el
+    "otr" 'org-table-recalculate
+    "otR" 'org-table-recalculate-buffer-tables
+    "ots" 'org-table-sort-lines
+    
+    "ott" '(:ignore t :wk "toggles")
+    "ottf" 'org-table-toggle-formula-debugger
+    "otto" 'org-table-toggle-coordinate-overlays
+    
+    "otw" 'org-table-wrap-region
 
-  :config
-  ;; ;; (efs/org-font-setup)
-  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
-  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
-  (add-to-list 'org-structure-template-alist '("py" . "src python"))
-  (add-to-list 'org-structure-template-alist '("clj" . "src clojure"))
-  ;; (setq org-latex-pdf-process '("tectonic %f"))
-  ;; (setq org-export-backends '(html))
-  ;; ;; (add-to-list 'org-export-backends 'beamer)
-  ;; (plist-put org-format-latex-options :scale 1.2)
+    "oi" '(:ignore t :wk "insert")
+    "oib" 'org-insert-structure-template
+    "oid" 'org-insert-drawer
+    "oie" 'org-set-effort
+    "oif" 'org-footnote-new
+    "oih" 'org-insert-heading
+    "oiH" 'org-insert-heading-after-current
+    "oii" 'org-insert-item
+    "oiK" 'spacemacs/insert-keybinding-org
+    "oil" 'org-insert-link
+    "oin" 'org-add-note
+    "oip" 'org-set-property
+    "ois" 'org-insert-subheading
+    "oit" 'org-set-tags-command
+    
+    "ox" '(:ignore t :wk "text")
+    "oxb" (synthmacs/org-emphasize synthmacs/org-bold ?*)
+    "oxc" (synthmacs/org-emphasize synthmacs/org-code ?~)
+   "oxi" (synthmacs/org-emphasize synthmacs/org-italic ?/)
+    "oxo" 'org-open-at-point
+    "oxr" (synthmacs/org-emphasize synthmacs/org-clear ? )
+    "oxs" (synthmacs/org-emphasize synthmacs/org-strike-through ?+)
+    "oxu" (synthmacs/org-emphasize synthmacs/org-underline ?_)
+    "oxv" (synthmacs/org-emphasize synthmacs/org-verbatim ?=)
   )
+
+(org-mode-map
+ :states 'insert
+ "TAB" 'synthmacs/org-indent-or-complete
+ "S-TAB" nil)
+
+(org-mode-map
+ :states 'normal
+ "z i" '(org-toggle-inline-images :wk "inline images"))
+
+:init
+;; general settings
+(when (file-directory-p "~/Developer/ExoCortex/org")
+  (setq org-directory "~/Developer/ExoCortex/org"
+        +org-export-directory "~/Developer/ExoCortex/org/export"
+        org-default-notes-file "~/Developer/ExoCortex/org/notes.org"
+        org-id-locations-file "~/Developer/ExoCortex/org/.orgids"
+        ))	
+;; (setq org-export-in-background t)
+(setq org-src-preserve-indentation t) ;; do not put two spaces on the left
+(setq org-startup-indented t)
+(setq org-startup-with-inline-images t)
+(setq org-hide-emphasis-markers t)
+(setq org-catch-invisible-edits 'smart)
+(setq org-image-actual-width nil)
+(setq org-indent-indentation-per-level 1)
+(setq org-list-demote-modify-bullet '(("-" . "+") ("+" . "*")))
+;; disable modules for faster startup
+;; (setq org-modules
+;;       '(ol-docview
+;;         org-habit))
+;; (setq org-todo-keywords
+;;       '((sequence "TODO(t)" "NEXT(n)" "PROG(p)" "|" "HOLD(h)" "DONE(d)")))
+(setq-default prettify-symbols-alist '(("#+BEGIN_SRC" . "»")
+                                       ("#+END_SRC" . "«")
+                                       ("#+begin_src" . "»")
+                                       ("#+end_src" . "«")
+                                       ("lambda"  . "λ")
+                                       ("->" . "→")
+                                       ("->>" . "↠")))
+(setq prettify-symbols-unprettify-at-point 'right-edge)
+(setq org-capture-templates
+      (quote (
+              ("b" "Books to read"
+               entry
+               (file+headline "~/code/git/ExoCortex/org/media.org" "Books")
+               "** %^{Title} %?\n")
+
+              ("f" "Fix code"
+               entry
+               (file+headline "~/code/git/ExoCortex/org/tasks.org" "Fixes")
+               "* FIXME %^{Description}\n@%a\n%?")
+
+              ("n" "Quick note"
+               entry
+               (file+headline "~/code/git/ExoCortex/org/notes.org" "Notes")
+               "** %^{Description}\nAdded: %t\n%?")
+
+              ("o" "One on one"
+               entry
+               (file+headline "~/code/git/ExoCortex/org/mozilla.org" "1:1")
+               "** %t\n*** %?\n")
+
+              ("r" "Reminder"
+               entry
+               (file+headline "~/code/git/ExoCortex/org/tasks.org" "Reminders")
+               "* REMINDER %^{Description}\n%?")
+
+              ("t" "Task" entry
+               (file+function "~/code/git/ExoCortex/org/tasks.org" org-reverse-datetree-goto-date-in-file)
+               "* TODO %^{Description}\n%?")
+
+              ("w" "Watch - Movie/Show/Documentary"
+               entry
+               (file+headline "~/code/git/ExoCortex/org/media.org" "Watch")
+               "** [[%^{Link}][%^{Title}]]\n%?"))))
+
+:config
+;; ;; (efs/org-font-setup)
+(add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+(add-to-list 'org-structure-template-alist '("py" . "src python"))
+(add-to-list 'org-structure-template-alist '("clj" . "src clojure"))
+;; (setq org-latex-pdf-process '("tectonic %f"))
+;; (setq org-export-backends '(html))
+;; ;; (add-to-list 'org-export-backends 'beamer)
+;; (plist-put org-format-latex-options :scale 1.2)
+)
 ;; org mode:1 ends here
 
 ;; [[file:../synthmacs.org::*Enabling the Table of Contents][Enabling the Table of Contents:1]]
