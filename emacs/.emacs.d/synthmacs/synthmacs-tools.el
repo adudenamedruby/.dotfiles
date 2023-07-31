@@ -59,6 +59,16 @@
   (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
 ;; git-gutter-fringe:1 ends here
 
+;; [[file:../synthmacs.org::*Spell-checking][Spell-checking:1]]
+(use-package flyspell
+  :straight nil
+  :hook
+  ((prog-mode . flyspell-prog-mode)
+   (text-mode . turn-on-flyspell))
+  :config
+  (flyspell-mode +1))
+;; Spell-checking:1 ends here
+
 ;; [[file:../synthmacs.org::*Helpful][Helpful:1]]
 (use-package helpful
   :after evil

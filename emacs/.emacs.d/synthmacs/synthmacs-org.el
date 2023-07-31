@@ -510,6 +510,10 @@
   )
 ;; org-appear:1 ends here
 
+;; [[file:../synthmacs.org::*Enhanced HTML exports][Enhanced HTML exports:1]]
+(use-package htmlize)
+;; Enhanced HTML exports:1 ends here
+
 ;; [[file:../synthmacs.org::*synthmacs-org][synthmacs-org:1]]
 (provide 'synthmacs-org)
 ;;; synthmacs-org.el ends here

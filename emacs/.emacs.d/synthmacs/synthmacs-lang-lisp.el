@@ -18,6 +18,18 @@
   )
 ;; evil-lisp-state:1 ends here
 
+;; [[file:../synthmacs.org::*Lispy][Lispy:1]]
+(use-package lispy
+  :straight t
+  :hook ((emacs-lisp-mode . lispy-mode)
+         (lisp-mode . lispy-mode)
+         (scheme-mode . lispy-mode)))
+
+(use-package lispyville
+  :straight t
+  :hook (lispy-mode . lispyville-mode))
+;; Lispy:1 ends here
+
 ;; [[file:../synthmacs.org::*synthmacs-lang-lisp][synthmacs-lang-lisp:1]]
 (provide 'synthmacs-lang-lisp)
 ;;; synthmacs-lang-lisp.el ends here

@@ -52,6 +52,7 @@
   - [[#org-tree-slide][org-tree-slide]]
   - [[#evil-org-mode][evil-org-mode]]
   - [[#org-appear][org-appear]]
+  - [[#enhanced-html-exports][Enhanced HTML exports]]
   - [[#org-roam][org-roam]]
   - [[#obsidian][Obsidian]]
 - [[#ui][UI]]
@@ -82,6 +83,7 @@
 - [[#useful-tools][Useful Tools]]
   - [[#dirvish][Dirvish]]
   - [[#gitvcs-integration][Git/VCS Integration]]
+  - [[#spell-checking][Spell-checking]]
   - [[#helpful][Helpful]]
   - [[#projectile][Projectile]]
   - [[#rg][Rg]]
@@ -100,12 +102,14 @@
   - [[#snippets][Snippets]]
   - [[#treesitter][Treesitter]]
 - [[#programming-languages][Programming Languages]]
+  - [[#c--c][C & C++]]
   - [[#css][CSS]]
   - [[#git-modes][Git-Modes]]
   - [[#haskell][Haskell]]
   - [[#html][HTML]]
   - [[#json][JSON]]
   - [[#lisps][LISPs]]
+  - [[#lua][LUA]]
   - [[#markdown][Markdown]]
   - [[#rust][Rust]]
   - [[#swift][Swift]]
@@ -372,9 +376,24 @@ Make elisp in this file behave like we expect these days. Everyone has this set,
 
 In non-elisp speak, it adds proper scoping and “closure” behaviour to variables. This [[https://www.emacswiki.org/emacs/DynamicBindingVsLexicalBinding][Emacswiki article]] explains it well.
 
+Furthermore, to comply with Emacs conventions for libraries, the tangled ~init.el~ must have the following header
+
 #+BEGIN_SRC emacs-lisp
-  ;;; init.el --- Personal configuration file -*- lexical-binding: t; no-byte-compile: t; -*-
-;; NOTE: init.el is now generated from synthmacs.org.  Please edit that file instead
+;;; init.el --- Synthmacs Configuration -*- lexical-binding: t -*-
+
+;; Copyright (C) 2023 Roux G. Buciu
+
+;; Author: roux g. buciu <roux@fringe.foundation>
+;; Keywords: internal
+;; URL: https://fringe.foundation
+
+;;; Commentary:
+;; A mostly minimal, reproducible Emacs configuration.  This file is
+;; automatically tangled from synthmacs.org, with header/footer comments on each
+;; code block that allow for de-tangling the source back to synthmacs.org when
+;; working on this file directly.
+
+;;; Code:
 #+END_SRC
 
 *** Improve I/O
@@ -415,6 +434,7 @@ Optimizations for improving I/O performance. Increase max bytes read from a sub-
   (require 'synthmacs-programming)
 
   ;; programming languages
+  (require 'synthmacs-lang-cpp)
   (require 'synthmacs-lang-clojure)
   (require 'synthmacs-lang-css)
   (require 'synthmacs-lang-gitModes)
@@ -423,7 +443,9 @@ Optimizations for improving I/O performance. Increase max bytes read from a sub-
   (require 'synthmacs-lang-lisp)
   (require 'synthmacs-lang-clisp)
   (require 'synthmacs-lang-elisp)
+  (require 'synthmacs-lang-lua)
   (require 'synthmacs-lang-markdown)
+  (require 'synthmacs-lang-racket)
   (require 'synthmacs-lang-rust)
   (require 'synthmacs-lang-swift)
   (require 'synthmacs-lang-yaml)
@@ -2569,6 +2591,16 @@ Automatically displays emphasis markers and links when the cursor is on them.
   )
 #+end_src
 
+** Enhanced HTML exports
+:PROPERTIES:
+:CUSTOM_ID: h:C94BF628-0B29-4D0C-88AE-9F6D49D9FE3A
+:END:
+When exporting things from org mode, we want to make sure that src blocks have good syntax highlighting.
+
+#+begin_src emacs-lisp
+(use-package htmlize)
+#+end_src
+
 ** org-roam
 :PROPERTIES:
 :CUSTOM_ID: h:37777EDB-7144-42DF-907B-506383270BA0
@@ -3923,6 +3955,22 @@ Icons in corfu? Yes please.
 
 #+end_src
 
+** Spell-checking
+:PROPERTIES:
+:CUSTOM_ID: h:9B73D2D1-19BD-455C-BD29-B57E526D6FA0
+:END:
+FlySpell does a lot out of the box, therefore I have a very basic config.
+
+#+begin_src emacs-lisp
+(use-package flyspell
+  :straight nil
+  :hook
+  ((prog-mode . flyspell-prog-mode)
+   (text-mode . turn-on-flyspell))
+  :config
+  (flyspell-mode +1))
+#+end_src
+
 ** Helpful
 :PROPERTIES:
 :CUSTOM_ID: h:949B41C1-C4A4-484B-9A6A-76A07DBBFCB1
@@ -4790,6 +4838,19 @@ You can either build your own languages, or you can use pre-built. For now, let'
 :CUSTOM_ID: h:732BA080-834D-49E0-967E-0D37CE1C6BA0
 :END:
 
+** C & C++
+:PROPERTIES:
+:CUSTOM_ID: h:0D5FF03F-A780-4815-A7D4-12C54934AD98
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-cpp.el
+:END:
+#+begin_src emacs-lisp
+(use-package ccls
+  :straight t
+  :defer t
+  :hook ((c-mode c++-mode objc-mode cuda-mode) . lsp)
+  :commands lsp)
+#+end_src
+
 ** CSS
 :PROPERTIES:
 :CUSTOM_ID: h:538E2BA8-BB96-4424-939F-3F56E0E88D08
@@ -4843,6 +4904,12 @@ You can either build your own languages, or you can use pre-built. For now, let'
 :header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-json.el
 :END:
 #+begin_src emacs-lisp
+(use-package json-mode
+  :general
+  (synthmacs/local-leader-keys
+    :keymaps 'json-mode-map
+    "p" 'json-pretty-print)
+  )
 #+end_src
 
 ** LISPs
@@ -5033,6 +5100,29 @@ You can either build your own languages, or you can use pre-built. For now, let'
   (add-to-list 'sly-contribs 'sly-repl-ansi-color))
 #+end_src
 
+*** Racket & Scheme
+:PROPERTIES:
+:CUSTOM_ID: h:7094F6B5-F03E-4F6E-A769-398810C7AFA4
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-racket.el
+:END:
+Minimalism and elegant syntax, the purest. Hygienic macros. Racket has a great documentation, and scribble!
+
+#+begin_src emacs-lisp
+(use-package geiser
+  :straight t
+  :config
+  (setq geiser-active-implementations '(chez)))
+
+(use-package geiser-chez
+  :straight t
+  :init
+  (setq geiser-chez-binary "scheme"))
+
+(use-package racket-mode
+  :straight t
+  :mode ("\\.rkt\\'" "\\.scrbl\\'")
+  :hook ((racket-mode . racket-xp-mode)))
+#+end_src
 *** Emacs-lisp
 :PROPERTIES:
 :CUSTOM_ID: h:D036C70A-011B-49DD-82B7-8B077BB1123C
@@ -5090,6 +5180,34 @@ Keeps the file indented nicely, but, this might clash with lsp stuff, so we only
   :config
   (evil-lisp-state-leader "SPC l")
   )
+#+end_src
+
+**** Lispy
+:PROPERTIES:
+:CUSTOM_ID: h:DFF57B56-2A58-4979-9CE9-730163888E81
+:END:
+Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lispyville.
+
+#+begin_src emacs-lisp
+(use-package lispy
+  :straight t
+  :hook ((emacs-lisp-mode . lispy-mode)
+         (lisp-mode . lispy-mode)
+         (scheme-mode . lispy-mode)))
+
+(use-package lispyville
+  :straight t
+  :hook (lispy-mode . lispyville-mode))
+#+end_src
+
+** LUA
+:PROPERTIES:
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-lua.el
+:CUSTOM_ID: h:25D63D00-C5AC-4570-A0DA-2494D38A4838
+:END:
+
+#+begin_src emacs-lisp
+(use-package lua-mode)
 #+end_src
 
 ** Markdown
@@ -5252,6 +5370,16 @@ Keeps the file indented nicely, but, this might clash with lsp stuff, so we only
 :CUSTOM_ID: h:320148C4-896F-4FFF-90CD-08E91DCCED9E
 :END:
 
+*** synthmacs-lang-cpp
+:PROPERTIES:
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-cpp.el
+:CUSTOM_ID: h:AB49F4D1-70DB-45C8-B756-31E8F432537C
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-lang-cpp)
+;;; synthmacs-lang-cpp.el ends here
+#+end_src
+
 *** synthmacs-lang-css
 :PROPERTIES:
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-css.el
@@ -5297,7 +5425,7 @@ Keeps the file indented nicely, but, this might clash with lsp stuff, so we only
 :CUSTOM_ID: h:FD16520D-EDBD-44ED-BFAE-8F8E6B9ED790
 :END:
 
-*** synthmacs-lang-clojure
+**** synthmacs-lang-clojure
 :PROPERTIES:
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clojure.el
 :CUSTOM_ID: h:F6A9AC39-89F2-41DA-84DD-5AF7A01F351B
@@ -5307,7 +5435,7 @@ Keeps the file indented nicely, but, this might clash with lsp stuff, so we only
 ;;; synthmacs-lang-clojure.el ends here
 #+end_src
 
-*** synthmacs-lang-clisp
+**** synthmacs-lang-clisp
 :PROPERTIES:
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clisp.el
 :CUSTOM_ID: h:771E15AF-C8A5-49CD-B224-AE4103FD2822
@@ -5317,7 +5445,7 @@ Keeps the file indented nicely, but, this might clash with lsp stuff, so we only
 ;;; synthmacs-lang-clisp.el ends here
 #+end_src
 
-*** synthmacs-lang-elisp
+**** synthmacs-lang-elisp
 :PROPERTIES:
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-elisp.el
 :CUSTOM_ID: h:29743F9F-3D7F-44A6-9CD6-369EB609D4E0
@@ -5327,14 +5455,35 @@ Keeps the file indented nicely, but, this might clash with lsp stuff, so we only
 ;;; synthmacs-lang-elisp.el ends here
 #+end_src
 
-*** synthmacs-lang-lisp
+
+**** synthmacs-lang-racket
+:PROPERTIES:
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-racket.el
+:CUSTOM_ID: h:1AD3BB1C-F056-4470-9FAD-2A59DE07C12D
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-lang-racket)
+;;; synthmacs-lang-racket.el ends here
+#+end_src
+
+**** synthmacs-lang-lisp
 :PROPERTIES:
 :header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-lisp.el
-:CUSTOM_ID: h:08483E03-F91B-4E81-8DAF-8C710A9AD0F8
+:CUSTOM_ID: h:8FE2D24E-3438-4087-81BC-BEB0E545377A
 :END:
 #+begin_src emacs-lisp
 (provide 'synthmacs-lang-lisp)
 ;;; synthmacs-lang-lisp.el ends here
+#+end_src
+
+*** synthmacs-lang-lua
+:PROPERTIES:
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-lua.el
+:CUSTOM_ID: h:3FB7F5B0-DF8F-4EAF-9F11-12A193F5787D
+:END:
+#+begin_src emacs-lisp
+(provide 'synthmacs-lang-lua)
+;;; synthmacs-lang-lua.el ends here
 #+end_src
 
 *** synthmacs-lang-markdown
