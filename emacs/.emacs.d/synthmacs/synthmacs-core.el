@@ -72,7 +72,9 @@
 ;; [[file:../synthmacs.org::*Custom file][Custom file:1]]
 (use-package emacs
   :init
-  (setq custom-file (make-temp-file "")) ; use a temp file as a placeholder
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (when (file-exists-p custom-file)
+    (load custom-file 'noerror))
   (setq custom-safe-themes t)            ; mark all themes as safe, since we can't persist now
   (setq enable-local-variables :all)     ; fix =defvar= warnings
   )

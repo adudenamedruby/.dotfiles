@@ -201,7 +201,7 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   (add-hook 'Info-selection-hook 'info-colors-fontify-node))
 ;; info-colors:1 ends here
 
-;; [[file:../synthmacs.org::*Navigation][Navigation:1]]
+;; [[file:../synthmacs.org::*Winum][Winum:1]]
 (use-package winum
   :general
   (synthmacs/leader-keys
@@ -218,7 +218,7 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   (setq winum-auto-setup-mode-line nil
 	winum-ignored-buffers '(" *which-key*"))
   (winum-mode))
-;; Navigation:1 ends here
+;; Winum:1 ends here
 
 ;; [[file:../synthmacs.org::*ace-window][ace-window:1]]
 (use-package ace-window
@@ -333,7 +333,7 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   (setq which-key-prefix-prefix "+")
   :config
   (which-key-mode 1)
-  (which-key-setup-minibuffer)
+  ;; (which-key-setup-minibuffer)
   ;; Rename the entry for M-1 in the SPC h k Top-level bindings,
   ;; and for 1 in the SPC- Spacemacs root, to 1..9
   (push '(("\\(.*\\)1" . "winum-select-window-1") .
@@ -378,7 +378,7 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   ;; (setq highlight-indent-guides-method 'column)
   ;; (setq highlight-indent-guides-method 'bitmap)
   (setq highlight-indent-guides-method 'character)
-  (setq highlight-indent-guides-character ?‖)
+  (setq highlight-indent-guides-character ?|)
   (setq highlight-indent-guides-responsive 'top)
   ;; (setq highlight-indent-guides-responsive 'stack)
   ;; (setq highlight-indent-guides-auto-enabled nil)
