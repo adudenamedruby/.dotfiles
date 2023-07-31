@@ -24,7 +24,7 @@
 ;; [[file:../synthmacs.org::*Universal argument][Universal argument:1]]
 (use-package emacs
   :init
-  (global-set-key (kbd "C-M-u") 'universal-argument)
+  (global-set-key (kbd "C-M-u") 'universal-argument))
 ;; Universal argument:1 ends here
 
 ;; [[file:../synthmacs.org::*User setup][User setup:1]]

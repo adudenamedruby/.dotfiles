@@ -33,7 +33,6 @@
 ;; Package cleanup:1 ends here
 
 ;; [[file:../synthmacs.org::*Install ~use-package~][Install ~use-package~:1]]
-;; Install use-package
 (straight-use-package 'use-package)
 ;; Install ~use-package~:1 ends here
 

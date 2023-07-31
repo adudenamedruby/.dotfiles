@@ -540,7 +540,6 @@ Let’s load an optional package which gives us some convenience functions, like
 :CUSTOM_ID: h:B461CF7F-5DD9-48E7-8DC7-EECDCBEF418D
 :END:
 #+BEGIN_SRC emacs-lisp
-;; Install use-package
 (straight-use-package 'use-package)
 #+END_SRC
 
@@ -587,7 +586,7 @@ Since I will be letting ~evil~ use ~C-u~, I should rebind ~universal-argument to
 #+begin_src emacs-lisp
 (use-package emacs
   :init
-  (global-set-key (kbd "C-M-u") 'universal-argument)
+  (global-set-key (kbd "C-M-u") 'universal-argument))
 #+end_src
 
 *** User setup
