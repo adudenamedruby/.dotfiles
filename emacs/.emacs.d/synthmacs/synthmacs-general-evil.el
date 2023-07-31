@@ -1,3 +1,13 @@
+;; [[file:../synthmacs.org::*synthmacs-general-evil][synthmacs-general-evil:1]]
+;;; synthmacs-general-evil.el --- Synthmacs General Evil
+
+;;; Commentary:
+
+;; Set up keybindings for Synthmacs
+
+;;; Code:
+;; synthmacs-general-evil:1 ends here
+
 ;; [[file:../synthmacs.org::*General][General:1]]
 (use-package general
   :demand t

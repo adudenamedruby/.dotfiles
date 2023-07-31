@@ -1,3 +1,13 @@
+;; [[file:../synthmacs.org::*synthmacs-completion-framework][synthmacs-completion-framework:1]]
+;;; synthmacs-completion-framework.el --- Synthmacs Completion Frameworks
+
+;;; Commentary:
+
+;; Set up completion frameworks for Synthmacs
+
+;;; Code:
+;; synthmacs-completion-framework:1 ends here
+
 ;; [[file:../synthmacs.org::*vertico][vertico:1]]
 (use-package vertico
   :straight (vertico :files (:defaults "extensions/*")

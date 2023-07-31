@@ -1,3 +1,13 @@
+;; [[file:../synthmacs.org::*synthmacs-programming][synthmacs-programming:1]]
+;;; synthmacs-programming.el --- Synthmacs Programming Environment
+
+;;; Commentary:
+
+;; Set up conditions for programming modes in Synthmacs
+
+;;; Code:
+;; synthmacs-programming:1 ends here
+
 ;; [[file:../synthmacs.org::*lsp-mode][lsp-mode:1]]
 (use-package lsp-mode
   :commands (lsp lsp-deferred)

@@ -1,3 +1,13 @@
+;; [[file:../synthmacs.org::*synthmacs-tools][synthmacs-tools:1]]
+;;; synthmacs-tools.el --- Synthmacs Useful Tools
+
+;;; Commentary:
+
+;; Set up a variety of useful tools for Synthmacs
+
+;;; Code:
+;; synthmacs-tools:1 ends here
+
 ;; [[file:../synthmacs.org::*Magit][Magit:1]]
 (use-package magit
   ;; :custom

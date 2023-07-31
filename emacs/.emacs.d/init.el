@@ -1,4 +1,4 @@
-;; [[file:synthmacs.org::*Header & Lexical Binding][Header & Lexical Binding:1]]
+;; [[file:synthmacs.org::*init.el][init.el:1]]
 ;;; init.el --- Synthmacs Configuration -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2023 Roux G. Buciu
@@ -8,13 +8,13 @@
 ;; URL: https://fringe.foundation
 
 ;;; Commentary:
-;; A mostly minimal, reproducible Emacs configuration.  This file is
+;; The Synthmacs configuration. This file & all others Synthmacs module files are
 ;; automatically tangled from synthmacs.org, with header/footer comments on each
 ;; code block that allow for de-tangling the source back to synthmacs.org when
 ;; working on this file directly.
 
 ;;; Code:
-;; Header & Lexical Binding:1 ends here
+;; init.el:1 ends here
 
 ;; [[file:synthmacs.org::*Improve I/O][Improve I/O:1]]
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
@@ -40,23 +40,7 @@
   (require 'synthmacs-completion-framework)
   (require 'synthmacs-tools)
   (require 'synthmacs-programming)
-
-  ;; programming languages
-  (require 'synthmacs-lang-cpp)
-  (require 'synthmacs-lang-clojure)
-  (require 'synthmacs-lang-css)
-  (require 'synthmacs-lang-gitModes)
-  (require 'synthmacs-lang-haskell)
-  (require 'synthmacs-lang-html)
-  (require 'synthmacs-lang-lisp)
-  (require 'synthmacs-lang-clisp)
-  (require 'synthmacs-lang-elisp)
-  (require 'synthmacs-lang-lua)
-  (require 'synthmacs-lang-markdown)
-  (require 'synthmacs-lang-racket)
-  (require 'synthmacs-lang-rust)
-  (require 'synthmacs-lang-swift)
-  (require 'synthmacs-lang-yaml)
+  (require 'synthmacs-programming-languages)
   )
 ;; init.el load modules:1 ends here
 

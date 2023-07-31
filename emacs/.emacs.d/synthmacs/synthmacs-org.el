@@ -1,3 +1,13 @@
+;; [[file:../synthmacs.org::*synthmacs-org][synthmacs-org:1]]
+;;; synthmacs-org.el --- Synthmacs Org
+
+;;; Commentary:
+
+;; Set up Org mode for Synthmacs
+
+;;; Code:
+;; synthmacs-org:1 ends here
+
 ;; [[file:../synthmacs.org::*org mode][org mode:1]]
 (defmacro synthmacs/org-emphasize (fname char)
   "Make function for setting the emphasis in org mode"

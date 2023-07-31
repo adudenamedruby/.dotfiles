@@ -1,3 +1,13 @@
+;; [[file:../synthmacs.org::*synthmacs-ui][synthmacs-ui:1]]
+;;; synthmacs-ui.el --- Synthmacs UI
+
+;;; Commentary:
+
+;; Set up UI niecities for Synthmacs
+
+;;; Code:
+;; synthmacs-ui:1 ends here
+
 ;; [[file:../synthmacs.org::*nerd-icons][nerd-icons:1]]
 (use-package nerd-icons
   :init

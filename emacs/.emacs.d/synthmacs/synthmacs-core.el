@@ -1,3 +1,13 @@
+;; [[file:../synthmacs.org::*synthmacs-core][synthmacs-core:1]]
+;;; synthmacs-core.el --- Synthmacs Core
+
+;;; Commentary:
+
+;; Set up core Synthmacs functionalities
+
+;;; Code:
+;; synthmacs-core:1 ends here
+
 ;; [[file:../synthmacs.org::*Emacs Setup][Emacs Setup:1]]
 (use-package emacs
   :init

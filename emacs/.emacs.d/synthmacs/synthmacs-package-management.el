@@ -1,3 +1,13 @@
+;; [[file:../synthmacs.org::*synthmacs-package-management][synthmacs-package-management:1]]
+;;; synthmacs-package-management.el --- Synthmacs Package Management
+
+;;; Commentary:
+
+;; Set up how packages are managed in Synthmacs
+
+;;; Code:
+;; synthmacs-package-management:1 ends here
+
 ;; [[file:../synthmacs.org::*Initial setup][Initial setup:1]]
 (setq straight-repository-branch "develop")
 (setq straight-use-package-by-default t)

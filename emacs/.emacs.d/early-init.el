@@ -1,3 +1,13 @@
+;; [[file:synthmacs.org::*early-init.el][early-init.el:1]]
+;;; early-init.el --- Synthmacs Early Init
+
+;;; Commentary:
+
+;; Set up conditions for Emacs startup.
+
+;;; Code:
+;; early-init.el:1 ends here
+
 ;; [[file:synthmacs.org::*Header][Header:1]]
 ;;; early-init.el --- Early Init File -*- lexical-binding: t; no-byte-compile: t -*-
 ;; NOTE: early-init.el is now generated from synthmacs.org.  Please edit that file instead
@@ -29,7 +39,6 @@
   (set-scroll-bar-mode nil))
 (setq inhibit-splash-screen t)
 (setq use-file-dialog nil)
-
 
 ;; Native-Comp
 (setq native-comp-speed 2

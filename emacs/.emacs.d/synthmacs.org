@@ -20,9 +20,21 @@
   - [[#why-a-literate-config][Why a literate config?]]
   - [[#synthmacs-modules][Synthmacs "modules"]]
   - [[#structure-of-this-configuration][Structure of this configuration]]
-- [[#startup-optimization][Startup Optimization]]
+- [[#module-headers][Module Headers]]
   - [[#early-initel][early-init.el]]
   - [[#initel][init.el]]
+  - [[#synthmacs-core][synthmacs-core]]
+  - [[#synthmacs-package-management][synthmacs-package-management]]
+  - [[#synthmacs-general-evil][synthmacs-general-evil]]
+  - [[#synthmacs-org][synthmacs-org]]
+  - [[#synthmacs-ui][synthmacs-ui]]
+  - [[#synthmacs-completion-framework][synthmacs-completion-framework]]
+  - [[#synthmacs-tools][synthmacs-tools]]
+  - [[#synthmacs-programming][synthmacs-programming]]
+  - [[#synthmacs-programming-languages][synthmacs-programming-languages]]
+- [[#startup-optimization][Startup Optimization]]
+  - [[#early-initel-1][early-init.el]]
+  - [[#initel-1][init.el]]
   - [[#initel-load-modules][init.el load modules]]
 - [[#package-management][Package Management]]
   - [[#bootstrap-straight-and-straight-use-package][Bootstrap Straight and straight-use-package]]
@@ -120,18 +132,18 @@
   - [[#rust][Rust]]
   - [[#swift][Swift]]
   - [[#yaml][YAML]]
-- [[#provide-modules][Provide modules]]
-  - [[#early-initel-1][early-init.el]]
-  - [[#initel-1][init.el]]
-  - [[#synthmacs-core][synthmacs-core]]
-  - [[#synthmacs-package-management][synthmacs-package-management]]
-  - [[#synthmacs-general-evil][synthmacs-general-evil]]
-  - [[#synthmacs-org][synthmacs-org]]
-  - [[#synthmacs-ui][synthmacs-ui]]
-  - [[#synthmacs-completion-framework][synthmacs-completion-framework]]
-  - [[#synthmacs-tools][synthmacs-tools]]
-  - [[#synthmacs-programming][synthmacs-programming]]
-  - [[#programming-languages-1][Programming Languages]]
+- [[#module-footers][Module Footers]]
+  - [[#early-initel-2][early-init.el]]
+  - [[#initel-2][init.el]]
+  - [[#synthmacs-core-1][synthmacs-core]]
+  - [[#synthmacs-package-management-1][synthmacs-package-management]]
+  - [[#synthmacs-general-evil-1][synthmacs-general-evil]]
+  - [[#synthmacs-org-1][synthmacs-org]]
+  - [[#synthmacs-ui-1][synthmacs-ui]]
+  - [[#synthmacs-completion-framework-1][synthmacs-completion-framework]]
+  - [[#synthmacs-tools-1][synthmacs-tools]]
+  - [[#synthmacs-programming-1][synthmacs-programming]]
+  - [[#synthmacs-programming-languages-1][synthmacs-programming-languages]]
 
 * Introduction
 :PROPERTIES:
@@ -148,7 +160,7 @@
 :PROPERTIES:
 :CUSTOM_ID: h:D9ED3ADB-810A-4A1C-A1D3-5397874AFAC7
 :END:
-This file (~synthmacs.org~) is the literate Synthmacs configuration. Every time I save the file, the code blocks get tangled, asynchronously. By default, they get tangled (in sequence) to ~./init.el~. However, some blocks override this default (e.g. see the section [[*early-init.el][early-init.el]]), meaning that I end up with what are, essentially, modules in which things are organized in some way that makes sense to me. More on that [[#h:C522D670-C206-44F7-96CE-17D01E578287][here]].
+This file (~synthmacs.org~) is the literate Synthmacs configuration. Every time I save the file, the code blocks get tangled, asynchronously. By default, they get tangled (in sequence) to ~./init.el~. However, many blocks override this default (e.g. see the section [[*early-init.el][early-init.el]]), meaning that I end up with what are, essentially, modules, in which things are organized in some way that makes sense to me. More on that [[#h:C522D670-C206-44F7-96CE-17D01E578287][here]].
 
 ** Why vanilla Emacs?
 :PROPERTIES:
@@ -161,9 +173,10 @@ I was mostly happy.
 Three things changed:
 1. I started to learn LISP
 2. That made me want to understand Emacs a little more
-3. Spacemacs is really great... but the one thing that always bothered me was that the way it's put together makes it very different to how a normal config looks. So often, changing some things by looking at other's people's configs was.... challenging
+3. Spacemacs is really great... but the one thing that always bothered me was that the way it's put together makes it very different to how a normal config looks. So, often, changing something by looking at other's people's configs was.... challenging. This is partly on Spacemacs, but mostly on me for not knowing Emacs/elisp.
 
-Over the next few weeks, I started the process of experimenting with my own config. I took a lot of inspiration from a ton of people, shamelessly stealing ideas to make my config better... or just make Emacs have the behaviour I wanted. I've tried to credit code sources where possible. However, in my haste from earlier efforts, I don't have credits for everything. For anything that's not original, here's a non-exhaustive list of some of the main places I was inspired by:
+Over about a month, I started the process of experimenting with my own config. I took a lot of inspiration from a ton of people, shamelessly stealing ideas to make my config better... or just make Emacs have the behaviour I wanted. I've tried to credit code sources where possible. However, in my haste from earlier efforts, I don't have credits for everything. For anything that's not original, here's a non-exhaustive list of some of the main places I was inspired by:
+
 - [[https://github.com/abougouffa/minemacs/blob/ab9084efe27191fd0ab5f94eee5502766fce16c1/modules/me-lisp.el#L43][abougouffa]]
 - [[https://github.com/daedreth/UncleDavesEmacs/blob/master/config.org][daedreth]]
 - [[https://writequit.org/org/#2daddf2c-228b-40ae-90b1-cd0b8c39f061][dakrone]]
@@ -186,9 +199,13 @@ It is a long journey, and I still have a long way to go, but I am glad I started
 :PROPERTIES:
 :CUSTOM_ID: h:B5231F9E-07D2-4738-97FD-78EC648B3F3D
 :END:
+My inital attempt at an Emacs config was not in literate form; rather, it was in standard module form, where my ~init.el~ file loaded up other files which contained the modules that made up my Emacs.
+
+However, I'd never done literate programming, and was curious about it, so I decided to embrace it, for now.
+
 Having your configuration in ~org-mode~ has some benefits and some drawbacks. Further, it adds a layer of abstraction between me and my ~init.el~ file. So, is it worth it?
 
-The main, and biggest, drawback is that it can happen that the ~org-mode~ file has a mistake and tangles an incorrect ~*.el~ file. In that case you can't use your nice bindings but you are thrown in barebones Emacs and you have to =C-x C-f= your way to the ~init.el~ and run ~M-x check-parens~.
+The main, and biggest, drawback is that it can happen that the ~org-mode~ file has a mistake and tangles an incorrect ~*.el~ file. In that case you can't use your nice bindings and are thrown in barebones Emacs and you have to =C-x C-f= your way to the ~init.el~ and run ~M-x check-parens~, or to some fine you've just tangled.
 
 You can also run ~org-babel-tangle-jump-to-org~ from the tangled file if you add:
 #+begin_src org
@@ -208,7 +225,8 @@ Let's consider some of the benefits:
 :END:
 I tangle this file with the function ~synthmacs/tangle-config~, you can read source code in [[#h:16B948EA-5375-44DE-ACD7-3664D4A9CE5F][this]] section. Every time I save the ~synthmacs.org~ file, it is tangled to multiple ~.el~ files.
 
-I achieve that by means of this file's "local variables", which I put at the end of the ~synthmacs.org~ file:
+I achieve that by means of this file's "local variables", which I put at the end of the ~synthmacs.org~ file, as I found in [[https://www.lucacambiaghi.com/vanilla-emacs/readme.html#h:4C37CFFC-D045-47B4-BFDC-801977247199][Luca's config]]:
+
 #+begin_src org
 # Local Variables:
 # eval: (add-hook 'after-save-hook (lambda ()(progn (synthmacs/org-add-ids-to-headlines-in-file) (synthmacs/tangle-config))) nil t)
@@ -229,6 +247,18 @@ All subheadings under it will "inherit" those properties and will be tangled to 
 
 I then have a lean ~init.el~ (written in [[#h:7B22A4F3-49A1-4848-A185-B4EEA060EECE][this]] section) which I use to control which modules I want to use. Why turn off modules? Maybe something's acting up? Maybe I'm setting something up brand new and, while I'm still figuring things out, I want it enabled when I'm working on my config, but I don't want it enabled when I'm actually using Emacs for doing actual work.
 
+Further more, as previously mentioned, inside a module itself, I may add ~:tangle no~ to a specific block, to prevent it from tangling for a variety of reasons. This provide great flexibility, with only some minor bookkeeping.
+
+*** Adding or removing a module
+:PROPERTIES:
+:CUSTOM_ID: h:4145B43A-229A-4741-8AEE-5396D6672B33
+:END:
+Adding or removing a module is fairly simple, and can be done with four steps:
+1. Add/remove the module's header in the [[#h:62997C68-9B29-4090-A4EA-2BB056826767][Module Headers]] 
+2. Add/remove the module from the [[#h:7B22A4F3-49A1-4848-A185-B4EEA060EECE][init.el load modules]]
+3. Add/remove the module's section from the file, along with all other references to the file
+4. Add/remove the module's footer in the [[#h:79F3414D-6DBD-420A-A955-913ACCB5A17B][Module Footers]] 
+
 ** Structure of this configuration
 :PROPERTIES:
 :CUSTOM_ID: h:0FFBBB41-3AD1-4C09-A15D-FA9A03B6C2CB
@@ -239,7 +269,8 @@ In general, the config tries to manintain a pretty cohesive modularization while
 - As much as possible, functions should not be free-floating, but should be part of the init or general module of whatever thing they're most related to 
 
 With that out of the way, the general outline of this file aims to be:
-- The [[#h:49282F28-9E13-48D2-A565-1605B1CC57B8][first section]] is some information about ~synthmacs.org~ and other comments for my future self or anyone else who happens to be reading this. Hello!
+- The [[#h:49282F28-9E13-48D2-A565-1605B1CC57B8][zeroth section]] is some information about ~synthmacs.org~ and other comments for my future self or anyone else who happens to be reading this. Hello!
+- The [[#h:62997C68-9B29-4090-A4EA-2BB056826767][first section]] is mostly ignorable. It is the headers for all the modules.
 - In the [[#h:EC68944C-F745-45D8-9905-420E0813DBAF][second section]], we have some optimization to startup time. Most of these things are from other people, because I am not as wise in the Emacs ways.
 - In the [[#h:F8B6E0EE-7BBD-4F7F-B31E-44DE7B43AA39][third section]], we setup our package managers, ~straight~ and  ~use-package~
 - In the [[#h:3D38D8F0-1B85-4265-9941-77A3A2FA235B][fourth section]], we configure ~emacs~ with some better defaults and extend some some of its core features (e.g. ~help-mode~)
@@ -251,6 +282,185 @@ With that out of the way, the general outline of this file aims to be:
 - In the [[#h:2E967F87-8304-4262-B5BF-3286ACA7211B][tenth section]], we set up the tools for programming
 - In the [[#h:732BA080-834D-49E0-967E-0D37CE1C6BA0][eleventh section]], we then configure different languages I use for programming to use those tools
 - The [[#h:754DFB20-B2AB-4750-9BDA-D24E8014C504][twelfth, and final, section]] will be providing the ~provide~ statement for each module without which things would fall apart.
+
+* Module Headers
+:PROPERTIES:
+:CUSTOM_ID: h:62997C68-9B29-4090-A4EA-2BB056826767
+:END:
+
+** early-init.el
+:PROPERTIES:
+:CUSTOM_ID: h:C134637C-76BC-4013-91BE-3D273C12C691
+:header-args: :emacs-lisp :tangle early-init.el
+:END:
+#+BEGIN_SRC emacs-lisp
+;;; early-init.el --- Synthmacs Early Init
+
+;;; Commentary:
+
+;; Set up conditions for Emacs startup.
+
+;;; Code:
+#+END_SRC
+
+** init.el
+:PROPERTIES:
+:CUSTOM_ID: h:0EDF1757-169B-4750-8262-415B599A4B53
+:header-args: :emacs-lisp :tangle init.el
+:END:
+#+begin_src emacs-lisp
+;;; init.el --- Synthmacs Configuration -*- lexical-binding: t -*-
+
+;; Copyright (C) 2023 Roux G. Buciu
+
+;; Author: roux g. buciu <roux@fringe.foundation>
+;; Keywords: internal
+;; URL: https://fringe.foundation
+
+;;; Commentary:
+;; The Synthmacs configuration. This file & all others Synthmacs module files are
+;; automatically tangled from synthmacs.org, with header/footer comments on each
+;; code block that allow for de-tangling the source back to synthmacs.org when
+;; working on this file directly.
+
+;;; Code:
+#+end_src
+
+** synthmacs-core
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-core.el :mkdirp yes
+:CUSTOM_ID: h:6C65C946-EAFF-4F1D-9501-0DC155A3719A
+:END:
+The header of this file alse has the ~:mkdirp yes~ argument. This is because, in the case that the ~./synthmacs/~ folder doesn't exist when tangling the file, we should create it without worrying about failures.
+#+begin_src emacs-lisp
+;;; synthmacs-core.el --- Synthmacs Core
+
+;;; Commentary:
+
+;; Set up core Synthmacs functionalities
+
+;;; Code:
+#+end_src
+
+** synthmacs-package-management
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-package-management.el
+:CUSTOM_ID: h:BECD851C-F8A3-42DF-947E-9BDA87337575
+:END:
+#+begin_src emacs-lisp
+;;; synthmacs-package-management.el --- Synthmacs Package Management
+
+;;; Commentary:
+
+;; Set up how packages are managed in Synthmacs
+
+;;; Code:
+#+end_src
+
+** synthmacs-general-evil
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-general-evil.el
+:CUSTOM_ID: h:3CCD39F9-C228-4767-BBA8-0AA80322C01E
+:END:
+#+begin_src emacs-lisp
+;;; synthmacs-general-evil.el --- Synthmacs General Evil
+
+;;; Commentary:
+
+;; Set up keybindings for Synthmacs
+
+;;; Code:
+#+end_src
+
+** synthmacs-org
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-org.el
+:CUSTOM_ID: h:3C05F9B9-F006-44AC-8DEE-F9EA2E6E3DB2
+:END:
+#+begin_src emacs-lisp
+;;; synthmacs-org.el --- Synthmacs Org
+
+;;; Commentary:
+
+;; Set up Org mode for Synthmacs
+
+;;; Code:
+#+end_src
+
+** synthmacs-ui
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-ui.el
+:CUSTOM_ID: h:46D11F9E-6108-4A88-888B-4DDBA1AD316A
+:END:
+#+begin_src emacs-lisp
+;;; synthmacs-ui.el --- Synthmacs UI
+
+;;; Commentary:
+
+;; Set up UI niecities for Synthmacs
+
+;;; Code:
+#+end_src
+
+** synthmacs-completion-framework
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-completion-framework.el
+:CUSTOM_ID: h:D7BA43FA-DCD5-49A8-A972-13FCE0465438
+:END:
+#+begin_src emacs-lisp
+;;; synthmacs-completion-framework.el --- Synthmacs Completion Frameworks
+
+;;; Commentary:
+
+;; Set up completion frameworks for Synthmacs
+
+;;; Code:
+#+end_src
+
+** synthmacs-tools
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-tools.el
+:CUSTOM_ID: h:3DE0D1E2-51E9-4DCC-96BD-227464214C7C
+:END:
+#+begin_src emacs-lisp
+;;; synthmacs-tools.el --- Synthmacs Useful Tools
+
+;;; Commentary:
+
+;; Set up a variety of useful tools for Synthmacs
+
+;;; Code:
+#+end_src
+
+** synthmacs-programming
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-programming.el
+:CUSTOM_ID: h:CE800ACA-533D-4E20-8E62-75AB021FE36A
+:END:
+#+begin_src emacs-lisp
+;;; synthmacs-programming.el --- Synthmacs Programming Environment
+
+;;; Commentary:
+
+;; Set up conditions for programming modes in Synthmacs
+
+;;; Code:
+#+end_src
+
+** synthmacs-programming-languages
+:PROPERTIES:
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-programming-languages.el
+:CUSTOM_ID: h:320148C4-896F-4FFF-90CD-08E91DCCED9E
+:END:
+#+begin_src emacs-lisp
+;;; synthmacs-programming-languages.el --- Synthmacs Programming Languages
+
+;;; Commentary:
+
+;; Set up programming languages & language tools
+
+;;; Code:
+#+end_src
 
 * Startup Optimization
 :PROPERTIES:
@@ -303,7 +513,6 @@ With that out of the way, the general outline of this file aims to be:
   (set-scroll-bar-mode nil))
 (setq inhibit-splash-screen t)
 (setq use-file-dialog nil)
-
 
 ;; Native-Comp
 (setq native-comp-speed 2
@@ -377,29 +586,9 @@ Following DOOM, we max the garbage collection threshold on startup, and reset it
 :PROPERTIES:
 :CUSTOM_ID: h:470961E9-E775-4F50-861D-CC1A2616B4A1
 :END:
-Make elisp in this file behave like we expect these days. Everyone has this set, but no one explains why.
+Make elisp in this file behave like we expect these days. Everyone has this set, but no one explains why. In non-elisp speak, it adds proper scoping and “closure” behaviour to variables. This [[https://www.emacswiki.org/emacs/DynamicBindingVsLexicalBinding][Emacswiki article]] explains it well.
 
-In non-elisp speak, it adds proper scoping and “closure” behaviour to variables. This [[https://www.emacswiki.org/emacs/DynamicBindingVsLexicalBinding][Emacswiki article]] explains it well.
-
-Furthermore, to comply with Emacs conventions for libraries, the tangled ~init.el~ must have the following header
-
-#+BEGIN_SRC emacs-lisp
-;;; init.el --- Synthmacs Configuration -*- lexical-binding: t -*-
-
-;; Copyright (C) 2023 Roux G. Buciu
-
-;; Author: roux g. buciu <roux@fringe.foundation>
-;; Keywords: internal
-;; URL: https://fringe.foundation
-
-;;; Commentary:
-;; A mostly minimal, reproducible Emacs configuration.  This file is
-;; automatically tangled from synthmacs.org, with header/footer comments on each
-;; code block that allow for de-tangling the source back to synthmacs.org when
-;; working on this file directly.
-
-;;; Code:
-#+END_SRC
+Furthermore, to comply with Emacs conventions for libraries, the tangled ~init.el~ must have[[#h:0EDF1757-169B-4750-8262-415B599A4B53][the following header]].
 
 *** Improve I/O
 :PROPERTIES:
@@ -437,23 +626,7 @@ Optimizations for improving I/O performance. Increase max bytes read from a sub-
   (require 'synthmacs-completion-framework)
   (require 'synthmacs-tools)
   (require 'synthmacs-programming)
-
-  ;; programming languages
-  (require 'synthmacs-lang-cpp)
-  (require 'synthmacs-lang-clojure)
-  (require 'synthmacs-lang-css)
-  (require 'synthmacs-lang-gitModes)
-  (require 'synthmacs-lang-haskell)
-  (require 'synthmacs-lang-html)
-  (require 'synthmacs-lang-lisp)
-  (require 'synthmacs-lang-clisp)
-  (require 'synthmacs-lang-elisp)
-  (require 'synthmacs-lang-lua)
-  (require 'synthmacs-lang-markdown)
-  (require 'synthmacs-lang-racket)
-  (require 'synthmacs-lang-rust)
-  (require 'synthmacs-lang-swift)
-  (require 'synthmacs-lang-yaml)
+  (require 'synthmacs-programming-languages)
   )
 #+end_src
 
@@ -548,7 +721,7 @@ Let’s load an optional package which gives us some convenience functions, like
 * Core Emacs Setup
 :PROPERTIES:
 :CUSTOM_ID: h:3D38D8F0-1B85-4265-9941-77A3A2FA235B
-:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-core.el :mkdirp yes
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-core.el
 :END:
 
 ** Emacs Setup
@@ -5078,12 +5251,12 @@ We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[h
 * Programming Languages
 :PROPERTIES:
 :CUSTOM_ID: h:732BA080-834D-49E0-967E-0D37CE1C6BA0
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-programming-languages.el
 :END:
 
 ** C & C++
 :PROPERTIES:
 :CUSTOM_ID: h:0D5FF03F-A780-4815-A7D4-12C54934AD98
-:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-cpp.el
 :END:
 #+begin_src emacs-lisp
 (use-package ccls
@@ -5096,7 +5269,6 @@ We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[h
 ** CSS
 :PROPERTIES:
 :CUSTOM_ID: h:538E2BA8-BB96-4424-939F-3F56E0E88D08
-:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-css.el
 :END:
 
 #+begin_src emacs-lisp
@@ -5112,7 +5284,6 @@ We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[h
 ** Git-Modes
 :PROPERTIES:
 :CUSTOM_ID: h:6661E55B-9B07-433E-A913-B7BDEA5B7B3C
-:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-gitModes.el
 :END:
 #+begin_src emacs-lisp
 (use-package git-modes
@@ -5122,13 +5293,11 @@ We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[h
 ** Haskell
 :PROPERTIES:
 :CUSTOM_ID: h:28BA5E9F-6893-4E40-9F42-246F8731948C
-:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-haskell.el
 :END:
 
 ** HTML
 :PROPERTIES:
 :CUSTOM_ID: h:5561B91C-C61D-47D5-8320-9A559032C762
-:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-html.el
 :END:
 
 #+begin_src emacs-lisp
@@ -5143,7 +5312,6 @@ We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[h
 ** JSON
 :PROPERTIES:
 :CUSTOM_ID: h:4E57EA77-924F-484E-B76E-AFB813E10B9C
-:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-json.el
 :END:
 #+begin_src emacs-lisp
 (use-package json-mode
@@ -5162,7 +5330,6 @@ We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[h
 *** Clojure
 :PROPERTIES:
 :CUSTOM_ID: h:FF09BB1E-5437-4AFF-A4F5-367B92AF76CC
-:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clojure.el
 :END:
 
 **** clojure-mode
@@ -5252,7 +5419,6 @@ We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[h
 *** Common Lisp
 :PROPERTIES:
 :CUSTOM_ID: h:32C00231-247B-4BB8-9DF7-A733338041A0
-:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clisp.el
 :END:
   
 #+begin_src emacs-lisp
@@ -5345,7 +5511,6 @@ We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[h
 *** Racket & Scheme
 :PROPERTIES:
 :CUSTOM_ID: h:7094F6B5-F03E-4F6E-A769-398810C7AFA4
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-racket.el
 :END:
 Minimalism and elegant syntax, the purest. Hygienic macros. Racket has a great documentation, and scribble!
 
@@ -5365,10 +5530,10 @@ Minimalism and elegant syntax, the purest. Hygienic macros. Racket has a great d
   :mode ("\\.rkt\\'" "\\.scrbl\\'")
   :hook ((racket-mode . racket-xp-mode)))
 #+end_src
+
 *** Emacs-lisp
 :PROPERTIES:
 :CUSTOM_ID: h:D036C70A-011B-49DD-82B7-8B077BB1123C
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-elisp.el
 :END:
 
 #+begin_src emacs-lisp
@@ -5385,7 +5550,6 @@ Minimalism and elegant syntax, the purest. Hygienic macros. Racket has a great d
 *** General Lisp Tools
 :PROPERTIES:
 :CUSTOM_ID: h:DD59307A-C59B-4CF6-87CF-0C5D425E3F91
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-lisp.el
 :END:
 
 **** aggressive-indent
@@ -5444,7 +5608,6 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
 
 ** LUA
 :PROPERTIES:
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-lua.el
 :CUSTOM_ID: h:25D63D00-C5AC-4570-A0DA-2494D38A4838
 :END:
 
@@ -5455,7 +5618,6 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
 ** Markdown
 :PROPERTIES:
 :CUSTOM_ID: h:80E9702A-E2B6-44B5-A139-AD16C9B5D92F
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-markdown.el
 :END:
 
 #+begin_src emacs-lisp
@@ -5472,7 +5634,6 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
 ** Rust
 :PROPERTIES:
 :CUSTOM_ID: h:6355CFE4-6BA5-4134-BA38-74634F9FF919
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-rust.el
 :END:
 
 #+begin_src emacs-lisp
@@ -5488,8 +5649,8 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
 ** Swift
 :PROPERTIES:
 :CUSTOM_ID: h:4C66614A-ED5B-4771-96C3-E2C789282DC1
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-swift.el
 :END:
+
 #+begin_src emacs-lisp
 (use-package lsp-sourcekit
   :after lsp-mode
@@ -5503,7 +5664,6 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
 ** YAML
 :PROPERTIES:
 :CUSTOM_ID: h:0AB88184-7AE8-4232-B4A7-B8C4714B91D3
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-yaml.el
 :END:
 
 #+begin_src emacs-lisp
@@ -5511,7 +5671,7 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
   :mode ((rx ".yml" eos) . yaml-mode))
 #+end_src
 
-* Provide modules
+* Module Footers
 :PROPERTIES:
 :CUSTOM_ID: h:79F3414D-6DBD-420A-A955-913ACCB5A17B
 :END:
@@ -5522,7 +5682,7 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
 :header-args: :emacs-lisp :tangle early-init.el
 :END:
 #+BEGIN_SRC emacs-lisp
-  ;;; early-init.el ends here
+;;; early-init.el ends here
 #+END_SRC
 
 ** init.el
@@ -5614,165 +5774,15 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
 ;;; synthmacs-programming.el ends here
 #+end_src
 
-** Programming Languages
+** synthmacs-programming-languages
 :PROPERTIES:
 :CUSTOM_ID: h:320148C4-896F-4FFF-90CD-08E91DCCED9E
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-programming-languages.el
 :END:
 
-*** synthmacs-lang-cpp
-:PROPERTIES:
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-cpp.el
-:CUSTOM_ID: h:AB49F4D1-70DB-45C8-B756-31E8F432537C
-:END:
 #+begin_src emacs-lisp
-(provide 'synthmacs-lang-cpp)
-;;; synthmacs-lang-cpp.el ends here
-#+end_src
-
-*** synthmacs-lang-css
-:PROPERTIES:
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-css.el
-:CUSTOM_ID: h:07FF0441-BACD-40DE-A350-CE4973D19F44
-:END:
-#+begin_src emacs-lisp
-(provide 'synthmacs-lang-css)
-;;; synthmacs-lang-css.el ends here
-#+end_src
-
-*** synchmacs-lang-gitModes
-:PROPERTIES:
-:CUSTOM_ID: h:8ABA1185-A8B8-47D0-BF61-A3CA50528389
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-gitModes.el
-:END:
-#+begin_src emacs-lisp
-(provide 'synthmacs-lang-gitModes)
-;;; synthmacs-lang-gitModes.el ends here
-#+end_src
-
-*** synthmacs-lang-haskell
-:PROPERTIES:
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-haskell.el
-:CUSTOM_ID: h:6E27FD00-65D6-421C-9C96-B4A8877CA5BB
-:END:
-#+begin_src emacs-lisp
-(provide 'synthmacs-lang-haskell)
-;;; synthmacs-lang-haskell.el ends here
-#+end_src
-
-*** synthmacs-lang-html
-:PROPERTIES:
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-html.el
-:CUSTOM_ID: h:F0DD1F2F-A930-4C32-81AE-1D4730BF5FEF
-:END:
-#+begin_src emacs-lisp
-(provide 'synthmacs-lang-html)
-;;; synthmacs-lang-html.el ends here
-#+end_src
-
-*** LISPs
-:PROPERTIES:
-:CUSTOM_ID: h:FD16520D-EDBD-44ED-BFAE-8F8E6B9ED790
-:END:
-
-**** synthmacs-lang-clojure
-:PROPERTIES:
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clojure.el
-:CUSTOM_ID: h:F6A9AC39-89F2-41DA-84DD-5AF7A01F351B
-:END:
-#+begin_src emacs-lisp
-(provide 'synthmacs-lang-clojure)
-;;; synthmacs-lang-clojure.el ends here
-#+end_src
-
-**** synthmacs-lang-clisp
-:PROPERTIES:
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-clisp.el
-:CUSTOM_ID: h:771E15AF-C8A5-49CD-B224-AE4103FD2822
-:END:
-#+begin_src emacs-lisp
-(provide 'synthmacs-lang-clisp)
-;;; synthmacs-lang-clisp.el ends here
-#+end_src
-
-**** synthmacs-lang-elisp
-:PROPERTIES:
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-elisp.el
-:CUSTOM_ID: h:29743F9F-3D7F-44A6-9CD6-369EB609D4E0
-:END:
-#+begin_src emacs-lisp
-(provide 'synthmacs-lang-elisp)
-;;; synthmacs-lang-elisp.el ends here
-#+end_src
-
-
-**** synthmacs-lang-racket
-:PROPERTIES:
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-racket.el
-:CUSTOM_ID: h:1AD3BB1C-F056-4470-9FAD-2A59DE07C12D
-:END:
-#+begin_src emacs-lisp
-(provide 'synthmacs-lang-racket)
-;;; synthmacs-lang-racket.el ends here
-#+end_src
-
-**** synthmacs-lang-lisp
-:PROPERTIES:
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-lisp.el
-:CUSTOM_ID: h:8FE2D24E-3438-4087-81BC-BEB0E545377A
-:END:
-#+begin_src emacs-lisp
-(provide 'synthmacs-lang-lisp)
-;;; synthmacs-lang-lisp.el ends here
-#+end_src
-
-*** synthmacs-lang-lua
-:PROPERTIES:
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-lua.el
-:CUSTOM_ID: h:3FB7F5B0-DF8F-4EAF-9F11-12A193F5787D
-:END:
-#+begin_src emacs-lisp
-(provide 'synthmacs-lang-lua)
-;;; synthmacs-lang-lua.el ends here
-#+end_src
-
-*** synthmacs-lang-markdown
-:PROPERTIES:
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-markdown.el
-:CUSTOM_ID: h:4DC1FE56-048B-42E5-BBC0-C7D8C97A394A
-:END:
-#+begin_src emacs-lisp
-(provide 'synthmacs-lang-markdown)
-;;; synthmacs-lang-markdown.el ends here
-#+end_src
-
-*** synthmacs-lang-rust
-:PROPERTIES:
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-rust.el
-:CUSTOM_ID: h:B3C70973-504D-407A-A865-579F5A3DC1C1
-:END:
-#+begin_src emacs-lisp
-(provide 'synthmacs-lang-rust)
-;;; synthmacs-lang-rust.el ends here
-#+end_src
-
-*** synthmacs-lang-swift
-:PROPERTIES:
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-swift.el
-:CUSTOM_ID: h:778CF1D8-D2CA-4920-90BA-768D5C6EDC0E
-:END:
-#+begin_src emacs-lisp
-(provide 'synthmacs-lang-swift)
-;;; synthmacs-lang-swift.el ends here
-#+end_src
-
-*** synthmacs-lang-yaml
-:PROPERTIES:
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-lang-yaml.el
-:CUSTOM_ID: h:B2672AC2-5D01-4636-9064-E9D313BB65D8
-:END:
-#+begin_src emacs-lisp
-(provide 'synthmacs-lang-yaml)
-;;; synthmacs-lang-yaml.el ends here
+(provide 'synthmacs-programming-languages)
+;;; synthmacs-programming-languages.el ends here
 #+end_src
 
 * COMMENT Local variables
