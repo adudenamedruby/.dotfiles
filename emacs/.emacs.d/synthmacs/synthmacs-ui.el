@@ -310,6 +310,16 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   (global-ligature-mode t))
 ;; Ligatures:1 ends here
 
+;; [[file:../synthmacs.org::*Colours in compilation buffer][Colours in compilation buffer:1]]
+(defun synthmacs/colorize-compilation-buffer ()
+  "Enable colors in the *compilation* buffer."
+  (require 'ansi-color)
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+
+(add-hook 'compilation-filter-hook synthmacs/colorize-compilation-buffer)
+;; Colours in compilation buffer:1 ends here
+
 ;; [[file:../synthmacs.org::*which-key][which-key:1]]
 (setq which-key-idle-delay 0.4)
 (use-package which-key

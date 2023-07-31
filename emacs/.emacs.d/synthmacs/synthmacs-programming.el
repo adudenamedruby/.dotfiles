@@ -215,6 +215,17 @@
 ;; 		  (sh-mode))))
 ;; Treesitter languages:1 ends here
 
+;; [[file:../synthmacs.org::*Tresitter load languages][Tresitter load languages:1]]
+(use-package treesit-auto
+  :demand t)
+
+;; (define-derived-mode python-auto-mode prog-mode "Python Auto"
+;;   "Automatically decide which Python mode to use."
+;;   (if (treesit-ready-p 'python t)
+;;       (python-ts-mode)
+;;     (python-mode)))
+;; Tresitter load languages:1 ends here
+
 ;; [[file:../synthmacs.org::*synthmacs-programming][synthmacs-programming:1]]
 (provide 'synthmacs-programming)
 ;;; synthmacs-programming.el ends here

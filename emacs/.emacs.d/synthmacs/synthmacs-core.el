@@ -130,7 +130,7 @@
 (use-package emacs
   :init
   ;; use common convention for indentation by default
-  ;;(setq-default indent-tabs-mode t)
+  (setq-default indent-tabs-mode nil)
   ;;(setq-default tab-width 2)
 
   ;; Enable indentation+completion using the TAB key.
@@ -489,6 +489,14 @@ folder; otherwise, delete a character backwards."
   (save-some-buffers nil t)
   (kill-emacs))
 ;; Quit (but save before doing so!):1 ends here
+
+;; [[file:../synthmacs.org::*Prefer ~rg~ and ~fd~ if available][Prefer ~rg~ and ~fd~ if available:1]]
+(when (executable-find "rg")
+  (setq grep-program "rg"))
+
+(when (executable-find "fd")
+  (setq find-program "fd"))
+;; Prefer ~rg~ and ~fd~ if available:1 ends here
 
 ;; [[file:../synthmacs.org::*xref][xref:1]]
 (use-package xref

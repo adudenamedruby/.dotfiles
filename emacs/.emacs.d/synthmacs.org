@@ -34,6 +34,7 @@
   - [[#garbage-collector-magic-hack][Garbage collector magic hack]]
   - [[#no-littering][no-littering]]
   - [[#auto-pair-paranthesis][Auto-pair paranthesis]]
+  - [[#prefer-rg-and-fd-if-available][Prefer ~rg~ and ~fd~ if available]]
   - [[#xref][xref]]
 - [[#keybindings-general--evil-mode][Keybindings: General & EVIL mode]]
   - [[#general][General]]
@@ -65,6 +66,7 @@
   - [[#dashboard][Dashboard]]
   - [[#wrap-long-lines][Wrap long lines]]
   - [[#ligatures][Ligatures]]
+  - [[#colours-in-compilation-buffer][Colours in compilation buffer]]
   - [[#which-key][which-key]]
   - [[#rainbow-delimiters][rainbow-delimiters]]
   - [[#popup-management][Popup management]]
@@ -744,7 +746,7 @@ Hide it if we're in a window. I go back and forth on hiding the menu. I like it 
 (use-package emacs
   :init
   ;; use common convention for indentation by default
-  ;;(setq-default indent-tabs-mode t)
+  (setq-default indent-tabs-mode nil)
   ;;(setq-default tab-width 2)
 
   ;; Enable indentation+completion using the TAB key.
@@ -1212,6 +1214,19 @@ In programming, missing parens and the like are a pain to track down. Let's auto
                 (lambda (c) (eq c ?<   ;; >
                                 )))
   )  
+#+end_src
+
+** Prefer ~rg~ and ~fd~ if available
+:PROPERTIES:
+:CUSTOM_ID: h:51F9CE5B-C63C-4235-A063-3DF4A84ED457
+:END:
+
+#+begin_src emacs-lisp
+(when (executable-find "rg")
+  (setq grep-program "rg"))
+
+(when (executable-find "fd")
+  (setq find-program "fd"))
 #+end_src
 
 ** xref
@@ -3140,6 +3155,22 @@ I like ligatures. Some people don't. That's ok.
   (global-ligature-mode t))
 #+end_src
 
+** Colours in compilation buffer
+:PROPERTIES:
+:CUSTOM_ID: h:8649D1F8-EF61-4972-9D5F-47065F052A26
+:END:
+Enable colors in the ~*compilation*~ buffer. Provided by a [[https://stackoverflow.com/a/3072831/13215205][helpful stackoverflow answer]]
+
+#+begin_src emacs-lisp
+(defun synthmacs/colorize-compilation-buffer ()
+  "Enable colors in the *compilation* buffer."
+  (require 'ansi-color)
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+
+(add-hook 'compilation-filter-hook synthmacs/colorize-compilation-buffer)
+#+end_src
+
 ** which-key
 :PROPERTIES:
 :CUSTOM_ID: h:40130D60-680F-44CF-B7CD-FF38E97CB2EF
@@ -3421,7 +3452,7 @@ A few more useful Emacs configs for Vectico
 :PROPERTIES:
 :CUSTOM_ID: h:CF8C8DA3-23A3-4CF0-80A9-3DB977BB0182
 :END:
-[[https://github.com/oantolin/orderless][orderless]] teaches icomplete to match mutliple patterns in any order.
+[[https://github.com/oantolin/orderless][orderless]] teaches icomplete to match mutliple patterns in any order. I’ve found the ~orderless~ /completion style/ especially well-suited to Emacs. It allows me to type short strings that can match the symbol I’m looking for in any order. In Emacs, I may not know if I’m looking for ~package-list~ or ~list-packages~. In either case, I can just type “pack lis” in the minibuffer to find the correct one.
 
 #+begin_src emacs-lisp
 (use-package orderless
@@ -4864,7 +4895,21 @@ You can either build your own languages, or you can use pre-built. For now, let'
 ;; 		  (sh-mode))))
 #+end_src
 
+*** Tresitter load languages
+:PROPERTIES:
+:CUSTOM_ID: h:A4E5151A-751C-4188-9680-86EF89F2FD32
+:END:
+We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[https://archive.casouri.cc/note/2023/tree-sitter-in-emacs-29/index.html][recommended workaround]] is to derive a mode that picks between them. 
+#+begin_src emacs-lisp
+(use-package treesit-auto
+  :demand t)
 
+;; (define-derived-mode python-auto-mode prog-mode "Python Auto"
+;;   "Automatically decide which Python mode to use."
+;;   (if (treesit-ready-p 'python t)
+;;       (python-ts-mode)
+;;     (python-mode)))
+#+end_src
 
 * Programming Languages
 :PROPERTIES:
