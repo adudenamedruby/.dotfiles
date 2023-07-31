@@ -110,6 +110,12 @@
 (use-package common-lisp-snippets)
 ;; commond-lisp-snippets:1 ends here
 
+;; [[file:../synthmacs.org::*Apheleia][Apheleia:1]]
+(use-package apheleia
+  :config
+  (apheleia-global-mode +1))
+;; Apheleia:1 ends here
+
 ;; [[file:../synthmacs.org::*Treesitter][Treesitter:1]]
 (require 'treesit)
 

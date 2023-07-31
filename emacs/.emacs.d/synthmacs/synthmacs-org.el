@@ -442,7 +442,7 @@
          (org-tree-slide-stop . (lambda () (+remap-faces-at-stop-present))))
   :general
   (synthmacs/leader-keys
-    "t p" '(org-tree-slide-mode :wk "present"))
+    "tP" '(org-tree-slide-mode :wk "present-slides"))
   (general-nmap
     :keymaps '(org-tree-slide-mode-map org-mode-map)
     "C-j" 'org-tree-slide-move-next-tree

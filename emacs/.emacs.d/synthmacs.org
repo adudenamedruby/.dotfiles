@@ -104,6 +104,7 @@
   - [[#flycheck][Flycheck]]
   - [[#imenu][iMenu]]
   - [[#snippets][Snippets]]
+  - [[#apheleia][Apheleia]]
   - [[#treesitter][Treesitter]]
 - [[#programming-languages][Programming Languages]]
   - [[#c--c][C & C++]]
@@ -2473,7 +2474,7 @@ A presentation mode for org-mode
          (org-tree-slide-stop . (lambda () (+remap-faces-at-stop-present))))
   :general
   (synthmacs/leader-keys
-    "t p" '(org-tree-slide-mode :wk "present"))
+    "tP" '(org-tree-slide-mode :wk "present-slides"))
   (general-nmap
     :keymaps '(org-tree-slide-mode-map org-mode-map)
     "C-j" 'org-tree-slide-move-next-tree
@@ -4917,6 +4918,17 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
         (list (concat synthmacs/latex-math-prefix key) value (concat "Math symbol " value))))
     synthmacs/latex-math-symbols))
   )
+#+end_src
+
+** Apheleia
+:PROPERTIES:
+:CUSTOM_ID: h:4B8F69EC-EAAD-4D66-B18F-64EEAC79A9AF
+:END:
+[[https://github.com/radian-software/apheleia][Apheleia]] is an Emacs package that automatically formats code to make it more legible every time you save the code base. Unlike many code-formatting tools, Apheleia works asynchronously to restructure your code without actually pausing your work as it’s processing. Code is reformatted in the background and applied only when Apheleia detects that formatting has changed. Apheleia uses smart logic to prevent a jump in your current cursor position, so you can continue working without interruption, even as your code is formatted in real time.
+#+begin_src emacs-lisp
+(use-package apheleia
+  :config
+  (apheleia-global-mode +1))
 #+end_src
 
 ** Treesitter
