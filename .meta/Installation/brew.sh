@@ -46,6 +46,7 @@ brew install --cask font-fira-code
 brew install --cask font-fira-code-nerd-font
 brew install --cask font-hack
 brew install --cask font-hack-nerd-font
+brew install --cask font-iosevka
 
 # Keyboard related things
 brew install --cask karabiner-elements

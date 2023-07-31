@@ -294,9 +294,12 @@ _q_: quit
   :config
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+  ;; I basically never want to go to the beginning of the line where I left
+  ;; a mark. So I invert these two keys for easy access
   (define-key evil-normal-state-map "`" 'evil-goto-mark-line)
   (define-key evil-normal-state-map "'" 'evil-goto-mark)
   (define-key evil-visual-state-map "'" 'evil-goto-mark)
+  ;; Use visual line motions even outside of visual-line-mode buffers
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
   (evil-set-initial-state 'messages-buffer-mode 'normal)

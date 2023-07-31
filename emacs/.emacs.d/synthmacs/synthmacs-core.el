@@ -21,6 +21,12 @@
   )
 ;; Emacs Setup:1 ends here
 
+;; [[file:../synthmacs.org::*Universal argument][Universal argument:1]]
+(use-package emacs
+  :init
+  (global-set-key (kbd "C-M-u") 'universal-argument)
+;; Universal argument:1 ends here
+
 ;; [[file:../synthmacs.org::*User setup][User setup:1]]
 (use-package emacs
   :init
@@ -158,7 +164,7 @@
     :type 'string
     :group 'synthmacs)
 
-  (defcustom synthmacs/variable-pitch-font-family "Sans Serif"
+  (defcustom synthmacs/variable-pitch-font-family "Iosevka"
     "Variable pitch font family"
     :type 'string
     :group 'synthmacs)
@@ -172,11 +178,17 @@
 (use-package emacs
   :init
   ;; Main typeface
-  (set-face-attribute 'default nil :font synthmacs/default-font-family :height 140)
+  (set-face-attribute 'default nil
+                      :font synthmacs/default-font-family
+                      :height 140)
   ;; Set the fixed pitch face (monospace)
-  (set-face-attribute 'fixed-pitch nil :font synthmacs/default-font-family)
+  (set-face-attribute 'fixed-pitch nil
+                      :font synthmacs/default-font-family
+                      :height 140)
   ;; Set the variable pitch face
-  (set-face-attribute 'variable-pitch nil :font synthmacs/variable-pitch-font-family)
+  (set-face-attribute 'variable-pitch nil
+                      :font synthmacs/variable-pitch-font-family
+                      :height 140)
   )
 ;; Fonts:1 ends here
 

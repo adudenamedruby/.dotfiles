@@ -169,101 +169,139 @@
     "ox" '(:ignore t :wk "text")
     "oxb" (synthmacs/org-emphasize synthmacs/org-bold ?*)
     "oxc" (synthmacs/org-emphasize synthmacs/org-code ?~)
-   "oxi" (synthmacs/org-emphasize synthmacs/org-italic ?/)
+    "oxi" (synthmacs/org-emphasize synthmacs/org-italic ?/)
     "oxo" 'org-open-at-point
     "oxr" (synthmacs/org-emphasize synthmacs/org-clear ? )
     "oxs" (synthmacs/org-emphasize synthmacs/org-strike-through ?+)
     "oxu" (synthmacs/org-emphasize synthmacs/org-underline ?_)
     "oxv" (synthmacs/org-emphasize synthmacs/org-verbatim ?=)
+    )
+
+  (org-mode-map
+   :states 'insert
+   "TAB" 'synthmacs/org-indent-or-complete
+   "S-TAB" nil)
+
+  (org-mode-map
+   :states 'normal
+   "z i" '(org-toggle-inline-images :wk "inline images"))
+
+  :init
+  ;; general settings
+  (when (file-directory-p "~/Developer/ExoCortex/org")
+    (setq org-directory "~/Developer/ExoCortex/org"
+          +org-export-directory "~/Developer/ExoCortex/org/export"
+          org-default-notes-file "~/Developer/ExoCortex/org/notes.org"
+          org-id-locations-file "~/Developer/ExoCortex/org/.orgids"
+          ))	
+  ;; (setq org-export-in-background t)
+  (setq org-src-preserve-indentation t) ;; do not put two spaces on the left
+  (setq org-startup-indented t)
+  (setq org-startup-with-inline-images t)
+  (setq org-hide-emphasis-markers t)
+  (setq org-catch-invisible-edits 'smart)
+  (setq org-image-actual-width nil)
+  (setq org-indent-indentation-per-level 1)
+  (setq org-list-demote-modify-bullet '(("-" . "+") ("+" . "*")))
+  ;; disable modules for faster startup
+  ;; (setq org-modules
+  ;;       '(ol-docview
+  ;;         org-habit))
+  ;; (setq org-todo-keywords
+  ;;       '((sequence "TODO(t)" "NEXT(n)" "PROG(p)" "|" "HOLD(h)" "DONE(d)")))
+  (setq-default prettify-symbols-alist '(("#+BEGIN_SRC" . "»")
+                                         ("#+END_SRC" . "«")
+                                         ("#+begin_src" . "»")
+                                         ("#+end_src" . "«")
+                                         ("lambda"  . "λ")
+                                         ("->" . "→")
+                                         ("->>" . "↠")))
+  (setq prettify-symbols-unprettify-at-point 'right-edge)
+  (setq org-capture-templates
+        (quote (
+                ("b" "Books to read"
+                 entry
+                 (file+headline "~/code/git/ExoCortex/org/media.org" "Books")
+                 "** %^{Title} %?\n")
+
+                ("f" "Fix code"
+                 entry
+                 (file+headline "~/code/git/ExoCortex/org/tasks.org" "Fixes")
+                 "* FIXME %^{Description}\n@%a\n%?")
+
+                ("n" "Quick note"
+                 entry
+                 (file+headline "~/code/git/ExoCortex/org/notes.org" "Notes")
+                 "** %^{Description}\nAdded: %t\n%?")
+
+                ("o" "One on one"
+                 entry
+                 (file+headline "~/code/git/ExoCortex/org/mozilla.org" "1:1")
+                 "** %t\n*** %?\n")
+
+                ("r" "Reminder"
+                 entry
+                 (file+headline "~/code/git/ExoCortex/org/tasks.org" "Reminders")
+                 "* REMINDER %^{Description}\n%?")
+
+                ("t" "Task" entry
+                 (file+function "~/code/git/ExoCortex/org/tasks.org" org-reverse-datetree-goto-date-in-file)
+                 "* TODO %^{Description}\n%?")
+
+                ("w" "Watch - Movie/Show/Documentary"
+                 entry
+                 (file+headline "~/code/git/ExoCortex/org/media.org" "Watch")
+                 "** [[%^{Link}][%^{Title}]]\n%?"))))
+
+  ;; Increase the size of various headings
+;; (set-face-attribute 'org-document-title nil :font "Iosevka" :weight 'bold :height 1.3)
+;; (dolist (face '((org-level-1 . 1.2)
+;;                 (org-level-2 . 1.1)
+;;                 (org-level-3 . 1.05)
+;;                 (org-level-4 . 1.0)
+;;                 (org-level-5 . 1.1)
+;;                 (org-level-6 . 1.1)
+;;                 (org-level-7 . 1.1)
+;;                 (org-level-8 . 1.1)))
+;;   (set-face-attribute (car face) nil :font "Iosevka" :weight 'medium :height (cdr face)))
+
+;; Make sure org-indent face is available
+;; (require 'org-indent)
+
+;; Ensure that anything that should be fixed-pitch in Org files appears that way
+;; (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+;; (set-face-attribute 'org-table nil  :inherit 'fixed-pitch)
+;; (set-face-attribute 'org-formula nil  :inherit 'fixed-pitch)
+;; (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
+;; (set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch))
+;; (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+;; (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+;; (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+;; (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
+
+;; Get rid of the background on column views
+;; (set-face-attribute 'org-column nil :background nil)
+;; (set-face-attribute 'org-column-title nil :background nil)
+
+;; TODO: Others to consider
+;; '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+;; '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+;; '(org-property-value ((t (:inherit fixed-pitch))) t)
+;; '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+;; '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+;; '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+;; '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
+  :config
+  ;; ;; (efs/org-font-setup)
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("py" . "src python"))
+  (add-to-list 'org-structure-template-alist '("clj" . "src clojure"))
+  ;; (setq org-latex-pdf-process '("tectonic %f"))
+  ;; (setq org-export-backends '(html))
+  ;; ;; (add-to-list 'org-export-backends 'beamer)
+  ;; (plist-put org-format-latex-options :scale 1.2)
   )
-
-(org-mode-map
- :states 'insert
- "TAB" 'synthmacs/org-indent-or-complete
- "S-TAB" nil)
-
-(org-mode-map
- :states 'normal
- "z i" '(org-toggle-inline-images :wk "inline images"))
-
-:init
-;; general settings
-(when (file-directory-p "~/Developer/ExoCortex/org")
-  (setq org-directory "~/Developer/ExoCortex/org"
-        +org-export-directory "~/Developer/ExoCortex/org/export"
-        org-default-notes-file "~/Developer/ExoCortex/org/notes.org"
-        org-id-locations-file "~/Developer/ExoCortex/org/.orgids"
-        ))	
-;; (setq org-export-in-background t)
-(setq org-src-preserve-indentation t) ;; do not put two spaces on the left
-(setq org-startup-indented t)
-(setq org-startup-with-inline-images t)
-(setq org-hide-emphasis-markers t)
-(setq org-catch-invisible-edits 'smart)
-(setq org-image-actual-width nil)
-(setq org-indent-indentation-per-level 1)
-(setq org-list-demote-modify-bullet '(("-" . "+") ("+" . "*")))
-;; disable modules for faster startup
-;; (setq org-modules
-;;       '(ol-docview
-;;         org-habit))
-;; (setq org-todo-keywords
-;;       '((sequence "TODO(t)" "NEXT(n)" "PROG(p)" "|" "HOLD(h)" "DONE(d)")))
-(setq-default prettify-symbols-alist '(("#+BEGIN_SRC" . "»")
-                                       ("#+END_SRC" . "«")
-                                       ("#+begin_src" . "»")
-                                       ("#+end_src" . "«")
-                                       ("lambda"  . "λ")
-                                       ("->" . "→")
-                                       ("->>" . "↠")))
-(setq prettify-symbols-unprettify-at-point 'right-edge)
-(setq org-capture-templates
-      (quote (
-              ("b" "Books to read"
-               entry
-               (file+headline "~/code/git/ExoCortex/org/media.org" "Books")
-               "** %^{Title} %?\n")
-
-              ("f" "Fix code"
-               entry
-               (file+headline "~/code/git/ExoCortex/org/tasks.org" "Fixes")
-               "* FIXME %^{Description}\n@%a\n%?")
-
-              ("n" "Quick note"
-               entry
-               (file+headline "~/code/git/ExoCortex/org/notes.org" "Notes")
-               "** %^{Description}\nAdded: %t\n%?")
-
-              ("o" "One on one"
-               entry
-               (file+headline "~/code/git/ExoCortex/org/mozilla.org" "1:1")
-               "** %t\n*** %?\n")
-
-              ("r" "Reminder"
-               entry
-               (file+headline "~/code/git/ExoCortex/org/tasks.org" "Reminders")
-               "* REMINDER %^{Description}\n%?")
-
-              ("t" "Task" entry
-               (file+function "~/code/git/ExoCortex/org/tasks.org" org-reverse-datetree-goto-date-in-file)
-               "* TODO %^{Description}\n%?")
-
-              ("w" "Watch - Movie/Show/Documentary"
-               entry
-               (file+headline "~/code/git/ExoCortex/org/media.org" "Watch")
-               "** [[%^{Link}][%^{Title}]]\n%?"))))
-
-:config
-;; ;; (efs/org-font-setup)
-(add-to-list 'org-structure-template-alist '("sh" . "src shell"))
-(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
-(add-to-list 'org-structure-template-alist '("py" . "src python"))
-(add-to-list 'org-structure-template-alist '("clj" . "src clojure"))
-;; (setq org-latex-pdf-process '("tectonic %f"))
-;; (setq org-export-backends '(html))
-;; ;; (add-to-list 'org-export-backends 'beamer)
-;; (plist-put org-format-latex-options :scale 1.2)
-)
 ;; org mode:1 ends here
 
 ;; [[file:../synthmacs.org::*Enabling the Table of Contents][Enabling the Table of Contents:1]]
