@@ -227,6 +227,17 @@
   )
 ;; restart-emacs:1 ends here
 
+;; [[file:../synthmacs.org::*Prescient][Prescient:1]]
+(use-package prescient
+  :defer 1
+  :config
+  (prescient-persist-mode 1))
+
+(use-package corfu-prescient)
+
+(use-package vertico-prescient)
+;; Prescient:1 ends here
+
 ;; [[file:../synthmacs.org::*Transient][Transient:1]]
 (use-package transient
   :general

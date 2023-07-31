@@ -397,6 +397,68 @@
   )
 ;; Tangling this file:1 ends here
 
+;; [[file:../synthmacs.org::*org-tree-slide][org-tree-slide:1]]
+(use-package org-tree-slide
+  :after org
+  :hook ((org-tree-slide-play . (lambda () (+remap-faces-at-start-present)))
+         (org-tree-slide-stop . (lambda () (+remap-faces-at-stop-present))))
+  :general
+  (synthmacs/leader-keys
+    "t p" '(org-tree-slide-mode :wk "present"))
+  (general-nmap
+    :keymaps '(org-tree-slide-mode-map org-mode-map)
+    "C-j" 'org-tree-slide-move-next-tree
+    "C-k" 'org-tree-slide-move-previous-tree)
+  :init
+  (setq org-tree-slide-activate-message "Presentation mode ON")
+  (setq org-tree-slide-deactivate-message "Presentation mode OFF")
+  (setq org-tree-slide-indicator nil)
+  (setq org-tree-slide-breadcrumbs "    >    ")
+  (setq org-tree-slide-heading-emphasis t)
+  (setq org-tree-slide-slide-in-waiting 0.025)
+  (setq org-tree-slide-content-margin-top 4)
+  (defun +remap-faces-at-start-present ()
+    (setq-local face-remapping-alist '((default (:height 1.50) variable-pitch)
+                                       (fixed-pitch (:height 1.2) fixed-pitch)
+                                       ;; (org-verbatim (:height 1.2) org-verbatim)
+                                       ;; (org-block (:height 1.2) org-block)
+                                       ))
+    ;; (setq-local olivetti-body-width 95)
+    (olivetti-mode 1)
+    (display-fill-column-indicator-mode 0)
+    (hide-mode-line-mode 1)
+    (diff-hl-mode 0)
+    (centaur-tabs-mode 0))
+  (defun +remap-faces-at-stop-present ()
+    (setq-local face-remapping-alist '((default variable-pitch default)))
+    ;; (setq-local olivetti-body-width 120)
+    (olivetti-mode 0)
+    (display-fill-column-indicator-mode 1)
+    (hide-mode-line-mode 0)
+    (doom-modeline-mode 1)
+    (diff-hl-mode 1)
+    (centaur-tabs-mode 1))
+  (setq org-tree-slide-breadcrumbs nil)
+  (setq org-tree-slide-header nil)
+  (setq org-tree-slide-slide-in-effect nil)
+  (setq org-tree-slide-heading-emphasis nil)
+  (setq org-tree-slide-cursor-init t)
+  (setq org-tree-slide-modeline-display nil)
+  (setq org-tree-slide-skip-done nil)
+  (setq org-tree-slide-skip-comments t)
+  (setq org-tree-slide-fold-subtrees-skipped t)
+  (setq org-tree-slide-skip-outline-level 8) ;; or 0?
+  (setq org-tree-slide-never-touch-face t)
+  ;; :config
+  ;; (org-tree-slide-presentation-profile)
+  ;; :custom-face
+  ;; (org-tree-slide-heading-level-1 ((t (:height 1.8 :weight bold))))
+  ;; (org-tree-slide-heading-level-2 ((t (:height 1.5 :weight bold))))
+  ;; (org-tree-slide-heading-level-3 ((t (:height 1.5 :weight bold))))
+  ;; (org-tree-slide-heading-level-4 ((t (:height 1.5 :weight bold))))
+  )
+;; org-tree-slide:1 ends here
+
 ;; [[file:../synthmacs.org::*evil-org-mode][evil-org-mode:1]]
 (use-package evil-org-mode
   :straight (evil-org-mode
@@ -513,6 +575,87 @@
 ;; [[file:../synthmacs.org::*Enhanced HTML exports][Enhanced HTML exports:1]]
 (use-package htmlize)
 ;; Enhanced HTML exports:1 ends here
+
+;; [[file:../synthmacs.org::*org-roam][org-roam:1]]
+(use-package org-roam
+  :after org
+  :init
+  (setq org-enable-roam-support t)
+  (setq org-enable-roam-ui t)
+  (setq org-roam-directory (expand-file-name "~/Developer/ExoCortex/myWiki/zettlekasten"))
+  (setq org-roam-db-location (expand-file-name "~/Developer/ExoCortex/myWiki/db/org-roam.db"))
+  (setq org-roam-v2-ack t)
+  (setq org-roam-capture-templates
+        '(("n" "Note" plain
+           ;; %? is the cursor, and the rest is what the file will be preloaded with
+           ;; This can also be: (file "~/location/to/org/file")
+           "\n\n* ${title}\n** Summary\n%?\n\n** More details\n\n* References\n\n* LINKS\n"
+           ;; filename AND what's added to the top of the file
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: adudenamedruby\n#+date: %t")
+           :unnarrowed t)
+
+          ("g" "Glossary term" plain
+           "\n\n* ${title}\n** Definition\n%?\n\n* References\n\n* LINKS\n- [[id:C1F1861B-20E0-4E15-9C0A-C93CE1652CC9][Glossary]]\n"
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: adudenamedruby\n#+date: %t")
+           :unnarrowed t)
+
+          ("q" "Quote" plain
+           "\n\n#+BEGIN_QUOTE\n%?#+END_QUOTE\n\n* References\n\n* LINKS\n-[[id:ADC4CC70-7EE8-4B34-A852-7A4F9DF8AFBF][Quotes]]\n"
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+author: adudenamedruby\n#+date: %t")
+           :unnarrowed t)
+          ))
+  :general
+  (synthmacs/leader-keys
+    "or" '(:ignore t :wk "org-roam")
+    "orc" 'org-roam-capture
+    "orf" 'org-roam-node-find
+    "org" 'org-roam-graph
+    "orr" 'org-roam-ref-add
+    "ori" 'org-roam-node-insert
+    "orb" 'org-roam-buffer-toggle
+    "ora" 'org-roam-alias-add
+    
+    "ord" '(:ignore t :wk "org-roam-dailies")
+    "ordy" 'org-roam-dailies-goto-yesterday
+    "ordt" 'org-roam-dailies-goto-today
+    "ordT" 'org-roam-dailies-goto-tomorrow
+    "ordd" 'org-roam-dailies-goto-date
+    )
+  :config
+  (org-roam-setup)
+  ;; If using org-roam-protocol
+  ;; (require 'org-roam-protocol)
+  (add-to-list 'display-buffer-alist
+	       '(("*org-roam*"
+		  (display-buffer-in-direction)
+		  (direction . right)
+		  (window-width . 0.33)
+		  (window-height . fit-window-to-buffer))))
+
+  )
+;; org-roam:1 ends here
+
+;; [[file:../synthmacs.org::*Obsidian][Obsidian:1]]
+(use-package obsidian
+  :ensure t
+  :demand t
+  :general
+  (synthmacs/local-leader-keys
+    :keymap 'obsidian-mode-map
+    "o" 'obsidian-follow-link-at-point
+    ;; Jump to backlinks
+    "b" 'obsidian-backlink-jump
+    ;; If you prefer you can use `obsidian-insert-link'
+    "i" 'obsidian-insert-wikilink
+    )
+  :config
+  (obsidian-specify-path "~/MY_OBSIDIAN_FOLDER")
+  (global-obsidian-mode t)
+  :custom
+  ;; This directory will be used for `obsidian-capture' if set.
+  (obsidian-inbox-directory "Inbox")
+  )
+;; Obsidian:1 ends here
 
 ;; [[file:../synthmacs.org::*synthmacs-org][synthmacs-org:1]]
 (provide 'synthmacs-org)

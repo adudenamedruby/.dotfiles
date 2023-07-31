@@ -2416,7 +2416,7 @@ Taken from https://github.com/KaratasFurkan/.emacs.d
 :END:
 A presentation mode for org-mode
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (use-package org-tree-slide
   :after org
   :hook ((org-tree-slide-play . (lambda () (+remap-faces-at-start-present)))
@@ -2627,7 +2627,7 @@ When exporting things from org mode, we want to make sure that src blocks have g
 :END:
 Instead of Obsidian, let's use org roam?
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (use-package org-roam
   :after org
   :init
@@ -2692,23 +2692,26 @@ Instead of Obsidian, let's use org roam?
 :END:
 But we could also use obsidian style in emacs, and then have it appear in the actual vault. Neato?!
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (use-package obsidian
   :ensure t
   :demand t
+  :general
+  (synthmacs/local-leader-keys
+    :keymap 'obsidian-mode-map
+    "o" 'obsidian-follow-link-at-point
+    ;; Jump to backlinks
+    "b" 'obsidian-backlink-jump
+    ;; If you prefer you can use `obsidian-insert-link'
+    "i" 'obsidian-insert-wikilink
+    )
   :config
   (obsidian-specify-path "~/MY_OBSIDIAN_FOLDER")
   (global-obsidian-mode t)
   :custom
   ;; This directory will be used for `obsidian-capture' if set.
   (obsidian-inbox-directory "Inbox")
-  :bind (:map obsidian-mode-map
-	      ;; Replace C-c C-o with Obsidian.el's implementation. It's ok to use another key binding.
-	      ("C-c C-o" . obsidian-follow-link-at-point)
-	      ;; Jump to backlinks
-	      ("C-c C-b" . obsidian-backlink-jump)
-	      ;; If you prefer you can use `obsidian-insert-link'
-	      ("C-c C-l" . obsidian-insert-wikilink)))
+  )
 #+end_src
 
 * UI
@@ -4247,7 +4250,7 @@ restart-emacs teaches Emacs to restart itself. I added a me/reload-init command 
 :END:
 [[https://github.com/radian-software/prescient.el][prescient.el]] teaches corfu and vertico better sorting and filtering.
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (use-package prescient
   :defer 1
   :config
