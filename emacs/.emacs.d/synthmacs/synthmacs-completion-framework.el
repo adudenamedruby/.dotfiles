@@ -392,7 +392,9 @@ targets."
 ;; [[file:../synthmacs.org::*corfu][corfu:1]]
 (use-package corfu
   :straight (corfu :files (:defaults "extensions/*")
-		   :includes (corfu-popupinfo))
+		   :includes (corfu-echo
+                              corfu-history
+                              corfu-popupinfo))
   :hook ((prog-mode . corfu-mode)
 	 (org-mode . corfu-mode)
 	 (corfu-mode . corfu-popupinfo-mode))
@@ -428,27 +430,27 @@ targets."
   ;; See also `corfu-exclude-modes'.
   )
 
-(use-package corfu-echo
-  :straight nil
-  :after corfu
-  :commands corfu-echo-mode
-  :init
-  (corfu-echo-mode 1))
+;; (use-package corfu-echo
+;;   :straight nil
+;;   :after corfu
+;;   :commands corfu-echo-mode
+;;   :init
+;;   (corfu-echo-mode 1))
 
-(use-package corfu-history
-  :straight nil
-  :after (corfu savehist)
-  :commands corfu-history-mode
-  :init
-  (add-to-list 'savehist-additional-variables 'corfu-history)
-  (corfu-history-mode 1))
+;; (use-package corfu-history
+;;   :straight nil
+;;   :after (corfu savehist)
+;;   :commands corfu-history-mode
+;;   :init
+;;   (add-to-list 'savehist-additional-variables 'corfu-history)
+;;   (corfu-history-mode 1))
 
-(use-package corfu-popupinfo
-  :straight nil
-  :after corfu
-  :commands corfu-popupinfo-mode
-  :init
-  (corfu-popupinfo-mode 1))
+;; (use-package corfu-popupinfo
+;;   :straight nil
+;;   :after corfu
+;;   :commands corfu-popupinfo-mode
+;;   :init
+;;   (corfu-popupinfo-mode 1))
 ;; corfu:1 ends here
 
 ;; [[file:../synthmacs.org::*Emacs & Corfu][Emacs & Corfu:1]]

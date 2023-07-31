@@ -3171,7 +3171,7 @@ Enable colors in the ~*compilation*~ buffer. Provided by a [[https://stackoverfl
   (let ((inhibit-read-only t))
     (ansi-color-apply-on-region (point-min) (point-max))))
 
-(add-hook 'compilation-filter-hook synthmacs/colorize-compilation-buffer)
+(add-hook 'compilation-filter-hook 'synthmacs/colorize-compilation-buffer)
 #+end_src
 
 ** which-key
@@ -3795,7 +3795,9 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
 #+begin_src emacs-lisp
 (use-package corfu
   :straight (corfu :files (:defaults "extensions/*")
-		   :includes (corfu-popupinfo))
+		   :includes (corfu-echo
+                              corfu-history
+                              corfu-popupinfo))
   :hook ((prog-mode . corfu-mode)
 	 (org-mode . corfu-mode)
 	 (corfu-mode . corfu-popupinfo-mode))
@@ -3831,27 +3833,27 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
   ;; See also `corfu-exclude-modes'.
   )
 
-(use-package corfu-echo
-  :straight nil
-  :after corfu
-  :commands corfu-echo-mode
-  :init
-  (corfu-echo-mode 1))
+;; (use-package corfu-echo
+;;   :straight nil
+;;   :after corfu
+;;   :commands corfu-echo-mode
+;;   :init
+;;   (corfu-echo-mode 1))
 
-(use-package corfu-history
-  :straight nil
-  :after (corfu savehist)
-  :commands corfu-history-mode
-  :init
-  (add-to-list 'savehist-additional-variables 'corfu-history)
-  (corfu-history-mode 1))
+;; (use-package corfu-history
+;;   :straight nil
+;;   :after (corfu savehist)
+;;   :commands corfu-history-mode
+;;   :init
+;;   (add-to-list 'savehist-additional-variables 'corfu-history)
+;;   (corfu-history-mode 1))
 
-(use-package corfu-popupinfo
-  :straight nil
-  :after corfu
-  :commands corfu-popupinfo-mode
-  :init
-  (corfu-popupinfo-mode 1))
+;; (use-package corfu-popupinfo
+;;   :straight nil
+;;   :after corfu
+;;   :commands corfu-popupinfo-mode
+;;   :init
+;;   (corfu-popupinfo-mode 1))
 #+end_src
 
 *** Emacs & Corfu

@@ -317,7 +317,7 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   (let ((inhibit-read-only t))
     (ansi-color-apply-on-region (point-min) (point-max))))
 
-(add-hook 'compilation-filter-hook synthmacs/colorize-compilation-buffer)
+(add-hook 'compilation-filter-hook 'synthmacs/colorize-compilation-buffer)
 ;; Colours in compilation buffer:1 ends here
 
 ;; [[file:../synthmacs.org::*which-key][which-key:1]]
