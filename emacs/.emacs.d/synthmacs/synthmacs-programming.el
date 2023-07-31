@@ -116,6 +116,11 @@
   (apheleia-global-mode +1))
 ;; Apheleia:1 ends here
 
+;; [[file:../synthmacs.org::*expand-region][expand-region:1]]
+(use-package expand-region
+  :bind ("C-=" . er/expand-region))
+;; expand-region:1 ends here
+
 ;; [[file:../synthmacs.org::*Treesitter][Treesitter:1]]
 (require 'treesit)
 

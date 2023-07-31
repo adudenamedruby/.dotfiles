@@ -105,6 +105,7 @@
   - [[#imenu][iMenu]]
   - [[#snippets][Snippets]]
   - [[#apheleia][Apheleia]]
+  - [[#expand-region][expand-region]]
   - [[#treesitter][Treesitter]]
 - [[#programming-languages][Programming Languages]]
   - [[#c--c][C & C++]]
@@ -4929,6 +4930,17 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 (use-package apheleia
   :config
   (apheleia-global-mode +1))
+#+end_src
+
+** expand-region
+:PROPERTIES:
+:CUSTOM_ID: h:B2C0A320-1857-469B-8A93-98CDD6AA7FF2
+:END:
+[[https://github.com/magnars/expand-region.el][Expand-region]] increases the selected region by semantic units. Just keep pressing the key until it selects what you want.
+
+#+begin_src emacs-lisp
+(use-package expand-region
+  :bind ("C-=" . er/expand-region))
 #+end_src
 
 ** Treesitter
