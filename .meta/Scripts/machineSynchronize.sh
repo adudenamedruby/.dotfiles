@@ -52,9 +52,6 @@ machineSynchronize() {
       b)
         brew_operation=true
         ;;
-      s)
-        spacemacs_operation=true
-        ;;
       a)
         dotfiles_operation=true
         repos_operation=true
@@ -74,11 +71,6 @@ machineSynchronize() {
   # Do something with the flags
   if $brew_operation; then
     brewOperation
-  fi
-
-  if $spacemacs_operation; then
-    #spacemacsOperation
-    printf "Skipping Spacemacs for now\n\n"
   fi
 
   if $repos_operation; then

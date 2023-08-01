@@ -22,7 +22,6 @@ syncCall () {
     echo "Warning: sync requires at least one argument to run."
     echo "Please provide one of the following arguments:"
     echo "   -b   runs brew update, upgrade, and clean"
-    echo "   -s   updates Spacemacs"
     echo "   -r   syncs all available personal repos"
     echo "   -d   syncs & stows dotfiles"
     echo "   -----------------------------------------"
