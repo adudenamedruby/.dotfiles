@@ -21,11 +21,13 @@
     :prefix "SPC" ;; set leader
     :global-prefix "M-SPC") ;; access leader in insert mode
 
+  ;; set up ',' as the local leader key
   (general-create-definer synthmacs/local-leader-keys
     :states '(normal visual)
     :keymaps 'override
     :prefix ","
     :global-prefix "SPC m")
+  
   (general-nmap
     :states 'nermal
     "gD" '(xref-find-references :wk "xref-references"))
@@ -154,8 +156,7 @@
 
 ;; [[file:../synthmacs.org::*Org bindings][Org bindings:1]]
 (synthmacs/leader-keys
-  "o" '(:ignore t :wk "org")
-  )
+  "o" '(:ignore t :wk "org"))
 ;; Org bindings:1 ends here
 
 ;; [[file:../synthmacs.org::*Project bindings][Project bindings:1]]
@@ -304,14 +305,17 @@ _q_: quit
   :config
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+  
   ;; I basically never want to go to the beginning of the line where I left
   ;; a mark. So I invert these two keys for easy access
   (define-key evil-normal-state-map "`" 'evil-goto-mark-line)
   (define-key evil-normal-state-map "'" 'evil-goto-mark)
   (define-key evil-visual-state-map "'" 'evil-goto-mark)
+  
   ;; Use visual line motions even outside of visual-line-mode buffers
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+  
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'normal)
   )
@@ -380,8 +384,7 @@ _q_: quit
   :after evil
   :demand
   :init
-  ;; disable pulses as it is more distracting than useful and
-  ;; less readable.
+  ;; disable pulses as it is more distracting than useful and less readable.
   (setq evil-goggles-pulse nil
 	evil-goggles-async-duration 0.1
 	evil-goggles-blocking-duration 0.05)

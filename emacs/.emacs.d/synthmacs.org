@@ -37,7 +37,11 @@
   - [[#initel-1][init.el]]
   - [[#initel-load-modules][init.el load modules]]
 - [[#package-management][Package Management]]
-  - [[#bootstrap-straight-and-straight-use-package][Bootstrap Straight and straight-use-package]]
+  - [[#initial-setup][Initial setup]]
+  - [[#debug][Debug]]
+  - [[#fetching-straightel][Fetching ~straight.el~]]
+  - [[#package-cleanup][Package cleanup]]
+  - [[#install-use-package][Install ~use-package~]]
 - [[#core-emacs-setup][Core Emacs Setup]]
   - [[#emacs-setup][Emacs Setup]]
   - [[#custom-variables][Custom variables]]
@@ -290,8 +294,8 @@ With that out of the way, the general outline of this file aims to be:
 
 ** early-init.el
 :PROPERTIES:
-:CUSTOM_ID: h:C134637C-76BC-4013-91BE-3D273C12C691
 :header-args: :emacs-lisp :tangle early-init.el
+:CUSTOM_ID: h:788D5D8A-006A-4EDE-B521-638F8748A716
 :END:
 #+BEGIN_SRC emacs-lisp
 ;;; early-init.el --- Synthmacs Early Init
@@ -305,8 +309,8 @@ With that out of the way, the general outline of this file aims to be:
 
 ** init.el
 :PROPERTIES:
-:CUSTOM_ID: h:0EDF1757-169B-4750-8262-415B599A4B53
 :header-args: :emacs-lisp :tangle init.el
+:CUSTOM_ID: h:7C4F5C5B-4588-4024-B1E0-A33B990C1A6E
 :END:
 #+begin_src emacs-lisp
 ;;; init.el --- Synthmacs Configuration -*- lexical-binding: t -*-
@@ -329,7 +333,7 @@ With that out of the way, the general outline of this file aims to be:
 ** synthmacs-core
 :PROPERTIES:
 :header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-core.el :mkdirp yes
-:CUSTOM_ID: h:6C65C946-EAFF-4F1D-9501-0DC155A3719A
+:CUSTOM_ID: h:8FB27D57-FDBE-48E7-80EB-9B7B50594FD5
 :END:
 The header of this file alse has the ~:mkdirp yes~ argument. This is because, in the case that the ~./synthmacs/~ folder doesn't exist when tangling the file, we should create it without worrying about failures.
 #+begin_src emacs-lisp
@@ -345,7 +349,7 @@ The header of this file alse has the ~:mkdirp yes~ argument. This is because, in
 ** synthmacs-package-management
 :PROPERTIES:
 :header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-package-management.el
-:CUSTOM_ID: h:BECD851C-F8A3-42DF-947E-9BDA87337575
+:CUSTOM_ID: h:9A4136B8-4266-4211-AA67-0CD8D204C605
 :END:
 #+begin_src emacs-lisp
 ;;; synthmacs-package-management.el --- Synthmacs Package Management
@@ -360,7 +364,7 @@ The header of this file alse has the ~:mkdirp yes~ argument. This is because, in
 ** synthmacs-general-evil
 :PROPERTIES:
 :header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-general-evil.el
-:CUSTOM_ID: h:3CCD39F9-C228-4767-BBA8-0AA80322C01E
+:CUSTOM_ID: h:1B395F79-2E33-4F4A-8852-22A61E39A83C
 :END:
 #+begin_src emacs-lisp
 ;;; synthmacs-general-evil.el --- Synthmacs General Evil
@@ -375,7 +379,7 @@ The header of this file alse has the ~:mkdirp yes~ argument. This is because, in
 ** synthmacs-org
 :PROPERTIES:
 :header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-org.el
-:CUSTOM_ID: h:3C05F9B9-F006-44AC-8DEE-F9EA2E6E3DB2
+:CUSTOM_ID: h:7D27AB89-C6AE-4EFF-B811-53296CB55B57
 :END:
 #+begin_src emacs-lisp
 ;;; synthmacs-org.el --- Synthmacs Org
@@ -390,7 +394,7 @@ The header of this file alse has the ~:mkdirp yes~ argument. This is because, in
 ** synthmacs-ui
 :PROPERTIES:
 :header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-ui.el
-:CUSTOM_ID: h:46D11F9E-6108-4A88-888B-4DDBA1AD316A
+:CUSTOM_ID: h:F42936B0-634E-41E6-93AC-F68B6778DD80
 :END:
 #+begin_src emacs-lisp
 ;;; synthmacs-ui.el --- Synthmacs UI
@@ -405,7 +409,7 @@ The header of this file alse has the ~:mkdirp yes~ argument. This is because, in
 ** synthmacs-completion-framework
 :PROPERTIES:
 :header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-completion-framework.el
-:CUSTOM_ID: h:D7BA43FA-DCD5-49A8-A972-13FCE0465438
+:CUSTOM_ID: h:480FA19E-4D31-4E20-AA44-B81E48EB6E12
 :END:
 #+begin_src emacs-lisp
 ;;; synthmacs-completion-framework.el --- Synthmacs Completion Frameworks
@@ -420,7 +424,7 @@ The header of this file alse has the ~:mkdirp yes~ argument. This is because, in
 ** synthmacs-tools
 :PROPERTIES:
 :header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-tools.el
-:CUSTOM_ID: h:3DE0D1E2-51E9-4DCC-96BD-227464214C7C
+:CUSTOM_ID: h:A1AFF28B-01EC-454C-B682-D4DEE947316E
 :END:
 #+begin_src emacs-lisp
 ;;; synthmacs-tools.el --- Synthmacs Useful Tools
@@ -435,7 +439,7 @@ The header of this file alse has the ~:mkdirp yes~ argument. This is because, in
 ** synthmacs-programming
 :PROPERTIES:
 :header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-programming.el
-:CUSTOM_ID: h:CE800ACA-533D-4E20-8E62-75AB021FE36A
+:CUSTOM_ID: h:CCBA1130-9F40-456E-974C-12A85F8D50CA
 :END:
 #+begin_src emacs-lisp
 ;;; synthmacs-programming.el --- Synthmacs Programming Environment
@@ -450,7 +454,7 @@ The header of this file alse has the ~:mkdirp yes~ argument. This is because, in
 ** synthmacs-programming-languages
 :PROPERTIES:
 :header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-programming-languages.el
-:CUSTOM_ID: h:320148C4-896F-4FFF-90CD-08E91DCCED9E
+:CUSTOM_ID: h:534FC795-1F02-4052-9CA7-083E406F17C4
 :END:
 #+begin_src emacs-lisp
 ;;; synthmacs-programming-languages.el --- Synthmacs Programming Languages
@@ -472,15 +476,6 @@ The header of this file alse has the ~:mkdirp yes~ argument. This is because, in
 :CUSTOM_ID: h:7DBC58C1-3944-437C-87F9-95C9202BD34E
 :header-args: :emacs-lisp :tangle early-init.el
 :END:
-
-*** Header
-:PROPERTIES:
-:CUSTOM_ID: h:CDE376DB-BA7E-459F-B1BD-F423C530C414
-:END:
-#+begin_src emacs-lisp
-;;; early-init.el --- Early Init File -*- lexical-binding: t; no-byte-compile: t -*-
-;; NOTE: early-init.el is now generated from synthmacs.org.  Please edit that file instead
-#+end_src
 
 *** Disable package/UI at first
 :PROPERTIES:
@@ -586,9 +581,7 @@ Following DOOM, we max the garbage collection threshold on startup, and reset it
 :PROPERTIES:
 :CUSTOM_ID: h:470961E9-E775-4F50-861D-CC1A2616B4A1
 :END:
-Make elisp in this file behave like we expect these days. Everyone has this set, but no one explains why. In non-elisp speak, it adds proper scoping and “closure” behaviour to variables. This [[https://www.emacswiki.org/emacs/DynamicBindingVsLexicalBinding][Emacswiki article]] explains it well.
-
-Furthermore, to comply with Emacs conventions for libraries, the tangled ~init.el~ must have[[#h:0EDF1757-169B-4750-8262-415B599A4B53][the following header]].
+Make elisp in this file behave like we expect these days. Everyone has this set, but no one explains why. In non-elisp speak, it adds proper scoping and “closure” behaviour to variables. This [[https://www.emacswiki.org/emacs/DynamicBindingVsLexicalBinding][Emacswiki article]] explains it well. Furthermore, to comply with Emacs conventions for libraries, the tangled ~init.el~ must have [[#h:0EDF1757-169B-4750-8262-415B599A4B53][the following header]].
 
 *** Improve I/O
 :PROPERTIES:
@@ -601,7 +594,6 @@ Optimizations for improving I/O performance. Increase max bytes read from a sub-
 
 ;; Ensure Synthmacs is running out of this file's directory
 (setq user-emacs-directory (file-truename (file-name-directory load-file-name)))
-
 #+END_SRC
 
 ** init.el load modules
@@ -609,6 +601,7 @@ Optimizations for improving I/O performance. Increase max bytes read from a sub-
 :CUSTOM_ID: h:7B22A4F3-49A1-4848-A185-B4EEA060EECE
 :header-args: :emacs-lisp :tangle init.el
 :END:
+
 #+begin_src emacs-lisp
 (message "SynthMacs is powering up, please be patient...")
 
@@ -633,28 +626,23 @@ Optimizations for improving I/O performance. Increase max bytes read from a sub-
 * Package Management
 :PROPERTIES:
 :CUSTOM_ID: h:F8B6E0EE-7BBD-4F7F-B31E-44DE7B43AA39
+:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-package-management.el
 :END:
-
-** Bootstrap Straight and straight-use-package
-:PROPERTIES:
-:CUSTOM_ID: h:686F7A63-013E-48ED-AC56-DF39BD398E20
-:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-package-management.el :mkdirp yes
-:END:
-
 [[https://github.com/raxod502/straight.el][straight.el]] is used to download packages for us from all over the web. It stores them all in their respective git folders in ~.emacs.d/straight~, which makes debugging, and contributing fixes back upstream as easy as possible.
 
 First, we configure some settings for ~staight.el~ to better integrate with ~use-package~. [[https://github.com/jwiegley/use-package][use-package]] is a nice and consistent way to declare packages and their respective configs.
 
 Some rules/conventions:
 
-- Prefer ~:init~ to ~:custom~. Prefer multiple ~setq~ expressions to one.
-- Default to ~:defer t~
-- Use ~:demand~ to force loading
-- When packages do not require installation e.g. ~dired~, we need ~:straight (:type built-in)~ 
-- If you specify ~:commands~, they will be autoloaded and the package will be loaded when the commands are first executed
++ Prefer ~:init~ to ~:custom~
++ Prefer multiple ~setq~ expressions to one.
++ Default to ~:defer t~
++ Use ~:demand~ to force loading
++ When packages do not require installation from the web, e.g. ~dired~, we need ~:straight (:type built-in)~ 
++ If you specify ~:commands~, they will be autoloaded and the package will be loaded when the commands are first executed
   + If you use ~:general~ and bind commands to keys it will automatically load the package on first invokation
 
-*** Initial setup
+** Initial setup
 :PROPERTIES:
 :CUSTOM_ID: h:DC526D93-55D3-4D6E-88A1-2696A7753D3E
 :END:
@@ -670,7 +658,7 @@ First, let's set ~Straight~ straight, by setting some defaults for it.
 (setq use-package-always-defer t)
 #+END_SRC
 
-*** Debug
+** Debug
 :PROPERTIES:
 :CUSTOM_ID: h:3F452C31-8C7C-4F5C-AE0C-66923780EE16
 :END:
@@ -679,11 +667,10 @@ We want to enable debugging whenever we encounter an error. I go back and forth 
 (setq debug-on-error t)
 #+end_src
 
-*** Fetching ~straight.el~
+** Fetching ~straight.el~
 :PROPERTIES:
 :CUSTOM_ID: h:5F148603-9BBF-4A65-A09A-6A616B8DAAFC
 :END:
-
 #+BEGIN_SRC emacs-lisp
 (setq straight-repository-branch "develop")
 (defvar bootstrap-version)
@@ -700,7 +687,7 @@ We want to enable debugging whenever we encounter an error. I go back and forth 
   (load bootstrap-file nil 'nomessage))
 #+END_SRC
 
-*** Package cleanup
+** Package cleanup
 :PROPERTIES:
 :CUSTOM_ID: h:B5393607-D2E9-448C-9A72-3027EE6D1101
 :END:
@@ -710,7 +697,7 @@ Let’s load an optional package which gives us some convenience functions, like
 (require 'straight-x)
 #+end_src
 
-*** Install ~use-package~
+** Install ~use-package~
 :PROPERTIES:
 :CUSTOM_ID: h:B461CF7F-5DD9-48E7-8DC7-EECDCBEF418D
 :END:
@@ -757,7 +744,7 @@ Some general things to set up:
 :PROPERTIES:
 :CUSTOM_ID: h:2CF7E703-8836-4976-9AEB-17D4C86131AA
 :END:
-Since I will be letting ~evil~ use ~C-u~, I should rebind ~universal-argument to something else. It will be ~C-M-u~
+Since I will be letting ~evil~ use ~C-u~, I should rebind ~universal-argument~ to something else. That something else will be ~C-M-u~.
 #+begin_src emacs-lisp
 (use-package emacs
   :init
@@ -780,7 +767,7 @@ Who is using Synthmacs?
 :PROPERTIES:
 :CUSTOM_ID: h:1FFE6051-E84B-438A-9FA9-BB6A6EFBE77F
 :END:
-They are annoying and it's much more idiomatic to type y or n for these types of things anyway. So let's make sure Synthmacs confornms to this.
+The "yes-or-no" prompts are annoying and it's much more idiomatic to type y or n for these types of things anyway. So let's make sure Synthmacs confornms to this.
 
 #+begin_src emacs-lisp
 (use-package emacs
@@ -815,6 +802,7 @@ Emacs is very conservative about assuming encoding. Everything is utf-8 these da
 :CUSTOM_ID: h:9E1EAAC3-9A7D-48C6-95D3-B98A8D8C1861
 :END:
 Recent files. Enable them for nice navigation from the dashboard, ~consult-recent-files~, and so on.
+
 #+begin_src emacs-lisp
 (use-package emacs
   :init
@@ -833,6 +821,7 @@ Recent files. Enable them for nice navigation from the dashboard, ~consult-recen
 :CUSTOM_ID: h:2A391835-2D45-4E8E-87C1-823E3B5402A8
 :END:
 The ESC key should not be a modifier, but should behave as per its namesake.
+
 #+begin_src emacs-lisp
 (use-package emacs
   :init
@@ -861,6 +850,7 @@ I prefer having ~custom~ modify its own file. This next snippet ensures any pack
 :CUSTOM_ID: h:DD2D8AFF-4FB3-4157-8A5E-F8A71509C869
 :END:
 Autosaving is great, but stop littering the file system with backup files all over the place. Maybe I'll really want this in the future. For now, it's a hard no.
+
 #+begin_src emacs-lisp
 (use-package emacs
   :init
@@ -873,12 +863,11 @@ Autosaving is great, but stop littering the file system with backup files all ov
 :PROPERTIES:
 :CUSTOM_ID: h:D92031FF-2EE5-4894-B10E-7E3B36E5876D
 :END:
-I work with symlinks a fair bit of the time. Let's make sure that when I am working with them, I'm going to the actual file, because, really, that's what I want to edit.
+I work with symlinks a fair bit of the time. Let's make sure that when I am opening them, I'm going to the actual file, because, really, that's what I want to edit.
 
 #+begin_src emacs-lisp
 (use-package emacs
   :init
-  ;; follow symlinks 
   (setq vc-follow-symlinks t))
 #+end_src
 
@@ -886,7 +875,7 @@ I work with symlinks a fair bit of the time. Let's make sure that when I am work
 :PROPERTIES:
 :CUSTOM_ID: h:B186EAC9-0310-4C0D-93A4-3F3B9D9C96A8
 :END:
-Hide it if we're in a window. I go back and forth on hiding the menu. I like it being there, but I've never used it, so why is it there?
+Hide the chrome if we're in a window. I go back and forth on hiding the menu. I like it being there, but I've never used it, so why is it there?
 
 #+begin_src emacs-lisp
 (use-package emacs
@@ -905,6 +894,7 @@ Hide it if we're in a window. I go back and forth on hiding the menu. I like it 
 :PROPERTIES:
 :CUSTOM_ID: h:7B6C9DD0-B689-471C-904B-299C56F20AC7
 :END:
+
 #+begin_src emacs-lisp
 (use-package emacs
   :init
@@ -913,18 +903,28 @@ Hide it if we're in a window. I go back and forth on hiding the menu. I like it 
 	scroll-margin 5
 	scroll-preserve-screen-position 't)
 
-  ;; Enables having the line the cursor is on be highlighted
+  ;; Enables having the line the cursor is on be highlighted for easily
+  ;; finding the cursor and your location
   (global-hl-line-mode 1)
 
   ;; enable winner mode globally for undo/redo window layout changes
   (winner-mode t)
-
-  (show-paren-mode t)
   )
-
 #+end_src
 
-*** Other
+*** Parens
+:PROPERTIES:
+:CUSTOM_ID: h:2378B43A-C32A-46DE-B7F4-73029F27D079
+:END:
+Seeing the relative parens highlighted isn't just useful for LISPs. It's just darn useful all around!
+
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
+  (show-paren-mode t))
+#+end_src
+
+*** Indenting
 :PROPERTIES:
 :CUSTOM_ID: h:5C66A615-DF0F-43EC-8446-28ADEBF553F8
 :END:
@@ -939,15 +939,23 @@ Hide it if we're in a window. I go back and forth on hiding the menu. I like it 
   ;; Completion is often bound to M-TAB.
   (setq tab-always-indent 'complete)
 
-  (global-prettify-symbols-mode 1)
 
   ;; ------------------ Indent Behaviours ---------------------
   ;; Electric indent mode messes up with a bunch of languages indenting.
   ;; So disable it.
   (setq electric-indent-inhibit t)
+  )
+#+end_src
 
+*** Other
+:PROPERTIES:
+:CUSTOM_ID: h:FC417D6E-F204-4903-8DE7-E816E08A81E4
+:END:
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
+  (global-prettify-symbols-mode 1)
   (global-visual-line-mode t)
-
   )
 #+end_src
 
@@ -956,7 +964,6 @@ Hide it if we're in a window. I go back and forth on hiding the menu. I like it 
 :CUSTOM_ID: h:6BB5DBD1-2222-429E-8227-7F420E786E77
 :END:
 #+begin_src emacs-lisp
-;; reopening the last killed buffer
 (use-package emacs
   :init
   (defcustom synthmacs/default-font-family "FiraCode Nerd Font" 
@@ -970,9 +977,9 @@ Hide it if we're in a window. I go back and forth on hiding the menu. I like it 
     :group 'synthmacs)
   
   (defcustom synthmacs--killed-buffer-list nil
-    "List of recently killed buffers.")
+    "List of recently killed buffers, used for undoing a kill-buffer command.")
   )
-    #+end_src
+#+end_src
 
 ** Fonts
 :PROPERTIES:
@@ -1000,6 +1007,7 @@ Hide it if we're in a window. I go back and forth on hiding the menu. I like it 
 :PROPERTIES:
 :CUSTOM_ID: h:7C608EDA-7A99-49BB-BBCD-65E4CFCA0ED0
 :END:
+I still mostly have to clean these up and find a better place for them. I do not like how they're floating around without a home.
 
 *** Buffers
 :PROPERTIES:
@@ -1062,6 +1070,7 @@ to the `killed-buffer-list` when killing the buffer."
 :PROPERTIES:
 :CUSTOM_ID: h:B0981CAF-B4C2-499E-A218-788F1491D0A3
 :END:
+Straight outta Spacemacs. Not usually useful, but once in a while, killer useful.
 
 #+begin_src emacs-lisp
 (defun synthmacs//directory-path ()
@@ -1159,7 +1168,7 @@ buffer."
 :PROPERTIES:
 :CUSTOM_ID: h:B40ACBE6-248E-401A-98F1-B719695D1FE2
 :END:
-Taken from DOOM
+Taken from DOOM.
 
 #+begin_src emacs-lisp
 (use-package emacs
@@ -1202,11 +1211,13 @@ windows (unlike `doom/window-maximize-buffer'). Activate again to undo."
                  (add-hook 'doom-switch-window-hook #'doom--enlargened-forget-last-wconf-h)))))))))
   )
 #+end_src
+
 *** Renaming files & buffers
 :PROPERTIES:
 :CUSTOM_ID: h:394285B9-12FD-4DB8-B82F-3FDAE36AECDC
 :END:
 From Spacemacs.
+
 #+begin_src emacs-lisp
 (defun synthmacs/rename-current-buffer-file (&optional arg)
   "Rename the current buffer and the file it is visiting.
@@ -1304,7 +1315,7 @@ initialized with the current directory instead of filename."
 :PROPERTIES:
 :CUSTOM_ID: h:14B4AD1F-CC7B-42BF-8C28-33019F387080
 :END:
-From SystemCrafters
+From SystemCrafters.
 
 #+begin_src emacs-lisp
 (defun synthmacs/minibuffer-backwards-kill (arg)
@@ -1322,6 +1333,8 @@ folder; otherwise, delete a character backwards."
 :PROPERTIES:
 :CUSTOM_ID: h:86C4D8A2-9E75-46C9-AE4B-F4DBBDC9AA61
 :END:
+Symbolicate! Like "Engage!", but prettier.
+
 #+begin_src emacs-lisp
 (defun synthmacs/my-add-pretty-symbol ()
   (setq prettify-symbols-alist
@@ -1343,14 +1356,13 @@ folder; otherwise, delete a character backwards."
   (interactive)
   (save-some-buffers nil t)
   (kill-emacs))
-
 #+end_src
 
 ** Garbage collector magic hack
 :PROPERTIES:
 :CUSTOM_ID: h:42E8D107-2954-49CB-8E38-33CF300BABDE
 :END:
-Inspired by DOOMs use of this to manage garbage collection
+Inspired by DOOMs use of this to manage garbage collection. For some reason, it doesn't work, and Emacs gives me a "can't find package" error.
 
 #+begin_src emacs-lisp :tangle no
 (use-package gcmh
@@ -1363,7 +1375,7 @@ Inspired by DOOMs use of this to manage garbage collection
 :PROPERTIES:
 :CUSTOM_ID: h:23600A76-1CDE-48FE-9024-163E861F2F0C
 :END:
-Basically tries to clean up the ~emacs.d~ directory by creating consistent placement for files.
+Basically tries to clean up the ~emacs.d~ directory by creating consistent placement for files. For some reason, it doesn't work, and Emacs gives me a "can't find package" error.
 
 #+begin_src emacs-lisp :tangle no
 (use-package 'no-littering)
@@ -1373,7 +1385,7 @@ Basically tries to clean up the ~emacs.d~ directory by creating consistent place
 :PROPERTIES:
 :CUSTOM_ID: h:7B34AC43-8F07-4754-9360-0592CBDBAF9F
 :END:
-In programming, missing parens and the like are a pain to track down. Let's automate some of that to decrease the likely hood of this actually happening.
+In programming, missing parens and the like are a pain to track down. Let's automate some of that to decrease the likely hood of this actually happening. I found this online but I'm not... 100% sure what it does, so I'm disabling it for now, while I figure it out.
 
 #+begin_src emacs-lisp :tangle no
 (use-package emacs
@@ -1404,13 +1416,17 @@ In programming, missing parens and the like are a pain to track down. Let's auto
 :PROPERTIES:
 :CUSTOM_ID: h:51F9CE5B-C63C-4235-A063-3DF4A84ED457
 :END:
+~Rg~ and ~fd~ are <3
 
 #+begin_src emacs-lisp
-(when (executable-find "rg")
-  (setq grep-program "rg"))
+(use-package emacs
+  :init
+  (when (executable-find "rg")
+    (setq grep-program "rg"))
 
-(when (executable-find "fd")
-  (setq find-program "fd"))
+  (when (executable-find "fd")
+    (setq find-program "fd"))
+  )
 #+end_src
 
 ** xref
@@ -1456,11 +1472,13 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
     :prefix "SPC" ;; set leader
     :global-prefix "M-SPC") ;; access leader in insert mode
 
+  ;; set up ',' as the local leader key
   (general-create-definer synthmacs/local-leader-keys
     :states '(normal visual)
     :keymaps 'override
     :prefix ","
     :global-prefix "SPC m")
+  
   (general-nmap
     :states 'nermal
     "gD" '(xref-find-references :wk "xref-references"))
@@ -1471,6 +1489,7 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
 :PROPERTIES:
 :CUSTOM_ID: h:F8198789-D8ED-49CF-88F5-C6619539211E
 :END:
+Here, I'm either defining generic bindings OR setting up prefixes for things that I know I'll be using. This section was heavily inspired by Spacemacs.
 
 *** Application bindings
 :PROPERTIES:
@@ -1646,8 +1665,7 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
 :END:
 #+begin_src emacs-lisp
 (synthmacs/leader-keys
-  "o" '(:ignore t :wk "org")
-  )
+  "o" '(:ignore t :wk "org"))
 #+end_src
 
 *** Project bindings
@@ -1741,6 +1759,8 @@ NOTE: We need to load ~general~ before ~evil~, otherwise the ~:general~ keyword 
 :PROPERTIES:
 :CUSTOM_ID: h:E25DB824-33FC-457C-9547-B457A4019A0F
 :END:
+Hydra gives us a really nice way to set up some popups for temporary, but repeatable actions.
+
 #+begin_src emacs-lisp
 (use-package hydra
   :general
@@ -1804,7 +1824,7 @@ _q_: quit
 :PROPERTIES:
 :CUSTOM_ID: h:D64CA666-A9A1-4DE2-900D-32E3726F6792
 :END:
-We're in agreement that Vim motions are *the way*. Thus, we'll make Synthmacs behave like Vim, when it comes to text editing. There are a number of other evil packages which add vim-like bindings to various modes, and they're all (ie, the ones we use) added here.
+We're in agreement that Vim motions are *the way*, right? Thus, we'll make Synthmacs behave like Vim, when it comes to text editing. There are a number of other evil packages which add vim-like bindings to various modes, and they're all added here.
 
 NOTE: other evil packages (like [[#h:29AD92F1-04AB-4CE5-91F4-A1E4B187F0CE][evil-lisp-state]]) may exist in the config, but be placed in more appropriate locations.
 
@@ -1812,6 +1832,8 @@ NOTE: other evil packages (like [[#h:29AD92F1-04AB-4CE5-91F4-A1E4B187F0CE][evil-
 :PROPERTIES:
 :CUSTOM_ID: h:E03B3DCB-697A-4FD2-8C32-51BF96A5DF8B
 :END:
+Emacs VIm emulation Layer! Yum.
+
 #+begin_src emacs-lisp
 (use-package evil
   :demand
@@ -1841,14 +1863,17 @@ NOTE: other evil packages (like [[#h:29AD92F1-04AB-4CE5-91F4-A1E4B187F0CE][evil-
   :config
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+  
   ;; I basically never want to go to the beginning of the line where I left
   ;; a mark. So I invert these two keys for easy access
   (define-key evil-normal-state-map "`" 'evil-goto-mark-line)
   (define-key evil-normal-state-map "'" 'evil-goto-mark)
   (define-key evil-visual-state-map "'" 'evil-goto-mark)
+  
   ;; Use visual line motions even outside of visual-line-mode buffers
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+  
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'normal)
   )
@@ -1858,6 +1883,7 @@ NOTE: other evil packages (like [[#h:29AD92F1-04AB-4CE5-91F4-A1E4B187F0CE][evil-
 :PROPERTIES:
 :CUSTOM_ID: h:D9672083-EF2E-4DB5-B911-6A6CD2D2C2BE
 :END:
+Basically, lets a count of searched things show up in the modeline. Delicious.
 #+begin_src emacs-lisp
 (use-package evil-anzu
   :demand
@@ -1879,7 +1905,6 @@ NOTE: other evil packages (like [[#h:29AD92F1-04AB-4CE5-91F4-A1E4B187F0CE][evil-
   :config
   (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
   (define-key evil-outer-text-objects-map "a" 'evil-outer-arg))
-
 #+end_src
 
 *** evil-cleverparens
@@ -1893,7 +1918,6 @@ NOTE: other evil packages (like [[#h:29AD92F1-04AB-4CE5-91F4-A1E4B187F0CE][evil-
   :config
   ;; `evil-cp-change` should move to point
   (evil-set-command-properties 'evil-cp-change :move-point t))
-
 #+end_src
 
 *** evil-collection
@@ -1952,8 +1976,7 @@ Fun visual tweak. When yanking, joining, deleting, changing, etc, it will briefl
   :after evil
   :demand
   :init
-  ;; disable pulses as it is more distracting than useful and
-  ;; less readable.
+  ;; disable pulses as it is more distracting than useful and less readable.
   (setq evil-goggles-pulse nil
 	evil-goggles-async-duration 0.1
 	evil-goggles-blocking-duration 0.05)
@@ -1972,13 +1995,13 @@ Fun visual tweak. When yanking, joining, deleting, changing, etc, it will briefl
 :PROPERTIES:
 :CUSTOM_ID: h:EFDDB64A-5F12-4643-B5EF-9A069B3BCCEE
 :END:
-Handly refactoring! Key bindings:
+Handly refactoring! Some key bindings:
 
-~TAB~     : toggle occurance
-~n~ / ~N~ : next / previous occurance
-~F~       : restrict scope to function
-~J~ / ~K~ : extend scope of match down/up
-~V~       : toggle visibility of matches
++ ~TAB~     : toggle occurance
++ ~n~ / ~N~   : next / previous occurance
++ ~F~       : restrict scope to function
++ ~J~ / ~K~   : extend scope of match down/up
++ ~V~       : toggle visibility of matches
 
 #+begin_src emacs-lisp
 (use-package evil-iedit-state
@@ -2020,7 +2043,6 @@ Example: ~glip=~ will left align inner paragraph on the ~=~ separator
 (use-package evil-matchit
   :init
   (global-evil-matchit-mode 1))
-
 #+end_src
 
 *** evil-numbers
@@ -2045,7 +2067,6 @@ _q_: quit
   ("+" evil-numbers/inc-at-pt)
   ("-" evil-numbers/dec-at-pt)
   ("q" nil :exit t))
-
 #+end_src
 
 *** evil-surround
@@ -2129,11 +2150,10 @@ Interesting bits:
           (org-emphasize ,char)))
 
 (use-package org
-  ;; :straight org-plus-contrib
-  ;; :straight (:type built-in)
   :hook ((org-mode . prettify-symbols-mode)
          (org-mode . visual-line-mode))
   :general
+  ;; These keybindings need some more work, but they're mostly there!
   (synthmacs/leader-keys
     "o[" 'org-agenda-file-to-front
     "o]" 'org-remove-file
@@ -2432,6 +2452,8 @@ Interesting bits:
 :PROPERTIES:
 :CUSTOM_ID: h:5415BD51-CBCC-46BD-85C2-7355CB5F88CE
 :END:
+Let's have a ToC without basicaly doing anything!
+
 #+begin_src emacs-lisp
 (use-package toc-org
   :commands toc-org-enable
@@ -2511,8 +2533,7 @@ Taken from https://writequit.org/articles/emacs-org-mode-generate-ids.html
 
 Problem: when exporting org files to HTML, the header anchors are volatile. Once I publish a new HTML version of this file, the previous version's links are no longer valid.
 
-This function adds ~CUSTOM_ID~ property to all headings in a file (one-time).
-We can then use this to link to that heading forever.
+This function adds ~CUSTOM_ID~ property to all headings in a file (one-time). We can then use this to link to that heading forever.
 
 Adding it as a ~after-save-hook~  automatically adds a ~CUSTOM_ID~ to newly created headers.
 
@@ -2629,10 +2650,7 @@ Taken from https://github.com/KaratasFurkan/.emacs.d
        (format command
 	       (expand-file-name "synthmacs.org" user-emacs-directory)
 	       (expand-file-name "init.el" user-emacs-directory))
-       "tangle-process")
-      )
-    )
-  )
+       "tangle-process"))))
 #+end_src
 
 ** org-tree-slide
@@ -3050,6 +3068,7 @@ For the moment, I'm loading a ton of themes and experimenting with them. However
 :CUSTOM_ID: h:BD6AA932-6150-4DD5-B27D-B35286DD7230
 :END:
 Some functions for themes. Notably, I set:
+
 + a default, fallback theme
 + a list of some of my favourite themes
 + the ability to cycle through that list
@@ -3642,7 +3661,7 @@ Persist history over Emacs restarts. Vertico sorts by history position.
 :PROPERTIES:
 :CUSTOM_ID: h:3997A77C-E1E4-4B26-88DA-ECAE5794367B
 :END:
-A few more useful Emacs configs for Vectico
+A few more useful Emacs configs for Vectico.
 
 #+begin_src emacs-lisp
 (use-package emacs
@@ -3718,6 +3737,7 @@ A few more useful Emacs configs for Vectico
 
     "ttt" '(consult-theme :wk "consult-themes")
     )
+  ;; These are from the consult repo. I'm not enabling everything, but will explore
   ;; Replace bindings. Lazily loaded due by `use-package'.
   ;; :bind (;; C-c bindings in `mode-specific-map'
   ;; ("C-c M-x" . consult-mode-command)
@@ -3920,7 +3940,6 @@ A few more useful Emacs configs for Vectico
                  (window-parameters (mode-line-format . none))))
   )
 
-
 ;; --------------- Use Embark in WhichKey -------------
 (defun embark-which-key-indicator ()
   "An embark indicator that displays keymaps using which-key.
@@ -3945,10 +3964,10 @@ targets."
        nil nil t (lambda (binding)
                    (not (string-suffix-p "-argument" (cdr binding))))))))
 
-;; (setq embark-indicators
-;;   '(embark-which-key-indicator
-;;     embark-highlight-indicator
-;;     embark-isearch-highlight-indicator))
+(setq embark-indicators
+  '(embark-which-key-indicator
+    embark-highlight-indicator
+    embark-isearch-highlight-indicator))
 
 (defun embark-hide-which-key-indicator (fn &rest args)
   "Hide the which-key indicator immediately when using the completing-read prompter."
@@ -3957,8 +3976,8 @@ targets."
          (remq #'embark-which-key-indicator embark-indicators)))
     (apply fn args)))
 
-;; (advice-add #'embark-completing-read-prompter
-;;             :around #'embark-hide-which-key-indicator)
+(advice-add #'embark-completing-read-prompter
+            :around #'embark-hide-which-key-indicator)
 
 ;; -------- Package actions using Straight -------------
 ;; (defvar-keymap embark-straight-map
@@ -4058,6 +4077,7 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
   ;; See also `corfu-exclude-modes'.
   )
 
+;; These error out for some reason. FIXME!
 ;; (use-package corfu-echo
 ;;   :straight nil
 ;;   :after corfu
@@ -4100,7 +4120,6 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
   ;; Enable indentation+completion using the TAB key.
   ;; `completion-at-point' is often bound to M-TAB.
   (setq tab-always-indent 'complete))
-
 #+end_src
 
 *** kind-icon
@@ -4120,7 +4139,6 @@ Icons in corfu? Yes please.
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 #+end_src
 
-
 * Useful Tools
 :PROPERTIES:
 :CUSTOM_ID: h:B57C03F6-2111-489A-9303-B1A06C95EFF5
@@ -4131,9 +4149,14 @@ Icons in corfu? Yes please.
 :PROPERTIES:
 :CUSTOM_ID: h:895ADECA-8F1A-4FBB-A930-871EE0B6D4D8
 :END:
+An interesting file browser built on top of Dired. Do I mess with this? Or do I go with something like treemacs, which I like? I'm gonna have to experiment. Disabled ford now.
 
 #+begin_src emacs-lisp :tangle no
 (use-package dirvish
+  :general
+  (synthmacs/leader-keys
+    "fm" '(dirvish :wk "file manager")
+    "ft" '(dirvish-side :wk "file tree"))
   :init
   (dirvish-override-dired-mode)
   :config
@@ -4143,10 +4166,6 @@ Icons in corfu? Yes please.
 	dirvish-side-width 45
 	dirvish-side-follow-mode t
 	))
-
-(synthmacs/leader-keys
-  "fm" '(dirvish :wk "file manager")
-  "ft" '(dirvish-side :wk "file tree"))
 
 ;; Addtional syntax highlighting for dired
 (use-package diredfl
@@ -4269,6 +4288,8 @@ FlySpell does a lot out of the box, therefore I have a very basic config.
 :PROPERTIES:
 :CUSTOM_ID: h:949B41C1-C4A4-484B-9A6A-76A07DBBFCB1
 :END:
+A much nicer interface for when using ~describe-*~
+
 #+begin_src emacs-lisp
 (use-package helpful
   :after evil
@@ -4390,6 +4411,7 @@ FlySpell does a lot out of the box, therefore I have a very basic config.
 :PROPERTIES:
 :CUSTOM_ID: h:C8E39F4E-D75F-4031-8205-F1A7F865B91A
 :END:
+Whitespace is a pain when working with git and I don't want to aritificially inflate my git commits. WS-Butler will help with this.
 
 #+begin_src emacs-lisp
 (use-package ws-butler
@@ -4670,6 +4692,7 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
   :config
   (setq mastodon-instance-url "https://fosstodon.org"))
 #+end_src
+
 * Programming Environment
 :PROPERTIES:
 :CUSTOM_ID: h:2E967F87-8304-4262-B5BF-3286ACA7211B
@@ -5099,6 +5122,7 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 :CUSTOM_ID: h:4B8F69EC-EAAD-4D66-B18F-64EEAC79A9AF
 :END:
 [[https://github.com/radian-software/apheleia][Apheleia]] is an Emacs package that automatically formats code to make it more legible every time you save the code base. Unlike many code-formatting tools, Apheleia works asynchronously to restructure your code without actually pausing your work as it’s processing. Code is reformatted in the background and applied only when Apheleia detects that formatting has changed. Apheleia uses smart logic to prevent a jump in your current cursor position, so you can continue working without interruption, even as your code is formatted in real time.
+
 #+begin_src emacs-lisp
 (use-package apheleia
   :config

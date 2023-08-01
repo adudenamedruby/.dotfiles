@@ -133,6 +133,7 @@
 
     "ttt" '(consult-theme :wk "consult-themes")
     )
+  ;; These are from the consult repo. I'm not enabling everything, but will explore
   ;; Replace bindings. Lazily loaded due by `use-package'.
   ;; :bind (;; C-c bindings in `mode-specific-map'
   ;; ("C-c M-x" . consult-mode-command)
@@ -323,7 +324,6 @@
                  (window-parameters (mode-line-format . none))))
   )
 
-
 ;; --------------- Use Embark in WhichKey -------------
 (defun embark-which-key-indicator ()
   "An embark indicator that displays keymaps using which-key.
@@ -348,10 +348,10 @@ targets."
        nil nil t (lambda (binding)
                    (not (string-suffix-p "-argument" (cdr binding))))))))
 
-;; (setq embark-indicators
-;;   '(embark-which-key-indicator
-;;     embark-highlight-indicator
-;;     embark-isearch-highlight-indicator))
+(setq embark-indicators
+  '(embark-which-key-indicator
+    embark-highlight-indicator
+    embark-isearch-highlight-indicator))
 
 (defun embark-hide-which-key-indicator (fn &rest args)
   "Hide the which-key indicator immediately when using the completing-read prompter."
@@ -360,8 +360,8 @@ targets."
          (remq #'embark-which-key-indicator embark-indicators)))
     (apply fn args)))
 
-;; (advice-add #'embark-completing-read-prompter
-;;             :around #'embark-hide-which-key-indicator)
+(advice-add #'embark-completing-read-prompter
+            :around #'embark-hide-which-key-indicator)
 
 ;; -------- Package actions using Straight -------------
 ;; (defvar-keymap embark-straight-map
@@ -440,6 +440,7 @@ targets."
   ;; See also `corfu-exclude-modes'.
   )
 
+;; These error out for some reason. FIXME!
 ;; (use-package corfu-echo
 ;;   :straight nil
 ;;   :after corfu

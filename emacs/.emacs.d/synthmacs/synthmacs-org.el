@@ -15,11 +15,10 @@
           (org-emphasize ,char)))
 
 (use-package org
-  ;; :straight org-plus-contrib
-  ;; :straight (:type built-in)
   :hook ((org-mode . prettify-symbols-mode)
          (org-mode . visual-line-mode))
   :general
+  ;; These keybindings need some more work, but they're mostly there!
   (synthmacs/leader-keys
     "o[" 'org-agenda-file-to-front
     "o]" 'org-remove-file
@@ -439,10 +438,7 @@
        (format command
 	       (expand-file-name "synthmacs.org" user-emacs-directory)
 	       (expand-file-name "init.el" user-emacs-directory))
-       "tangle-process")
-      )
-    )
-  )
+       "tangle-process"))))
 ;; Tangling this file:1 ends here
 
 ;; [[file:../synthmacs.org::*org-tree-slide][org-tree-slide:1]]

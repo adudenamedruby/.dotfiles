@@ -107,7 +107,6 @@
 ;; [[file:../synthmacs.org::*Symlinks][Symlinks:1]]
 (use-package emacs
   :init
-  ;; follow symlinks 
   (setq vc-follow-symlinks t))
 ;; Symlinks:1 ends here
 
@@ -132,17 +131,22 @@
 	scroll-margin 5
 	scroll-preserve-screen-position 't)
 
-  ;; Enables having the line the cursor is on be highlighted
+  ;; Enables having the line the cursor is on be highlighted for easily
+  ;; finding the cursor and your location
   (global-hl-line-mode 1)
 
   ;; enable winner mode globally for undo/redo window layout changes
   (winner-mode t)
-
-  (show-paren-mode t)
   )
 ;; Scrolling behaviours:1 ends here
 
-;; [[file:../synthmacs.org::*Other][Other:1]]
+;; [[file:../synthmacs.org::*Parens][Parens:1]]
+(use-package emacs
+  :init
+  (show-paren-mode t))
+;; Parens:1 ends here
+
+;; [[file:../synthmacs.org::*Indenting][Indenting:1]]
 (use-package emacs
   :init
   ;; use common convention for indentation by default
@@ -153,20 +157,23 @@
   ;; Completion is often bound to M-TAB.
   (setq tab-always-indent 'complete)
 
-  (global-prettify-symbols-mode 1)
 
   ;; ------------------ Indent Behaviours ---------------------
   ;; Electric indent mode messes up with a bunch of languages indenting.
   ;; So disable it.
   (setq electric-indent-inhibit t)
+  )
+;; Indenting:1 ends here
 
+;; [[file:../synthmacs.org::*Other][Other:1]]
+(use-package emacs
+  :init
+  (global-prettify-symbols-mode 1)
   (global-visual-line-mode t)
-
   )
 ;; Other:1 ends here
 
 ;; [[file:../synthmacs.org::*Custom variables][Custom variables:1]]
-;; reopening the last killed buffer
 (use-package emacs
   :init
   (defcustom synthmacs/default-font-family "FiraCode Nerd Font" 
@@ -180,7 +187,7 @@
     :group 'synthmacs)
   
   (defcustom synthmacs--killed-buffer-list nil
-    "List of recently killed buffers.")
+    "List of recently killed buffers, used for undoing a kill-buffer command.")
   )
 ;; Custom variables:1 ends here
 
@@ -513,11 +520,14 @@ folder; otherwise, delete a character backwards."
 ;; Quit (but save before doing so!):1 ends here
 
 ;; [[file:../synthmacs.org::*Prefer ~rg~ and ~fd~ if available][Prefer ~rg~ and ~fd~ if available:1]]
-(when (executable-find "rg")
-  (setq grep-program "rg"))
+(use-package emacs
+  :init
+  (when (executable-find "rg")
+    (setq grep-program "rg"))
 
-(when (executable-find "fd")
-  (setq find-program "fd"))
+  (when (executable-find "fd")
+    (setq find-program "fd"))
+  )
 ;; Prefer ~rg~ and ~fd~ if available:1 ends here
 
 ;; [[file:../synthmacs.org::*xref][xref:1]]

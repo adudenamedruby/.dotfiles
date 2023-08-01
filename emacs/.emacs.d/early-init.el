@@ -8,11 +8,6 @@
 ;;; Code:
 ;; early-init.el:1 ends here
 
-;; [[file:synthmacs.org::*Header][Header:1]]
-;;; early-init.el --- Early Init File -*- lexical-binding: t; no-byte-compile: t -*-
-;; NOTE: early-init.el is now generated from synthmacs.org.  Please edit that file instead
-;; Header:1 ends here
-
 ;; [[file:synthmacs.org::*Disable package/UI at first][Disable package/UI at first:1]]
 ;; In Emacs 27+, package initialization occurs before `user-init-file' is
 ;; loaded, but after `early-init-file'. Doom handles package initialization, so
