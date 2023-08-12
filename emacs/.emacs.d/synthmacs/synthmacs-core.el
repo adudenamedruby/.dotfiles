@@ -19,8 +19,7 @@
   (setq sentence-end-double-space nil)
   (setq ring-bell-function 'ignore)
   (setq frame-resize-pixelwise t)
-  ;; write over selected text on input... like all modern editors do
-  (setq delete-selection-mode t)
+  
   ;; clean up dired buffers
   (setq dired-kill-when-opening-new-dired-buffer t)
 

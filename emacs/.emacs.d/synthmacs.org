@@ -510,8 +510,7 @@ The header of this file alse has the ~:mkdirp yes~ argument. This is because, in
 (setq use-file-dialog nil)
 
 ;; Native-Comp
-(setq native-comp-speed 2
-      comp-speed 2)
+(setq native-comp-speed 2)
 (setq native-comp-async-report-warnings-errors nil
       comp-async-report-warnings-errors nil)
 (setq native-comp-async-query-on-exit t
@@ -728,8 +727,7 @@ Some general things to set up:
   (setq sentence-end-double-space nil)
   (setq ring-bell-function 'ignore)
   (setq frame-resize-pixelwise t)
-  ;; write over selected text on input... like all modern editors do
-  (setq delete-selection-mode t)
+  
   ;; clean up dired buffers
   (setq dired-kill-when-opening-new-dired-buffer t)
 

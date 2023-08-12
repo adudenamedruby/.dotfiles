@@ -36,8 +36,7 @@
 (setq use-file-dialog nil)
 
 ;; Native-Comp
-(setq native-comp-speed 2
-      comp-speed 2)
+(setq native-comp-speed 2)
 (setq native-comp-async-report-warnings-errors nil
       comp-async-report-warnings-errors nil)
 (setq native-comp-async-query-on-exit t
