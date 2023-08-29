@@ -735,7 +735,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/opt/homebrew/Cellar/emacs-plus@29/29.0.90/Emacs.app</string>
+					<string>/Applications/Emacs.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
