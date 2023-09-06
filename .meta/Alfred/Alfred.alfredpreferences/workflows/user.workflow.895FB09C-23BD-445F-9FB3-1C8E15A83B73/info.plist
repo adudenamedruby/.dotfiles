@@ -687,7 +687,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Dash.app</string>
+					<string>/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
