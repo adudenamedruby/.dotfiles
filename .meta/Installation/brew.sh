@@ -202,11 +202,15 @@ brew install --cask onyx
 
 brew install --cask spotify
 
+brew install --cask slack
+
 brew install --cask steam
 
 brew install --cask todoist
 
 brew install --cask vlc
+
+brew install --cask zoom
 
 # Apps outside of brew:
 #

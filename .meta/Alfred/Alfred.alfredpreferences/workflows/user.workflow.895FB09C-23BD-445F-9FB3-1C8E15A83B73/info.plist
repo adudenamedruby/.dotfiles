@@ -8,19 +8,6 @@
 	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
-		<key>0D59E4F9-E917-44E6-878A-1A99694DB433</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>2B21442B-421B-43CF-842C-BE39428618AB</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>14253085-F66C-4D06-8FCA-EAF6C76F2D8D</key>
 		<array>
 			<dict>
@@ -34,11 +21,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>269A1616-7DA3-4BEF-958B-D0DCBDD92A28</key>
+		<key>30DD5C9D-F2DA-48F1-A458-4E36DCD9B552</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>EFE2F3C8-1C51-4DBB-9E6E-39FA7E7842D0</string>
+				<string>6481E27F-C35F-4448-ABF5-A829251FD3B4</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -47,11 +34,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>2B21442B-421B-43CF-842C-BE39428618AB</key>
+		<key>31C800F5-1BF8-4688-88CF-7693CF2F5C87</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>002D19AA-745C-47EC-AE13-9D354AE1C14A</string>
+				<string>A36B1C92-1B2F-48CE-9E14-D79808D7D81A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -63,20 +50,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>7B807827-5759-4114-AAA5-95B363D036D0</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>30DD5C9D-F2DA-48F1-A458-4E36DCD9B552</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>6481E27F-C35F-4448-ABF5-A829251FD3B4</string>
+				<string>4C638AB8-BDB0-45DA-8CBC-8F20CD38AE1E</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -111,32 +85,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>50A456B0-C96E-4CA1-AFC1-B52C442B9140</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>99C9B868-2385-4000-99E6-5572EE95E2D4</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>64975824-5181-429B-9D2A-07BAF68D11A2</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>C8F07787-AA29-4B16-BBAC-2B79E6B3E776</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>6E2C5999-2695-4FF1-9969-C43A70B37193</key>
 		<array>
 			<dict>
@@ -154,7 +102,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>50A456B0-C96E-4CA1-AFC1-B52C442B9140</string>
+				<string>D7BA7DAF-0934-43BB-8505-0E032052AAE8</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -176,11 +124,37 @@
 				<false/>
 			</dict>
 		</array>
+		<key>77AEE473-DBC7-49D6-8ADD-1ACBF64CFCDD</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3727EECE-FD18-44A3-AF30-FE67634E3485</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>79C7AEFE-6279-4FF4-B1FA-8EB419B019AE</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>6D586526-89FF-47CE-B07B-A3299032B6C8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>79D48CCA-C2AE-4E81-B7F2-6A06052280AD</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C8F07787-AA29-4B16-BBAC-2B79E6B3E776</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -206,7 +180,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>0D59E4F9-E917-44E6-878A-1A99694DB433</string>
+				<string>002D19AA-745C-47EC-AE13-9D354AE1C14A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -228,23 +202,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>99C9B868-2385-4000-99E6-5572EE95E2D4</key>
+		<key>9DF867F4-9F06-4C20-83EF-90BF21097349</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>4C638AB8-BDB0-45DA-8CBC-8F20CD38AE1E</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>58E6CADC-3764-4A33-B59E-4658B9B68569</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>A36B1C92-1B2F-48CE-9E14-D79808D7D81A</string>
+				<string>001B6212-15E7-43E0-BC57-E7A0789EB995</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -253,8 +215,19 @@
 				<false/>
 			</dict>
 		</array>
-		<key>9DF867F4-9F06-4C20-83EF-90BF21097349</key>
-		<array/>
+		<key>A55E6762-03D4-43C6-954D-29FC43540A17</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>EBF87C0D-6745-406B-92EF-B7240FC3C060</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>A680D035-1B55-41B4-A2D4-EB39B8623E23</key>
 		<array>
 			<dict>
@@ -298,7 +271,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>94300C6C-AE38-45D9-AE5D-5F5BDD24AA1F</string>
+				<string>D1DB76C7-35ED-40F8-B56C-E8063A6A8604</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -310,7 +283,20 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>D1DB76C7-35ED-40F8-B56C-E8063A6A8604</string>
+				<string>94300C6C-AE38-45D9-AE5D-5F5BDD24AA1F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C956EF15-004D-4E94-A6BD-152B92BE8672</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>77AEE473-DBC7-49D6-8ADD-1ACBF64CFCDD</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -323,7 +309,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>269A1616-7DA3-4BEF-958B-D0DCBDD92A28</string>
+				<string>A55E6762-03D4-43C6-954D-29FC43540A17</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -336,7 +322,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>64975824-5181-429B-9D2A-07BAF68D11A2</string>
+				<string>79D48CCA-C2AE-4E81-B7F2-6A06052280AD</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -350,6 +336,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>3D2B8A8C-214D-495B-9DE6-EF32BC5DEAD8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>D7BA7DAF-0934-43BB-8505-0E032052AAE8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>31C800F5-1BF8-4688-88CF-7693CF2F5C87</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -373,11 +372,11 @@
 		</array>
 		<key>E51463CA-496F-45A4-B707-7ECF50EFF071</key>
 		<array/>
-		<key>EFE2F3C8-1C51-4DBB-9E6E-39FA7E7842D0</key>
+		<key>EBF87C0D-6745-406B-92EF-B7240FC3C060</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>289093E4-BD6E-4B4A-8849-83F096EB8EDD</string>
+				<string>155DE370-B0AF-463E-B9CA-894004619F25</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -389,7 +388,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>155DE370-B0AF-463E-B9CA-894004619F25</string>
+				<string>289093E4-BD6E-4B4A-8849-83F096EB8EDD</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -486,6 +485,97 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>#!/bin/zsh
+
+# Get the current day of the week (1=Monday, 7=Sunday)
+day_of_week=$(date +%u)
+
+# Get the current hour in 24-hour format
+current_hour=$(date +%H)
+
+# Check if it's a weekday (Monday to Friday)
+if [[ $day_of_week -ge 1 &amp;&amp; $day_of_week -le 5 ]]; then
+    # Check if it's between 9am (9) and 5pm (17)
+    if [[ $current_hour -ge 9 &amp;&amp; $current_hour -lt 17 ]]; then
+        echo "work"
+    else
+        echo "personal"
+    fi
+else
+    echo "personal"
+fi</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>11</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>77AEE473-DBC7-49D6-8ADD-1ACBF64CFCDD</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alignment</key>
+				<integer>0</integer>
+				<key>backgroundcolor</key>
+				<string></string>
+				<key>fadespeed</key>
+				<integer>0</integer>
+				<key>fillmode</key>
+				<integer>0</integer>
+				<key>font</key>
+				<string></string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>largetypetext</key>
+				<string>{query}</string>
+				<key>textcolor</key>
+				<string></string>
+				<key>wrapat</key>
+				<integer>50</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.largetype</string>
+			<key>uid</key>
+			<string>3727EECE-FD18-44A3-AF30-FE67634E3485</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>test</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string></string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>C956EF15-004D-4E94-A6BD-152B92BE8672</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>paths</key>
 				<array>
 					<string>/Applications/Band-in-a-Box/Band-in-a-Box.app</string>
@@ -536,7 +626,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/System/Applications/Messages.app</string>
+					<string>/Applications/Slack.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -544,32 +634,9 @@
 			<key>type</key>
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
-			<string>94300C6C-AE38-45D9-AE5D-5F5BDD24AA1F</string>
+			<string>D1DB76C7-35ED-40F8-B56C-E8063A6A8604</string>
 			<key>version</key>
 			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>echo $(id -u -n | tr -d '\r')</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>5</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>64975824-5181-429B-9D2A-07BAF68D11A2</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -605,6 +672,47 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>#!/bin/zsh
+
+# Get the current day of the week (1=Monday, 7=Sunday)
+day_of_week=$(date +%u)
+
+# Get the current hour in 24-hour format
+current_hour=$(date +%H)
+
+# Check if it's a weekday (Monday to Friday)
+if [[ $day_of_week -ge 1 &amp;&amp; $day_of_week -le 5 ]]; then
+    # Check if it's between 9am (9) and 5pm (17)
+    if [[ $current_hour -ge 9 &amp;&amp; $current_hour -lt 17 ]]; then
+        echo "work"
+    else
+        echo "personal"
+    fi
+else
+    echo "personal"
+fi</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>11</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>79D48CCA-C2AE-4E81-B7F2-6A06052280AD</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -615,15 +723,15 @@
 						<key>matchmode</key>
 						<integer>4</integer>
 						<key>matchstring</key>
-						<string>adudenamedruby</string>
+						<string>work</string>
 						<key>outputlabel</key>
-						<string>home</string>
+						<string>work</string>
 						<key>uid</key>
 						<string>58E6CADC-3764-4A33-B59E-4658B9B68569</string>
 					</dict>
 				</array>
 				<key>elselabel</key>
-				<string>work</string>
+				<string>personal</string>
 				<key>hideelse</key>
 				<false/>
 			</dict>
@@ -639,7 +747,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Slack.app</string>
+					<string>/Applications/Discord.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -647,7 +755,24 @@
 			<key>type</key>
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
-			<string>D1DB76C7-35ED-40F8-B56C-E8063A6A8604</string>
+			<string>94300C6C-AE38-45D9-AE5D-5F5BDD24AA1F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>408D34E2-CBED-4C1B-BC3F-16646A5C6EF1</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -681,23 +806,6 @@
 			<string>F33D1D76-062B-4DC0-B5E4-CCEB06294EC9</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>408D34E2-CBED-4C1B-BC3F-16646A5C6EF1</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -848,7 +956,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Skype.app</string>
+					<string>/Applications/zoom.us.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -856,7 +964,7 @@
 			<key>type</key>
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
-			<string>289093E4-BD6E-4B4A-8849-83F096EB8EDD</string>
+			<string>155DE370-B0AF-463E-B9CA-894004619F25</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -868,18 +976,36 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>echo $(id -u -n | tr -d '\r')</string>
+				<string>#!/bin/zsh
+
+# Get the current day of the week (1=Monday, 7=Sunday)
+day_of_week=$(date +%u)
+
+# Get the current hour in 24-hour format
+current_hour=$(date +%H)
+
+# Check if it's a weekday (Monday to Friday)
+if [[ $day_of_week -ge 1 &amp;&amp; $day_of_week -le 5 ]]; then
+    # Check if it's between 9am (9) and 5pm (17)
+    if [[ $current_hour -ge 9 &amp;&amp; $current_hour -lt 17 ]]; then
+        echo "work"
+    else
+        echo "personal"
+    fi
+else
+    echo "personal"
+fi</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>type</key>
-				<integer>5</integer>
+				<integer>11</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>269A1616-7DA3-4BEF-958B-D0DCBDD92A28</string>
+			<string>A55E6762-03D4-43C6-954D-29FC43540A17</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -927,22 +1053,22 @@
 						<key>matchmode</key>
 						<integer>4</integer>
 						<key>matchstring</key>
-						<string>fringeFoundation</string>
+						<string>work</string>
 						<key>outputlabel</key>
-						<string>home</string>
+						<string>work</string>
 						<key>uid</key>
 						<string>58E6CADC-3764-4A33-B59E-4658B9B68569</string>
 					</dict>
 				</array>
 				<key>elselabel</key>
-				<string>work</string>
+				<string>personal</string>
 				<key>hideelse</key>
 				<false/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
-			<string>EFE2F3C8-1C51-4DBB-9E6E-39FA7E7842D0</string>
+			<string>EBF87C0D-6745-406B-92EF-B7240FC3C060</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -951,7 +1077,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/zoom.us.app</string>
+					<string>/Applications/Skype.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -959,7 +1085,7 @@
 			<key>type</key>
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
-			<string>155DE370-B0AF-463E-B9CA-894004619F25</string>
+			<string>289093E4-BD6E-4B4A-8849-83F096EB8EDD</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1076,6 +1202,23 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>paths</key>
+				<array>
+					<string>/System/Applications/Messages.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>001B6212-15E7-43E0-BC57-E7A0789EB995</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -1126,7 +1269,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Spark.app</string>
+					<string>/System/Applications/Mail.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1134,7 +1277,7 @@
 			<key>type</key>
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
-			<string>4C638AB8-BDB0-45DA-8CBC-8F20CD38AE1E</string>
+			<string>A36B1C92-1B2F-48CE-9E14-D79808D7D81A</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1177,18 +1320,36 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>echo $(id -u -n | tr -d '\r')</string>
+				<string>#!/bin/zsh
+
+# Get the current day of the week (1=Monday, 7=Sunday)
+day_of_week=$(date +%u)
+
+# Get the current hour in 24-hour format
+current_hour=$(date +%H)
+
+# Check if it's a weekday (Monday to Friday)
+if [[ $day_of_week -ge 1 &amp;&amp; $day_of_week -le 5 ]]; then
+    # Check if it's between 9am (9) and 5pm (17)
+    if [[ $current_hour -ge 9 &amp;&amp; $current_hour -lt 17 ]]; then
+        echo "work"
+    else
+        echo "personal"
+    fi
+else
+    echo "personal"
+fi</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>type</key>
-				<integer>5</integer>
+				<integer>11</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>50A456B0-C96E-4CA1-AFC1-B52C442B9140</string>
+			<string>D7BA7DAF-0934-43BB-8505-0E032052AAE8</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -1205,22 +1366,22 @@
 						<key>matchmode</key>
 						<integer>4</integer>
 						<key>matchstring</key>
-						<string>adudenamedruby</string>
+						<string>work</string>
 						<key>outputlabel</key>
-						<string>home</string>
+						<string>work</string>
 						<key>uid</key>
 						<string>58E6CADC-3764-4A33-B59E-4658B9B68569</string>
 					</dict>
 				</array>
 				<key>elselabel</key>
-				<string>work</string>
+				<string>personal</string>
 				<key>hideelse</key>
 				<false/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
-			<string>99C9B868-2385-4000-99E6-5572EE95E2D4</string>
+			<string>31C800F5-1BF8-4688-88CF-7693CF2F5C87</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1229,7 +1390,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/System/Applications/Mail.app</string>
+					<string>/Applications/Spark.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1237,7 +1398,7 @@
 			<key>type</key>
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
-			<string>A36B1C92-1B2F-48CE-9E14-D79808D7D81A</string>
+			<string>4C638AB8-BDB0-45DA-8CBC-8F20CD38AE1E</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1551,127 +1712,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Xcode.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>002D19AA-745C-47EC-AE13-9D354AE1C14A</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>echo $(id -u -n | tr -d '\r')</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>5</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>0D59E4F9-E917-44E6-878A-1A99694DB433</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>0</integer>
-				<key>focusedappvariable</key>
-				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>11</integer>
-				<key>hotmod</key>
-				<integer>1966080</integer>
-				<key>hotstring</key>
-				<string>X</string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedAppsMode</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
-			<key>uid</key>
-			<string>90E95058-3B83-4C50-B95F-966111DCB141</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string>{query}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>4</integer>
-						<key>matchstring</key>
-						<string>fringeFoundation</string>
-						<key>outputlabel</key>
-						<string>home</string>
-						<key>uid</key>
-						<string>58E6CADC-3764-4A33-B59E-4658B9B68569</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>work</string>
-				<key>hideelse</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>2B21442B-421B-43CF-842C-BE39428618AB</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/Xcode.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>7B807827-5759-4114-AAA5-95B363D036D0</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/XcodeXvim.app/Contents/Developer/Applications/Simulator.app</string>
+					<string>/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1711,6 +1752,54 @@
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>30DD5C9D-F2DA-48F1-A458-4E36DCD9B552</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Xcode.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>002D19AA-745C-47EC-AE13-9D354AE1C14A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>11</integer>
+				<key>hotmod</key>
+				<integer>1966080</integer>
+				<key>hotstring</key>
+				<string>X</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>90E95058-3B83-4C50-B95F-966111DCB141</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -1774,14 +1863,14 @@
 			<key>ypos</key>
 			<real>1790</real>
 		</dict>
-		<key>002D19AA-745C-47EC-AE13-9D354AE1C14A</key>
+		<key>001B6212-15E7-43E0-BC57-E7A0789EB995</key>
 		<dict>
 			<key>xpos</key>
-			<real>405</real>
+			<real>195</real>
 			<key>ypos</key>
-			<real>2160</real>
+			<real>1265</real>
 		</dict>
-		<key>0D59E4F9-E917-44E6-878A-1A99694DB433</key>
+		<key>002D19AA-745C-47EC-AE13-9D354AE1C14A</key>
 		<dict>
 			<key>xpos</key>
 			<real>195</real>
@@ -1798,16 +1887,9 @@
 		<key>155DE370-B0AF-463E-B9CA-894004619F25</key>
 		<dict>
 			<key>xpos</key>
-			<real>435</real>
+			<real>450</real>
 			<key>ypos</key>
-			<real>1005</real>
-		</dict>
-		<key>269A1616-7DA3-4BEF-958B-D0DCBDD92A28</key>
-		<dict>
-			<key>xpos</key>
-			<real>195</real>
-			<key>ypos</key>
-			<real>950</real>
+			<real>885</real>
 		</dict>
 		<key>275227B0-9557-4C58-9036-D566965CEF9A</key>
 		<dict>
@@ -1819,23 +1901,23 @@
 		<key>289093E4-BD6E-4B4A-8849-83F096EB8EDD</key>
 		<dict>
 			<key>xpos</key>
-			<real>435</real>
+			<real>450</real>
 			<key>ypos</key>
-			<real>895</real>
-		</dict>
-		<key>2B21442B-421B-43CF-842C-BE39428618AB</key>
-		<dict>
-			<key>xpos</key>
-			<real>330</real>
-			<key>ypos</key>
-			<real>2235</real>
+			<real>1015</real>
 		</dict>
 		<key>30DD5C9D-F2DA-48F1-A458-4E36DCD9B552</key>
 		<dict>
 			<key>xpos</key>
-			<real>580</real>
+			<real>355</real>
 			<key>ypos</key>
-			<real>2270</real>
+			<real>2210</real>
+		</dict>
+		<key>31C800F5-1BF8-4688-88CF-7693CF2F5C87</key>
+		<dict>
+			<key>xpos</key>
+			<real>350</real>
+			<key>ypos</key>
+			<real>1495</real>
 		</dict>
 		<key>35DA5E21-B35E-47E9-B19D-4B8BE17177D8</key>
 		<dict>
@@ -1843,6 +1925,13 @@
 			<real>195</real>
 			<key>ypos</key>
 			<real>1370</real>
+		</dict>
+		<key>3727EECE-FD18-44A3-AF30-FE67634E3485</key>
+		<dict>
+			<key>xpos</key>
+			<real>780</real>
+			<key>ypos</key>
+			<real>80</real>
 		</dict>
 		<key>3D2B8A8C-214D-495B-9DE6-EF32BC5DEAD8</key>
 		<dict>
@@ -1896,16 +1985,9 @@
 		<key>4C638AB8-BDB0-45DA-8CBC-8F20CD38AE1E</key>
 		<dict>
 			<key>xpos</key>
-			<real>440</real>
+			<real>450</real>
 			<key>ypos</key>
-			<real>1420</real>
-		</dict>
-		<key>50A456B0-C96E-4CA1-AFC1-B52C442B9140</key>
-		<dict>
-			<key>xpos</key>
-			<real>195</real>
-			<key>ypos</key>
-			<real>1475</real>
+			<real>1535</real>
 		</dict>
 		<key>632E1C41-F7ED-43BA-A8A3-70E676986AC8</key>
 		<dict>
@@ -1917,16 +1999,9 @@
 		<key>6481E27F-C35F-4448-ABF5-A829251FD3B4</key>
 		<dict>
 			<key>xpos</key>
-			<real>740</real>
+			<real>510</real>
 			<key>ypos</key>
-			<real>2270</real>
-		</dict>
-		<key>64975824-5181-429B-9D2A-07BAF68D11A2</key>
-		<dict>
-			<key>xpos</key>
-			<real>200</real>
-			<key>ypos</key>
-			<real>335</real>
+			<real>2210</real>
 		</dict>
 		<key>6D586526-89FF-47CE-B07B-A3299032B6C8</key>
 		<dict>
@@ -1956,6 +2031,13 @@
 			<key>ypos</key>
 			<real>1370</real>
 		</dict>
+		<key>77AEE473-DBC7-49D6-8ADD-1ACBF64CFCDD</key>
+		<dict>
+			<key>xpos</key>
+			<real>625</real>
+			<key>ypos</key>
+			<real>80</real>
+		</dict>
 		<key>79C7AEFE-6279-4FF4-B1FA-8EB419B019AE</key>
 		<dict>
 			<key>xpos</key>
@@ -1963,19 +2045,19 @@
 			<key>ypos</key>
 			<real>845</real>
 		</dict>
+		<key>79D48CCA-C2AE-4E81-B7F2-6A06052280AD</key>
+		<dict>
+			<key>xpos</key>
+			<real>190</real>
+			<key>ypos</key>
+			<real>335</real>
+		</dict>
 		<key>7A5997C6-C47F-45F2-BC5C-39418E10F5F6</key>
 		<dict>
 			<key>xpos</key>
 			<real>35</real>
 			<key>ypos</key>
 			<real>2105</real>
-		</dict>
-		<key>7B807827-5759-4114-AAA5-95B363D036D0</key>
-		<dict>
-			<key>xpos</key>
-			<real>405</real>
-			<key>ypos</key>
-			<real>2265</real>
 		</dict>
 		<key>7DE16EFE-CD99-4904-B18E-8901AA0660B4</key>
 		<dict>
@@ -2008,16 +2090,9 @@
 		<key>94300C6C-AE38-45D9-AE5D-5F5BDD24AA1F</key>
 		<dict>
 			<key>xpos</key>
-			<real>440</real>
+			<real>445</real>
 			<key>ypos</key>
-			<real>285</real>
-		</dict>
-		<key>99C9B868-2385-4000-99E6-5572EE95E2D4</key>
-		<dict>
-			<key>xpos</key>
-			<real>355</real>
-			<key>ypos</key>
-			<real>1495</real>
+			<real>390</real>
 		</dict>
 		<key>9DF867F4-9F06-4C20-83EF-90BF21097349</key>
 		<dict>
@@ -2029,9 +2104,9 @@
 		<key>A36B1C92-1B2F-48CE-9E14-D79808D7D81A</key>
 		<dict>
 			<key>xpos</key>
-			<real>440</real>
+			<real>450</real>
 			<key>ypos</key>
-			<real>1530</real>
+			<real>1405</real>
 		</dict>
 		<key>A3ECCB66-CEC0-4DE6-9DD2-346525C56E7F</key>
 		<dict>
@@ -2039,6 +2114,13 @@
 			<real>195</real>
 			<key>ypos</key>
 			<real>1895</real>
+		</dict>
+		<key>A55E6762-03D4-43C6-954D-29FC43540A17</key>
+		<dict>
+			<key>xpos</key>
+			<real>195</real>
+			<key>ypos</key>
+			<real>950</real>
 		</dict>
 		<key>A680D035-1B55-41B4-A2D4-EB39B8623E23</key>
 		<dict>
@@ -2078,9 +2160,16 @@
 		<key>C8F07787-AA29-4B16-BBAC-2B79E6B3E776</key>
 		<dict>
 			<key>xpos</key>
-			<real>355</real>
+			<real>345</real>
 			<key>ypos</key>
 			<real>355</real>
+		</dict>
+		<key>C956EF15-004D-4E94-A6BD-152B92BE8672</key>
+		<dict>
+			<key>xpos</key>
+			<real>450</real>
+			<key>ypos</key>
+			<real>80</real>
 		</dict>
 		<key>CA97BFC0-04DB-4A08-A504-AD56163F82B2</key>
 		<dict>
@@ -2113,9 +2202,16 @@
 		<key>D1DB76C7-35ED-40F8-B56C-E8063A6A8604</key>
 		<dict>
 			<key>xpos</key>
-			<real>440</real>
+			<real>445</real>
 			<key>ypos</key>
-			<real>390</real>
+			<real>280</real>
+		</dict>
+		<key>D7BA7DAF-0934-43BB-8505-0E032052AAE8</key>
+		<dict>
+			<key>xpos</key>
+			<real>195</real>
+			<key>ypos</key>
+			<real>1475</real>
 		</dict>
 		<key>DC6870D2-D009-4CF5-9ECA-EF88854CB58E</key>
 		<dict>
@@ -2131,10 +2227,10 @@
 			<key>ypos</key>
 			<real>1160</real>
 		</dict>
-		<key>EFE2F3C8-1C51-4DBB-9E6E-39FA7E7842D0</key>
+		<key>EBF87C0D-6745-406B-92EF-B7240FC3C060</key>
 		<dict>
 			<key>xpos</key>
-			<real>355</real>
+			<real>350</real>
 			<key>ypos</key>
 			<real>970</real>
 		</dict>
