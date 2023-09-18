@@ -277,7 +277,7 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://mozilla-hub.atlassian.net/secure/RapidBoard.jspa?rapidView=200&amp;selectedIssue=FXIOS-1806&amp;assignee=6048302caf98490072495aa2</string>
+				<string>https://mozilla-hub.atlassian.net/jira/software/c/projects/FXIOS/boards/700?assignee=6048302caf98490072495aa2</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
@@ -431,7 +431,7 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://mozilla-hub.atlassian.net/jira/software/c/projects/FXIOS/boards/200/backlog?selectedIssue=FXIOS-4152&amp;issueLimit=100</string>
+				<string>https://mozilla-hub.atlassian.net/jira/software/c/projects/FXIOS/boards/700/backlog?issueLimit=100</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
