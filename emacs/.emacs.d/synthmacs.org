@@ -663,7 +663,7 @@ First, let's set ~Straight~ straight, by setting some defaults for it.
 :END:
 We want to enable debugging whenever we encounter an error. I go back and forth on this. But as I'm putting my first emacs config together now, I'm leaving it on for the time being, to help... well, you know, debug!
 #+begin_src emacs-lisp
-(setq debug-on-error t)
+(setq debug-on-error nil)
 #+end_src
 
 ** Fetching ~straight.el~

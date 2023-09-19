@@ -19,7 +19,7 @@
 ;; Initial setup:1 ends here
 
 ;; [[file:../synthmacs.org::*Debug][Debug:1]]
-(setq debug-on-error t)
+(setq debug-on-error nil)
 ;; Debug:1 ends here
 
 ;; [[file:../synthmacs.org::*Fetching ~straight.el~][Fetching ~straight.el~:1]]
