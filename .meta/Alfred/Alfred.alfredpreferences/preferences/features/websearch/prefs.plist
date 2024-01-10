@@ -96,6 +96,17 @@
 			<key>url</key>
 			<string>https://www.desjardins.com/ca/</string>
 		</dict>
+		<key>B120BBDF-D62D-43CD-B340-11450E8D0021</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>focalpoint</string>
+			<key>text</key>
+			<string>Focal Point</string>
+			<key>url</key>
+			<string>https://www.thefocalpointhub.com/</string>
+		</dict>
 		<key>BB2D0C0D-C2E2-4B5B-82E1-86BE1C0E0C25</key>
 		<dict>
 			<key>enabled</key>
