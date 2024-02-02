@@ -134,42 +134,49 @@
 
 ;; [[file:../synthmacs.org::*Treesitter][Treesitter:1]]
 (use-package tree-sitter
-  :hook (
-         (bash-mode
-          c-mode
-          cmake-mode
-          clojure-mode
-          commonlisp-mode
-          css-mode
-          elixir-mode
-          elisp-mode
-          html-mode
-          haskell-mode
-          js-mode
-          json-mode
-          lua-mode
-          make-mode
-          markdown-mode
-          objc-mode
-          python-mode
-          racket-mode
-          ruby-mode
-          rust-mode
-          scheme-mode
-          sqlite-mode
-          sql-mode
-          swift-mode
-          toml-mode
-          yaml-mode) . tree-sitter-mode)
-  :config
-  (setq tsc-dyn-get-from nil)
-  (setq tree-sitter-hl-use-font-lock-keywords t
-        tree-sitter-hl-enable-query-region-extension nil)
+  :hook
+  ((sh-mode
+    c-mode
+    ;; cmake-mode
+    clojure-mode
+    common-lisp-mode
+    css-mode
+    elixir-mode
+    ;; elisp-mode
+    html-mode
+    ;; haskell-mode
+    js-mode
+    json-mode
+    lua-mode
+    ;; make-mode
+    markdown-mode
+    objc-mode
+    python-mode
+    racket-mode
+    ruby-mode
+    rust-mode
+    scheme-mode
+    ;; sqlite-mode
+    sql-mode
+    swift-mode
+    ;; toml-mode
+    yaml-mode) . synthmacs//tree-sitter-mode-enable)
+  
+  :preface
+  (defun synthmacs//tree-sitter-mode-enable ()
+    (tree-sitter-mode t))
+  ;; :config
+  ;; (setq tsc-dyn-get-from nil)
+  ;; (setq tree-sitter-hl-use-font-lock-keywords t
+  ;;       tree-sitter-hl-enable-query-region-extension nil)
   :config
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 ;; Treesitter:1 ends here
 
 ;; [[file:../synthmacs.org::*Treesitter languages][Treesitter languages:1]]
+(use-package treesit-auto
+  :demand t)
+
 (setq treesit-language-source-alist
       '((bash "https://github.com/tree-sitter/tree-sitter-bash")
         (c "https://github.com/tree-sitter/tree-sitter-c")
@@ -258,17 +265,6 @@
       ;; 		    (bash-ts-mode)
       ;; 		  (sh-mode))))
 ;; Treesitter languages:1 ends here
-
-;; [[file:../synthmacs.org::*Tresitter load languages][Tresitter load languages:1]]
-(use-package treesit-auto
-  :demand t)
-
-;; (define-derived-mode python-auto-mode prog-mode "Python Auto"
-;;   "Automatically decide which Python mode to use."
-;;   (if (treesit-ready-p 'python t)
-;;       (python-ts-mode)
-;;     (python-mode)))
-;; Tresitter load languages:1 ends here
 
 ;; [[file:../synthmacs.org::*synthmacs-programming][synthmacs-programming:1]]
 (provide 'synthmacs-programming)

@@ -5143,37 +5143,41 @@ Emacs 29 added native TreeSitter support. TreeSitter is a new way of incremental
 
 #+begin_src emacs-lisp
 (use-package tree-sitter
-  :hook (
-         (bash-mode
-          c-mode
-          cmake-mode
-          clojure-mode
-          commonlisp-mode
-          css-mode
-          elixir-mode
-          elisp-mode
-          html-mode
-          haskell-mode
-          js-mode
-          json-mode
-          lua-mode
-          make-mode
-          markdown-mode
-          objc-mode
-          python-mode
-          racket-mode
-          ruby-mode
-          rust-mode
-          scheme-mode
-          sqlite-mode
-          sql-mode
-          swift-mode
-          toml-mode
-          yaml-mode) . tree-sitter-mode)
-  :config
-  (setq tsc-dyn-get-from nil)
-  (setq tree-sitter-hl-use-font-lock-keywords t
-        tree-sitter-hl-enable-query-region-extension nil)
+  :hook
+  ((sh-mode
+    c-mode
+    ;; cmake-mode
+    clojure-mode
+    common-lisp-mode
+    css-mode
+    elixir-mode
+    ;; elisp-mode
+    html-mode
+    ;; haskell-mode
+    js-mode
+    json-mode
+    lua-mode
+    ;; make-mode
+    markdown-mode
+    objc-mode
+    python-mode
+    racket-mode
+    ruby-mode
+    rust-mode
+    scheme-mode
+    ;; sqlite-mode
+    sql-mode
+    swift-mode
+    ;; toml-mode
+    yaml-mode) . synthmacs//tree-sitter-mode-enable)
+  
+  :preface
+  (defun synthmacs//tree-sitter-mode-enable ()
+    (tree-sitter-mode t))
+  ;; :config
+  ;; (setq tsc-dyn-get-from nil)
+  ;; (setq tree-sitter-hl-use-font-lock-keywords t
+  ;;       tree-sitter-hl-enable-query-region-extension nil)
   :config
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 #+end_src
@@ -5184,6 +5188,9 @@ Emacs 29 added native TreeSitter support. TreeSitter is a new way of incremental
 :END:
 You can either build your own languages, or you can use pre-built.
 #+begin_src emacs-lisp
+(use-package treesit-auto
+  :demand t)
+
 (setq treesit-language-source-alist
       '((bash "https://github.com/tree-sitter/tree-sitter-bash")
         (c "https://github.com/tree-sitter/tree-sitter-c")
@@ -5278,9 +5285,7 @@ You can either build your own languages, or you can use pre-built.
 :CUSTOM_ID: h:A4E5151A-751C-4188-9680-86EF89F2FD32
 :END:
 We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[https://archive.casouri.cc/note/2023/tree-sitter-in-emacs-29/index.html][recommended workaround]] is to derive a mode that picks between them. 
-#+begin_src emacs-lisp
-(use-package treesit-auto
-  :demand t)
+#+begin_src emacs-lisp :tangle no
 
 ;; (define-derived-mode python-auto-mode prog-mode "Python Auto"
 ;;   "Automatically decide which Python mode to use."
@@ -5704,7 +5709,14 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
                                                    "/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin/sourcekit"))))
 
 (use-package swift-mode
-  :hook (swift-mode . (lambda () (lsp))))
+  :defer t
+  :mode "\\.swift\\'"
+  :hook (swift-mode . (lambda () (lsp)))
+  :config
+  (setq swift-mode:basic-offset 4
+        swift-mode:parenthesized-expression-offset 4
+        swift-mode:multiline-statement-offset 0
+        swift-mode:highlight-anchor t))
 
 (use-package flycheck-swift
   :after swift-mode

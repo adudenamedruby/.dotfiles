@@ -298,7 +298,14 @@
                                                    "/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin/sourcekit"))))
 
 (use-package swift-mode
-  :hook (swift-mode . (lambda () (lsp))))
+  :defer t
+  :mode "\\.swift\\'"
+  :hook (swift-mode . (lambda () (lsp)))
+  :config
+  (setq swift-mode:basic-offset 4
+        swift-mode:parenthesized-expression-offset 4
+        swift-mode:multiline-statement-offset 0
+        swift-mode:highlight-anchor t))
 
 (use-package flycheck-swift
   :after swift-mode
