@@ -77,10 +77,9 @@
   (global-flycheck-mode t))
 
 (use-package flycheck-posframe
-  :defer 1
   :after flycheck
-  :hook (flycheck-mode . flycheck-posframe-mode)
   :config
+  (add-hook 'flycheck-mode-hook #'flycheck-posframe-mode)
   (flycheck-posframe-configure-pretty-defaults)
   (add-hook 'flycheck-posframe-inhibit-functions #'company--active-p)
   (add-hook 'flycheck-posframe-inhibit-functions #'evil-insert-state-p)
@@ -123,6 +122,8 @@
 ;; [[file:../synthmacs.org::*Apheleia][Apheleia:1]]
 (use-package apheleia
   :config
+  (add-to-list 'apheleia-mode-alist '(swift-mode . swift-format))
+  (add-to-list 'apheleia-formatters '(swift-format "swift-format" (buffer-file-name)))
   (apheleia-global-mode +1))
 ;; Apheleia:1 ends here
 
@@ -171,7 +172,7 @@
 ;;      (scheme "https://github.com/6cdh/tree-sitter-scheme")
 ;;      (sqlite "https://github.com/dhcmrlchtdj/tree-sitter-sqlite")
 ;;      (sql "https://github.com/m-novikov/tree-sitter-sql")
-;;      ;; (swift "https://gitlab.com/woolsweater/tree-sitter-swifter")
+;;      (swift "https://gitlab.com/woolsweater/tree-sitter-swifter")
 ;;      (toml "https://github.com/tree-sitter/tree-sitter-toml")
 ;;      (yaml "https://github.com/ikatyang/tree-sitter-yaml")
 ;;      (zig "https://github.com/maxxnino/tree-sitter-zig")))

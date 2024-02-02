@@ -288,12 +288,25 @@
 
 ;; [[file:../synthmacs.org::*Swift][Swift:1]]
 (use-package lsp-sourcekit
-  :after lsp-mode
+  :after swift-mode
   :config
-  (setq lsp-sourcekit-executable (string-trim (shell-command-to-string "xcrun --find sourcekit-lsp"))))
+  (setq lsp-sourcekit-executable (cl-find-if #'executable-find
+                                             (list lsp-sourcekit-executable ; 'sourcekit-lsp' by default
+                                                   "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"
+                                                   "sourcekit"
+                                                   "/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin/sourcekit-lsp"
+                                                   "/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin/sourcekit"))))
 
 (use-package swift-mode
   :hook (swift-mode . (lambda () (lsp))))
+
+(use-package flycheck-swift
+  :after swift-mode
+  :config
+  (flycheck-swift-setup)
+  ;; (setq flycheck-swift-sdk-path "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk")
+  ;; (setq flycheck-swift-target "arm64-apple-ios10") 
+  )
 ;; Swift:1 ends here
 
 ;; [[file:../synthmacs.org::*YAML][YAML:1]]

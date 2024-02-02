@@ -758,7 +758,7 @@ Who is using Synthmacs?
 (use-package emacs
   :init
   (setq user-full-name "roux g. buciu"
-        user-mail-address "roux@fringe.foundation"))
+        user-mail-address "roux@adudenamedruby.com"))
 #+end_src
 
 *** "Yes or no" prompts
@@ -3088,7 +3088,6 @@ Some functions for themes. Notably, I set:
 				 ample-zen
 				 doom-1337
 				 catppuccin
-				 manoj-dark
 				 doom-snazzy
 				 kaolin-dark
 				 doom-gruvbox
@@ -3097,9 +3096,7 @@ Some functions for themes. Notably, I set:
 				 doom-acario-dark
 				 gruvbox-dark-hard
 				 modus-vivendi
-				 alect-black
-				 modus-operandi
-				 gruvbox-light-hard))
+				 alect-black))
 
 (defun synthmacs/load-theme (&optional theme)
   "Apply user theme."
@@ -3554,13 +3551,13 @@ Doesn't activate line numbers for term/eshell, or for org mode. But I might chan
 :PROPERTIES:
 :CUSTOM_ID: h:9F8FCA21-383E-42FA-BA7D-59DD3ECEB950
 :END:
-I first learned Python, and the standard for code was to break at the 80th column. I like that tradition, so I enable the fill column for code, but push it a bit at 85. Because I'm a rebel like that. For the moment, it's showing up everywhere, but I may want it to only be in prog-mode? Still working on that.
+I first learned Python, and the standard for code was to break at the 80th column. I like that tradition, so I enable the fill column for code, but push it a bit at 90. Because I'm a rebel like that. For the moment, it's showing up everywhere, but I may want it to only be in prog-mode? Still working on that.
 
 #+begin_src emacs-lisp
 (use-package emacs
   ;; :hook (prog-mode . display-fill-column-indicator-mode)
   :init
-  (setq-default fill-column 85)
+  (setq-default fill-column 90)
   (global-display-fill-column-indicator-mode)
 
   ;; Columns number in the modeline
@@ -4593,12 +4590,12 @@ restart-emacs teaches Emacs to restart itself. I added a me/reload-init command 
      ("+" "Increase" (lambda ()
 		       (interactive)
 		       (progn
-			 (text-scale-increase)
+			 (text-scale-increase 0.25)
 			 (synthmacs/font-size-transient))))
      ("-" "Decrease" (lambda ()
 		       (interactive)
 		       (progn
-			 (text-scale-decrease)
+			 (text-scale-decrease 0.25)
 			 (synthmacs/font-size-transient))))
      ])
   )
@@ -4959,10 +4956,9 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
   (global-flycheck-mode t))
 
 (use-package flycheck-posframe
-  :defer 1
   :after flycheck
-  :hook (flycheck-mode . flycheck-posframe-mode)
   :config
+  (add-hook 'flycheck-mode-hook #'flycheck-posframe-mode)
   (flycheck-posframe-configure-pretty-defaults)
   (add-hook 'flycheck-posframe-inhibit-functions #'company--active-p)
   (add-hook 'flycheck-posframe-inhibit-functions #'evil-insert-state-p)
@@ -5124,6 +5120,8 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 #+begin_src emacs-lisp
 (use-package apheleia
   :config
+  (add-to-list 'apheleia-mode-alist '(swift-mode . swift-format))
+  (add-to-list 'apheleia-formatters '(swift-format "swift-format" (buffer-file-name)))
   (apheleia-global-mode +1))
 #+end_src
 
@@ -5189,7 +5187,7 @@ You can either build your own languages, or you can use pre-built. For now, let'
 ;;      (scheme "https://github.com/6cdh/tree-sitter-scheme")
 ;;      (sqlite "https://github.com/dhcmrlchtdj/tree-sitter-sqlite")
 ;;      (sql "https://github.com/m-novikov/tree-sitter-sql")
-;;      ;; (swift "https://gitlab.com/woolsweater/tree-sitter-swifter")
+;;      (swift "https://gitlab.com/woolsweater/tree-sitter-swifter")
 ;;      (toml "https://github.com/tree-sitter/tree-sitter-toml")
 ;;      (yaml "https://github.com/ikatyang/tree-sitter-yaml")
 ;;      (zig "https://github.com/maxxnino/tree-sitter-zig")))
@@ -5675,12 +5673,25 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
 
 #+begin_src emacs-lisp
 (use-package lsp-sourcekit
-  :after lsp-mode
+  :after swift-mode
   :config
-  (setq lsp-sourcekit-executable (string-trim (shell-command-to-string "xcrun --find sourcekit-lsp"))))
+  (setq lsp-sourcekit-executable (cl-find-if #'executable-find
+                                             (list lsp-sourcekit-executable ; 'sourcekit-lsp' by default
+                                                   "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"
+                                                   "sourcekit"
+                                                   "/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin/sourcekit-lsp"
+                                                   "/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin/sourcekit"))))
 
 (use-package swift-mode
   :hook (swift-mode . (lambda () (lsp))))
+
+(use-package flycheck-swift
+  :after swift-mode
+  :config
+  (flycheck-swift-setup)
+  ;; (setq flycheck-swift-sdk-path "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk")
+  ;; (setq flycheck-swift-target "arm64-apple-ios10") 
+  )
 #+end_src
 
 ** YAML

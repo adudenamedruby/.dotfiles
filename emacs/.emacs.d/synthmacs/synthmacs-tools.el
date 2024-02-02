@@ -324,12 +324,12 @@
      ("+" "Increase" (lambda ()
 		       (interactive)
 		       (progn
-			 (text-scale-increase)
+			 (text-scale-increase 0.25)
 			 (synthmacs/font-size-transient))))
      ("-" "Decrease" (lambda ()
 		       (interactive)
 		       (progn
-			 (text-scale-decrease)
+			 (text-scale-decrease 0.25)
 			 (synthmacs/font-size-transient))))
      ])
   )

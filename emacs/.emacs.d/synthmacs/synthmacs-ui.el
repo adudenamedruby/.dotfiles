@@ -91,7 +91,6 @@
 				 ample-zen
 				 doom-1337
 				 catppuccin
-				 manoj-dark
 				 doom-snazzy
 				 kaolin-dark
 				 doom-gruvbox
@@ -100,9 +99,7 @@
 				 doom-acario-dark
 				 gruvbox-dark-hard
 				 modus-vivendi
-				 alect-black
-				 modus-operandi
-				 gruvbox-light-hard))
+				 alect-black))
 
 (defun synthmacs/load-theme (&optional theme)
   "Apply user theme."
@@ -430,7 +427,7 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 (use-package emacs
   ;; :hook (prog-mode . display-fill-column-indicator-mode)
   :init
-  (setq-default fill-column 85)
+  (setq-default fill-column 90)
   (global-display-fill-column-indicator-mode)
 
   ;; Columns number in the modeline

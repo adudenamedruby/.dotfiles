@@ -41,33 +41,33 @@
 	<key>DVTMarkupTextEmphasisColor</key>
 	<string>0.902904 0.829158 0.64093 1</string>
 	<key>DVTMarkupTextEmphasisFont</key>
-	<string>.SFNS-RegularItalic - 12.0</string>
+	<string>.SFNS-RegularItalic - 15.0</string>
 	<key>DVTMarkupTextInlineCodeColor</key>
 	<string>0.902904 0.829158 0.64093 0.7</string>
 	<key>DVTMarkupTextLinkColor</key>
 	<string>0.44101 0.586024 0.526823 1</string>
 	<key>DVTMarkupTextLinkFont</key>
-	<string>.SFNS-Regular - 12.0</string>
+	<string>.SFNS-Regular - 15.0</string>
 	<key>DVTMarkupTextNormalColor</key>
 	<string>0.902904 0.829158 0.64093 1</string>
 	<key>DVTMarkupTextNormalFont</key>
-	<string>.SFNS-Regular - 12.0</string>
+	<string>.SFNS-Regular - 15.0</string>
 	<key>DVTMarkupTextOtherHeadingColor</key>
 	<string>0.902904 0.829158 0.64093 0.5</string>
 	<key>DVTMarkupTextOtherHeadingFont</key>
-	<string>.SFNS-Regular - 16.8</string>
+	<string>.SFNS-Regular - 21.0</string>
 	<key>DVTMarkupTextPrimaryHeadingColor</key>
 	<string>0.902904 0.829158 0.64093 1</string>
 	<key>DVTMarkupTextPrimaryHeadingFont</key>
-	<string>.SFNS-Regular - 28.8</string>
+	<string>.SFNS-Regular - 36.0</string>
 	<key>DVTMarkupTextSecondaryHeadingColor</key>
 	<string>0.902904 0.829158 0.64093 1</string>
 	<key>DVTMarkupTextSecondaryHeadingFont</key>
-	<string>.SFNS-Regular - 21.6</string>
+	<string>.SFNS-Regular - 27.0</string>
 	<key>DVTMarkupTextStrongColor</key>
 	<string>0.902904 0.829158 0.64093 1</string>
 	<key>DVTMarkupTextStrongFont</key>
-	<string>.SFNS-Bold - 12.0</string>
+	<string>.SFNS-Bold - 15.0</string>
 	<key>DVTScrollbarMarkerAnalyzerColor</key>
 	<string>0.403922 0.372549 1 1</string>
 	<key>DVTScrollbarMarkerBreakpointColor</key>
@@ -146,6 +146,16 @@
 		<string>0.902904 0.829158 0.64093 1</string>
 		<key>xcode.syntax.preprocessor</key>
 		<string>0.490196 0.713725 0.411765 1</string>
+		<key>xcode.syntax.regex</key>
+		<string>0.666934 0.691066 0.114062 1</string>
+		<key>xcode.syntax.regex.capturename</key>
+		<string>0.780392 0.439216 0.537255 1</string>
+		<key>xcode.syntax.regex.charname</key>
+		<string>0.780392 0.439216 0.537255 1</string>
+		<key>xcode.syntax.regex.number</key>
+		<string>0.780392 0.439216 0.537255 1</string>
+		<key>xcode.syntax.regex.other</key>
+		<string>0.902904 0.829158 0.64093 1</string>
 		<key>xcode.syntax.string</key>
 		<string>0.666934 0.691066 0.114062 1</string>
 		<key>xcode.syntax.url</key>
@@ -154,59 +164,69 @@
 	<key>DVTSourceTextSyntaxFonts</key>
 	<dict>
 		<key>xcode.syntax.attribute</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.character</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.comment</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.comment.doc</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.comment.doc.keyword</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.declaration.other</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.declaration.type</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.identifier.class</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.identifier.class.system</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.identifier.constant</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.identifier.constant.system</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.identifier.function</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.identifier.function.system</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.identifier.macro</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.identifier.macro.system</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.identifier.type</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.identifier.type.system</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.identifier.variable</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.identifier.variable.system</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.keyword</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.mark</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.markup.code</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.number</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.plain</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.preprocessor</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
+		<key>xcode.syntax.regex</key>
+		<string>HackNF-Regular - 14.0</string>
+		<key>xcode.syntax.regex.capturename</key>
+		<string>HackNF-Regular - 14.0</string>
+		<key>xcode.syntax.regex.charname</key>
+		<string>HackNF-Regular - 14.0</string>
+		<key>xcode.syntax.regex.number</key>
+		<string>HackNF-Regular - 14.0</string>
+		<key>xcode.syntax.regex.other</key>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.string</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 		<key>xcode.syntax.url</key>
-		<string>SFMono-Regular - 16.0</string>
+		<string>HackNF-Regular - 14.0</string>
 	</dict>
 </dict>
 </plist>
