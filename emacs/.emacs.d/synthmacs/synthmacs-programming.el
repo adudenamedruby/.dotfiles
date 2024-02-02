@@ -133,56 +133,71 @@
 ;; expand-region:1 ends here
 
 ;; [[file:../synthmacs.org::*Treesitter][Treesitter:1]]
-(require 'treesit)
-
-;; (when (boundp 'treesit-extra-load-path)
-;;   (add-to-list 'treesit-extra-load-path "/usr/local/lib/")
-;;   (add-to-list 'treesit-extra-load-path "~/.local/lib/"))
+(use-package tree-sitter
+  :hook (
+         (bash-mode
+          c-mode
+          cmake-mode
+          clojure-mode
+          commonlisp-mode
+          css-mode
+          elixir-mode
+          elisp-mode
+          html-mode
+          haskell-mode
+          js-mode
+          json-mode
+          lua-mode
+          make-mode
+          markdown-mode
+          objc-mode
+          python-mode
+          racket-mode
+          ruby-mode
+          rust-mode
+          scheme-mode
+          sqlite-mode
+          sql-mode
+          swift-mode
+          toml-mode
+          yaml-mode) . tree-sitter-mode)
+  :config
+  (setq tsc-dyn-get-from nil)
+  (setq tree-sitter-hl-use-font-lock-keywords t
+        tree-sitter-hl-enable-query-region-extension nil)
+  :config
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 ;; Treesitter:1 ends here
 
 ;; [[file:../synthmacs.org::*Treesitter languages][Treesitter languages:1]]
-(use-package tree-sitter-langs)
-(require 'tree-sitter-langs)
-
-;; (setq treesit-language-source-alist
-;;       '((bash "https://github.com/tree-sitter/tree-sitter-bash")
-;;         (c "https://github.com/tree-sitter/tree-sitter-c")
-;;         (cmake "https://github.com/uyha/tree-sitter-cmake")
-;;         (clojure "https://github.com/sogaiu/tree-sitter-clojure")
-;;         (commonlisp "https://github.com/theHamsta/tree-sitter-commonlisp")
-;;         (css "https://github.com/tree-sitter/tree-sitter-css")
-;;         (elixir "https://github.com/elixir-lang/tree-sitter-elixir")
-;;         (elisp "https://github.com/Wilfred/tree-sitter-elisp")
-;;         (html "https://github.com/tree-sitter/tree-sitter-html")
-;;         (haskell "https://github.com/tree-sitter/tree-sitter-haskell")
-;;         (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
-;;         (json "https://github.com/tree-sitter/tree-sitter-json")
-;;         (lua "https://github.com/Azganoth/tree-sitter-lua")
-;;         (make "https://github.com/alemuller/tree-sitter-make")
-;;         (markdown "https://github.com/ikatyang/tree-sitter-markdown")
-;;         (objc "https://github.com/jiyee/tree-sitter-objc")
-;;         ;; (ocaml "https://github.com/tree-sitter/tree-sitter-ocaml")
-;;         (python "https://github.com/tree-sitter/tree-sitter-python")
-;;         (racket "https://github.com/6cdh/tree-sitter-racket")
-;;         (ruby "https://github.com/tree-sitter/tree-sitter-ruby")
-;;         (rust "https://github.com/tree-sitter/tree-sitter-rust")
-;;         (scheme "https://github.com/6cdh/tree-sitter-scheme")
-;;         (sqlite "https://github.com/dhcmrlchtdj/tree-sitter-sqlite")
-;;         (sql "https://github.com/m-novikov/tree-sitter-sql")
-;;         (swift "https://github.com/alex-pinkus/tree-sitter-swift")
-;;         (toml "https://github.com/tree-sitter/tree-sitter-toml")
-;;         (yaml "https://github.com/ikatyang/tree-sitter-yaml")
-;;         (zig "https://github.com/maxxnino/tree-sitter-zig")))
-
-;; (setq major-mode-remap-alist
-;;       '((yaml-mode . yaml-ts-mode)
-;;         ;; (bash-mode . bash-ts-mode)
-;;         ;; (js2-mode . js-ts-mode)
-;;         ;; (typescript-mode . typescript-ts-mode)
-;;         ;; (json-mode . json-ts-mode)
-;;         ;; (css-mode . css-ts-mode)
-;;         (python-mode . python-ts-mode)
-;;         (swift-mode . swift-ts-mode)))
+(setq treesit-language-source-alist
+      '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+        (c "https://github.com/tree-sitter/tree-sitter-c")
+        (cmake "https://github.com/uyha/tree-sitter-cmake")
+        (clojure "https://github.com/sogaiu/tree-sitter-clojure")
+        (commonlisp "https://github.com/theHamsta/tree-sitter-commonlisp")
+        (css "https://github.com/tree-sitter/tree-sitter-css")
+        (elixir "https://github.com/elixir-lang/tree-sitter-elixir")
+        (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+        (html "https://github.com/tree-sitter/tree-sitter-html")
+        (haskell "https://github.com/tree-sitter/tree-sitter-haskell")
+        (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+        (json "https://github.com/tree-sitter/tree-sitter-json")
+        (lua "https://github.com/Azganoth/tree-sitter-lua")
+        (make "https://github.com/alemuller/tree-sitter-make")
+        (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+        (objc "https://github.com/jiyee/tree-sitter-objc")
+        ;; (ocaml "https://github.com/tree-sitter/tree-sitter-ocaml")
+        (python "https://github.com/tree-sitter/tree-sitter-python")
+        (racket "https://github.com/6cdh/tree-sitter-racket")
+        (ruby "https://github.com/tree-sitter/tree-sitter-ruby")
+        (rust "https://github.com/tree-sitter/tree-sitter-rust")
+        (scheme "https://github.com/6cdh/tree-sitter-scheme")
+        (sqlite "https://github.com/dhcmrlchtdj/tree-sitter-sqlite")
+        (sql "https://github.com/m-novikov/tree-sitter-sql")
+        (swift "https://gitlab.com/woolsweater/tree-sitter-swifter")
+        (toml "https://github.com/tree-sitter/tree-sitter-toml")
+        (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
 
       ;; (defun synthmacs/treesit-install-all-languages ()
       ;;     "Install all languages specified by `treesit-language-source-alist'."

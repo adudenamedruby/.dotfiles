@@ -3,7 +3,7 @@
 
 ;; Copyright (C) 2023 Roux G. Buciu
 
-;; Author: roux g. buciu <roux@fringe.foundation>
+;; Author: roux g. buciu
 ;; Keywords: internal
 ;; URL: https://fringe.foundation
 

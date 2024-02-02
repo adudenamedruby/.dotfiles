@@ -317,7 +317,7 @@ With that out of the way, the general outline of this file aims to be:
 
 ;; Copyright (C) 2023 Roux G. Buciu
 
-;; Author: roux g. buciu <roux@fringe.foundation>
+;; Author: roux g. buciu
 ;; Keywords: internal
 ;; URL: https://fringe.foundation
 
@@ -757,8 +757,7 @@ Who is using Synthmacs?
 #+begin_src emacs-lisp
 (use-package emacs
   :init
-  (setq user-full-name "roux g. buciu"
-        user-mail-address "roux@adudenamedruby.com"))
+  (setq user-full-name "roux g. buciu"))
 #+end_src
 
 *** "Yes or no" prompts
@@ -5143,61 +5142,76 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 Emacs 29 added native TreeSitter support. TreeSitter is a new way of incrementally parsing source code that offers superior navigation and syntax highlighting. To fully realize this benefit, however, it requires that we install tree-sitter grammars independently from Emacs. Right now, I’m using [[https://github.com/casouri/tree-sitter-module][casouri’s modules]], which I build and install under ~/.emacs.d/tree-sitter, if they don’t already exist under /usr/local/lib/ or ~/.local/lib. In case of the latter, I just add extra paths to treesit-extra-load-path explicitly.
 
 #+begin_src emacs-lisp
-(require 'treesit)
-
-;; (when (boundp 'treesit-extra-load-path)
-;;   (add-to-list 'treesit-extra-load-path "/usr/local/lib/")
-;;   (add-to-list 'treesit-extra-load-path "~/.local/lib/"))
+(use-package tree-sitter
+  :hook (
+         (bash-mode
+          c-mode
+          cmake-mode
+          clojure-mode
+          commonlisp-mode
+          css-mode
+          elixir-mode
+          elisp-mode
+          html-mode
+          haskell-mode
+          js-mode
+          json-mode
+          lua-mode
+          make-mode
+          markdown-mode
+          objc-mode
+          python-mode
+          racket-mode
+          ruby-mode
+          rust-mode
+          scheme-mode
+          sqlite-mode
+          sql-mode
+          swift-mode
+          toml-mode
+          yaml-mode) . tree-sitter-mode)
+  :config
+  (setq tsc-dyn-get-from nil)
+  (setq tree-sitter-hl-use-font-lock-keywords t
+        tree-sitter-hl-enable-query-region-extension nil)
+  :config
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 #+end_src
 
 *** Treesitter languages
 :PROPERTIES:
 :CUSTOM_ID: h:3AF9D17A-2060-42DA-8F0E-BD28BA742A2A
 :END:
-You can either build your own languages, or you can use pre-built. For now, let's use pre-built ones.
+You can either build your own languages, or you can use pre-built.
 #+begin_src emacs-lisp
-(use-package tree-sitter-langs)
-(require 'tree-sitter-langs)
-
-;; (setq treesit-language-source-alist
-;;       '((bash "https://github.com/tree-sitter/tree-sitter-bash")
-;;         (c "https://github.com/tree-sitter/tree-sitter-c")
-;;         (cmake "https://github.com/uyha/tree-sitter-cmake")
-;;         (clojure "https://github.com/sogaiu/tree-sitter-clojure")
-;;         (commonlisp "https://github.com/theHamsta/tree-sitter-commonlisp")
-;;         (css "https://github.com/tree-sitter/tree-sitter-css")
-;;         (elixir "https://github.com/elixir-lang/tree-sitter-elixir")
-;;         (elisp "https://github.com/Wilfred/tree-sitter-elisp")
-;;         (html "https://github.com/tree-sitter/tree-sitter-html")
-;;         (haskell "https://github.com/tree-sitter/tree-sitter-haskell")
-;;         (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
-;;         (json "https://github.com/tree-sitter/tree-sitter-json")
-;;         (lua "https://github.com/Azganoth/tree-sitter-lua")
-;;         (make "https://github.com/alemuller/tree-sitter-make")
-;;         (markdown "https://github.com/ikatyang/tree-sitter-markdown")
-;;         (objc "https://github.com/jiyee/tree-sitter-objc")
-;;         ;; (ocaml "https://github.com/tree-sitter/tree-sitter-ocaml")
-;;         (python "https://github.com/tree-sitter/tree-sitter-python")
-;;         (racket "https://github.com/6cdh/tree-sitter-racket")
-;;         (ruby "https://github.com/tree-sitter/tree-sitter-ruby")
-;;         (rust "https://github.com/tree-sitter/tree-sitter-rust")
-;;         (scheme "https://github.com/6cdh/tree-sitter-scheme")
-;;         (sqlite "https://github.com/dhcmrlchtdj/tree-sitter-sqlite")
-;;         (sql "https://github.com/m-novikov/tree-sitter-sql")
-;;         (swift "https://github.com/alex-pinkus/tree-sitter-swift")
-;;         (toml "https://github.com/tree-sitter/tree-sitter-toml")
-;;         (yaml "https://github.com/ikatyang/tree-sitter-yaml")
-;;         (zig "https://github.com/maxxnino/tree-sitter-zig")))
-
-;; (setq major-mode-remap-alist
-;;       '((yaml-mode . yaml-ts-mode)
-;;         ;; (bash-mode . bash-ts-mode)
-;;         ;; (js2-mode . js-ts-mode)
-;;         ;; (typescript-mode . typescript-ts-mode)
-;;         ;; (json-mode . json-ts-mode)
-;;         ;; (css-mode . css-ts-mode)
-;;         (python-mode . python-ts-mode)
-;;         (swift-mode . swift-ts-mode)))
+(setq treesit-language-source-alist
+      '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+        (c "https://github.com/tree-sitter/tree-sitter-c")
+        (cmake "https://github.com/uyha/tree-sitter-cmake")
+        (clojure "https://github.com/sogaiu/tree-sitter-clojure")
+        (commonlisp "https://github.com/theHamsta/tree-sitter-commonlisp")
+        (css "https://github.com/tree-sitter/tree-sitter-css")
+        (elixir "https://github.com/elixir-lang/tree-sitter-elixir")
+        (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+        (html "https://github.com/tree-sitter/tree-sitter-html")
+        (haskell "https://github.com/tree-sitter/tree-sitter-haskell")
+        (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+        (json "https://github.com/tree-sitter/tree-sitter-json")
+        (lua "https://github.com/Azganoth/tree-sitter-lua")
+        (make "https://github.com/alemuller/tree-sitter-make")
+        (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+        (objc "https://github.com/jiyee/tree-sitter-objc")
+        ;; (ocaml "https://github.com/tree-sitter/tree-sitter-ocaml")
+        (python "https://github.com/tree-sitter/tree-sitter-python")
+        (racket "https://github.com/6cdh/tree-sitter-racket")
+        (ruby "https://github.com/tree-sitter/tree-sitter-ruby")
+        (rust "https://github.com/tree-sitter/tree-sitter-rust")
+        (scheme "https://github.com/6cdh/tree-sitter-scheme")
+        (sqlite "https://github.com/dhcmrlchtdj/tree-sitter-sqlite")
+        (sql "https://github.com/m-novikov/tree-sitter-sql")
+        (swift "https://gitlab.com/woolsweater/tree-sitter-swifter")
+        (toml "https://github.com/tree-sitter/tree-sitter-toml")
+        (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
 
       ;; (defun synthmacs/treesit-install-all-languages ()
       ;;     "Install all languages specified by `treesit-language-source-alist'."
@@ -5257,10 +5271,6 @@ You can either build your own languages, or you can use pre-built. For now, let'
       ;; 	  (lambda () (if (treesit-ready-p 'bash t)
       ;; 		    (bash-ts-mode)
       ;; 		  (sh-mode))))
-#+end_src
-
-#+begin_src emacs-lisp :tangle no
-(treesit-language-available-p 'bash)
 #+end_src
 
 *** Tresitter load languages

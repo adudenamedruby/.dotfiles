@@ -39,8 +39,7 @@
 ;; [[file:../synthmacs.org::*User setup][User setup:1]]
 (use-package emacs
   :init
-  (setq user-full-name "roux g. buciu"
-        user-mail-address "roux@adudenamedruby.com"))
+  (setq user-full-name "roux g. buciu"))
 ;; User setup:1 ends here
 
 ;; [[file:../synthmacs.org::*"Yes or no" prompts]["Yes or no" prompts:1]]
