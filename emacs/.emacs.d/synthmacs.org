@@ -196,6 +196,7 @@ Over about a month, I started the process of experimenting with my own config. I
 - [[https://robbmann.io/emacsd/][robbmann]]
 - [[https://config.daviwil.com/emacs][System Crafters]]
 - [[https://github.com/vale981/dotfiles/blob/7d7971b91356b271dd08afbaf9979fba33d471ed/dots/emacs/emacs.org#L1020][vale981]]
+- [[https://github.com/konrad1977/emacs][konrad1977]]
   
 It is a long journey, and I still have a long way to go, but I am glad I started it.
 
@@ -625,7 +626,7 @@ Optimizations for improving I/O performance. Increase max bytes read from a sub-
 * Package Management
 :PROPERTIES:
 :CUSTOM_ID: h:F8B6E0EE-7BBD-4F7F-B31E-44DE7B43AA39
-:header-args:    :emacs-lisp :tangle ./synthmacs/synthmacs-package-management.el
+:header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-package-management.el
 :END:
 [[https://github.com/raxod502/straight.el][straight.el]] is used to download packages for us from all over the web. It stores them all in their respective git folders in ~.emacs.d/straight~, which makes debugging, and contributing fixes back upstream as easy as possible.
 
@@ -2395,43 +2396,43 @@ Interesting bits:
                  "** [[%^{Link}][%^{Title}]]\n%?"))))
 
   ;; Increase the size of various headings
-;; (set-face-attribute 'org-document-title nil :font "Iosevka" :weight 'bold :height 1.3)
-;; (dolist (face '((org-level-1 . 1.2)
-;;                 (org-level-2 . 1.1)
-;;                 (org-level-3 . 1.05)
-;;                 (org-level-4 . 1.0)
-;;                 (org-level-5 . 1.1)
-;;                 (org-level-6 . 1.1)
-;;                 (org-level-7 . 1.1)
-;;                 (org-level-8 . 1.1)))
-;;   (set-face-attribute (car face) nil :font "Iosevka" :weight 'medium :height (cdr face)))
+  ;; (set-face-attribute 'org-document-title nil :font "Iosevka" :weight 'bold :height 1.3)
+  ;; (dolist (face '((org-level-1 . 1.2)
+  ;;                 (org-level-2 . 1.1)
+  ;;                 (org-level-3 . 1.05)
+  ;;                 (org-level-4 . 1.0)
+  ;;                 (org-level-5 . 1.1)
+  ;;                 (org-level-6 . 1.1)
+  ;;                 (org-level-7 . 1.1)
+  ;;                 (org-level-8 . 1.1)))
+  ;;   (set-face-attribute (car face) nil :font "Iosevka" :weight 'medium :height (cdr face)))
 
-;; Make sure org-indent face is available
-;; (require 'org-indent)
+  ;; Make sure org-indent face is available
+  ;; (require 'org-indent)
 
-;; Ensure that anything that should be fixed-pitch in Org files appears that way
-;; (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
-;; (set-face-attribute 'org-table nil  :inherit 'fixed-pitch)
-;; (set-face-attribute 'org-formula nil  :inherit 'fixed-pitch)
-;; (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
-;; (set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch))
-;; (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
-;; (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
-;; (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
-;; (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
+  ;; Ensure that anything that should be fixed-pitch in Org files appears that way
+  ;; (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+  ;; (set-face-attribute 'org-table nil  :inherit 'fixed-pitch)
+  ;; (set-face-attribute 'org-formula nil  :inherit 'fixed-pitch)
+  ;; (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
+  ;; (set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch))
+  ;; (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+  ;; (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+  ;; (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+  ;; (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
 
-;; Get rid of the background on column views
-;; (set-face-attribute 'org-column nil :background nil)
-;; (set-face-attribute 'org-column-title nil :background nil)
+  ;; Get rid of the background on column views
+  ;; (set-face-attribute 'org-column nil :background nil)
+  ;; (set-face-attribute 'org-column-title nil :background nil)
 
-;; TODO: Others to consider
-;; '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
-;; '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
-;; '(org-property-value ((t (:inherit fixed-pitch))) t)
-;; '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
-;; '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
-;; '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
-;; '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
+  ;; TODO: Others to consider
+  ;; '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+  ;; '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+  ;; '(org-property-value ((t (:inherit fixed-pitch))) t)
+  ;; '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+  ;; '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+  ;; '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+  ;; '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
   :config
   ;; ;; (efs/org-font-setup)
   (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
@@ -3862,6 +3863,8 @@ A few more useful Emacs configs for Vectico.
   )
 #+end_src
 
+#+RESULTS:
+
 ** Marginalia
 :PROPERTIES:
 :CUSTOM_ID: h:FBAFE981-A3D6-4CE7-B9EE-E4BC74F56B1F
@@ -3959,9 +3962,9 @@ targets."
                    (not (string-suffix-p "-argument" (cdr binding))))))))
 
 (setq embark-indicators
-  '(embark-which-key-indicator
-    embark-highlight-indicator
-    embark-isearch-highlight-indicator))
+      '(embark-which-key-indicator
+        embark-highlight-indicator
+        embark-isearch-highlight-indicator))
 
 (defun embark-hide-which-key-indicator (fn &rest args)
   "Hide the which-key indicator immediately when using the completing-read prompter."
@@ -4627,27 +4630,27 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
   :hook (erc-track-list-changed . dw/on-erc-track-list-changed)
   :config
   (setq
-      erc-nick "daviwil"
-      erc-user-full-name "David Wilson"
-      erc-prompt-for-nickserv-password nil
-      erc-auto-query 'bury
-      erc-join-buffer 'bury
-      erc-interpret-mirc-color t
-      erc-rename-buffers t
-      erc-lurker-hide-list '("JOIN" "PART" "QUIT")
-      erc-track-exclude-types '("JOIN" "NICK" "QUIT" "MODE")
-      erc-track-enable-keybindings nil
-      erc-track-visibility nil ; Only use the selected frame for visibility
-      erc-fill-column 80
-      erc-fill-function 'erc-fill-static
-      erc-fill-static-center 20
-      erc-track-exclude '("#twitter_daviwil")
-      erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#guix"))
-      erc-quit-reason (lambda (s) (or s "Fading out..."))
-      erc-modules
-      '(autoaway autojoin button completion fill irccontrols keep-place
-          list match menu move-to-prompt netsplit networks noncommands
-          readonly ring stamp track hl-nicks))
+   erc-nick "daviwil"
+   erc-user-full-name "David Wilson"
+   erc-prompt-for-nickserv-password nil
+   erc-auto-query 'bury
+   erc-join-buffer 'bury
+   erc-interpret-mirc-color t
+   erc-rename-buffers t
+   erc-lurker-hide-list '("JOIN" "PART" "QUIT")
+   erc-track-exclude-types '("JOIN" "NICK" "QUIT" "MODE")
+   erc-track-enable-keybindings nil
+   erc-track-visibility nil ; Only use the selected frame for visibility
+   erc-fill-column 80
+   erc-fill-function 'erc-fill-static
+   erc-fill-static-center 20
+   erc-track-exclude '("#twitter_daviwil")
+   erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#guix"))
+   erc-quit-reason (lambda (s) (or s "Fading out..."))
+   erc-modules
+   '(autoaway autojoin button completion fill irccontrols keep-place
+              list match menu move-to-prompt netsplit networks noncommands
+              readonly ring stamp track hl-nicks))
 
   (add-hook 'erc-join-hook 'bitlbee-identify)
   (defun bitlbee-identify ()
@@ -4661,11 +4664,11 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 (defun dw/connect-irc ()
   (interactive)
   (erc-tls
-     :server "chat.freenode.net" :port 7000
-     :nick "daviwil" :password (password-store-get "IRC/Freenode")))
-  ;; (erc
-  ;;    :server "127.0.0.1" :port 6667
-  ;;    :nick "daviwil" :password (password-store-get "IRC/Bitlbee")))
+   :server "chat.freenode.net" :port 7000
+   :nick "daviwil" :password (password-store-get "IRC/Freenode")))
+;; (erc
+;;    :server "127.0.0.1" :port 6667
+;;    :nick "daviwil" :password (password-store-get "IRC/Bitlbee")))
 #+end_src
 
 *** Matrix
@@ -4702,6 +4705,7 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 :PROPERTIES:
 :CUSTOM_ID: h:72DF6BA8-0E4C-4292-9D6D-B28248978A9F
 :END:
+
 #+begin_src emacs-lisp
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
@@ -4738,6 +4742,7 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 :PROPERTIES:
 :CUSTOM_ID: h:5F80D574-943C-4E55-B3E7-7BFFC02A74CA
 :END:
+
 #+begin_src emacs-lisp
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
@@ -4946,6 +4951,7 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 :PROPERTIES:
 :CUSTOM_ID: h:337359CD-0A1C-48AE-A141-36BFC0FE4641
 :END:
+
 [[https://github.com/flycheck/flycheck][flycheck]] gathers syntax errors and warnings on-the-fly. We use [[https://github.com/alexmurray/flycheck-posframe][flycheck-posframe]] to show them if the cursor is on a flycheck warning.
 
 #+begin_src emacs-lisp
@@ -4953,6 +4959,20 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
   :defer 1
   :init
   (global-flycheck-mode t))
+
+;; (use-package flycheck
+;;  :hook (prog-mode . flycheck-mode)
+;;  :diminish t
+;;  :bind
+;;   ("C-c e n" . flycheck-next-error)
+;;   ("C-c e p" . flycheck-previous-error)
+;;   :custom
+;;   (setq flycheck-checker-error-threshold 15)
+;;   ;; (setq flymake-show-diagnostics-at-end-of-line 'short)
+;;   )
+
+;; (use-package flycheck-inline
+;;   :hook (flycheck-mode . flycheck-inline-mode))
 
 (use-package flycheck-posframe
   :after flycheck
@@ -5141,47 +5161,6 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 :END:
 Emacs 29 added native TreeSitter support. TreeSitter is a new way of incrementally parsing source code that offers superior navigation and syntax highlighting. To fully realize this benefit, however, it requires that we install tree-sitter grammars independently from Emacs. Right now, I’m using [[https://github.com/casouri/tree-sitter-module][casouri’s modules]], which I build and install under ~/.emacs.d/tree-sitter, if they don’t already exist under /usr/local/lib/ or ~/.local/lib. In case of the latter, I just add extra paths to treesit-extra-load-path explicitly.
 
-#+begin_src emacs-lisp
-(use-package tree-sitter
-  :hook
-  ((sh-mode
-    c-mode
-    ;; cmake-mode
-    clojure-mode
-    common-lisp-mode
-    css-mode
-    elixir-mode
-    ;; elisp-mode
-    html-mode
-    ;; haskell-mode
-    js-mode
-    json-mode
-    lua-mode
-    ;; make-mode
-    markdown-mode
-    objc-mode
-    python-mode
-    racket-mode
-    ruby-mode
-    rust-mode
-    scheme-mode
-    ;; sqlite-mode
-    sql-mode
-    swift-mode
-    ;; toml-mode
-    yaml-mode) . synthmacs//tree-sitter-mode-enable)
-  
-  :preface
-  (defun synthmacs//tree-sitter-mode-enable ()
-    (tree-sitter-mode t))
-  ;; :config
-  ;; (setq tsc-dyn-get-from nil)
-  ;; (setq tree-sitter-hl-use-font-lock-keywords t
-  ;;       tree-sitter-hl-enable-query-region-extension nil)
-  :config
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
-#+end_src
-
 *** Treesitter languages
 :PROPERTIES:
 :CUSTOM_ID: h:3AF9D17A-2060-42DA-8F0E-BD28BA742A2A
@@ -5278,6 +5257,48 @@ You can either build your own languages, or you can use pre-built.
       ;; 	  (lambda () (if (treesit-ready-p 'bash t)
       ;; 		    (bash-ts-mode)
       ;; 		  (sh-mode))))
+#+end_src
+
+*** Treesitter config
+:PROPERTIES:
+:CUSTOM_ID: h:1F89A7BB-A52D-4A73-B31C-2D4840548C38
+:END:
+#+begin_src emacs-lisp
+(use-package tree-sitter
+  :hook
+  (
+   (sh-mode . tree-sitter-mode)
+   (c-mode . tree-sitter-mode)
+   (clojure-mode . tree-sitter-mode)
+   (common-lisp-mode . tree-sitter-mode)
+   (css-mode . tree-sitter-mode)
+   (elixir-mode . tree-sitter-mode)
+   ;; elisp-mode
+   (html-mode . tree-sitter-mode)
+   ;; haskell-mode
+   (js-mode . tree-sitter-mode)
+   (json-mode . tree-sitter-mode)
+   (lua-mode . tree-sitter-mode)
+   ;; make-mode
+   (markdown-mode . tree-sitter-mode)
+   (objc-mode . tree-sitter-mode)
+   (python-mode . tree-sitter-mode)
+   (racket-mode . tree-sitter-mode)
+   (ruby-mode . tree-sitter-mode)
+   (rust-mode . tree-sitter-mode)
+   (scheme-mode . tree-sitter-mode)
+   ;; sqlite-mode
+   (sql-mode . tree-sitter-mode)
+   (swift-mode . tree-sitter-mode)
+   ;; toml-mode
+   (yaml-mode . tree-sitter-mode))
+
+  :config
+  (setq tsc-dyn-get-from nil)
+  (setq tree-sitter-hl-use-font-lock-keywords t
+        tree-sitter-hl-enable-query-region-extension nil)
+  :config
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 #+end_src
 
 *** Tresitter load languages

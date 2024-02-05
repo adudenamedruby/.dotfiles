@@ -76,6 +76,20 @@
   :init
   (global-flycheck-mode t))
 
+;; (use-package flycheck
+;;  :hook (prog-mode . flycheck-mode)
+;;  :diminish t
+;;  :bind
+;;   ("C-c e n" . flycheck-next-error)
+;;   ("C-c e p" . flycheck-previous-error)
+;;   :custom
+;;   (setq flycheck-checker-error-threshold 15)
+;;   ;; (setq flymake-show-diagnostics-at-end-of-line 'short)
+;;   )
+
+;; (use-package flycheck-inline
+;;   :hook (flycheck-mode . flycheck-inline-mode))
+
 (use-package flycheck-posframe
   :after flycheck
   :config
@@ -131,47 +145,6 @@
 (use-package expand-region
   :bind ("C-=" . er/expand-region))
 ;; expand-region:1 ends here
-
-;; [[file:../synthmacs.org::*Treesitter][Treesitter:1]]
-(use-package tree-sitter
-  :hook
-  ((sh-mode
-    c-mode
-    ;; cmake-mode
-    clojure-mode
-    common-lisp-mode
-    css-mode
-    elixir-mode
-    ;; elisp-mode
-    html-mode
-    ;; haskell-mode
-    js-mode
-    json-mode
-    lua-mode
-    ;; make-mode
-    markdown-mode
-    objc-mode
-    python-mode
-    racket-mode
-    ruby-mode
-    rust-mode
-    scheme-mode
-    ;; sqlite-mode
-    sql-mode
-    swift-mode
-    ;; toml-mode
-    yaml-mode) . synthmacs//tree-sitter-mode-enable)
-  
-  :preface
-  (defun synthmacs//tree-sitter-mode-enable ()
-    (tree-sitter-mode t))
-  ;; :config
-  ;; (setq tsc-dyn-get-from nil)
-  ;; (setq tree-sitter-hl-use-font-lock-keywords t
-  ;;       tree-sitter-hl-enable-query-region-extension nil)
-  :config
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
-;; Treesitter:1 ends here
 
 ;; [[file:../synthmacs.org::*Treesitter languages][Treesitter languages:1]]
 (use-package treesit-auto
@@ -265,6 +238,44 @@
       ;; 		    (bash-ts-mode)
       ;; 		  (sh-mode))))
 ;; Treesitter languages:1 ends here
+
+;; [[file:../synthmacs.org::*Treesitter config][Treesitter config:1]]
+(use-package tree-sitter
+  :hook
+  (
+   (sh-mode . tree-sitter-mode)
+   (c-mode . tree-sitter-mode)
+   (clojure-mode . tree-sitter-mode)
+   (common-lisp-mode . tree-sitter-mode)
+   (css-mode . tree-sitter-mode)
+   (elixir-mode . tree-sitter-mode)
+   ;; elisp-mode
+   (html-mode . tree-sitter-mode)
+   ;; haskell-mode
+   (js-mode . tree-sitter-mode)
+   (json-mode . tree-sitter-mode)
+   (lua-mode . tree-sitter-mode)
+   ;; make-mode
+   (markdown-mode . tree-sitter-mode)
+   (objc-mode . tree-sitter-mode)
+   (python-mode . tree-sitter-mode)
+   (racket-mode . tree-sitter-mode)
+   (ruby-mode . tree-sitter-mode)
+   (rust-mode . tree-sitter-mode)
+   (scheme-mode . tree-sitter-mode)
+   ;; sqlite-mode
+   (sql-mode . tree-sitter-mode)
+   (swift-mode . tree-sitter-mode)
+   ;; toml-mode
+   (yaml-mode . tree-sitter-mode))
+
+  :config
+  (setq tsc-dyn-get-from nil)
+  (setq tree-sitter-hl-use-font-lock-keywords t
+        tree-sitter-hl-enable-query-region-extension nil)
+  :config
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+;; Treesitter config:1 ends here
 
 ;; [[file:../synthmacs.org::*synthmacs-programming][synthmacs-programming:1]]
 (provide 'synthmacs-programming)
