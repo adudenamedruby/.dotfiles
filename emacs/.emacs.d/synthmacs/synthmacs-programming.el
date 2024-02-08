@@ -8,7 +8,7 @@
 ;;; Code:
 ;; synthmacs-programming:1 ends here
 
-;; [[file:../synthmacs.org::*lsp-mode][lsp-mode:1]]
+;; [[file:../synthmacs.org::*LSP][LSP:1]]
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :hook
@@ -38,9 +38,7 @@
   ;;   (setq lsp-headerline-breadcrumb-enable nil)
   ;;   (setq lsp-diagnostics-provider :none)
   )
-;; lsp-mode:1 ends here
 
-;; [[file:../synthmacs.org::*lsp-ui][lsp-ui:1]]
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
   :general
@@ -63,12 +61,12 @@
   :custom
   (lsp-ui-doc-position 'bottom)
   )
-;; lsp-ui:1 ends here
+;; LSP:1 ends here
 
-;; [[file:../synthmacs.org::*lsp-ui][lsp-ui:2]]
+;; [[file:../synthmacs.org::*LSP][LSP:2]]
 (use-package lsp-treemacs
   :after lsp)
-;; lsp-ui:2 ends here
+;; LSP:2 ends here
 
 ;; [[file:../synthmacs.org::*Flycheck][Flycheck:1]]
 (use-package flycheck

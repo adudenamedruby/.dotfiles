@@ -4631,8 +4631,8 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
   :hook (erc-track-list-changed . dw/on-erc-track-list-changed)
   :config
   (setq
-   erc-nick "daviwil"
-   erc-user-full-name "David Wilson"
+   erc-nick "adudenamedruby"
+   erc-user-full-name "Roux Buciu"
    erc-prompt-for-nickserv-password nil
    erc-auto-query 'bury
    erc-join-buffer 'bury
@@ -4645,7 +4645,7 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
    erc-fill-column 80
    erc-fill-function 'erc-fill-static
    erc-fill-static-center 20
-   erc-track-exclude '("#twitter_daviwil")
+   erc-track-exclude '("#twitter_adudenamedruby")
    erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#guix"))
    erc-quit-reason (lambda (s) (or s "Fading out..."))
    erc-modules
@@ -4666,7 +4666,7 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
   (interactive)
   (erc-tls
    :server "chat.freenode.net" :port 7000
-   :nick "daviwil" :password (password-store-get "IRC/Freenode")))
+   :nick "adudenamedruby" :password (password-store-get "IRC/Freenode")))
 ;; (erc
 ;;    :server "127.0.0.1" :port 6667
 ;;    :nick "daviwil" :password (password-store-get "IRC/Bitlbee")))
@@ -4702,11 +4702,6 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 :CUSTOM_ID: h:222F2EE3-FD70-4274-AABC-759B5F7556C5
 :END:
 
-*** lsp-mode
-:PROPERTIES:
-:CUSTOM_ID: h:72DF6BA8-0E4C-4292-9D6D-B28248978A9F
-:END:
-
 #+begin_src emacs-lisp
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
@@ -4737,14 +4732,7 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
   ;;   (setq lsp-headerline-breadcrumb-enable nil)
   ;;   (setq lsp-diagnostics-provider :none)
   )
-#+end_src
 
-*** lsp-ui
-:PROPERTIES:
-:CUSTOM_ID: h:5F80D574-943C-4E55-B3E7-7BFFC02A74CA
-:END:
-
-#+begin_src emacs-lisp
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
   :general
