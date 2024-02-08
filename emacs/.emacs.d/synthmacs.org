@@ -4599,6 +4599,7 @@ restart-emacs teaches Emacs to restart itself. I added a me/reload-init command 
 		       (progn
 			 (text-scale-decrease 0.25)
 			 (synthmacs/font-size-transient))))
+      ("q" "Quit" transient-quit-one)
      ])
   )
 #+end_src

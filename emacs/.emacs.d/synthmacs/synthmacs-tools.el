@@ -331,6 +331,7 @@
 		       (progn
 			 (text-scale-decrease 0.25)
 			 (synthmacs/font-size-transient))))
+      ("q" "Quit" transient-quit-one)
      ])
   )
 ;; Transient increase/decrease font size:1 ends here
