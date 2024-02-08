@@ -74,6 +74,7 @@
 (use-package soothe-theme)
 (use-package subatomic-theme)
 (use-package sublime-themes)
+(use-package kanagawa-theme)
 ;; A variety of themes:1 ends here
 
 ;; [[file:../synthmacs.org::*Theme functions][Theme functions:1]]
@@ -83,7 +84,8 @@
 (defvar synthmacs--cur-theme nil
   "Internal variable storing currently loaded theme.")
 
-(defvar synthmacs--user-themes '(kaolin-bubblegum
+(defvar synthmacs--user-themes '(kanagawa
+                                 kaolin-bubblegum
 				 doom-challenger-deep
 				 cyberpunk
 				 jazz

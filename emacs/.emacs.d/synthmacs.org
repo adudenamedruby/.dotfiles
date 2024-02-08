@@ -3059,6 +3059,7 @@ For the moment, I'm loading a ton of themes and experimenting with them. However
 (use-package soothe-theme)
 (use-package subatomic-theme)
 (use-package sublime-themes)
+(use-package kanagawa-theme)
 #+end_src
 
 *** Theme functions
@@ -3080,7 +3081,8 @@ Some functions for themes. Notably, I set:
 (defvar synthmacs--cur-theme nil
   "Internal variable storing currently loaded theme.")
 
-(defvar synthmacs--user-themes '(kaolin-bubblegum
+(defvar synthmacs--user-themes '(kanagawa
+                                 kaolin-bubblegum
 				 doom-challenger-deep
 				 cyberpunk
 				 jazz
