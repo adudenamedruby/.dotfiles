@@ -8,65 +8,47 @@
 ;;; Code:
 ;; synthmacs-programming:1 ends here
 
-;; [[file:../synthmacs.org::*LSP][LSP:1]]
-(use-package lsp-mode
-  :commands (lsp lsp-deferred)
-  :hook
-  ((prog-mode . lsp-deferred)
-   (lsp-mode . (lambda () (setq-local evil-lookup-func #'lsp-describe-thing-at-point)))
-   (lsp-mode . lsp-enable-which-key-integration))
-  ;; :general
-  ;; (synthmacs/local-leader-keys
-  ;;   :states 'normal
-  ;;   :keymaps 'lsp-mode-map
-  ;;   "i" '(:ignore t :which-key "import")
-  ;;   "io" '(lsp-organize-imports :wk "optimize")
-  ;;   "l" '(:keymap lsp-command-map :wk "lsp")
-  ;;   "a" '(lsp-execute-code-action :wk "code action")  
-  ;;   "r" '(lsp-rename :wk "rename"))
-  :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-  (setq lsp-keymap-prefix "C-c l")
-  ;; (setq lsp-restart 'ignore)
-  ;;   (setq lsp-eldoc-enable-hover nil)
-  ;;   (setq lsp-enable-file-watchers nil)
-  ;;   (setq lsp-signature-auto-activate nil)
-  ;;   (setq lsp-modeline-diagnostics-enable nil)
-  ;;   (setq lsp-keep-workspace-alive nil)
-  ;;   (setq lsp-auto-execute-action nil)
-  ;;   (setq lsp-before-save-edits nil)
-  ;;   (setq lsp-headerline-breadcrumb-enable nil)
-  ;;   (setq lsp-diagnostics-provider :none)
-  )
+;; [[file:../synthmacs.org::*Eglot][Eglot:1]]
+(use-package eglot
+  :hook ((swift-mode . eglot-ensure))
+  :commands (eglot eglot-ensure)
+  :config
+  (setq eglot-stay-out-of '(corfu company)
+        ;; eglot-send-changes-idle-time 0.1
+        eglot-autoshutdown t
+        eglot-ignored-server-capabilities '(:hoverProvider)
+        eglot-extend-to-xref t)
+  (advice-add 'jsonrpc--log-event :override #'ignore)
+  (add-to-list 'eglot-server-programs '(swift-mode . my-swift-mode:eglot-server-contact)))
 
-(use-package lsp-ui
-  :hook (lsp-mode . lsp-ui-mode)
-  :general
-  (synthmacs/local-leader-keys
-    "h" 'lsp-ui-doc-show
-    "H" 'lsp-ui-doc-hide)
-  (lsp-ui-peek-mode-map
-   :states 'normal
-   "C-n" 'lsp-ui-peek--select-next
-   "C-p" 'lsp-ui-peek--select-prev)
-  (outline-mode-map
-   :states 'normal
-   "C-j" 'nil
-   "C-k" 'nil)
-  :init
-  (setq lsp-ui-doc-show-with-cursor nil)
-  (setq lsp-ui-doc-show-with-mouse nil)
-  (setq lsp-ui-peek-always-show t)
-  (setq lsp-ui-peek-fontify 'always)
-  :custom
-  (lsp-ui-doc-position 'bottom)
-  )
-;; LSP:1 ends here
+;; (use-package eglot-booster
+;;   :after eglot
+;;   :config (eglot-booster-mode)
+;;   ;; (package-vc-install "https://github.com/jdtsmith/eglot-booster")
+;;   )
 
-;; [[file:../synthmacs.org::*LSP][LSP:2]]
-(use-package lsp-treemacs
-  :after lsp)
-;; LSP:2 ends here
+;; (advice-add 'eglot-xref-backend :override 'xref-eglot+dumb-backend)
+
+;; (defun xref-eglot+dumb-backend () 'eglot+dumb)
+
+;; (cl-defmethod xref-backend-identifier-at-point ((_backend (eql eglot+dumb)))
+;;   (cons (xref-backend-identifier-at-point 'eglot)
+;;         (xref-backend-identifier-at-point 'dumb-jump)))
+
+;; (cl-defmethod xref-backend-identifier-completion-table ((_backend (eql eglot+dumb)))
+;;   (xref-backend-identifier-completion-table 'eglot))
+
+;; (cl-defmethod xref-backend-definitions ((_backend (eql eglot+dumb)) identifier)
+;;   (or (xref-backend-definitions 'eglot (car identifier))
+;;       (xref-backend-definitions 'dumb-jump (cdr identifier))))
+
+;; (cl-defmethod xref-backend-references ((_backend (eql eglot+dumb)) identifier)
+;;   (or (xref-backend-references 'eglot (car identifier))
+;;       (xref-backend-references 'dumb-jump (cdr identifier))))
+
+;; (cl-defmethod xref-backend-apropos ((_backend (eql eglot+dumb)) pattern)
+;;   (xref-backend-apropos 'eglot pattern))
+;; Eglot:1 ends here
 
 ;; [[file:../synthmacs.org::*Flycheck][Flycheck:1]]
 (use-package flycheck
@@ -85,8 +67,14 @@
 ;;   ;; (setq flymake-show-diagnostics-at-end-of-line 'short)
 ;;   )
 
-;; (use-package flycheck-inline
-;;   :hook (flycheck-mode . flycheck-inline-mode))
+(use-package flycheck-inline
+  :hook (flycheck-mode . flycheck-inline-mode))
+
+(use-package flycheck-eglot
+  :hook (swift-mode . global-flycheck-eglot-mode)
+  :after flycheck
+  :config
+  (setq flycheck-eglot-exclusive t))
 
 (use-package flycheck-posframe
   :after flycheck

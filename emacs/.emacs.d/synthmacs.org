@@ -115,6 +115,7 @@
   - [[#transient][Transient]]
   - [[#communication][Communication]]
 - [[#programming-environment][Programming Environment]]
+  - [[#eglot][Eglot]]
   - [[#lsp][LSP]]
   - [[#dap-debug-adapter-support][DAP (Debug Adapter Support)]]
   - [[#flycheck][Flycheck]]
@@ -3700,6 +3701,7 @@ A few more useful Emacs configs for Vectico.
 
 #+begin_src emacs-lisp
 (use-package orderless
+  :after vertico
   :demand
   :init
   ;; Configure a custom style dispatcher (see the Consult wiki)
@@ -3707,7 +3709,10 @@ A few more useful Emacs configs for Vectico.
   ;;       orderless-component-separator #'orderless-escapable-split-on-space)
   (setq completion-styles '(orderless basic))
   (setq completion-category-defaults nil)
-  (setq completion-category-overrides '((file (styles partial-completion))))
+  (setq read-file-name-completion-ignore-case t)
+  (setq read-buffer-completion-ignore-case t)
+  (setq completion-category-overrides '((file (styles partial-completion))
+                                        (eglot (styles . (orderless flex)))))
   )
 #+end_src
 
@@ -4601,7 +4606,7 @@ restart-emacs teaches Emacs to restart itself. I added a me/reload-init command 
 		       (progn
 			 (text-scale-decrease 0.25)
 			 (synthmacs/font-size-transient))))
-      ("q" "Quit" transient-quit-one)
+     ("q" "Quit" transient-quit-one)
      ])
   )
 #+end_src
@@ -4699,12 +4704,59 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 :header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-programming.el
 :END:
 
+** Eglot
+:PROPERTIES:
+:CUSTOM_ID: h:27CB31CB-2AE5-405E-B6B9-42BA33939308
+:END:
+
+#+begin_src emacs-lisp
+(use-package eglot
+  :hook ((swift-mode . eglot-ensure))
+  :commands (eglot eglot-ensure)
+  :config
+  (setq eglot-stay-out-of '(corfu company)
+        ;; eglot-send-changes-idle-time 0.1
+        eglot-autoshutdown t
+        eglot-ignored-server-capabilities '(:hoverProvider)
+        eglot-extend-to-xref t)
+  (advice-add 'jsonrpc--log-event :override #'ignore)
+  (add-to-list 'eglot-server-programs '(swift-mode . my-swift-mode:eglot-server-contact)))
+
+;; (use-package eglot-booster
+;;   :after eglot
+;;   :config (eglot-booster-mode)
+;;   ;; (package-vc-install "https://github.com/jdtsmith/eglot-booster")
+;;   )
+
+;; (advice-add 'eglot-xref-backend :override 'xref-eglot+dumb-backend)
+
+;; (defun xref-eglot+dumb-backend () 'eglot+dumb)
+
+;; (cl-defmethod xref-backend-identifier-at-point ((_backend (eql eglot+dumb)))
+;;   (cons (xref-backend-identifier-at-point 'eglot)
+;;         (xref-backend-identifier-at-point 'dumb-jump)))
+
+;; (cl-defmethod xref-backend-identifier-completion-table ((_backend (eql eglot+dumb)))
+;;   (xref-backend-identifier-completion-table 'eglot))
+
+;; (cl-defmethod xref-backend-definitions ((_backend (eql eglot+dumb)) identifier)
+;;   (or (xref-backend-definitions 'eglot (car identifier))
+;;       (xref-backend-definitions 'dumb-jump (cdr identifier))))
+
+;; (cl-defmethod xref-backend-references ((_backend (eql eglot+dumb)) identifier)
+;;   (or (xref-backend-references 'eglot (car identifier))
+;;       (xref-backend-references 'dumb-jump (cdr identifier))))
+
+;; (cl-defmethod xref-backend-apropos ((_backend (eql eglot+dumb)) pattern)
+;;   (xref-backend-apropos 'eglot pattern))
+#+end_src
+
 ** LSP
 :PROPERTIES:
 :CUSTOM_ID: h:222F2EE3-FD70-4274-AABC-759B5F7556C5
 :END:
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :hook
@@ -4759,7 +4811,7 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
   )
 #+end_src
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (use-package lsp-treemacs
   :after lsp)
 #+end_src
@@ -4962,8 +5014,14 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 ;;   ;; (setq flymake-show-diagnostics-at-end-of-line 'short)
 ;;   )
 
-;; (use-package flycheck-inline
-;;   :hook (flycheck-mode . flycheck-inline-mode))
+(use-package flycheck-inline
+  :hook (flycheck-mode . flycheck-inline-mode))
+
+(use-package flycheck-eglot
+  :hook (swift-mode . global-flycheck-eglot-mode)
+  :after flycheck
+  :config
+  (setq flycheck-eglot-exclusive t))
 
 (use-package flycheck-posframe
   :after flycheck
@@ -4973,6 +5031,8 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
   (add-hook 'flycheck-posframe-inhibit-functions #'company--active-p)
   (add-hook 'flycheck-posframe-inhibit-functions #'evil-insert-state-p)
   (add-hook 'flycheck-posframe-inhibit-functions #'evil-replace-state-p))
+
+
 #+end_src
 
 ** iMenu

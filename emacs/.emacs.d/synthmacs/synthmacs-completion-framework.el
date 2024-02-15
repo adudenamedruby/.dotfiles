@@ -105,6 +105,7 @@
 
 ;; [[file:../synthmacs.org::*Orderless][Orderless:1]]
 (use-package orderless
+  :after vertico
   :demand
   :init
   ;; Configure a custom style dispatcher (see the Consult wiki)
@@ -112,7 +113,10 @@
   ;;       orderless-component-separator #'orderless-escapable-split-on-space)
   (setq completion-styles '(orderless basic))
   (setq completion-category-defaults nil)
-  (setq completion-category-overrides '((file (styles partial-completion))))
+  (setq read-file-name-completion-ignore-case t)
+  (setq read-buffer-completion-ignore-case t)
+  (setq completion-category-overrides '((file (styles partial-completion))
+                                        (eglot (styles . (orderless flex)))))
   )
 ;; Orderless:1 ends here
 
