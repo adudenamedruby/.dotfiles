@@ -100,6 +100,7 @@
   - [[#wgrep][wgrep]]
   - [[#corfu][Corfu]]
 - [[#useful-tools][Useful Tools]]
+  - [[#treemacs][Treemacs]]
   - [[#dirvish][Dirvish]]
   - [[#gitvcs-integration][Git/VCS Integration]]
   - [[#spell-checking][Spell-checking]]
@@ -2050,7 +2051,6 @@ Example: ~glip=~ will left align inner paragraph on the ~=~ separator
 :END:
 #+begin_src emacs-lisp
 (use-package evil-numbers
-  :defer t
   :general
   (synthmacs/leader-keys
     "n" '(synthmacs/hydra/numbers-state/body :wk "numbers")))
@@ -2098,7 +2098,6 @@ Why? [[https://github.com/syl20bnr/spacemacs/blob/develop/doc/DOCUMENTATION.org#
 :END:
 #+begin_src emacs-lisp
 (use-package evil-visual-mark-mode
-  :defer t
   :general
   (synthmacs/leader-keys
     "t`" '(evil-visual-mark-mode :wk "visual-mark-mode")))
@@ -3007,6 +3006,23 @@ People sometimes say that making your editor look good is pointless. I disagree:
   :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
   :init
   (all-the-icons-completion-mode))
+
+(use-package treemacs-nerd-icons
+  :after treemacs
+  :config
+  (treemacs-load-theme "nerd-icons"))
+#+end_src
+
+*** treemacs-icons
+:PROPERTIES:
+:CUSTOM_ID: h:69172FAA-2850-4244-8461-678470ABCAB4
+:END:
+
+#+begin_src emacs-lisp
+(use-package treemacs-nerd-icons
+  :after treemacs
+  :config
+  (treemacs-load-theme "nerd-icons"))
 #+end_src
 
 ** Themes
@@ -3235,6 +3251,7 @@ Let's add numbers to windows so we can go to window 1-9 using ~SPC x~. Pretty ha
 (use-package winum
   :general
   (synthmacs/leader-keys
+    "0" '(treemacs-select-window :which-key "Treemacs")
     "1" '(winum-select-window-1 :wk "winum-select-window-1")
     "2" '(winum-select-window-2 :wk "winum-select-window-2")
     "3" '(winum-select-window-3 :wk "winum-select-window-3")
@@ -4048,6 +4065,7 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
                               corfu-popupinfo))
   :hook ((prog-mode . corfu-mode)
 	 (org-mode . corfu-mode)
+         ;; (localizeable-mode . corfu-mode)
 	 (corfu-mode . corfu-popupinfo-mode))
   :bind
   (:map corfu-map
@@ -4060,8 +4078,22 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
   :init
   (setq corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (setq corfu-auto t)                 ;; Enable auto completion
-  (setq corfu-min-width 80)
-  (setq corfu-max-width corfu-min-width)
+  (setq corfu-bar-width 10)
+  (setq corfu-scroll-margin 2)
+  (setq corfu-auto-prefix 1)
+  (setq corfu-min-width 40)
+  (setq corfu-max-width 140)
+  ;; (setq corfu-max-width corfu-min-width)
+  (setq corfu-left-margin-width 0.8)
+  (setq corfu-right-margin-width 0.8)
+  (setq corfu-count 12)
+  (setq corfu-auto-delay 0.3)
+  (setq corfu-quit-no-match 'separator)
+  (setq corfu-popupinfo-resize t)
+  (setq corfu-popupinfo-hide t)
+  (setq corfu-popupinfo-direction '(force-horizontal))
+  (setq corfu-popupinfo-min-width corfu-min-width)
+  (setq corfu-popupinfo-max-width corfu-max-width)
   (global-corfu-mode)
   
   :custom
@@ -4148,6 +4180,67 @@ Icons in corfu? Yes please.
 :CUSTOM_ID: h:B57C03F6-2111-489A-9303-B1A06C95EFF5
 :header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-tools.el
 :END:
+
+** Treemacs
+:PROPERTIES:
+:CUSTOM_ID: h:10AF9BA5-4D0A-483D-B2EB-CD97CE94E916
+:END:
+
+#+begin_src emacs-lisp
+(use-package treemacs
+  :commands (treemacs treemacs-select-window)
+  :hook (treemacs-mode . treemacs-project-follow-mode)
+  :bind (("M-J" . treemacs-find-file))
+  :general
+  (synthmacs/leader-keys
+    "ft" '(treemacs-find-file :wk "treemacs-find-file")
+    "tn" '(treemacs :wk "treemacs-toggle")
+)
+  :custom-face
+  (treemacs-directory-face ((t (:family "SF Pro Display" :height 0.9))))
+  (treemacs-directory-collapsed-face ((t (:family "SF Pro Display" :height 0.9))))
+  (treemacs-git-ignored-face ((t (:family "SF Pro Display" :height 0.9))))
+  (treemacs-git-unmodified-face ((t (:family "SF Pro Display" :height 0.9))))
+  (treemacs-git-untracked-face ((t (:family "SF Pro Display" :height 0.9))))
+  (treemacs-git-added-face ((t (:family "SF Pro Display" :height 0.9))))
+  (treemacs-git-renamed-face ((t (:family "SF Pro Display" :height 0.9))))
+  (treemacs-git-modified-face ((t (:family "SF Pro Display" :height 0.9))))
+  (treemacs-tags-face ((t (:family "SF Pro Display" :height 0.9))))
+  :config
+  (setq treemacs-follow-after-init t)
+  (setq treemacs-collapse-dirs 1)
+  (setq treemacs-directory-name-transformer #'identity)
+  (setq treemacs-file-name-transformer #'identity)
+  (setq treemacs-show-cursor nil)
+  (setq treemacs-display-current-project-exclusively t)
+  (setq treemacs-filewatch-mode t)
+  (setq treemacs-follow-mode nil)
+  (setq treemacs-hide-dot-git-directory t)
+  (setq treemacs-git-integration t)
+  (setq treemacs-space-between-root-nodes t)
+  (setq treemacs-hide-gitignored-files-mode t)
+  (setq treemacs-git-mode 'extended)
+  (setq treemacs-indentation 1)
+  (setq treemacs-is-never-other-window t)
+  (setq treemacs-silent-refresh	t)
+  (setq treemacs-sorting 'treemacs--sort-alphabetic-case-insensitive-asc)
+  (setq treemacs-width 30))
+
+(defun treemacs-mode-handler()
+  (set (make-local-variable 'face-remapping-alist)
+       '((default :background "#1c1c24"))))
+
+(add-hook 'treemacs-mode-hook 'treemacs-mode-handler)
+
+(use-package treemacs-magit
+  :after treemacs magit)
+
+(use-package treemacs-evil
+  :after (treemacs evil))
+
+(use-package treemacs-projectile
+  :after (treemacs projectile))
+#+end_src
 
 ** Dirvish
 :PROPERTIES:
@@ -4693,7 +4786,6 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 :END:
 #+begin_src emacs-lisp :tangle no
 (use-package mastodon
-  :defer t
   :config
   (setq mastodon-instance-url "https://fosstodon.org"))
 #+end_src
@@ -5064,7 +5156,7 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
   ;; "TAB" 'nil
   ;; "C-TAB" 'yas-expand)
   :hook
-  ((prog-mode org-mode dap-ui-repl-mode vterm-mode) . yas-minor-mode)
+  ((prog-mode org-mode dap-ui-repl-mode vterm-mode swift-mode) . yas-minor-mode)
   :init
   (defun synthmacs/yas-try-expanding-auto-snippets ()
     (when (and (boundp 'yas-minor-mode) yas-minor-mode)
@@ -5379,10 +5471,9 @@ We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[h
 :PROPERTIES:
 :CUSTOM_ID: h:0D5FF03F-A780-4815-A7D4-12C54934AD98
 :END:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (use-package ccls
   :straight t
-  :defer t
   :hook ((c-mode c++-mode objc-mode cuda-mode) . lsp)
   :commands lsp)
 #+end_src
@@ -5407,8 +5498,7 @@ We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[h
 :CUSTOM_ID: h:6661E55B-9B07-433E-A913-B7BDEA5B7B3C
 :END:
 #+begin_src emacs-lisp
-(use-package git-modes
-  :defer t)
+(use-package git-modes)
 #+end_src
 
 ** Haskell
@@ -5624,7 +5714,6 @@ We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[h
 (use-package sly-macrostep)
 
 (use-package sly-repl-ansi-color
-  :defer t
   :init
   (add-to-list 'sly-contribs 'sly-repl-ansi-color))
 #+end_src
@@ -5677,7 +5766,9 @@ Minimalism and elegant syntax, the purest. Hygienic macros. Racket has a great d
 :PROPERTIES:
 :CUSTOM_ID: h:BB3EB984-53C4-480A-9FD5-1EFBD6BA4D3F
 :END:
+
 Keeps the file indented nicely, but, this might clash with lsp stuff, so we only use it for Lisp stuff.
+
 #+begin_src emacs-lisp
 (use-package aggressive-indent
     :hook ((clojure-mode . aggressive-indent-mode)
@@ -5689,13 +5780,14 @@ Keeps the file indented nicely, but, this might clash with lsp stuff, so we only
 :PROPERTIES:
 :CUSTOM_ID: h:29AD92F1-04AB-4CE5-91F4-A1E4B187F0CE
 :END:
+
 - Wrap with ~SPC l w~
 - Raise with ~SPC l r~
 - Enter lisp-state with ~SPC l .~
 - Navigate symbols with ~j~ and ~k~
 - Navigate forms with ~h~ and ~l~
 - Go to parent sexp with ~U~
-- 
+
 #+begin_src emacs-lisp
 (use-package evil-lisp-state
   :after evil
@@ -5763,8 +5855,7 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
   :init (setq rust-format-on-save t))
 
 (use-package cargo
-  :straight t
-  :defer t)
+  :straight t)
 #+end_src
 
 ** Swift
@@ -5784,22 +5875,28 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
                                                    "/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin/sourcekit"))))
 
 (use-package swift-mode
-  :defer t
   :mode "\\.swift\\'"
-  :hook (swift-mode . (lambda () (lsp)))
+  ;; :hook (swift-mode . (lambda () (lsp)))
   :config
   (setq swift-mode:basic-offset 4
         swift-mode:parenthesized-expression-offset 4
         swift-mode:multiline-statement-offset 0
         swift-mode:highlight-anchor t))
 
-(use-package flycheck-swift
-  :after swift-mode
-  :config
-  (flycheck-swift-setup)
-  ;; (setq flycheck-swift-sdk-path "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk")
-  ;; (setq flycheck-swift-target "arm64-apple-ios10") 
-  )
+;; (use-package flycheck-swift
+;;   :after swift-mode
+;;   :config
+;;   (flycheck-swift-setup)
+;;   ;; (setq flycheck-swift-sdk-path "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk")
+;;   ;; (setq flycheck-swift-target "arm64-apple-ios10") 
+;;   )
+
+;; (use-package localizeable-mode
+;;   :mode "\\.strings\\'"
+  ;; :bind (:map localizeable-mode-map
+  ;;             ("C-c C-c" . #'swift-additions:compile-and-run-app)
+  ;;             ("C-c C-k" . #'periphery-run-loco))
+  ;; )
 #+end_src
 
 ** YAML

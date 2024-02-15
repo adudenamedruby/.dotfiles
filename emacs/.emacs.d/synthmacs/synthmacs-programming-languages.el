@@ -8,14 +8,6 @@
 ;;; Code:
 ;; synthmacs-programming-languages:1 ends here
 
-;; [[file:../synthmacs.org::*C & C++][C & C++:1]]
-(use-package ccls
-  :straight t
-  :defer t
-  :hook ((c-mode c++-mode objc-mode cuda-mode) . lsp)
-  :commands lsp)
-;; C & C++:1 ends here
-
 ;; [[file:../synthmacs.org::*CSS][CSS:1]]
 (use-package css-mode
   :mode "\\.css\\'"
@@ -27,8 +19,7 @@
 ;; CSS:1 ends here
 
 ;; [[file:../synthmacs.org::*Git-Modes][Git-Modes:1]]
-(use-package git-modes
-  :defer t)
+(use-package git-modes)
 ;; Git-Modes:1 ends here
 
 ;; [[file:../synthmacs.org::*HTML][HTML:1]]
@@ -196,7 +187,6 @@
 (use-package sly-macrostep)
 
 (use-package sly-repl-ansi-color
-  :defer t
   :init
   (add-to-list 'sly-contribs 'sly-repl-ansi-color))
 ;; Common Lisp:1 ends here
@@ -282,8 +272,7 @@
   :init (setq rust-format-on-save t))
 
 (use-package cargo
-  :straight t
-  :defer t)
+  :straight t)
 ;; Rust:1 ends here
 
 ;; [[file:../synthmacs.org::*Swift][Swift:1]]
@@ -298,22 +287,28 @@
                                                    "/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin/sourcekit"))))
 
 (use-package swift-mode
-  :defer t
   :mode "\\.swift\\'"
-  :hook (swift-mode . (lambda () (lsp)))
+  ;; :hook (swift-mode . (lambda () (lsp)))
   :config
   (setq swift-mode:basic-offset 4
         swift-mode:parenthesized-expression-offset 4
         swift-mode:multiline-statement-offset 0
         swift-mode:highlight-anchor t))
 
-(use-package flycheck-swift
-  :after swift-mode
-  :config
-  (flycheck-swift-setup)
-  ;; (setq flycheck-swift-sdk-path "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk")
-  ;; (setq flycheck-swift-target "arm64-apple-ios10") 
-  )
+;; (use-package flycheck-swift
+;;   :after swift-mode
+;;   :config
+;;   (flycheck-swift-setup)
+;;   ;; (setq flycheck-swift-sdk-path "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk")
+;;   ;; (setq flycheck-swift-target "arm64-apple-ios10") 
+;;   )
+
+;; (use-package localizeable-mode
+;;   :mode "\\.strings\\'"
+  ;; :bind (:map localizeable-mode-map
+  ;;             ("C-c C-c" . #'swift-additions:compile-and-run-app)
+  ;;             ("C-c C-k" . #'periphery-run-loco))
+  ;; )
 ;; Swift:1 ends here
 
 ;; [[file:../synthmacs.org::*YAML][YAML:1]]

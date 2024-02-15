@@ -32,7 +32,19 @@
   :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
   :init
   (all-the-icons-completion-mode))
+
+(use-package treemacs-nerd-icons
+  :after treemacs
+  :config
+  (treemacs-load-theme "nerd-icons"))
 ;; all-the-icons-completion:1 ends here
+
+;; [[file:../synthmacs.org::*treemacs-icons][treemacs-icons:1]]
+(use-package treemacs-nerd-icons
+  :after treemacs
+  :config
+  (treemacs-load-theme "nerd-icons"))
+;; treemacs-icons:1 ends here
 
 ;; [[file:../synthmacs.org::*A variety of themes][A variety of themes:1]]
 (use-package doom-themes
@@ -214,6 +226,7 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
 (use-package winum
   :general
   (synthmacs/leader-keys
+    "0" '(treemacs-select-window :which-key "Treemacs")
     "1" '(winum-select-window-1 :wk "winum-select-window-1")
     "2" '(winum-select-window-2 :wk "winum-select-window-2")
     "3" '(winum-select-window-3 :wk "winum-select-window-3")

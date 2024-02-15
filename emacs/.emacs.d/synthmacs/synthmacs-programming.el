@@ -101,7 +101,7 @@
   ;; "TAB" 'nil
   ;; "C-TAB" 'yas-expand)
   :hook
-  ((prog-mode org-mode dap-ui-repl-mode vterm-mode) . yas-minor-mode)
+  ((prog-mode org-mode dap-ui-repl-mode vterm-mode swift-mode) . yas-minor-mode)
   :init
   (defun synthmacs/yas-try-expanding-auto-snippets ()
     (when (and (boundp 'yas-minor-mode) yas-minor-mode)

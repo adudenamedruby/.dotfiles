@@ -8,6 +8,62 @@
 ;;; Code:
 ;; synthmacs-tools:1 ends here
 
+;; [[file:../synthmacs.org::*Treemacs][Treemacs:1]]
+(use-package treemacs
+  :commands (treemacs treemacs-select-window)
+  :hook (treemacs-mode . treemacs-project-follow-mode)
+  :bind (("M-J" . treemacs-find-file))
+  :general
+  (synthmacs/leader-keys
+    "ft" '(treemacs-find-file :wk "treemacs-find-file")
+    "tn" '(treemacs :wk "treemacs-toggle")
+)
+  :custom-face
+  (treemacs-directory-face ((t (:family "SF Pro Display" :height 0.9))))
+  (treemacs-directory-collapsed-face ((t (:family "SF Pro Display" :height 0.9))))
+  (treemacs-git-ignored-face ((t (:family "SF Pro Display" :height 0.9))))
+  (treemacs-git-unmodified-face ((t (:family "SF Pro Display" :height 0.9))))
+  (treemacs-git-untracked-face ((t (:family "SF Pro Display" :height 0.9))))
+  (treemacs-git-added-face ((t (:family "SF Pro Display" :height 0.9))))
+  (treemacs-git-renamed-face ((t (:family "SF Pro Display" :height 0.9))))
+  (treemacs-git-modified-face ((t (:family "SF Pro Display" :height 0.9))))
+  (treemacs-tags-face ((t (:family "SF Pro Display" :height 0.9))))
+  :config
+  (setq treemacs-follow-after-init t)
+  (setq treemacs-collapse-dirs 1)
+  (setq treemacs-directory-name-transformer #'identity)
+  (setq treemacs-file-name-transformer #'identity)
+  (setq treemacs-show-cursor nil)
+  (setq treemacs-display-current-project-exclusively t)
+  (setq treemacs-filewatch-mode t)
+  (setq treemacs-follow-mode nil)
+  (setq treemacs-hide-dot-git-directory t)
+  (setq treemacs-git-integration t)
+  (setq treemacs-space-between-root-nodes t)
+  (setq treemacs-hide-gitignored-files-mode t)
+  (setq treemacs-git-mode 'extended)
+  (setq treemacs-indentation 1)
+  (setq treemacs-is-never-other-window t)
+  (setq treemacs-silent-refresh	t)
+  (setq treemacs-sorting 'treemacs--sort-alphabetic-case-insensitive-asc)
+  (setq treemacs-width 30))
+
+(defun treemacs-mode-handler()
+  (set (make-local-variable 'face-remapping-alist)
+       '((default :background "#1c1c24"))))
+
+(add-hook 'treemacs-mode-hook 'treemacs-mode-handler)
+
+(use-package treemacs-magit
+  :after treemacs magit)
+
+(use-package treemacs-evil
+  :after (treemacs evil))
+
+(use-package treemacs-projectile
+  :after (treemacs projectile))
+;; Treemacs:1 ends here
+
 ;; [[file:../synthmacs.org::*Magit][Magit:1]]
 (use-package magit
   ;; :custom

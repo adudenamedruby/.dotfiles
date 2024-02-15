@@ -430,7 +430,6 @@ _q_: quit
 
 ;; [[file:../synthmacs.org::*evil-numbers][evil-numbers:1]]
 (use-package evil-numbers
-  :defer t
   :general
   (synthmacs/leader-keys
     "n" '(synthmacs/hydra/numbers-state/body :wk "numbers")))
@@ -463,7 +462,6 @@ _q_: quit
 
 ;; [[file:../synthmacs.org::*evil-visual-mark-mode][evil-visual-mark-mode:1]]
 (use-package evil-visual-mark-mode
-  :defer t
   :general
   (synthmacs/leader-keys
     "t`" '(evil-visual-mark-mode :wk "visual-mark-mode")))

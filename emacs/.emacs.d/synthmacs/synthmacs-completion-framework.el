@@ -411,6 +411,7 @@ targets."
                               corfu-popupinfo))
   :hook ((prog-mode . corfu-mode)
 	 (org-mode . corfu-mode)
+         ;; (localizeable-mode . corfu-mode)
 	 (corfu-mode . corfu-popupinfo-mode))
   :bind
   (:map corfu-map
@@ -423,8 +424,22 @@ targets."
   :init
   (setq corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (setq corfu-auto t)                 ;; Enable auto completion
-  (setq corfu-min-width 80)
-  (setq corfu-max-width corfu-min-width)
+  (setq corfu-bar-width 10)
+  (setq corfu-scroll-margin 2)
+  (setq corfu-auto-prefix 1)
+  (setq corfu-min-width 40)
+  (setq corfu-max-width 140)
+  ;; (setq corfu-max-width corfu-min-width)
+  (setq corfu-left-margin-width 0.8)
+  (setq corfu-right-margin-width 0.8)
+  (setq corfu-count 12)
+  (setq corfu-auto-delay 0.3)
+  (setq corfu-quit-no-match 'separator)
+  (setq corfu-popupinfo-resize t)
+  (setq corfu-popupinfo-hide t)
+  (setq corfu-popupinfo-direction '(force-horizontal))
+  (setq corfu-popupinfo-min-width corfu-min-width)
+  (setq corfu-popupinfo-max-width corfu-max-width)
   (global-corfu-mode)
   
   :custom
