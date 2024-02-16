@@ -411,7 +411,6 @@ targets."
                               corfu-popupinfo))
   :hook ((prog-mode . corfu-mode)
 	 (org-mode . corfu-mode)
-         ;; (localizeable-mode . corfu-mode)
 	 (corfu-mode . corfu-popupinfo-mode))
   :bind
   (:map corfu-map

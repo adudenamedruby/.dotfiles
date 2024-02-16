@@ -115,6 +115,8 @@
   - [[#prescient][Prescient]]
   - [[#transient][Transient]]
   - [[#communication][Communication]]
+  - [[#request][Request]]
+  - [[#spinner][Spinner]]
 - [[#programming-environment][Programming Environment]]
   - [[#eglot][Eglot]]
   - [[#lsp][LSP]]
@@ -129,7 +131,6 @@
   - [[#c--c][C & C++]]
   - [[#css][CSS]]
   - [[#git-modes][Git-Modes]]
-  - [[#haskell][Haskell]]
   - [[#html][HTML]]
   - [[#json][JSON]]
   - [[#lisps][LISPs]]
@@ -4065,7 +4066,6 @@ After running ~embark-export~, we can edit the results with ~wgrep~ and commit t
                               corfu-popupinfo))
   :hook ((prog-mode . corfu-mode)
 	 (org-mode . corfu-mode)
-         ;; (localizeable-mode . corfu-mode)
 	 (corfu-mode . corfu-popupinfo-mode))
   :bind
   (:map corfu-map
@@ -4298,6 +4298,9 @@ An interesting file browser built on top of Dired. Do I mess with this? Or do I 
     "gi" 'magit-init
     "gl" 'magit-log
     "gs" 'magit-status)
+  (synthmacs/leader-keys
+    :keymaps 'magit-mode-map
+    "z" 'magit-stash)
   (general-nmap
     :keymaps '(magit-status-mode-map
 	       magit-stash-mode-map
@@ -4309,9 +4312,9 @@ An interesting file browser built on top of Dired. Do I mess with this? Or do I 
   :init
   (setq magit-log-arguments '("--graph" "--decorate" "--color"))
   (setq git-commit-fill-column 72)
-  :config
-  (evil-define-key* '(normal visual) magit-mode-map
-    "zz" #'evil-scroll-line-to-center)
+  ;; :config
+  ;; (evil-define-key* '(normal visual) magit-mode-map
+  ;;   "zz" #'evil-scroll-line-to-center)
   )
 #+end_src
 
@@ -4788,6 +4791,27 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 (use-package mastodon
   :config
   (setq mastodon-instance-url "https://fosstodon.org"))
+#+end_src
+
+
+** Request
+:PROPERTIES:
+:CUSTOM_ID: h:FB2B4B09-7E37-4C21-8808-C52BDA2C6812
+:END:
+
+#+begin_src emacs-lisp
+(use-package spinner
+  :defer t)
+#+end_src
+
+** Spinner
+:PROPERTIES:
+:CUSTOM_ID: h:C3C0CC30-DFED-48BE-9BA2-19B5E8B68534
+:END:
+
+#+begin_src emacs-lisp
+(use-package request
+  :defer t)
 #+end_src
 
 * Programming Environment
@@ -5501,11 +5525,6 @@ We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[h
 (use-package git-modes)
 #+end_src
 
-** Haskell
-:PROPERTIES:
-:CUSTOM_ID: h:28BA5E9F-6893-4E40-9F42-246F8731948C
-:END:
-
 ** HTML
 :PROPERTIES:
 :CUSTOM_ID: h:5561B91C-C61D-47D5-8320-9A559032C762
@@ -5524,8 +5543,10 @@ We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[h
 :PROPERTIES:
 :CUSTOM_ID: h:4E57EA77-924F-484E-B76E-AFB813E10B9C
 :END:
+
 #+begin_src emacs-lisp
 (use-package json-mode
+  :commands (json-mode)
   :general
   (synthmacs/local-leader-keys
     :keymaps 'json-mode-map
@@ -5863,6 +5884,11 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
 :CUSTOM_ID: h:4C66614A-ED5B-4771-96C3-E2C789282DC1
 :END:
 
+*** swift-mode
+:PROPERTIES:
+:CUSTOM_ID: h:3BD5061D-CDBC-4F54-8169-86FE293BC8B0
+:END:
+
 #+begin_src emacs-lisp
 (use-package lsp-sourcekit
   :after swift-mode
@@ -5890,13 +5916,88 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
 ;;   ;; (setq flycheck-swift-sdk-path "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk")
 ;;   ;; (setq flycheck-swift-target "arm64-apple-ios10") 
 ;;   )
+#+end_src
 
-;; (use-package localizeable-mode
-;;   :mode "\\.strings\\'"
-  ;; :bind (:map localizeable-mode-map
-  ;;             ("C-c C-c" . #'swift-additions:compile-and-run-app)
-  ;;             ("C-c C-k" . #'periphery-run-loco))
-  ;; )
+*** apple-docs-query
+:PROPERTIES:
+:CUSTOM_ID: h:5EB0CD08-7129-4BCC-ADFB-93981357A037
+:END:
+
+#+begin_src emacs-lisp
+(require 'json)
+(require 'url-http)
+(require 'cl-lib)
+
+(defgroup apple-docs-query nil
+  "Apple Docs Query Group."
+  :tag "apple-docs-query"
+  :group 'apple-docs-query)
+
+(defface apple-docs-title-face
+  '((t (:inherit font-lock-keyword-face :bold t)))
+  "Title face."
+  :group 'apple-docs-query)
+
+(defface apple-docs-description-face
+  '((t (:inherit completions-annotations)))
+  "Description face."
+  :group 'apple-docs-query)
+
+(defconst apple-developer-url "https://developer.apple.com"
+  "Developer apple site.")
+
+(cl-defun request-data-from-apple-docs (&key url)
+  "Request data (as URL)."
+  (let* ((request-curl-options (list "-H" (string-trim (url-http-user-agent-string)))))
+    (request url
+      :type "GET"
+      :parser 'json-read
+      :success
+      (cl-function
+       (lambda (&key data &allow-other-keys)
+         (let* ((c2-width (round (* (- (window-width) 9) 0.4)))
+                (choices (mapcar (lambda (item)
+                                   (let-alist item
+                                     (cons
+                                      (propertize
+                                       (format "%s %s"
+                                               (propertize
+                                                (or
+                                                 (assoc-default 'title item) "") 'face 'apple-docs-title-face)
+                                               (truncate-string-to-width
+                                                (propertize
+                                                 (or
+                                                  (assoc-default 'description item) "")
+                                                 'face 'apple-docs-description-face) c2-width nil 32)))
+                                      (assoc-default 'url item)))) (cdr (car data))))
+                (selected (completing-read "Apple docs: " choices))
+                (url (cdr (assoc selected choices))))
+           (browse-apple-url url)))))
+    nil))
+
+(cl-defun browse-apple-url (url)
+  "Browse URL."
+  (if-let ((url url))
+      (browse-url (concat apple-developer-url url))))
+
+(defun apple-docs/query (query)
+  "Query Hacking with swift (as QUERY)."
+  (interactive "sQuery:")
+  (when-let ((url (url-encode-url (format "%s/search/search_data.php?q=%s&type=Documentation" apple-developer-url query))))
+    (request-data-from-apple-docs :url url)))
+
+(defun apple-docs/query-thing-at-point ()
+  "Query thing at point."
+  (interactive)
+  (let ((word (thing-at-point 'word)))
+    (apple-docs/query word)))
+
+(use-package emacs
+  :general
+  (synthmacs/local-leader-keys
+    :keymaps 'swift-mode-map
+    "a" '(apple-docs/query :wk "query-apple")
+    "A" '(apple-docs/query-thing-at-point :wk "query-apple-thing-at-point")))
 #+end_src
 
 ** YAML

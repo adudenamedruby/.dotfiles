@@ -78,6 +78,9 @@
     "gi" 'magit-init
     "gl" 'magit-log
     "gs" 'magit-status)
+  (synthmacs/leader-keys
+    :keymaps 'magit-mode-map
+    "z" 'magit-stash)
   (general-nmap
     :keymaps '(magit-status-mode-map
 	       magit-stash-mode-map
@@ -89,9 +92,9 @@
   :init
   (setq magit-log-arguments '("--graph" "--decorate" "--color"))
   (setq git-commit-fill-column 72)
-  :config
-  (evil-define-key* '(normal visual) magit-mode-map
-    "zz" #'evil-scroll-line-to-center)
+  ;; :config
+  ;; (evil-define-key* '(normal visual) magit-mode-map
+  ;;   "zz" #'evil-scroll-line-to-center)
   )
 ;; Magit:1 ends here
 
@@ -391,6 +394,16 @@
      ])
   )
 ;; Transient increase/decrease font size:1 ends here
+
+;; [[file:../synthmacs.org::*Request][Request:1]]
+(use-package spinner
+  :defer t)
+;; Request:1 ends here
+
+;; [[file:../synthmacs.org::*Spinner][Spinner:1]]
+(use-package request
+  :defer t)
+;; Spinner:1 ends here
 
 ;; [[file:../synthmacs.org::*synthmacs-tools][synthmacs-tools:1]]
 (provide 'synthmacs-tools)
