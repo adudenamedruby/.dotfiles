@@ -396,12 +396,12 @@
 ;; Transient increase/decrease font size:1 ends here
 
 ;; [[file:../synthmacs.org::*Request][Request:1]]
-(use-package spinner
+(use-package request
   :defer t)
 ;; Request:1 ends here
 
 ;; [[file:../synthmacs.org::*Spinner][Spinner:1]]
-(use-package request
+(use-package spinner
   :defer t)
 ;; Spinner:1 ends here
 

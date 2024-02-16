@@ -312,6 +312,8 @@ _q_: quit
   (define-key evil-normal-state-map "'" 'evil-goto-mark)
   (define-key evil-visual-state-map "'" 'evil-goto-mark)
   
+  (define-key evil-motion-state-map [remap evil-goto-definition] #'dumb-jump-go)
+  
   ;; Use visual line motions even outside of visual-line-mode buffers
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)

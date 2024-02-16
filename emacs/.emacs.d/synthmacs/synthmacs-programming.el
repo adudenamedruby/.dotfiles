@@ -27,28 +27,40 @@
 ;;   ;; (package-vc-install "https://github.com/jdtsmith/eglot-booster")
 ;;   )
 
-;; (advice-add 'eglot-xref-backend :override 'xref-eglot+dumb-backend)
+(advice-add 'eglot-xref-backend :override 'xref-eglot+dumb-backend)
 
-;; (defun xref-eglot+dumb-backend () 'eglot+dumb)
+(defun xref-eglot+dumb-backend () 'eglot+dumb)
 
-;; (cl-defmethod xref-backend-identifier-at-point ((_backend (eql eglot+dumb)))
-;;   (cons (xref-backend-identifier-at-point 'eglot)
-;;         (xref-backend-identifier-at-point 'dumb-jump)))
+(cl-defmethod xref-backend-identifier-at-point ((_backend (eql eglot+dumb)))
+  (cons (xref-backend-identifier-at-point 'eglot)
+        (xref-backend-identifier-at-point 'dumb-jump)))
 
-;; (cl-defmethod xref-backend-identifier-completion-table ((_backend (eql eglot+dumb)))
-;;   (xref-backend-identifier-completion-table 'eglot))
+(cl-defmethod xref-backend-identifier-completion-table ((_backend (eql eglot+dumb)))
+  (xref-backend-identifier-completion-table 'eglot))
 
-;; (cl-defmethod xref-backend-definitions ((_backend (eql eglot+dumb)) identifier)
-;;   (or (xref-backend-definitions 'eglot (car identifier))
-;;       (xref-backend-definitions 'dumb-jump (cdr identifier))))
+(cl-defmethod xref-backend-definitions ((_backend (eql eglot+dumb)) identifier)
+  (or (xref-backend-definitions 'eglot (car identifier))
+      (xref-backend-definitions 'dumb-jump (cdr identifier))))
 
-;; (cl-defmethod xref-backend-references ((_backend (eql eglot+dumb)) identifier)
-;;   (or (xref-backend-references 'eglot (car identifier))
-;;       (xref-backend-references 'dumb-jump (cdr identifier))))
+(cl-defmethod xref-backend-references ((_backend (eql eglot+dumb)) identifier)
+  (or (xref-backend-references 'eglot (car identifier))
+      (xref-backend-references 'dumb-jump (cdr identifier))))
 
-;; (cl-defmethod xref-backend-apropos ((_backend (eql eglot+dumb)) pattern)
-;;   (xref-backend-apropos 'eglot pattern))
+(cl-defmethod xref-backend-apropos ((_backend (eql eglot+dumb)) pattern)
+  (xref-backend-apropos 'eglot pattern))
 ;; Eglot:1 ends here
+
+;; [[file:../synthmacs.org::*Dumb Jump][Dumb Jump:1]]
+(use-package dumb-jump
+  :hook (prog-mode . dumb-jump-mode)
+  :config
+  (put 'dumb-jump-go 'byte-obsolete-info nil)
+  (setq dumb-jump-window 'current
+        dumb-jump-force-searcher 'rg
+        dumb-jump-quiet t
+        xref-show-definitions-function #'xref-show-definitions-completing-read)
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
+;; Dumb Jump:1 ends here
 
 ;; [[file:../synthmacs.org::*Flycheck][Flycheck:1]]
 (use-package flycheck
