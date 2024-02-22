@@ -431,7 +431,7 @@ targets."
   ;; (setq corfu-max-width corfu-min-width)
   (setq corfu-left-margin-width 0.8)
   (setq corfu-right-margin-width 0.8)
-  (setq corfu-count 12)
+  (setq corfu-count 15)
   (setq corfu-auto-delay 0.3)
   (setq corfu-quit-no-match 'separator)
   (setq corfu-popupinfo-resize t)
