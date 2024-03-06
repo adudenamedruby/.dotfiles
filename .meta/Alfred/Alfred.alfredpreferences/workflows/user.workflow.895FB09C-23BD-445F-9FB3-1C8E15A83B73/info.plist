@@ -764,7 +764,7 @@ fi</string>
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Emacs.app</string>
+					<string>/opt/homebrew/Cellar/emacs-plus@29/29.2/Emacs.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1311,7 +1311,7 @@ fi</string>
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Spark.app</string>
+					<string>/Applications/Spark Desktop.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
