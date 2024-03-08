@@ -1,4 +1,4 @@
-#+TITLE: SYNTHMACS Config
++TITLE: SYNTHMACS Config
 #+AUTHOR: roux g. buciu
 #+DESCRIPTION: adudenamedruby's emacs configuration
 #+STARTUP: showeverything
@@ -47,9 +47,6 @@
   - [[#custom-variables][Custom variables]]
   - [[#fonts][Fonts]]
   - [[#free-functions][Free Functions]]
-  - [[#garbage-collector-magic-hack][Garbage collector magic hack]]
-  - [[#no-littering][no-littering]]
-  - [[#auto-pair-paranthesis][Auto-pair paranthesis]]
   - [[#prefer-rg-and-fd-if-available][Prefer ~rg~ and ~fd~ if available]]
   - [[#xref][xref]]
 - [[#keybindings-general--evil-mode][Keybindings: General & EVIL mode]]
@@ -100,9 +97,8 @@
   - [[#wgrep][wgrep]]
   - [[#corfu][Corfu]]
 - [[#useful-tools][Useful Tools]]
-  - [[#treemacs][Treemacs]]
-  - [[#dirvish][Dirvish]]
   - [[#gitvcs-integration][Git/VCS Integration]]
+  - [[#treemacs][Treemacs]]
   - [[#spell-checking][Spell-checking]]
   - [[#helpful][Helpful]]
   - [[#projectile][Projectile]]
@@ -120,8 +116,6 @@
 - [[#programming-environment][Programming Environment]]
   - [[#eglot][Eglot]]
   - [[#dumb-jump][Dumb Jump]]
-  - [[#lsp][LSP]]
-  - [[#dap-debug-adapter-support][DAP (Debug Adapter Support)]]
   - [[#flycheck][Flycheck]]
   - [[#imenu][iMenu]]
   - [[#snippets][Snippets]]
@@ -1360,36 +1354,36 @@ Symbolicate! Like "Engage!", but prettier.
   (kill-emacs))
 #+end_src
 
-** Garbage collector magic hack
+** COMMENT Garbage collector magic hack
 :PROPERTIES:
 :CUSTOM_ID: h:42E8D107-2954-49CB-8E38-33CF300BABDE
 :END:
 Inspired by DOOMs use of this to manage garbage collection. For some reason, it doesn't work, and Emacs gives me a "can't find package" error.
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (use-package gcmh
   :demand t
   :config
   (gcmh-mode 1))
 #+end_src
 
-** no-littering
+** COMMENT no-littering
 :PROPERTIES:
 :CUSTOM_ID: h:23600A76-1CDE-48FE-9024-163E861F2F0C
 :END:
 Basically tries to clean up the ~emacs.d~ directory by creating consistent placement for files. For some reason, it doesn't work, and Emacs gives me a "can't find package" error.
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (use-package 'no-littering)
 #+end_src
 
-** Auto-pair paranthesis
+** COMMENT Auto-pair paranthesis
 :PROPERTIES:
 :CUSTOM_ID: h:7B34AC43-8F07-4754-9360-0592CBDBAF9F
 :END:
 In programming, missing parens and the like are a pain to track down. Let's automate some of that to decrease the likely hood of this actually happening. I found this online but I'm not... 100% sure what it does, so I'm disabling it for now, while I figure it out.
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (use-package emacs
   :hook
   ((org-mode . (lambda () (synthmacs/add-local-electric-pairs '(;(?= . ?=)
@@ -2494,7 +2488,7 @@ Make stars for headings into fun symbols!
 :CUSTOM_ID: h:681606B7-B88E-48E9-911E-D5D398D89049
 :END:
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (use-package org
   :init
   (defun +org-cycle-only-current-subtree-h (&optional arg)
@@ -3373,7 +3367,7 @@ A nicer startup experience than just an empty buffer. Includes a nice useful lis
 :END:
 [[https://github.com/joostkremers/visual-fill-column][visual-fill-column]] wraps lines at fill-column, and makes it easier to read long lines of code. It is preferred over the built-in visual-line-mode because it doesn’t break words. This is disabled for now because I actually prefer having the visual column and keeping my own code short.
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (use-package visual-fill-column
   :defer 1
   :hook (org-src . visual-fill-column-mode)
@@ -4183,6 +4177,100 @@ Icons in corfu? Yes please.
 :header-args: :emacs-lisp :tangle ./synthmacs/synthmacs-tools.el
 :END:
 
+** Git/VCS Integration
+:PROPERTIES:
+:CUSTOM_ID: h:38F6723F-CA92-401B-BE94-8130078BAD7E
+:END:
+
+*** Magit
+:PROPERTIES:
+:CUSTOM_ID: h:A8A112D1-5F39-4624-993C-FCB9945BFA3E
+:END:
+*The* killer feature for Emacs?
+#+begin_src emacs-lisp
+(use-package magit
+  ;; :custom
+  ;; (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+  :general
+  (synthmacs/leader-keys
+    "gb" 'magit-blame-addition
+    "gc" 'magit-clone
+    "gd" 'magit-dispatch
+    "gf" 'magit-file-dispatch
+    "gh" 'magit-info
+    "gi" 'magit-init
+    "gl" 'magit-log
+    "gs" 'magit-status)
+  (synthmacs/leader-keys
+    :keymaps 'magit-mode-map
+    "z" 'magit-stash)
+  (general-nmap
+    :keymaps '(magit-status-mode-map
+	       magit-stash-mode-map
+               magit-revision-mode-map
+               magit-process-mode-map
+               magit-diff-mode-map)
+    "TAB" #'magit-section-toggle
+    "<escape>" #'transient-quit-one)
+  :init
+  (setq magit-log-arguments '("--graph" "--decorate" "--color"))
+  (setq git-commit-fill-column 72)
+  ;; :config
+  ;; (evil-define-key* '(normal visual) magit-mode-map
+  ;;   "zz" #'evil-scroll-line-to-center)
+  )
+#+end_src
+
+*** magit-delta
+:PROPERTIES:
+:CUSTOM_ID: h:6E4105EB-0ABA-4FD4-921C-3A3AB712043E
+:END:
+[[https://github.com/dandavison/magit-delta][magit-delta]] improves the coloring of diffs in magit using [[https://github.com/dandavison/delta][delta]]
+
+#+begin_src emacs-lisp
+(use-package magit-delta
+  :after magit
+  :commands magit-delta-mode
+  :hook (magit-mode . magit-delta-mode)
+  )
+#+end_src
+
+*** COMMENT Forge
+:PROPERTIES:
+:CUSTOM_ID: h:1F20D642-C0E7-4390-A881-9E9EE153D2E8
+:END:
+
+#+begin_src emacs-lisp
+;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
+;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started
+;; (use-package forge)
+#+end_src
+
+*** git-gutter
+:PROPERTIES:
+:CUSTOM_ID: h:38246314-1E80-406F-A981-53092B7DF6FC
+:END:
+#+begin_src emacs-lisp
+(use-package git-gutter
+  :init
+  (global-git-gutter-mode +1)
+  :config
+  (setq git-gutter:update-interval 0.02))
+#+end_src
+
+*** git-gutter-fringe
+:PROPERTIES:
+:CUSTOM_ID: h:82BEAA64-6A3D-4416-8886-F4C4137722E4
+:END:
+#+begin_src emacs-lisp
+(use-package git-gutter-fringe
+  :config
+  (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
+
+#+end_src
+
 ** Treemacs
 :PROPERTIES:
 :CUSTOM_ID: h:10AF9BA5-4D0A-483D-B2EB-CD97CE94E916
@@ -4244,13 +4332,13 @@ Icons in corfu? Yes please.
   :after (treemacs projectile))
 #+end_src
 
-** Dirvish
+** COMMENT Dirvish
 :PROPERTIES:
 :CUSTOM_ID: h:895ADECA-8F1A-4FBB-A930-871EE0B6D4D8
 :END:
 An interesting file browser built on top of Dired. Do I mess with this? Or do I go with something like treemacs, which I like? I'm gonna have to experiment. Disabled ford now.
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (use-package dirvish
   :general
   (synthmacs/leader-keys
@@ -4274,100 +4362,6 @@ An interesting file browser built on top of Dired. Do I mess with this? Or do I 
    (dirvish-directory-view-mode . diredfl-mode))
   :config
   (set-face-attribute 'diredfl-dir-name nil :bold t))
-#+end_src
-
-** Git/VCS Integration
-:PROPERTIES:
-:CUSTOM_ID: h:38F6723F-CA92-401B-BE94-8130078BAD7E
-:END:
-
-*** Magit
-:PROPERTIES:
-:CUSTOM_ID: h:A8A112D1-5F39-4624-993C-FCB9945BFA3E
-:END:
-*The* killer feature for Emacs?
-#+begin_src emacs-lisp
-(use-package magit
-  ;; :custom
-  ;; (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
-  :general
-  (synthmacs/leader-keys
-    "gb" 'magit-blame-addition
-    "gc" 'magit-clone
-    "gd" 'magit-dispatch
-    "gf" 'magit-file-dispatch
-    "gh" 'magit-info
-    "gi" 'magit-init
-    "gl" 'magit-log
-    "gs" 'magit-status)
-  (synthmacs/leader-keys
-    :keymaps 'magit-mode-map
-    "z" 'magit-stash)
-  (general-nmap
-    :keymaps '(magit-status-mode-map
-	       magit-stash-mode-map
-               magit-revision-mode-map
-               magit-process-mode-map
-               magit-diff-mode-map)
-    "TAB" #'magit-section-toggle
-    "<escape>" #'transient-quit-one)
-  :init
-  (setq magit-log-arguments '("--graph" "--decorate" "--color"))
-  (setq git-commit-fill-column 72)
-  ;; :config
-  ;; (evil-define-key* '(normal visual) magit-mode-map
-  ;;   "zz" #'evil-scroll-line-to-center)
-  )
-#+end_src
-
-*** magit-delta
-:PROPERTIES:
-:CUSTOM_ID: h:6E4105EB-0ABA-4FD4-921C-3A3AB712043E
-:END:
-[[https://github.com/dandavison/magit-delta][magit-delta]] improves the coloring of diffs in magit using [[https://github.com/dandavison/delta][delta]]
-
-#+begin_src emacs-lisp
-(use-package magit-delta
-  :after magit
-  :commands magit-delta-mode
-  :hook (magit-mode . magit-delta-mode)
-  )
-#+end_src
-
-*** Forge
-:PROPERTIES:
-:CUSTOM_ID: h:1F20D642-C0E7-4390-A881-9E9EE153D2E8
-:END:
-#+begin_src emacs-lisp
-
-;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
-;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started
-;; (use-package forge)
-#+end_src
-
-*** git-gutter
-:PROPERTIES:
-:CUSTOM_ID: h:38246314-1E80-406F-A981-53092B7DF6FC
-:END:
-#+begin_src emacs-lisp
-(use-package git-gutter
-  :init
-  (global-git-gutter-mode +1)
-  :config
-  (setq git-gutter:update-interval 0.02))
-#+end_src
-
-*** git-gutter-fringe
-:PROPERTIES:
-:CUSTOM_ID: h:82BEAA64-6A3D-4416-8886-F4C4137722E4
-:END:
-#+begin_src emacs-lisp
-(use-package git-gutter-fringe
-  :config
-  (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
-  (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
-  (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
-
 #+end_src
 
 ** Spell-checking
@@ -4685,13 +4679,13 @@ restart-emacs teaches Emacs to restart itself. I added a me/reload-init command 
 :CUSTOM_ID: h:EA44D2EB-130A-4510-B9F1-F4B45FB8F001
 :END:
 
-*** ERC
+*** COMMENT ERC
 :PROPERTIES:
 :CUSTOM_ID: h:089DA3BB-BBA0-4D7B-910B-1A92B3B08A76
 :END:
 The big daddy of IRC clients. I haven't actually yet started configuring. I've merely left this in here, untangled, from SystemCrafters config
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (defun dw/on-erc-track-list-changed ()
   (dolist (buffer erc-modified-channels-alist)
     (tracking-add-buffer (car buffer))))
@@ -4748,19 +4742,19 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 ;;    :nick "daviwil" :password (password-store-get "IRC/Bitlbee")))
 #+end_src
 
-*** Matrix
+*** COMMENT Matrix
 :PROPERTIES:
 :CUSTOM_ID: h:64D3DC7F-D466-41F8-AFE0-86AEB82D6380
 :END:
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (use-package matrix-client)
 #+end_src
 
-*** Mastodon
+*** COMMENT Mastodon
 :PROPERTIES:
 :CUSTOM_ID: h:A1033FEB-2B71-477C-BC99-34B53358B208
 :END:
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (use-package mastodon
   :config
   (setq mastodon-instance-url "https://fosstodon.org"))
@@ -4786,6 +4780,7 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 (use-package spinner
   :defer t)
 #+end_src
+
 * Programming Environment
 :PROPERTIES:
 :CUSTOM_ID: h:2E967F87-8304-4262-B5BF-3286ACA7211B
@@ -4856,12 +4851,12 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 #+end_src
 
-** LSP
+** COMMENT LSP
 :PROPERTIES:
 :CUSTOM_ID: h:222F2EE3-FD70-4274-AABC-759B5F7556C5
 :END:
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :hook
@@ -4914,19 +4909,17 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
   :custom
   (lsp-ui-doc-position 'bottom)
   )
-#+end_src
 
-#+begin_src emacs-lisp :tangle no
 (use-package lsp-treemacs
   :after lsp)
 #+end_src
 
-** DAP (Debug Adapter Support)
+** COMMENT DAP (Debug Adapter Support)
 :PROPERTIES:
 :CUSTOM_ID: h:B978949E-16C8-45D1-B8DE-7A47D10FFDCA
 :END:
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (use-package dap-mode
   :hook
   ((dap-mode . corfu-mode)
@@ -5087,11 +5080,11 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
   )
 #+end_src
 
-*** DAP Languages
+*** COMMENT DAP Languages
 :PROPERTIES:
 :CUSTOM_ID: h:DEB733DA-3C46-4317-B6AB-13BAE08AAA05
 :END:
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 #+end_src
 
@@ -5183,7 +5176,7 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 (use-package yasnippet-snippets)
 #+end_src
 
-*** commond-lisp-snippets
+*** common-lisp-snippets
 :PROPERTIES:
 :CUSTOM_ID: h:0987E887-8EFF-4E43-A9D7-092FAF2B2B2C
 :END:
@@ -5191,11 +5184,11 @@ The big daddy of IRC clients. I haven't actually yet started configuring. I've m
 (use-package common-lisp-snippets)
 #+end_src
 
-*** LaTeX snippets
+*** COMMENT LaTeX snippets
 :PROPERTIES:
 :CUSTOM_ID: h:55F5E584-47AC-49FF-93A2-ED7E3D30B4EE
 :END:
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (use-package yasnippet
   :config
   (setq synthmacs/greek-alphabet
@@ -5465,7 +5458,7 @@ You can either build your own languages, or you can use pre-built.
 :CUSTOM_ID: h:A4E5151A-751C-4188-9680-86EF89F2FD32
 :END:
 We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[https://archive.casouri.cc/note/2023/tree-sitter-in-emacs-29/index.html][recommended workaround]] is to derive a mode that picks between them. 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 
 ;; (define-derived-mode python-auto-mode prog-mode "Python Auto"
 ;;   "Automatically decide which Python mode to use."
@@ -5484,7 +5477,7 @@ We will have to wait until Emacs 30+ for automatic fallback. Until then, the [[h
 :PROPERTIES:
 :CUSTOM_ID: h:0D5FF03F-A780-4815-A7D4-12C54934AD98
 :END:
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (use-package ccls
   :straight t
   :hook ((c-mode c++-mode objc-mode cuda-mode) . lsp)
@@ -5907,7 +5900,7 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
 ;;   )
 #+end_src
 
-*** apple-docs-query
+*** COMMENT apple-docs-query
 :PROPERTIES:
 :CUSTOM_ID: h:5EB0CD08-7129-4BCC-ADFB-93981357A037
 :END:
@@ -5989,7 +5982,7 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
     "A" '(apple-docs/query-thing-at-point :wk "query-apple-thing-at-point")))
 #+end_src
 
-*** mode-line-hud
+*** COMMENT mode-line-hud
 :PROPERTIES:
 :CUSTOM_ID: h:0A272CF9-8308-4926-9E62-C85035929AF2
 :END:
@@ -6053,7 +6046,7 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
                     (force-mode-line-update))))
 #+end_src
 
-*** xcodebuildserver
+*** COMMENT xcodebuildserver
 :PROPERTIES:
 :CUSTOM_ID: h:25A96927-E236-45FA-8C08-79176DA03206
 :END:
@@ -6076,7 +6069,7 @@ Enhance the overall lisp experience in Emacs with Lispy, and its evil friend Lis
   (file-exists-p (format "%s/%s" root "buildServer.json")))
 #+end_src
 
-*** periphery
+*** COMMENT periphery
 :PROPERTIES:
 :CUSTOM_ID: h:2A743133-7AAE-4A44-B03F-C9ABE3B36266
 :END:
@@ -6771,7 +6764,7 @@ ARGS are rest arguments, appended to the argument list."
 :CUSTOM_ID: h:0812A4BB-43CD-4BCF-A549-CB98B14C24DA
 :END:
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (defvar loco-command "loco")
 
 (defun send-loco-result-to-periphery (text)
@@ -6808,7 +6801,7 @@ ARGS are rest arguments, appended to the argument list."
 :CUSTOM_ID: h:15EA154F-C2E8-4D76-B2B5-250CF952A87B
 :END:
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (defconst periphery-quick-regex-parser "\\([^:]+\\):\\([0-9]+\\)?:\\([0-9]+\\):\s?\\(.+\\)"
   "Parse vimgrep like strings (compilation).")
 
@@ -6914,7 +6907,7 @@ ARGS are rest arguments, appended to the argument list."
 :CUSTOM_ID: h:2A6972F8-AAFE-4CA1-AE81-7CFFE04F578B
 :END:
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (defvar current-query "")
 
 (defun send-search-result-to-periphery (text)
@@ -6993,7 +6986,7 @@ ARGS are rest arguments, appended to the argument list."
 :CUSTOM_ID: h:E8A654B1-43D2-4BAB-B344-AB5EC7F1B6A5
 :END:
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (defvar swiftformat-command "swiftformat")
 (defvar swift-version "5.9")
 (defvar disabled-rules-list '(
@@ -7108,7 +7101,7 @@ ARGS are rest arguments, appended to the argument list."
      :attributes 'warning)))
 #+end_src
 
-*** ios-simulator
+*** COMMENT ios-simulator
 :PROPERTIES:
 :CUSTOM_ID: h:97F9C112-7414-4D36-9E61-8C9743A3A77F
 :END:
@@ -7416,7 +7409,7 @@ ARGS are rest arguments, appended to the argument list."
          ) available-devices))
 #+end_src
 
-*** ios-device
+*** COMMENT ios-device
 :PROPERTIES:
 :CUSTOM_ID: h:8505C2EC-865B-4724-9B32-5D088D6D0296
 :END:
@@ -7474,7 +7467,7 @@ ARGS are rest arguments, appended to the argument list."
       (kill-buffer current-buffer-name)))
 #+end_src
 
-*** xcode-additions
+*** COMMENT xcode-additions
 :PROPERTIES:
 :CUSTOM_ID: h:1025C67F-DA74-4357-B292-12B140655B94
 :END:
@@ -7560,7 +7553,7 @@ ARGS are rest arguments, appended to the argument list."
           nil))))))
 #+end_src
 
-*** swift-additions
+*** COMMENT swift-additions
 :PROPERTIES:
 :CUSTOM_ID: h:F10B30B3-FD87-40F1-82BE-34730AA50C15
 :END:

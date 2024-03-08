@@ -8,6 +8,64 @@
 ;;; Code:
 ;; synthmacs-tools:1 ends here
 
+;; [[file:../synthmacs.org::*Magit][Magit:1]]
+(use-package magit
+  ;; :custom
+  ;; (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+  :general
+  (synthmacs/leader-keys
+    "gb" 'magit-blame-addition
+    "gc" 'magit-clone
+    "gd" 'magit-dispatch
+    "gf" 'magit-file-dispatch
+    "gh" 'magit-info
+    "gi" 'magit-init
+    "gl" 'magit-log
+    "gs" 'magit-status)
+  (synthmacs/leader-keys
+    :keymaps 'magit-mode-map
+    "z" 'magit-stash)
+  (general-nmap
+    :keymaps '(magit-status-mode-map
+	       magit-stash-mode-map
+               magit-revision-mode-map
+               magit-process-mode-map
+               magit-diff-mode-map)
+    "TAB" #'magit-section-toggle
+    "<escape>" #'transient-quit-one)
+  :init
+  (setq magit-log-arguments '("--graph" "--decorate" "--color"))
+  (setq git-commit-fill-column 72)
+  ;; :config
+  ;; (evil-define-key* '(normal visual) magit-mode-map
+  ;;   "zz" #'evil-scroll-line-to-center)
+  )
+;; Magit:1 ends here
+
+;; [[file:../synthmacs.org::*magit-delta][magit-delta:1]]
+(use-package magit-delta
+  :after magit
+  :commands magit-delta-mode
+  :hook (magit-mode . magit-delta-mode)
+  )
+;; magit-delta:1 ends here
+
+;; [[file:../synthmacs.org::*git-gutter][git-gutter:1]]
+(use-package git-gutter
+  :init
+  (global-git-gutter-mode +1)
+  :config
+  (setq git-gutter:update-interval 0.02))
+;; git-gutter:1 ends here
+
+;; [[file:../synthmacs.org::*git-gutter-fringe][git-gutter-fringe:1]]
+(use-package git-gutter-fringe
+  :config
+  (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
+;; git-gutter-fringe:1 ends here
+
 ;; [[file:../synthmacs.org::*Treemacs][Treemacs:1]]
 (use-package treemacs
   :commands (treemacs treemacs-select-window)
@@ -63,70 +121,6 @@
 (use-package treemacs-projectile
   :after (treemacs projectile))
 ;; Treemacs:1 ends here
-
-;; [[file:../synthmacs.org::*Magit][Magit:1]]
-(use-package magit
-  ;; :custom
-  ;; (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
-  :general
-  (synthmacs/leader-keys
-    "gb" 'magit-blame-addition
-    "gc" 'magit-clone
-    "gd" 'magit-dispatch
-    "gf" 'magit-file-dispatch
-    "gh" 'magit-info
-    "gi" 'magit-init
-    "gl" 'magit-log
-    "gs" 'magit-status)
-  (synthmacs/leader-keys
-    :keymaps 'magit-mode-map
-    "z" 'magit-stash)
-  (general-nmap
-    :keymaps '(magit-status-mode-map
-	       magit-stash-mode-map
-               magit-revision-mode-map
-               magit-process-mode-map
-               magit-diff-mode-map)
-    "TAB" #'magit-section-toggle
-    "<escape>" #'transient-quit-one)
-  :init
-  (setq magit-log-arguments '("--graph" "--decorate" "--color"))
-  (setq git-commit-fill-column 72)
-  ;; :config
-  ;; (evil-define-key* '(normal visual) magit-mode-map
-  ;;   "zz" #'evil-scroll-line-to-center)
-  )
-;; Magit:1 ends here
-
-;; [[file:../synthmacs.org::*magit-delta][magit-delta:1]]
-(use-package magit-delta
-  :after magit
-  :commands magit-delta-mode
-  :hook (magit-mode . magit-delta-mode)
-  )
-;; magit-delta:1 ends here
-
-;; [[file:../synthmacs.org::*Forge][Forge:1]]
-;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
-;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started
-;; (use-package forge)
-;; Forge:1 ends here
-
-;; [[file:../synthmacs.org::*git-gutter][git-gutter:1]]
-(use-package git-gutter
-  :init
-  (global-git-gutter-mode +1)
-  :config
-  (setq git-gutter:update-interval 0.02))
-;; git-gutter:1 ends here
-
-;; [[file:../synthmacs.org::*git-gutter-fringe][git-gutter-fringe:1]]
-(use-package git-gutter-fringe
-  :config
-  (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
-  (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
-  (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
-;; git-gutter-fringe:1 ends here
 
 ;; [[file:../synthmacs.org::*Spell-checking][Spell-checking:1]]
 (use-package flyspell

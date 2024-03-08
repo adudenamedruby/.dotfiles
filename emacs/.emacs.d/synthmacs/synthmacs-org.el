@@ -336,6 +336,38 @@
   )
 ;; org-superstar:1 ends here
 
+;; [[file:../synthmacs.org::*Cycle only one heading][Cycle only one heading:1]]
+(use-package org
+  :init
+  (defun +org-cycle-only-current-subtree-h (&optional arg)
+    "Toggle the local fold at the point, and no deeper.
+`org-cycle's standard behavior is to cycle between three levels: collapsed,
+subtree and whole document. This is slow, especially in larger org buffer. Most
+of the time I just want to peek into the current subtree -- at most, expand
+*only* the current subtree.
+
+All my (performant) foldings needs are met between this and `org-show-subtree'
+(on zO for evil users), and `org-cycle' on shift-TAB if I need it."
+    (interactive "P")
+    (unless (eq this-command 'org-shifttab)
+      (save-excursion
+        (org-beginning-of-line)
+        (let (invisible-p)
+          (when (and (org-at-heading-p)
+                     (or org-cycle-open-archived-trees
+                         (not (member org-archive-tag (org-get-tags))))
+                     (or (not arg)
+                         (setq invisible-p (outline-invisible-p (line-end-position)))))
+            (unless invisible-p
+              (setq org-cycle-subtree-status 'subtree))
+            (org-cycle-internal-local)
+            t)))))
+  :config
+  ;; Only fold the current tree, rather than recursively
+  (add-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h)
+  )
+;; Cycle only one heading:1 ends here
+
 ;; [[file:../synthmacs.org::*Using org-id in links][Using org-id in links:1]]
 (use-package org
   :init

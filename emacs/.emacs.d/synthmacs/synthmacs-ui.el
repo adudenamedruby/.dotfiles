@@ -306,6 +306,22 @@ When BACKWARD is non-nil, or with universal-argument, cycle backwards."
   )
 ;; Dashboard:1 ends here
 
+;; [[file:../synthmacs.org::*Wrap long lines][Wrap long lines:1]]
+(use-package visual-fill-column
+  :defer 1
+  :hook (org-src . visual-fill-column-mode)
+  :custom
+  (visual-line-fringe-indicators
+   '(left-curly-arrow right-curly-arrow))
+  (split-window-preferred-function
+   'visual-fill-column-split-window-sensibly)
+  :config
+  (advice-add 'text-scale-adjust
+              :after #'visual-fill-column-adjust)
+  (global-visual-fill-column-mode 1)
+  (global-visual-line-mode 1))
+;; Wrap long lines:1 ends here
+
 ;; [[file:../synthmacs.org::*Ligatures][Ligatures:1]]
 (use-package ligature
   :straight (:host github :repo "mickeynp/ligature.el")

@@ -127,9 +127,9 @@
 (use-package yasnippet-snippets)
 ;; yasnippet:1 ends here
 
-;; [[file:../synthmacs.org::*commond-lisp-snippets][commond-lisp-snippets:1]]
+;; [[file:../synthmacs.org::*common-lisp-snippets][common-lisp-snippets:1]]
 (use-package common-lisp-snippets)
-;; commond-lisp-snippets:1 ends here
+;; common-lisp-snippets:1 ends here
 
 ;; [[file:../synthmacs.org::*Apheleia][Apheleia:1]]
 (use-package apheleia
@@ -277,6 +277,14 @@
 (use-package tree-sitter-langs
   :after tree-sitter)
 ;; Treesitter config:1 ends here
+
+;; [[file:../synthmacs.org::*Tresitter load languages][Tresitter load languages:1]]
+;; (define-derived-mode python-auto-mode prog-mode "Python Auto"
+;;   "Automatically decide which Python mode to use."
+;;   (if (treesit-ready-p 'python t)
+;;       (python-ts-mode)
+;;     (python-mode)))
+;; Tresitter load languages:1 ends here
 
 ;; [[file:../synthmacs.org::*synthmacs-programming][synthmacs-programming:1]]
 (provide 'synthmacs-programming)
