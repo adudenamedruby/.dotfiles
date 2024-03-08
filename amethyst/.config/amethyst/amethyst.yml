@@ -134,13 +134,13 @@ focus-screen-cw:
 
 # Move the currently focused window onto the next screen in the list going counter-clockwise.
 swap-screen-ccw:
-  mod: mod1
-  key: 7
+  mod: <NONE>
+  key: <NONE>
 
 # Move the currently focused window onto the next screen in the list going clockwise.
 swap-screen-cw:
   mod: mod1
-  key: 9
+  key: w
 
 # Swap the position of the currently focused window with the next window in the list going counter-clockwise.
 swap-ccw:
@@ -199,18 +199,18 @@ select-column-layout:
 
 # Move the currently focused window to the space to the left.
 throw-space-left:
-  mod: <NONE>
-  key: <NONE>
+  mod: mod1
+  key: d
 
 # Move currently the focused window to the space to the right.
 throw-space-right:
-  mod: <NONE>
-  key: <NONE>
+  mod: mod1
+  key: b
 
 # Toggle the floating state of the currently focused window; i.e., if it was floating make it tiled and if it was tiled make it floating.
 toggle-float:
-  mod: mod1
-  key: f
+  mod: <NONE>
+  key: <NONE>
 
 # Display the layout HUD with the current layout on each screen.
 display-current-layout:
