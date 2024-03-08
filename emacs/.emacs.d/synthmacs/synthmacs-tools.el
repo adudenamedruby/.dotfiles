@@ -371,30 +371,6 @@
   )
 ;; Transient:1 ends here
 
-;; [[file:../synthmacs.org::*Transient increase/decrease font size][Transient increase/decrease font size:1]]
-(use-package transient
-  :general
-  (synthmacs/leader-keys
-    "tx" 'synthmacs/font-size-transient)
-  :config
-  (transient-define-prefix synthmacs/font-size-transient ()
-    "Change font size"
-    ["Font size"
-     ("+" "Increase" (lambda ()
-		       (interactive)
-		       (progn
-			 (text-scale-increase 0.25)
-			 (synthmacs/font-size-transient))))
-     ("-" "Decrease" (lambda ()
-		       (interactive)
-		       (progn
-			 (text-scale-decrease 0.25)
-			 (synthmacs/font-size-transient))))
-     ("q" "Quit" transient-quit-one)
-     ])
-  )
-;; Transient increase/decrease font size:1 ends here
-
 ;; [[file:../synthmacs.org::*Request][Request:1]]
 (use-package request
   :defer t)

@@ -112,8 +112,7 @@
 				 kaolin-aurora
 				 doom-acario-dark
 				 gruvbox-dark-hard
-				 modus-vivendi
-				 alect-black))
+				 modus-vivendi))
 
 (defun synthmacs/load-theme (&optional theme)
   "Apply user theme."

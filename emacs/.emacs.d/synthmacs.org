@@ -1777,8 +1777,8 @@ _+_: text-scale-increase
 _-_: text-scale-decrease
 _q_: quit
 "
-  ("+" text-scale-increase)
-  ("-" text-scale-decrease)
+  ("+" (text-scale-increase 0.25))
+  ("-" (text-scale-decrease 0.25))
   ("q" nil :exit t))
 
 
@@ -3118,8 +3118,7 @@ Some functions for themes. Notably, I set:
 				 kaolin-aurora
 				 doom-acario-dark
 				 gruvbox-dark-hard
-				 modus-vivendi
-				 alect-black))
+				 modus-vivendi))
 
 (defun synthmacs/load-theme (&optional theme)
   "Apply user theme."
@@ -4678,35 +4677,6 @@ restart-emacs teaches Emacs to restart itself. I added a me/reload-init command 
      ;;  ]
      ]
     )
-  )
-#+end_src
-
-*** Transient increase/decrease font size
-:PROPERTIES:
-:CUSTOM_ID: h:B2B436F2-7763-472F-A1FE-3CA3B1A1CA52
-:END:
-
-#+begin_src emacs-lisp
-(use-package transient
-  :general
-  (synthmacs/leader-keys
-    "tx" 'synthmacs/font-size-transient)
-  :config
-  (transient-define-prefix synthmacs/font-size-transient ()
-    "Change font size"
-    ["Font size"
-     ("+" "Increase" (lambda ()
-		       (interactive)
-		       (progn
-			 (text-scale-increase 0.25)
-			 (synthmacs/font-size-transient))))
-     ("-" "Decrease" (lambda ()
-		       (interactive)
-		       (progn
-			 (text-scale-decrease 0.25)
-			 (synthmacs/font-size-transient))))
-     ("q" "Quit" transient-quit-one)
-     ])
   )
 #+end_src
 

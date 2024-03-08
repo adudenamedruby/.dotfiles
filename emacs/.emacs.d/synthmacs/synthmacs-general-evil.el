@@ -231,8 +231,8 @@ _+_: text-scale-increase
 _-_: text-scale-decrease
 _q_: quit
 "
-  ("+" text-scale-increase)
-  ("-" text-scale-decrease)
+  ("+" (text-scale-increase 0.25))
+  ("-" (text-scale-decrease 0.25))
   ("q" nil :exit t))
 
 
