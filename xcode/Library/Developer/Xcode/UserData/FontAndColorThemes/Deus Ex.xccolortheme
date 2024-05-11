@@ -5,23 +5,23 @@
 	<key>DVTConsoleDebuggerInputTextColor</key>
 	<string>0.901681 0.678842 0.115047 1</string>
 	<key>DVTConsoleDebuggerInputTextFont</key>
-	<string>FiraCode-Medium - 15.0</string>
+	<string>FiraCode-Retina - 15.0</string>
 	<key>DVTConsoleDebuggerOutputTextColor</key>
 	<string>0.653927 0.773968 0.783257 1</string>
 	<key>DVTConsoleDebuggerOutputTextFont</key>
-	<string>FiraCode-Medium - 15.0</string>
+	<string>FiraCode-Retina - 15.0</string>
 	<key>DVTConsoleDebuggerPromptTextColor</key>
 	<string>0.821391 0.535833 0.0857762 1</string>
 	<key>DVTConsoleDebuggerPromptTextFont</key>
-	<string>FiraCode-Medium - 15.0</string>
+	<string>FiraCode-Retina - 15.0</string>
 	<key>DVTConsoleExectuableInputTextColor</key>
 	<string>0.770437 0.783913 0.778299 1</string>
 	<key>DVTConsoleExectuableInputTextFont</key>
-	<string>FiraCode-Medium - 15.0</string>
+	<string>FiraCode-Retina - 15.0</string>
 	<key>DVTConsoleExectuableOutputTextColor</key>
 	<string>0.770437 0.783913 0.778299 1</string>
 	<key>DVTConsoleExectuableOutputTextFont</key>
-	<string>FiraCode-Medium - 15.0</string>
+	<string>FiraCode-Retina - 15.0</string>
 	<key>DVTConsoleTextBackgroundColor</key>
 	<string>0.0736267 0.0736267 0.0736267 1</string>
 	<key>DVTConsoleTextInsertionPointColor</key>
@@ -59,15 +59,15 @@
 	<key>DVTMarkupTextOtherHeadingColor</key>
 	<string>0.770437 0.783913 0.778299 0.5</string>
 	<key>DVTMarkupTextOtherHeadingFont</key>
-	<string>.SFNS-Regular - 19.2</string>
+	<string>.SFNS-Regular - 20.4</string>
 	<key>DVTMarkupTextPrimaryHeadingColor</key>
 	<string>0.770437 0.783913 0.778299 1</string>
 	<key>DVTMarkupTextPrimaryHeadingFont</key>
-	<string>.SFNS-Regular - 32.2</string>
+	<string>.SFNS-Regular - 36.4</string>
 	<key>DVTMarkupTextSecondaryHeadingColor</key>
 	<string>0.770437 0.783913 0.778299 1</string>
 	<key>DVTMarkupTextSecondaryHeadingFont</key>
-	<string>.SFNS-Regular - 24.4</string>
+	<string>.SFNS-Regular - 26.8</string>
 	<key>DVTMarkupTextStrongColor</key>
 	<string>0.770437 0.783913 0.778299 1</string>
 	<key>DVTMarkupTextStrongFont</key>

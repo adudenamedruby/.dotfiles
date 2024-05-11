@@ -131,6 +131,17 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>D9042B7E-D781-4D3D-B47F-F2FDA4FDD548</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>tmu</string>
+			<key>text</key>
+			<string>Toronto Metropolitan University</string>
+			<key>url</key>
+			<string>https://continuing.torontomu.ca/</string>
+		</dict>
 		<key>E1878E49-5F6E-4CA6-B36B-785E3497EC0F</key>
 		<dict>
 			<key>enabled</key>
