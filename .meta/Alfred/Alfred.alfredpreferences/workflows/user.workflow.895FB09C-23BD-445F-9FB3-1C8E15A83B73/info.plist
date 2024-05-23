@@ -12,7 +12,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>CA97BFC0-04DB-4A08-A504-AD56163F82B2</string>
+				<string>4C076AA2-9318-458A-836B-6C2C8DC4E560</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -229,18 +229,7 @@
 			</dict>
 		</array>
 		<key>A680D035-1B55-41B4-A2D4-EB39B8623E23</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>4C076AA2-9318-458A-836B-6C2C8DC4E560</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>AA5181D6-AF82-4F8F-8B2E-D634681314F2</key>
 		<array>
 			<dict>
@@ -482,7 +471,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/System/Applications/Books.app</string>
+					<string>/Applications/Adobe Photoshop 2024/Adobe Photoshop 2024.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -490,7 +479,7 @@
 			<key>type</key>
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
-			<string>CA97BFC0-04DB-4A08-A504-AD56163F82B2</string>
+			<string>4C076AA2-9318-458A-836B-6C2C8DC4E560</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -773,23 +762,6 @@ fi</string>
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
 			<string>C4643DF2-EB56-42EA-9B68-255781DE3A66</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/Adobe Photoshop 2024/Adobe Photoshop 2024.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>4C076AA2-9318-458A-836B-6C2C8DC4E560</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1982,9 +1954,9 @@ fi</string>
 		<key>4C076AA2-9318-458A-836B-6C2C8DC4E560</key>
 		<dict>
 			<key>xpos</key>
-			<real>195</real>
+			<real>190</real>
 			<key>ypos</key>
-			<real>740</real>
+			<real>25</real>
 		</dict>
 		<key>4C638AB8-BDB0-45DA-8CBC-8F20CD38AE1E</key>
 		<dict>
@@ -2174,13 +2146,6 @@ fi</string>
 			<real>345</real>
 			<key>ypos</key>
 			<real>355</real>
-		</dict>
-		<key>CA97BFC0-04DB-4A08-A504-AD56163F82B2</key>
-		<dict>
-			<key>xpos</key>
-			<real>190</real>
-			<key>ypos</key>
-			<real>25</real>
 		</dict>
 		<key>CBD47FE4-44C4-45C3-8625-D6BC066B8745</key>
 		<dict>
