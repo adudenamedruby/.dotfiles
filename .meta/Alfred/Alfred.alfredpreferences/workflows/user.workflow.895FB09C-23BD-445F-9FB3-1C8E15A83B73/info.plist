@@ -753,7 +753,7 @@ fi</string>
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/opt/homebrew/Cellar/emacs-plus@29/29.3/Emacs.app</string>
+					<string>/opt/homebrew/Cellar/emacs-plus@29/29.4/Emacs.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
