@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "I need to create documentation for [project\/component name]. Please generate:\n\n1. An overview of the [project\/component]\n2. Installation instructions\n3. Configuration options\n4. API reference (if applicable)\n5. Usage examples\n6. Troubleshooting guide\n7. FAQ section\n\nFor each section, consider:\n- The target audience (e.g., developers, end-users)\n- Any prerequisites or dependencies\n- Common pitfalls or misconceptions\n- Best practices\n\nPlease use clear, concise language and include relevant code snippets where appropriate.",
+    "uid" : "566DFA31-FF7E-4158-9CF8-B02E4FBE7564",
+    "name" : "Code Documentation",
+    "keyword" : "codegendocs"
+  }
+}

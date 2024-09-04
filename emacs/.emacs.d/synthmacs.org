@@ -987,15 +987,15 @@ Seeing the relative parens highlighted isn't just useful for LISPs. It's just da
   ;; Main typeface
   (set-face-attribute 'default nil
                       :font synthmacs/default-font-family
-                      :height 140)
+                      :height 150)
   ;; Set the fixed pitch face (monospace)
   (set-face-attribute 'fixed-pitch nil
                       :font synthmacs/default-font-family
-                      :height 140)
+                      :height 150)
   ;; Set the variable pitch face
   (set-face-attribute 'variable-pitch nil
                       :font synthmacs/variable-pitch-font-family
-                      :height 140)
+                      :height 150)
   )
 #+end_src
 

@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "Implement a [name of algorithm] in [programming language]. \nPlease include: \n1. The main function with clear parameter and return types \n2. Helper functions if necessary \n3. Time and space complexity analysis \n4. Example usage",
+    "uid" : "B55D1D44-3717-4287-8CF4-FA265DC0C81E",
+    "name" : "Code Implement Algorithm",
+    "keyword" : "code implement algorithm"
+  }
+}

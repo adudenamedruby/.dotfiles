@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "Generate appropriate comments and docstrings for the following code:\n```\n\n```\nFollow [language-specific] conventions for docstrings. Include:\n1. Brief description of the function\/class\n2. Parameters and their types\n3. Return value and type\n4. Any exceptions that might be raised\n5. Usage examples if the function\/class usage is not immediately obvious",
+    "uid" : "5394D2AE-EABE-4A61-A64B-831EC824920D",
+    "name" : "Code Generation Documentation comments",
+    "keyword" : "codegendocscomments"
+  }
+}

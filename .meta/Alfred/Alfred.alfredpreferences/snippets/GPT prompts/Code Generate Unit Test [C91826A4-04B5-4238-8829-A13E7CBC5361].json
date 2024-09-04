@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "Generate unit tests for the following function:\n```\n\n```\nInclude tests for:\n1. Normal expected inputs\n2. Edge cases\n3. Invalid inputs\nUse XCTest syntax.",
+    "uid" : "C91826A4-04B5-4238-8829-A13E7CBC5361",
+    "name" : "Code Generate Unit Test",
+    "keyword" : "codegenunit"
+  }
+}

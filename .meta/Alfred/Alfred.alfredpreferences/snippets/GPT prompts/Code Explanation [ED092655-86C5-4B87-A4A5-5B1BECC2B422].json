@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "Can you explain the following part of the code in detail:\n```\n\n```\nSpecifically:\n1. What is the purpose of this section?\n2. How does it work step-by-step?\n3. Are there any potential issues or limitations with this approach?",
+    "uid" : "ED092655-86C5-4B87-A4A5-5B1BECC2B422",
+    "name" : "Code Explanation",
+    "keyword" : "codeexplain"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "Please review the following code:\n```\n\n```\nConsider:\n1. Code quality and adherence to best practices\n2. Potential bugs or edge cases\n3. Performance optimizations\n4. Readability and maintainability\n5. Any security concerns\nSuggest improvements and explain your reasoning for each suggestion.",
+    "uid" : "49D3E837-B782-42C1-A272-A20085DBE434",
+    "name" : "Code Review",
+    "keyword" : "codereview"
+  }
+}
