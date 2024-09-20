@@ -30,8 +30,8 @@ local options = {
     inccommand = 'split',
     incsearch = true,
     --isfname:append("@-@"),
+    listchars = { tab = '» ', trail = '·', nbsp = '␣' , space = '·'},
     list = true,
-    listchars = { tab = '» ', trail = '·', nbsp = '␣' },
     mouse = "a",                             -- allow the mouse to be used in neovim
     nu = true,
     number = true,                           -- set numbered lines
