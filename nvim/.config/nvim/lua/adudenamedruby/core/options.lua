@@ -1,6 +1,22 @@
--- :help options
+-- Set to true if you have a Nerd Font installed and selected in the terminal
+vim.g.have_nerd_font = true
+
+-- [[ Setting options ]]
+-- See `:help vim.opt`
+-- NOTE: You can change these options as you wish!
+--  For more options, you can see `:help option-list`
+
+-- Sync clipboard between OS and Neovim.
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+-- vim.schedule(function()
+--   vim.opt.clipboard = 'unnamedplus'
+-- end)
+
 local options = {
     backup = false,                          -- creates a backup file
+    breakindent = true,
     clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
     cmdheight = 2,                           -- more space in the neovim command line for displaying messages
     colorcolumn = "80",
@@ -11,8 +27,11 @@ local options = {
     fileencoding = "utf-8",                  -- the encoding written to a file
     hlsearch = true,                         -- highlight all matches on previous search pattern
     ignorecase = true,                       -- ignore case in search patterns
+    inccommand = 'split',
     incsearch = true,
     --isfname:append("@-@"),
+    list = true,
+    listchars = { tab = '» ', trail = '·', nbsp = '␣' },
     mouse = "a",                             -- allow the mouse to be used in neovim
     nu = true,
     number = true,                           -- set numbered lines
@@ -33,9 +52,9 @@ local options = {
     swapfile = false,                        -- creates a swapfile
     tabstop = 4,
     termguicolors = true,
-    timeoutlen = 1000,                       -- time to wait for a mapped sequence to complete (in milliseconds)
+    timeoutlen = 300,                       -- time to wait for a mapped sequence to complete (in milliseconds)
     undofile = true,                         -- enable persistent undo
-    updatetime = 50,
+    updatetime = 250,
     wrap = false,                            -- display lines as one long line
     writebackup = false,                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 -- guicursor = ""
