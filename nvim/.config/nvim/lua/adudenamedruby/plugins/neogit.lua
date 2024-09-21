@@ -7,6 +7,14 @@ return {
 		"nvim-telescope/telescope.nvim", -- optional
 	},
 	config = true,
+	opts = {
+		mappings = {
+			popup = {
+				["F"] = "PullPopup",
+				["p"] = false,
+			},
+		},
+	},
 	keys = {
 		{ "<leader>gs", "<cmd>Neogit<cr>", desc = "NeoGit" },
 	},
