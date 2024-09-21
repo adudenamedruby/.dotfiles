@@ -17,6 +17,9 @@ alias dot="cd ~/.dotfiles"
 # don't use vim
 alias vim="nvim"
 
+# work on Firefox
+alias fxios="nvim ~/Developer/firefox-ios/"
+
 syncCall () {
   if [ $# -eq 0 ]; then
     echo "Warning: sync requires at least one argument to run."
