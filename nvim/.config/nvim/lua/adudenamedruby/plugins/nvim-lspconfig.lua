@@ -21,6 +21,7 @@ return {
 			{ "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			{ "antosha417/nvim-lsp-file-operations", config = true },
 
 			-- Useful status updates for LSP.
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -229,6 +230,35 @@ return {
 					end,
 				},
 			})
+
+			local lspconfig = require("lspconfig")
+			local opts = { noremap = true, silent = true }
+			local on_attach = function(_, bufnr)
+				opts.buffer = bufnr
+
+				opts.desc = "Show line diagnostics"
+				vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+
+				opts.desc = "Show documentation for what is under cursor"
+				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+			end
+
+			lspconfig["sourcekit"].setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+				on_init = function(client)
+					-- HACK: to fix some issues with LSP
+					-- more details: https://github.com/neovim/neovim/issues/19237#issuecomment-2237037154
+					client.offset_encoding = "utf-8"
+				end,
+			})
+
+			-- nice icons
+			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+			for type, icon in pairs(signs) do
+				local hl = "DiagnosticSign" .. type
+				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+			end
 		end,
 	},
 }
