@@ -76,6 +76,7 @@ return {
 		vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "diagnostics search" })
 		vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "search resume" })
 		vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = 'search recent files ("." for repeat)' })
+		vim.keymap.set("n", "<leader>tt", builtin.colorscheme, { desc = "themes" })
 
 		vim.keymap.set("n", "<leader>bb", builtin.buffers, { desc = "list all buffers" })
 

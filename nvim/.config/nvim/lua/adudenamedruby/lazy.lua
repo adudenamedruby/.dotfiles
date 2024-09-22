@@ -34,3 +34,11 @@ require("lazy").setup({
 -- KEYMAPS
 local keymap = vim.keymap
 keymap.set("n", "<leader>hl", "<cmd>Lazy<CR>", { desc = "open lazy" })
+
+-- Set random colourscheme
+require("adudenamedruby.plugins.colorscheme")
+
+-- Randomly select a colorscheme
+local colorschemes = { "catppuccin", "tokyonight", "kanagawa", "rose-pine", "carbonfox" }
+local random_colorscheme = colorschemes[math.random(#colorschemes)]
+vim.cmd("colorscheme " .. random_colorscheme)
