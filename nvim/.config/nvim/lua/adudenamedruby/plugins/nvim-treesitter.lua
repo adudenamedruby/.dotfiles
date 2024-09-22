@@ -2,25 +2,48 @@ return {
 	-- Highlight, edit, and navigate code
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	main = "nvim-treesitter.configs", -- Sets main module to use for opts
+	main = "treesitter.configs", -- Sets main module to use for opts
+dependencies = {
+      "windwp/nvim-ts-autotag",
+    },
 	-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-	opts = {
-		ensure_installed = {
+config = function()
+      local treesitter = require("nvim-treesitter.configs")
+
+      treesitter.setup({
+        incremental_selection = {
+          enable = false,
+          keymaps = {
+            scope_incremental = "a",
+            node_decremental = "z",
+          },
+        },
+        highlight = {
+          enable = true,
+        },
+        -- indent = { enable = true },
+        autotag = { enable = false },
+        ensure_installed = {
 			"bash",
 			"c",
 			"diff",
+          "gitignore",
+
 			"html",
-			"lua",
+ "json",
+"lua",
 			"luadoc",
 			"markdown",
 			"markdown_inline",
 			"query",
+          "swift",
+
 			"vim",
 			"vimdoc",
-		},
-		-- Autoinstall languages that are not installed
-		auto_install = true,
-		highlight = {
+          "yaml",
+        },
+        auto_install = true,
+highlight = {
 			enable = true,
 			-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
 			--  If you are experiencing weird indenting issues, add the language to
@@ -28,7 +51,8 @@ return {
 			additional_vim_regex_highlighting = { "ruby" },
 		},
 		indent = { enable = true, disable = { "ruby" } },
-	},
+      })
+    end,	
 	-- There are additional nvim-treesitter modules that you can use to interact
 	-- with nvim-treesitter. You should go explore a few and see what interests you:
 	--
