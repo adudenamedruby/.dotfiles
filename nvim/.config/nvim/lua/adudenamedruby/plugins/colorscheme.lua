@@ -35,7 +35,7 @@ return {
 		priority = 1000,
 		config = function()
 			require("tokyonight").setup({
-				style = "storm", -- Other styles: "night", "day", "moon"
+				style = "moon", -- Other styles: "night", "day", "moon"
 				transparent = false,
 			})
 		end,
