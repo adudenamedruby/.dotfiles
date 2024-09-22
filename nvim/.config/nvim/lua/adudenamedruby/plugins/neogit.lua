@@ -8,6 +8,7 @@ return {
 	},
 	config = true,
 	opts = {
+		disable_insert_on_commit = true,
 		mappings = {
 			popup = {
 				["F"] = "PullPopup",
