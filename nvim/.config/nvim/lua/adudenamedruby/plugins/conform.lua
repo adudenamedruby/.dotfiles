@@ -5,12 +5,13 @@ return {
 	cmd = { "ConformInfo" },
 	keys = {
 		{
-			"<leader>fc",
+			"<leader>fa",
 			function()
 				require("conform").format({
-async = true,
-lsp_fallback = true,
-timeout_ms = 500 })
+					async = true,
+					lsp_fallback = true,
+					timeout_ms = 500,
+				})
 			end,
 			mode = "",
 			desc = "format buffer",
@@ -36,7 +37,7 @@ timeout_ms = 500 })
 		end,
 		formatters_by_ft = {
 			lua = { "stylua" },
-swift = { "swiftformat" },
+			swift = { "swiftformat" },
 			-- Conform can also run multiple formatters sequentially
 			-- python = { "isort", "black" },
 			--
