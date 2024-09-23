@@ -4,10 +4,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Clear highlights on search when pressing <Esc> in normal mode
---  See `:help hlsearch`
-vim.keymap.set("n", "<leader>sc", "<cmd>nohlsearch<CR>")
-
 -- Diagnostic keymaps
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -17,7 +13,7 @@ vim.keymap.set("n", "<leader>sc", "<cmd>nohlsearch<CR>")
 --
 --close NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "exit terminal mode" })
 
 -- TIP: Disable arrow keys in normal mode
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
@@ -35,11 +31,11 @@ vim.keymap.set("n", "<leader>bp", "<cmd>:bp<CR>", { desc = "previous buffer" })
 -- Debug menu
 
 -- Error menu
-vim.keymap.set("n", "<leader>en", "<cmd>silent cc | silent cn<cr>zz", { desc = "Jump to next issue" })
-vim.keymap.set("n", "<leader>ep", "<cmd>silent cc | silent cp<cr>zz", { desc = "Jump to previous issue" })
+vim.keymap.set("n", "<leader>en", "<cmd>silent cc | silent cn<cr>zz", { desc = "jump to next issue" })
+vim.keymap.set("n", "<leader>ep", "<cmd>silent cc | silent cp<cr>zz", { desc = "jump to previous issue" })
 
 -- Files menu
-vim.keymap.set("n", "<leader>fs", "<cmd>w<CR>", { desc = "[S]ave file" })
+vim.keymap.set("n", "<leader>fs", "<cmd>w<CR>", { desc = "save file" })
 
 -- Git menu
 vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns blame<CR>", { desc = "git blame" })
@@ -53,6 +49,9 @@ vim.keymap.set("n", "<leader>qq", "<cmd>q<CR>", { desc = "[Q]uit nVim" })
 -- Registers menu
 
 -- Search menu
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
+vim.keymap.set("n", "<leader>sc", "<cmd>nohlsearch<CR>")
 
 -- Toggle menu
 
@@ -62,10 +61,10 @@ vim.keymap.set("n", "<leader>qq", "<cmd>q<CR>", { desc = "[Q]uit nVim" })
 --  Use CTRL+<hjkl> to switch between windows
 
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set("n", "<leader>wh", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<leader>wl", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<leader>wj", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<leader>wk", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+vim.keymap.set("n", "<leader>wh", "<C-w><C-h>", { desc = "move focus to the left window" })
+vim.keymap.set("n", "<leader>wl", "<C-w><C-l>", { desc = "move focus to the right window" })
+vim.keymap.set("n", "<leader>wj", "<C-w><C-j>", { desc = "move focus to the lower window" })
+vim.keymap.set("n", "<leader>wk", "<C-w><C-k>", { desc = "move focus to the upper window" })
 
 vim.keymap.set("n", "<leader>ws", "<cmd>:split<CR>", { desc = "horizontal split" })
 vim.keymap.set("n", "<leader>wv", "<cmd>:vsplit<CR>", { desc = "vertical split" })
