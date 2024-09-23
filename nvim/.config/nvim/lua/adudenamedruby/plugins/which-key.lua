@@ -55,6 +55,7 @@ return {
 				{ "<leader>r", group = "registers" },
 				{ "<leader>s", group = "search" },
 				{ "<leader>t", group = "toggle" },
+				{ "<leader>v", group = "visual selection" },
 				{ "<leader>w", group = "windows" },
 				{ "<leader>x", group = "Xcode" },
 				-- { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
