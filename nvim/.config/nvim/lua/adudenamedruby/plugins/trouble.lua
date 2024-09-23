@@ -14,7 +14,7 @@ return {
 			auto_preview = true,
 			auto_jump = false,
 			mode = "quickfix",
-			severity = vim.diagnostic.severity.ERROR,
+			severity = vim.diagnostic.severity.WARN,
 			cycle_results = false,
 		})
 

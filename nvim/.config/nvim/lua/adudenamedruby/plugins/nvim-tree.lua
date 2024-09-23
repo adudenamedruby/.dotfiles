@@ -18,7 +18,7 @@ return {
 				threshold = vim.log.levels.WARN,
 			},
 			view = {
-				width = 40,
+				width = 50,
 				relativenumber = true,
 			},
 			-- change folder arrow icons

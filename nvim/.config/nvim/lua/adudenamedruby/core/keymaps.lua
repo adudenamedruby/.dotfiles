@@ -35,6 +35,8 @@ vim.keymap.set("n", "<leader>bp", "<cmd>:bp<CR>", { desc = "previous buffer" })
 -- Debug menu
 
 -- Error menu
+vim.keymap.set("n", "<leader>en", "<cmd>silent cc | silent cn<cr>zz", { desc = "Jump to next issue" })
+vim.keymap.set("n", "<leader>ep", "<cmd>silent cc | silent cp<cr>zz", { desc = "Jump to previous issue" })
 
 -- Files menu
 vim.keymap.set("n", "<leader>fs", "<cmd>w<CR>", { desc = "[S]ave file" })
