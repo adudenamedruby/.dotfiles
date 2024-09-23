@@ -68,9 +68,9 @@ return {
 		-- See `:help telescope.builtin`
 		local builtin = require("telescope.builtin")
 		vim.keymap.set("n", "<leader>hs", builtin.help_tags, { desc = "search help" })
-		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "search keymaps" })
+		vim.keymap.set("n", "<leader>hk", builtin.keymaps, { desc = "search keymaps" })
 		vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "find file" })
-		vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "search Telescope builtin" })
+		vim.keymap.set("n", "<leader>sb", builtin.builtin, { desc = "search Telescope builtin" })
 		vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "search current word" })
 		vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "grep search" })
 		vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "diagnostics search" })
@@ -79,6 +79,15 @@ return {
 		vim.keymap.set("n", "<leader>tt", builtin.colorscheme, { desc = "themes" })
 
 		vim.keymap.set("n", "<leader>bb", builtin.buffers, { desc = "list all buffers" })
+
+		-- Slightly advanced example of overriding default behavior and theme
+		vim.keymap.set("n", "<leader>ss", function()
+			-- You can pass additional configuration to Telescope to change the theme, layout, etc.
+			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+				winblend = 10,
+				previewer = false,
+			}))
+		end, { desc = "fuzzy search in current buffer" })
 
 		-- Slightly advanced example of overriding default behavior and theme
 		vim.keymap.set("n", "<leader>/", function()
