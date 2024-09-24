@@ -10,6 +10,23 @@ return {
 		--  - ci'  - [C]hange [I]nside [']quote
 		require("mini.ai").setup({ n_lines = 500 })
 
+		require("mini.jump2d").setup({
+			mappings = {
+				start_jumping = "<leader>jj",
+			},
+		})
+
+		-- this is very useful, by hitting `sj` you can split arguments into new lines (ctrl+m in Xcode)
+		require("mini.splitjoin").setup({
+			mappings = {
+				toggle = "<C-m>",
+				split = "",
+				join = "",
+			},
+		})
+
+		require("mini.pairs").setup()
+
 		-- Add/delete/replace surroundings (brackets, quotes, etc.)
 		--
 		-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
