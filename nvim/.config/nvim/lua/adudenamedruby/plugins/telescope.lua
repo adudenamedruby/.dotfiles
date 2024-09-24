@@ -74,7 +74,7 @@ return {
 		vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "search current word" })
 		vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "grep search" })
 		vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "diagnostics search" })
-		vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "search resume" })
+		vim.keymap.set("n", "<leader>sr", builtin.registers, { desc = "search registers" })
 		vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = 'search recent files ("." for repeat)' })
 		vim.keymap.set("n", "<leader>tt", builtin.colorscheme, { desc = "themes" })
 

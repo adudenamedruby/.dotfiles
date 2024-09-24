@@ -12,7 +12,7 @@ return {
 
 		require("mini.jump2d").setup({
 			mappings = {
-				start_jumping = "<leader>jj",
+				start_jumping = "<leader>uj",
 			},
 		})
 
@@ -33,8 +33,5 @@ return {
 		-- - sd'   - [S]urround [D]elete [']quotes
 		-- - sr)'  - [S]urround [R]eplace [)] [']
 		require("mini.surround").setup()
-
-		-- ... and there is more!
-		--  Check out: https://github.com/echasnovski/mini.nvim
 	end,
 }

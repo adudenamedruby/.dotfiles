@@ -1613,7 +1613,7 @@ fi</string>
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/iTerm.app</string>
+					<string>/Applications/WezTerm.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1630,7 +1630,7 @@ fi</string>
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/kitty.app</string>
+					<string>/Applications/iTerm.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>

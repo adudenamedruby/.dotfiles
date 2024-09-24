@@ -17,6 +17,9 @@ alias dot="cd ~/.dotfiles"
 # don't use vim
 alias vim="nvim"
 
+# wezterm configs
+alias wezconf="nvim ~/.dotfiles/wezterm/.config/wezterm/wezterm.lua"
+
 # work on Firefox
 alias fxios="nvim ~/Developer/firefox-ios/"
 

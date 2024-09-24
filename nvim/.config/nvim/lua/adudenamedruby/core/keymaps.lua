@@ -2,7 +2,7 @@
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = ","
 
 -- Diagnostic keymaps
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
@@ -25,6 +25,7 @@ vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 vim.keymap.set("n", "<leader><TAB>", "<cmd>:b#<CR>", { desc = "switch to last buffer" })
 vim.keymap.set("n", "<leader>be", "<cmd>:enew<CR>", { desc = "open empty buffer" })
 vim.keymap.set("n", "<leader>bd", "<cmd>:bd<CR>", { desc = "delete buffer" })
+vim.keymap.set("n", "<leader>bD", "<cmd>:bd!<CR>", { desc = "force delete buffer" })
 vim.keymap.set("n", "<leader>bn", "<cmd>:bn<CR>", { desc = "next buffer" })
 vim.keymap.set("n", "<leader>bp", "<cmd>:bp<CR>", { desc = "previous buffer" })
 
@@ -42,11 +43,20 @@ vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns blame<CR>", { desc = "git blame
 vim.keymap.set("n", "<leader>gc", "<cmd>Gitsigns blame_line<CR>", { desc = "git blame line" })
 
 -- Help menu
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>hm",
+	":redir @a<CR>:messages<CR>:redir END<CR>:new<CR>:put a<CR>",
+	{ desc = "messages buffer" }
+)
+
+vim.keymap.set("n", "<leader>hM", "<cmd>Mason<CR>", { desc = "open Mason" })
 
 -- Quit menu
-vim.keymap.set("n", "<leader>qq", "<cmd>q<CR>", { desc = "[Q]uit nVim" })
+vim.keymap.set("n", "<leader>qq", "<cmd>q<CR>", { desc = "quit nVim" })
+vim.keymap.set("n", "<leader>qQ", "<cmd>q!<CR>", { desc = "force quit nVim" })
 
--- Registers menu
+-- Utilities menu
 
 -- Search menu
 -- Clear highlights on search when pressing <Esc> in normal mode
@@ -71,3 +81,21 @@ vim.keymap.set("n", "<leader>wv", "<cmd>:vsplit<CR>", { desc = "vertical split" 
 
 vim.keymap.set("n", "<leader>wd", "<cmd>:q<CR>", { desc = "delete current window" })
 vim.keymap.set("n", "<leader>wo", "<cmd>:only<CR>", { desc = "close all windows except current" })
+
+function ToggleSplits()
+	-- Get the current window layout (width and height)
+	local width = vim.api.nvim_win_get_width(0)
+	local height = vim.api.nvim_win_get_height(0)
+
+	-- If the current window is wider than it is tall, it's a horizontal split
+	if width > height then
+		-- Convert horizontal splits to vertical by using :wincmd L (Move to the left)
+		vim.cmd("wincmd H")
+	else
+		-- Convert vertical splits to horizontal by using :wincmd H (Move down)
+		vim.cmd("wincmd J")
+	end
+end
+
+-- Bind the function to a key, e.g., <leader>t
+vim.keymap.set("n", "<leader>wc", ":lua ToggleSplits()<CR>", { desc = "change orientation" })

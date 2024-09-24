@@ -78,41 +78,41 @@ return {
 					--  To jump back, press <C-t>.
 					map("gd", require("telescope.builtin").lsp_definitions, "go to definition")
 
+					-- WARN: This is not Goto Definition, this is Goto Declaration.
+					--  For example, in C this would take you to the header.
+					map("gD", vim.lsp.buf.declaration, "go to declaration")
+
 					-- Find references for the word under your cursor.
 					map("gr", require("telescope.builtin").lsp_references, "go to references")
 
 					-- Jump to the implementation of the word under your cursor.
 					--  Useful when your language has ways of declaring types without an actual implementation.
-					map("gI", require("telescope.builtin").lsp_implementations, "go to implementation")
+					map("gi", require("telescope.builtin").lsp_implementations, "go to implementation")
 
 					-- Jump to the type of the word under your cursor.
 					--  Useful when you're not sure what type a variable is and you want to see
 					--  the definition of its *type*, not where it was *defined*.
-					map("<leader>ld", require("telescope.builtin").lsp_type_definitions, "type definition")
+					map("<leader>Ld", require("telescope.builtin").lsp_type_definitions, "type definition")
 
 					-- Fuzzy find all the symbols in your current document.
 					--  Symbols are things like variables, functions, types, etc.
-					map("<leader>ls", require("telescope.builtin").lsp_document_symbols, "document symbols")
+					map("<leader>Ls", require("telescope.builtin").lsp_document_symbols, "document symbols")
 
 					-- Fuzzy find all the symbols in your current workspace.
 					--  Similar to document symbols, except searches over your entire project.
 					map(
-						"<leader>lw",
+						"<leader>Lw",
 						require("telescope.builtin").lsp_dynamic_workspace_symbols,
 						"[W]orkspace [S]ymbols"
 					)
 
 					-- Rename the variable under your cursor.
 					--  Most Language Servers support renaming across files, etc.
-					map("<leader>lr", vim.lsp.buf.rename, "rename")
+					map("<leader>Lr", vim.lsp.buf.rename, "rename")
 
 					-- Execute a code action, usually your cursor needs to be on top of an error
 					-- or a suggestion from your LSP for this to activate.
-					map("<leader>la", vim.lsp.buf.code_action, "code action", { "n", "x" })
-
-					-- WARN: This is not Goto Definition, this is Goto Declaration.
-					--  For example, in C this would take you to the header.
-					map("gD", vim.lsp.buf.declaration, "goto declaration")
+					map("<leader>La", vim.lsp.buf.code_action, "code action", { "n", "x" })
 
 					-- The following two autocommands are used to highlight references of the
 					-- word under your cursor when your cursor rests there for a little while.

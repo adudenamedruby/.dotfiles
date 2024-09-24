@@ -80,20 +80,20 @@ return {
 
     vim.keymap.set("n", "<leader>cq", "<cmd>Telescope quickfix<cr>", { desc = "show quickFix list" })
 
-    vim.keymap.set("n", "<leader>cx", "<cmd>XcodebuildQuickfixLine<cr>", { desc = "quickfix line" })
+    vim.keymap.set("n", "<leader>cl", "<cmd>XcodebuildQuickfixLine<cr>", { desc = "quickfix line" })
     vim.keymap.set("n", "<leader>ca", "<cmd>XcodebuildCodeActions<cr>", { desc = "show code actions" })
 
     -- xcode menu
-    vim.keymap.set("n", "<leader>xB", "<cmd>XcodebuildPicker<cr>", { desc = "show Xcodebuild actions" })
-    vim.keymap.set("n", "<leader>xp", "<cmd>XcodebuildProjectManager<cr>", { desc = "show project manager actions" })
+    vim.keymap.set("n", "<leader>cxB", "<cmd>XcodebuildPicker<cr>", { desc = "show Xcodebuild actions" })
+    vim.keymap.set("n", "<leader>cxp", "<cmd>XcodebuildProjectManager<cr>", { desc = "show project manager actions" })
 
-    vim.keymap.set("n", "<leader>xl", "<cmd>XcodebuildToggleLogs<cr>", { desc = "show Xcodebuild logs" })
-    vim.keymap.set("n", "<leader>xc", "<cmd>XcodebuildToggleCodeCoverage<cr>", { desc = "show code coverage" })
-    vim.keymap.set("n", "<leader>xC", "<cmd>XcodebuildShowCodeCoverageReport<cr>", { desc = "show code coverage report" })
-    vim.keymap.set("n", "<leader>xe", "<cmd>XcodebuildTestExplorerToggle<cr>", { desc = "toggle test explorer" })
-    vim.keymap.set("n", "<leader>xs", "<cmd>XcodebuildFailingSnapshots<cr>", { desc = "show failing snapshots" })
+    vim.keymap.set("n", "<leader>cxl", "<cmd>XcodebuildToggleLogs<cr>", { desc = "show Xcodebuild logs" })
+    vim.keymap.set("n", "<leader>cxc", "<cmd>XcodebuildToggleCodeCoverage<cr>", { desc = "show code coverage" })
+    vim.keymap.set("n", "<leader>cxC", "<cmd>XcodebuildShowCodeCoverageReport<cr>", { desc = "show code coverage report" })
+    vim.keymap.set("n", "<leader>cxe", "<cmd>XcodebuildTestExplorerToggle<cr>", { desc = "toggle test explorer" })
+    vim.keymap.set("n", "<leader>cxs", "<cmd>XcodebuildFailingSnapshots<cr>", { desc = "show failing snapshots" })
 
-    vim.keymap.set("n", "<leader>xd", "<cmd>XcodebuildSelectDevice<cr>", { desc = "select device" })
-    vim.keymap.set("n", "<leader>xp", "<cmd>XcodebuildSelectTestPlan<cr>", { desc = "select test plan" })
+    vim.keymap.set("n", "<leader>cxd", "<cmd>XcodebuildSelectDevice<cr>", { desc = "select device" })
+    vim.keymap.set("n", "<leader>cxp", "<cmd>XcodebuildSelectTestPlan<cr>", { desc = "select test plan" })
 	end,
 }
