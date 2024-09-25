@@ -54,17 +54,16 @@ return {
 		require("dap").defaults.fallback.switchbuf = "usetab,uselast"
 
     --stylua: ignore start
-    vim.keymap.set("n", "<leader>db", xcodebuild.build_and_debug, { desc = "build & debug" })
+    vim.keymap.set("n", "<leader>cr", xcodebuild.build_and_debug, { desc = "build & debug" })
     vim.keymap.set("n", "<leader>dd", xcodebuild.debug_without_build, { desc = "debug without building" })
     vim.keymap.set("n", "<leader>dt", xcodebuild.debug_tests, { desc = "debug tests" })
     vim.keymap.set("n", "<leader>dT", xcodebuild.debug_class_tests, { desc = "debug class tests" })
     vim.keymap.set("n", "<leader>tb", xcodebuild.toggle_breakpoint, { desc = "toggle breakpoint" })
     vim.keymap.set("n", "<leader>tB", xcodebuild.toggle_message_breakpoint, { desc = "toggle message breakpoint" })
+    vim.keymap.set("n", "<leader>dx", function()
+        xcodebuild.terminate_session()
+        require("dap").listeners.after["event_terminated"]["me"]()
+    end, { desc = "terminate debugger" })
 		--stylua: ignore end
-
-		vim.keymap.set("n", "<leader>dx", function()
-			xcodebuild.terminate_session()
-			require("dap").listeners.after["event_terminated"]["me"]()
-		end, { desc = "Terminate debugger" })
 	end,
 }

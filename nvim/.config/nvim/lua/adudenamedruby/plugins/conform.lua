@@ -1,3 +1,6 @@
+local home = os.getenv("HOME")
+local swiftformat_config = home .. "/.config/swiftformat/.swiftformat"
+
 return {
 	-- Autoformat
 	"stevearc/conform.nvim",
@@ -5,7 +8,7 @@ return {
 	cmd = { "ConformInfo" },
 	keys = {
 		{
-			"<leader>fa",
+			"<leader>uf",
 			function()
 				require("conform").format({
 					async = true,
@@ -37,7 +40,10 @@ return {
 		end,
 		formatters_by_ft = {
 			lua = { "stylua" },
-			-- swift = { "swiftformat" },
+			swift = {
+				command = "swiftformat",
+				args = { "--config", swiftformat_config },
+			},
 			-- Conform can also run multiple formatters sequentially
 			-- python = { "isort", "black" },
 			--

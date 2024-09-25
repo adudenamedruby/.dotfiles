@@ -199,13 +199,13 @@ select-column-layout:
 
 # Move the currently focused window to the space to the left.
 throw-space-left:
-  mod: mod1
-  key: d
+  mod: <NONE>
+  key: <NONE>
 
 # Move currently the focused window to the space to the right.
 throw-space-right:
-  mod: mod1
-  key: b
+  mod: <NONE>
+  key: <NONE>
 
 # Toggle the floating state of the currently focused window; i.e., if it was floating make it tiled and if it was tiled make it floating.
 toggle-float:
@@ -225,7 +225,7 @@ toggle-tiling:
 # Rerun the current layout's algorithm.
 reevaluate-windows:
   mod: mod1
-  key: l
+  key: s
 
 # Turn on or off focus-follows-mouse.
 toggle-focus-follows-mouse:
