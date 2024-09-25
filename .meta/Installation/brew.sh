@@ -98,6 +98,8 @@ brew install svn
 
 brew install swiftlint
 
+brew install swiftformat
+
 brew install the_silver_searcher # AG
 
 brew install tree-sitter
@@ -158,6 +160,8 @@ brew install swi-prolog
 brew install nvim
 
 brew install xcode-build-server
+# when running a new project, you'll need to run this
+# xcode-build-server config -scheme <XXX> -project *.xcodeproj
 brew install xcbeautify
 brew install ruby
 brew install pipx
