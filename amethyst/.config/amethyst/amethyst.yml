@@ -63,7 +63,7 @@ mod2:
 # Move to the next layout in the list.
 cycle-layout:
   mod: mod1
-  key: s
+  key: b
 
 # Move to the previous layout in the list.
 cycle-layout-backward:
@@ -120,7 +120,7 @@ focus-cw:
 # Focus the main window in the list.
 focus-main:
   mod: mod1
-  key: t
+  key: c
 
 # Focus the next screen in the list going counter-clockwise.
 focus-screen-ccw:
@@ -155,7 +155,7 @@ swap-cw:
 # Swap the position of the currently focused window with the main window in the list.
 swap-main:
   mod: mod1
-  key: c
+  key: t
 
 # Move focus to the n-th screen in the list; e.g., focus-screen-3 will move mouse focus to the 3rd screen. Note that the main window in the given screen will be focused.
 #focus-screen-n:
@@ -225,7 +225,7 @@ toggle-tiling:
 # Rerun the current layout's algorithm.
 reevaluate-windows:
   mod: mod1
-  key: z
+  key: l
 
 # Turn on or off focus-follows-mouse.
 toggle-focus-follows-mouse:
@@ -235,7 +235,7 @@ toggle-focus-follows-mouse:
 # Automatically quit and reopen Amethyst.
 relaunch-amethyst:
   mod: mod1
-  key: l
+  key: 0
 
 # disable screen padding on in-built display
 disable-screen-padding-on-inbuilt: true
