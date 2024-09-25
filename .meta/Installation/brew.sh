@@ -157,6 +157,12 @@ brew install swi-prolog
 
 brew install nvim
 
+brew install xcode-build-server
+brew install xcbeautify
+brew install ruby
+brew install pipx
+gem install xcodeproj
+
 # Emacs
 brew tap d12frosted/emacs-plus
 brew install emacs-plus@29 --with-modern-sexy-v1-icon

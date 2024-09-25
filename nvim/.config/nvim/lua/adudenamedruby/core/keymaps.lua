@@ -37,20 +37,21 @@ vim.keymap.set("n", "<leader>ep", "<cmd>silent cc | silent cp<cr>zz", { desc = "
 
 -- Files menu
 vim.keymap.set("n", "<leader>fs", "<cmd>w<CR>", { desc = "save file" })
+vim.keymap.set("n", "<leader>fr", ":e<CR>:bd#<CR>:e<CR>", { desc = "reload file" })
 
 -- Git menu
 vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns blame<CR>", { desc = "git blame" })
-vim.keymap.set("n", "<leader>gc", "<cmd>Gitsigns blame_line<CR>", { desc = "git blame line" })
+vim.keymap.set("n", "<leader>gl", "<cmd>Gitsigns blame_line<CR>", { desc = "git blame line" })
 
 -- Help menu
 vim.api.nvim_set_keymap(
 	"n",
-	"<leader>hm",
+	"<leader>Hm",
 	":redir @a<CR>:messages<CR>:redir END<CR>:new<CR>:put a<CR>",
 	{ desc = "messages buffer" }
 )
 
-vim.keymap.set("n", "<leader>hM", "<cmd>Mason<CR>", { desc = "open Mason" })
+vim.keymap.set("n", "<leader>HM", "<cmd>Mason<CR>", { desc = "open Mason" })
 
 -- Quit menu
 vim.keymap.set("n", "<leader>qq", "<cmd>q<CR>", { desc = "quit nVim" })
