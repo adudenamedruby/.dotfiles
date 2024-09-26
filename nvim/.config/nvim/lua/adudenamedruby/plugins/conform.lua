@@ -39,6 +39,11 @@ return {
 			}
 		end,
 		formatters_by_ft = {
+			sh = { "shfmt" },
+			html = { "prettier" },
+			json = { "prettier" },
+			yaml = { "prettier" },
+			markdown = { "prettier" },
 			lua = { "stylua" },
 			swift = {
 				command = "swiftformat",
