@@ -105,7 +105,7 @@ return {
 				grep_open_files = true,
 				prompt_title = "Live Grep in Open Files",
 			})
-		end, { desc = "search in open files" })
+		end, "search in open files")
 
 		-- Shortcut for searching your Neovim configuration files
 		KMap("<leader>Hn", function()

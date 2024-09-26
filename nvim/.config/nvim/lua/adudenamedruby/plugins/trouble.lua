@@ -6,7 +6,6 @@ return {
 		{ "<leader>et", "<cmd>Trouble quickfix toggle<cr>", { desc = "open a quickfix" } },
 	},
 
-	opts = {},
 	config = function()
 		require("trouble").setup({
 			auto_open = false,
