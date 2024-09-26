@@ -16,10 +16,10 @@ return {
 				incremental_selection = {
 					enable = true,
 					keymaps = {
-						init_selection = "<leader>vS",
-						scope_incremental = "<leader>vs",
-						node_incremental = "<leader>vi",
-						node_decremental = "<leader>vd",
+						init_selection = "<leader>us",
+						scope_incremental = "<leader>us",
+						node_incremental = "<leader>ui",
+						node_decremental = "<leader>ud",
 					},
 				},
 
@@ -28,8 +28,12 @@ return {
 				ensure_installed = {
 					"bash",
 					"c",
+					"cpp",
+					"css",
 					"clojure",
 					"diff",
+					"dockerfile",
+					"fennel",
 					"gitignore",
 					"html",
 					"json",
@@ -37,6 +41,8 @@ return {
 					"luadoc",
 					"markdown",
 					"markdown_inline",
+					"python",
+					"regex",
 					"query",
 					"swift",
 					"vim",
@@ -54,44 +60,58 @@ return {
 					additional_vim_regex_highlighting = { "ruby" },
 				},
 
+				pickers = {
+					find_files = {
+						file_ignore_patterns = { "node_modules", ".git", ".venv" },
+						hidden = true,
+					},
+				},
+
+				live_grep = {
+					file_ignore_patterns = { "node_modules", ".git", ".venv" },
+					additional_args = function(_)
+						return { "--hidden" }
+					end,
+				},
+
 				indent = { enable = true, disable = { "ruby" } },
 
 				textobjects = {
 					select = {
 						enable = true,
 
-						-- Automatically jump forward to textobj, similar to targets.vim
+						-- automatically jump forward to textobj, similar to targets.vim
 						lookahead = true,
 
 						keymaps = {
-							-- You can use the capture groups defined in textobjects.scm
+							-- you can use the capture groups defined in textobjects.scm
 							["af"] = "@function.outer",
 							["if"] = "@function.inner",
 							["ac"] = "@class.outer",
-							-- You can optionally set descriptions to the mappings (used in the desc parameter of
+							-- you can optionally set descriptions to the mappings (used in the desc parameter of
 							-- nvim_buf_set_keymap) which plugins like which-key display
-							["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-							-- You can also use captures from other query groups like `locals.scm`
-							["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+							["ic"] = { query = "@class.inner", desc = "select inner part of a class region" },
+							-- you can also use captures from other query groups like `locals.scm`
+							["as"] = { query = "@scope", query_group = "locals", desc = "select language scope" },
 						},
-						-- You can choose the select mode (default is charwise 'v')
+						-- you can choose the select mode (default is charwise 'v')
 						--
-						-- Can also be a function which gets passed a table with the keys
+						-- can also be a function which gets passed a table with the keys
 						-- * query_string: eg '@function.inner'
 						-- * method: eg 'v' or 'o'
-						-- and should return the mode ('v', 'V', or '<c-v>') or a table
+						-- and should return the mode ('v', 'v', or '<c-v>') or a table
 						-- mapping query_strings to modes.
 						selection_modes = {
 							["@parameter.outer"] = "v", -- charwise
-							["@function.outer"] = "V", -- linewise
+							["@function.outer"] = "v", -- linewise
 							["@class.outer"] = "<c-v>", -- blockwise
 						},
-						-- If you set this to `true` (default is `false`) then any textobject is
-						-- extended to include preceding or succeeding whitespace. Succeeding
+						-- if you set this to `true` (default is `false`) then any textobject is
+						-- extended to include preceding or succeeding whitespace. succeeding
 						-- whitespace has priority in order to act similarly to eg the built-in
 						-- `ap`.
 						--
-						-- Can also be a function which gets passed a table with the keys
+						-- can also be a function which gets passed a table with the keys
 						-- * query_string: eg '@function.inner'
 						-- * selection_mode: eg 'v'
 						-- and should return true or false

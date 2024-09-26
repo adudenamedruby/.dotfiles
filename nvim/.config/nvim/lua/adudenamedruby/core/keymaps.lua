@@ -5,7 +5,10 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 -- Diagnostic keymaps
--- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "go to previous diagnostic" })
+vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "go to next diagnostic" })
+vim.keymap.set("n", "<leader>dl", vim.diagnostic.open_float, { desc = "show line diagnostics" })
+vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "open diagnostic quickfix list" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -62,9 +65,10 @@ vim.keymap.set("n", "<leader>qQ", "<cmd>q!<CR>", { desc = "force quit nVim" })
 -- Search menu
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
-vim.keymap.set("n", "<leader>sc", "<cmd>nohlsearch<CR>")
+vim.keymap.set("n", "<leader>sc", "<cmd>nohlsearch<CR>", { desc = "clear search highlights" })
 
 -- Toggle menu
+vim.keymap.set("n", "<leader>tw", "<cmd>set wrap!<CR>", { desc = "toggle line wrapping" })
 
 -- Windows menu
 
@@ -100,3 +104,20 @@ end
 
 -- Bind the function to a key, e.g., <leader>t
 vim.keymap.set("n", "<leader>wc", ":lua ToggleSplits()<CR>", { desc = "change orientation" })
+
+-- quality of life keymaps
+-- vertical scroll & center
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- search & center
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- don't yank x or visual paste
+vim.keymap.set("n", "x", '"_x')
+vim.keymap.set("v", "p", '"_dP')
+
+-- Stay in indent mode
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")

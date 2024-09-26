@@ -1,0 +1,3 @@
+return {
+	"gberenfield/cljfold.vim",
+}

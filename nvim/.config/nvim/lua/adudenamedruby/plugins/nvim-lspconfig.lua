@@ -92,27 +92,34 @@ return {
 					-- Jump to the type of the word under your cursor.
 					--  Useful when you're not sure what type a variable is and you want to see
 					--  the definition of its *type*, not where it was *defined*.
-					map("<leader>Ld", require("telescope.builtin").lsp_type_definitions, "type definition")
+					map("<leader>ld", require("telescope.builtin").lsp_type_definitions, "type definition")
 
 					-- Fuzzy find all the symbols in your current document.
 					--  Symbols are things like variables, functions, types, etc.
-					map("<leader>Ls", require("telescope.builtin").lsp_document_symbols, "document symbols")
+					map("<leader>ls", require("telescope.builtin").lsp_document_symbols, "document symbols")
 
 					-- Fuzzy find all the symbols in your current workspace.
 					--  Similar to document symbols, except searches over your entire project.
 					map(
-						"<leader>Lw",
+						"<leader>lw",
 						require("telescope.builtin").lsp_dynamic_workspace_symbols,
 						"[W]orkspace [S]ymbols"
 					)
 
 					-- Rename the variable under your cursor.
 					--  Most Language Servers support renaming across files, etc.
-					map("<leader>Lr", vim.lsp.buf.rename, "rename")
+					map("<leader>lr", vim.lsp.buf.rename, "rename")
 
 					-- Execute a code action, usually your cursor needs to be on top of an error
 					-- or a suggestion from your LSP for this to activate.
-					map("<leader>La", vim.lsp.buf.code_action, "code action", { "n", "x" })
+					map("<leader>la", vim.lsp.buf.code_action, "code action", { "n", "x" })
+
+					vim.keymap.set(
+						"n",
+						"<leader>li",
+						vim.lsp.buf.hover,
+						{ desc = "Show documentation for what is under cursor" }
+					)
 
 					-- The following two autocommands are used to highlight references of the
 					-- word under your cursor when your cursor rests there for a little while.
@@ -175,7 +182,7 @@ return {
 			local servers = {
 				-- clangd = {},
 				-- gopls = {},
-				-- pyright = {},
+				pyright = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
@@ -184,8 +191,11 @@ return {
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
 				-- ts_ls = {},
-				--
-
+				html = { filetypes = { "html", "twig", "hbs" } },
+				cssls = {},
+				dockerls = {},
+				jsonls = {},
+				yamlls = {},
 				lua_ls = {
 					-- cmd = {...},
 					-- filetypes = { ...},
@@ -195,8 +205,18 @@ return {
 							completion = {
 								callSnippet = "Replace",
 							},
-							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-							-- diagnostics = { disable = { 'missing-fields' } },
+							runtime = { version = "LuaJIT" },
+							workspace = {
+								checkThirdParty = false,
+								library = {
+									"${3rd}/luv/library",
+									unpack(vim.api.nvim_get_runtime_file("", true)),
+								},
+							},
+							diagnostics = { disable = { "missing-fields" } },
+							format = {
+								enable = false,
+							},
 						},
 					},
 				},
@@ -207,15 +227,6 @@ return {
 
 			require("lspconfig").sourcekit.setup({
 				capabilities = capabilities,
-				on_attach = function(_, bufnr)
-					opts.buffer = bufnr
-
-					opts.desc = "Show line diagnostics"
-					vim.keymap.set("n", "<leader>dl", vim.diagnostic.open_float, opts)
-
-					opts.desc = "Show documentation for what is under cursor"
-					vim.keymap.set("n", "<leader>ci", vim.lsp.buf.hover, opts)
-				end,
 				on_init = function(client)
 					-- HACK: to fix some issues with LSP
 					-- more details: https://github.com/neovim/neovim/issues/19237#issuecomment-2237037154

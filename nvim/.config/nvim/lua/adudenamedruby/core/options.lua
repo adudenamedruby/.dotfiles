@@ -35,6 +35,7 @@ local options = {
 	inccommand = "split",
 	incsearch = true,
 	--isfname:append("@-@"),
+	linebreak = true, -- don't split words
 	listchars = { tab = "» ", trail = "·", nbsp = "␣", space = "·" },
 	list = true,
 	mouse = "a", -- allow the mouse to be used in neovim
@@ -43,9 +44,9 @@ local options = {
 	numberwidth = 4, -- set number column width to 2 {default 4}
 	pumheight = 10, -- pop up menu height
 	relativenumber = true, -- set relative numbered lines
-	scrolloff = 8, -- is one of my fav
+	scrolloff = 25, -- is one of my fav
 	shiftwidth = 4,
-	showmode = true, -- we don't need to see things like -- INSERT -- anymore
+	showmode = false, -- we don't need to see things like -- INSERT -- anymore
 	showtabline = 2, -- always show tabs
 	sidescrolloff = 8,
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
