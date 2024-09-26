@@ -32,7 +32,7 @@ require("lazy").setup({
 })
 
 -- KEYMAPS
-KMap("n", "<leader>HL", "<cmd>Lazy<CR>", "open Lazy")
+KMap("<leader>HL", "<cmd>Lazy<CR>", "open Lazy")
 
 -- Set random colourscheme
 require("adudenamedruby.plugins.colorscheme")

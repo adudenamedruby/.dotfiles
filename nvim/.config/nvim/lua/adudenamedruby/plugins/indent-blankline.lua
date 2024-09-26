@@ -25,7 +25,7 @@ return {
 			},
 		})
 
-		KMap("n", "<leader>ti", "<cmd>IBLToggle<CR>", "toggle indent-blankline")
-		KMap("n", "<leader>tI", "<cmd>IBLToggleScope<CR>", "toggle indent-blankline scope")
+		KMap("<leader>ti", "<cmd>IBLToggle<CR>", "toggle indent-blankline")
+		KMap("<leader>tI", "<cmd>IBLToggleScope<CR>", "toggle indent-blankline scope")
 	end,
 }

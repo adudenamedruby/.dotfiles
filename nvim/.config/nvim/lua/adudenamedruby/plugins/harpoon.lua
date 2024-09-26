@@ -25,32 +25,32 @@ return {
 		-- end
 
 		-- Keymaps
-		KMap("n", "<leader>ha", function()
+		KMap("<leader>ha", function()
 			harpoon:list():add()
 		end, "add to harpoon")
-		KMap("n", "<leader>hd", function()
+		KMap("<leader>hd", function()
 			harpoon:list():remove()
 		end, "remove from harpoon")
-		KMap("n", "<leader>hv", function()
+		KMap("<leader>hv", function()
 			-- toggle_telescope(harpoon:list())
 			harpoon.ui:toggle_quick_menu(harpoon:list())
 		end, "open harpoon list")
 
-		KMap("n", "<leader>hh", function()
+		KMap("<leader>hh", function()
 			harpoon:list():select(1)
 		end, "goto harpoon 1")
-		KMap("n", "<leader>ht", function()
+		KMap("<leader>ht", function()
 			harpoon:list():select(2)
 		end, "goto harpoon 2")
-		KMap("n", "<leader>hs", function()
+		KMap("<leader>hs", function()
 			harpoon:list():select(3)
 		end, "goto harpoon 3")
 
 		-- Toggle previous & next buffers stored within Harpoon list
-		KMap("n", "<leader>hp", function()
+		KMap("<leader>hp", function()
 			harpoon:list():prev()
 		end, "harpoon previous")
-		KMap("n", "<leader>hn", function()
+		KMap("<leader>hn", function()
 			harpoon:list():next()
 		end, "harpoon next")
 	end,
