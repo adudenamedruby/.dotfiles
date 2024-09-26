@@ -59,8 +59,6 @@ return {
 		})
 
 		-- set keymaps
-		local keymap = vim.keymap
-
-		keymap.set("n", "<leader>ft", "<cmd>NvimTreeToggle<CR>", { desc = "file tree" })
+		KMap("<leader>ft", "<cmd>NvimTreeToggle<CR>", "file tree")
 	end,
 }

@@ -5,13 +5,13 @@ local function setupListeners()
 	dap.listeners.after["event_initialized"]["me"] = function()
 		if not areSet then
 			areSet = true
-			vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "continue", noremap = true })
-			vim.keymap.set("n", "<leader>dC", dap.run_to_cursor, { desc = "run to cursor" })
-			vim.keymap.set("n", "<leader>ds", dap.step_over, { desc = "step over" })
-			vim.keymap.set("n", "<leader>di", dap.step_into, { desc = "step into" })
-			vim.keymap.set("n", "<leader>do", dap.step_out, { desc = "step out" })
-			vim.keymap.set({ "n", "v" }, "<Leader>dh", require("dap.ui.widgets").hover, { desc = "hover" })
-			vim.keymap.set({ "n", "v" }, "<Leader>de", require("dapui").eval, { desc = "eval" })
+			KMap("<leader>dc", dap.continue, "continue")
+			KMap("<leader>dC", dap.run_to_cursor, "run to cursor")
+			KMap("<leader>ds", dap.step_over, "step over")
+			KMap("<leader>di", dap.step_into, "step into")
+			KMap("<leader>do", dap.step_out, "step out")
+			KMap("<leader>dh", require("dap.ui.widgets").hover, "hover", { "n", "v" })
+			KMap("<leader>de", require("dapui").eval, "eval", { "n", "v" })
 		end
 	end
 
@@ -23,8 +23,8 @@ local function setupListeners()
 			vim.keymap.del("n", "<leader>ds")
 			vim.keymap.del("n", "<leader>di")
 			vim.keymap.del("n", "<leader>do")
-			vim.keymap.del({ "n", "v" }, "<Leader>dh")
-			vim.keymap.del({ "n", "v" }, "<Leader>de")
+			vim.keymap.del({ "n", "v" }, "<leader>dh")
+			vim.keymap.del({ "n", "v" }, "<leader>de")
 		end
 	end
 end

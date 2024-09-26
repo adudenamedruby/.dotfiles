@@ -25,7 +25,7 @@ end
 --
 --close NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
-KMap("t", "<Esc><Esc>", "<C-\\><C-n>", "exit terminal mode")
+KMap("<Esc><Esc>", "<C-\\><C-n>", "exit terminal mode", "t")
 
 -- Resize with arrows
 KMap("<Up>", ":resize -2<CR>")
@@ -113,13 +113,13 @@ KMap("<C-d>", "<C-d>zz")
 KMap("<C-u>", "<C-u>zz")
 
 -- search & center
-KMap("nzzzv")
-KMap("Nzzzv")
+KMap("n", "nzzzv")
+KMap("N", "Nzzzv")
 
 -- don't yank x or visual paste
 KMap("x", '"_x')
-KMap("v", "p", '"_dP')
+KMap("p", '"_dP', "", "v")
 
 -- Stay in indent mode
-KMap("v", "<", "<gv")
-KMap("v", ">", ">gv")
+KMap("<", "<gv", "", "v")
+KMap(">", ">gv", "", "v")

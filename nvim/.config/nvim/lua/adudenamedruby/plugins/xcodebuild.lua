@@ -64,7 +64,7 @@ return {
     -- code menu
     KMap("<leader>cb", "<cmd>XcodebuildBuild<cr>", "build project")
     KMap("<leader>cB", "<cmd>XcodebuildBuildForTesting<cr>", "build for testing")
-    -- vim.keymap.set("<leader>cr", "<cmd>XcodebuildBuildRun<cr>", { desc = "build & run project" })
+    -- ("<leader>cr", "<cmd>XcodebuildBuildRun<cr>", "build & run project")
     KMap("<leader>c.", "<cmd>XcodebuildCancel<cr>", "cancel run action")
     KMap("<leader>ca", "<cmd>XcodebuildCodeActions<cr>", "show code actions")
     KMap("<leader>cq", "<cmd>Telescope quickfix<cr>", "show quickFix list")
@@ -91,7 +91,7 @@ return {
     -- test menu
     KMap("<leader>ct", "", "tests")
     KMap("<leader>cta", "<cmd>XcodebuildTest<cr>", "run all tests")
-    KMap("v", "<leader>ctt", "<cmd>XcodebuildTestSelected<cr>", "run selected tests")
+    KMap("<leader>ctt", "<cmd>XcodebuildTestSelected<cr>", "run selected tests", "v")
     KMap("<leader>ctc", "<cmd>XcodebuildTestClass<cr>", "run this test class")
     KMap("<leader>ctf", "<cmd>XcodebuildTestFailing<cr>", "rerun failed test")
     KMap("<leader>ctr", "<cmd>XcodebuildTestRepeat<cr>", "repeat last test")
