@@ -14,9 +14,9 @@ vim.g.maplocalleader = ","
 --   func - What to do when pressing that keybind
 --   desc - A description to show up in which-key. Default value = ""
 KMap = function(keys, func, desc, mode)
-	mode = mode or "n"
-	desc = desc or ""
-	vim.keymap.set(mode, keys, func, { desc = desc, noremap = true, silent = true })
+    mode = mode or "n"
+    desc = desc or ""
+    vim.keymap.set(mode, keys, func, { desc = desc, noremap = true, silent = true })
 end
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -90,18 +90,18 @@ KMap("<leader>wd", "<cmd>:q<CR>", "delete current window")
 KMap("<leader>wo", "<cmd>:only<CR>", "close all windows except current")
 
 function ToggleSplits()
-	-- Get the current window layout (width and height)
-	local width = vim.api.nvim_win_get_width(0)
-	local height = vim.api.nvim_win_get_height(0)
+    -- Get the current window layout (width and height)
+    local width = vim.api.nvim_win_get_width(0)
+    local height = vim.api.nvim_win_get_height(0)
 
-	-- If the current window is wider than it is tall, it's a horizontal split
-	if width > height then
-		-- Convert horizontal splits to vertical by using :wincmd L (Move to the left)
-		vim.cmd("wincmd H")
-	else
-		-- Convert vertical splits to horizontal by using :wincmd H (Move down)
-		vim.cmd("wincmd J")
-	end
+    -- If the current window is wider than it is tall, it's a horizontal split
+    if width > height then
+        -- Convert horizontal splits to vertical by using :wincmd L (Move to the left)
+        vim.cmd("wincmd H")
+    else
+        -- Convert vertical splits to horizontal by using :wincmd H (Move down)
+        vim.cmd("wincmd J")
+    end
 end
 
 -- Bind the function to a key, e.g., <leader>t
