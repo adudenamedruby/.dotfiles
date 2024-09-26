@@ -114,6 +114,8 @@ return {
 					-- or a suggestion from your LSP for this to activate.
 					map("<leader>la", vim.lsp.buf.code_action, "code action", { "n", "x" })
 
+					map("<leader>Hl", "<cmd>LspInfo<cr>", "info")
+
 					vim.keymap.set(
 						"n",
 						"<leader>li",
@@ -239,7 +241,6 @@ return {
 			--
 			--  You can press `g?` for help in this menu.
 			require("mason").setup()
-
 
 			-- You can add other tools here that you want Mason to install
 			-- for you, so that they are available from within Neovim.

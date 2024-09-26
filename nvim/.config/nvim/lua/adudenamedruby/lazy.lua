@@ -32,8 +32,7 @@ require("lazy").setup({
 })
 
 -- KEYMAPS
-local keymap = vim.keymap
-keymap.set("n", "<leader>HL", "<cmd>Lazy<CR>", { desc = "open Lazy" })
+KMap("n", "<leader>HL", "<cmd>Lazy<CR>", "open Lazy")
 
 -- Set random colourscheme
 require("adudenamedruby.plugins.colorscheme")

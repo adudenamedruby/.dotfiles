@@ -23,8 +23,9 @@ return {
 					"Trouble",
 				},
 			},
-
-			vim.keymap.set("n", "<leader>ti", "<cmd>IBLToggle<CR>", { desc = "toggle indent-blankline" }),
 		})
+
+		KMap("n", "<leader>ti", "<cmd>IBLToggle<CR>", "toggle indent-blankline")
+		KMap("n", "<leader>tI", "<cmd>IBLToggleScope<CR>", "toggle indent-blankline scope")
 	end,
 }
