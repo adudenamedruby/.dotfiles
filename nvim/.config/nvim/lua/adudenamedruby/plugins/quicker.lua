@@ -2,11 +2,11 @@ return {
 	"stevearc/quicker.nvim",
 	event = "FileType qf",
 	config = function()
-		dmap("<leader>tq", function()
+		KMap("<leader>tq", function()
 			require("quicker").toggle()
 		end, "toggle quickfix")
 
-		dmap("<leader>tl", function()
+		KMap("<leader>tl", function()
 			require("quicker").toggle({ loclist = true })
 		end, "toggle loclist")
 
