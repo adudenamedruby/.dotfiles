@@ -49,7 +49,7 @@
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
-				<string>delete derived data</string>
+				<string>dd derived data</string>
 				<key>subtext</key>
 				<string>Deletes the Derived Data folder &amp; it's contents</string>
 				<key>text</key>

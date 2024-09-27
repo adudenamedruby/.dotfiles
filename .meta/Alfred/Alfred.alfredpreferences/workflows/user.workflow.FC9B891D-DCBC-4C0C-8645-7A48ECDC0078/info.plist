@@ -396,7 +396,7 @@
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>fixedorder</key>
-				<true/>
+				<false/>
 				<key>items</key>
 				<string>[{"title":"Sprint Board","arg":"sprint","subtitle":"Sprint board for current sprint"},{"title":"Ticket","arg":"ticket","subtitle":"Search for a specific ticket"},{"title":"Backlog","arg":"backlog","subtitle":"Launch the FxiOS Backlog"},{"title":"Technical Backlog","arg":"tech backlog","subtitle":""},{"title":"Epic Board","arg":"epics","subtitle":"Launch the FxiOS Epic Board"},{"title":"Search","arg":"search","subtitle":"Search the FXiOS project"}]</string>
 				<key>keyword</key>

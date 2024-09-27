@@ -254,11 +254,11 @@
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>fixedorder</key>
-				<true/>
+				<false/>
 				<key>items</key>
 				<string>[{"imagefile":"40c8cd0d58797f6456b510edab7d48959a203148.png","title":"Apple ID","arg":"id","subtitle":"Apple ID sign in page"},{"imagefile":"3f1d0507e71fb803e0f3311329cece7b70b0158e.png","title":"Developer","arg":"developer","subtitle":"Developer portal"},{"imagefile":"b262f02f037e00223d1ee5f31e3673f834e3c071.png","title":"App Store Connect","arg":"connect","subtitle":"Previously iTunesConnect"},{"imagefile":"694967d832b99cffd4ee44d8fe2f5159a8f80ce6.png","title":"XcodeReleases","arg":"xcodereleases"},{"imagefile":"4ba9949b9cf8ca1524a9da1c60b43126ee027d6f.png","title":"Developer Documentation","arg":"docs","subtitle":"Apple's Online Dev Docs"}]</string>
 				<key>keyword</key>
-				<string>apple</string>
+				<string>apple dev</string>
 				<key>matchmode</key>
 				<integer>0</integer>
 				<key>runningsubtext</key>

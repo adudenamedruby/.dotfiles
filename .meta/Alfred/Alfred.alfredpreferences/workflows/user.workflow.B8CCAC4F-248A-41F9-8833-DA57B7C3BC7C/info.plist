@@ -306,7 +306,7 @@
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>fixedorder</key>
-				<true/>
+				<false/>
 				<key>items</key>
 				<string>[{"imagefile":"88bd356ead96e01439729fe4f96b4f6c5d67c222.png","title":"Sheets","arg":"sheets","subtitle":"Google Sheets"},{"imagefile":"05e18763aafd12f3650f1650b05e9aa27eabbe14.png","title":"Docs","arg":"docs","subtitle":"Google Docs"},{"imagefile":"90faadfba311652e0790ce98aee28b1c5a18e429.png","title":"Calendar","arg":"cal","subtitle":"Google Calendar"},{"imagefile":"8d6cb0ddb5ee580383625ea08a7a9a203ef621ad.png","title":"Translate","arg":"translate","subtitle":"Google Translate"},{"imagefile":"bc753601df0611d6e34e5c6d7d94c7775c5151b8.png","title":"Maps","arg":"maps","subtitle":"Google Maps"},{"imagefile":"14557a2098fd02aae40692bc9385204bf8b886a8.png","title":"Drive","arg":"drive","subtitle":"Google Drive"},{"imagefile":"465219f994ac54bdf7c31914d8caf3c79d872d46.png","title":"Slides","arg":"slides","subtitle":"Google Slides"}]</string>
 				<key>keyword</key>
