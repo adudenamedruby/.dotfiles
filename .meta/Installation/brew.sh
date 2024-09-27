@@ -6,11 +6,10 @@
 # Also install Xcode, and then open it.
 # Also also, install 1Password
 
-
 # Install homebrew if it is not installed
 
 which -s brew
-if [[ $? != 0 ]] ; then
+if [[ $? != 0 ]]; then
     # Install Homebrew
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
@@ -60,6 +59,9 @@ softwareupdate --install-rosetta
 # Here we'll install what I consider core utilities. Not apps,
 # not fun stuff, but development oriented things, or QoL things
 # like FZF.
+brew install hidden bar
+
+brew install stats
 
 brew install carthage
 
@@ -111,7 +113,7 @@ brew install choose-rust # instead of cut/awk
 
 brew install dust # better version of du
 
-brew install fd # instead of find 
+brew install fd # instead of find
 
 brew install grex # regex generator of sorts
 
