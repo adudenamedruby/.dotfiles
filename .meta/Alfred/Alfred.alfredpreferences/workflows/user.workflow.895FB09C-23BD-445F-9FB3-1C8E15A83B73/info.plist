@@ -672,23 +672,6 @@ fi</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>408D34E2-CBED-4C1B-BC3F-16646A5C6EF1</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -716,6 +699,23 @@ fi</string>
 			<string>F33D1D76-062B-4DC0-B5E4-CCEB06294EC9</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>408D34E2-CBED-4C1B-BC3F-16646A5C6EF1</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -831,9 +831,7 @@ fi</string>
 			<key>config</key>
 			<dict>
 				<key>paths</key>
-				<array>
-					<string>/Applications/GitKraken.app</string>
-				</array>
+				<array/>
 				<key>toggle</key>
 				<false/>
 			</dict>
@@ -1112,6 +1110,23 @@ fi</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>paths</key>
+				<array>
+					<string>/System/Applications/Books.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>35DA5E21-B35E-47E9-B19D-4B8BE17177D8</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -1139,23 +1154,6 @@ fi</string>
 			<string>75FA6826-160D-44EB-8FCB-975A83A8878B</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/Logic Pro X.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>35DA5E21-B35E-47E9-B19D-4B8BE17177D8</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1580,6 +1578,23 @@ fi</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/iTerm.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>7DE16EFE-CD99-4904-B18E-8901AA0660B4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -1622,23 +1637,6 @@ fi</string>
 			<string>alfred.workflow.action.launchfiles</string>
 			<key>uid</key>
 			<string>C0E3053A-AFB0-4505-9D49-077497264953</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/iTerm.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>7DE16EFE-CD99-4904-B18E-8901AA0660B4</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1791,7 +1789,7 @@ fi</string>
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Spotify.app</string>
+					<string>/System/Applications/Music.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -2038,9 +2036,9 @@ fi</string>
 		<key>7DE16EFE-CD99-4904-B18E-8901AA0660B4</key>
 		<dict>
 			<key>xpos</key>
-			<real>335</real>
+			<real>325</real>
 			<key>ypos</key>
-			<real>2055</real>
+			<real>2000</real>
 		</dict>
 		<key>80A32D7F-E799-47AF-BF24-B1DC15200832</key>
 		<dict>
