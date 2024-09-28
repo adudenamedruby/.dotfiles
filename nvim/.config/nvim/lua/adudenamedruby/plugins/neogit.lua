@@ -1,20 +1,19 @@
 return {
-	"NeogitOrg/neogit",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"sindrets/diffview.nvim",
-		"nvim-telescope/telescope.nvim",
-	},
-	config = true,
-	opts = {
-		mappings = {
-			popup = {
-				["F"] = "PullPopup",
-				["p"] = false,
-			},
-		},
-	},
-	keys = {
-		{ "<leader>gs", "<cmd>Neogit<cr>", desc = "NeoGit" },
-	},
+    "NeogitOrg/neogit",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "sindrets/diffview.nvim",
+        "nvim-telescope/telescope.nvim",
+    },
+    config = true,
+    opts = {
+        disable_hint = false,
+        mappings = {
+            popup = {
+                ["F"] = "PullPopup",
+                ["p"] = false,
+            },
+        },
+    },
+    KMap("<leader>gs", "<cmd>Neogit<cr>", "NeoGit"),
 }
