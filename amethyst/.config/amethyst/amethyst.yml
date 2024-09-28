@@ -250,7 +250,7 @@ smart-window-margins: true
 # window-margins: true
 # window-margin-size: 5
 # The size of the margins between windows (in px, default 0).
-window-margin-size: 7
+window-margin-size: 10
 
 # The max number of windows that may be visible on a screen at one time before
 # additional windows are minimized. A value of 0 disables the feature.

@@ -695,7 +695,7 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://github.com/polymathruby/{query}</string>
+				<string>https://github.com/adudenamedruby/{query}</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
@@ -896,39 +896,11 @@
 						<key>matchmode</key>
 						<integer>0</integer>
 						<key>matchstring</key>
-						<string>sync</string>
-						<key>outputlabel</key>
-						<string>sync</string>
-						<key>uid</key>
-						<string>1F36B66F-13E8-44D5-B916-F7728810C301</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
 						<string>notifications</string>
 						<key>outputlabel</key>
 						<string>notifications</string>
 						<key>uid</key>
 						<string>EAEB31B9-F60D-48DD-A95D-F6B8E6A39AB3</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>l10n</string>
-						<key>outputlabel</key>
-						<string>localization</string>
-						<key>uid</key>
-						<string>6B142354-CF15-4B51-BB62-07338F45919C</string>
 					</dict>
 				</array>
 				<key>elselabel</key>
@@ -955,7 +927,7 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://github.com/polymathruby/firefox-ios</string>
+				<string>https://github.com/adudenamedruby/firefox-ios</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
@@ -972,9 +944,9 @@
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>fixedorder</key>
-				<true/>
+				<false/>
 				<key>items</key>
-				<string>[{"title":"Home","subtitle":"View my profile"},{"imagefile":"f35a3988f24873039cdc57eb278b28acea536bc7.png","title":"Search","arg":"search","subtitle":"Search GitHub"},{"imagefile":"94e245b01fd6ac4365c21fa483925df77636ea66.png","title":"User","arg":"user","subtitle":"Open user's homepage"},{"imagefile":"4e5025e909ca2744e1d1419c13d400e0f9e4c156.png","title":"Open Repo","arg":"repo","subtitle":"Open a specific repo"},{"imagefile":"d17a6ff95b2195240aad01de8961e7cfcd96305f.png","title":"FxiOS","arg":"fxios","subtitle":"Open the Firefox iOS repo"},{"imagefile":"1929788b7a0e101695cdfeff873a67983147efa5.png","title":"Mozilla mobile","arg":"mobile","subtitle":"Open the Mozilla-Mobile group"},{"imagefile":"da26b210bf534e4166e7449e63c86663e364e977.png","title":"Sync","arg":"sync","subtitle":"Synchronize existing local repos"},{"title":"Notifications","arg":"notifications","subtitle":"See what's going on in your GitHub world"},{"imagefile":"aef7a340aa18d1bee3f806b95ead2ff4d11e7aba.png","title":"Localization","arg":"l10n","subtitle":"L10N repo"}]</string>
+				<string>[{"title":"Home","subtitle":"View my profile"},{"imagefile":"f35a3988f24873039cdc57eb278b28acea536bc7.png","title":"Search","arg":"search","subtitle":"Search GitHub"},{"imagefile":"94e245b01fd6ac4365c21fa483925df77636ea66.png","title":"User","arg":"user","subtitle":"Open user's homepage"},{"imagefile":"4e5025e909ca2744e1d1419c13d400e0f9e4c156.png","title":"Open Repo","arg":"repo","subtitle":"Open a specific repo"},{"imagefile":"d17a6ff95b2195240aad01de8961e7cfcd96305f.png","title":"FxiOS","arg":"fxios","subtitle":"Open the Firefox iOS repo"},{"imagefile":"1929788b7a0e101695cdfeff873a67983147efa5.png","title":"Mozilla mobile","arg":"mobile","subtitle":"Open the Mozilla-Mobile group"},{"title":"Notifications","arg":"notifications","subtitle":"See what's going on in your GitHub world"}]</string>
 				<key>keyword</key>
 				<string>git</string>
 				<key>matchmode</key>
@@ -1212,7 +1184,7 @@
 				<key>fixedorder</key>
 				<true/>
 				<key>items</key>
-				<string>[{"title":"Home","arg":"main","subtitle":"Open the mozilla\/main repo"},{"imagefile":"5dfa03a3e411e4da57d7ce9301a85915b01653d2.png","title":"Open Issue(s)","arg":"issue","subtitle":"Open all issues, or a specific issue"},{"title":"Fx-iOS Wiki","arg":"wiki","subtitle":"Open Firefox iOS Wiki"},{"imagefile":"a2d1b9c8d8015948f844a416efa4759fc0e9c0d2.png","title":"electricRGB's Fork","arg":"fork","subtitle":"Firefox-iOS - my fork"},{"imagefile":"62af086be857f7c5d3322aa39c49e371411a333f.png","title":"Pull Requests","arg":"pull","subtitle":""},{"imagefile":"7ef514b164a716f1faeeb058f3171cc1f399cf2a.png","title":"Localization","arg":"l10n","subtitle":"L10N Repo"}]</string>
+				<string>[{"title":"Home","arg":"main","subtitle":"Open the mozilla\/main repo"},{"imagefile":"5dfa03a3e411e4da57d7ce9301a85915b01653d2.png","title":"Open Issue(s)","arg":"issue","subtitle":"Open all issues, or a specific issue"},{"title":"Fx-iOS Wiki","arg":"wiki","subtitle":"Open Firefox iOS Wiki"},{"imagefile":"a2d1b9c8d8015948f844a416efa4759fc0e9c0d2.png","title":"adudenamedruby's Fork","arg":"fork","subtitle":"Firefox-iOS - my fork"},{"imagefile":"62af086be857f7c5d3322aa39c49e371411a333f.png","title":"Pull Requests","arg":"pull","subtitle":""},{"imagefile":"7ef514b164a716f1faeeb058f3171cc1f399cf2a.png","title":"Localization","arg":"l10n","subtitle":"L10N Repo"}]</string>
 				<key>keyword</key>
 				<string>fxios</string>
 				<key>matchmode</key>

@@ -18,12 +18,15 @@ alias dot="cd ~/.dotfiles"
 alias vim="nvim"
 
 # wezterm configs
-alias wezconf="nvim ~/.dotfiles/wezterm/.config/wezterm/wezterm.lua"
+alias wezconf="cd ~/.dotfiles/wezterm/.config/wezterm; vim wezterm.lua"
+
+# nvim configs
+alias vimconf="cd ~/.dotfiles/nvim/.config/nvim; vim README.md"
 
 # work on Firefox
-alias fxios="nvim ~/Developer/firefox-ios/"
+alias fxios="cd ~/Developer/firefox-ios; vim README.md"
 
-syncCall () {
+syncCall() {
   if [ $# -eq 0 ]; then
     echo "Warning: sync requires at least one argument to run."
     echo "Please provide one of the following arguments:"
@@ -42,13 +45,13 @@ alias sync='syncCall'
 
 # Cheatsheet
 cheatsheet() {
-    echo "+++ adudenamedruby sys cheatsheet +++"
-    echo " -> fd      - instead of find"
-    echo " -> rg      - instead of grep"
-    echo " -> sd      - instead of sed"
-    echo " -> choose  - instead of cut/awk"
-    echo " -> ouch    - unarchiver, basically"
-    echo " -> grex    - regex generator of sorts"
+  echo "+++ adudenamedruby sys cheatsheet +++"
+  echo " -> fd      - instead of find"
+  echo " -> rg      - instead of grep"
+  echo " -> sd      - instead of sed"
+  echo " -> choose  - instead of cut/awk"
+  echo " -> ouch    - unarchiver, basically"
+  echo " -> grex    - regex generator of sorts"
 }
 
 alias cheatsheet="cheatsheet"
@@ -68,7 +71,7 @@ function mkcd takedir() {
 function takeurl() {
   local data thedir
   data="$(mktemp)"
-  curl -L "$1" > "$data"
+  curl -L "$1" >"$data"
   tar xf "$data"
   thedir="$(tar tf "$data" | head -n 1)"
   rm "$data"
