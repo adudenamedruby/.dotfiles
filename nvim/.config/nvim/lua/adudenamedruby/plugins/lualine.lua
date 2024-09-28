@@ -39,29 +39,15 @@ return {
             -- 	end
             -- 	return str
             -- end,
-            -- symbols = {
-            -- 	error = function(count)
-            -- 		return count > 0 and " " .. count or ""
-            -- 	end,
-            -- 	warn = function(count)
-            -- 		return count > 0 and " " .. count or ""
-            -- 	end,
-            -- 	info = function(count)
-            -- 		return count > 0 and " " .. count or ""
-            -- 	end,
-            -- 	hint = function(count)
-            -- 		return count > 0 and " " .. count or ""
-            -- 	end,
-            -- },
             colored = true,
             update_in_insert = false,
-            always_visible = true,
+            always_visible = false,
         }
 
         local diff = {
             "diff",
             colored = true,
-            symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+            symbols = { added = " ", modified = "∆ ", removed = "- " }, -- changes diff symbols
             cond = hide_in_width,
         }
 
