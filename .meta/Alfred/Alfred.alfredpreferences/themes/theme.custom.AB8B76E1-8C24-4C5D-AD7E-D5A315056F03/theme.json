@@ -3,23 +3,23 @@
     "result" : {
       "textSpacing" : 8,
       "subtext" : {
-        "size" : 11,
-        "colorSelected" : "#EFCE73FF",
+        "size" : 12,
+        "colorSelected" : "#B9A05AD9",
         "font" : "Hack Regular Nerd Font Complete Mono",
         "color" : "#FFF7D640"
       },
       "shortcut" : {
-        "size" : 24,
+        "size" : 18,
         "colorSelected" : "#AA60F3FF",
         "font" : "Hack Regular Nerd Font Complete Mono",
         "color" : "#5D502EFF"
       },
-      "backgroundSelected" : "#5D502EFF",
+      "backgroundSelected" : "#5D502EC2",
       "text" : {
         "size" : 16,
         "colorSelected" : "#EFCE73FF",
-        "font" : "Hack Regular Nerd Font Complete Mono",
-        "color" : "#DED9AABD"
+        "font" : "Fira Code",
+        "color" : "#BBA25BA9"
       },
       "iconPaddingHorizontal" : 7,
       "roundness" : 3,
@@ -31,7 +31,7 @@
       "paddingHorizontal" : 8,
       "spacing" : 10,
       "text" : {
-        "size" : 37,
+        "size" : 30,
         "colorSelected" : "#000000FF",
         "font" : "Fira Code",
         "color" : "#F6CE54FF"
@@ -42,13 +42,13 @@
     },
     "window" : {
       "color" : "#070C0EE8",
-      "paddingHorizontal" : 16,
+      "paddingHorizontal" : 10,
       "width" : 680,
       "borderPadding" : 0,
       "borderColor" : "#E1404900",
       "blur" : 0,
       "roundness" : 8,
-      "paddingVertical" : 10
+      "paddingVertical" : 5
     },
     "visualEffectMode" : 2,
     "separator" : {
@@ -57,7 +57,7 @@
     },
     "scrollbar" : {
       "color" : "#F6CE54FF",
-      "thickness" : 2
+      "thickness" : 0
     },
     "name" : "Deus Ex v3"
   }

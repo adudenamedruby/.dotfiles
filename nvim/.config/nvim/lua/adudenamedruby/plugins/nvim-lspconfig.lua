@@ -72,11 +72,7 @@ return {
 
                     -- Fuzzy find all the symbols in your current workspace.
                     --  Similar to document symbols, except searches over your entire project.
-                    map(
-                        "<leader>lw",
-                        require("telescope.builtin").lsp_dynamic_workspace_symbols,
-                        "[W]orkspace [S]ymbols"
-                    )
+                    map("<leader>lw", require("telescope.builtin").lsp_dynamic_workspace_symbols, "workspace symbols")
 
                     -- Rename the variable under your cursor.
                     --  Most Language Servers support renaming across files, etc.
@@ -156,13 +152,24 @@ return {
             local servers = {
                 -- clangd = {},
                 -- gopls = {},
+                pyright = {},
                 -- rust_analyzer = {},
-                clojure_lsp = {},
+                -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
+                --
+                -- Some languages (like typescript) have entire language plugins that can be useful:
+                --    https://github.com/pmizio/typescript-tools.nvim
+                --
+                -- But for many setups, the LSP (`ts_ls`) will work just fine
+                -- ts_ls = {},
+                html = { filetypes = { "html", "twig", "hbs" } },
                 cssls = {},
                 dockerls = {},
-                html = { filetypes = { "html", "twig", "hbs" } },
                 jsonls = {},
+                yamlls = {},
                 lua_ls = {
+                    -- cmd = {...},
+                    -- filetypes = { ...},
+                    -- capabilities = {},
                     settings = {
                         Lua = {
                             completion = {
@@ -183,17 +190,16 @@ return {
                         },
                     },
                 },
-                pyright = {},
-                sourcekit = {
-                    capabilities = capabilities,
-                    on_init = function(client)
-                        -- HACK: to fix some issues with LSP
-                        -- more details: https://github.com/neovim/neovim/issues/19237#issuecomment-2237037154
-                        client.offset_encoding = "utf-8"
-                    end,
-                },
-                yamlls = {},
             }
+
+            require("lspconfig").sourcekit.setup({
+                capabilities = capabilities,
+                on_init = function(client)
+                    -- HACK: to fix some issues with LSP
+                    -- more details: https://github.com/neovim/neovim/issues/19237#issuecomment-2237037154
+                    client.offset_encoding = "utf-8"
+                end,
+            })
 
             -- Ensure the servers and tools above are installed
             --  To check the current status of installed tools and/or manually install
