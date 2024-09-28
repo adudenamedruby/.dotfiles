@@ -106,6 +106,11 @@ brew install the_silver_searcher # AG
 
 brew install tree-sitter
 
+brew install java
+# check for symlink in install
+
+brew install leiningen
+
 # rust alternatives to utils
 brew install btop # instead of top
 
@@ -145,6 +150,7 @@ brew install scbl
 brew install --cask racket
 
 brew install clojure/tools/clojure
+brew install clojure-lsp/brew/clojure-lsp-native
 
 ## Haskell
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh

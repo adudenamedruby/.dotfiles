@@ -104,3 +104,5 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 eval "$(starship init zsh)"
 
+
+source /Users/adudenamedruby/.config/broot/launcher/bash/br
