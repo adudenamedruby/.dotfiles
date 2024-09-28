@@ -27,12 +27,6 @@ end
 -- or just use <C-\><C-n> to exit terminal mode
 KMap("<Esc><Esc>", "<C-\\><C-n>", "exit terminal mode", "t")
 
--- Resize with arrows
-KMap("<Up>", ":resize -2<CR>")
-KMap("<Down>", ":resize +2<CR>")
-KMap("<Left>", ":vertical resize -2<CR>")
-KMap("<Right>", ":vertical resize +2<CR>")
-
 -- Buffer menu
 KMap("<leader><TAB>", "<cmd>:b#<CR>", "switch to last buffer")
 KMap("<leader>be", "<cmd>:enew<CR>", "open empty buffer")
@@ -65,16 +59,18 @@ KMap("<leader>Hm", ":redir @a<CR>:messages<CR>:redir END<CR>:new<CR>:put a<CR>",
 KMap("<leader>HM", "<cmd>Mason<CR>", "open Mason")
 
 -- quickfix menu
-KMap("<leader>qn", "<cmd>cnext<CR>zz", "quickfix list next")
-KMap("<leader>qp", "<cmd>cprev<CR>zz", "quickfix list previous")
-KMap("<leader>qN", "<cmd>lnext<CR>zz", "loclist next")
-KMap("<leader>qP", "<cmd>lprev<CR>zz", "loclist previous")
-KMap("<leader>qo", "<cmd>copen<CR>", "open quickfix list")
-KMap("<leader>qc", "<cmd>cclose<CR>", "close quickfix list")
+KMap("<leader>xn", "<cmd>cnext<CR>zz", "quickfix list next")
+KMap("<leader>xp", "<cmd>cprev<CR>zz", "quickfix list previous")
+KMap("<leader>xN", "<cmd>lnext<CR>zz", "loclist next")
+KMap("<leader>xP", "<cmd>lprev<CR>zz", "loclist previous")
+KMap("<leader>xo", "<cmd>copen<CR>", "open quickfix list")
+KMap("<leader>xc", "<cmd>cclose<CR>", "close quickfix list")
+KMap("<leader>xO", "<cmd>lopen<CR>", "open loclist")
+KMap("<leader>xC", "<cmd>lclose<CR>", "close loclist")
 
 -- Quit menu
-KMap("<leader>Qq", "<cmd>q<CR>", "quit nVim")
-KMap("<leader>QQ", "<cmd>q!<CR>", "force quit nVim")
+KMap("<leader>qq", "<cmd>q<CR>", "quit nVim")
+KMap("<leader>qQ", "<cmd>q!<CR>", "force quit nVim")
 
 -- Search menu
 -- Clear highlights on search when pressing <Esc> in normal mode
@@ -96,6 +92,12 @@ KMap("<leader>wv", "<cmd>:vsplit<CR>", "vertical split")
 
 KMap("<leader>wd", "<cmd>:q<CR>", "delete current window")
 KMap("<leader>wo", "<cmd>:only<CR>", "close all windows except current")
+
+-- Resize with arrows
+KMap("<Up>", ":resize +2<CR>")
+KMap("<Down>", ":resize -2<CR>")
+KMap("<Left>", ":vertical resize +2<CR>")
+KMap("<Right>", ":vertical resize -2<CR>")
 
 function ToggleSplits()
     -- Get the current window layout (width and height)
