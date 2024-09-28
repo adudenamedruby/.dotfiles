@@ -1,3 +1,31 @@
 return {
-	"tpope/vim-sexp-mappings-for-regular-people",
+    -- "tpope/vim-sexp-mappings-for-regular-people",
+    -- dependencies = { "guns/vim-sexp" },
+    -- config = function()
+    --     -- local function unmap_sexp_keys()
+    --     --     vim.api.nvim_set_keymap("n", "(", "", { noremap = true })
+    --     --     vim.api.nvim_set_keymap("n", ")", "", { noremap = true })
+    --     --     vim.api.nvim_set_keymap("n", "e", "", { noremap = true })
+    --     --     -- Add more keys that need to be unmapped
+    --     -- end
+    --
+    --     -- local function map_sexp_keys_with_prefix()
+    --     --     local wk = require("which-key")
+    --     -- wk.register({
+    --     --     l = {
+    --     --         name = "SEXP", -- Optional group name for <leader>l
+    --     --         ["("] = { "<Plug>(sexp_insert_at_list_head)", "Insert at list head" },
+    --     --         [")"] = { "<Plug>(sexp_insert_at_list_tail)", "Insert at list tail" },
+    --     --         ["e"] = { "<Plug>(sexp_send_to_comment)", "Send to comment" },
+    --     --         ["j"] = { "<Plug>(sexp_move_to_prev_element_head)", "Prev element head" },
+    --     --         ["k"] = { "<Plug>(sexp_move_to_next_element_head)", "Next element head" },
+    --     --         -- Add more sexp key mappings as needed
+    --     --     },
+    --     -- }, { prefix = "<leader>" })
+    --     -- end
+    --
+    --     -- Call both functions on plugin load
+    --     -- unmap_sexp_keys()
+    --     -- map_sexp_keys_with_prefix()
+    -- end,
 }

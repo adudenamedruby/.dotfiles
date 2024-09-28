@@ -1,3 +1,3 @@
 return {
-	"gberenfield/cljfold.vim",
+    -- "gberenfield/cljfold.vim",
 }
