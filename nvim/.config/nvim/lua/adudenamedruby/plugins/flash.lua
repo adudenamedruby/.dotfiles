@@ -9,7 +9,8 @@ return {
         modes = {
             char = {
                 -- avy jump jump
-                jump_labels = false,
+                enabled = false,
+                jump_labels = true,
                 multi_line = false,
             },
         },
