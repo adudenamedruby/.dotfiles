@@ -7,7 +7,7 @@ return {
     },
     config = true,
     opts = {
-        disable_hint = false,
+        disable_hint = true,
         mappings = {
             popup = {
                 ["F"] = "PullPopup",
