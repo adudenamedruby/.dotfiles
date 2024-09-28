@@ -64,9 +64,17 @@ KMap("<leader>Hm", ":redir @a<CR>:messages<CR>:redir END<CR>:new<CR>:put a<CR>",
 
 KMap("<leader>HM", "<cmd>Mason<CR>", "open Mason")
 
+-- quickfix menu
+KMap("<leader>qn", "<cmd>cnext<CR>zz", "quickfix list next")
+KMap("<leader>qp", "<cmd>cprev<CR>zz", "quickfix list previous")
+KMap("<leader>qN", "<cmd>lnext<CR>zz", "loclist next")
+KMap("<leader>qP", "<cmd>lprev<CR>zz", "loclist previous")
+KMap("<leader>qo", "<cmd>copen<CR>", "open quickfix list")
+KMap("<leader>qc", "<cmd>cclose<CR>", "close quickfix list")
+
 -- Quit menu
-KMap("<leader>qq", "<cmd>q<CR>", "quit nVim")
-KMap("<leader>qQ", "<cmd>q!<CR>", "force quit nVim")
+KMap("<leader>Qq", "<cmd>q<CR>", "quit nVim")
+KMap("<leader>QQ", "<cmd>q!<CR>", "force quit nVim")
 
 -- Search menu
 -- Clear highlights on search when pressing <Esc> in normal mode
