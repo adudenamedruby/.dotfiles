@@ -36,7 +36,7 @@ return {
             harpoon:list():replace_at(2)
         end, "add to t")
         KMap("<leader>han", function()
-            harpoon:list():replace_at(4)
+            harpoon:list():replace_at(3)
         end, "add to n")
         KMap("<leader>has", function()
             harpoon:list():replace_at(4)
