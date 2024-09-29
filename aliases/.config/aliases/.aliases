@@ -15,10 +15,13 @@ alias desk="cd ~/Desktop"
 alias dot="cd ~/.dotfiles"
 
 # don't use vim
-alias vim="nvim"
+alias vim=nvim
 
 # bat
 alias cat=bat
+
+#lazygit
+alias g=lazygit
 
 # quick accesss to configs
 alias wezconf="cd ~/.dotfiles/wezterm/.config/wezterm; vim wezterm.lua"
