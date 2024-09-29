@@ -27,8 +27,8 @@ brew install --cask alfred
 
 # Terminals
 brew install --cask iterm2
-brew install --cask kitty
 brew install --cask warp
+brew install --cask wezterm
 brew install starship
 
 brew install --cask amethyst
@@ -60,6 +60,10 @@ softwareupdate --install-rosetta
 # not fun stuff, but development oriented things, or QoL things
 # like FZF.
 brew install hidden bar
+
+brew install eza
+
+brew install bat
 
 brew install stats
 
@@ -145,7 +149,7 @@ pip3 install virtualenv
 # Lisp family languages
 brew install clisp
 
-brew install scbl
+brew install sbcl
 
 brew install --cask racket
 
@@ -180,9 +184,6 @@ brew tap d12frosted/emacs-plus
 brew install emacs-plus@29 --with-modern-sexy-v1-icon
 brew link emacs-plus
 #ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
-
-# Select which branch of Spacemacs we want - master or dev
-git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
 
 # ---------------------------------------------
 # Applications

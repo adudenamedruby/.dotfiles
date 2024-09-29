@@ -17,15 +17,19 @@ alias dot="cd ~/.dotfiles"
 # don't use vim
 alias vim="nvim"
 
-# wezterm configs
-alias wezconf="cd ~/.dotfiles/wezterm/.config/wezterm; vim wezterm.lua"
+# bat
+alias cat=bat
 
-# nvim configs
+# quick accesss to configs
+alias wezconf="cd ~/.dotfiles/wezterm/.config/wezterm; vim wezterm.lua"
 alias vimconf="cd ~/.dotfiles/nvim/.config/nvim; vim README.md"
+alias karaconf="vim ~/.dotfiles/karabiner/.config"
+alias aliasconf="vim ~/.dotfiles/aliases/.config/aliases/.aliases"
 
 # work on Firefox
 alias fxios="cd ~/Developer/firefox-ios; vim README.md"
 
+# Updates
 syncCall() {
   if [ $# -eq 0 ]; then
     echo "Warning: sync requires at least one argument to run."
@@ -57,9 +61,11 @@ cheatsheet() {
 alias cheatsheet="cheatsheet"
 
 # ls aliases
-alias la="lsd -a"
-alias ll="lsd -lh"
-alias lla="lsd -lha"
+alias la="lsd -l --git -a"
+alias ll="lsd -l --git -h"
+alias lla="lsd -l --git -h -a"
+alias lt="lsd -l --git -a --tree --depth=2"
+alias ltree="lsd -tree --depth=2"
 
 # take functions
 
@@ -92,14 +98,6 @@ function take() {
     takedir "$@"
   fi
 }
-
-# tmux aliases
-alias ta="tmux attach -t"
-alias tad="tmux attach -d -t"
-alias ts="tmux new-session -s"
-alias tl="tmux list-sessions"
-alias tksv="tmux kill-server"
-alias tkss="tmux kill-session -t"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"

@@ -8,6 +8,10 @@ return {
     config = true,
     opts = {
         disable_hint = true,
+        disable_insert_on_commit = true,
+        intogrations = {
+            diffview = true,
+        },
         mappings = {
             popup = {
                 ["F"] = "PullPopup",
