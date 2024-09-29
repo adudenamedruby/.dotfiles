@@ -2,6 +2,7 @@
 /zsh/.config/zsh/.zsh_history
 /zsh/.config/zsh/.zsh_sessions/
 /emacs/.emacs.d/*
+/tmux/.config/tmux/plugins/*
 !/emacs/.emacs.d/tree-sitter
 !/emacs/.emacs.d/init.el
 !/emacs/.emacs.d/early-init.el
