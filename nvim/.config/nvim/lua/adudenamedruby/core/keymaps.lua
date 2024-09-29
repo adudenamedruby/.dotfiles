@@ -82,10 +82,10 @@ KMap("<leader>tw", "<cmd>set wrap!<CR>", "toggle line wrapping")
 
 -- Windows menu
 --  See `:help wincmd` for a list of all window commands
-KMap("<leader>wh", "<C-w><C-h>", "move focus to the left window")
-KMap("<leader>wl", "<C-w><C-l>", "move focus to the right window")
-KMap("<leader>wj", "<C-w><C-j>", "move focus to the lower window")
-KMap("<leader>wk", "<C-w><C-k>", "move focus to the upper window")
+KMap("c-h", "<cmd>wincmd h<CR>", "move focus to the left window")
+KMap("c-l", "<cmd>wincmd l<CR>", "move focus to the right window")
+KMap("c-j", "<cmd>wincmd j<CR>", "move focus to the lower window")
+KMap("c-k", "<cmd>wincmd k<CR>", "move focus to the upper window")
 
 KMap("<leader>ws", "<cmd>:split<CR>", "horizontal split")
 KMap("<leader>wv", "<cmd>:vsplit<CR>", "vertical split")
