@@ -1,7 +1,20 @@
 return {
     -- "tpope/vim-sexp-mappings-for-regular-people",
-    -- dependencies = { "guns/vim-sexp" },
+    -- dependencies = {
+    --     { "guns/vim-sexp", ft = { "clojure", "lisp", "scheme", "fennel", "janet", "racket" } },
+    -- },
+    -- ft = { "clojure", "lisp", "scheme", "fennel", "janet", "racket" },
     -- config = function()
+    -- some good keybinds
+    -- ( or ) traverse forms.
+    -- b and w will move back and forth elements
+    -- B and W will move back and forth forms
+    -- Extra text objects like "f" allowing for vim-surround style commands on arbitrary forms like dsf (delete surrounding form) or csf[ (change surrounding form to "[")
+    -- Slurp and barf with >( or <)
+    -- Insert at beginning or end of current form with <I or >I
+    -- Move up and down defs with [[ and ]]
+    -- Move elements with <e and >e
+    -- Move forms with >f and <f
     --     -- local function unmap_sexp_keys()
     --     --     vim.api.nvim_set_keymap("n", "(", "", { noremap = true })
     --     --     vim.api.nvim_set_keymap("n", ")", "", { noremap = true })

@@ -120,7 +120,7 @@ focus-cw:
 # Focus the main window in the list.
 focus-main:
   mod: mod1
-  key: c
+  key: t
 
 # Focus the next screen in the list going counter-clockwise.
 focus-screen-ccw:
@@ -155,7 +155,7 @@ swap-cw:
 # Swap the position of the currently focused window with the main window in the list.
 swap-main:
   mod: mod1
-  key: t
+  key: c
 
 # Move focus to the n-th screen in the list; e.g., focus-screen-3 will move mouse focus to the 3rd screen. Note that the main window in the given screen will be focused.
 #focus-screen-n:
@@ -250,7 +250,7 @@ smart-window-margins: true
 # window-margins: true
 # window-margin-size: 5
 # The size of the margins between windows (in px, default 0).
-window-margin-size: 10
+window-margin-size: 6
 
 # The max number of windows that may be visible on a screen at one time before
 # additional windows are minimized. A value of 0 disables the feature.

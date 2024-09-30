@@ -310,5 +310,5 @@ return {
             },
         },
     },
-    KMap("<leader>gs", "<cmd>Neogit<cr>", "NeoGit"),
+    -- KMap("<leader>gs", "<cmd>Neogit<cr>", "NeoGit"),
 }

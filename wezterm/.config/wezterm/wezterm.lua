@@ -40,95 +40,129 @@ config.adjust_window_size_when_changing_font_size = false
 
 config.window_decorations = "RESIZE"
 
+-- config.enable_mouse_reporting = true
+-- config.automatically_select_copy = true
+
 -- tab bar
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.tab_and_split_indices_are_zero_based = false
 
--- -- tmux
--- config.leader = { key = "w", mods = "CTRL", timeout_milliseconds = 2000 }
--- config.keys = {
--- 	{
--- 		mods = "LEADER",
--- 		key = "c",
--- 		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "d",
--- 		action = wezterm.action.CloseCurrentPane({ confirm = true }),
--- 	},
--- 	{
--- 		mods = "LEADER|CTRL",
--- 		key = "h",
--- 		action = wezterm.action.ActivateTabRelative(-1),
--- 	},
--- 	{
--- 		mods = "LEADER|CTRL",
--- 		key = "l",
--- 		action = wezterm.action.ActivateTabRelative(1),
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "v",
--- 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "s",
--- 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "h",
--- 		action = wezterm.action.ActivatePaneDirection("Left"),
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "j",
--- 		action = wezterm.action.ActivatePaneDirection("Down"),
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "k",
--- 		action = wezterm.action.ActivatePaneDirection("Up"),
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "l",
--- 		action = wezterm.action.ActivatePaneDirection("Right"),
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "LeftArrow",
--- 		action = wezterm.action.AdjustPaneSize({ "Left", 5 }),
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "RightArrow",
--- 		action = wezterm.action.AdjustPaneSize({ "Right", 5 }),
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "DownArrow",
--- 		action = wezterm.action.AdjustPaneSize({ "Down", 5 }),
--- 	},
--- 	{
--- 		mods = "LEADER",
--- 		key = "UpArrow",
--- 		action = wezterm.action.AdjustPaneSize({ "Up", 5 }),
--- 	},
--- }
---
--- for i = 1, 9 do
--- 	-- leader + number to activate that tab
--- 	table.insert(config.keys, {
--- 		key = tostring(i),
--- 		mods = "LEADER",
--- 		action = wezterm.action.ActivateTab(i - 1),
--- 	})
--- end
+-- tmux
+config.leader = { key = "w", mods = "CTRL", timeout_milliseconds = 2000 }
+config.keys = {
+	{
+		mods = "LEADER",
+		key = "c",
+		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
+	},
+	{
+		mods = "LEADER",
+		key = "d",
+		action = wezterm.action.CloseCurrentPane({ confirm = true }),
+	},
+	{
+		mods = "LEADER|CTRL",
+		key = "h",
+		action = wezterm.action.ActivateTabRelative(-1),
+	},
+	{
+		mods = "LEADER|CTRL",
+		key = "l",
+		action = wezterm.action.ActivateTabRelative(1),
+	},
+	{
+		mods = "LEADER",
+		key = "v",
+		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		mods = "LEADER",
+		key = "s",
+		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		mods = "LEADER",
+		key = "h",
+		action = wezterm.action.ActivatePaneDirection("Left"),
+	},
+	{
+		mods = "LEADER",
+		key = "j",
+		action = wezterm.action.ActivatePaneDirection("Down"),
+	},
+	{
+		mods = "LEADER",
+		key = "k",
+		action = wezterm.action.ActivatePaneDirection("Up"),
+	},
+	{
+		mods = "LEADER",
+		key = "l",
+		action = wezterm.action.ActivatePaneDirection("Right"),
+	},
+	{
+		mods = "LEADER",
+		key = "LeftArrow",
+		action = wezterm.action.AdjustPaneSize({ "Left", 5 }),
+	},
+	{
+		mods = "LEADER",
+		key = "RightArrow",
+		action = wezterm.action.AdjustPaneSize({ "Right", 5 }),
+	},
+	{
+		mods = "LEADER",
+		key = "DownArrow",
+		action = wezterm.action.AdjustPaneSize({ "Down", 5 }),
+	},
+	{
+		mods = "LEADER",
+		key = "UpArrow",
+		action = wezterm.action.AdjustPaneSize({ "Up", 5 }),
+	},
+	{
+		mods = "LEADER",
+		key = "g",
+		action = wezterm.action_callback(function(window, pane)
+			local cwd = pane:get_current_working_dir()
+			if cwd then
+				window:perform_action(
+					wezterm.action.SpawnCommandInNewWindow({
+						args = { "lazygit" },
+						cwd = cwd,
+						set_environment_variables = {
+							PATH = os.getenv("PATH"),
+						},
+					}),
+					pane
+				)
+			end
+		end),
+	},
+	{
+		mods = "LEADER",
+		key = "r",
+		action = wezterm.action.PromptInputLine({
+			description = "Rename tab: ",
+			action = wezterm.action_callback(function(window, _, line)
+				if line then
+					window:active_tab():set_title(line)
+				end
+			end),
+		}),
+	},
+}
+
+for i = 1, 9 do
+	-- leader + number to activate that tab
+	table.insert(config.keys, {
+		key = tostring(i),
+		mods = "LEADER",
+		action = wezterm.action.ActivateTab(i - 1),
+	})
+end
 
 -- leader command status
 wezterm.on("update-right-status", function(window, _)

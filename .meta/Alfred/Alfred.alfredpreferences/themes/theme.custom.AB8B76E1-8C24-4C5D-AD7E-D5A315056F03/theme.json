@@ -23,7 +23,7 @@
       },
       "iconPaddingHorizontal" : 7,
       "roundness" : 3,
-      "paddingVertical" : 8,
+      "paddingVertical" : 4,
       "iconSize" : 40
     },
     "search" : {
@@ -38,7 +38,7 @@
       },
       "background" : "#0508093B",
       "roundness" : 0,
-      "paddingVertical" : 2
+      "paddingVertical" : 4
     },
     "window" : {
       "color" : "#070C0EE8",
