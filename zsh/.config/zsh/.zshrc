@@ -93,6 +93,9 @@ source $(brew --prefix)/share/zsh-you-should-use/you-should-use.plugin.zsh
 # Ruby
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
+# custom scripts
+export PATH="$HOME/bin:$PATH"
+
 # Haskell!
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
