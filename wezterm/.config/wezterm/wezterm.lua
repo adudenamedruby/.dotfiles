@@ -122,25 +122,25 @@ config.keys = {
 		key = "UpArrow",
 		action = wezterm.action.AdjustPaneSize({ "Up", 5 }),
 	},
-	{
-		mods = "LEADER",
-		key = "g",
-		action = wezterm.action_callback(function(window, pane)
-			local cwd = pane:get_current_working_dir()
-			if cwd then
-				window:perform_action(
-					wezterm.action.SpawnCommandInNewWindow({
-						args = { "lazygit" },
-						cwd = cwd,
-						set_environment_variables = {
-							PATH = os.getenv("PATH"),
-						},
-					}),
-					pane
-				)
-			end
-		end),
-	},
+	-- {
+	-- 	mods = "LEADER",
+	-- 	key = "g",
+	-- 	action = wezterm.action_callback(function(window, pane)
+	-- 		local cwd = pane:get_current_working_dir()
+	-- 		if cwd then
+	-- 			window:perform_action(
+	-- 				wezterm.action.SpawnCommandInNewWindow({
+	-- 					args = { "lazygit" },
+	-- 					cwd = cwd,
+	-- 					set_environment_variables = {
+	-- 						PATH = os.getenv("PATH"),
+	-- 					},
+	-- 				}),
+	-- 				pane
+	-- 			)
+	-- 		end
+	-- 	end),
+	-- },
 	{
 		mods = "LEADER",
 		key = "r",
