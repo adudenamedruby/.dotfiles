@@ -318,6 +318,18 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>D01F1ABB-37DE-4F9A-B39B-361BCEBE435C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>45A1DB82-EED3-4665-8EB2-4C09858194B4</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>A016B85A-896E-42C9-A42A-B8988E2ADFD6</key>
 		<array>
@@ -951,6 +963,167 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://mozilla.greenhouse.io/dashboard</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>6FA4F22D-3778-4484-96AA-ACFA523AC70E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>sso</string>
+						<key>outputlabel</key>
+						<string>sso</string>
+						<key>uid</key>
+						<string>392A1118-6CDE-48A5-BE16-35A2EDF63E55</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>hr</string>
+						<key>outputlabel</key>
+						<string>hr</string>
+						<key>uid</key>
+						<string>223C103A-B754-4AE1-BAB5-FA1978307B32</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>docs</string>
+						<key>outputlabel</key>
+						<string>docs</string>
+						<key>uid</key>
+						<string>917F2455-B18D-4FC6-8DCA-DE5611E19838</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>dev</string>
+						<key>outputlabel</key>
+						<string>dev</string>
+						<key>uid</key>
+						<string>C00932F9-8C30-445A-B907-8714091F1DB7</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>chat</string>
+						<key>outputlabel</key>
+						<string>chat</string>
+						<key>uid</key>
+						<string>45A1DB82-EED3-4665-8EB2-4C09858194B4</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>8CAB397A-C34F-416B-A09F-FCC0196826DD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"human resources","arg":"hr","subtitle":"HR type stuff"},{"title":"Documentation","arg":"docs","subtitle":"Mozilla Docs"},{"title":"Developer Tools","arg":"dev","subtitle":"Dev tool type stuff"},{"title":"Coffee Chat","arg":"chat","subtitle":"Team Coffee Chat"}]</string>
+				<key>keyword</key>
+				<string>moz</string>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>moz://a</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>CF2DBCF3-9683-450C-9918-0EE05D14AA1E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://github.com/mozilla/data-review</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>514020CF-AE35-4D0B-A3D2-944065653943</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -1033,153 +1206,6 @@
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
 			<string>4771AD57-2A09-48C6-B4F8-46B730C8A6AA</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>skipqueryencode</key>
-				<false/>
-				<key>skipvarencode</key>
-				<false/>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://mozilla.greenhouse.io/dashboard</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>6FA4F22D-3778-4484-96AA-ACFA523AC70E</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>sso</string>
-						<key>outputlabel</key>
-						<string>sso</string>
-						<key>uid</key>
-						<string>392A1118-6CDE-48A5-BE16-35A2EDF63E55</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>hr</string>
-						<key>outputlabel</key>
-						<string>hr</string>
-						<key>uid</key>
-						<string>223C103A-B754-4AE1-BAB5-FA1978307B32</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>docs</string>
-						<key>outputlabel</key>
-						<string>docs</string>
-						<key>uid</key>
-						<string>917F2455-B18D-4FC6-8DCA-DE5611E19838</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>dev</string>
-						<key>outputlabel</key>
-						<string>dev</string>
-						<key>uid</key>
-						<string>C00932F9-8C30-445A-B907-8714091F1DB7</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>else</string>
-				<key>hideelse</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>8CAB397A-C34F-416B-A09F-FCC0196826DD</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>fixedorder</key>
-				<false/>
-				<key>items</key>
-				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"human resources","arg":"hr","subtitle":"HR type stuff"},{"title":"Documentation","arg":"docs","subtitle":"Mozilla Docs"},{"title":"Developer Tools","arg":"dev","subtitle":"Dev tool type stuff"},{"title":"Account","arg":"account","subtitle":"Account Management Portal"},{"title":"Air Mozilla","arg":"air","subtitle":"Watch Mozilla content"},{"title":"Gear Store","arg":"gear","subtitle":"Buy fun Mozilla merch!"},{"title":"Mana","arg":"mana","subtitle":"Mozilla Internal Wiki"},{"title":"MANA Search","arg":"search","subtitle":"Do an advanced MANA search"},{"title":"Udemy","arg":"udemy","subtitle":"Learning is fun!"},{"title":"Service Now","arg":"service","subtitle":"For all your Mozilla needs"},{"title":"The Hub","arg":"hub","subtitle":"For all your gear needs"},{"title":"PTO","arg":"pto","subtitle":"Personal Time Off - Take a break!"},{"title":"discourse","arg":"discourse","subtitle":"Chat about stuff!"},{"title":"Element","arg":"element","subtitle":"Element board"},{"title":"Bitrise","arg":"bitrise","subtitle":"CI pipeline"},{"title":"Bugzilla","arg":"bugzilla","subtitle":"Report pesky bugs..."},{"title":"Matrix","arg":"matrix","subtitle":"Matrix chat"},{"title":"Moderator","arg":"moderator","subtitle":"Ask questions for events"},{"title":"Retrium","arg":"retrium","subtitle":"Retro moderating tool"},{"title":"Figma","arg":"figma","subtitle":"Figma design systems"},{"title":"Wiki","arg":"wiki","subtitle":"Mozilla Wiki"},{"title":"Sentry","arg":"sentry","subtitle":"Crash reporting dashboard"},{"title":"Looker","arg":"looker","subtitle":"Metrics interpretation"},{"title":"gleandict","arg":"gleandict","subtitle":"Glean Dictionary Alpha"},{"title":"CultureAmp","arg":"cultureamp","subtitle":"Culture Amp"},{"title":"greenhouse","arg":"greenhouse","subtitle":"Greenhouse interviewing center"},{"title":"Data Review","arg":"dataReview","subtitle":"mazilla\/data-review repo"},{"title":"Nimbus","arg":"experimenter","subtitle":"Experimenter: nimbus"},{"title":"SiQ","arg":"siq","subtitle":"Hotel Desking"},{"title":"Coffee Chat","arg":"chat","subtitle":""},{"title":"Pontoon","arg":"pontoon","subtitle":"Localization platform"}]</string>
-				<key>keyword</key>
-				<string>moz</string>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>moz://a</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
-			<key>uid</key>
-			<string>CF2DBCF3-9683-450C-9918-0EE05D14AA1E</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>skipqueryencode</key>
-				<false/>
-				<key>skipvarencode</key>
-				<false/>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://github.com/mozilla/data-review</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>514020CF-AE35-4D0B-A3D2-944065653943</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1371,19 +1397,65 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>dev</string>
-				<key>replacestring</key>
+				<key>browser</key>
 				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://app.bitrise.io/app/6c06d3a40422d10f</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.utility.replace</string>
+			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>81705594-E5A1-49D5-A0E7-1F5264681B76</string>
+			<string>F48BE710-8E29-4DBB-933A-D367D061D609</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://www.figma.com/files/887474606008184927</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>F4AFC3D2-026A-4DB7-809E-8479606970C0</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://bugzilla.mozilla.org/home</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>ECEA00DE-1701-4842-B07C-3F01B6D1A817</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1527,69 +1599,6 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://app.bitrise.io/app/6c06d3a40422d10f</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>F48BE710-8E29-4DBB-933A-D367D061D609</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>skipqueryencode</key>
-				<false/>
-				<key>skipvarencode</key>
-				<false/>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://www.figma.com/files/887474606008184927</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>F4AFC3D2-026A-4DB7-809E-8479606970C0</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>skipqueryencode</key>
-				<false/>
-				<key>skipvarencode</key>
-				<false/>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://bugzilla.mozilla.org/home</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>ECEA00DE-1701-4842-B07C-3F01B6D1A817</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>skipqueryencode</key>
-				<false/>
-				<key>skipvarencode</key>
-				<false/>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
 				<string>https://pontoon.mozilla.org/projects/firefox-for-ios/</string>
 			</dict>
 			<key>type</key>
@@ -1598,6 +1607,54 @@
 			<string>4DD1BFAA-4BF3-4EBA-9E67-35817CB97D3D</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"People","arg":"people","subtitle":"People Directory"},{"title":"ADP","arg":"adp","subtitle":"Payroll Information"},{"title":"WorkDay","arg":"workday","subtitle":"Open WorkDay"},{"title":"Account","arg":"account","subtitle":"Account Management Portal"},{"title":"Air Mozilla","arg":"air","subtitle":"Watch Mozilla content"},{"title":"Gear Store","arg":"gear","subtitle":"Buy fun Mozilla merch!"},{"title":"Mana","arg":"mana","subtitle":"Mozilla Internal Wiki"},{"title":"MANA Search","arg":"search","subtitle":"Do an advanced MANA search"},{"title":"Udemy","arg":"udemy","subtitle":"Learning is fun!"},{"title":"Service Now","arg":"service","subtitle":"For all your Mozilla needs"},{"title":"The Hub","arg":"hub","subtitle":"For all your gear needs"},{"title":"PTO","arg":"pto","subtitle":"Personal Time Off - Take a break!"},{"title":"discourse","arg":"discourse","subtitle":"Chat about stuff!"},{"title":"Element","arg":"element","subtitle":"Element board"},{"title":"Bitrise","arg":"bitrise","subtitle":"CI pipeline"},{"title":"Bugzilla","arg":"bugzilla","subtitle":"Report pesky bugs..."},{"title":"Matrix","arg":"matrix","subtitle":"Matrix chat"},{"title":"Moderator","arg":"moderator","subtitle":"Ask questions for events"},{"title":"Retrium","arg":"retrium","subtitle":"Retro moderating tool"},{"title":"Figma","arg":"figma","subtitle":"Figma design systems"},{"title":"Wiki","arg":"wiki","subtitle":"Mozilla Wiki"},{"title":"Sentry","arg":"sentry","subtitle":"Crash reporting dashboard"},{"title":"Looker","arg":"looker","subtitle":"Metrics interpretation"},{"title":"gleandict","arg":"gleandict","subtitle":"Glean Dictionary Alpha"},{"title":"CultureAmp","arg":"cultureamp","subtitle":"Culture Amp"},{"title":"greenhouse","arg":"greenhouse","subtitle":"Greenhouse interviewing center"},{"title":"Data Review","arg":"dataReview","subtitle":"mazilla\/data-review repo"},{"title":"Nimbus","arg":"experimenter","subtitle":"Experimenter: nimbus"},{"title":"SiQ","arg":"siq","subtitle":"Hotel Desking"},{"title":"Coffee Chat","arg":"chat","subtitle":""},{"title":"Pontoon","arg":"pontoon","subtitle":"Localization platform"}]</string>
+				<key>keyword</key>
+				<string>dev</string>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>moz://a dev</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>1DE63DF1-E8B0-4A8B-8767-BDD848BC0C92</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>dev</string>
+				<key>replacestring</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.replace</string>
+			<key>uid</key>
+			<string>81705594-E5A1-49D5-A0E7-1F5264681B76</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1638,37 +1695,6 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>093F1FEA-E5B1-44A0-BB01-CD7C7FC16A46</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>fixedorder</key>
-				<false/>
-				<key>items</key>
-				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"People","arg":"people","subtitle":"People Directory"},{"title":"ADP","arg":"adp","subtitle":"Payroll Information"},{"title":"WorkDay","arg":"workday","subtitle":"Open WorkDay"},{"title":"Account","arg":"account","subtitle":"Account Management Portal"},{"title":"Air Mozilla","arg":"air","subtitle":"Watch Mozilla content"},{"title":"Gear Store","arg":"gear","subtitle":"Buy fun Mozilla merch!"},{"title":"Mana","arg":"mana","subtitle":"Mozilla Internal Wiki"},{"title":"MANA Search","arg":"search","subtitle":"Do an advanced MANA search"},{"title":"Udemy","arg":"udemy","subtitle":"Learning is fun!"},{"title":"Service Now","arg":"service","subtitle":"For all your Mozilla needs"},{"title":"The Hub","arg":"hub","subtitle":"For all your gear needs"},{"title":"PTO","arg":"pto","subtitle":"Personal Time Off - Take a break!"},{"title":"discourse","arg":"discourse","subtitle":"Chat about stuff!"},{"title":"Element","arg":"element","subtitle":"Element board"},{"title":"Bitrise","arg":"bitrise","subtitle":"CI pipeline"},{"title":"Bugzilla","arg":"bugzilla","subtitle":"Report pesky bugs..."},{"title":"Matrix","arg":"matrix","subtitle":"Matrix chat"},{"title":"Moderator","arg":"moderator","subtitle":"Ask questions for events"},{"title":"Retrium","arg":"retrium","subtitle":"Retro moderating tool"},{"title":"Figma","arg":"figma","subtitle":"Figma design systems"},{"title":"Wiki","arg":"wiki","subtitle":"Mozilla Wiki"},{"title":"Sentry","arg":"sentry","subtitle":"Crash reporting dashboard"},{"title":"Looker","arg":"looker","subtitle":"Metrics interpretation"},{"title":"gleandict","arg":"gleandict","subtitle":"Glean Dictionary Alpha"},{"title":"CultureAmp","arg":"cultureamp","subtitle":"Culture Amp"},{"title":"greenhouse","arg":"greenhouse","subtitle":"Greenhouse interviewing center"},{"title":"Data Review","arg":"dataReview","subtitle":"mazilla\/data-review repo"},{"title":"Nimbus","arg":"experimenter","subtitle":"Experimenter: nimbus"},{"title":"SiQ","arg":"siq","subtitle":"Hotel Desking"},{"title":"Coffee Chat","arg":"chat","subtitle":""},{"title":"Pontoon","arg":"pontoon","subtitle":"Localization platform"}]</string>
-				<key>keyword</key>
-				<string>dev</string>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>moz://a dev</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
-			<key>uid</key>
-			<string>1DE63DF1-E8B0-4A8B-8767-BDD848BC0C92</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1735,27 +1761,6 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>skipqueryencode</key>
-				<false/>
-				<key>skipvarencode</key>
-				<false/>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://mozilla.udemy.com/organization/home/</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>77D7F2C3-4CD2-42E9-9991-2D540373D1BA</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -1785,9 +1790,9 @@
 		<key>1DE63DF1-E8B0-4A8B-8767-BDD848BC0C92</key>
 		<dict>
 			<key>xpos</key>
-			<real>845</real>
+			<real>1065</real>
 			<key>ypos</key>
-			<real>2490</real>
+			<real>2345</real>
 		</dict>
 		<key>256BB1EC-F85D-45B9-8598-10CF2CC4C2CA</key>
 		<dict>
@@ -1834,9 +1839,9 @@
 		<key>4771AD57-2A09-48C6-B4F8-46B730C8A6AA</key>
 		<dict>
 			<key>xpos</key>
-			<real>1205</real>
+			<real>1200</real>
 			<key>ypos</key>
-			<real>1035</real>
+			<real>1395</real>
 		</dict>
 		<key>4DD1BFAA-4BF3-4EBA-9E67-35817CB97D3D</key>
 		<dict>
@@ -1887,13 +1892,6 @@
 			<key>ypos</key>
 			<real>1105</real>
 		</dict>
-		<key>77D7F2C3-4CD2-42E9-9991-2D540373D1BA</key>
-		<dict>
-			<key>xpos</key>
-			<real>1310</real>
-			<key>ypos</key>
-			<real>4000</real>
-		</dict>
 		<key>7F13CF2C-8235-4C9D-80E8-E4838855173A</key>
 		<dict>
 			<key>xpos</key>
@@ -1904,9 +1902,9 @@
 		<key>81705594-E5A1-49D5-A0E7-1F5264681B76</key>
 		<dict>
 			<key>xpos</key>
-			<real>700</real>
+			<real>955</real>
 			<key>ypos</key>
-			<real>1915</real>
+			<real>2370</real>
 		</dict>
 		<key>8CAB397A-C34F-416B-A09F-FCC0196826DD</key>
 		<dict>
@@ -1946,9 +1944,9 @@
 		<key>A016B85A-896E-42C9-A42A-B8988E2ADFD6</key>
 		<dict>
 			<key>xpos</key>
-			<real>1205</real>
+			<real>1270</real>
 			<key>ypos</key>
-			<real>2035</real>
+			<real>2270</real>
 		</dict>
 		<key>A10B8780-2CB5-4C18-B817-FFFF75A0820D</key>
 		<dict>
@@ -1960,14 +1958,14 @@
 		<key>A4C0D746-78FE-4AF6-9302-108B4428F8BE</key>
 		<dict>
 			<key>xpos</key>
-			<real>835</real>
+			<real>1020</real>
 			<key>ypos</key>
-			<real>1395</real>
+			<real>1435</real>
 		</dict>
 		<key>A9EF1CC8-6B90-4C2B-BAE3-CCFE365E8DB0</key>
 		<dict>
 			<key>xpos</key>
-			<real>690</real>
+			<real>900</real>
 			<key>ypos</key>
 			<real>1460</real>
 		</dict>

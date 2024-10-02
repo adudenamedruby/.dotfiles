@@ -48,6 +48,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "1e5a2a796a88b5d696acb07dd5c285b13d13da21" },
   "oil.nvim": { "branch": "master", "commit": "1360be5fda9c67338331abfcd80de2afbb395bcd" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
+  "poimandres": { "branch": "main", "commit": "77635055e686ae3c8a519198006ff0b43b6b2eae" },
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },
   "quicker.nvim": { "branch": "master", "commit": "183041a46d6c908eefb1c23ea02cce9c8f41256e" },
   "rainbow": { "branch": "master", "commit": "76ca1a20aa42edb5c65c19029968aad4625790dc" },
@@ -59,8 +60,6 @@
   "todo-comments.nvim": { "branch": "main", "commit": "ae0a2afb47cf7395dc400e5dc4e05274bf4fb9e0" },
   "tokyonight": { "branch": "main", "commit": "817bb6ffff1b9ce72cdd45d9fcfa8c9cd1ad3839" },
   "trouble.nvim": { "branch": "main", "commit": "6efc446226679fda0547c0fd6a7892fd5f5b15d8" },
-  "vim-sexp": { "branch": "master", "commit": "14464d4580af43424ed8f2614d94e62bfa40bb4d" },
-  "vim-sexp-mappings-for-regular-people": { "branch": "master", "commit": "cc5923e357373ea6ef0c13eae82f44e6b9b1d374" },
   "vim-sleuth": { "branch": "master", "commit": "be69bff86754b1aa5adcbb527d7fcd1635a84080" },
   "which-key.nvim": { "branch": "main", "commit": "fb070344402cfc662299d9914f5546d840a22126" },
   "xcodebuild.nvim": { "branch": "main", "commit": "14211d418021582e9758bec6f1d5dbcafe1928e1" }

@@ -604,7 +604,7 @@
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>subtext</key>
-				<string></string>
+				<string>Default is my repos tab</string>
 				<key>text</key>
 				<string>Enter repo name</string>
 				<key>withspace</key>
@@ -695,7 +695,7 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://github.com/adudenamedruby/{query}</string>
+				<string>https://github.com/adudenamedruby?tab=repositories</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>

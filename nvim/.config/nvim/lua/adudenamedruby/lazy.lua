@@ -38,6 +38,14 @@ KMap("<leader>HL", "<cmd>Lazy<CR>", "open Lazy")
 require("adudenamedruby.plugins.colorscheme")
 
 -- Randomly select a colorscheme
-local colorschemes = { "catppuccin", "tokyonight", "kanagawa", "rose-pine", "carbonfox", "everforest" }
+local colorschemes = {
+    "catppuccin",
+    "tokyonight",
+    "kanagawa",
+    "rose-pine",
+    "carbonfox",
+    "everforest",
+    "poimandres",
+}
 local random_colorscheme = colorschemes[math.random(#colorschemes)]
 vim.cmd("colorscheme " .. random_colorscheme)

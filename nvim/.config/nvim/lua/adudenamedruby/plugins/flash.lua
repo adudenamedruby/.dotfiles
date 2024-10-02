@@ -15,7 +15,7 @@ return {
             },
         },
     },
-    KMap("<leader>uj", function()
+    KMap("<leader>j", function()
         require("flash").jump()
     end, "jump", { "n", "x", "o" }),
     KMap("<leader>us", function()
