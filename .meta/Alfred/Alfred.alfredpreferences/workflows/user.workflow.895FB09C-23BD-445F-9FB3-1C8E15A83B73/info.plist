@@ -125,18 +125,7 @@
 			</dict>
 		</array>
 		<key>79C7AEFE-6279-4FF4-B1FA-8EB419B019AE</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>6D586526-89FF-47CE-B07B-A3299032B6C8</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>79D48CCA-C2AE-4E81-B7F2-6A06052280AD</key>
 		<array>
 			<dict>
@@ -471,7 +460,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Adobe Photoshop 2024/Adobe Photoshop 2024.app</string>
+					<string>/Applications/Affinity Photo 2.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -672,6 +661,23 @@ fi</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>408D34E2-CBED-4C1B-BC3F-16646A5C6EF1</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -699,23 +705,6 @@ fi</string>
 			<string>F33D1D76-062B-4DC0-B5E4-CCEB06294EC9</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/Adobe Lightroom Classic/Adobe Lightroom Classic.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>408D34E2-CBED-4C1B-BC3F-16646A5C6EF1</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -826,21 +815,6 @@ fi</string>
 			<string>79C7AEFE-6279-4FF4-B1FA-8EB419B019AE</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>paths</key>
-				<array/>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>6D586526-89FF-47CE-B07B-A3299032B6C8</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1110,23 +1084,6 @@ fi</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>paths</key>
-				<array>
-					<string>/System/Applications/Books.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>35DA5E21-B35E-47E9-B19D-4B8BE17177D8</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -1154,6 +1111,23 @@ fi</string>
 			<string>75FA6826-160D-44EB-8FCB-975A83A8878B</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/System/Applications/Books.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>35DA5E21-B35E-47E9-B19D-4B8BE17177D8</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1578,23 +1552,6 @@ fi</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>paths</key>
-				<array>
-					<string>/Applications/iTerm.app</string>
-				</array>
-				<key>toggle</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.launchfiles</string>
-			<key>uid</key>
-			<string>7DE16EFE-CD99-4904-B18E-8901AA0660B4</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -1984,13 +1941,6 @@ fi</string>
 			<key>ypos</key>
 			<real>2210</real>
 		</dict>
-		<key>6D586526-89FF-47CE-B07B-A3299032B6C8</key>
-		<dict>
-			<key>xpos</key>
-			<real>195</real>
-			<key>ypos</key>
-			<real>845</real>
-		</dict>
 		<key>6E2C5999-2695-4FF1-9969-C43A70B37193</key>
 		<dict>
 			<key>xpos</key>
@@ -2032,13 +1982,6 @@ fi</string>
 			<real>35</real>
 			<key>ypos</key>
 			<real>2105</real>
-		</dict>
-		<key>7DE16EFE-CD99-4904-B18E-8901AA0660B4</key>
-		<dict>
-			<key>xpos</key>
-			<real>325</real>
-			<key>ypos</key>
-			<real>2000</real>
 		</dict>
 		<key>80A32D7F-E799-47AF-BF24-B1DC15200832</key>
 		<dict>

@@ -984,6 +984,37 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"human resources","arg":"hr","subtitle":"HR type stuff"},{"title":"Documentation","arg":"docs","subtitle":"Mozilla Docs"},{"title":"Developer Tools","arg":"dev","subtitle":"Dev tool type stuff"},{"title":"Coffee Chat","arg":"chat","subtitle":"Team Coffee Chat"}]</string>
+				<key>keyword</key>
+				<string>moz</string>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>moz://a</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>CF2DBCF3-9683-450C-9918-0EE05D14AA1E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -1066,37 +1097,6 @@
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
 			<string>8CAB397A-C34F-416B-A09F-FCC0196826DD</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>fixedorder</key>
-				<false/>
-				<key>items</key>
-				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"human resources","arg":"hr","subtitle":"HR type stuff"},{"title":"Documentation","arg":"docs","subtitle":"Mozilla Docs"},{"title":"Developer Tools","arg":"dev","subtitle":"Dev tool type stuff"},{"title":"Coffee Chat","arg":"chat","subtitle":"Team Coffee Chat"}]</string>
-				<key>keyword</key>
-				<string>moz</string>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>moz://a</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
-			<key>uid</key>
-			<string>CF2DBCF3-9683-450C-9918-0EE05D14AA1E</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1909,9 +1909,9 @@
 		<key>8CAB397A-C34F-416B-A09F-FCC0196826DD</key>
 		<dict>
 			<key>xpos</key>
-			<real>430</real>
+			<real>350</real>
 			<key>ypos</key>
-			<real>1160</real>
+			<real>1215</real>
 		</dict>
 		<key>8FD543E2-CB5F-4B67-99AD-CFE3477FA57B</key>
 		<dict>
