@@ -133,3 +133,6 @@ KMap("p", '"_dP', "", "v")
 -- Stay in indent mode
 KMap("<", "<gv", "", "v")
 KMap(">", ">gv", "", "v")
+
+-- I use <C-w> as my multiplexer key, so I want it do do nothing in nvim
+-- vim.keymap.del({ "n", "i", "v" }, "<C-w>")

@@ -21,15 +21,7 @@ alias vim=nvim
 alias cat=bat
 
 #lazygit
-alias g=lazygit
-
-# quick accesss to configs
-alias wezconf="cd ~/.dotfiles/wezterm/.config/wezterm; vim wezterm.lua"
-alias vimconf="cd ~/.dotfiles/nvim/.config/nvim; vim README.md"
-alias karaconf="vim ~/.dotfiles/karabiner/.config"
-alias aliasconf="vim ~/.dotfiles/aliases/.config/aliases/.aliases"
-alias tmuxconf="cd ~/.dotfiles/tmux/.config/tmux; vim tmux.conf"
-alias zellijconf="cd ~/.dotfiles/zellij/.config/zellij; vim config.kdl"
+alias lg=lazygit
 
 # work on Firefox
 alias fxios="cd ~/Developer/firefox-ios; vim README.md"

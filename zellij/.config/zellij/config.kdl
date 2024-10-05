@@ -46,6 +46,24 @@ keybinds clear-defaults=true {
         bind "b" { BreakPane; SwitchToMode "Normal"; }
         bind "d" { CloseFocus; SwitchToMode "Normal"; }
         bind "e" { EditScrollback; SwitchToMode "Normal"; }
+        bind "g" {
+            // NewTab {
+            //     name "lazygit"
+            //     run "lazygit"
+            //     close_on_exit true
+            // }
+            Run "lazygit" {
+                floating false
+                close_on_exit true
+                // pane_size {
+                //     height 90
+                //     width 85
+                // }
+            };
+            SwitchToMode "Normal";
+        }
+        bind "l" { NextSwapLayout; SwitchToMode "Normal"; }
+        bind "m" { ToggleMouseMode; SwitchToMode "Normal"; }
         bind "n" { GoToNextTab; SwitchToMode "Normal"; }
         bind "o" {
             LaunchOrFocusPlugin "session-manager" {
@@ -66,6 +84,8 @@ keybinds clear-defaults=true {
         bind "y" { ToggleActiveSyncTab; SwitchToMode "Normal"; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
 
+        bind "{" { MovePane "Left"; SwitchToMode "Normal"; }
+        bind "}" { MovePane "Right"; SwitchToMode "Normal"; }
 
         bind "1" { GoToTab 1; SwitchToMode "Normal"; }
         bind "2" { GoToTab 2; SwitchToMode "Normal"; }
