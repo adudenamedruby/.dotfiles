@@ -15,9 +15,9 @@ vim.g.have_nerd_font = true
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
--- vim.schedule(function()
---   vim.opt.clipboard = 'unnamedplus'
--- end)
+vim.schedule(function()
+    vim.opt.clipboard = "unnamedplus"
+end)
 
 local options = {
     backup = false, -- creates a backup file

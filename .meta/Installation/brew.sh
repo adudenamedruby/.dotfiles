@@ -155,6 +155,8 @@ brew install --cask racket
 
 brew install clojure/tools/clojure
 brew install clojure-lsp/brew/clojure-lsp-native
+brew install borkdude/brew/clj-kondo
+brew install --cask nikitabobko/tap/aerospace
 
 ## Haskell
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh

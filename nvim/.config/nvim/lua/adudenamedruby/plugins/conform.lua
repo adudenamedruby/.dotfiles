@@ -16,7 +16,7 @@ return {
                     timeout_ms = 500,
                 })
             end,
-            mode = "",
+            mode = "n",
             desc = "format buffer",
         },
     },
@@ -38,6 +38,15 @@ return {
                 lsp_format = lsp_format_opt,
             }
         end,
+        formatters = {
+            swiftformat = {
+                command = "swiftformat",
+                args = {
+                    "--stdinpath",
+                    "$FILENAME",
+                },
+            },
+        },
         formatters_by_ft = {
             sh = { "shfmt" },
             html = { "prettier" },
@@ -46,10 +55,6 @@ return {
             markdown = { "prettier" },
             lua = { "stylua" },
             swift = { "swiftformat" },
-            -- swift = {
-            --     command = "swiftformat",
-            --     args = { "--config", swiftformat_config },
-            -- },
             -- Conform can also run multiple formatters sequentially
             -- python = { "isort", "black" },
             --

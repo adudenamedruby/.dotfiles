@@ -9,18 +9,7 @@
 	<key>connections</key>
 	<dict>
 		<key>14253085-F66C-4D06-8FCA-EAF6C76F2D8D</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>4C076AA2-9318-458A-836B-6C2C8DC4E560</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>30DD5C9D-F2DA-48F1-A458-4E36DCD9B552</key>
 		<array>
 			<dict>
@@ -60,70 +49,15 @@
 			</dict>
 		</array>
 		<key>3EE01843-348E-4B73-A4C1-907B2D4E1C30</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>43E7F234-6FF1-44B9-941C-CDB53A75A7F0</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>4092C2D6-8166-486F-9A5C-85999A2B3152</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>93C5A7F7-53E7-4280-BDF3-F97D1DDFE778</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>6E2C5999-2695-4FF1-9969-C43A70B37193</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>00159579-F605-49DB-99CE-6E02A93359C3</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>74BE6261-6726-4287-93FE-5D164441DD94</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>D7BA7DAF-0934-43BB-8505-0E032052AAE8</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>75FA6826-160D-44EB-8FCB-975A83A8878B</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>35DA5E21-B35E-47E9-B19D-4B8BE17177D8</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>79C7AEFE-6279-4FF4-B1FA-8EB419B019AE</key>
 		<array/>
 		<key>79D48CCA-C2AE-4E81-B7F2-6A06052280AD</key>
@@ -140,44 +74,11 @@
 			</dict>
 		</array>
 		<key>7A5997C6-C47F-45F2-BC5C-39418E10F5F6</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>80A32D7F-E799-47AF-BF24-B1DC15200832</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>90E95058-3B83-4C50-B95F-966111DCB141</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>002D19AA-745C-47EC-AE13-9D354AE1C14A</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>91E35486-02F0-48A0-B71D-9D59F0EF9064</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>C0E3053A-AFB0-4505-9D49-077497264953</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>93C5A7F7-53E7-4280-BDF3-F97D1DDFE778</key>
 		<array>
 			<dict>
@@ -192,18 +93,7 @@
 			</dict>
 		</array>
 		<key>9DF867F4-9F06-4C20-83EF-90BF21097349</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>001B6212-15E7-43E0-BC57-E7A0789EB995</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>A55E6762-03D4-43C6-954D-29FC43540A17</key>
 		<array>
 			<dict>
@@ -220,31 +110,9 @@
 		<key>A680D035-1B55-41B4-A2D4-EB39B8623E23</key>
 		<array/>
 		<key>AA5181D6-AF82-4F8F-8B2E-D634681314F2</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>632E1C41-F7ED-43BA-A8A3-70E676986AC8</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>B7F7D9AA-B507-4EBF-AA29-DC41E14EFFF4</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>410E7A9E-044F-4DAF-9943-AA9603245012</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>C8F07787-AA29-4B16-BBAC-2B79E6B3E776</key>
 		<array>
 			<dict>
@@ -271,44 +139,11 @@
 			</dict>
 		</array>
 		<key>CBD47FE4-44C4-45C3-8625-D6BC066B8745</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>A55E6762-03D4-43C6-954D-29FC43540A17</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>CC78EAE9-5069-4888-8C8B-0C3C78FA5067</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>79D48CCA-C2AE-4E81-B7F2-6A06052280AD</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>CD7DD9A3-771B-4EBC-AF5C-7469F7994EAC</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>3D2B8A8C-214D-495B-9DE6-EF32BC5DEAD8</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>D7BA7DAF-0934-43BB-8505-0E032052AAE8</key>
 		<array>
 			<dict>
@@ -323,18 +158,7 @@
 			</dict>
 		</array>
 		<key>DC6870D2-D009-4CF5-9ECA-EF88854CB58E</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>C4643DF2-EB56-42EA-9B68-255781DE3A66</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>DF4FF151-033C-4C79-B326-96F8FF955E44</key>
 		<array>
 			<dict>
@@ -388,31 +212,9 @@
 			</dict>
 		</array>
 		<key>F1AC46CD-F67E-4C4C-B26E-3DA3B03CA913</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>275227B0-9557-4C58-9036-D566965CEF9A</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>F33D1D76-062B-4DC0-B5E4-CCEB06294EC9</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>408D34E2-CBED-4C1B-BC3F-16646A5C6EF1</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 	</dict>
 	<key>createdby</key>
 	<string></string>

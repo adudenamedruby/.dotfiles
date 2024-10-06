@@ -1,5 +1,6 @@
 layout {
     default_tab_template {
+        children
         pane size=2 borderless=true {
             plugin location="file:~/.dotfiles/zellij/.config/zellij/plugins/zjstatus.wasm" {
                 format_left   "#[bg=#181926,fg=#d3869b]#[bg=#d3869b,fg=#11111b,bold] {session} {mode}"
@@ -50,6 +51,5 @@ layout {
                 tab_floating_indicator   " 󰹙"
             }
         }
-        children
     }
 }
