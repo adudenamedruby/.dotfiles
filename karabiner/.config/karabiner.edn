@@ -25,7 +25,7 @@
                         ;; basically it means time after which the key press is count delayed
                              :alone   1000   ;; to_if_alone_timeout_milliseconds (def: 1000)
                         ;; hold for 995s and single tap registered; hold for 1005s and seen as modifier
-                             :held    500    ;; to_if_held_down_threshold_milliseconds (def: 500)
+                             :held    250    ;; to_if_held_down_threshold_milliseconds (def: 500)
                         ;; key is fired twice when 500 ms is elapsed (otherwise seen as a hold command)
 }} ;; profiles
 
@@ -35,10 +35,10 @@
 ;; } ;; devices
 
 ;; simlayer
- :simlayers {:prog-right {:key :f}
-             :prog-left {:key :j}
-             :numbers-layer {:key :s}
-             :alt-layer {:key :d}}
+ :simlayers {;:prog-right {:key :f}
+             ;:prog-left {:key :j}
+             ;:numbers-layer {:key :s}
+             :alt-layer {:key :c}}
 
 ;; main contains multiple manipulators
  :main [;;{:des "..."                               ;; -> description
@@ -60,6 +60,18 @@
          :rules [[:##caps_lock :left_control nil {:alone :escape}]]}
         {:des "Tab -> Tab : HYPER"
          :rules [[:##tab :!COSleft_control nil {:alone :tab}]]}
+        ; {:des "Home row mods"
+         ; :rules [;left
+         ;         [:##a :left_control nil {:alone :a}]
+         ;         [:##s :left_option nil {:alone :s}]
+         ;         [:##d :left_command nil {:alone :d}]
+                 ; [:##f :left_shift nil {:alone :f}]
+         ;         ;right
+                 ; [:##j :right_shift nil {:alone :j}]
+         ;         [:##k :right_command nil {:alone :k}]
+         ;         [:##l :right_option nil {:alone :l}]
+         ;         [:##semicolon :right_control nil {:alone :semicolon}]
+                 ; ]}
         {:des "Programming Layer (Right)"
          :rules [;; Top row
                  [:y :backslash  :prog-right]
