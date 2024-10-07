@@ -23,16 +23,15 @@ config.colors = {
 	cursor_border = "#e04ba4", -- Set the cursor border color to red
 }
 
-local fancy = true
+local fancy = false
 if fancy then
 	config.background = {
-		-- b.get_background(),
-		b.get_random_animation(assets),
+		b.get_background(),
 	}
 end
 
-config.window_background_opacity = 0.995
-config.window_background_opacity = 1
+config.window_background_opacity = 0.985
+-- config.window_background_opacity = 1
 
 config.font = wezterm.font("FiraCode Nerd Font Mono")
 config.font_size = 16
