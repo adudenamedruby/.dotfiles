@@ -9,6 +9,8 @@ keybinds clear-defaults=true {
     }
     resize {
         bind "Ctrl c" "Esc" { SwitchToMode "Normal"; }
+        bind "=" "+" { Resize "Increase"; }
+        bind "-" { Resize "Decrease"; }
     }
     pane {
         bind "Ctrl c" "Esc" { SwitchToMode "Normal"; }
@@ -44,6 +46,16 @@ keybinds clear-defaults=true {
         bind "Ctrl c" "Esc" { SwitchToMode "Normal"; }
 
         bind "b" { BreakPane; SwitchToMode "Normal"; }
+        bind "c" {
+            Run "bash" "-c" "~/.local/myScripts/cheat.sh" {
+                floating false
+                close_on_exit false
+                pane_size {
+                    width 80
+                }
+            };
+            SwitchToMode "Normal";
+        }
         bind "d" { CloseFocus; SwitchToMode "Normal"; }
         bind "e" { EditScrollback; SwitchToMode "Normal"; }
         bind "g" {
@@ -74,7 +86,7 @@ keybinds clear-defaults=true {
         }
         bind "p" { GoToPreviousTab; SwitchToMode "Normal"; }
         bind "q" { Detach; }
-        bind "R" { SwitchToMode "RenamePane"; PaneNameInput 0;}
+        bind "R" { SwitchToMode "Resize"; }
         bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
         bind "s" { NewPane "Down"; SwitchToMode "Normal"; }
         bind "t" { NewTab; SwitchToMode "Normal"; }
@@ -138,8 +150,6 @@ keybinds clear-defaults=true {
                 resize_mod "alt";
             };
         }
-        bind "Alt =" "Alt +" { Resize "Increase"; }
-        bind "Alt -" { Resize "Decrease"; }
         bind "Alt {" { PreviousSwapLayout; }
         bind "Alt }" { NextSwapLayout; }
     }

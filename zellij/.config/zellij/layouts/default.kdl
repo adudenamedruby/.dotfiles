@@ -19,7 +19,7 @@ layout {
 
                 mode_normal        "#[bg=#689d6a,fg=#11111b,bold] NORMAL#[bg=#181926,fg=#689d6a]"
                 mode_locked        "#[bg=#6e738d,fg=#181926,bold] LOCKED #[bg=#181926,fg=#6e738d]"
-                mode_resize        "#[bg=#8aadf4,fg=#181926,bold] RESIZE#[bg=#181926,fg=#8aadf4]"
+                mode_resize        "#[bg=#fe8019,fg=#181926,bold] RESIZE#[bg=#181926,fg=#fe8019]"
                 mode_pane          "#[bg=#8aadf4,fg=#181926,bold] PANE#[bg=#181926,fg=#8aadf4]"
                 mode_tab           "#[bg=#8aadf4,fg=#181926,bold] TAB#[bg=#181926,fg=#8aadf4]"
                 mode_scroll        "#[bg=#8aadf4,fg=#181926,bold] SCROLL#[bg=#181926,fg=#8aadf4]"
