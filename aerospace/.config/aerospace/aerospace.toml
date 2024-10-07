@@ -112,11 +112,11 @@ alt-shift-a = ['move-node-to-workspace A', 'workspace A']
 cmd-shift-ctrl-alt-b = 'workspace B'
 alt-shift-b = ['move-node-to-workspace B', 'workspace B']
 
-# Chat
+# Comms
 cmd-shift-ctrl-alt-c = 'workspace C'
 alt-shift-c = ['move-node-to-workspace C', 'workspace C']
 
-# Darkroom
+# Discord
 cmd-shift-ctrl-alt-d = 'workspace D'
 alt-shift-d = ['move-node-to-workspace D', 'workspace D']
 
@@ -136,11 +136,11 @@ alt-shift-g = ['move-node-to-workspace G', 'workspace G']
 cmd-shift-ctrl-alt-i = 'workspace I'
 alt-shift-i = ['move-node-to-workspace I', 'workspace I']
 
-# Kommunication
-cmd-shift-ctrl-alt-k = 'workspace K'
-alt-shift-k = ['move-node-to-workspace K', 'workspace K']
+# ????
+# cmd-shift-ctrl-alt-k = 'workspace K'
+# alt-shift-k = ['move-node-to-workspace K', 'workspace K']
 
-# ???
+# Lightroom
 cmd-shift-ctrl-alt-l = 'workspace L'
 alt-shift-l = ['move-node-to-workspace L', 'workspace L']
 
@@ -182,17 +182,15 @@ alt-shift-u = ['move-node-to-workspace U', 'workspace U']
 # cmd-shift-ctrl-alt-v = 'workspace V'
 # alt-shift-v = ['move-node-to-workspace V', 'workspace V']
 
-# ???
-# cmd-shift-ctrl-alt-w = 'workspace W'
-# alt-shift-w = ['move-node-to-workspace W', 'workspace W']
-
 # Xcode
 cmd-shift-ctrl-alt-x = 'workspace X'
 alt-shift-x = ['move-node-to-workspace X', 'workspace X']
 
-# Music
+# Music (originally Spotify)
 cmd-shift-ctrl-alt-y = 'workspace Y'
 alt-shift-y = ['move-node-to-workspace Y', 'workspace Y']
+
+# W & Z are for a secret system shortcut
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 alt-comma = 'move-workspace-to-monitor --wrap-around next'

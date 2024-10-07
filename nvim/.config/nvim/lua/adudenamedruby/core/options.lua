@@ -18,6 +18,17 @@ vim.g.have_nerd_font = true
 vim.schedule(function()
     vim.opt.clipboard = "unnamedplus"
 end)
+-- vim.g.clipboard = {
+--     name = "OSC 52",
+--     copy = {
+--         ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+--         ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+--     },
+--     paste = {
+--         ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+--         ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+--     },
+-- }
 
 local options = {
     backup = false, -- creates a backup file
