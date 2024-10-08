@@ -50,27 +50,22 @@ keybinds clear-defaults=true {
             Run "bash" "-c" "~/.local/myScripts/cheat.sh" {
                 floating false
                 close_on_exit false
-                pane_size {
-                    width 80
-                }
             };
             SwitchToMode "Normal";
         }
         bind "d" { CloseFocus; SwitchToMode "Normal"; }
         bind "e" { EditScrollback; SwitchToMode "Normal"; }
         bind "g" {
-            // NewTab {
-            //     name "lazygit"
-            //     run "lazygit"
-            //     close_on_exit true
-            // }
             Run "lazygit" {
                 floating false
                 close_on_exit true
-                // pane_size {
-                //     height 90
-                //     width 85
-                // }
+            };
+            SwitchToMode "Normal";
+        }
+        bind "j" {
+            Run "bash" "-c" "~/.local/myScripts/zellijionizer.sh" {
+                floating true
+                close_on_exit true
             };
             SwitchToMode "Normal";
         }
