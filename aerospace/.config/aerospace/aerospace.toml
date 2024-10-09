@@ -195,8 +195,28 @@ alt-shift-y = ['move-node-to-workspace Y', 'workspace Y']
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 alt-comma = 'move-workspace-to-monitor --wrap-around next'
 
+# Don't mess up which workspaces are on which monitor.
 [workspace-to-monitor-force-assignment]
 E = 'secondary'
+
+A = 'main'
+B = 'main'
+C = 'main'
+D = 'main'
+F = 'main'
+G = 'main'
+H = 'main'
+I = 'main'
+L = 'main'
+M = 'main'
+N = 'main'
+O = 'main'
+R = 'main'
+S = 'main'
+T = 'main'
+U = 'main'
+X = 'main'
+Y = 'main'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-0 = 'mode service'

@@ -186,8 +186,6 @@
                  [:##w :grave_accent_and_tilde]
                  [:##e :!S2]
                  [:##r :!S5]
-                 [:##t :!Sbackslash]
-                 [:##y :1]
                  [:##u :0]
                  [:##i :!S6]
                  [:##o :!S4]
@@ -195,7 +193,7 @@
 
                  [:##a :open_bracket]
                  [:##s :!Shyphen]
-                 [:##d :!Sz]
+                 [:##d :!Sopen_bracket]
                  [:##f :!S9]
                  [:##g :!Sclose_bracket]
                  [:##h :!S8]
@@ -207,11 +205,11 @@
                  [:##z :!Sgrave_accent_and_tilde]
                  [:##x :hyphen]
                  [:##c :!S7]
-                 [:##v :!Sopen_bracket]
-                 [:##b :!Sw]
-                 [:##n :!Se]
+                 [:##v :!Squote]
+                 [:##b :!Sslash]
+                 [:##n :!Scomma]
                  [:##m :!S1]
-                 [:##comma :!Squote]
+                 [:##comma :!Sy]
                  [:##period :equal_sign]
                  [:##slash :!S3]]}
 
