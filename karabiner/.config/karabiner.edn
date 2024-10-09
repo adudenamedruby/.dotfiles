@@ -29,15 +29,18 @@
                         ;; key is fired twice when 500 ms is elapsed (otherwise seen as a hold command)
 }} ;; profiles
 
-;; :devices {
-;;     :apl-usb-int [{:vendor_id 1452, :product_id 635 }]  ;; Apple Internal & Magic Keyboard (USB)
+ ; :devices {;;     :apl-usb-int [{:vendor_id 1452, :product_id 635 }]  ;; Apple Internal & Magic Keyboard (USB)
 ;;     :apl-bt [{:vendor_id 1452, :product_id 615}] ;; Apple Magic Keyboard (Bluetooth)
-;; } ;; devices
+; }
+
+ :input-sources {:dvorak {:input_source_id "com.apple.keylayout.Dvorak" :language "en"}
+                 :grouxphite {:input_source_id "org.sil.ukelele.keyboardlayout.grouxphite.grouxphite" :language "en"}}
 
 ;; simlayer
  :simlayers {;:prog-right {:key :f}
              ;:prog-left {:key :j}
              ;:numbers-layer {:key :s}
+             :symbols-layer {:key :right_command}
              :alt-layer {:key :c}}
 
 ;; main contains multiple manipulators
@@ -60,168 +63,186 @@
          :rules [[:##caps_lock :left_control nil {:alone :escape}]]}
         {:des "Tab -> Tab : HYPER"
          :rules [[:##tab :!COSleft_control nil {:alone :tab}]]}
-        ; {:des "Home row mods"
-         ; :rules [;left
-         ;         [:##a :left_control nil {:alone :a}]
-         ;         [:##s :left_option nil {:alone :s}]
-         ;         [:##d :left_command nil {:alone :d}]
-                 ; [:##f :left_shift nil {:alone :f}]
-         ;         ;right
-                 ; [:##j :right_shift nil {:alone :j}]
-         ;         [:##k :right_command nil {:alone :k}]
-         ;         [:##l :right_option nil {:alone :l}]
-         ;         [:##semicolon :right_control nil {:alone :semicolon}]
-                 ; ]}
-        {:des "Programming Layer (Right)"
-         :rules [;; Top row
-                 [:y :backslash  :prog-right]
-                 [:u :0  :prog-right]
-                 [:i :!S6  :prog-right]
-                 [:o :!S4  :prog-right]
-                 [:p :backslash  :prog-right]
-
-                ;; Home row
-                 [:h :!S8  :prog-right]
-                 [:j :!S0  :prog-right]
-                 [:k :close_bracket  :prog-right]
-                 [:l :!Sequal_sign  :prog-right]
-                 [:semicolon :quote  :prog-right]
-
-                ;; Bottom Row
-                 [:m :!S1  :prog-right]
-                 [:comma :!Squote  :prog-right]
-                 [:period :equal_sign  :prog-right]
-                 [:slash :!S3  :prog-right]]}
-
-        {:des "Programming Layer (Left)"
-         :rules [;; Top row
-                 [:q :!Sbackslash  :prog-left]
-                 [:w :grave_accent_and_tilde  :prog-left]
-                 [:e :!S2  :prog-left]
-                 [:r :!S5  :prog-left]
-                 [:t :!Sbackslash  :prog-left]
-
-                ;; Home row
-                 [:a :open_bracket  :prog-left]
-                 [:s :!Shyphen  :prog-left]
-                 [:d :!Sz  :prog-left]
-                 [:f :!S9  :prog-left]
-                 [:g :!Sclose_bracket  :prog-left]
-
-                ;; Bottom Row
-                 [:z :!Sgrave_accent_and_tilde  :prog-left]
-                 [:x :hyphen  :prog-left]
-                 [:c :!S7  :prog-left]
-                 [:v :!Sopen_bracket  :prog-left]]}
-        {:des "Numbers Layer"
-         :rules [;; Top row
-                 [:o :9  :numbers-layer]
-                 [:i :8  :numbers-layer]
-                 [:u :7  :numbers-layer]
-
-                ;; Home row
-                 [:semicolon :0  :numbers-layer]
-                 [:l :6  :numbers-layer]
-                 [:k :5  :numbers-layer]
-                 [:j :4  :numbers-layer]
-
-                ;; Bottom Row
-                 [:m :1  :numbers-layer]
-                 [:comma :2  :numbers-layer]
-                 [:period :3  :numbers-layer]]}
+        ; {:des "Programming Layer (Right)"
+        ;  :rules [;; Top row
+        ;          [:y :backslash  :prog-right]
+        ;          [:u :0  :prog-right]
+        ;          [:i :!S6  :prog-right]
+        ;          [:o :!S4  :prog-right]
+        ;          [:p :backslash  :prog-right]
+        ;
+        ;         ;; Home row
+        ;          [:h :!S8  :prog-right]
+        ;          [:j :!S0  :prog-right]
+        ;          [:k :close_bracket  :prog-right]
+        ;          [:l :!Sequal_sign  :prog-right]
+        ;          [:semicolon :quote  :prog-right]
+        ;
+        ;         ;; Bottom Row
+        ;          [:m :!S1  :prog-right]
+        ;          [:comma :!Squote  :prog-right]
+        ;          [:period :equal_sign  :prog-right]
+        ;          [:slash :!S3  :prog-right]]}
+        ;
+        ; {:des "Programming Layer (Left)"
+        ;  :rules [;; Top row
+        ;          [:q :!Sbackslash  :prog-left]
+        ;          [:w :grave_accent_and_tilde  :prog-left]
+        ;          [:e :!S2  :prog-left]
+        ;          [:r :!S5  :prog-left]
+        ;          [:t :!Sbackslash  :prog-left]
+        ;
+        ;         ;; Home row
+        ;          [:a :open_bracket  :prog-left]
+        ;          [:s :!Shyphen  :prog-left]
+        ;          [:d :!Sz  :prog-left]
+        ;          [:f :!S9  :prog-left]
+        ;          [:g :!Sclose_bracket  :prog-left]
+        ;
+        ;         ;; Bottom Row
+        ;          [:z :!Sgrave_accent_and_tilde  :prog-left]
+        ;          [:x :hyphen  :prog-left]
+        ;          [:c :!S7  :prog-left]
+        ;          [:v :!Sopen_bracket  :prog-left]]}
+        ; {:des "Numbers Layer"
+        ;  :rules [;; Top row
+        ;          [:o :9  :numbers-layer]
+        ;          [:i :8  :numbers-layer]
+        ;          [:u :7  :numbers-layer]
+        ;
+        ;         ;; Home row
+        ;          [:semicolon :0  :numbers-layer]
+        ;          [:l :6  :numbers-layer]
+        ;          [:k :5  :numbers-layer]
+        ;          [:j :4  :numbers-layer]
+        ;
+        ;         ;; Bottom Row
+        ;          [:m :1  :numbers-layer]
+        ;          [:comma :2  :numbers-layer]
+        ;          [:period :3  :numbers-layer]]}
 
         {:des "Alt layer" ;; only the right hand side
-         :rules [;; Top row
-                 [:y :!Oy  :alt-layer]
-                 [:u :!O1  :alt-layer]
-                 [:i :!O2  :alt-layer]
-                 [:o :!O3  :alt-layer]
-                 [:p :!O4  :alt-layer]
+         :rules [:alt-layer;; Top row
+                 [:y :!Oy]
+                 [:u :!O1]
+                 [:i :!O2]
+                 [:o :!O3]
+                 [:p :!O4]
 
                 ;; Home row
-                 [:h :!O5  :alt-layer]
-                 [:j :!O6  :alt-layer]
-                 [:k :!O7  :alt-layer]
-                 [:l :!O8  :alt-layer]
-                 [:semicolon :!O9  :alt-layer]
+                 [:h :!O5]
+                 [:j :!O6]
+                 [:k :!O7]
+                 [:l :!O8]
+                 [:semicolon :!O9]
 
                 ;; Bottom Row
-                 [:n :!O9  :alt-layer]
-                 [:m ["L2" 1] :alt-layer]
-                 [:comma :!Ocomma  :alt-layer]
-                 [:period :!Oslash  :alt-layer]
-                 [:slash :!Obackslash  :alt-layer]]}
+                 [:n :!O9]
+                 [:m ["L2" 1]]
+                 [:comma :!Ocomma]
+                 [:period :!Oslash]
+                 [:slash :!Obackslash]]}
 
-        {:des "========= LAYER 1 (Prog Chars) =========="
-         :rules [;;--------- LAYER ACTIVATOR | right_command  -----------
-                 [:##right_command ["L1" 1] nil {:afterup ["L1" 0]}]
+        {:des "========= LAYER 1 (Prog Chars - Dvorak) =========="
+         :rules [:dvorak :symbols-layer
+                 [:##q :!Sbackslash]
+                 [:##w :grave_accent_and_tilde]
+                 [:##e :!S2]
+                 [:##r :!S5]
+                 [:##t :!Sbackslash]
+                 [:##y :1]
+                 [:##u :0]
+                 [:##i :!S6]
+                 [:##o :!S4]
+                 [:##p :backslash]
 
-;; Top row
-                 [:##q :!Sbackslash  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##w :grave_accent_and_tilde  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##e :!S2  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##r :!S5  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##t :!Sbackslash  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##y :backslash  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##u :0  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##i :!S6  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##o :!S4  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##p :backslash  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
+                 [:##a :open_bracket]
+                 [:##s :!Shyphen]
+                 [:##d :!Sz]
+                 [:##f :!S9]
+                 [:##g :!Sclose_bracket]
+                 [:##h :!S8]
+                 [:##j :!S0]
+                 [:##k :close_bracket]
+                 [:##l :!Sequal_sign]
+                 [:##semicolon :quote]
 
-            ;; Home row
-                 [:##a :open_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##s :!Shyphen  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##d :!Sz  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##f :!S9  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##g :!Sclose_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##h :!S8  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##j :!S0  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##k :close_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##l :!Sequal_sign  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##semicolon :quote  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-
-            ;; Bottom Row
-                 [:##z :!Sgrave_accent_and_tilde  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##x :hyphen  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##c :!S7  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##v :!Sopen_bracket  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##m :!S1  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##comma :!Squote  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##period :equal_sign  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]
-                 [:##slash :!S3  [["L1" 1] ["L2" 0] ["L3" 0] ["L4" 0]]]]}
-
+                 [:##z :!Sgrave_accent_and_tilde]
+                 [:##x :hyphen]
+                 [:##c :!S7]
+                 [:##v :!Sopen_bracket]
+                 [:##b :!Sw]
+                 [:##n :!Se]
+                 [:##m :!S1]
+                 [:##comma :!Squote]
+                 [:##period :equal_sign]
+                 [:##slash :!S3]]}
+        ;
+        ; {:des "========= LAYER 1 (Prog Chars - Graphite) =========="
+        ;  :rules [:grouxphite :!dvorak :symbols-layer
+        ;          [:##q :!Sbackslash]
+        ;          [:##w :grave_accent_and_tilde]
+        ;          [:##e :!S2]
+        ;          [:##r :!S5]
+        ;          [:##y :2]
+        ;          [:##u :0]
+        ;          [:##i :!S6]
+        ;          [:##o :!S4]
+        ;          [:##p :backslash]
+        ;
+        ;          [:##a :open_bracket]
+        ;          [:##s :!Shyphen]
+        ;          [:##d :!Sslash]
+        ;          [:##f :!S9]
+        ;          [:##g :!Sclose_bracket]
+        ;          [:##h :!S8]
+        ;          [:##j :!S0]
+        ;          [:##k :close_bracket]
+        ;          [:##l :!Sequal_sign]
+        ;          [:##semicolon :quote]
+        ;
+        ;          [:##z :!Sgrave_accent_and_tilde]
+        ;          [:##x :hyphen]
+        ;          [:##c :!S7]
+        ;          [:##v :!Sopen_bracket]
+        ;          [:##b :!Sw]
+        ;          [:##n :!Se]
+        ;          [:##m :!S1]
+        ;          [:##comma :!Squote]
+        ;          [:##period :equal_sign]
+        ;          [:##slash :!S3]]}
         {:des "========= LAYER 2 (One Show Window Commands) =========="
          :rules [;; Escape!
-                 [:!Tc nil  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
+                 [:!Tc nil  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
                  ;; Top row
-                 [:##q :!SOq  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##w :!SOw  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##e :!SOe  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##r :!SOr  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##t :!SOt  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##y :!SOy  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##u :!SOu  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##i :!SOi  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##o :!SOo  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##p :!SOp  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
+                 [:##q :!SOq  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##w :!SOw  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##e :!SOe  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##r :!SOr  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##t :!SOt  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##y :!SOy  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##u :!SOu  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##i :!SOi  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##o :!SOo  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##p :!SOp  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
 
             ;; Home row
-                 [:##a :!SOa  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##s :!SOs  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##d :!SOd  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##f :!SOf  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##g :!SOg  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##h :!SOh  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##j :!SOj  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##k :!OSk  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##l :!SOl  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
+                 [:##a :!SOa  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##s :!SOs  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##d :!SOd  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##f :!SOf  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##g :!SOg  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##h :!SOh  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##j :!SOj  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##k :!OSk  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##l :!SOl  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
 
             ;; Bottom Row
-                 [:##z :!SOz  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##x :!SOx  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##c :!SOc  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##v :!SOv  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]
-                 [:##m :!SOm  [["L1" 0] ["L2" 1] ["L3" 0] ["L4" 0]] {:afterup ["L2" 0]}]]}]
+                 [:##z :!SOz  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##x :!SOx  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##c :!SOc  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##v :!SOv  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##m :!SOm  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]]}]
 
 ;; main list
  }
