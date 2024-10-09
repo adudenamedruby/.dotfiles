@@ -33,14 +33,16 @@
 ;;     :apl-bt [{:vendor_id 1452, :product_id 615}] ;; Apple Magic Keyboard (Bluetooth)
 ; }
 
- :input-sources {:dvorak {:input_source_id "com.apple.keylayout.Dvorak" :language "en"}
-                 :grouxphite {:input_source_id "org.sil.ukelele.keyboardlayout.grouxphite.grouxphite" :language "en"}}
+ :input-sources {:dvorak {:input_source_id "^com\\.apple\\.keylayout\\.Dvorak$" :language "en"}
+                 :grouxphite {:input_source_id "^org\\.sil\\.ukelele\\.keyboardlayout\\.grouxphite\\.grouxphite$" :language "en"}}
 
+ :layers {:symbols-layer-dvorak {:key :right_command :condi :dvorak}
+          :symbols-layer-grouxphite {:key :right_command :condi :grouxphite}}
 ;; simlayer
  :simlayers {;:prog-right {:key :f}
              ;:prog-left {:key :j}
              ;:numbers-layer {:key :s}
-             :symbols-layer {:key :right_command}
+             ; :symbols-layer {:key :right_command}
              :alt-layer {:key :c}}
 
 ;; main contains multiple manipulators
@@ -138,13 +140,13 @@
 
                 ;; Bottom Row
                  [:n :!O9]
-                 [:m ["L2" 1]]
+                 [:m ["StD" 1]]
                  [:comma :!Ocomma]
                  [:period :!Oslash]
                  [:slash :!Obackslash]]}
 
-        {:des "========= LAYER 1 (Prog Chars - Dvorak) =========="
-         :rules [:dvorak :symbols-layer
+        {:des "Dvorak symbols layer"
+         :rules [:symbols-layer-dvorak
                  [:##q :!Sbackslash]
                  [:##w :grave_accent_and_tilde]
                  [:##e :!S2]
@@ -177,72 +179,74 @@
                  [:##comma :!Squote]
                  [:##period :equal_sign]
                  [:##slash :!S3]]}
-        ;
-        ; {:des "========= LAYER 1 (Prog Chars - Graphite) =========="
-        ;  :rules [:grouxphite :!dvorak :symbols-layer
-        ;          [:##q :!Sbackslash]
-        ;          [:##w :grave_accent_and_tilde]
-        ;          [:##e :!S2]
-        ;          [:##r :!S5]
-        ;          [:##y :2]
-        ;          [:##u :0]
-        ;          [:##i :!S6]
-        ;          [:##o :!S4]
-        ;          [:##p :backslash]
-        ;
-        ;          [:##a :open_bracket]
-        ;          [:##s :!Shyphen]
-        ;          [:##d :!Sslash]
-        ;          [:##f :!S9]
-        ;          [:##g :!Sclose_bracket]
-        ;          [:##h :!S8]
-        ;          [:##j :!S0]
-        ;          [:##k :close_bracket]
-        ;          [:##l :!Sequal_sign]
-        ;          [:##semicolon :quote]
-        ;
-        ;          [:##z :!Sgrave_accent_and_tilde]
-        ;          [:##x :hyphen]
-        ;          [:##c :!S7]
-        ;          [:##v :!Sopen_bracket]
-        ;          [:##b :!Sw]
-        ;          [:##n :!Se]
-        ;          [:##m :!S1]
-        ;          [:##comma :!Squote]
-        ;          [:##period :equal_sign]
-        ;          [:##slash :!S3]]}
-        {:des "========= LAYER 2 (One Show Window Commands) =========="
+
+        {:des "Grouxphite symbols layer"
+         :rules [:symbols-layer-grouxphite
+                 [:##q :!Sbackslash]
+                 [:##w :grave_accent_and_tilde]
+                 [:##e :!S2]
+                 [:##r :!S5]
+                 [:##t :!Sbackslash]
+                 [:##y :1]
+                 [:##u :0]
+                 [:##i :!S6]
+                 [:##o :!S4]
+                 [:##p :backslash]
+
+                 [:##a :open_bracket]
+                 [:##s :!Shyphen]
+                 [:##d :!Sz]
+                 [:##f :!S9]
+                 [:##g :!Sclose_bracket]
+                 [:##h :!S8]
+                 [:##j :!S0]
+                 [:##k :close_bracket]
+                 [:##l :!Sequal_sign]
+                 [:##semicolon :quote]
+
+                 [:##z :!Sgrave_accent_and_tilde]
+                 [:##x :hyphen]
+                 [:##c :!S7]
+                 [:##v :!Sopen_bracket]
+                 [:##b :!Sw]
+                 [:##n :!Se]
+                 [:##m :!S1]
+                 [:##comma :!Squote]
+                 [:##period :equal_sign]
+                 [:##slash :!S3]]}
+
+        {:des "Send to Desktop mode"
          :rules [;; Escape!
-                 [:!Tc nil  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:!Tc nil  ["StD" 1] {:afterup ["StD" 0]}]
                  ;; Top row
-                 [:##q :!SOq  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##w :!SOw  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##e :!SOe  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##r :!SOr  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##t :!SOt  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##y :!SOy  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##u :!SOu  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##i :!SOi  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##o :!SOo  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##p :!SOp  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##q :!SOq  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##w :!SOw  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##e :!SOe  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##r :!SOr  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##t :!SOt  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##y :!SOy  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##u :!SOu  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##i :!SOi  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##o :!SOo  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##p :!SOp  ["StD" 1] {:afterup ["StD" 0]}]
 
             ;; Home row
-                 [:##a :!SOa  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##s :!SOs  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##d :!SOd  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##f :!SOf  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##g :!SOg  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##h :!SOh  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##j :!SOj  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##k :!OSk  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##l :!SOl  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
+                 [:##a :!SOa  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##s :!SOs  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##d :!SOd  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##f :!SOf  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##g :!SOg  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##h :!SOh  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##j :!SOj  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##k :!OSk  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##l :!SOl  ["StD" 1] {:afterup ["StD" 0]}]
 
             ;; Bottom Row
-                 [:##z :!SOz  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##x :!SOx  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##c :!SOc  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##v :!SOv  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]
-                 [:##m :!SOm  [["L1" 0] ["L2" 1]] {:afterup ["L2" 0]}]]}]
+                 [:##z :!SOz  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##x :!SOx  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##c :!SOc  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##v :!SOv  ["StD" 1] {:afterup ["StD" 0]}]
+                 [:##m :!SOm  ["StD" 1] {:afterup ["StD" 0]}]]}]
 
 ;; main list
  }
