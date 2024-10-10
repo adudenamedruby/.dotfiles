@@ -2,6 +2,23 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>disabledDefaultActions</key>
+	<dict>
+		<key>alfred.action.mixed.email</key>
+		<true/>
+		<key>alfred.action.mixed.emailto</key>
+		<true/>
+		<key>alfred.action.showaslargetype</key>
+		<true/>
+		<key>alfred.action.text.extracturls</key>
+		<true/>
+		<key>alfred.action.text.openindictionary</key>
+		<true/>
+		<key>alfred.action.text.searchwithfinder</key>
+		<true/>
+		<key>alfred.action.text.useinalfred</key>
+		<true/>
+	</dict>
 	<key>showWithCtrl</key>
 	<false/>
 	<key>showWithFn</key>
