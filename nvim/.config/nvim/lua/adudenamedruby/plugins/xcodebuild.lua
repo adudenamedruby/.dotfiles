@@ -7,6 +7,7 @@ return {
         "nvim-tree/nvim-tree.lua",
         "MunifTanjim/nui.nvim",
     },
+
     config = function()
         require("xcodebuild").setup({
             show_build_progress_bar = false,

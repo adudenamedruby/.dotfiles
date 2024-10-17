@@ -991,7 +991,7 @@
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"human resources","arg":"hr","subtitle":"HR type stuff"},{"title":"Documentation","arg":"docs","subtitle":"Mozilla Docs"},{"title":"Developer Tools","arg":"dev","subtitle":"Dev tool type stuff"},{"title":"Coffee Chat","arg":"chat","subtitle":"Team Coffee Chat"}]</string>
+				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"Coffee Chat","arg":"chat","subtitle":"Team Coffee Chat"}]</string>
 				<key>keyword</key>
 				<string>moz</string>
 				<key>matchmode</key>
