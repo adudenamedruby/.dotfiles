@@ -41,7 +41,7 @@
 ;; simlayer
  :simlayers {;:prog-right {:key :f}
              ;:prog-left {:key :j}
-             ;:numbers-layer {:key :s}
+             :arrows-layer {:key :v}
              ; :symbols-layer {:key :right_command}
              :alt-layer {:key :c}}
 
@@ -65,47 +65,6 @@
          :rules [[:##caps_lock :left_control nil {:alone :escape}]]}
         {:des "Tab -> Tab : HYPER"
          :rules [[:##tab :!COSleft_control nil {:alone :tab}]]}
-        ; {:des "Programming Layer (Right)"
-        ;  :rules [;; Top row
-        ;          [:y :backslash  :prog-right]
-        ;          [:u :0  :prog-right]
-        ;          [:i :!S6  :prog-right]
-        ;          [:o :!S4  :prog-right]
-        ;          [:p :backslash  :prog-right]
-        ;
-        ;         ;; Home row
-        ;          [:h :!S8  :prog-right]
-        ;          [:j :!S0  :prog-right]
-        ;          [:k :close_bracket  :prog-right]
-        ;          [:l :!Sequal_sign  :prog-right]
-        ;          [:semicolon :quote  :prog-right]
-        ;
-        ;         ;; Bottom Row
-        ;          [:m :!S1  :prog-right]
-        ;          [:comma :!Squote  :prog-right]
-        ;          [:period :equal_sign  :prog-right]
-        ;          [:slash :!S3  :prog-right]]}
-        ;
-        ; {:des "Programming Layer (Left)"
-        ;  :rules [;; Top row
-        ;          [:q :!Sbackslash  :prog-left]
-        ;          [:w :grave_accent_and_tilde  :prog-left]
-        ;          [:e :!S2  :prog-left]
-        ;          [:r :!S5  :prog-left]
-        ;          [:t :!Sbackslash  :prog-left]
-        ;
-        ;         ;; Home row
-        ;          [:a :open_bracket  :prog-left]
-        ;          [:s :!Shyphen  :prog-left]
-        ;          [:d :!Sz  :prog-left]
-        ;          [:f :!S9  :prog-left]
-        ;          [:g :!Sclose_bracket  :prog-left]
-        ;
-        ;         ;; Bottom Row
-        ;          [:z :!Sgrave_accent_and_tilde  :prog-left]
-        ;          [:x :hyphen  :prog-left]
-        ;          [:c :!S7  :prog-left]
-        ;          [:v :!Sopen_bracket  :prog-left]]}
         ; {:des "Numbers Layer"
         ;  :rules [;; Top row
         ;          [:o :9  :numbers-layer]
@@ -122,6 +81,12 @@
         ;          [:m :1  :numbers-layer]
         ;          [:comma :2  :numbers-layer]
         ;          [:period :3  :numbers-layer]]}
+        {:des "Arrows layer" ;; only the right hand side
+         :rules [:arrows-layer;; Top row
+                 [:j :left_arrow]
+                 [:k :down_arrow]
+                 [:l :up_arrow]
+                 [:semicolon :right_arrow]]}
 
         {:des "Alt layer" ;; only the right hand side
          :rules [:alt-layer;; Top row
