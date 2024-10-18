@@ -15,3 +15,12 @@ vim.api.nvim_create_autocmd("BufLeave", {
         vim.cmd("checktime")
     end,
 })
+
+-- In the quickfix window, <CR> is used to jump to the error under the
+-- cursor, so undefine the mapping there.
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "qf",
+    callback = function()
+        vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "<CR>", { noremap = true, silent = true })
+    end,
+})
