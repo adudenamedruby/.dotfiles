@@ -25,13 +25,14 @@
                         ;; basically it means time after which the key press is count delayed
                              :alone   1000   ;; to_if_alone_timeout_milliseconds (def: 1000)
                         ;; hold for 995s and single tap registered; hold for 1005s and seen as modifier
-                             :held    250    ;; to_if_held_down_threshold_milliseconds (def: 500)
+                             :held    225    ;; to_if_held_down_threshold_milliseconds (def: 500)
                         ;; key is fired twice when 500 ms is elapsed (otherwise seen as a hold command)
 }} ;; profiles
 
- ; :devices {;;     :apl-usb-int [{:vendor_id 1452, :product_id 635 }]  ;; Apple Internal & Magic Keyboard (USB)
-;;     :apl-bt [{:vendor_id 1452, :product_id 615}] ;; Apple Magic Keyboard (Bluetooth)
-; }
+ :devices {:apple [{:vendor_id 1452}
+                   {:vendor_id 76}
+                   {:is_built_in_keyboard true}]
+           :hhkb [{:vendor_id 1278, :product_id 33}]}
 
  :input-sources {:dvorak {:input_source_id "^com\\.apple\\.keylayout\\.Dvorak$" :language "en"}
                  :grouxphite {:input_source_id "^org\\.sil\\.ukelele\\.keyboardlayout\\.grouxphite\\.grouxphite$" :language "en"}}
@@ -43,7 +44,8 @@
              ;:prog-left {:key :j}
              :arrows-layer {:key :v}
              ; :symbols-layer {:key :right_command}
-             :alt-layer {:key :c}}
+             :numbers-layer {:key :x}
+             :window-layer {:key :c}}
 
 ;; main contains multiple manipulators
  :main [;;{:des "..."                               ;; -> description
@@ -62,7 +64,9 @@
     ;; (custom variables) & modifiers -> Advanced
     ;; https://github.com/yqrashawn/GokuRakuJoudo/blob/master/examples.org#custom-variable
         {:des "Caps Lock -> Esc : Control"
-         :rules [[:##caps_lock :left_control nil {:alone :escape}]]}
+         :rules [[:##caps_lock :left_control :apple {:alone :escape}]]}
+        {:des "Control -> Esc : Control"
+         :rules [[:##left_control :left_control :hhkb {:alone :escape}]]}
         {:des "Tab -> Tab : HYPER"
          :rules [[:##tab :!COSleft_control nil {:alone :tab}]]}
         ; {:des "Numbers Layer"
@@ -88,8 +92,25 @@
                  [:l :up_arrow]
                  [:semicolon :right_arrow]]}
 
-        {:des "Alt layer" ;; only the right hand side
-         :rules [:alt-layer;; Top row
+        {:des "Numbers layer" ;; only the right hand side
+         :rules [:numbers-layer;; Top row
+                 [:u :7]
+                 [:i :8]
+                 [:o :9]
+
+                ;; Home row
+                 [:j :4]
+                 [:k :5]
+                 [:l :6]
+                 [:semicolon :0]
+
+                ;; Bottom Row
+                 [:m :1]
+                 [:comma :2]
+                 [:period :3]]}
+
+        {:des "window management layer" ;; only the right hand side
+         :rules [:window-layer;; Top row
                  [:y :!Oy]
                  [:u :!O1]
                  [:i :!O2]
@@ -104,11 +125,9 @@
                  [:semicolon :!O9]
 
                 ;; Bottom Row
-                 [:n :!O9]
                  [:m ["StD" 1]]
-                 [:comma :!Ocomma]
-                 [:period :!Oslash]
-                 [:slash :!Obackslash]]}
+                 [:comma :!Ohyphen]
+                 [:period :!Oequal_sign]]}
 
         {:des "Dvorak symbols layer"
          :rules [:symbols-layer-dvorak

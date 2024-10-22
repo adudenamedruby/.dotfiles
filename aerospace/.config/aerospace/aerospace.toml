@@ -133,6 +133,10 @@ alt-shift-f = ['move-node-to-workspace F', 'workspace F']
 alt-shift-g = ['move-node-to-workspace G', 'workspace G']
 
 # Internet
+cmd-shift-ctrl-alt-h = 'workspace H'
+alt-shift-h = ['move-node-to-workspace H', 'workspace H']
+
+# Internet
 cmd-shift-ctrl-alt-i = 'workspace I'
 alt-shift-i = ['move-node-to-workspace I', 'workspace I']
 
