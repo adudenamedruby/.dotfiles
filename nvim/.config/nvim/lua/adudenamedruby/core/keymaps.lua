@@ -94,11 +94,11 @@ KMap("<leader>wv", "<cmd>:vsplit<CR>", "vertical split")
 KMap("<leader>wd", "<cmd>:q<CR>", "delete current window")
 KMap("<leader>wo", "<cmd>:only<CR>", "close all windows except current")
 
--- -- Resize with arrows
--- KMap("<Up>", ":resize +2<CR>")
--- KMap("<Down>", ":resize -2<CR>")
--- KMap("<Left>", ":vertical resize +2<CR>")
--- KMap("<Right>", ":vertical resize -2<CR>")
+-- Resize with arrows
+KMap("<C-Up>", ":resize +2<CR>")
+KMap("<C-Down>", ":resize -2<CR>")
+KMap("<C-Left>", ":vertical resize +2<CR>")
+KMap("<C-Right>", ":vertical resize -2<CR>")
 
 function ToggleSplits()
     -- Get the current window layout (width and height)
