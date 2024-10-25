@@ -90,8 +90,8 @@
          :rules [:arrows-layer;; Top row
                  [:j :left_arrow]
                  [:k :down_arrow]
-                 [:l :up_arrow]
-                 [:semicolon :right_arrow]]}
+                 [:l :right_arrow]
+                 [:i :up_arrow]]}
 
         {:des "Numbers layer" ;; only the right hand side
          :rules [:numbers-layer;; Top row
