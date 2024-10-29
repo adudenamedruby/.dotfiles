@@ -70,8 +70,7 @@ KMap("<leader>xO", "<cmd>lopen<CR>", "open loclist")
 KMap("<leader>xC", "<cmd>lclose<CR>", "close loclist")
 
 -- Quit menu
-KMap("<leader>qq", "<cmd>q<CR>", "quit nVim")
-KMap("<leader>qQ", "<cmd>q!<CR>", "force quit nVim")
+KMap("<leader>qq", "<cmd>qa!<CR>", "quit nVim")
 
 -- Search menu
 -- Clear highlights on search when pressing <Esc> in normal mode

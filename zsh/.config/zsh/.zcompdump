@@ -1,4 +1,4 @@
-#files: 966	version: 5.9
+#files: 987	version: 5.9
 
 _comps=(
 '-' '_precommand'
@@ -112,6 +112,8 @@ _comps=(
 'add-zle-hook-widget' '_add-zle-hook-widget'
 'add-zsh-hook' '_add-zsh-hook'
 'admin' '_sccs'
+'aerospace' '_aerospace'
+'ag' '_the_silver_searcher'
 'ali' '_mh'
 'alias' '_alias'
 'amaya' '_webbrowser'
@@ -177,6 +179,7 @@ _comps=(
 'basename' '_basename'
 'basenc' '_basenc'
 'bash' '_bash'
+'bat' '_bat'
 'batch' '_at'
 'baz' '_baz'
 'beadm' '_beadm'
@@ -198,7 +201,10 @@ _comps=(
 'bpython3' '_bpython'
 'bpython3-gtk' '_bpython'
 'bpython3-urwid' '_bpython'
+'br' '_br'
 'brctl' '_brctl'
+'brew' '_brew'
+'broot' '_broot'
 'bsdconfig' '_bsdconfig'
 'bsdgrep' '_grep'
 'bsdinstall' '_bsdinstall'
@@ -232,6 +238,7 @@ _comps=(
 'caffeinate' '_caffeinate'
 'cal' '_cal'
 'calendar' '_calendar'
+'carthage' '_carthage'
 'cat' '_cat'
 'catchsegv' '_precommand'
 'cc' '_gcc'
@@ -358,7 +365,7 @@ _comps=(
 'debuild' '_debuild'
 'declare' '_typeset'
 'defaults' '_defaults'
-'delta' '_sccs'
+'delta' '_delta'
 'designate' '_openstack'
 'devtodo' '_devtodo'
 'df' '_df'
@@ -416,6 +423,7 @@ _comps=(
 'dumper' '_dumper'
 'dumper.exe' '_dumper'
 'dupload' '_dupload'
+'dust' '_dust'
 'dvibook' '_dvi'
 'dviconcat' '_dvi'
 'dvicopy' '_dvi'
@@ -468,6 +476,7 @@ _comps=(
 'fc' '_fc'
 'fc-list' '_xft_fonts'
 'fc-match' '_xft_fonts'
+'fd' '_fd'
 'feh' '_feh'
 'fetch' '_fetch'
 'fetchmail' '_fetchmail'
@@ -576,6 +585,7 @@ _comps=(
 'ggetopt' '_getopt'
 'ggrep' '_grep'
 'ggv' '_gnome-gv'
+'gh' '_gh'
 'ghead' '_head'
 'ghostscript' '_ghostscript'
 'ghostview' '_pspdf'
@@ -583,11 +593,6 @@ _comps=(
 'ginstall' '_install'
 'git' '_git'
 'git-buildpackage' '_git-buildpackage'
-'git-cvsserver' '_git'
-'git-receive-pack' '_git'
-'git-shell' '_git'
-'git-upload-archive' '_git'
-'git-upload-pack' '_git'
 'gitk' '_git'
 'gjoin' '_join'
 'glance' '_openstack'
@@ -828,6 +833,7 @@ _comps=(
 'ldconfig' '_ldconfig'
 'ldconfig.real' '_ldconfig'
 'ldd' '_ldd'
+'lein' '_lein'
 'less' '_less'
 'let' '_math'
 'lftp' '_ncftp'
@@ -868,6 +874,7 @@ _comps=(
 'lsattr' '_lsattr'
 'lsblk' '_lsblk'
 'lscfg' '_lscfg'
+'lsd' '_lsd'
 'lsdev' '_lsdev'
 'lsdiff' '_patchutils'
 'lslv' '_lslv'
@@ -1245,6 +1252,7 @@ _comps=(
 'reprepro' '_reprepro'
 'restart' '_initctl'
 'retawq' '_webbrowser'
+'rg' '_rg'
 'rgrep' '_grep'
 'rgview' '_vim'
 'rgvim' '_vim'
@@ -1308,6 +1316,7 @@ _comps=(
 'scriptreplay' '_script'
 'scselect' '_scselect'
 'scutil' '_scutil'
+'sd' '_sd'
 'seaf-cli' '_seafile'
 'sed' '_sed'
 'senlin' '_openstack'
@@ -1384,6 +1393,7 @@ _comps=(
 'ssh-keyscan' '_ssh'
 'sshfs' '_sshfs'
 'star' '_tar'
+'starship' '_starship'
 'start' '_initctl'
 'stat' '_stat'
 'status' '_initctl'
@@ -1420,6 +1430,7 @@ _comps=(
 'swanctl' '_swanctl'
 'swift' '_swift'
 'swiftc' '_swift'
+'swiftlint' '_swiftlint'
 'sync' '_nothing'
 'sysclean' '_sysclean'
 'sysctl' '_sysctl'
@@ -1452,7 +1463,6 @@ _comps=(
 'texindex' '_texinfo'
 'tg' '_topgit'
 'tidy' '_tidy'
-'tig' '_git'
 'time' '_precommand'
 'timeout' '_timeout'
 'times' '_nothing'
@@ -1586,7 +1596,9 @@ _comps=(
 'wanna-build' '_wanna-build'
 'watch' '_watch'
 'watcher' '_openstack'
+'watchexec' '_watchexec'
 'wc' '_wc'
+'wezterm' '_wezterm'
 'wget' '_wget'
 'what' '_sccs'
 'whatis' '_man'
@@ -1838,7 +1850,11 @@ bindkey '^[,' _history-complete-newer
 bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
-autoload -Uz _SUSEconfig __arguments _a2ps _a2utils _aap \
+autoload -Uz _aerospace _bat _br _brew _broot \
+            _carthage _delta _dust _fd _gh \
+            _git _lein _lsd _rg _sd \
+            _starship _swiftlint _the_silver_searcher _watchexec _wezterm \
+            _SUSEconfig __arguments _a2ps _a2utils _aap \
             _abcde _absolute_command_paths _ack _acpi _acpitool \
             _acroread _adb _add-zle-hook-widget _add-zsh-hook _alias \
             _aliases _all_labels _all_matches _alsa-utils _alternative \

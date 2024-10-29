@@ -193,6 +193,12 @@ return {
                 },
             }
 
+            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+                border = "single",
+                max_width = 100,
+                max_height = 30,
+            })
+
             require("lspconfig").sourcekit.setup({
                 capabilities = capabilities,
                 on_init = function(client)
