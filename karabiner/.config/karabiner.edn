@@ -112,24 +112,22 @@
 
         {:des "editing layer" ;; only the right hand side
          :rules [:edit-layer;; Top row
-                 ; [:y :!Oy]
                  ; [:u :!O1]
                  ; [:i :!O2]
                  ; [:o :!O3]
                  [:p :!Cdelete_or_backspace]
 
                 ;; Home row
-                 [:j :delete_or_backspace]
-                 ; [:j :!O6]
-                 ; [:k :!O7]
-                 ; [:l :!O8]
-                 ; [:semicolon :!O9]
+                 [:j :!Odelete_or_backspace]
+                 [:k :delete_or_backspace]
+                 [:l :delete_forward]
+                 [:semicolon :!Odelete_forward]
 
                 ;; Bottom Row
-                 [:n :!Odelete_or_backspace]]}
-                 ; [:m ["StD" 1]]
-                 ; [:comma :!Ohyphen]
+                 [:m :!Oleft_arrow]
+                 ; [:comma :delete]
                  ; [:period :!Oequal_sign]]}
+                 [:slash :!Oright_arrow]]}
 
         {:des "window management layer" ;; only the right hand side
          :rules [:window-layer;; Top row
