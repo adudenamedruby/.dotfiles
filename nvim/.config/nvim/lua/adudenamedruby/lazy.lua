@@ -40,11 +40,13 @@ require("adudenamedruby.plugins.colorscheme")
 -- Randomly select a colorscheme
 local colorschemes = {
     "catppuccin",
-    "tokyonight",
+    "tokyonight-moon",
     "kanagawa",
     "rose-pine",
     "carbonfox",
     "everforest",
+    "retrobox",
+    "duskfox",
 }
 local random_colorscheme = colorschemes[math.random(#colorschemes)]
 vim.cmd("colorscheme " .. random_colorscheme)

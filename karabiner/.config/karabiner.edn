@@ -66,26 +66,13 @@
     ;; https://github.com/yqrashawn/GokuRakuJoudo/blob/master/examples.org#custom-variable
         {:des "Caps Lock -> Esc : Control"
          :rules [[:##caps_lock :left_control :apple {:alone :escape}]]}
+
         {:des "Control -> Esc : Control"
          :rules [[:##left_control :left_control :hhkb {:alone :escape}]]}
+
         {:des "Tab -> Tab : HYPER"
          :rules [[:##tab :!COSleft_control nil {:alone :tab}]]}
-        ; {:des "Numbers Layer"
-        ;  :rules [;; Top row
-        ;          [:o :9  :numbers-layer]
-        ;          [:i :8  :numbers-layer]
-        ;          [:u :7  :numbers-layer]
-        ;
-        ;         ;; Home row
-        ;          [:semicolon :0  :numbers-layer]
-        ;          [:l :6  :numbers-layer]
-        ;          [:k :5  :numbers-layer]
-        ;          [:j :4  :numbers-layer]
-        ;
-        ;         ;; Bottom Row
-        ;          [:m :1  :numbers-layer]
-        ;          [:comma :2  :numbers-layer]
-        ;          [:period :3  :numbers-layer]]}
+
         {:des "Arrows layer" ;; only the right hand side
          :rules [:arrows-layer;; Top row
                  [:j :left_arrow]
@@ -112,10 +99,10 @@
 
         {:des "editing layer" ;; only the right hand side
          :rules [:edit-layer;; Top row
-                 ; [:u :!O1]
-                 ; [:i :!O2]
-                 ; [:o :!O3]
-                 [:p :!Cdelete_or_backspace]
+                 [:u :!SOleft_arrow]
+                 [:i :!Sup_arrow]
+                 [:o :!Sdown_arrow]
+                 [:p :!SOright_arrow]
 
                 ;; Home row
                  [:j :!Odelete_or_backspace]
@@ -125,8 +112,8 @@
 
                 ;; Bottom Row
                  [:m :!Oleft_arrow]
-                 ; [:comma :delete]
-                 ; [:period :!Oequal_sign]]}
+                 [:comma :up_arrow]
+                 [:period :down_arrow]
                  [:slash :!Oright_arrow]]}
 
         {:des "window management layer" ;; only the right hand side
