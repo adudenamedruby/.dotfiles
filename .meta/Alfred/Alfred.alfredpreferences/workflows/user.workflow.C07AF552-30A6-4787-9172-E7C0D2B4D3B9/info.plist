@@ -254,6 +254,18 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>E5024790-3856-43E5-A27F-61A20098945D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>DE5F2206-7D90-4554-9BAD-4AD6D27F6B01</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>4B548A99-86AD-4EDC-B875-0E9171458D73</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -812,7 +824,7 @@
 						<key>matchmode</key>
 						<integer>0</integer>
 						<key>matchstring</key>
-						<string></string>
+						<string>home</string>
 						<key>outputlabel</key>
 						<string>home</string>
 						<key>uid</key>
@@ -902,6 +914,20 @@
 						<key>uid</key>
 						<string>EAEB31B9-F60D-48DD-A95D-F6B8E6A39AB3</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>github</string>
+						<key>outputlabel</key>
+						<string>github</string>
+						<key>uid</key>
+						<string>DE5F2206-7D90-4554-9BAD-4AD6D27F6B01</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
@@ -912,6 +938,27 @@
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
 			<string>AEC1EED9-9BF1-4BB9-9A8D-56268487228A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://github.com/</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>E5024790-3856-43E5-A27F-61A20098945D</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -946,7 +993,7 @@
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"title":"Home","subtitle":"View my profile"},{"imagefile":"f35a3988f24873039cdc57eb278b28acea536bc7.png","title":"Search","arg":"search","subtitle":"Search GitHub"},{"imagefile":"94e245b01fd6ac4365c21fa483925df77636ea66.png","title":"User","arg":"user","subtitle":"Open user's homepage"},{"imagefile":"4e5025e909ca2744e1d1419c13d400e0f9e4c156.png","title":"Open Repo","arg":"repo","subtitle":"Open a specific repo"},{"imagefile":"d17a6ff95b2195240aad01de8961e7cfcd96305f.png","title":"FxiOS","arg":"fxios","subtitle":"Open the Firefox iOS repo"},{"imagefile":"1929788b7a0e101695cdfeff873a67983147efa5.png","title":"Mozilla mobile","arg":"mobile","subtitle":"Open the Mozilla-Mobile group"},{"title":"Notifications","arg":"notifications","subtitle":"See what's going on in your GitHub world"}]</string>
+				<string>[{"title":"GitHub","arg":"github"},{"title":"Home","arg":"home","subtitle":"View my profile"},{"imagefile":"f35a3988f24873039cdc57eb278b28acea536bc7.png","title":"Search","arg":"search","subtitle":"Search GitHub"},{"imagefile":"94e245b01fd6ac4365c21fa483925df77636ea66.png","title":"User","arg":"user","subtitle":"Open user's homepage"},{"imagefile":"4e5025e909ca2744e1d1419c13d400e0f9e4c156.png","title":"Open Repo","arg":"repo","subtitle":"Open a specific repo"},{"imagefile":"d17a6ff95b2195240aad01de8961e7cfcd96305f.png","title":"FxiOS","arg":"fxios","subtitle":"Open the Firefox iOS repo"},{"imagefile":"1929788b7a0e101695cdfeff873a67983147efa5.png","title":"Mozilla mobile","arg":"mobile","subtitle":"Open the Mozilla-Mobile group"},{"title":"Notifications","arg":"notifications","subtitle":"See what's going on in your GitHub world"}]</string>
 				<key>keyword</key>
 				<string>git</string>
 				<key>matchmode</key>
@@ -1767,6 +1814,13 @@ git push</string>
 			<real>650</real>
 			<key>ypos</key>
 			<real>300</real>
+		</dict>
+		<key>E5024790-3856-43E5-A27F-61A20098945D</key>
+		<dict>
+			<key>xpos</key>
+			<real>655</real>
+			<key>ypos</key>
+			<real>725</real>
 		</dict>
 		<key>F1107CAC-6645-40F5-8382-85C2EC9310CA</key>
 		<dict>

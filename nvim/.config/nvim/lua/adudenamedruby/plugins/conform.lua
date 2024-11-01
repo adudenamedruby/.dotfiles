@@ -42,9 +42,23 @@ return {
             swiftformat = {
                 command = "swiftformat",
                 args = {
+                    "--config",
+                    "~/.config/nvim/.swiftformat", -- update fallback path if needed
                     "--stdinpath",
                     "$FILENAME",
                 },
+                range_args = function(ctx)
+                    return {
+                        "--config",
+                        "~/.config/nvim/.swiftformat", -- update fallback path if needed
+                        "--linerange",
+                        ctx.range.start[1] .. "," .. ctx.range["end"][1],
+                    }
+                end,
+                stdin = true,
+                condition = function(ctx)
+                    return vim.fs.basename(ctx.filename) ~= "README.md"
+                end,
             },
         },
         formatters_by_ft = {

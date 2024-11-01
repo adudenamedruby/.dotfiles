@@ -47,6 +47,7 @@ local colorschemes = {
     "everforest",
     "retrobox",
     "duskfox",
+    "darkvoid",
 }
 local random_colorscheme = colorschemes[math.random(#colorschemes)]
 vim.cmd("colorscheme " .. random_colorscheme)
