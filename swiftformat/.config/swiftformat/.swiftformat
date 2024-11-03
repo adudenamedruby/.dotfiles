@@ -2,7 +2,7 @@
 --exclude firefox-ios/Client/Generated,firefox-ios/Sync/Generated,firefox-ios/Storage/Generated,focus-ios/Blockzilla/Generated,.venv,.build
 
 # options
---allman
+--allman false
 --self init-only # redundantSelf
 --importgrouping testable-bottom # sortedImports
 --commas always # trailingCommas
