@@ -1,6 +1,11 @@
 -- Options for NeoVim
 
--- Disable netrw because we'll be using neotree later
+-- replace lambda with symbol
+vim.cmd([[
+  syntax match LambdaWord "lambda" conceal cchar=λ
+]])
+
+-- Disable netrw because we'll be using other things
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -37,7 +42,7 @@ local options = {
     cmdheight = 2, -- more space in the neovim command line for displaying messages
     colorcolumn = "90",
     completeopt = { "menuone", "noselect" }, -- mostly just for cmp
-    conceallevel = 0, -- so that `` is visible in markdown files
+    conceallevel = 2, -- so that `` is visible in markdown files
     cursorline = true, -- highlight the current line
     expandtab = true, -- convert tabs to spaces
     fileencoding = "utf-8", -- the encoding written to a file

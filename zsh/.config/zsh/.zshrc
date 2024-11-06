@@ -92,6 +92,7 @@ source $(brew --prefix)/share/zsh-you-should-use/you-should-use.plugin.zsh
 
 # Ruby
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
 
 # custom scripts
 export PATH="$HOME/bin:$PATH"
