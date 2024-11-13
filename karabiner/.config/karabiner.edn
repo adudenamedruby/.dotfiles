@@ -77,8 +77,8 @@
          :rules [:arrows-layer;; Top row
                  [:j :left_arrow]
                  [:k :down_arrow]
-                 [:l :right_arrow]
-                 [:i :up_arrow]]}
+                 [:l :up_arrow]
+                 [:semicolon :right_arrow]]}
 
         {:des "Numbers layer" ;; only the right hand side
          :rules [:numbers-layer;; Top row
@@ -100,8 +100,8 @@
         {:des "editing layer" ;; only the right hand side
          :rules [:edit-layer;; Top row
                  [:u :!SOleft_arrow]
-                 [:i :!Sup_arrow]
-                 [:o :!Sdown_arrow]
+                 [:i :!Sdown_arrow]
+                 [:o :!Sup_arrow]
                  [:p :!SOright_arrow]
 
                 ;; Home row
@@ -112,8 +112,8 @@
 
                 ;; Bottom Row
                  [:m :!Oleft_arrow]
-                 [:comma :up_arrow]
-                 [:period :down_arrow]
+                 [:comma :down_arrow]
+                 [:period :up_arrow]
                  [:slash :!Oright_arrow]]}
 
         {:des "window management layer" ;; only the right hand side
