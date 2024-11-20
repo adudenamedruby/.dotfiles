@@ -118,23 +118,21 @@
 
         {:des "window management layer" ;; only the right hand side
          :rules [:window-layer;; Top row
-                 [:y :!Oy]
                  [:u :!O1]
-                 [:i :!O2]
+                 [:i ["StD" 1]]
                  [:o :!O3]
-                 [:p :!O4]
 
                 ;; Home row
-                 [:h :!O5]
                  [:j :!O6]
                  [:k :!O7]
-                 [:l :!O8]
-                 [:semicolon :!O9]
+                 [:l :!O2]
+                 [:semicolon :!O8]
 
                 ;; Bottom Row
-                 [:m ["StD" 1]]
-                 [:comma :!Ohyphen]
-                 [:period :!Oequal_sign]]}
+                 [:m :!O5]
+                 [:comma :!O4]
+                 [:period :!O0]
+                 [:slash :!O9]]}
 
         {:des "Dvorak symbols layer"
          :rules [:symbols-layer-dvorak
