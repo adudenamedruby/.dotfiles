@@ -27,6 +27,9 @@ end
 -- or just use <C-\><C-n> to exit terminal mode
 KMap("<Esc><Esc>", "<C-\\><C-n>", "exit terminal mode", "t")
 
+KMap("j", "gj")
+KMap("k", "gk")
+
 -- Buffer menu
 KMap("<leader><TAB>", "<cmd>:b#<CR>", "switch to last buffer")
 KMap("<leader>be", "<cmd>:enew<CR>", "open empty buffer")

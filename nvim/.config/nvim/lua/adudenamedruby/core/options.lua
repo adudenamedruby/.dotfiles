@@ -17,6 +17,7 @@ vim.g.have_nerd_font = true
 --  For more options, you can see `:help option-list`
 
 -- Sync clipboard between OS and Neovim.
+--  Schedule the setting after `UiEnter` because it can increase startup-time. Schedule the setting after `UiEnter` because it can increase startup-time. Schedule the setting after `UiEnter` because it can increase startup-time. Schedule the setting after `UiEnter` because it can increase startup-time. Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
@@ -77,7 +78,7 @@ local options = {
     timeoutlen = 500, -- time to wait for a mapped sequence to complete (in milliseconds)
     undofile = true, -- enable persistent undo
     updatetime = 250,
-    wrap = false, -- display lines as one long line
+    wrap = true, -- display lines as one long line
     writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
     -- guicursor = ""
 }
