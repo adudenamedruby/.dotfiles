@@ -43,10 +43,10 @@
  :simlayers {;:prog-right {:key :f}
              ;:prog-left {:key :j}
              :edit-layer {:key :z}
-             :arrows-layer {:key :v}
+             :arrows-layer {:key :c}
              ; :symbols-layer {:key :right_command}
              :numbers-layer {:key :x}
-             :window-layer {:key :c}}
+             :window-layer {:key :v}}
 
 ;; main contains multiple manipulators
  :main [;;{:des "..."                               ;; -> description
