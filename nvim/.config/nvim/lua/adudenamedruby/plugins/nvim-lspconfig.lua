@@ -192,6 +192,7 @@ return {
                         },
                     },
                 },
+                rust_analyzer = {},
             }
 
             vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

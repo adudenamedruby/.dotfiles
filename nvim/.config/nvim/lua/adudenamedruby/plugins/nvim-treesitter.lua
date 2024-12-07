@@ -43,6 +43,7 @@ return {
                     "markdown_inline",
                     "python",
                     "regex",
+                    "rust",
                     "query",
                     "swift",
                     "vim",
