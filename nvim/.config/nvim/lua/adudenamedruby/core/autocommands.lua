@@ -24,3 +24,18 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "<CR>", { noremap = true, silent = true })
     end,
 })
+
+-- Enable conceal for specific filetypes
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {
+        "swift",
+        "rust",
+        "clojure",
+        "lisp",
+    },
+    callback = function()
+        vim.cmd([[
+            syntax match Lambda "func" conceal cchar=λ
+        ]])
+    end,
+})

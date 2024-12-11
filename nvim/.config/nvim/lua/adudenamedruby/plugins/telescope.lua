@@ -46,7 +46,7 @@ return {
             theme = "ivy",
             layout_config = {
                 height = 20,
-                preview_width = 0.65,
+                preview_width = 0.6,
             },
             borderchars = {
                 "z",

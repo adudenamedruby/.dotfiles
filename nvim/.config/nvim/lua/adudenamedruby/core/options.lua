@@ -1,10 +1,4 @@
 -- Options for NeoVim
-
--- replace lambda with symbol
-vim.cmd([[
-  syntax match LambdaWord "lambda" conceal cchar=λ
-]])
-
 -- Disable netrw because we'll be using other things
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
