@@ -153,8 +153,6 @@ return {
             local servers = {
                 -- clangd = {},
                 -- gopls = {},
-                pyright = {},
-                -- rust_analyzer = {},
                 -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
                 --
                 -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -162,12 +160,11 @@ return {
                 --
                 -- But for many setups, the LSP (`ts_ls`) will work just fine
                 -- ts_ls = {},
-                html = { filetypes = { "html", "twig", "hbs" } },
                 clojure_lsp = {},
                 cssls = {},
                 dockerls = {},
+                html = { filetypes = { "html", "twig", "hbs" } },
                 jsonls = {},
-                yamlls = {},
                 lua_ls = {
                     -- cmd = {...},
                     -- filetypes = { ...},
@@ -192,7 +189,9 @@ return {
                         },
                     },
                 },
+                pyright = {},
                 rust_analyzer = {},
+                yamlls = {},
             }
 
             vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -225,6 +224,7 @@ return {
                 "prettier", -- ts/js formatter
                 "shfmt", -- Shell formatter
                 "stylua", -- Used to format Lua code
+                "rust-analyzer",
             })
             require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

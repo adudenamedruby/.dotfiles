@@ -42,6 +42,23 @@ return {
         -- Telescope picker. This is really useful to discover what Telescope can
         -- do as well as how to actually do it!
 
+        local pickerLayout = {
+            theme = "ivy",
+            layout_config = {
+                height = 20,
+                preview_width = 0.65,
+            },
+            borderchars = {
+                "z",
+                prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+                results = { " " },
+                -- results = { "a", "b", "c", "d", "e", "f", "g", "h" },
+                -- preview = { " " },
+                preview = { " ", "│", " ", "│", " ", " ", " ", " " },
+                -- preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+            },
+        }
+
         -- [[ Configure Telescope ]]
         -- See `:help telescope` and `:help telescope.setup()`
         require("telescope").setup({
@@ -49,21 +66,56 @@ return {
             --  All the info you're looking for is in `:help telescope.setup()`
             --
             defaults = {
-                --   mappings = {
-                --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-                --   },
+                -- layout_strategy = "ivy",
+                -- layout_config = {
+                --   height = 0.5,
+                --   -- other layout_config options
+                -- },
                 path_display = {
                     shorten = {
                         len = 1,
                         exclude = { -1, -2 },
                     },
                 },
+                -- mappings = {
+                --     i = { ["<c-enter>"] = "to_fuzzy_refine" },
+                -- },
             },
-            -- pickers = {}
+            pickers = {
+                find_files = pickerLayout,
+                git_files = pickerLayout,
+                grep_string = pickerLayout,
+                live_grep = pickerLayout,
+                buffers = pickerLayout,
+                old_files = pickerLayout,
+                commands = pickerLayout,
+                tags = pickerLayout,
+                command_history = pickerLayout,
+                search_history = pickerLayout,
+                help_tags = pickerLayout,
+                man_pages = pickerLayout,
+                marks = pickerLayout,
+                colorscheme = pickerLayout,
+                quickfix = pickerLayout,
+                quickfixhistory = pickerLayout,
+                loclist = pickerLayout,
+                jumplist = pickerLayout,
+                vim_options = pickerLayout,
+                keymaps = pickerLayout,
+                registers = pickerLayout,
+                lsp_references = pickerLayout,
+                lsp_workspace_symbols = pickerLayout,
+                diagnostics = pickerLayout,
+                lsp_definitions = pickerLayout,
+                lsp_type_definitions = pickerLayout,
+                lsp_implementations = pickerLayout,
+                treesitter = pickerLayout,
+            },
             extensions = {
                 ["ui-select"] = {
-                    require("telescope.themes").get_dropdown(),
+                    require("telescope.themes").get_ivy(),
                 },
+                fzf = {},
             },
         })
 
@@ -89,20 +141,10 @@ return {
         -- Slightly advanced example of overriding default behavior and theme
         KMap("<leader>ss", function()
             -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-            builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-                winblend = 10,
+            builtin.current_buffer_fuzzy_find(require("telescope.themes").get_ivy({
                 previewer = false,
             }))
-        end, "fuzzy search in current buffer")
-
-        -- Slightly advanced example of overriding default behavior and theme
-        KMap("<leader>/", function()
-            -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-            builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-                winblend = 10,
-                previewer = false,
-            }))
-        end, "fuzzy search in current buffer")
+        end, "telescope swoop")
 
         -- It's also possible to pass additional configuration options.
         --  See `:help telescope.builtin.live_grep()` for information about particular keys
@@ -114,8 +156,8 @@ return {
         end, "search in open files")
 
         -- Shortcut for searching your Neovim configuration files
-        KMap("<leader>Hn", function()
-            builtin.find_files({ cwd = vim.fn.stdpath("config") })
-        end, "search NeoVim files")
+        -- KMap("<leader>Hn", function()
+        --     builtin.find_files({ cwd = vim.fn.stdpath("config") })
+        -- end, "search NeoVim files")
     end,
 }

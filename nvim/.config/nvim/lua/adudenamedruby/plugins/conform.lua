@@ -67,13 +67,14 @@ return {
                 },
             },
             formatters_by_ft = {
-                sh = { "shfmt" },
                 html = { "prettier" },
                 json = { "prettier" },
-                yaml = { "prettier" },
-                markdown = { "prettier" },
                 lua = { "stylua" },
+                markdown = { "prettier" },
+                rust = { "rustfmt" },
+                sh = { "shfmt" },
                 swift = { "swiftformat" },
+                yaml = { "prettier" },
                 -- Conform can also run multiple formatters sequentially
                 -- python = { "isort", "black" },
                 --
