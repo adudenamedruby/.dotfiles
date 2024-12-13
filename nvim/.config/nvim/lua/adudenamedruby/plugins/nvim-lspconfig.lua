@@ -190,7 +190,7 @@ return {
                     },
                 },
                 pyright = {},
-                rust_analyzer = {},
+                -- rust_analyzer = {},
                 yamlls = {},
             }
 
@@ -224,7 +224,8 @@ return {
                 "prettier", -- ts/js formatter
                 "shfmt", -- Shell formatter
                 "stylua", -- Used to format Lua code
-                "rust-analyzer",
+                "codelldb",
+                -- "rust-analyzer",
             })
             require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
