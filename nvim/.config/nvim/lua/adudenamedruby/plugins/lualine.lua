@@ -87,7 +87,7 @@ return {
                     { xcodebuild_device, color = { fg = "#f9e2af", bg = "#161622" } },
                 },
                 lualine_y = { diff, "branch" },
-                lualine_z = { "location", "progress" },
+                lualine_z = { "filetype", "location", "progress" },
             },
             inactive_sections = {
                 lualine_a = {},

@@ -26,16 +26,16 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Enable conceal for specific filetypes
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = {
-        "swift",
-        "rust",
-        "clojure",
-        "lisp",
-    },
-    callback = function()
-        vim.cmd([[
-            syntax match Lambda "func" conceal cchar=λ
-        ]])
-    end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = {
+--         "swift",
+--         "rust",
+--         "clojure",
+--         "lisp",
+--     },
+--     callback = function()
+--         vim.cmd([[
+--             syntax match Lambda "func" conceal cchar=λ
+--         ]])
+--     end,
+-- })
