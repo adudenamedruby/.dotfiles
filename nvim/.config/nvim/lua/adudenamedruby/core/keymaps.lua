@@ -13,10 +13,16 @@ vim.g.maplocalleader = ","
 --   keys - The keys for the keybind
 --   func - What to do when pressing that keybind
 --   desc - A description to show up in which-key. Default value = ""
-KMap = function(keys, func, desc, mode)
+KMap = function(keys, func, desc, mode, expr)
     mode = mode or "n"
     desc = desc or ""
-    vim.keymap.set(mode, keys, func, { desc = desc, noremap = true, silent = true })
+    expr = expr or false
+
+    if expr then
+        vim.keymap.set(mode, keys, func, { expr = true, desc = desc, noremap = true, silent = true })
+    else
+        vim.keymap.set(mode, keys, func, { desc = desc, noremap = true, silent = true })
+    end
 end
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -139,3 +145,19 @@ KMap(">", ">gv", "", "v")
 
 -- I use <C-w> as my multiplexer key, so I want it do do nothing in nvim
 -- vim.keymap.del({ "n", "i", "v" }, "<C-w>")
+
+-- Move Lines
+KMap("<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", "Move Down")
+KMap("<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", "Move Up")
+KMap("<A-j>", "<esc><cmd>m .+1<cr>==gi", "Move Down", "i")
+KMap("<A-k>", "<esc><cmd>m .-2<cr>==gi", "Move Up", "i")
+KMap("<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", "Move Down", "v")
+KMap("<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", "Move Up", "v")
+
+-- Saner behaviour of n and N
+KMap("n", "'Nn'[v:searchforward].'zv'", "Next Search Result", "n", true)
+KMap("n", "'Nn'[v:searchforward]", "Next Search Result", "x", true)
+KMap("n", "'Nn'[v:searchforward]", "Next Search Result", "o", true)
+KMap("N", "'nN'[v:searchforward].'zv'", "Prev Search Result", "n", true)
+KMap("N", "'nN'[v:searchforward]", "Prev Search Result", "x", true)
+KMap("N", "'nN'[v:searchforward]", "Prev Search Result", "o", true)
