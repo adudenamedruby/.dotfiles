@@ -42,8 +42,7 @@
 ;; simlayer
  :simlayers {;:prog-right {:key :f}
              ;:prog-left {:key :j}
-             :edit-layer {:key :z}
-             :arrows-layer {:key :c}
+             :arrows-and-edit-layer {:key :c}
              ; :symbols-layer {:key :right_command}
              :numbers-layer {:key :x}
              :window-layer {:key :v}}
@@ -74,11 +73,23 @@
          :rules [[:##tab :!COSleft_control nil {:alone :tab}]]}
 
         {:des "Arrows layer" ;; only the right hand side
-         :rules [:arrows-layer;; Top row
+         :rules [:arrows-and-edit-layer;; Top row
+                 [:u :!SOleft_arrow]
+                 [:i :!Sdown_arrow]
+                 [:o :!Sup_arrow]
+                 [:p :!SOright_arrow]
+
+                 [:h :!Oleft_arrow]
                  [:j :left_arrow]
                  [:k :down_arrow]
                  [:l :up_arrow]
-                 [:semicolon :right_arrow]]}
+                 [:semicolon :right_arrow]
+                 [:quote :!Oright_arrow]
+
+                 [:m :!Odelete_or_backspace]
+                 [:comma :delete_or_backspace]
+                 [:period :delete_forward]
+                 [:slash :!Odelete_forward]]}
 
         {:des "Numbers layer" ;; only the right hand side
          :rules [:numbers-layer;; Top row
@@ -96,25 +107,6 @@
                  [:m :1]
                  [:comma :2]
                  [:period :3]]}
-
-        {:des "editing layer" ;; only the right hand side
-         :rules [:edit-layer;; Top row
-                 [:u :!SOleft_arrow]
-                 [:i :!Sdown_arrow]
-                 [:o :!Sup_arrow]
-                 [:p :!SOright_arrow]
-
-                ;; Home row
-                 [:j :!Odelete_or_backspace]
-                 [:k :delete_or_backspace]
-                 [:l :delete_forward]
-                 [:semicolon :!Odelete_forward]
-
-                ;; Bottom Row
-                 [:m :!Oleft_arrow]
-                 [:comma :down_arrow]
-                 [:period :up_arrow]
-                 [:slash :!Oright_arrow]]}
 
         {:des "window management layer" ;; only the right hand side
          :rules [:window-layer;; Top row
