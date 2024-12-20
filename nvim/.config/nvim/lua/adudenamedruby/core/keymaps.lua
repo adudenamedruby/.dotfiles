@@ -143,6 +143,10 @@ KMap("p", '"_dP', "", "v")
 KMap("<", "<gv", "", "v")
 KMap(">", ">gv", "", "v")
 
+-- Saner mark movement to save keystrokes
+KMap("'", "`", "")
+KMap("`", "'", "")
+
 -- I use <C-w> as my multiplexer key, so I want it do do nothing in nvim
 -- vim.keymap.del({ "n", "i", "v" }, "<C-w>")
 
@@ -155,9 +159,12 @@ KMap("<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", "Move Down"
 KMap("<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", "Move Up", "v")
 
 -- Saner behaviour of n and N
-KMap("n", "'Nn'[v:searchforward].'zv'", "Next Search Result", "n", true)
+KMap("n", "'Nn'[v:searchforward].'zv'", "Next Search Result", "n")
 KMap("n", "'Nn'[v:searchforward]", "Next Search Result", "x", true)
 KMap("n", "'Nn'[v:searchforward]", "Next Search Result", "o", true)
 KMap("N", "'nN'[v:searchforward].'zv'", "Prev Search Result", "n", true)
 KMap("N", "'nN'[v:searchforward]", "Prev Search Result", "x", true)
 KMap("N", "'nN'[v:searchforward]", "Prev Search Result", "o", true)
+
+-- treesitter
+KMap("<leader>uI", "<cmd>InspectTree<cr>", "Inspect Tree")

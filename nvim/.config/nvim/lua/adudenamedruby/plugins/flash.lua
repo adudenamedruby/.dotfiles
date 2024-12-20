@@ -21,7 +21,7 @@ return {
     KMap("<leader>us", function()
         require("flash").treesitter()
     end, "select with treesitter"),
-    KMap("R", function()
-        require("flash").remote()
-    end, "Remote Flash", "o"),
+    -- KMap("R", function()
+    --     require("flash").remote()
+    -- end, "Remote Flash", "o"),
 }
