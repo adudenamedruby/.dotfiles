@@ -1,5 +1,6 @@
 .DS_Store
 /zsh/.config/zsh/.zsh_history
+/zsh/.config/zsh/.zcompdump
 /zsh/.config/zsh/.zsh_sessions/
 /emacs/.emacs.d/*
 /tmux/.config/tmux/plugins/*
