@@ -3,10 +3,18 @@ return {
     --
     "saghen/blink.cmp",
     lazy = false, -- lazy loading handled internally
-    dependencies = "rafamadriz/friendly-snippets",
+    dependencies = {
+        "rafamadriz/friendly-snippets",
+        {
+            "saghen/blink.compat",
+            optional = true, -- make optional so it's only enabled if any extras need it
+            opts = {},
+            version = not vim.g.lazyvim_blink_main and "*",
+        },
+    },
 
     -- use a release tag to download pre-built binaries
-    version = "v0.*",
+    version = "*",
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -21,9 +29,17 @@ return {
             use_nvim_cmp_as_default = true,
             nerd_font_variant = "mono",
         },
-
         sources = {
             default = { "lsp", "path", "snippets", "buffer" },
+            -- providers = {
+            --     lsp = {
+            --         name = "lsp",
+            --         enabled = true,
+            --         module = "blink.cmp.sources.lsp",
+            --         kind = "LSP",
+            --         score_offset = 1000,
+            --     },
+            -- },
             -- optionally disable cmdline completions
             -- cmdline = {},
         },
@@ -56,7 +72,6 @@ return {
                 },
             },
         },
-
         signature = { enabled = true },
     },
     opts_extend = { "sources.default" },
