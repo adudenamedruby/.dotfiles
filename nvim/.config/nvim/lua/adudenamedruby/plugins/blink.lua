@@ -34,7 +34,6 @@ return {
 
             menu = {
                 min_width = 15,
-                max_width = 60,
                 max_height = 10,
                 border = "none",
             },
