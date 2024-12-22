@@ -3,6 +3,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         local lualine = require("lualine")
+        local harpoon_files = require("harpoon_files")
 
         local function xcodebuild_device()
             if vim.g.xcodebuild_platform == "macOS" then
@@ -82,6 +83,7 @@ return {
                     },
                 },
                 lualine_x = {
+                    { harpoon_files.lualine_component },
                     { "' ' .. vim.g.xcodebuild_last_status", color = { fg = "#a6e3a1" } },
                     -- { "'󰙨 ' .. vim.g.xcodebuild_test_plan", color = { fg = "#a6e3a1", bg = "#161622" } },
                     { xcodebuild_device, color = { fg = "#f9e2af", bg = "#161622" } },
