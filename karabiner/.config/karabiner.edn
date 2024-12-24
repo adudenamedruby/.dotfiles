@@ -72,6 +72,9 @@
         {:des "Tab -> Tab : HYPER"
          :rules [[:##tab :!COSleft_control nil {:alone :tab}]]}
 
+        {:des "C+t to enter"
+         :rules [[:!Tk :return_or_enter nil]]}
+
         {:des "Arrows layer" ;; only the right hand side
          :rules [:arrows-and-edit-layer;; Top row
                  [:u :!SOleft_arrow]

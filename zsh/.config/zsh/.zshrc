@@ -102,6 +102,10 @@ export PATH="$HOME/bin:$PATH"
 
 [ -f $HOME/.config/aliases/.aliases ] && source $HOME/.config/aliases/.aliases
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Unbind the original Ctrl+T
+bindkey -r '^T'
+# Bind Ctrl+F to fzf-file-widget
+bindkey '^F' fzf-file-widget
 
 # stop asking for my my password, git!
 /usr/bin/ssh-add --apple-use-keychain ~/.ssh/id_ed25519 2>/dev/null
