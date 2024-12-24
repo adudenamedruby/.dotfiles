@@ -29,6 +29,22 @@ end)
 --         ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
 --     },
 -- }
+function _G.CustomTabLine()
+    -- Get the current buffer name
+    local bufname = vim.fn.bufname(vim.fn.bufnr())
+    if bufname == "" then
+        return "[No Name]"
+    end
+
+    -- Get the project root (current working directory)
+    local project_root = vim.fn.getcwd()
+
+    -- Get the relative path of the file with respect to the project root
+    local filepath = vim.fn.fnamemodify(bufname, ":.")
+
+    -- Return the relative path, or full path if it cannot be made relative
+    return filepath ~= "" and filepath or vim.fn.fnamemodify(bufname, ":p")
+end
 
 local options = {
     backup = false, -- creates a backup file
@@ -69,6 +85,7 @@ local options = {
     swapfile = false, -- creates a swapfile
     tabstop = 4,
     termguicolors = true,
+    tabline = "%!v:lua.CustomTabLine()",
     timeoutlen = 500, -- time to wait for a mapped sequence to complete (in milliseconds)
     undofile = true, -- enable persistent undo
     updatetime = 250,
