@@ -1,0 +1,26 @@
+# Fonts
+font-family = FiraCode Nerd Font Mono
+font-size = 14
+
+# Look and Feel
+background-opacity = 0.9
+background-blur-radius = 20
+cursor-color = #FB00FC
+cursor-style = block
+
+window-padding-x = 15
+window-padding-y = 10
+macos-titlebar-style = hidden
+adjust-cursor-thickness        = 3
+link-url                       = true
+theme                          = ayu
+# window-vsync                   = true
+
+# Other
+clipboard-paste-protection     = true
+clipboard-trim-trailing-spaces = true
+# copy-on-select                 = true
+macos-auto-secure-input        = true
+macos-secure-input-indication  = true
+# macos-option-as-alt = true
+# quit-after-last-window-closed  = false
