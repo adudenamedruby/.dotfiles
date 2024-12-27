@@ -1,4 +1,7 @@
 return {
+    -- Vimade helps you maintain focus on the active part of the screen, especially when
+    -- working with many open windows. It let's you dim, fade, tint, animate,
+    -- and customize colors in your windows and buffers.
     "tadaa/vimade",
     -- default opts (you can partially set these or configure them however you like)
     opts = {

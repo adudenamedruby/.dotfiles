@@ -1,5 +1,5 @@
--- quickfix improved workflows
 return {
+    -- quickfix improved workflows
     "stevearc/quicker.nvim",
     event = "FileType qf",
     config = function()
