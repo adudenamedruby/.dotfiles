@@ -1,11 +1,6 @@
--- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
--- is not what someone will guess without a bit more experience.
---
---close NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
--- or just use <C-\><C-n> to exit terminal mode
-KMap("<Esc><Esc>", "<C-\\><C-n>", "exit terminal mode", "t")
+-- General keymaps
 
+-- Deal with visual lines more sanely
 KMap("j", "gj")
 KMap("k", "gk")
 
@@ -113,13 +108,6 @@ KMap("p", '"_dP', "", "v")
 KMap("<", "<gv", "", "v")
 KMap(">", ">gv", "", "v")
 
--- Saner mark movement to save keystrokes
-KMap("'", "`", "")
-KMap("`", "'", "")
-
--- I use <C-w> as my multiplexer key, so I want it do do nothing in nvim
--- vim.keymap.del({ "n", "i", "v" }, "<C-w>")
-
 -- Move Lines
 KMap("<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", "Move Down")
 KMap("<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", "Move Up")
@@ -127,6 +115,10 @@ KMap("<A-j>", "<esc><cmd>m .+1<cr>==gi", "Move Down", "i")
 KMap("<A-k>", "<esc><cmd>m .-2<cr>==gi", "Move Up", "i")
 KMap("<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", "Move Down", "v")
 KMap("<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", "Move Up", "v")
+
+-- Saner mark movement to save keystrokes
+KMap("'", "`", "")
+KMap("`", "'", "")
 
 -- Saner behaviour of n and N
 KMap("n", "'Nn'[v:searchforward].'zzzv'", "Next Search Result", "n", true)

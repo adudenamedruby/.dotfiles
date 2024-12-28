@@ -1,4 +1,4 @@
-require("adudenamedruby.core.autocommands")
+require("adudenamedruby.core.startupSettings")
 require("adudenamedruby.core.options")
 require("adudenamedruby.lazy")
 require("adudenamedruby.core.utils")

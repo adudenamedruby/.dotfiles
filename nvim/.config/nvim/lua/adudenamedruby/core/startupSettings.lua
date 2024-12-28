@@ -1,3 +1,30 @@
+-- Temporary while I fix keymappings
+KMap = function(keys, func, desc, mode, expr)
+    mode = mode or "n"
+    desc = desc or ""
+    expr = expr or false
+
+    if expr then
+        vim.keymap.set(mode, keys, func, { expr = true, desc = desc, noremap = true, silent = true })
+    else
+        vim.keymap.set(mode, keys, func, { desc = desc, noremap = true, silent = true })
+    end
+end
+
+-- Global Settings
+
+-- Set <space> as the leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+
+-- Disable netrw because we'll be using other file browsers
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+vim.g.have_nerd_font = true
+
+-- QoL Autocommands
+
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
@@ -6,13 +33,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
     callback = function()
         vim.highlight.on_yank()
-    end,
-})
-
-vim.api.nvim_create_autocmd("BufLeave", {
-    pattern = "*NeogitStatus*",
-    callback = function()
-        vim.cmd("checktime")
     end,
 })
 

@@ -1,32 +1,4 @@
-KMap = function(keys, func, desc, mode, expr)
-    mode = mode or "n"
-    desc = desc or ""
-    expr = expr or false
-
-    if expr then
-        vim.keymap.set(mode, keys, func, { expr = true, desc = desc, noremap = true, silent = true })
-    else
-        vim.keymap.set(mode, keys, func, { desc = desc, noremap = true, silent = true })
-    end
-end
-
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
-vim.g.mapleader = " "
-vim.g.maplocalleader = ","
-
--- Options for NeoVim
--- Disable netrw because we'll be using other things
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
--- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = true
-
--- See `:help vim.opt`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
+-- Options
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time. Schedule the setting after `UiEnter` because it can increase startup-time. Schedule the setting after `UiEnter` because it can increase startup-time. Schedule the setting after `UiEnter` because it can increase startup-time. Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -47,6 +19,8 @@ end)
 --         ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
 --     },
 -- }
+
+-- Customize the tabline display to show the full file path
 function _G.CustomTabLine()
     -- Get the current buffer name
     local bufname = vim.fn.bufname(vim.fn.bufnr())
