@@ -1,3 +1,21 @@
+KMap = function(keys, func, desc, mode, expr)
+    mode = mode or "n"
+    desc = desc or ""
+    expr = expr or false
+
+    if expr then
+        vim.keymap.set(mode, keys, func, { expr = true, desc = desc, noremap = true, silent = true })
+    else
+        vim.keymap.set(mode, keys, func, { desc = desc, noremap = true, silent = true })
+    end
+end
+
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+
 -- Options for NeoVim
 -- Disable netrw because we'll be using other things
 vim.g.loaded_netrw = 1

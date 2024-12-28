@@ -1,2 +1,5 @@
-require("adudenamedruby.core")
+require("adudenamedruby.core.autocommands")
+require("adudenamedruby.core.options")
 require("adudenamedruby.lazy")
+require("adudenamedruby.core.utils")
+require("adudenamedruby.core.keymaps")

@@ -1,30 +1,3 @@
--- Keymaps
---
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
-vim.g.mapleader = " "
-vim.g.maplocalleader = ","
-
--- Function: KMap
--- Description: Binds a specified keymap to an action with noremap and silent mode
--- Parameters:
---   mode - The modes in which you want the keybind to appear in. Default value = "n"
---   keys - The keys for the keybind
---   func - What to do when pressing that keybind
---   desc - A description to show up in which-key. Default value = ""
-KMap = function(keys, func, desc, mode, expr)
-    mode = mode or "n"
-    desc = desc or ""
-    expr = expr or false
-
-    if expr then
-        vim.keymap.set(mode, keys, func, { expr = true, desc = desc, noremap = true, silent = true })
-    else
-        vim.keymap.set(mode, keys, func, { desc = desc, noremap = true, silent = true })
-    end
-end
-
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -37,6 +10,7 @@ KMap("j", "gj")
 KMap("k", "gk")
 
 -- Buffer menu
+WKMapGroup("b", "buffers")
 KMap("<leader><TAB>", "<cmd>:b#<CR>", "switch to last buffer")
 KMap("<leader>be", "<cmd>:enew<CR>", "open empty buffer")
 KMap("<leader>bd", "<cmd>:bd<CR>", "delete buffer")
@@ -131,10 +105,6 @@ KMap("<leader>wc", ":lua ToggleSplits()<CR>", "change orientation")
 KMap("<C-d>", "<C-d>zz")
 KMap("<C-u>", "<C-u>zz")
 
--- search & center
-KMap("n", "nzzzv")
-KMap("N", "Nzzzv")
-
 -- don't yank x or visual paste
 KMap("x", '"_x')
 KMap("p", '"_dP', "", "v")
@@ -159,12 +129,23 @@ KMap("<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", "Move Down"
 KMap("<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", "Move Up", "v")
 
 -- Saner behaviour of n and N
-KMap("n", "'Nn'[v:searchforward].'zv'", "Next Search Result", "n")
+KMap("n", "'Nn'[v:searchforward].'zzzv'", "Next Search Result", "n", true)
 KMap("n", "'Nn'[v:searchforward]", "Next Search Result", "x", true)
 KMap("n", "'Nn'[v:searchforward]", "Next Search Result", "o", true)
-KMap("N", "'nN'[v:searchforward].'zv'", "Prev Search Result", "n", true)
+KMap("N", "'nN'[v:searchforward].'zzzv'", "Prev Search Result", "n", true)
 KMap("N", "'nN'[v:searchforward]", "Prev Search Result", "x", true)
 KMap("N", "'nN'[v:searchforward]", "Prev Search Result", "o", true)
 
 -- treesitter
 KMap("<leader>uI", "<cmd>InspectTree<cr>", "Inspect Tree")
+
+-- flash
+-- KMap("<leader>j", function()
+--     require("flash").jump()
+-- end, "jump", { "n", "x", "o" }),
+-- KMap("<leader>us", function()
+--     require("flash").treesitter()
+-- end, "select with treesitter"),
+-- wk.add({
+--     {"<leader>j", function() require("flash").jump() end, desc = "jump", { "n", "x", "o" })}
+-- })

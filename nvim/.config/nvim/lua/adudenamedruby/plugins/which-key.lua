@@ -43,7 +43,7 @@ return {
 
             -- Document existing key chains
             spec = {
-                { "<leader>b", group = "buffer" },
+                -- { "<leader>b", group = "buffer" },
                 { "<leader>c", group = "code" },
                 { "<leader>d", group = "debug" },
                 { "<leader>e", group = "errors" },
