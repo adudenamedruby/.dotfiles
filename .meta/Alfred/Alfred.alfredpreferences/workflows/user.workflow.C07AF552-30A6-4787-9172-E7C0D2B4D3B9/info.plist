@@ -707,7 +707,7 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://github.com/adudenamedruby?tab=repositories</string>
+				<string>https://github.com/adudenamedruby?tab=repositories&amp;q={query}&amp;type=&amp;language=&amp;sort=</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
