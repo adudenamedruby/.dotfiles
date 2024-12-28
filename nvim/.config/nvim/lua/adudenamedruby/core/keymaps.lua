@@ -1,9 +1,5 @@
 -- General keymaps
 
--- Deal with visual lines more sanely
-KMap("j", "gj")
-KMap("k", "gk")
-
 -- Buffer menu
 WKMapGroup("b", "buffers")
 KMap("<leader><TAB>", "<cmd>:b#<CR>", "switch to last buffer")
@@ -15,6 +11,12 @@ KMap("<leader>bn", "<cmd>:bn<CR>", "next buffer")
 KMap("<leader>bp", "<cmd>:bp<CR>", "previous buffer")
 KMap("<leader>br", ":e<CR>:bd#<CR>:e<CR>", "reload buffer with file")
 
+-- Debug menu
+KMap("<leader>dp", vim.diagnostic.goto_prev, "go to previous diagnostic")
+KMap("<leader>dn", vim.diagnostic.goto_next, "go to next diagnostic")
+KMap("<leader>dl", vim.diagnostic.open_float, "show line diagnostics")
+KMap("<leader>dq", vim.diagnostic.setloclist, "open diagnostic quickfix list")
+
 -- Error menu
 KMap("<leader>en", "<cmd>silent cc | silent cn<cr>zz", "jump to next issue")
 KMap("<leader>ep", "<cmd>silent cc | silent cp<cr>zz", "jump to previous issue")
@@ -22,22 +24,41 @@ KMap("<leader>ep", "<cmd>silent cc | silent cp<cr>zz", "jump to previous issue")
 -- Files menu
 KMap("<leader>fs", "<cmd>w<CR>", "save file")
 
+-- flash
+local flash = require("flash")
+
+KMap("<leader>j", function()
+    flash.jump()
+end, "jump", { "n", "x", "o" })
+KMap("<leader>us", function()
+    flash.treesitter()
+end, "select with treesitter")
+
 -- Git menu
 KMap("<leader>gb", "<cmd>Gitsigns blame<CR>", "git blame")
 KMap("<leader>gl", "<cmd>Gitsigns blame_line<CR>", "git blame line")
 
--- Debug menu
-KMap("<leader>dp", vim.diagnostic.goto_prev, "go to previous diagnostic")
-KMap("<leader>dn", vim.diagnostic.goto_next, "go to next diagnostic")
-KMap("<leader>dl", vim.diagnostic.open_float, "show line diagnostics")
-KMap("<leader>dq", vim.diagnostic.setloclist, "open diagnostic quickfix list")
-
 -- Help menu
 KMap("<leader>Hm", ":redir @a<CR>:messages<CR>:redir END<CR>:new<CR>:put a<CR>", "messages buffer")
-
 KMap("<leader>HM", "<cmd>Mason<CR>", "open Mason")
 
--- quickfix menu
+-- Indent Mode
+KMap("<", "<gv", "", "v")
+KMap(">", ">gv", "", "v")
+
+-- Marks: Saner mark movement to save keystrokes
+KMap("'", "`", "")
+KMap("`", "'", "")
+
+-- Move Lines
+KMap("<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", "Move Down")
+KMap("<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", "Move Up")
+KMap("<A-j>", "<esc><cmd>m .+1<cr>==gi", "Move Down", "i")
+KMap("<A-k>", "<esc><cmd>m .-2<cr>==gi", "Move Up", "i")
+KMap("<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", "Move Down", "v")
+KMap("<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", "Move Up", "v")
+
+-- Quickfix Menu
 KMap("<leader>xn", "<cmd>cnext<CR>zz", "quickfix list next")
 KMap("<leader>xp", "<cmd>cprev<CR>zz", "quickfix list previous")
 KMap("<leader>xN", "<cmd>lnext<CR>zz", "loclist next")
@@ -50,28 +71,46 @@ KMap("<leader>xC", "<cmd>lclose<CR>", "close loclist")
 -- Quit menu
 KMap("<leader>qq", "<cmd>qa!<CR>", "quit nVim")
 
--- Search menu
--- Clear highlights on search when pressing <Esc> in normal mode
---  See `:help hlsearch`
-KMap("<leader>sc", "<cmd>nohlsearch<CR>", "clear search highlights")
+-- Quality of Life bindings
+-- vertical scroll & center
+KMap("<C-d>", "<C-d>zz")
+KMap("<C-u>", "<C-u>zz")
+
+-- treesitter
+KMap("<leader>uI", "<cmd>InspectTree<cr>", "Inspect Tree")
 
 -- Toggle menu
 KMap("<leader>tw", "<cmd>set wrap!<CR>", "toggle line wrapping")
 
--- Windows menu
---  See `:help wincmd` for a list of all window commands
+-- Search: behaviour of n and N
+KMap("n", "'Nn'[v:searchforward].'zzzv'", "Next Search Result", "n", true)
+KMap("n", "'Nn'[v:searchforward]", "Next Search Result", "x", true)
+KMap("n", "'Nn'[v:searchforward]", "Next Search Result", "o", true)
+KMap("N", "'nN'[v:searchforward].'zzzv'", "Prev Search Result", "n", true)
+KMap("N", "'nN'[v:searchforward]", "Prev Search Result", "x", true)
+KMap("N", "'nN'[v:searchforward]", "Prev Search Result", "o", true)
+
+-- Search menu
+-- Clear highlights on search when pressing <Esc> in normal mode
+KMap("<leader>sc", "<cmd>nohlsearch<CR>", "clear search highlights")
+
+-- Visual Line movement
+KMap("j", "gj")
+KMap("k", "gk")
+
+-- Window movement
 KMap("c-h", "<cmd>wincmd h<CR>", "move focus to the left window")
 KMap("c-l", "<cmd>wincmd l<CR>", "move focus to the right window")
 KMap("c-j", "<cmd>wincmd j<CR>", "move focus to the lower window")
 KMap("c-k", "<cmd>wincmd k<CR>", "move focus to the upper window")
 
+-- Windows menu
 KMap("<leader>ws", "<cmd>:split<CR>", "horizontal split")
 KMap("<leader>wv", "<cmd>:vsplit<CR>", "vertical split")
-
 KMap("<leader>wd", "<cmd>:q<CR>", "delete current window")
 KMap("<leader>wo", "<cmd>:only<CR>", "close all windows except current")
 
--- Resize with arrows
+-- Resize windowswith arrows
 KMap("<C-Up>", ":resize +2<CR>")
 KMap("<C-Down>", ":resize -2<CR>")
 KMap("<C-Left>", ":vertical resize +2<CR>")
@@ -92,52 +131,9 @@ function ToggleSplits()
     end
 end
 
--- Bind the function to a key, e.g., <leader>t
 KMap("<leader>wc", ":lua ToggleSplits()<CR>", "change orientation")
 
--- QoL keymaps
--- vertical scroll & center
-KMap("<C-d>", "<C-d>zz")
-KMap("<C-u>", "<C-u>zz")
-
+-- Yanking
 -- don't yank x or visual paste
 KMap("x", '"_x')
 KMap("p", '"_dP', "", "v")
-
--- Stay in indent mode
-KMap("<", "<gv", "", "v")
-KMap(">", ">gv", "", "v")
-
--- Move Lines
-KMap("<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", "Move Down")
-KMap("<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", "Move Up")
-KMap("<A-j>", "<esc><cmd>m .+1<cr>==gi", "Move Down", "i")
-KMap("<A-k>", "<esc><cmd>m .-2<cr>==gi", "Move Up", "i")
-KMap("<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", "Move Down", "v")
-KMap("<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", "Move Up", "v")
-
--- Saner mark movement to save keystrokes
-KMap("'", "`", "")
-KMap("`", "'", "")
-
--- Saner behaviour of n and N
-KMap("n", "'Nn'[v:searchforward].'zzzv'", "Next Search Result", "n", true)
-KMap("n", "'Nn'[v:searchforward]", "Next Search Result", "x", true)
-KMap("n", "'Nn'[v:searchforward]", "Next Search Result", "o", true)
-KMap("N", "'nN'[v:searchforward].'zzzv'", "Prev Search Result", "n", true)
-KMap("N", "'nN'[v:searchforward]", "Prev Search Result", "x", true)
-KMap("N", "'nN'[v:searchforward]", "Prev Search Result", "o", true)
-
--- treesitter
-KMap("<leader>uI", "<cmd>InspectTree<cr>", "Inspect Tree")
-
--- flash
--- KMap("<leader>j", function()
---     require("flash").jump()
--- end, "jump", { "n", "x", "o" }),
--- KMap("<leader>us", function()
---     require("flash").treesitter()
--- end, "select with treesitter"),
--- wk.add({
---     {"<leader>j", function() require("flash").jump() end, desc = "jump", { "n", "x", "o" })}
--- })

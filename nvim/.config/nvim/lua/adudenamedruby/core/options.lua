@@ -28,9 +28,6 @@ function _G.CustomTabLine()
         return "[No Name]"
     end
 
-    -- Get the project root (current working directory)
-    local project_root = vim.fn.getcwd()
-
     -- Get the relative path of the file with respect to the project root
     local filepath = vim.fn.fnamemodify(bufname, ":.")
 

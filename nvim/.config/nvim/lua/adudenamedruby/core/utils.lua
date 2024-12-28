@@ -1,3 +1,5 @@
+local wk = require("which-key")
+
 -- Function: KMap
 -- Description: Binds a specified keymap to an action with noremap and silent mode
 -- Parameters:
@@ -16,8 +18,6 @@ KMap2 = function(keys, func, desc, mode, expr)
         vim.keymap.set(mode, keys, func, { desc = desc, noremap = true, silent = true })
     end
 end
-
-local wk = require("which-key")
 
 WKmap = function(lhs, rhs, desc, opts)
     opts = opts or {}
