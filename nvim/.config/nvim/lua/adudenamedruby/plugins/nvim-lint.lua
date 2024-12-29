@@ -16,9 +16,5 @@ return {
                 require("lint").try_lint()
             end,
         })
-
-        vim.keymap.set("n", "<leader>ul", function()
-            require("lint").try_lint()
-        end, { desc = "lint file" })
     end,
 }
