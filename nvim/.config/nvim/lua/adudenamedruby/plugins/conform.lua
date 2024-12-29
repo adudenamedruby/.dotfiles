@@ -6,20 +6,6 @@ return {
     "stevearc/conform.nvim",
     event = { "BufWritePre", "BufNewFile" },
     cmd = { "ConformInfo" },
-    keys = {
-        {
-            "<leader>uf",
-            function()
-                require("conform").format({
-                    async = true,
-                    lsp_fallback = true,
-                    timeout_ms = 500,
-                })
-            end,
-            mode = "n",
-            desc = "format buffer",
-        },
-    },
     config = function()
         require("conform").setup({
             notify_on_error = false,

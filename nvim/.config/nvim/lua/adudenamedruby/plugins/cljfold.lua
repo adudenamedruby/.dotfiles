@@ -1,3 +1,0 @@
-return {
-    -- "gberenfield/cljfold.vim",
-}

@@ -19,27 +19,16 @@ KMap2 = function(keys, func, desc, mode, expr)
     end
 end
 
-WKmap = function(lhs, rhs, desc, opts)
-    opts = opts or {}
-    local spec = {
-        {
-            "<leader>" .. lhs,
-            rhs,
-            desc = desc,
-            mode = opts.mode or "n",
-        },
-    }
-    wk.add(spec, opts)
+WKMap = function(keys, func, desc, mode, expr)
+    KMap("<leader>" .. keys, func, desc, mode, expr)
 end
 
-WKMapGroup = function(lhs, group_desc, opts)
-    opts = opts or {}
+WKMapGroup = function(lhs, group_desc)
     local spec = {
         {
             "<leader>" .. lhs,
             group = group_desc,
-            mode = opts.mode or "n",
         },
     }
-    wk.add(spec, opts)
+    wk.add(spec)
 end

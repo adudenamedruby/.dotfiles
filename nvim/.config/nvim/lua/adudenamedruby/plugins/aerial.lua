@@ -6,7 +6,6 @@ return {
     },
     config = function()
         require("aerial").setup({
-            KMap("<leader>ta", "<cmd>AerialToggle!<CR>", "aerial"),
             -- Priority list of preferred backends for aerial.
             -- This can be a filetype map (see :help aerial-filetype-map)
             backends = { "treesitter", "lsp", "markdown", "asciidoc", "man" },

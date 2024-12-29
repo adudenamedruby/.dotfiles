@@ -1,6 +1,4 @@
 return {
-    -- TODO: if turning this on, you need to enable capabilites in lsp
-    --
     "saghen/blink.cmp",
     lazy = false, -- lazy loading handled internally
     dependencies = {

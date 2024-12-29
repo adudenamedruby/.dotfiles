@@ -40,25 +40,6 @@ return {
                     F12 = "<F12>",
                 },
             },
-
-            -- Document existing key chains
-            spec = {
-                -- { "<leader>b", group = "buffer" },
-                { "<leader>c", group = "code" },
-                { "<leader>d", group = "debug" },
-                { "<leader>e", group = "errors" },
-                { "<leader>f", group = "files" },
-                { "<leader>g", group = "git" },
-                { "<leader>h", group = "harpoon" },
-                { "<leader>H", group = "Help" },
-                { "<leader>l", group = "LSP" },
-                { "<leader>x", group = "quickfix" },
-                { "<leader>q", group = "quit" },
-                { "<leader>s", group = "search" },
-                { "<leader>t", group = "toggle" },
-                { "<leader>u", group = "utilities" },
-                { "<leader>w", group = "windows" },
-            },
         },
     },
 }
