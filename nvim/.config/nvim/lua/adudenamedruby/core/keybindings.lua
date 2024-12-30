@@ -56,7 +56,7 @@ WKMap("gb", "<cmd>Gitsigns blame<CR>", "git blame")
 WKMap("gl", "<cmd>Gitsigns blame_line<CR>", "git blame line")
 WKMap("gd", "<cmd>DiffviewOpen<CR>", "diffView open")
 WKMap("gD", "<cmd>DiffviewClose<CR>", "diffView close")
-WKMap("gh", "<cmd>DiffviewFileHistory<CR>", "diffView fileHistory")
+WKMap("gh", "<cmd>DiffviewFileHistory %<CR>", "diffView fileHistory")
 
 WKMap("gs", function()
     telescope.extensions.git_worktree.git_worktrees()
