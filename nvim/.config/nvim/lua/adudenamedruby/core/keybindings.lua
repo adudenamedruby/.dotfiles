@@ -35,12 +35,6 @@ WKMap("dn", vim.diagnostic.goto_next, "go to next diagnostic")
 WKMap("dl", vim.diagnostic.open_float, "show line diagnostics")
 WKMap("dq", vim.diagnostic.setloclist, "open diagnostic quickfix list")
 
--- Error menu
-WKMapGroup("e", "errors")
-WKMap("en", "<cmd>silent cc | silent cn<cr>zz", "jump to next issue")
-WKMap("ep", "<cmd>silent cc | silent cp<cr>zz", "jump to previous issue")
-WKMap("et", "<cmd>Trouble quickfix toggle<cr>", "open a quickfix")
-
 -- Files menu
 WKMapGroup("f", "files")
 WKMap("ff", builtin.find_files, "find file")
