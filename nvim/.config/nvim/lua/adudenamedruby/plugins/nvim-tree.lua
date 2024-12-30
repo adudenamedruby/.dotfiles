@@ -58,8 +58,5 @@ return {
                 update_root = false,
             },
         })
-
-        -- set keymaps
-        KMap("<leader>ft", "<cmd>NvimTreeToggle<CR>", "file tree")
     end,
 }

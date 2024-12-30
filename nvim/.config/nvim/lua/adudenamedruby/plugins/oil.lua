@@ -206,6 +206,5 @@ return {
                 border = "rounded",
             },
         })
-        KMap("<leader>fo", "<cmd>Oil --float<CR>", "oil")
     end,
 }

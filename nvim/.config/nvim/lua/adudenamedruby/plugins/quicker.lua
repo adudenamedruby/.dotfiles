@@ -3,14 +3,6 @@ return {
     "stevearc/quicker.nvim",
     event = "FileType qf",
     config = function()
-        KMap("<leader>tq", function()
-            require("quicker").toggle()
-        end, "toggle quickfix")
-
-        KMap("<leader>tl", function()
-            require("quicker").toggle({ loclist = true })
-        end, "toggle loclist")
-
         require("quicker").setup({
             keys = {
                 {

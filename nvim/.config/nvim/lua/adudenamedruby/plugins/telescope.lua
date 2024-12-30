@@ -124,40 +124,5 @@ return {
         pcall(require("telescope").load_extension, "ui-select")
 
         -- See `:help telescope.builtin`
-        local builtin = require("telescope.builtin")
-        KMap("<leader>Hs", builtin.help_tags, "search help")
-        KMap("<leader>sk", builtin.keymaps, "search keymaps")
-        KMap("<leader>ff", builtin.find_files, "find file")
-        KMap("<leader>sb", builtin.builtin, "search Telescope builtin")
-        KMap("<leader>sw", builtin.grep_string, "search current word")
-        KMap("<leader>sg", builtin.live_grep, "grep search")
-        KMap("<leader>sd", builtin.diagnostics, "diagnostics search")
-        KMap("<leader>sR", builtin.registers, "search registers")
-        KMap("<leader>sr", builtin.oldfiles, "search recent files")
-        KMap("<leader>tt", builtin.colorscheme, "themes")
-
-        KMap("<leader>bb", builtin.buffers, "list all buffers")
-
-        -- Slightly advanced example of overriding default behavior and theme
-        KMap("<leader>ss", function()
-            -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-            builtin.current_buffer_fuzzy_find(require("telescope.themes").get_ivy({
-                previewer = false,
-            }))
-        end, "telescope swoop")
-
-        -- It's also possible to pass additional configuration options.
-        --  See `:help telescope.builtin.live_grep()` for information about particular keys
-        KMap("<leader>s/", function()
-            builtin.live_grep({
-                grep_open_files = true,
-                prompt_title = "Live Grep in Open Files",
-            })
-        end, "search in open files")
-
-        -- Shortcut for searching your Neovim configuration files
-        -- KMap("<leader>Hn", function()
-        --     builtin.find_files({ cwd = vim.fn.stdpath("config") })
-        -- end, "search NeoVim files")
     end,
 }

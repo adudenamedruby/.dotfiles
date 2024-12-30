@@ -7,5 +7,4 @@ return {
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {},
-    KMap("<leader>tm", "<cmd>RenderMarkdown toggle<CR>", "toggle RenderMarkdown"),
 }

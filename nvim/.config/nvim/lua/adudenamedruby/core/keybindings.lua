@@ -1,23 +1,22 @@
 -- Keymappings
 
--- Aerial
-WKMap("ta", "<cmd>AerialToggle!<CR>", "aerial")
+-- local variables
+local builtin = require("telescope.builtin")
+local conform = require("conform")
+local duck = require("duck")
+local flash = require("flash")
+local harpoon = require("harpoon")
+local lint = require("lint")
+local telescope = require("telescope")
+local quicker = require("quicker")
 
 -- Code menu
 WKMapGroup("c", "code")
 
--- Conform
-WKMap("uf", function()
-    require("conform").format({
-        async = true,
-        lsp_fallback = true,
-        timeout_ms = 500,
-    })
-end, "format buffer")
-
 -- Buffer menu
 WKMapGroup("b", "buffers")
 WKMap("<TAB>", "<cmd>:b#<CR>", "switch to last buffer")
+WKMap("bb", builtin.buffers, "list all buffers")
 WKMap("be", "<cmd>:enew<CR>", "open empty buffer")
 WKMap("bd", "<cmd>:bd<CR>", "delete buffer")
 WKMap("bD", "<cmd>:bd!<CR>", "force delete buffer")
@@ -25,6 +24,8 @@ WKMap("bo", "<cmd>:bd!# | e#<CR>", "force delete buffer")
 WKMap("bn", "<cmd>:bn<CR>", "next buffer")
 WKMap("bp", "<cmd>:bp<CR>", "previous buffer")
 WKMap("br", ":e<CR>:bd#<CR>:e<CR>", "reload buffer with file")
+WKMap("bs", "<cmd>ScratchVSplit<cr>", "scratch buffer (vertical)")
+WKMap("bS", "<cmd>ScratchHSplit<cr>", "scratch buffer (horizontal)")
 
 -- Debug menu
 WKMapGroup("d", "debug")
@@ -38,14 +39,16 @@ WKMap("dq", vim.diagnostic.setloclist, "open diagnostic quickfix list")
 WKMapGroup("e", "errors")
 WKMap("en", "<cmd>silent cc | silent cn<cr>zz", "jump to next issue")
 WKMap("ep", "<cmd>silent cc | silent cp<cr>zz", "jump to previous issue")
+WKMap("et", "<cmd>Trouble quickfix toggle<cr>", "open a quickfix")
 
 -- Files menu
 WKMapGroup("f", "files")
+WKMap("ff", builtin.find_files, "find file")
 WKMap("fs", "<cmd>w<CR>", "save file")
+WKMap("ft", "<cmd>NvimTreeToggle<CR>", "file tree")
+WKMap("fo", "<cmd>Oil --float<CR>", "oil")
 
 -- flash
-local flash = require("flash")
-
 WKMap("j", function()
     flash.jump()
 end, "jump", { "n", "x", "o" })
@@ -62,15 +65,13 @@ WKMap("gD", "<cmd>DiffviewClose<CR>", "diffView close")
 WKMap("gh", "<cmd>DiffviewFileHistory<CR>", "diffView fileHistory")
 
 WKMap("gs", function()
-    require("telescope").extensions.git_worktree.git_worktrees()
+    telescope.extensions.git_worktree.git_worktrees()
 end, "switch worktree")
 WKMap("gc", function()
-    require("telescope").extensions.git_worktree.create_git_worktree()
+    telescope.extensions.git_worktree.create_git_worktree()
 end, "create worktree")
 
 -- Harpoon menu
-local harpoon = require("harpoon")
-
 WKMapGroup("h", "harpoon")
 WKMap("ha", "", "add to harpoon")
 WKMap("haa", function()
@@ -131,6 +132,9 @@ end, "go to s")
 WKMapGroup("H", "Help")
 WKMap("Hm", ":redir @a<CR>:messages<CR>:redir END<CR>:new<CR>:put a<CR>", "messages buffer")
 WKMap("HM", "<cmd>Mason<CR>", "open Mason")
+WKMap("Hk", builtin.keymaps, "search keymaps")
+WKMap("Hb", builtin.builtin, "search Telescope builtin")
+WKMap("Hs", builtin.help_tags, "search help")
 
 -- Indent Mode
 KMap("<", "<gv", "", "v")
@@ -166,7 +170,7 @@ WKMap("xC", "<cmd>lclose<CR>", "close loclist")
 
 -- Quit menu
 WKMapGroup("q", "quit")
-KMap("<leader>qq", "<cmd>qa!<CR>", "quit nVim")
+WKMap("qq", "<cmd>qa!<CR>", "quit nVim")
 
 -- Quality of Life bindings
 -- vertical scroll & center
@@ -178,7 +182,18 @@ WKMap("uI", "<cmd>InspectTree<cr>", "Inspect Tree")
 
 -- Toggle menu
 WKMapGroup("t", "toggle")
+WKMap("ta", "<cmd>AerialToggle!<CR>", "aerial")
+WKMap("tt", builtin.colorscheme, "themes")
 WKMap("tw", "<cmd>set wrap!<CR>", "toggle line wrapping")
+-- Quicker
+WKMap("tq", function()
+    quicker.toggle()
+end, "toggle quickfix")
+WKMap("tl", function()
+    quicker.toggle({ loclist = true })
+end, "toggle loclist")
+-- Markdown
+WKMap("tm", "<cmd>RenderMarkdown toggle<CR>", "toggle RenderMarkdown")
 
 -- Search: behaviour of n and N
 KMap("n", "'Nn'[v:searchforward].'zzzv'", "Next Search Result", "n", true)
@@ -192,14 +207,46 @@ KMap("N", "'nN'[v:searchforward]", "Prev Search Result", "o", true)
 WKMapGroup("s", "search")
 -- Clear highlights on search when pressing <Esc> in normal mode
 WKMap("sc", "<cmd>nohlsearch<CR>", "clear search highlights")
+WKMap("sw", builtin.grep_string, "search current word")
+WKMap("sg", builtin.live_grep, "grep search")
+WKMap("sd", builtin.diagnostics, "diagnostics search")
+WKMap("sR", builtin.registers, "search registers")
+WKMap("sr", builtin.oldfiles, "search recent files")
+
+-- Slightly advanced example of overriding default behavior and theme
+WKMap("ss", function()
+    -- You can pass additional configuration to Telescope to change the theme, layout, etc.
+    builtin.current_buffer_fuzzy_find(require("telescope.themes").get_ivy({
+        previewer = false,
+    }))
+end, "telescope swoop")
+
+-- It's also possible to pass additional configuration options.
+--  See `:help telescope.builtin.live_grep()` for information about particular keys
+WKMap("s/", function()
+    builtin.live_grep({
+        grep_open_files = true,
+        prompt_title = "Live Grep in Open Files",
+    })
+end, "search in open files")
+
+-- Shortcut for searching your Neovim configuration files
+-- KMap("<leader>Hn", function()
+--     builtin.find_files({ cwd = vim.fn.stdpath("config") })
+-- end, "search NeoVim files")
 
 -- Utilites menu
 WKMapGroup("u", "utilities")
+WKMap("uf", function()
+    conform.format({
+        async = true,
+        lsp_fallback = true,
+        timeout_ms = 500,
+    })
+end, "format buffer")
 
 -- Utilities: Duck
-local duck = require("duck")
-
-KMap("<leader>uD", "", "Duck")
+WKMapGroup("uD", "Duck")
 WKMap("uDd", function()
     duck.hatch()
 end, "summon duck")
@@ -212,7 +259,7 @@ end, "cook all ducks")
 
 -- Utilities: Linter
 WKMap("ul", function()
-    require("lint").try_lint()
+    lint.try_lint()
 end, "lint file")
 
 -- Visual Line movement
@@ -220,10 +267,14 @@ KMap("j", "gj")
 KMap("k", "gk")
 
 -- Window movement
-KMap("c-h", "<cmd>wincmd h<CR>", "move focus to the left window")
-KMap("c-l", "<cmd>wincmd l<CR>", "move focus to the right window")
-KMap("c-j", "<cmd>wincmd j<CR>", "move focus to the lower window")
-KMap("c-k", "<cmd>wincmd k<CR>", "move focus to the upper window")
+-- KMap("c-h", "<cmd>wincmd h<CR>", "move focus to the left window")
+-- KMap("c-l", "<cmd>wincmd l<CR>", "move focus to the right window")
+-- KMap("c-j", "<cmd>wincmd j<CR>", "move focus to the lower window")
+-- KMap("c-k", "<cmd>wincmd k<CR>", "move focus to the upper window")
+KMap("<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>")
+KMap("<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>")
+KMap("<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>")
+KMap("<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>")
 
 -- Windows menu
 WKMapGroup("w", "windows")
