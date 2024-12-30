@@ -131,10 +131,11 @@ end, "go to s")
 -- Help menu
 WKMapGroup("H", "Help")
 WKMap("Hm", ":redir @a<CR>:messages<CR>:redir END<CR>:new<CR>:put a<CR>", "messages buffer")
+WKMap("HL", "<cmd>Lazy<CR>", "open Lazy")
 WKMap("HM", "<cmd>Mason<CR>", "open Mason")
 WKMap("Hk", builtin.keymaps, "search keymaps")
 WKMap("Hb", builtin.builtin, "search Telescope builtin")
-WKMap("Hs", builtin.help_tags, "search help")
+WKMap("Hh", builtin.help_tags, "search help")
 
 -- Indent Mode
 KMap("<", "<gv", "", "v")

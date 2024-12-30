@@ -7,7 +7,7 @@ local wk = require("which-key")
 --   keys - The keys for the keybind
 --   func - What to do when pressing that keybind
 --   desc - A description to show up in which-key. Default value = ""
-KMap2 = function(keys, func, desc, mode, expr)
+KMap = function(keys, func, desc, mode, expr)
     mode = mode or "n"
     desc = desc or ""
     expr = expr or false
