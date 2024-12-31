@@ -6,12 +6,20 @@ local conform = require("conform")
 local duck = require("duck")
 local flash = require("flash")
 local harpoon = require("harpoon")
+local hovercraft = require("hovercraft")
 local lint = require("lint")
 local telescope = require("telescope")
 local quicker = require("quicker")
 
 -- Code menu
 WKMapGroup("c", "code")
+WKMap("cd", function()
+    if hovercraft.is_visible() then
+        hovercraft.enter_popup()
+    else
+        hovercraft.hover()
+    end
+end)
 
 -- Buffer menu
 WKMapGroup("b", "buffers")

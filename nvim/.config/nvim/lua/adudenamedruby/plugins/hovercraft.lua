@@ -23,7 +23,8 @@ return {
             },
 
             window = {
-                border = "single",
+                border = "rounded",
+                max_width = 90,
             },
 
             keys = {
@@ -54,19 +55,4 @@ return {
             },
         }
     end,
-
-    keys = {
-        {
-            "gK",
-            function()
-                local hovercraft = require("hovercraft")
-
-                if hovercraft.is_visible() then
-                    hovercraft.enter_popup()
-                else
-                    hovercraft.hover()
-                end
-            end,
-        },
-    },
 }
