@@ -1,1 +1,1 @@
-vim.cmd([[ syntax match lambda "fn" conceal cchar=λ ]])
+WKMap("ct", "<cmd>RustLsp testables", "testables")
