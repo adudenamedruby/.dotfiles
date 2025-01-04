@@ -48,3 +48,5 @@ function M.set_daily_colorscheme()
 
     vim.cmd("colorscheme " .. chosen_scheme)
 end
+
+return M
