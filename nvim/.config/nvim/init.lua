@@ -1,5 +1,6 @@
 require("adudenamedruby.core.startupSettings")
 require("adudenamedruby.core.options")
 require("adudenamedruby.lazy")
+require("adudenamedruby.core.dailyColorscheme").set_daily_colorscheme()
 require("adudenamedruby.core.utils")
 require("adudenamedruby.core.keybindings")

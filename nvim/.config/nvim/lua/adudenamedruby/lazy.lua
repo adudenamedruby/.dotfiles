@@ -1,5 +1,4 @@
--- [[ Install `lazy.nvim` plugin manager ]]
---    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
+-- Install `lazy.nvim` plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -10,15 +9,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- [[ Configure and install plugins ]]
---
---  To check the current status of your plugins, run
---    :Lazy
---
---  You can press `?` in this menu for help. Use `:q` to close the window
---
---  To update plugins you can run
---    :Lazy update
+-- Configure and install plugins
 require("lazy").setup({
     { import = "adudenamedruby.plugins" },
 }, {
@@ -30,17 +21,3 @@ require("lazy").setup({
         notify = false,
     },
 })
-
--- Set random colourscheme
-require("adudenamedruby.plugins.colorscheme")
-
--- Randomly select a colorscheme
-local colorschemes = {
-    "catppuccin",
-    "tokyonight-moon",
-    "kanagawa",
-    "carbonfox",
-    "duskfox",
-}
-local random_colorscheme = colorschemes[math.random(#colorschemes)]
-vim.cmd("colorscheme " .. random_colorscheme)
