@@ -84,14 +84,14 @@ return {
                     -- or a suggestion from your LSP for this to activate.
                     map("<leader>la", vim.lsp.buf.code_action, "code action", { "n", "x" })
 
-                    map("<leader>Hl", "<cmd>LspInfo<cr>", "info")
+                    map("<leader>Hl", "<cmd>LspInfo<cr>", "server info")
 
-                    vim.keymap.set(
-                        "n",
-                        "<leader>li",
-                        vim.lsp.buf.hover,
-                        { desc = "Show documentation for what is under cursor" }
-                    )
+                    -- vim.keymap.set(
+                    --     "n",
+                    --     "<leader>li",
+                    --     vim.lsp.buf.hover,
+                    --     { desc = "Show documentation for what is under cursor" }
+                    -- )
 
                     -- The following two autocommands are used to highlight references of the
                     -- word under your cursor when your cursor rests there for a little while.

@@ -13,13 +13,13 @@ local quicker = require("quicker")
 
 -- Code menu
 WKMapGroup("c", "code")
-WKMap("cd", function()
+WKMap("ch", function()
     if hovercraft.is_visible() then
         hovercraft.enter_popup()
     else
         hovercraft.hover()
     end
-end)
+end, "lsp info help")
 
 -- Buffer menu
 WKMapGroup("b", "buffers")
