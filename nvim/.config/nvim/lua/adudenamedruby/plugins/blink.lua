@@ -20,7 +20,7 @@ return {
         keymap = {
             preset = "default",
             ["<C-h>"] = { "show", "show_documentation", "hide_documentation" },
-            ["<C-s>"] = { "select_and_accept" },
+            ["<C-t>"] = { "select_and_accept" },
         },
 
         appearance = {
