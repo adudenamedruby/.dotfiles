@@ -26,12 +26,11 @@ brew upgrade
 brew install --cask alfred
 
 # Terminals
-brew install --cask iterm2
-brew install --cask warp
+brew install --cask ghostty
 brew install --cask wezterm
 brew install starship
 
-brew install --cask amethyst
+brew install --cask nikitabobko/tap/aerospace
 
 # zsh related things
 brew install zsh-syntax-highlighting
@@ -80,15 +79,25 @@ $(brew --prefix)/opt/fzf/install
 
 brew install git
 
+brew install git-delta
+
+brew install gh
+
 brew install gls
 
 brew install grep
 
 brew install imagemagick
 
+brew install lazygit
+
 brew install librsvg
 
+brew install broot
+
 brew install libvterm
+
+brew install neovim
 
 brew install node
 
@@ -108,12 +117,18 @@ brew install swiftformat
 
 brew install the_silver_searcher # AG
 
+brew install tmux
+
 brew install tree-sitter
 
 brew install java
 # check for symlink in install
 
 brew install leiningen
+
+brew install unzip
+
+brew install tldr
 
 # rust alternatives to utils
 brew install btop # instead of top
@@ -156,7 +171,6 @@ brew install --cask racket
 brew install clojure/tools/clojure
 brew install clojure-lsp/brew/clojure-lsp-native
 brew install borkdude/brew/clj-kondo
-brew install --cask nikitabobko/tap/aerospace
 
 ## Haskell
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
@@ -182,9 +196,9 @@ brew install pipx
 gem install xcodeproj
 
 # Emacs
-brew tap d12frosted/emacs-plus
-brew install emacs-plus@29 --with-modern-sexy-v1-icon
-brew link emacs-plus
+# brew tap d12frosted/emacs-plus
+# brew install emacs-plus@29 --with-modern-sexy-v1-icon
+# brew link emacs-plus
 #ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
 
 # ---------------------------------------------
@@ -201,7 +215,7 @@ brew install --cask arc
 
 brew install --cask calibre
 
-brew install --cask dash
+# brew install --cask dash
 
 brew install --cask daisydisk
 
@@ -211,17 +225,11 @@ brew install --cask devutils
 
 brew install --cask discord
 
-brew install --cask fantastical
-
 brew install --cask keycastr
-
-brew install --cask moom
 
 brew install --cask obs
 
 brew install --cask onyx
-
-brew install --cask spotify
 
 brew install --cask slack
 
