@@ -58,7 +58,7 @@ softwareupdate --install-rosetta
 # Here we'll install what I consider core utilities. Not apps,
 # not fun stuff, but development oriented things, or QoL things
 # like FZF.
-brew install hidden bar
+brew install --cask hiddenbar
 
 brew install eza
 
@@ -224,6 +224,8 @@ brew install --cask devcleaner
 brew install --cask devutils
 
 brew install --cask discord
+
+brew install --cask hiddenbar
 
 brew install --cask keycastr
 
