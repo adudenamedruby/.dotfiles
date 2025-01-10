@@ -1,4 +1,5 @@
 .DS_Store
+/bin/.local/*
 !/bin/.local/myScripts
 /zsh/.config/zsh/.zsh_history
 /zsh/.config/zsh/.zcompdump
