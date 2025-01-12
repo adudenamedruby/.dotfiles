@@ -168,8 +168,8 @@ alt-shift-o = ['move-node-to-workspace OBS', 'workspace OBS']
 # alt-shift-q = ['move-node-to-workspace Q', 'workspace Q']
 
 # Realbook
-cmd-shift-ctrl-alt-r = 'workspace RealBook'
-alt-shift-r = ['move-node-to-workspace RealBook', 'workspace RealBook']
+cmd-shift-ctrl-alt-r = 'workspace Random'
+alt-shift-r = ['move-node-to-workspace Random', 'workspace Random']
 
 # Schedule
 cmd-shift-ctrl-alt-s = 'workspace Schedule'
@@ -218,7 +218,7 @@ Lightroom = 'main'
 Messaging = 'main'
 Notes = 'main'
 OBS = 'main'
-RealBook = 'main'
+Random = 'main'
 Schedule = 'main'
 Terminal = 'main'
 Utilities = 'main'
@@ -334,7 +334,7 @@ run = 'move-node-to-workspace OBS'
 
 [[on-window-detected]]
 if.app-id = 'org.racket-lang.DrRacket'
-run = 'move-node-to-workspace RealBook'
+run = 'move-node-to-workspace Random'
 
 [[on-window-detected]]
 if.app-id = 'tonyapp.devutils'
