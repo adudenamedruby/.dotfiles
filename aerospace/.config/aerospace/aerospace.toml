@@ -106,60 +106,60 @@ alt-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 # Affinity Photo
-cmd-shift-ctrl-alt-a = 'workspace A'
-alt-shift-a = ['move-node-to-workspace A', 'workspace A']
+cmd-shift-ctrl-alt-a = 'workspace Affinity'
+alt-shift-a = ['move-node-to-workspace Affinity', 'workspace Affinity']
 
 # Books
-cmd-shift-ctrl-alt-b = 'workspace B'
-alt-shift-b = ['move-node-to-workspace B', 'workspace B']
+cmd-shift-ctrl-alt-b = 'workspace Books'
+alt-shift-b = ['move-node-to-workspace Books', 'workspace Books']
 
 # Comms
-cmd-shift-ctrl-alt-c = 'workspace C'
-alt-shift-c = ['move-node-to-workspace C', 'workspace C']
+cmd-shift-ctrl-alt-c = 'workspace Comms'
+alt-shift-c = ['move-node-to-workspace Comms', 'workspace Comms']
 
 # Discord
-cmd-shift-ctrl-alt-d = 'workspace D'
-alt-shift-d = ['move-node-to-workspace D', 'workspace D']
+cmd-shift-ctrl-alt-d = 'workspace Dash'
+alt-shift-d = ['move-node-to-workspace Dash', 'workspace Dash']
 
 # External Monitor
-cmd-shift-ctrl-alt-e = 'workspace E'
-alt-shift-e = ['move-node-to-workspace E', 'workspace E']
+cmd-shift-ctrl-alt-e = 'workspace External'
+alt-shift-e = ['move-node-to-workspace External', 'workspace External']
 
 # ???
 # cmd-shift-ctrl-alt-f = 'workspace F'
-alt-shift-f = ['move-node-to-workspace F', 'workspace F']
+# alt-shift-f = ['move-node-to-workspace F', 'workspace F']
 
-# ???
-# cmd-shift-ctrl-alt-g = 'workspace G'
-alt-shift-g = ['move-node-to-workspace G', 'workspace G']
-
-# Internet
-cmd-shift-ctrl-alt-h = 'workspace H'
-alt-shift-h = ['move-node-to-workspace H', 'workspace H']
+# Groove (music)
+cmd-shift-ctrl-alt-g = 'workspace Groove'
+alt-shift-g = ['move-node-to-workspace Groove', 'workspace Groove']
 
 # Internet
-cmd-shift-ctrl-alt-i = 'workspace I'
-alt-shift-i = ['move-node-to-workspace I', 'workspace I']
+cmd-shift-ctrl-alt-h = 'workspace Huddle'
+alt-shift-h = ['move-node-to-workspace Huddle', 'workspace Huddle']
+
+# Internet
+cmd-shift-ctrl-alt-i = 'workspace Interweb'
+alt-shift-i = ['move-node-to-workspace Interweb', 'workspace Interweb']
 
 # ????
 # cmd-shift-ctrl-alt-k = 'workspace K'
 # alt-shift-k = ['move-node-to-workspace K', 'workspace K']
 
 # Lightroom
-cmd-shift-ctrl-alt-l = 'workspace L'
-alt-shift-l = ['move-node-to-workspace L', 'workspace L']
+cmd-shift-ctrl-alt-l = 'workspace Lightroom'
+alt-shift-l = ['move-node-to-workspace Lightroom', 'workspace Lightroom']
 
-# Mail
-cmd-shift-ctrl-alt-m = 'workspace M'
-alt-shift-m = ['move-node-to-workspace M', 'workspace M']
+# Messaging
+cmd-shift-ctrl-alt-m = 'workspace Messaging'
+alt-shift-m = ['move-node-to-workspace Messaging', 'workspace Messaging']
 
 # Notes
-cmd-shift-ctrl-alt-n = 'workspace N'
-alt-shift-n = ['move-node-to-workspace N', 'workspace N']
+cmd-shift-ctrl-alt-n = 'workspace Notes'
+alt-shift-n = ['move-node-to-workspace Notes', 'workspace Notes']
 
 # OBS
-cmd-shift-ctrl-alt-o = 'workspace O'
-alt-shift-o = ['move-node-to-workspace O', 'workspace O']
+cmd-shift-ctrl-alt-o = 'workspace OBS'
+alt-shift-o = ['move-node-to-workspace OBS', 'workspace OBS']
 
 # P is 1Password - do not bind
 
@@ -168,71 +168,72 @@ alt-shift-o = ['move-node-to-workspace O', 'workspace O']
 # alt-shift-q = ['move-node-to-workspace Q', 'workspace Q']
 
 # Realbook
-cmd-shift-ctrl-alt-r = 'workspace R'
-alt-shift-r = ['move-node-to-workspace R', 'workspace R']
+cmd-shift-ctrl-alt-r = 'workspace RealBook'
+alt-shift-r = ['move-node-to-workspace RealBook', 'workspace RealBook']
 
 # Schedule
-cmd-shift-ctrl-alt-s = 'workspace S'
-alt-shift-s = ['move-node-to-workspace S', 'workspace S']
+cmd-shift-ctrl-alt-s = 'workspace Schedule'
+alt-shift-s = ['move-node-to-workspace Schedule', 'workspace Schedule']
 
 # Terminal
-cmd-shift-ctrl-alt-t = 'workspace T'
-alt-shift-t = ['move-node-to-workspace T', 'workspace T']
+cmd-shift-ctrl-alt-t = 'workspace Terminal'
+alt-shift-t = ['move-node-to-workspace Terminal', 'workspace Terminal']
 
 # Utilities
-cmd-shift-ctrl-alt-u = 'workspace U'
-alt-shift-u = ['move-node-to-workspace U', 'workspace U']
+cmd-shift-ctrl-alt-u = 'workspace Utilities'
+alt-shift-u = ['move-node-to-workspace Utilities', 'workspace Utilities']
 
 # ???
 # cmd-shift-ctrl-alt-v = 'workspace V'
 # alt-shift-v = ['move-node-to-workspace V', 'workspace V']
 
 # Xcode
-cmd-shift-ctrl-alt-x = 'workspace X'
-alt-shift-x = ['move-node-to-workspace X', 'workspace X']
+cmd-shift-ctrl-alt-x = 'workspace Xcode'
+alt-shift-x = ['move-node-to-workspace Xcode', 'workspace Xcode']
 
 # Music (originally Spotify)
-cmd-shift-ctrl-alt-y = 'workspace Y'
-alt-shift-y = ['move-node-to-workspace Y', 'workspace Y']
+# cmd-shift-ctrl-alt-y = 'workspace Y'
+# alt-shift-y = ['move-node-to-workspace Y', 'workspace Y']
 
 # W & Z are for a secret system shortcut
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-alt-comma = 'move-workspace-to-monitor --wrap-around next'
+# alt-comma = 'move-workspace-to-monitor --wrap-around next'
 
-# Don't mess up which workspaces are on which monitor.
+# =================================================================
+# Multiple monitor configuration
+# =================================================================
 [workspace-to-monitor-force-assignment]
-E = 'secondary'
+External = 'secondary'
 
-A = 'main'
-B = 'main'
-C = 'main'
-D = 'main'
-F = 'main'
-G = 'main'
-H = 'main'
-I = 'main'
-L = 'main'
-M = 'main'
-N = 'main'
-O = 'main'
-R = 'main'
-S = 'main'
-T = 'main'
-U = 'main'
-X = 'main'
-Y = 'main'
+Affinity = 'main'
+Books = 'main'
+Comms = 'main'
+Dash = 'main'
+# F = 'main'
+Groove = 'main'
+Huddle = 'main'
+Interweb = 'main'
+Lightroom = 'main'
+Messaging = 'main'
+Notes = 'main'
+OBS = 'main'
+RealBook = 'main'
+Schedule = 'main'
+Terminal = 'main'
+Utilities = 'main'
+Xcode = 'main'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-alt-backslash = 'mode service'
+# alt-backslash = 'mode service'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-[mode.service.binding]
-esc = ['reload-config', 'mode main']
-r = ['flatten-workspace-tree', 'mode main'] # reset layout
-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
-backspace = ['close-all-windows-but-current', 'mode main']
+# [mode.service.binding]
+# esc = ['reload-config', 'mode main']
+# r = ['flatten-workspace-tree', 'mode main'] # reset layout
+# f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+# backspace = ['close-all-windows-but-current', 'mode main']
 
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
@@ -241,3 +242,100 @@ backspace = ['close-all-windows-but-current', 'mode main']
 # alt-shift-j = ['join-with down', 'mode main']
 # alt-shift-k = ['join-with up', 'mode main']
 # alt-shift-l = ['join-with right', 'mode main']
+
+# =================================================================
+#
+# Assign apps on particular workspaces
+#
+# Use this command to get IDs of running applications:
+#   aerospace list-apps
+#
+# =================================================================
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = 'move-node-to-workspace Terminal'
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run = 'move-node-to-workspace Interweb'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Safari'
+run = 'move-node-to-workspace Interweb'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iCal'
+run = 'move-node-to-workspace Schedule'
+
+[[on-window-detected]]
+if.app-id = 'com.todoist.mac.Todoist'
+run = 'move-node-to-workspace Schedule'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = 'move-node-to-workspace Messaging'
+
+[[on-window-detected]]
+if.app-id = 'com.readdle.SparkDesktop.appstore'
+run = 'move-node-to-workspace Messaging'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.dt.Xcode'
+run = 'move-node-to-workspace Xcode'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = 'move-node-to-workspace Groove'
+
+[[on-window-detected]]
+if.app-id = 'com.seriflabs.affinityphoto2'
+run = 'move-node-to-workspace Affinity'
+
+[[on-window-detected]]
+if.app-id = 'com.seriflabs.affinitydesigner2'
+run = 'move-node-to-workspace Affinity'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iBooksX'
+run = 'move-node-to-workspace Books'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace Comms'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Mail'
+run = 'move-node-to-workspace Comms'
+
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = 'move-node-to-workspace Comms'
+
+[[on-window-detected]]
+if.app-id = 'com.kapeli.dashdoc'
+run = 'move-node-to-workspace Dash'
+
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+run = 'move-node-to-workspace Huddle'
+
+[[on-window-detected]]
+if.app-id = 'com.adobe.LightroomClassicCC7'
+run = 'move-node-to-workspace Lightroom'
+
+[[on-window-detected]]
+if.app-id = 'com.obsproject.obs-studio'
+run = 'move-node-to-workspace OBS'
+
+[[on-window-detected]]
+if.app-id = 'org.racket-lang.DrRacket'
+run = 'move-node-to-workspace RealBook'
+
+[[on-window-detected]]
+if.app-id = 'tonyapp.devutils'
+run = 'move-node-to-workspace Utilities'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = 'move-node-to-workspace Utilities'
