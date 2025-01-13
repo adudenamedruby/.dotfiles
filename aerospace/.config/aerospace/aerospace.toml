@@ -329,6 +329,10 @@ if.app-id = 'com.adobe.LightroomClassicCC7'
 run = 'move-node-to-workspace Lightroom'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.Photos'
+run = 'move-node-to-workspace Lightroom'
+
+[[on-window-detected]]
 if.app-id = 'com.obsproject.obs-studio'
 run = 'move-node-to-workspace OBS'
 
