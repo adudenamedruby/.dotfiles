@@ -1,10 +1,9 @@
 .DS_Store
 /bin/.local/*
 !/bin/.local/myScripts
-/zsh/.config/zsh/.zsh_history
-/zsh/.config/zsh/.zcompdump
-/zsh/.config/zsh/.zcompcache/
-/zsh/.config/zsh/.zsh_sessions/
+!/zsh/.config/zsh/.zprofile
+!/zsh/.config/zsh/.zshrc
+/zsh/.config/zsh/*
 /emacs/.emacs.d/*
 /tmux/.config/tmux/plugins/*
 !/emacs/.emacs.d/tree-sitter
