@@ -138,8 +138,8 @@ cmd-shift-ctrl-alt-h = 'workspace Huddle'
 alt-shift-h = ['move-node-to-workspace Huddle', 'workspace Huddle']
 
 # Internet
-cmd-shift-ctrl-alt-i = 'workspace Interweb'
-alt-shift-i = ['move-node-to-workspace Interweb', 'workspace Interweb']
+cmd-shift-ctrl-alt-i = 'workspace Interwebz'
+alt-shift-i = ['move-node-to-workspace Interwebz', 'workspace Interwebz']
 
 # ????
 # cmd-shift-ctrl-alt-k = 'workspace K'
@@ -191,14 +191,11 @@ alt-shift-u = ['move-node-to-workspace Utilities', 'workspace Utilities']
 cmd-shift-ctrl-alt-x = 'workspace Xcode'
 alt-shift-x = ['move-node-to-workspace Xcode', 'workspace Xcode']
 
-# Music (originally Spotify)
+# ???
 # cmd-shift-ctrl-alt-y = 'workspace Y'
 # alt-shift-y = ['move-node-to-workspace Y', 'workspace Y']
 
 # W & Z are for a secret system shortcut
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-# alt-comma = 'move-workspace-to-monitor --wrap-around next'
 
 # =================================================================
 # Multiple monitor configuration
@@ -213,7 +210,7 @@ Dash = 'main'
 # F = 'main'
 Groove = 'main'
 Huddle = 'main'
-Interweb = 'main'
+Interwebz = 'main'
 Lightroom = 'main'
 Messaging = 'main'
 Notes = 'main'
@@ -223,6 +220,10 @@ Schedule = 'main'
 Terminal = 'main'
 Utilities = 'main'
 Xcode = 'main'
+
+# =================================================================
+# Service Mode - I have no need of this
+# =================================================================
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 # alt-backslash = 'mode service'
@@ -258,11 +259,11 @@ run = 'move-node-to-workspace Terminal'
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
-run = 'move-node-to-workspace Interweb'
+run = 'move-node-to-workspace Interwebz'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
-run = 'move-node-to-workspace Interweb'
+run = 'move-node-to-workspace Interwebz'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
