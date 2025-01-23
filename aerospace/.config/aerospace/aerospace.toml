@@ -294,6 +294,10 @@ if.app-id = 'com.apple.Music'
 run = 'move-node-to-workspace Groove'
 
 [[on-window-detected]]
+if.app-id = 'com.valvesoftware.Steam'
+run = 'move-node-to-workspace Groove'
+
+[[on-window-detected]]
 if.app-id = 'com.seriflabs.affinityphoto2'
 run = 'move-node-to-workspace Affinity'
 
