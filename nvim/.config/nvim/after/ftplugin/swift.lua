@@ -3,7 +3,11 @@ vim.cmd([[ syntax match lambda "func" conceal cchar=λ ]])
 local xcodebuild = require("xcodebuild.integrations.dap")
 
 -- TODO: make sure to set path to your codelldb
-local codelldbPath = os.getenv("HOME") .. "/Developer/codelldb-aarch64-darwin/extension/adapter/codelldb"
+-- local codelldbPath = os.getenv("HOME") .. "/Developer/codelldb-aarch64-darwin/extension/adapter/codelldb"
+local mason_registry = require("mason-registry")
+local codelldb = mason_registry.get_package("codelldb")
+local codelldbPath = codelldb:get_install_path() .. "/extension/adapter/codelldb"
+
 xcodebuild.setup(codelldbPath)
 vim.keymap.set("n", "<leader>cr", xcodebuild.build_and_debug, { desc = "build & debug" })
 vim.keymap.set("n", "<leader>dd", xcodebuild.debug_without_build, { desc = "debug without building" })

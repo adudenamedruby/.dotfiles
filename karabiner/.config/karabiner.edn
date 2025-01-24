@@ -118,10 +118,12 @@
                  [:o :!O3]
 
                 ;; Home row
+                 [:h :!Oquote]
                  [:j :!O6]
                  [:k :!O7]
                  [:l :!O2]
                  [:semicolon :!O8]
+                 [:quote :!Oequal_sign]
 
                 ;; Bottom Row
                  [:m :!O5]
