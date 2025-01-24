@@ -16,7 +16,6 @@ return {
                 local disable_filetypes = {
                     c = true,
                     cpp = true,
-                    swift = true,
                 }
                 local lsp_format_opt
                 if disable_filetypes[vim.bo[bufnr].filetype] then
@@ -29,29 +28,29 @@ return {
                     lsp_format = lsp_format_opt,
                 }
             end,
-            formatters = {
-                swiftformat = {
-                    command = "swiftformat",
-                    args = {
-                        "--config",
-                        "~/.config/swiftformat/.swiftformat",
-                        "--stdinpath",
-                        "$FILENAME",
-                    },
-                    range_args = function(ctx)
-                        return {
-                            "--config",
-                            "~/.config/swiftformat/.swiftformat",
-                            "--linerange",
-                            ctx.range.start[1] .. "," .. ctx.range["end"][1],
-                        }
-                    end,
-                    stdin = true,
-                    condition = function(ctx)
-                        return vim.fs.basename(ctx.filename) ~= "README.md"
-                    end,
-                },
-            },
+            -- formatters = {
+            --     swiftformat = {
+            --         command = "swiftformat",
+            --         args = {
+            --             "--config",
+            --             "~/.config/swiftformat/.swiftformat",
+            --             "--stdinpath",
+            --             "$FILENAME",
+            --         },
+            --         range_args = function(ctx)
+            --             return {
+            --                 "--config",
+            --                 "~/.config/swiftformat/.swiftformat",
+            --                 "--linerange",
+            --                 ctx.range.start[1] .. "," .. ctx.range["end"][1],
+            --             }
+            --         end,
+            --         stdin = true,
+            --         condition = function(ctx)
+            --             return vim.fs.basename(ctx.filename) ~= "README.md"
+            --         end,
+            --     },
+            -- },
             formatters_by_ft = {
                 html = { "prettier" },
                 json = { "prettier" },
@@ -59,7 +58,7 @@ return {
                 markdown = { "prettier" },
                 rust = { "rustfmt" },
                 sh = { "shfmt" },
-                swift = { "swiftformat" },
+                -- swift = { "swiftformat" },
                 yaml = { "prettier" },
                 -- Conform can also run multiple formatters sequentially
                 -- python = { "isort", "black" },
