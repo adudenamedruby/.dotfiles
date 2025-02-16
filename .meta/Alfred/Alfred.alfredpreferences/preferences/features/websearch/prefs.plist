@@ -63,6 +63,17 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>7599A102-CC2A-4286-942B-0C866B9BAB4E</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>bachata</string>
+			<key>text</key>
+			<string>Bachata Dance Course</string>
+			<key>url</key>
+			<string>https://www.bachatadanceacademyonline.com/library</string>
+		</dict>
 		<key>76C27C08-9EBF-4E66-95BA-DC9FE85B2A0B</key>
 		<dict>
 			<key>enabled</key>

@@ -220,7 +220,7 @@ WKMap("sr", builtin.oldfiles, "search recent files")
 WKMap("ss", function()
     -- You can pass additional configuration to Telescope to change the theme, layout, etc.
     builtin.current_buffer_fuzzy_find(require("telescope.themes").get_ivy({
-        previewer = false,
+        previewer = true,
     }))
 end, "telescope swoop")
 

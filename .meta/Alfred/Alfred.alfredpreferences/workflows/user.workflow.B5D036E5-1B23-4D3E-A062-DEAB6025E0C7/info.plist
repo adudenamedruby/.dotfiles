@@ -133,12 +133,29 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>inputstring</key>
+				<string>{var:snippetapp}</string>
+				<key>matchcasesensitive</key>
+				<true/>
+				<key>matchmode</key>
+				<integer>1</integer>
+				<key>matchstring</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>7521B349-C1D6-4186-B21E-8EAC41BD18F3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>autopaste</key>
 				<true/>
 				<key>clipboardtext</key>
 				<string>{query}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
 				<key>transient</key>
 				<true/>
 			</dict>
@@ -147,7 +164,7 @@
 			<key>uid</key>
 			<string>AEDE6F2A-3933-4CB6-9F5B-0D53DDFE79BA</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -177,25 +194,6 @@
 			<string>F36CDFFD-4057-4FF1-965B-4379AE4B8D90</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>inputstring</key>
-				<string>{var:snippetapp}</string>
-				<key>matchcasesensitive</key>
-				<true/>
-				<key>matchmode</key>
-				<integer>1</integer>
-				<key>matchstring</key>
-				<string></string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>7521B349-C1D6-4186-B21E-8EAC41BD18F3</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -277,8 +275,6 @@ fi
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -317,7 +313,7 @@ fi
 			<key>uid</key>
 			<string>05450F7C-3D4F-45BF-ACA3-9422EF54EFDD</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -341,8 +337,6 @@ fi
 				<false/>
 				<key>clipboardtext</key>
 				<string>{query}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
 				<key>transient</key>
 				<false/>
 			</dict>
@@ -351,7 +345,7 @@ fi
 			<key>uid</key>
 			<string>5A54554C-598A-41C6-B0D9-62046CEFB1AD</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -405,62 +399,62 @@ https://github.com/jsumners/alfred-emoji/issues
 			<key>note</key>
 			<string>Please submit issues and feature requests at https://github.com/jsumners/alfred-emoji/issues</string>
 			<key>xpos</key>
-			<real>270</real>
+			<integer>270</integer>
 			<key>ypos</key>
-			<real>180</real>
+			<integer>180</integer>
 		</dict>
 		<key>5A54554C-598A-41C6-B0D9-62046CEFB1AD</key>
 		<dict>
 			<key>xpos</key>
-			<real>550</real>
+			<integer>550</integer>
 			<key>ypos</key>
-			<real>260</real>
+			<integer>260</integer>
 		</dict>
 		<key>69116487-E1CC-4FAE-BBFC-7904198F317B</key>
 		<dict>
 			<key>xpos</key>
-			<real>50</real>
+			<integer>50</integer>
 			<key>ypos</key>
-			<real>260</real>
+			<integer>260</integer>
 		</dict>
 		<key>7521B349-C1D6-4186-B21E-8EAC41BD18F3</key>
 		<dict>
 			<key>xpos</key>
-			<real>450</real>
+			<integer>450</integer>
 			<key>ypos</key>
-			<real>130</real>
+			<integer>130</integer>
 		</dict>
 		<key>AEDE6F2A-3933-4CB6-9F5B-0D53DDFE79BA</key>
 		<dict>
 			<key>note</key>
 			<string>Auto Paste</string>
 			<key>xpos</key>
-			<real>550</real>
+			<integer>550</integer>
 			<key>ypos</key>
-			<real>100</real>
+			<integer>100</integer>
 		</dict>
 		<key>E577A252-59CC-4971-9A6E-90F0C02DC35E</key>
 		<dict>
 			<key>xpos</key>
-			<real>450</real>
+			<integer>450</integer>
 			<key>ypos</key>
-			<real>290</real>
+			<integer>290</integer>
 		</dict>
 		<key>F36CDFFD-4057-4FF1-965B-4379AE4B8D90</key>
 		<dict>
 			<key>xpos</key>
-			<real>50</real>
+			<integer>50</integer>
 			<key>ypos</key>
-			<real>100</real>
+			<integer>100</integer>
 		</dict>
 		<key>F5CA3331-1B99-45EF-8E9A-06C417387250</key>
 		<dict>
 			<key>note</key>
 			<string>Auto Update - remove to disable</string>
 			<key>xpos</key>
-			<real>820</real>
+			<integer>820</integer>
 			<key>ypos</key>
-			<real>180</real>
+			<integer>180</integer>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
@@ -513,7 +507,7 @@ https://github.com/jsumners/alfred-emoji/issues
 		</dict>
 	</array>
 	<key>version</key>
-	<string>2.2.0</string>
+	<string>2.3.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/jsumners/alfred-emoji</string>
 </dict>
