@@ -1,7 +1,7 @@
 -- Keymappings
 
 -- local variables
-local builtin = require("telescope.builtin")
+local telescopeBuiltin = require("telescope.builtin")
 local conform = require("conform")
 local duck = require("duck")
 local flash = require("flash")
@@ -24,7 +24,7 @@ end, "lsp info help")
 -- Buffer menu
 WKMapGroup("b", "buffers")
 WKMap("<TAB>", "<cmd>:b#<CR>", "switch to last buffer")
-WKMap("bb", builtin.buffers, "list all buffers")
+WKMap("bb", telescopeBuiltin.buffers, "list all buffers")
 WKMap("be", "<cmd>:enew<CR>", "open empty buffer")
 WKMap("bd", "<cmd>:bd<CR>", "delete buffer")
 WKMap("bD", "<cmd>:bd!<CR>", "force delete buffer")
@@ -45,7 +45,7 @@ WKMap("dq", vim.diagnostic.setloclist, "open diagnostic quickfix list")
 
 -- Files menu
 WKMapGroup("f", "files")
-WKMap("ff", builtin.find_files, "find file")
+WKMap("ff", telescopeBuiltin.find_files, "find file")
 WKMap("fs", "<cmd>w<CR>", "save file")
 WKMap("ft", "<cmd>NvimTreeToggle<CR>", "file tree")
 WKMap("fo", "<cmd>Oil --float<CR>", "oil")
@@ -135,9 +135,9 @@ WKMapGroup("H", "Help")
 WKMap("Hm", ":redir @a<CR>:messages<CR>:redir END<CR>:new<CR>:put a<CR>", "messages buffer")
 WKMap("HL", "<cmd>Lazy<CR>", "open Lazy")
 WKMap("HM", "<cmd>Mason<CR>", "open Mason")
-WKMap("Hk", builtin.keymaps, "search keymaps")
-WKMap("Hb", builtin.builtin, "search Telescope builtin")
-WKMap("Hh", builtin.help_tags, "search help")
+WKMap("Hk", telescopeBuiltin.keymaps, "search keymaps")
+WKMap("Hb", telescopeBuiltin.builtin, "search Telescope builtin")
+WKMap("Hh", telescopeBuiltin.help_tags, "search help")
 
 -- Indent Mode
 KMap("<", "<gv", "", "v")
@@ -186,7 +186,7 @@ WKMap("uI", "<cmd>InspectTree<cr>", "Inspect Tree")
 -- Toggle menu
 WKMapGroup("t", "toggle")
 WKMap("ta", "<cmd>AerialToggle!<CR>", "aerial")
-WKMap("tt", builtin.colorscheme, "themes")
+WKMap("tt", telescopeBuiltin.colorscheme, "themes")
 WKMap("tw", "<cmd>set wrap!<CR>", "toggle line wrapping")
 -- Quicker
 WKMap("tq", function()
@@ -210,16 +210,16 @@ KMap("N", "'nN'[v:searchforward]", "Prev Search Result", "o", true)
 WKMapGroup("s", "search")
 -- Clear highlights on search when pressing <Esc> in normal mode
 WKMap("sc", "<cmd>nohlsearch<CR>", "clear search highlights")
-WKMap("sw", builtin.grep_string, "search current word")
-WKMap("sg", builtin.live_grep, "grep search")
-WKMap("sd", builtin.diagnostics, "diagnostics search")
-WKMap("sR", builtin.registers, "search registers")
-WKMap("sr", builtin.oldfiles, "search recent files")
+WKMap("sw", telescopeBuiltin.grep_string, "search current word")
+WKMap("sg", telescopeBuiltin.live_grep, "grep search")
+WKMap("sd", telescopeBuiltin.diagnostics, "diagnostics search")
+WKMap("sR", telescopeBuiltin.registers, "search registers")
+WKMap("sr", telescopeBuiltin.oldfiles, "search recent files")
 
 -- Slightly advanced example of overriding default behavior and theme
 WKMap("ss", function()
     -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-    builtin.current_buffer_fuzzy_find(require("telescope.themes").get_ivy({
+    telescopeBuiltin.current_buffer_fuzzy_find(require("telescope.themes").get_ivy({
         previewer = true,
     }))
 end, "telescope swoop")
@@ -227,7 +227,7 @@ end, "telescope swoop")
 -- It's also possible to pass additional configuration options.
 --  See `:help telescope.builtin.live_grep()` for information about particular keys
 WKMap("s/", function()
-    builtin.live_grep({
+    telescopeBuiltin.live_grep({
         grep_open_files = true,
         prompt_title = "Live Grep in Open Files",
     })
@@ -235,7 +235,7 @@ end, "search in open files")
 
 -- Shortcut for searching your Neovim configuration files
 -- KMap("<leader>Hn", function()
---     builtin.find_files({ cwd = vim.fn.stdpath("config") })
+--     telescopeBuiltin.find_files({ cwd = vim.fn.stdpath("config") })
 -- end, "search NeoVim files")
 
 -- Utilites menu
