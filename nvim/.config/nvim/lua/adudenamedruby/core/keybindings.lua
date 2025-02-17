@@ -211,19 +211,16 @@ WKMapGroup("s", "search")
 -- Clear highlights on search when pressing <Esc> in normal mode
 WKMap("sc", "<cmd>nohlsearch<CR>", "clear search highlights")
 WKMap("sW", telescopeBuiltin.lsp_document_symbols, "search word symbol")
+WKMap("ss", telescopeBuiltin.current_buffer_fuzzy_find, "search current buffer")
 WKMap("sw", telescopeBuiltin.grep_string, "search current word")
+WKMap("sh", telescopeBuiltin.command_history, "search command history")
+WKMap("sH", telescopeBuiltin.search_history, "search search history")
+WKMap("sm", telescopeBuiltin.marks, "search marks")
 WKMap("sg", telescopeBuiltin.live_grep, "grep search")
 WKMap("sd", telescopeBuiltin.diagnostics, "diagnostics search")
 WKMap("sR", telescopeBuiltin.registers, "search registers")
 WKMap("sr", telescopeBuiltin.oldfiles, "search recent files")
-
--- Slightly advanced example of overriding default behavior and theme
-WKMap("ss", function()
-    -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-    telescopeBuiltin.current_buffer_fuzzy_find(require("telescope.themes").get_ivy({
-        previewer = true,
-    }))
-end, "telescope swoop")
+WKMap("st", telescopeBuiltin.treesitter, "search treesitter")
 
 -- It's also possible to pass additional configuration options.
 --  See `:help telescope.builtin.live_grep()` for information about particular keys
