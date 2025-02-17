@@ -210,6 +210,7 @@ KMap("N", "'nN'[v:searchforward]", "Prev Search Result", "o", true)
 WKMapGroup("s", "search")
 -- Clear highlights on search when pressing <Esc> in normal mode
 WKMap("sc", "<cmd>nohlsearch<CR>", "clear search highlights")
+WKMap("sW", telescopeBuiltin.lsp_document_symbols, "search word symbol")
 WKMap("sw", telescopeBuiltin.grep_string, "search current word")
 WKMap("sg", telescopeBuiltin.live_grep, "grep search")
 WKMap("sd", telescopeBuiltin.diagnostics, "diagnostics search")
