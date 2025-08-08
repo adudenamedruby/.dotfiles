@@ -134,8 +134,8 @@ cmd-shift-ctrl-alt-g = 'workspace Groove'
 alt-shift-g = ['move-node-to-workspace Groove', 'workspace Groove']
 
 # Internet
-cmd-shift-ctrl-alt-h = 'workspace Huddle'
-alt-shift-h = ['move-node-to-workspace Huddle', 'workspace Huddle']
+cmd-shift-ctrl-alt-h = 'workspace Hack'
+alt-shift-h = ['move-node-to-workspace Hack', 'workspace Hack']
 
 # Internet
 cmd-shift-ctrl-alt-i = 'workspace Interwebz'
@@ -209,7 +209,7 @@ Comms = 'main'
 Dash = 'main'
 # F = 'main'
 Groove = 'main'
-Huddle = 'main'
+Hack = 'main'
 Interwebz = 'main'
 Lightroom = 'main'
 Messaging = 'main'
@@ -331,7 +331,15 @@ run = 'move-node-to-workspace External'
 
 [[on-window-detected]]
 if.app-id = 'com.skype.skype'
-run = 'move-node-to-workspace Huddle'
+run = 'move-node-to-workspace External'
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.rustrover'
+run = 'move-node-to-workspace Hack'
+
+[[on-window-detected]]
+if.app-id = 'dev.zed.Zed'
+run = 'move-node-to-workspace Hack'
 
 [[on-window-detected]]
 if.app-id = 'com.adobe.LightroomClassicCC7'
