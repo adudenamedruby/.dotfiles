@@ -1,5 +1,3 @@
-vim.cmd([[ syntax match lambda "func" conceal cchar=λ ]])
-
 local xcodebuild = require("xcodebuild.integrations.dap")
 
 -- TODO: make sure to set path to your codelldb
