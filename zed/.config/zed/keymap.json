@@ -1,36 +1,58 @@
 [
-    // {
-    //     "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
-    //     "bindings": {
-    //       // put key-bindings here if you want them to work in normal & visual mode
-    //       // Git
-    //       "space g h d": "editor::ToggleSelectedDiffHunks",
-    //       "space g s": "git_panel::ToggleFocus",
+    {
+        "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+        "bindings": {
+            // put key-bindings here if you want them to work in normal & visual mode
+            // Git
+            "space g h": "editor::ToggleSelectedDiffHunks",
+            "space g b": "editor::ToggleGitBlame",
+            "space g l": "editor::ToggleGitBlameInline",
+            "space g n": "editor::GoToHunk",
+            "space g p": "editor::GoToPreviousHunk",
+            "space g d": "editor::ToggleHunkDiff",
+            "space g p": "git_panel::ToggleFocus",
 
-    //       // Toggle inlay hints
-    //       "space t i": "editor::ToggleInlayHints",
+            // Toggles
+            "space t i": "editor::ToggleInlayHints",
+            "space t w": "editor::ToggleSoftWrap",
 
-    //       // Toggle soft wrap
-    //       "space u w": "editor::ToggleSoftWrap",
+            //       // NOTE: Toggle Zen mode, not fully working yet
+            //       "space c z": "workspace::ToggleCenteredLayout",
 
-    //       // NOTE: Toggle Zen mode, not fully working yet
-    //       "space c z": "workspace::ToggleCenteredLayout",
+            // Open markdown preview
+            //       "space m p": "markdown::OpenPreview",
+            //       "space m P": "markdown::OpenPreviewToTheSide",
 
-    //       // Open markdown preview
-    //       "space m p": "markdown::OpenPreview",
-    //       "space m P": "markdown::OpenPreviewToTheSide",
+            // buffers
+            "space b b": "tab_switcher::ToggleAll",
+            "space b d": "pane::CloseActiveItem",
+            "space b n": "pane::ActivateNextItem",
+            "space b p": "pane::ActivatePreviousItem",
 
-    //       // Open recent project
-    //       "space f p": "projects::OpenRecent",
-    //       // Search word under cursor
-    //       "space s w": "pane::DeploySearch",
+            // diagnostics
+            "space d n": "editor::GoToDiagnostic",
+            "space d p": "editor::GoToPreviousDiagnostic",
+            "space d t": "editor::ToggleInlineDiagnostics",
 
-    //       // Chat with AI
-    //       "space a c": "assistant::ToggleFocus",
-    //       // Go to file with `gf`
-    //       "g f": "editor::OpenExcerpts",
-    //     },
-    //   },
+            // files
+            "space f f": "file_finder::Toggle",
+            "space f s": "workspace::Save",
+            "space f t": "pane::RevealInProjectPanel",
+            "space f p": "projects::OpenRecent",
+
+            // search
+            "space s g": "workspace::NewSearch",
+            "space s o": "outline::Toggle",
+            "space t o": "outline_panel::ToggleFocus",
+            // Search word under cursor
+            "space s w": "pane::DeploySearch"
+
+            // Chat with AI
+            //       "space a c": "assistant::ToggleFocus",
+            // Go to file with `gf`
+            //       "g f": "editor::OpenExcerpts",
+        }
+    },
     {
         "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
         "bindings": {
@@ -42,34 +64,11 @@
             "ctrl-k": "workspace::ActivatePaneUp",
             "ctrl-j": "workspace::ActivatePaneDown",
 
-            // files
-            "space f f": "file_finder::Toggle",
-            "space f s": "workspace::Save",
-            "space f t": "pane::RevealInProjectPanel",
-
-            // buffers
-            "space b b": "tab_switcher::ToggleAll",
-            "space b d": "pane::CloseActiveItem",
-            "space b n": "pane::ActivateNextItem",
-            "space b p": "pane::ActivatePreviousItem",
-
             // windows
             "space w v": "pane::SplitVertical",
             "space w s": "pane::SplitHorizontal",
             "space w d": "pane::CloseAllItems",
-            "space w o": "vim::MaximizePane",
-
-            // diagnostics
-            "space d n": "editor::GoToDiagnostic",
-            "space d p": "editor::GoToPreviousDiagnostic",
-            "space d t": "editor::ToggleInlineDiagnostics",
-
-            // Git
-            "space g b": "editor::ToggleGitBlame",
-            "space g l": "editor::ToggleGitBlameInline",
-            "space g n": "editor::GoToHunk",
-            "space g p": "editor::GoToPreviousHunk",
-            "space g d": "editor::ExpandAllDiffHunks"
+            "space w o": "vim::MaximizePane"
         }
     },
     {
@@ -77,21 +76,13 @@
         "context": "EmptyPane || SharedScreen",
         "bindings": {
             "space f f": "file_finder::Toggle",
-
             "space f p": "projects::OpenRecent"
         }
     },
     {
         // File panel (netrw)
-        "context": "ProjectPanel && not_editing",
+        "context": "(ProjectPanel || OutlinePanel || GitPanel) && not_editing",
         "bindings": {
-            "a": "project_panel::NewFile",
-            "A": "project_panel::NewDirectory",
-            "r": "project_panel::Rename",
-            "d": "project_panel::Delete",
-            "x": "project_panel::Cut",
-            "c": "project_panel::Copy",
-            "p": "project_panel::Paste",
             // Close project panel as project file panel on the right
             "q": "workspace::ToggleLeftDock",
             "space e": "workspace::ToggleLeftDock",
@@ -100,6 +91,19 @@
             "ctrl-l": "workspace::ActivatePaneRight",
             "ctrl-k": "workspace::ActivatePaneUp",
             "ctrl-j": "workspace::ActivatePaneDown"
+        }
+    },
+    {
+        // File panel (netrw)
+        "context": "(ProjectPanel) && not_editing",
+        "bindings": {
+            "a": "project_panel::NewFile",
+            "A": "project_panel::NewDirectory",
+            "r": "project_panel::Rename",
+            "d": "project_panel::Delete",
+            "x": "project_panel::Cut",
+            "c": "project_panel::Copy",
+            "p": "project_panel::Paste"
         }
     }
 ]
