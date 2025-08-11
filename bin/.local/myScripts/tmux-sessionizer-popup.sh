@@ -2,7 +2,7 @@
 
 tmpfile=$(mktemp /tmp/tmux_select.XXXXXX)
 
-directories=(~/Developer ~/.dotfiles/*/.config ~/Developer/exercism)
+directories=(~/Developer ~/.dotfiles/starship ~/.dotfiles/*/.config)
 
 selection_command="find ${directories[*]} -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf > \"$tmpfile\""
 

@@ -187,7 +187,23 @@ return {
                         },
                     },
                 },
-                pyright = {},
+                -- pyright = {},
+                pylsp = {
+                    settings = {
+                        pylsp = {
+                            plugins = {
+                                pyflakes = { enabled = false },
+                                pycodestyle = { enabled = false },
+                                autopep8 = { enabled = false },
+                                yapf = { enabled = false },
+                                mccabe = { enabled = false },
+                                pylsp_mypy = { enabled = false },
+                                pylsp_black = { enabled = false },
+                                pylsp_isort = { enabled = false },
+                            },
+                        },
+                    },
+                },
                 -- rust_analyzer = {},
                 yamlls = {},
             }
@@ -219,6 +235,7 @@ return {
             -- for you, so that they are available from within Neovim.
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
+                "ruff",
                 "prettier", -- ts/js formatter
                 "shfmt", -- Shell formatter
                 "stylua", -- Used to format Lua code

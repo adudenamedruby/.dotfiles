@@ -207,7 +207,7 @@ format = '[$symbol]($style)'
 format = '[$symbol]($style)'
 
 [python]
-format = '[$symbol]($style)'
+format = '[(\($virtualenv\) )$symbol]($style)'
 
 [raku]
 format = '[$symbol]($style)'
