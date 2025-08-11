@@ -14,3 +14,9 @@
 !/emacs/.emacs.d/synthmacs/*
 !/emacs/.emacs.d/synthmacs/assets/
 !/emacs/.emacs.d/synthmacs/assets/*
+/zed/.config/zed/cache/
+/zed/.config/zed/sessions/
+/zed/.config/zed/logs/
+/zed/.config/zed/crash-reports/
+/zed/.config/zed/prompts/
+
