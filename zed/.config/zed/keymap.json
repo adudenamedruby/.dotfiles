@@ -2,7 +2,7 @@
     {
         "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
         "bindings": {
-            // put key-bindings here if you want them to work in normal & visual mode
+            // key-bindings that work in normal & visual mode
             // Git
             "space g h": "editor::ToggleSelectedDiffHunks",
             "space g b": "editor::ToggleGitBlame",
@@ -16,7 +16,7 @@
             "space t i": "editor::ToggleInlayHints",
             "space t w": "editor::ToggleSoftWrap",
 
-            //       // NOTE: Toggle Zen mode, not fully working yet
+            // NOTE: Toggle Zen mode, not fully working yet
             //       "space c z": "workspace::ToggleCenteredLayout",
 
             // Open markdown preview
@@ -56,9 +56,7 @@
     {
         "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
         "bindings": {
-            // put key-bindings here if you want them to work only in normal mode
-            // Window movement bindings
-            // Ctrl jklk to move between panes
+            // key-bindings that work only in normal mode
             "ctrl-h": "workspace::ActivatePaneLeft",
             "ctrl-l": "workspace::ActivatePaneRight",
             "ctrl-k": "workspace::ActivatePaneUp",
@@ -80,7 +78,7 @@
         }
     },
     {
-        // File panel (netrw)
+        // Panels on the left
         "context": "(ProjectPanel || OutlinePanel || GitPanel) && not_editing",
         "bindings": {
             // Close project panel as project file panel on the right
@@ -94,7 +92,7 @@
         }
     },
     {
-        // File panel (netrw)
+        // File tree
         "context": "(ProjectPanel) && not_editing",
         "bindings": {
             "a": "project_panel::NewFile",
