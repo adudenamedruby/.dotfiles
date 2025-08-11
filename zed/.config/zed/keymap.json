@@ -28,6 +28,7 @@
             "space b d": "pane::CloseActiveItem",
             "space b n": "pane::ActivateNextItem",
             "space b p": "pane::ActivatePreviousItem",
+            "space tab": "pane::AlternateFile",
 
             // diagnostics
             "space d n": "editor::GoToDiagnostic",
@@ -41,11 +42,12 @@
             "space f p": "projects::OpenRecent",
 
             // search
-            "space s g": "workspace::NewSearch",
+            "space s p": "workspace::NewSearch",
             "space s o": "outline::Toggle",
             "space t o": "outline_panel::ToggleFocus",
             // Search word under cursor
-            "space s w": "pane::DeploySearch"
+            "space s w": "pane::DeploySearch",
+            "space s r": "buffer_search::DeployReplace"
 
             // Chat with AI
             //       "space a c": "assistant::ToggleFocus",
@@ -66,7 +68,7 @@
             "space w v": "pane::SplitVertical",
             "space w s": "pane::SplitHorizontal",
             "space w d": "pane::CloseAllItems",
-            "space w o": "vim::MaximizePane"
+            "space w o": "workspace::ToggleZoom"
         }
     },
     {
