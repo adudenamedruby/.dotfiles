@@ -7,34 +7,72 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "ui_font_size": 16,
-  "buffer_font_size": 15,
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark"
-  },
-  "tab_bar": {
-    "show": true,
-    "show_nav_history_buttons": false
-  },
-  "tabs": {
-    "file_icons": true,
-    "git_status": true
-  },
-  "project_panel": {
-    "indent_size": 16
-  },
-  "preferred_line_length": 90,
-  "tab_size": 4,
+    // UI
+    "buffer_font_family": "FiraCode Nerd Font Mono",
+    "icon_theme": "Catppuccin Mocha",
+    "ui_font_size": 16,
+    "buffer_font_size": 15,
+    "theme": {
+        "mode": "system",
+        "light": "One Light",
+        "dark": "Catppuccin Mocha - No Italics"
+    },
+    "tab_bar": {
+        "show": true,
+        "show_nav_history_buttons": false,
+        "show_tab_bar_buttons": false
+    },
+    "tabs": {
+        "file_icons": true,
+        "git_status": true,
+        "show_close_button": "hidden"
+    },
+    "active_pane_modifiers": {
+        "border_size": 0.5,
+        "inactive_opacity": 0.5
+    },
+    "file_finder": {
+        "modal_max_width": "medium"
+    },
+    "show_whitespaces": "all",
+    "wrap_guides": [90],
+    "project_panel": {
+        "indent_size": 16,
+        "hide_root": false
+    },
 
-  // VIM
-  "vim_mode": true,
-  "relative_line_numbers": true,
-  "vertical_scroll_margin": 20,
+    // LSP
+    "lsp": {
+        "rust-analyzer": {
+            "initialization_options": {
+                "check": {
+                    "command": "clippy" // rust-analyzer.check.command (default: "check")
+                }
+            }
+        }
+    },
 
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false
-  }
+    // Zed Behaviours
+    "restore_on_startup": "none",
+    "git": {
+        "git_gutter": "tracked_files",
+        "inline_blame": {
+            "enabled": false
+        }
+    },
+
+    // VIM
+    "vim_mode": true,
+    "relative_line_numbers": true,
+    "vertical_scroll_margin": 20,
+
+    // Editor preferences
+    "preferred_line_length": 90,
+    "tab_size": 4,
+
+    // Misc
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false
+    }
 }
