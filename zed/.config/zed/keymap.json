@@ -3,24 +3,11 @@
         "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
         "bindings": {
             // key-bindings that work in normal & visual mode
-            // Git
-            "space g b": "git::Blame",
-            "space g l": "editor::ToggleGitBlameInline",
-            "space g n": "editor::GoToHunk",
-            "space g p": "editor::GoToPreviousHunk",
-            "space g d": "editor::ToggleSelectedDiffHunks",
-            "space g P": "git_panel::ToggleFocus",
 
-            // Toggles
-            "space t i": "editor::ToggleInlayHints",
-            "space t w": "editor::ToggleSoftWrap",
-
-            // NOTE: Toggle Zen mode, not fully working yet
-            //       "space c z": "workspace::ToggleCenteredLayout",
-
-            // Open markdown preview
-            //       "space m p": "markdown::OpenPreview",
-            //       "space m P": "markdown::OpenPreviewToTheSide",
+            // AI
+            //       "space a c": "assistant::ToggleFocus",
+            // Go to file with `gf`
+            //       "g f": "editor::OpenExcerpts",
 
             // buffers
             "space b b": "tab_switcher::ToggleAll",
@@ -40,24 +27,37 @@
             "space f t": "pane::RevealInProjectPanel",
             "space f p": "projects::OpenRecent",
 
+            // Git
+            "space g b": "git::Blame",
+            "space g l": "editor::ToggleGitBlameInline",
+            "space g n": "editor::GoToHunk",
+            "space g p": "editor::GoToPreviousHunk",
+            "space g d": "editor::ToggleSelectedDiffHunks",
+            "space g P": "git_panel::ToggleFocus",
+
             // search
             "space s p": "workspace::NewSearch",
             "space s o": "outline::Toggle",
-            "space t o": "outline_panel::ToggleFocus",
             // Search word under cursor
             "space s w": "pane::DeploySearch",
-            "space s r": "buffer_search::DeployReplace"
+            "space s r": "buffer_search::DeployReplace",
 
-            // Chat with AI
-            //       "space a c": "assistant::ToggleFocus",
-            // Go to file with `gf`
-            //       "g f": "editor::OpenExcerpts",
+            // Toggles
+            "space t c": "command_palette::Toggle",
+            "space t i": "editor::ToggleInlayHints",
+            "space t w": "editor::ToggleSoftWrap",
+            "space t o": "outline_panel::ToggleFocus",
+            "space t m": "markdown::OpenPreview",
+            "space t M": "markdown::OpenPreviewToTheSide"
+            // NOTE: Toggle Zen mode, not fully working yet
+            //       "space t z": "workspace::ToggleCenteredLayout",
         }
     },
     {
         "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
         "bindings": {
             // key-bindings that work only in normal mode
+            // Move in panels
             "ctrl-h": "workspace::ActivatePaneLeft",
             "ctrl-l": "workspace::ActivatePaneRight",
             "ctrl-k": "workspace::ActivatePaneUp",
