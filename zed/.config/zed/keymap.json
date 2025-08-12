@@ -18,6 +18,8 @@
 
             // code
             "space c f": "editor::Format",
+            "space c a r": "editor::Rename",
+            "space c h": "editor::Hover",
 
             // diagnostics
             "space d n": "editor::GoToDiagnostic",
