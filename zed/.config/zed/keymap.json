@@ -16,10 +16,14 @@
             "space b p": "pane::ActivatePreviousItem",
             "space b a": "pane::AlternateFile",
 
+            // code
+            "space c f": "editor::Format",
+
             // diagnostics
             "space d n": "editor::GoToDiagnostic",
             "space d p": "editor::GoToPreviousDiagnostic",
             "space d t": "editor::ToggleInlineDiagnostics",
+            "space d a": "diagnostics::Deploy",
 
             // files
             "space f f": "file_finder::Toggle",
@@ -41,6 +45,7 @@
             // Search word under cursor
             "space s w": "pane::DeploySearch",
             "space s r": "buffer_search::DeployReplace",
+            "space s s": "project_symbols::Toggle",
 
             // Toggles
             "space t c": "command_palette::Toggle",
@@ -66,9 +71,17 @@
             // windows
             "space w v": "pane::SplitVertical",
             "space w s": "pane::SplitHorizontal",
-            "space w d": "pane::CloseAllItems",
+            "space w d": "pane::CloseActiveItem",
             "space w o": "pane::CloseOtherItems",
             "space w m": "workspace::ToggleZoom"
+        }
+    },
+    {
+        // Empty pane, set of keybindings that are available when there is no active editor
+        "context": "Editor && VimControl && !VimWaiting && !menu",
+        "bindings": {
+            "g a": "editor::SelectAllMatches",
+            "space s r": "editor::FindAllReferences"
         }
     },
     {
