@@ -27,7 +27,6 @@ brew install --cask alfred
 
 # Terminals
 brew install --cask ghostty
-brew install --cask wezterm
 brew install starship
 
 brew install --cask nikitabobko/tap/aerospace
@@ -130,6 +129,8 @@ brew install unzip
 
 brew install tldr
 
+brew install prettier
+
 # rust alternatives to utils
 brew install btop # instead of top
 
@@ -157,6 +158,7 @@ brew install tealdeer # instead of tldr
 
 # Python 3
 brew install python3
+brew install uv
 
 # virtual environments for Python
 pip3 install virtualenv
@@ -205,42 +207,34 @@ gem install xcodeproj
 # Applications
 # ---------------------------------------------
 
-brew install --cask affinity-designer
-
-brew install --cask affinity-photo
-
-brew install --cask appcleaner
-
-brew install --cask arc
-
-brew install --cask calibre
-
 # brew install --cask dash
-
+brew install --cask 1password
+brew install --cask affinity-designer
+brew install --cask affinity-photo
+brew install --cask alfred
+brew install --cask anki
+brew install --cask appcleaner
+brew install --cask arc
+brew install --cask calibre
 brew install --cask daisydisk
-
 brew install --cask devcleaner
-
 brew install --cask devutils
-
 brew install --cask discord
-
+brew install --cask firefox
+brew install --cask ghostty
 brew install --cask hiddenbar
-
+brew install --cask karabiner-elements
 brew install --cask keycastr
-
+brew install --cask loopback
 brew install --cask obs
-
-brew install --cask onyx
-
+brew install --cask skype
 brew install --cask slack
-
 brew install --cask steam
-
 brew install --cask todoist
-
+brew install --cask todoist-app
 brew install --cask vlc
-
+brew install --cask zed
+brew install --cask zen
 brew install --cask zoom
 
 # Apps outside of brew:
