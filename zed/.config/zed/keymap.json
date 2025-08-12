@@ -1,123 +1,123 @@
 [
-    {
-        "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
-        "bindings": {
-            // key-bindings that work in normal & visual mode
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      // key-bindings that work in normal & visual mode
 
-            // AI
-            //       "space a c": "assistant::ToggleFocus",
-            // Go to file with `gf`
-            //       "g f": "editor::OpenExcerpts",
+      // AI
+      //       "space a c": "assistant::ToggleFocus",
+      // Go to file with `gf`
+      //       "g f": "editor::OpenExcerpts",
 
-            // buffers
-            "space b b": "tab_switcher::ToggleAll",
-            "space b d": "pane::CloseActiveItem",
-            "space b n": "pane::ActivateNextItem",
-            "space b p": "pane::ActivatePreviousItem",
-            "space b a": "pane::AlternateFile",
+      // buffers
+      "space b b": "tab_switcher::ToggleAll",
+      "space b d": "pane::CloseActiveItem",
+      "space b n": "pane::ActivateNextItem",
+      "space b p": "pane::ActivatePreviousItem",
+      "space b a": "pane::AlternateFile",
 
-            // code
-            "space c f": "editor::Format",
-            "space c a r": "editor::Rename",
-            "space c h": "editor::Hover",
+      // code
+      "space c f": "editor::Format",
+      "space c a r": "editor::Rename",
+      "space c h": "editor::Hover",
 
-            // diagnostics
-            "space d n": "editor::GoToDiagnostic",
-            "space d p": "editor::GoToPreviousDiagnostic",
-            "space d t": "editor::ToggleInlineDiagnostics",
-            "space d a": "diagnostics::Deploy",
+      // diagnostics
+      "space d n": "editor::GoToDiagnostic",
+      "space d p": "editor::GoToPreviousDiagnostic",
+      "space d t": "editor::ToggleInlineDiagnostics",
+      "space d a": "diagnostics::Deploy",
 
-            // files
-            "space f f": "file_finder::Toggle",
-            "space f s": "workspace::Save",
-            "space f t": "pane::RevealInProjectPanel",
-            "space f p": "projects::OpenRecent",
+      // files
+      "space f f": "file_finder::Toggle",
+      "space f s": "workspace::Save",
+      "space f t": "pane::RevealInProjectPanel",
+      "space f p": "projects::OpenRecent",
 
-            // Git
-            "space g b": "git::Blame",
-            "space g l": "editor::ToggleGitBlameInline",
-            "space g n": "editor::GoToHunk",
-            "space g p": "editor::GoToPreviousHunk",
-            "space g d": "editor::ToggleSelectedDiffHunks",
-            "space g P": "git_panel::ToggleFocus",
+      // Git
+      "space g b": "git::Blame",
+      "space g l": "editor::ToggleGitBlameInline",
+      "space g n": "editor::GoToHunk",
+      "space g p": "editor::GoToPreviousHunk",
+      "space g d": "editor::ToggleSelectedDiffHunks",
+      "space g P": "git_panel::ToggleFocus",
 
-            // search
-            "space s p": "workspace::NewSearch",
-            "space s o": "outline::Toggle",
-            // Search word under cursor
-            "space s w": "pane::DeploySearch",
-            "space s r": "buffer_search::DeployReplace",
-            "space s s": "project_symbols::Toggle",
+      // search
+      "space s p": "workspace::NewSearch",
+      "space s o": "outline::Toggle",
+      // Search word under cursor
+      "space s w": "pane::DeploySearch",
+      "space s r": "buffer_search::DeployReplace",
+      "space s s": "project_symbols::Toggle",
 
-            // Toggles
-            "space t c": "command_palette::Toggle",
-            "space t i": "editor::ToggleInlayHints",
-            "space t w": "editor::ToggleSoftWrap",
-            "space t o": "outline_panel::ToggleFocus",
-            "space t m": "markdown::OpenPreview",
-            "space t M": "markdown::OpenPreviewToTheSide"
-            // NOTE: Toggle Zen mode, not fully working yet
-            //       "space t z": "workspace::ToggleCenteredLayout",
-        }
-    },
-    {
-        "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
-        "bindings": {
-            // key-bindings that work only in normal mode
-            // Move in panels
-            "ctrl-h": "workspace::ActivatePaneLeft",
-            "ctrl-l": "workspace::ActivatePaneRight",
-            "ctrl-k": "workspace::ActivatePaneUp",
-            "ctrl-j": "workspace::ActivatePaneDown",
-
-            // windows
-            "space w v": "pane::SplitVertical",
-            "space w s": "pane::SplitHorizontal",
-            "space w d": "pane::CloseActiveItem",
-            "space w o": "pane::CloseOtherItems",
-            "space w m": "workspace::ToggleZoom"
-        }
-    },
-    {
-        // Empty pane, set of keybindings that are available when there is no active editor
-        "context": "Editor && VimControl && !VimWaiting && !menu",
-        "bindings": {
-            "g a": "editor::SelectAllMatches",
-            "space s r": "editor::FindAllReferences"
-        }
-    },
-    {
-        // Empty pane, set of keybindings that are available when there is no active editor
-        "context": "EmptyPane || SharedScreen",
-        "bindings": {
-            "space f f": "file_finder::Toggle",
-            "space f p": "projects::OpenRecent"
-        }
-    },
-    {
-        // Panels on the left
-        "context": "(ProjectPanel || OutlinePanel || GitPanel) && not_editing",
-        "bindings": {
-            // Close project panel as project file panel on the right
-            "q": "workspace::ToggleLeftDock",
-            // Navigate between panel
-            "ctrl-h": "workspace::ActivatePaneLeft",
-            "ctrl-l": "workspace::ActivatePaneRight",
-            "ctrl-k": "workspace::ActivatePaneUp",
-            "ctrl-j": "workspace::ActivatePaneDown"
-        }
-    },
-    {
-        // File tree
-        "context": "(ProjectPanel) && not_editing",
-        "bindings": {
-            "a": "project_panel::NewFile",
-            "A": "project_panel::NewDirectory",
-            "r": "project_panel::Rename",
-            "d": "project_panel::Delete",
-            "x": "project_panel::Cut",
-            "c": "project_panel::Copy",
-            "p": "project_panel::Paste"
-        }
+      // Toggles
+      "space t c": "command_palette::Toggle",
+      "space t i": "editor::ToggleInlayHints",
+      "space t w": "editor::ToggleSoftWrap",
+      "space t o": "outline_panel::ToggleFocus",
+      "space t m": "markdown::OpenPreview",
+      "space t M": "markdown::OpenPreviewToTheSide"
+      // NOTE: Toggle Zen mode, not fully working yet
+      //       "space t z": "workspace::ToggleCenteredLayout",
     }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      // key-bindings that work only in normal mode
+      // Move in panels
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+
+      // windows
+      "space w v": "pane::SplitVertical",
+      "space w s": "pane::SplitHorizontal",
+      "space w d": "pane::CloseActiveItem",
+      "space w o": "pane::CloseOtherItems",
+      "space w m": "workspace::ToggleZoom"
+    }
+  },
+  {
+    // Empty pane, set of keybindings that are available when there is no active editor
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "g a": "editor::SelectAllMatches",
+      "space s r": "editor::FindAllReferences"
+    }
+  },
+  {
+    // Empty pane, set of keybindings that are available when there is no active editor
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      "space f f": "file_finder::Toggle",
+      "space f p": "projects::OpenRecent"
+    }
+  },
+  {
+    // Panels on the left
+    "context": "(ProjectPanel || OutlinePanel || GitPanel) && not_editing",
+    "bindings": {
+      // Close project panel as project file panel on the right
+      "q": "workspace::ToggleLeftDock",
+      // Navigate between panel
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    // File tree
+    "context": "(ProjectPanel) && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste"
+    }
+  }
 ]
