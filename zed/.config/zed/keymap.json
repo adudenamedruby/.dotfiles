@@ -85,7 +85,6 @@
         "bindings": {
             // Close project panel as project file panel on the right
             "q": "workspace::ToggleLeftDock",
-            "space e": "workspace::ToggleLeftDock",
             // Navigate between panel
             "ctrl-h": "workspace::ActivatePaneLeft",
             "ctrl-l": "workspace::ActivatePaneRight",
