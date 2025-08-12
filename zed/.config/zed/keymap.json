@@ -108,6 +108,12 @@
     }
   },
   {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "ctrl-s": "editor::ConfirmCompletion"
+    }
+  },
+  {
     // File tree
     "context": "(ProjectPanel) && not_editing",
     "bindings": {
