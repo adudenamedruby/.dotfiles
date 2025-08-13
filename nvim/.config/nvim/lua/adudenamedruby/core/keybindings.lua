@@ -23,7 +23,7 @@ end, "lsp info help")
 
 -- Buffer menu
 WKMapGroup("b", "buffers")
-WKMap("<TAB>", "<cmd>:b#<CR>", "switch to last buffer")
+WKMap("ba", "<cmd>:b#<CR>", "switch to last buffer")
 WKMap("bb", telescopeBuiltin.buffers, "list all buffers")
 WKMap("be", "<cmd>:enew<CR>", "open empty buffer")
 WKMap("bd", "<cmd>:bd<CR>", "delete buffer")

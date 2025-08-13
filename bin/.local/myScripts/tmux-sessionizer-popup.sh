@@ -24,9 +24,9 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     # No tmux server is running; start a new session
     tmux new-session -s "$selected_name" -c "$selected"
     tmux rename-window -t "${selected_name}:1" "editor"
-    if [[ -f "$selected/README.md" ]]; then
-        tmux send-keys -t "${selected_name}:1" "vim README.md" C-m
-    fi
+    # if [[ -f "$selected/README.md" ]]; then
+    #     tmux send-keys -t "${selected_name}:1" "vim README.md" C-m
+    # fi
     exit 0
 fi
 
@@ -47,12 +47,12 @@ setup_editor_window() {
     fi
 
     # Check if Neovim is running; if not, open readme.md, if it exists
-    pane_command=$(tmux list-panes -t "${session_name}:${window_index}.${pane_index}" -F "#{pane_current_command}")
-    if [[ "$pane_command" != "nvim" ]]; then
-        if [[ -f "$selected_dir/readme.md" ]]; then
-            tmux send-keys -t "${session_name}:${window_index}.${pane_index}" "vim readme.md" C-m
-        fi
-    fi
+    # pane_command=$(tmux list-panes -t "${session_name}:${window_index}.${pane_index}" -F "#{pane_current_command}")
+    # if [[ "$pane_command" != "nvim" ]]; then
+    #     if [[ -f "$selected_dir/readme.md" ]]; then
+    #         tmux send-keys -t "${session_name}:${window_index}.${pane_index}" "vim readme.md" C-m
+    #     fi
+    # fi
 }
 
 if ! tmux has-session -t="$selected_name" 2>/dev/null; then
