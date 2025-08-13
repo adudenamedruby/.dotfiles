@@ -49,6 +49,9 @@
   // "chat_panel": {
   //   "button": "never"
   // },
+  "git_panel": {
+    "button": false
+  },
   // "show_call_status_icon": false,
   "experimental.theme_overrides": {
     "players": [

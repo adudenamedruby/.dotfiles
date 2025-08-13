@@ -54,6 +54,7 @@
       "space t i": "editor::ToggleInlayHints",
       "space t w": "editor::ToggleSoftWrap",
       "space t o": "outline_panel::ToggleFocus",
+      "space t b": "workspace::ToggleBottomDock",
       "space t m": "markdown::OpenPreview",
       "space t M": "markdown::OpenPreviewToTheSide"
       // NOTE: Toggle Zen mode, not fully working yet
@@ -73,7 +74,7 @@
       // windows
       "space w v": "pane::SplitVertical",
       "space w s": "pane::SplitHorizontal",
-      "space w d": "pane::CloseActiveItem",
+      // "space w d": "workspace::CloseWindow",
       "space w o": "pane::CloseOtherItems",
       "space w m": "workspace::ToggleZoom"
     }
