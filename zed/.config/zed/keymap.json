@@ -74,8 +74,7 @@
       // windows
       "space w v": "pane::SplitVertical",
       "space w s": "pane::SplitHorizontal",
-      // "space w d": "workspace::CloseWindow",
-      "space w o": "pane::CloseOtherItems",
+      "space w d": "pane::CloseAllItems",
       "space w m": "workspace::ToggleZoom"
     }
   },
@@ -96,16 +95,21 @@
     }
   },
   {
-    // Panels on the left
     "context": "(ProjectPanel || OutlinePanel || GitPanel) && not_editing",
     "bindings": {
-      // Close project panel as project file panel on the right
-      "q": "workspace::ToggleLeftDock",
       // Navigate between panel
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    // Panels on the left
+    "context": "(ProjectPanel || OutlinePanel || GitPanel) && not_editing",
+    "bindings": {
+      // Close project panel as project file panel on the right
+      "q": "workspace::ToggleLeftDock"
     }
   },
   {

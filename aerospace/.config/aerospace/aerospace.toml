@@ -47,12 +47,12 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = [ { monitor."Built-in Retina Display" = 5 }, 5  ]
-inner.vertical =   [ { monitor."Built-in Retina Display" = 5 }, 5  ]
-outer.left =       [ { monitor."Built-in Retina Display" = 5 }, 10  ]
-outer.bottom =     [ { monitor."Built-in Retina Display" = 5 }, 10  ]
-outer.top =        [ { monitor."Built-in Retina Display" = 5 }, 10  ]
-outer.right =      [ { monitor."Built-in Retina Display" = 5 }, 10  ]
+inner.horizontal = [{ monitor."Built-in Retina Display" = 5 }, 5]
+inner.vertical = [{ monitor."Built-in Retina Display" = 5 }, 5]
+outer.left = [{ monitor."Built-in Retina Display" = 5 }, 10]
+outer.bottom = [{ monitor."Built-in Retina Display" = 5 }, 10]
+outer.top = [{ monitor."Built-in Retina Display" = 5 }, 10]
+outer.right = [{ monitor."Built-in Retina Display" = 5 }, 10]
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -113,9 +113,9 @@ alt-shift-a = ['move-node-to-workspace Affinity', 'workspace Affinity']
 cmd-shift-ctrl-alt-b = 'workspace Books'
 alt-shift-b = ['move-node-to-workspace Books', 'workspace Books']
 
-# Comms
-cmd-shift-ctrl-alt-c = 'workspace Comms'
-alt-shift-c = ['move-node-to-workspace Comms', 'workspace Comms']
+# Chat
+cmd-shift-ctrl-alt-c = 'workspace Chat'
+alt-shift-c = ['move-node-to-workspace Chat', 'workspace Chat']
 
 # Discord
 cmd-shift-ctrl-alt-d = 'workspace Dash'
@@ -149,9 +149,9 @@ alt-shift-i = ['move-node-to-workspace Interwebz', 'workspace Interwebz']
 cmd-shift-ctrl-alt-l = 'workspace Lightroom'
 alt-shift-l = ['move-node-to-workspace Lightroom', 'workspace Lightroom']
 
-# Messaging
-cmd-shift-ctrl-alt-m = 'workspace Messaging'
-alt-shift-m = ['move-node-to-workspace Messaging', 'workspace Messaging']
+# Mail
+cmd-shift-ctrl-alt-m = 'workspace Mail'
+alt-shift-m = ['move-node-to-workspace Mail', 'workspace Mail']
 
 # Notes
 cmd-shift-ctrl-alt-n = 'workspace Notes'
@@ -205,14 +205,14 @@ External = 'secondary'
 
 Affinity = 'main'
 Books = 'main'
-Comms = 'main'
+Chat = 'main'
 Dash = 'main'
 # F = 'main'
 Groove = 'main'
 Hack = 'main'
 Interwebz = 'main'
 Lightroom = 'main'
-Messaging = 'main'
+Mail = 'main'
 Notes = 'main'
 OBS = 'main'
 Random = 'main'
@@ -275,11 +275,11 @@ run = 'move-node-to-workspace Schedule'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
-run = 'move-node-to-workspace Messaging'
+run = 'move-node-to-workspace Chat'
 
 [[on-window-detected]]
 if.app-id = 'com.readdle.SparkDesktop.appstore'
-run = 'move-node-to-workspace Messaging'
+run = 'move-node-to-workspace Mail'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.dt.Xcode'
@@ -311,15 +311,15 @@ run = 'move-node-to-workspace Books'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run = 'move-node-to-workspace Comms'
+run = 'move-node-to-workspace Chat'
 
 [[on-window-detected]]
-if.app-id = 'com.apple.Mail'
-run = 'move-node-to-workspace Comms'
+if.app-id = 'com.apple.mail'
+run = 'move-node-to-workspace Mail'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
-run = 'move-node-to-workspace Comms'
+run = 'move-node-to-workspace Chat'
 
 [[on-window-detected]]
 if.app-id = 'com.kapeli.dashdoc'

@@ -185,7 +185,7 @@ WKMap("uI", "<cmd>InspectTree<cr>", "Inspect Tree")
 
 -- Toggle menu
 WKMapGroup("t", "toggle")
-WKMap("ta", "<cmd>AerialToggle!<CR>", "aerial")
+WKMap("to", "<cmd>AerialToggle!<CR>", "outline")
 WKMap("tt", telescopeBuiltin.colorscheme, "themes")
 WKMap("tw", "<cmd>set wrap!<CR>", "toggle line wrapping")
 -- Quicker
