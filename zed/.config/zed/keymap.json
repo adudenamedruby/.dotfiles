@@ -1,5 +1,14 @@
 [
   {
+    "context": "Pane",
+    "bindings": {
+      "alt-ctrl-c": "search::ToggleCaseSensitive",
+      "alt-ctrl-r": "search::ToggleReplace",
+      "alt-ctrl-g": "search::ToggleRegex",
+      "alt-ctrl-w": "search::ToggleWholeWord"
+    }
+  },
+  {
     "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
     "bindings": {
       // key-bindings that work in normal & visual mode
@@ -44,10 +53,9 @@
       // search
       "space s p": "workspace::NewSearch",
       "space s o": "outline::Toggle",
-      // Search word under cursor
       "space s w": "pane::DeploySearch",
-      "space s r": "buffer_search::DeployReplace",
-      "space s s": "project_symbols::Toggle",
+      "space s s": "buffer_search::Deploy",
+      "space s S": "project_symbols::Toggle",
 
       // Toggles
       "space t c": "command_palette::Toggle",
