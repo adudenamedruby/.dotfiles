@@ -129,4 +129,6 @@ bindkey '^F' fzf-file-widget
 
 eval "$(starship init zsh)"
 
-source /Users/adudenamedruby/.config/broot/launcher/bash/br
+# source /Users/adudenamedruby/.config/broot/launcher/bash/br
+
+# source /Users/ruby-moz/.config/broot/launcher/bash/br

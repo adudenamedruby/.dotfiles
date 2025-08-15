@@ -12,19 +12,13 @@ alias docs="cd ~/Documents"
 alias down="cd ~/Downloads"
 alias dev="cd ~/Developer"
 alias desk="cd ~/Desktop"
-alias dot="cd ~/.dotfiles"
+alias dots="cd ~/.dotfiles"
 
 # don't use vim
 alias vim=nvim
 
-# bat
-alias cat=bat
-
 #lazygit
 alias lg=lazygit
-
-# work on Firefox
-alias fxios="cd ~/Developer/firefox-ios; vim README.md"
 
 # Updates
 syncCall() {
