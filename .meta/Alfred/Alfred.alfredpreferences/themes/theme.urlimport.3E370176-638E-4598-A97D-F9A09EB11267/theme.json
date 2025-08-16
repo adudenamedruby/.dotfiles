@@ -22,12 +22,13 @@
         "color" : "#FDF16FFF"
       },
       "iconPaddingHorizontal" : 4,
+      "roundness" : 0,
       "paddingVertical" : 3,
       "iconSize" : 33
     },
     "search" : {
-      "paddingVertical" : 3,
-      "background" : "#519B3A00",
+      "backgroundSelected" : "#B2D7FFFF",
+      "paddingHorizontal" : 8,
       "spacing" : 8,
       "text" : {
         "size" : 35,
@@ -35,17 +36,19 @@
         "font" : "System",
         "color" : "#489588FF"
       },
-      "backgroundSelected" : "#B2D7FFFF"
+      "background" : "#519B3A00",
+      "roundness" : 0,
+      "paddingVertical" : 3
     },
     "window" : {
       "color" : "#032025B2",
-      "paddingHorizontal" : 8,
+      "paddingHorizontal" : 10,
       "width" : 559,
       "borderPadding" : 0,
       "borderColor" : "#000000A5",
       "blur" : 4,
-      "roundness" : 3,
-      "paddingVertical" : 8
+      "roundness" : 16,
+      "paddingVertical" : 12
     },
     "credit" : "Magnus Fredlundh",
     "separator" : {

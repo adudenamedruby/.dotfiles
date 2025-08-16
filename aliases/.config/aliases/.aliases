@@ -47,6 +47,7 @@ cheatsheet() {
   echo " -> choose  - instead of cut/awk"
   echo " -> ouch    - unarchiver, basically"
   echo " -> grex    - regex generator of sorts"
+  echo " -> eza     - lsd but with trees (-alT)"
 }
 
 alias cheatsheet="cheatsheet"

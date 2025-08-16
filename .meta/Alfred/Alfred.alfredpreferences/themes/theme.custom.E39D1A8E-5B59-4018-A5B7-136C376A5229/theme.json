@@ -14,7 +14,7 @@
         "font" : "Source Code Pro",
         "color" : "#8B86CEFF"
       },
-      "backgroundSelected" : "#282B35FF",
+      "backgroundSelected" : "#390936FF",
       "text" : {
         "size" : 20,
         "colorSelected" : "#FFFFFFFF",
@@ -22,7 +22,7 @@
         "color" : "#D08E5DFF"
       },
       "iconPaddingHorizontal" : 5,
-      "roundness" : 0,
+      "roundness" : 7,
       "paddingVertical" : 8,
       "iconSize" : 40
     },
@@ -41,7 +41,7 @@
         "color" : "#BF369AFF"
       },
       "background" : "#282B35FF",
-      "roundness" : 0,
+      "roundness" : 8,
       "paddingVertical" : 2
     },
     "scrollbar" : {
@@ -50,13 +50,13 @@
     },
     "name" : "Dusk (v3)",
     "window" : {
-      "color" : "#282B35FF",
+      "color" : "#282B35F2",
       "paddingHorizontal" : 10,
       "width" : 680,
       "borderPadding" : 10,
       "borderColor" : "#E1404900",
       "blur" : 0,
-      "roundness" : 3,
+      "roundness" : 11,
       "paddingVertical" : 10
     }
   }
