@@ -2,6 +2,16 @@ return {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     event = { "BufReadPre", "BufNewFile" },
+    keys = function()
+        local U = require("adudenamedruby.core.utils")
+
+        return {
+            U.PLMap("dt", "<cmd>Trouble diagnostics toggle<CR>", "Trouble (project)"),
+            U.PLMap("dt", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "Trouble (buffer)"),
+            U.PLMap("xT", "<cmd>Trouble loclist toggle<cr>", "toggle loclist (Trouble)"),
+            U.PLMap("xt", "<cmd>Trouble gflist toggle<cr>", "toggle quickfix (Trouble)"),
+        }
+    end,
     config = function()
         require("trouble").setup({
             auto_open = false,
