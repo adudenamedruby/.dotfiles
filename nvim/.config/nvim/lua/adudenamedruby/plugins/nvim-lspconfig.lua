@@ -52,7 +52,6 @@ return {
                     --  This is where a variable was first declared, or where a function is defined, etc.
                     --  To jump back, press <C-t>.
                     map("gd", fzf.lsp_definitions, "go to definition")
-                    -- map("gd", vim.lsp.buf.definition, "go to definition")
 
                     -- WARN: This is not Goto Definition, this is Goto Declaration.
                     --  For example, in C this would take you to the header.
@@ -76,7 +75,7 @@ return {
 
                     -- Fuzzy find all the symbols in your current workspace.
                     --  Similar to document symbols, except searches over your entire project.
-                    map("<leader>lw", fzf.lsp_workspace_symbols, "workspace symbols")
+                    map("<leader>sS", fzf.lsp_workspace_symbols, "workspace symbols")
 
                     -- Rename the variable under your cursor.
                     --  Most Language Servers support renaming across files, etc.
