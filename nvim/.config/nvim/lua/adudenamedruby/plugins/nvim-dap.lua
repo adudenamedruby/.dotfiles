@@ -1,17 +1,18 @@
 local function setupListeners()
+    local U = require("adudenamedruby.core.utils")
     local dap = require("dap")
     local areSet = false
 
     dap.listeners.after["event_initialized"]["me"] = function()
         if not areSet then
             areSet = true
-            KMap("<leader>dc", dap.continue, "continue")
-            KMap("<leader>dC", dap.run_to_cursor, "run to cursor")
-            KMap("<leader>ds", dap.step_over, "step over")
-            KMap("<leader>di", dap.step_into, "step into")
-            KMap("<leader>do", dap.step_out, "step out")
-            KMap("<leader>dh", require("dap.ui.widgets").hover, "hover", { "n", "v" })
-            KMap("<leader>de", require("dapui").eval, "eval", { "n", "v" })
+            U.GLMap("dc", dap.continue, "continue")
+            U.GLMap("dC", dap.run_to_cursor, "run to cursor")
+            U.GLMap("ds", dap.step_over, "step over")
+            U.GLMap("di", dap.step_into, "step into")
+            U.GLMap("do", dap.step_out, "step out")
+            U.GLMap("dh", require("dap.ui.widgets").hover, "hover", { "n", "v" })
+            U.GLMap("de", require("dapui").eval, "eval", { "n", "v" })
         end
     end
 

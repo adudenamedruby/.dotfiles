@@ -38,9 +38,6 @@ U.GLMap("gd", "<cmd>DiffviewOpen<CR>", "diffView open")
 U.GLMap("gD", "<cmd>DiffviewClose<CR>", "diffView close")
 U.GLMap("gh", "<cmd>DiffviewFileHistory %<CR>", "diffView fileHistory")
 
-U.GLMap("tHt", "<cmd>Hardtime toggle<CR>", "toggle Hardtime")
-U.GLMap("tHr", "<cmd>Hardtime report<CR>", "Hardtime report")
-
 -- Help menu
 U.GLMap("Hm", ":redir @a<CR>:messages<CR>:redir END<CR>:new<CR>:put a<CR>", "messages buffer")
 U.GLMap("HL", "<cmd>Lazy<CR>", "open Lazy")
@@ -49,10 +46,6 @@ U.GLMap("HM", "<cmd>Mason<CR>", "open Mason")
 -- Indent Mode
 U.GMap("<", "<gv", "", "v")
 U.GMap(">", ">gv", "", "v")
-
--- LSP menu
--- many lsp functions are actually in nvim-lsp because they need to be
--- in the local LSP callback
 
 -- Marks: Saner mark movement to save keystrokes
 U.GMap("'", "`", "")
@@ -90,8 +83,6 @@ U.GLMap("uI", "<cmd>InspectTree<cr>", "Inspect Tree")
 -- Toggle menu
 U.GLMap("to", "<cmd>AerialToggle!<CR>", "outline")
 U.GLMap("tw", "<cmd>set wrap!<CR>", "toggle line wrapping")
-
--- Markdown
 U.GLMap("tm", "<cmd>RenderMarkdown toggle<CR>", "toggle RenderMarkdown")
 
 -- Search: behaviour of n and N

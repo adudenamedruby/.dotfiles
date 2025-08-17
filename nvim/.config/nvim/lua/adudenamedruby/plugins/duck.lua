@@ -15,5 +15,12 @@ return {
             end, "cook all ducks"),
         }
     end,
-    config = function() end,
+    config = function()
+        local ok, wk = pcall(require, "which-key")
+        if ok then
+            wk.add({
+                { "<leader>uD", group = "Duck" },
+            })
+        end
+    end,
 }
