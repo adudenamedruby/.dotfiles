@@ -1,11 +1,19 @@
--- Function: KMap
--- Description: Binds a specified keymap to an action with noremap and silent mode
--- Parameters:
---   mode - The modes in which you want the keybind to appear in. Default value = "n"
---   keys - The keys for the keybind
---   func - What to do when pressing that keybind
---   desc - A description to show up in which-key. Default value = ""
-local function Map(keys, func, desc, mode, expr)
+local M = {}
+
+function M.GMap(keys, func, desc, mode, expr)
+    vim.keymap.set(mode or "n", keys, func, {
+        expr = expr or false,
+        desc = desc or "",
+        noremap = true,
+        silent = true,
+    })
+end
+
+function M.GLMap(keys, func, desc, mode, expr)
+    M.GMap("<leader>" .. keys, func, desc, mode, expr)
+end
+
+function M.PMap(keys, func, desc, mode, expr)
     return {
         keys,
         func,
@@ -17,11 +25,15 @@ local function Map(keys, func, desc, mode, expr)
     }
 end
 
-local function WMap(keys, func, desc, mode, expr)
-    return Map("<leader>" .. keys, func, desc, mode, expr)
+function M.PLMap(keys, func, desc, mode, expr)
+    return M.PMap("<leader>" .. keys, func, desc, mode, expr)
 end
 
-return {
-    Map = Map,
-    WMap = WMap,
-}
+function M.PLMapGroup(lhs, group_desc)
+    local ok, wk = pcall(require, "which-key")
+    if ok then
+        wk.add({ { "<leader>" .. lhs, group = group_desc } })
+    end
+end
+
+return M

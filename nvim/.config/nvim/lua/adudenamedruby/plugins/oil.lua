@@ -2,6 +2,12 @@ return {
     "stevearc/oil.nvim",
     opts = {},
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    keys = function()
+        local U = require("adudenamedruby.core.utils")
+        return {
+            -- etc…
+        }
+    end,
     config = function()
         require("oil").setup({
             -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
