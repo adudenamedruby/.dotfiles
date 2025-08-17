@@ -2,6 +2,19 @@ return {
     -- quickfix improved workflows
     "stevearc/quicker.nvim",
     event = "FileType qf",
+
+    keys = function()
+        local quicker = require("quicker")
+        local U = require("adudenamedruby.core.utils")
+        return {
+            U.PLMap("tq", function()
+                quicker.toggle()
+            end, "toggle quickfix"),
+            U.PLMap("tl", function()
+                quicker.toggle({ loclist = true })
+            end, "toggle loclist"),
+        }
+    end,
     config = function()
         require("quicker").setup({
             keys = {

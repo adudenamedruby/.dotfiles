@@ -1,6 +1,15 @@
 return {
     "mfussenegger/nvim-lint",
     event = { "BufReadPre", "BufNewFile" },
+    keys = function()
+        local lint = require("lint")
+        local U = require("adudenamedruby.core.utils")
+        return {
+            U.PLMap("ul", function()
+                lint.try_lint()
+            end, "lint file"),
+        }
+    end,
     config = function()
         local lint = require("lint")
 

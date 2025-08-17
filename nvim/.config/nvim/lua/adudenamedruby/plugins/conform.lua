@@ -6,6 +6,19 @@ return {
     "stevearc/conform.nvim",
     event = { "BufWritePre", "BufNewFile" },
     cmd = { "ConformInfo" },
+    keys = function()
+        local conform = require("conform")
+        local U = require("adudenamedruby.core.utils")
+        return {
+            U.PLMap("uf", function()
+                conform.format({
+                    async = true,
+                    lsp_fallback = true,
+                    timeout_ms = 500,
+                })
+            end, "format buffer"),
+        }
+    end,
     config = function()
         require("conform").setup({
             notify_on_error = false,

@@ -3,7 +3,7 @@ font-family = FiraCode Nerd Font Mono
 font-size = 15
 
 # Look and Feel
-background-opacity = 0.93
+background-opacity = 0.95
 background-blur-radius = 20
 cursor-color = #FB00FC
 cursor-style = block

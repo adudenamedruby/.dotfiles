@@ -203,4 +203,35 @@ return {
             })
         end,
     },
+    {
+        "adudenamedruby/mithrandir.nvim",
+        lazy = false,
+        priority = 1000, -- make sure it loads before other colorschemes
+        config = function()
+            require("mithrandir").setup({
+                transparent = false,
+                italics = {
+                    comments = true,
+                    keywords = false,
+                    functions = false,
+                    variables = false,
+                },
+                plugins = {
+                    treesitter = true,
+                    lsp = true,
+                    telescope = true,
+                    cmp = true,
+                    gitsigns = true,
+                    blink = true,
+                    trouble = true,
+                    which_key = true,
+                    render_markdown = true,
+                    nvim_tree = true,
+                    oil = true,
+                    harpoon = true,
+                    hovercraft = true,
+                },
+            })
+        end,
+    },
 }

@@ -46,7 +46,26 @@ return {
                         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
                     end
 
-                    local fzf = require("fzf-lua")
+                    local ok, fzf = pcall(require, "fzf-lua")
+                    if not ok then
+                        fzf = {
+                            lsp_definitions = vim.lsp.buf.definition,
+                            lsp_declarations = vim.lsp.buf.declaration,
+                            lsp_references = vim.lsp.buf.references,
+                            lsp_implementations = vim.lsp.buf.implementation,
+                            lsp_typedefs = vim.lsp.buf.type_definition,
+                            lsp_document_symbols = vim.lsp.buf.document_symbol,
+                            lsp_workspace_symbols = function()
+                                vim.lsp.buf.workspace_symbol("")
+                            end,
+                            lsp_document_diagnostics = function()
+                                vim.diagnostic.setqflist({ open = true })
+                            end,
+                            lsp_workspace_diagnostics = function()
+                                vim.diagnostic.setqflist({ open = true })
+                            end,
+                        }
+                    end
 
                     -- Jump to the definition of the word under your cursor.
                     --  This is where a variable was first declared, or where a function is defined, etc.
@@ -78,7 +97,7 @@ return {
                     map("<leader>sS", fzf.lsp_workspace_symbols, "workspace symbols")
 
                     map("<leader>dD", fzf.lsp_document_diagnostics, "document diagnostics")
-                    map("<leader>dP", fzf.lsp_workspace_diagnostics(), "project diagnostics")
+                    map("<leader>dP", fzf.lsp_workspace_diagnostics, "project diagnostics")
 
                     -- Rename the variable under your cursor.
                     --  Most Language Servers support renaming across files, etc.
@@ -219,6 +238,7 @@ return {
             -- })
 
             require("lspconfig").sourcekit.setup({
+                filetypes = { "swift", "objective-c", "objective-cpp" },
                 capabilities = {
                     workspace = {
                         didChangeWatchedFiles = {
@@ -281,16 +301,10 @@ return {
                         [vim.diagnostic.severity.HINT] = "󰌶 ",
                     },
                     texthl = {
-                        [vim.diagnostic.severity.ERROR] = "Error",
-                        [vim.diagnostic.severity.WARN] = "Warn",
-                        [vim.diagnostic.severity.INFO] = "Info",
-                        [vim.diagnostic.severity.HINT] = "Hint",
-                    },
-                    linehl = {
-                        [vim.diagnostic.severity.ERROR] = "Error",
-                        [vim.diagnostic.severity.WARN] = "Warn",
-                        [vim.diagnostic.severity.INFO] = "Info",
-                        [vim.diagnostic.severity.HINT] = "Hint",
+                        [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+                        [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+                        [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+                        [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
                     },
                 } or {},
                 virtual_text = {

@@ -3,6 +3,19 @@ return {
     dependencies = {
         { "nvim-lua/plenary.nvim" },
     },
+    keys = function()
+        local hovercraft = require("hovercraft")
+        local U = require("adudenamedruby.core.utils")
+        return {
+            U.PLMap("ch", function()
+                if hovercraft.is_visible() then
+                    hovercraft.enter_popup()
+                else
+                    hovercraft.hover()
+                end
+            end, "lsp info help"),
+        }
+    end,
     opts = function()
         return {
             providers = {

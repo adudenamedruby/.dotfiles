@@ -3,22 +3,6 @@
 -- local variables
 local U = require("adudenamedruby.core.utils")
 
-local conform = require("conform")
-local duck = require("duck")
-local flash = require("flash")
-local hovercraft = require("hovercraft")
-local lint = require("lint")
-local quicker = require("quicker")
-
--- Code menu
-U.GLMap("ch", function()
-    if hovercraft.is_visible() then
-        hovercraft.enter_popup()
-    else
-        hovercraft.hover()
-    end
-end, "lsp info help")
-
 -- Buffer menu
 U.GLMap("ba", "<cmd>:b#<CR>", "switch to last buffer")
 U.GLMap("be", "<cmd>:enew<CR>", "open empty buffer")
@@ -33,8 +17,12 @@ U.GLMap("bS", "<cmd>ScratchHSplit<cr>", "scratch buffer (horizontal)")
 
 -- Debug menu
 -- There are sereval keymaps in nvim-dap for the debugger
-U.GLMap("dp", vim.diagnostic.goto_prev, "go to previous diagnostic")
-U.GLMap("dn", vim.diagnostic.goto_next, "go to next diagnostic")
+U.GLMap("dp", function()
+    vim.diagnostic.jump({ count = -1, float = true })
+end, "go to previous diagnostic")
+U.GLMap("dn", function()
+    vim.diagnostic.jump({ count = 1, float = true })
+end, "go to next diagnostic")
 U.GLMap("dl", vim.diagnostic.open_float, "show line diagnostics")
 U.GLMap("dq", vim.diagnostic.setloclist, "open diagnostic quickfix list")
 
@@ -42,14 +30,6 @@ U.GLMap("dq", vim.diagnostic.setloclist, "open diagnostic quickfix list")
 U.GLMap("fs", "<cmd>w<CR>", "save file")
 U.GLMap("ft", "<cmd>NvimTreeToggle<CR>", "file tree")
 U.GLMap("fo", "<cmd>Oil --float<CR>", "oil")
-
--- flash
-U.GLMap("j", function()
-    flash.jump()
-end, "jump", { "n", "x", "o" })
-U.GLMap("us", function()
-    flash.treesitter()
-end, "select with treesitter")
 
 -- Git menu
 U.GLMap("gb", "<cmd>Gitsigns blame<CR>", "git blame")
@@ -110,13 +90,7 @@ U.GLMap("uI", "<cmd>InspectTree<cr>", "Inspect Tree")
 -- Toggle menu
 U.GLMap("to", "<cmd>AerialToggle!<CR>", "outline")
 U.GLMap("tw", "<cmd>set wrap!<CR>", "toggle line wrapping")
--- Quicker
-U.GLMap("tq", function()
-    quicker.toggle()
-end, "toggle quickfix")
-U.GLMap("tl", function()
-    quicker.toggle({ loclist = true })
-end, "toggle loclist")
+
 -- Markdown
 U.GLMap("tm", "<cmd>RenderMarkdown toggle<CR>", "toggle RenderMarkdown")
 
@@ -131,31 +105,6 @@ U.GMap("N", "'nN'[v:searchforward]", "Prev Search Result", "o", true)
 -- Search menu
 -- Clear highlights on search when pressing <Esc> in normal mode
 U.GLMap("sc", "<cmd>nohlsearch<CR>", "clear search highlights")
-
--- Utilites menu
-U.GLMap("uf", function()
-    conform.format({
-        async = true,
-        lsp_fallback = true,
-        timeout_ms = 500,
-    })
-end, "format buffer")
-
--- Utilities: Duck
-U.GLMap("uDd", function()
-    duck.hatch()
-end, "summon duck")
-U.GLMap("uDc", function()
-    duck.cook()
-end, "cook duck")
-U.GLMap("uDa", function()
-    duck.cook_all()
-end, "cook all ducks")
-
--- Utilities: Linter
-U.GLMap("ul", function()
-    lint.try_lint()
-end, "lint file")
 
 -- Visual Line movement
 U.GMap("j", "gj")
