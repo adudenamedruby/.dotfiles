@@ -1,10 +1,11 @@
 -- Keymappings
 
 -- local variables
-local telescopeBuiltin = require("telescope.builtin")
+-- local telescopeBuiltin = require("telescope.builtin")
 local conform = require("conform")
 local duck = require("duck")
 local flash = require("flash")
+local fzf = require("fzf-lua")
 local harpoon = require("harpoon")
 local hovercraft = require("hovercraft")
 local lint = require("lint")
@@ -24,7 +25,8 @@ end, "lsp info help")
 -- Buffer menu
 WKMapGroup("b", "buffers")
 WKMap("ba", "<cmd>:b#<CR>", "switch to last buffer")
-WKMap("bb", telescopeBuiltin.buffers, "list all buffers")
+-- WKMap("bb", telescopeBuiltin.buffers, "list all buffers")
+WKMap("bb", fzf.buffers, "list all buffers")
 WKMap("be", "<cmd>:enew<CR>", "open empty buffer")
 WKMap("bd", "<cmd>:bd<CR>", "delete buffer")
 WKMap("bD", "<cmd>:bd!<CR>", "force delete buffer")
@@ -45,7 +47,8 @@ WKMap("dq", vim.diagnostic.setloclist, "open diagnostic quickfix list")
 
 -- Files menu
 WKMapGroup("f", "files")
-WKMap("ff", telescopeBuiltin.find_files, "find file")
+WKMap("ff", "<cmd>FzfLua files<CR>", "fzf find file")
+-- WKMap("ff", telescopeBuiltin.find_files, "find file")
 WKMap("fs", "<cmd>w<CR>", "save file")
 WKMap("ft", "<cmd>NvimTreeToggle<CR>", "file tree")
 WKMap("fo", "<cmd>Oil --float<CR>", "oil")
@@ -72,6 +75,10 @@ end, "switch worktree")
 WKMap("gc", function()
     telescope.extensions.git_worktree.create_git_worktree()
 end, "create worktree")
+
+WKMapGroup("tH", "Hardtime")
+WKMap("tHt", "<cmd>Hardtime toggle<CR>", "toggle Hardtime")
+WKMap("tHr", "<cmd>Hardtime report<CR>", "Hardtime report")
 
 -- Harpoon menu
 WKMapGroup("h", "harpoon")
@@ -135,9 +142,12 @@ WKMapGroup("H", "Help")
 WKMap("Hm", ":redir @a<CR>:messages<CR>:redir END<CR>:new<CR>:put a<CR>", "messages buffer")
 WKMap("HL", "<cmd>Lazy<CR>", "open Lazy")
 WKMap("HM", "<cmd>Mason<CR>", "open Mason")
-WKMap("Hk", telescopeBuiltin.keymaps, "search keymaps")
-WKMap("Hb", telescopeBuiltin.builtin, "search Telescope builtin")
-WKMap("Hh", telescopeBuiltin.help_tags, "search help")
+-- WKMap("Hk", telescopeBuiltin.keymaps, "search keymaps")
+-- WKMap("Hb", telescopeBuiltin.builtin, "search Telescope builtin")
+-- WKMap("Hh", telescopeBuiltin.help_tags, "search help")
+WKMap("Hk", fzf.keymaps, "search keymaps")
+WKMap("Hb", fzf.builtin, "search fzf-lua builtin")
+WKMap("Hh", fzf.help_tags, "search help")
 
 -- Indent Mode
 KMap("<", "<gv", "", "v")
@@ -186,7 +196,8 @@ WKMap("uI", "<cmd>InspectTree<cr>", "Inspect Tree")
 -- Toggle menu
 WKMapGroup("t", "toggle")
 WKMap("to", "<cmd>AerialToggle!<CR>", "outline")
-WKMap("tt", telescopeBuiltin.colorscheme, "themes")
+-- WKMap("tt", telescopeBuiltin.colorscheme, "themes")
+WKMap("tt", fzf.colorschemes, "themes")
 WKMap("tw", "<cmd>set wrap!<CR>", "toggle line wrapping")
 -- Quicker
 WKMap("tq", function()
@@ -210,27 +221,43 @@ KMap("N", "'nN'[v:searchforward]", "Prev Search Result", "o", true)
 WKMapGroup("s", "search")
 -- Clear highlights on search when pressing <Esc> in normal mode
 WKMap("sc", "<cmd>nohlsearch<CR>", "clear search highlights")
-WKMap("sS", telescopeBuiltin.lsp_document_symbols, "search word symbol")
-WKMap("ss", telescopeBuiltin.current_buffer_fuzzy_find, "search current buffer")
-WKMap("sw", telescopeBuiltin.grep_string, "search current word")
-WKMap("sh", telescopeBuiltin.command_history, "search command history")
-WKMap("sH", telescopeBuiltin.search_history, "search search history")
-WKMap("sm", telescopeBuiltin.marks, "search marks")
-WKMap("sp", telescopeBuiltin.live_grep, "grep search")
-WKMap("sd", telescopeBuiltin.diagnostics, "diagnostics search")
-WKMap("sR", telescopeBuiltin.registers, "search registers")
-WKMap("sr", telescopeBuiltin.oldfiles, "search recent files")
-WKMap("st", telescopeBuiltin.treesitter, "search treesitter")
-
+WKMap("sh", fzf.command_history, "search command history")
+WKMap("sH", fzf.search_history, "search search history")
+WKMap("sm", fzf.marks, "search marks")
+WKMap("sr", fzf.registers, "search registers")
+WKMap("sR", fzf.oldfiles, "search recent files")
+WKMap("sS", fzf.lsp_document_symbols, "search word symbol")
+WKMap("st", fzf.treesitter, "search treesitter")
+WKMap("sd", fzf.diagnostics_workspace, "diagnostics search")
+WKMap("ss", fzf.blines, "search current buffer")
+WKMap("sp", fzf.live_grep, "grep search")
+WKMap("sw", fzf.grep_cword, "search current word")
+WKMap("sh", fzf.command_history, "search command history")
+WKMap("sH", fzf.search_history, "search search history")
+WKMap("sm", fzf.marks, "search marks")
+WKMap("sR", fzf.registers, "search registers")
+WKMap("sr", fzf.oldfiles, "search recent files")
+-- WKMap("sS", telescopeBuiltin.lsp_document_symbols, "search word symbol")
+-- WKMap("ss", telescopeBuiltin.current_buffer_fuzzy_find, "search current buffer")
+-- WKMap("sw", telescopeBuiltin.grep_string, "search current word")
+-- WKMap("sh", telescopeBuiltin.command_history, "search command history")
+-- WKMap("sH", telescopeBuiltin.search_history, "search search history")
+-- WKMap("sm", telescopeBuiltin.marks, "search marks")
+-- WKMap("sp", telescopeBuiltin.live_grep, "grep search")
+-- WKMap("sd", telescopeBuiltin.diagnostics, "diagnostics search")
+-- WKMap("sR", telescopeBuiltin.registers, "search registers")
+-- WKMap("sr", telescopeBuiltin.oldfiles, "search recent files")
+-- WKMap("st", telescopeBuiltin.treesitter, "search treesitter")
+--
 -- It's also possible to pass additional configuration options.
 --  See `:help telescope.builtin.live_grep()` for information about particular keys
-WKMap("s/", function()
-    telescopeBuiltin.live_grep({
-        grep_open_files = true,
-        prompt_title = "Live Grep in Open Files",
-    })
-end, "search in open files")
-
+-- WKMap("s/", function()
+--     telescopeBuiltin.live_grep({
+--         grep_open_files = true,
+--         prompt_title = "Live Grep in Open Files",
+--     })
+-- end, "search in open files")
+--
 -- Shortcut for searching your Neovim configuration files
 -- KMap("<leader>Hn", function()
 --     telescopeBuiltin.find_files({ cwd = vim.fn.stdpath("config") })
