@@ -29,11 +29,13 @@ function M.PLMap(keys, func, desc, mode, expr)
     return M.PMap("<leader>" .. keys, func, desc, mode, expr)
 end
 
-function M.PLMapGroup(lhs, group_desc)
-    local ok, wk = pcall(require, "which-key")
-    if ok then
-        wk.add({ { "<leader>" .. lhs, group = group_desc } })
-    end
-end
-
+-- function M.PLMapGroup(lhs, group_desc)
+--     return { "<leader>" .. lhs, group = group_desc }
+-- end
+-- function M.PLMapGroup(lhs, group_desc)
+--     local ok, wk = pcall(require, "which-key")
+--     if ok then
+--         wk.add({ { "<leader>" .. lhs, group = group_desc } })
+--     end
+-- end
 return M

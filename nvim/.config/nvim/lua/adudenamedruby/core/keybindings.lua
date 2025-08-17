@@ -1,17 +1,14 @@
 -- Keymappings
 
 -- local variables
--- local telescopeBuiltin = require("telescope.builtin")
 local U = require("adudenamedruby.core.utils")
 
 local conform = require("conform")
 local duck = require("duck")
 local flash = require("flash")
 local fzf = require("fzf-lua")
-local harpoon = require("harpoon")
 local hovercraft = require("hovercraft")
 local lint = require("lint")
-local telescope = require("telescope")
 local quicker = require("quicker")
 
 -- Code menu
@@ -25,7 +22,6 @@ end, "lsp info help")
 
 -- Buffer menu
 U.GLMap("ba", "<cmd>:b#<CR>", "switch to last buffer")
--- U.GLMap("bb", telescopeBuiltin.buffers, "list all buffers")
 U.GLMap("bb", fzf.buffers, "list all buffers")
 U.GLMap("be", "<cmd>:enew<CR>", "open empty buffer")
 U.GLMap("bd", "<cmd>:bd<CR>", "delete buffer")
@@ -46,7 +42,6 @@ U.GLMap("dq", vim.diagnostic.setloclist, "open diagnostic quickfix list")
 
 -- Files menu
 U.GLMap("ff", "<cmd>FzfLua files<CR>", "fzf find file")
--- U.GLMap("ff", telescopeBuiltin.find_files, "find file")
 U.GLMap("fs", "<cmd>w<CR>", "save file")
 U.GLMap("ft", "<cmd>NvimTreeToggle<CR>", "file tree")
 U.GLMap("fo", "<cmd>Oil --float<CR>", "oil")
@@ -66,79 +61,13 @@ U.GLMap("gd", "<cmd>DiffviewOpen<CR>", "diffView open")
 U.GLMap("gD", "<cmd>DiffviewClose<CR>", "diffView close")
 U.GLMap("gh", "<cmd>DiffviewFileHistory %<CR>", "diffView fileHistory")
 
-U.GLMap("gs", function()
-    telescope.extensions.git_worktree.git_worktrees()
-end, "switch worktree")
-U.GLMap("gc", function()
-    telescope.extensions.git_worktree.create_git_worktree()
-end, "create worktree")
-
 U.GLMap("tHt", "<cmd>Hardtime toggle<CR>", "toggle Hardtime")
 U.GLMap("tHr", "<cmd>Hardtime report<CR>", "Hardtime report")
-
--- Harpoon menu
-U.GLMap("ha", "", "add to harpoon")
-U.GLMap("haa", function()
-    harpoon:list():add()
-end, "add to harpoon")
-U.GLMap("hah", function()
-    harpoon:list():replace_at(1)
-end, "add to h")
-U.GLMap("hat", function()
-    harpoon:list():replace_at(2)
-end, "add to t")
-U.GLMap("han", function()
-    harpoon:list():replace_at(3)
-end, "add to n")
-U.GLMap("has", function()
-    harpoon:list():replace_at(4)
-end, "add to s")
-
-U.GLMap("hr", "", "remove")
-U.GLMap("hrr", function()
-    harpoon:list():remove()
-end, "remove current file")
-U.GLMap("hrc", function()
-    harpoon:list():clear()
-end, "clear harpoon")
-U.GLMap("hrh", function()
-    harpoon:list():remove_at(1)
-end, "clear h")
-U.GLMap("hrt", function()
-    harpoon:list():remove_at(2)
-end, "clear t")
-U.GLMap("hrn", function()
-    harpoon:list():remove_at(3)
-end, "clear n")
-U.GLMap("hrs", function()
-    harpoon:list():remove_at(4)
-end, "clear s")
-
-U.GLMap("hv", function()
-    -- toggle_telescope(harpoon:list())
-    harpoon.ui:toggle_quick_menu(harpoon:list())
-end, "open harpoon list")
-
-U.GLMap("hh", function()
-    harpoon:list():select(1)
-end, "go to h")
-U.GLMap("ht", function()
-    harpoon:list():select(2)
-end, "go to t")
-U.GLMap("hn", function()
-    harpoon:list():select(3)
-end, "go to n")
-U.GLMap("hs", function()
-    harpoon:list():select(4)
-end, "go to s")
 
 -- Help menu
 U.GLMap("Hm", ":redir @a<CR>:messages<CR>:redir END<CR>:new<CR>:put a<CR>", "messages buffer")
 U.GLMap("HL", "<cmd>Lazy<CR>", "open Lazy")
 U.GLMap("HM", "<cmd>Mason<CR>", "open Mason")
--- U.GLMap("Hk", telescopeBuiltin.keymaps, "search keymaps")
--- U.GLMap("Hb", telescopeBuiltin.builtin, "search Telescope builtin")
--- U.GLMap("Hh", telescopeBuiltin.help_tags, "search help")
 U.GLMap("Hk", fzf.keymaps, "search keymaps")
 U.GLMap("Hb", fzf.builtin, "search fzf-lua builtin")
 U.GLMap("Hh", fzf.help_tags, "search help")
@@ -186,7 +115,6 @@ U.GLMap("uI", "<cmd>InspectTree<cr>", "Inspect Tree")
 
 -- Toggle menu
 U.GLMap("to", "<cmd>AerialToggle!<CR>", "outline")
--- U.GLMap("tt", telescopeBuiltin.colorscheme, "themes")
 U.GLMap("tt", fzf.colorschemes, "themes")
 U.GLMap("tw", "<cmd>set wrap!<CR>", "toggle line wrapping")
 -- Quicker
@@ -215,7 +143,6 @@ U.GLMap("sH", fzf.search_history, "search search history")
 U.GLMap("sm", fzf.marks, "search marks")
 U.GLMap("sr", fzf.registers, "search registers")
 U.GLMap("sR", fzf.oldfiles, "search recent files")
-U.GLMap("sS", fzf.lsp_document_symbols, "search word symbol")
 U.GLMap("st", fzf.treesitter, "search treesitter")
 U.GLMap("sd", fzf.diagnostics_workspace, "diagnostics search")
 U.GLMap("ss", fzf.blines, "search current buffer")
@@ -226,31 +153,6 @@ U.GLMap("sH", fzf.search_history, "search search history")
 U.GLMap("sm", fzf.marks, "search marks")
 U.GLMap("sR", fzf.registers, "search registers")
 U.GLMap("sr", fzf.oldfiles, "search recent files")
--- U.GLMap("sS", telescopeBuiltin.lsp_document_symbols, "search word symbol")
--- U.GLMap("ss", telescopeBuiltin.current_buffer_fuzzy_find, "search current buffer")
--- U.GLMap("sw", telescopeBuiltin.grep_string, "search current word")
--- U.GLMap("sh", telescopeBuiltin.command_history, "search command history")
--- U.GLMap("sH", telescopeBuiltin.search_history, "search search history")
--- U.GLMap("sm", telescopeBuiltin.marks, "search marks")
--- U.GLMap("sp", telescopeBuiltin.live_grep, "grep search")
--- U.GLMap("sd", telescopeBuiltin.diagnostics, "diagnostics search")
--- U.GLMap("sR", telescopeBuiltin.registers, "search registers")
--- U.GLMap("sr", telescopeBuiltin.oldfiles, "search recent files")
--- U.GLMap("st", telescopeBuiltin.treesitter, "search treesitter")
---
--- It's also possible to pass additional configuration options.
---  See `:help telescope.builtin.live_grep()` for information about particular keys
--- U.GLMap("s/", function()
---     telescopeBuiltin.live_grep({
---         grep_open_files = true,
---         prompt_title = "Live Grep in Open Files",
---     })
--- end, "search in open files")
---
--- Shortcut for searching your Neovim configuration files
--- KMap("<leader>Hn", function()
---     telescopeBuiltin.find_files({ cwd = vim.fn.stdpath("config") })
--- end, "search NeoVim files")
 
 -- Utilites menu
 U.GLMap("uf", function()
