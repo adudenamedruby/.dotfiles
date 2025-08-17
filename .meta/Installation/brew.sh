@@ -37,13 +37,10 @@ brew install zsh-autosuggestions
 brew install zsh-you-should-use
 
 # My preferred fonts
-brew tap homebrew/cask-fonts
-brew install --cask font-source-code-pro
 brew install --cask font-fira-code
 brew install --cask font-fira-code-nerd-font
 brew install --cask font-hack
 brew install --cask font-hack-nerd-font
-brew install --cask font-iosevka
 
 # Keyboard related things
 brew install --cask karabiner-elements
@@ -179,9 +176,11 @@ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 
 # Rust
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+rustup component add rust-analyzer --toolchain stable
+rustup component add rust-src --toolchain stable
 
 # Prolog
-brew install swi-prolog
+# brew install swi-prolog
 
 # ---------------------------------------------
 # Editors
@@ -189,13 +188,13 @@ brew install swi-prolog
 
 brew install nvim
 
-brew install xcode-build-server
+# brew install xcode-build-server
 # when running a new project, you'll need to run this
 # xcode-build-server config -scheme <XXX> -project *.xcodeproj
-brew install xcbeautify
-brew install ruby
-brew install pipx
-gem install xcodeproj
+# brew install xcbeautify
+# brew install ruby
+# brew install pipx
+# gem install xcodeproj
 
 # Emacs
 # brew tap d12frosted/emacs-plus
@@ -230,7 +229,6 @@ brew install --cask obs
 brew install --cask skype
 brew install --cask slack
 brew install --cask steam
-brew install --cask todoist
 brew install --cask todoist-app
 brew install --cask vlc
 brew install --cask zed
