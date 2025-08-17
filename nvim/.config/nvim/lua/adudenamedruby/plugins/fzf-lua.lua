@@ -3,6 +3,39 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     -- or if using mini.icons/mini.nvim
     -- dependencies = { "echasnovski/mini.icons" },
+    keys = function()
+        local fzf = require("fzf-lua")
+        local U = require("adudenamedruby.core.utils")
+        return {
+
+            U.PLMap("bb", fzf.buffers, "list all buffers"),
+
+            U.PLMap("ff", fzf.files, "fzf find file"),
+
+            U.PLMap("Hk", fzf.keymaps, "search keymaps"),
+            U.PLMap("Hb", fzf.builtin, "search fzf-lua builtin"),
+            U.PLMap("Hh", fzf.help_tags, "search help"),
+            U.PLMap("Hn", function()
+                fzf.nvim_options()
+            end, "NVim options"),
+
+            U.PLMap("tt", fzf.colorschemes, "themes"),
+
+            U.PLMap("sh", fzf.search_history, "search history"),
+            U.PLMap("sH", fzf.command_history, "command history"),
+            U.PLMap("sm", fzf.marks, "marks"),
+            U.PLMap("sp", fzf.live_grep, "project grep"),
+            U.PLMap("sr", fzf.registers, "registers"),
+            U.PLMap("sR", fzf.oldfiles, "recent files"),
+            U.PLMap("ss", fzf.blines, "swoop buffer"),
+            U.PLMap("so", fzf.treesitter, "treesitter"),
+            U.PLMap("sd", fzf.diagnostics_workspace, "diagnostics"),
+            U.PLMap("sv", function()
+                fzf.grep_visual()
+            end, "visual selection"),
+            U.PLMap("sw", fzf.grep_cword, "current word"),
+        }
+    end,
     opts = {
         files = {
             -- shorten each path component to 1 char,

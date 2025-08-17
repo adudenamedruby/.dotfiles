@@ -6,7 +6,6 @@ local U = require("adudenamedruby.core.utils")
 local conform = require("conform")
 local duck = require("duck")
 local flash = require("flash")
-local fzf = require("fzf-lua")
 local hovercraft = require("hovercraft")
 local lint = require("lint")
 local quicker = require("quicker")
@@ -22,7 +21,6 @@ end, "lsp info help")
 
 -- Buffer menu
 U.GLMap("ba", "<cmd>:b#<CR>", "switch to last buffer")
-U.GLMap("bb", fzf.buffers, "list all buffers")
 U.GLMap("be", "<cmd>:enew<CR>", "open empty buffer")
 U.GLMap("bd", "<cmd>:bd<CR>", "delete buffer")
 U.GLMap("bD", "<cmd>:bd!<CR>", "force delete buffer")
@@ -41,7 +39,6 @@ U.GLMap("dl", vim.diagnostic.open_float, "show line diagnostics")
 U.GLMap("dq", vim.diagnostic.setloclist, "open diagnostic quickfix list")
 
 -- Files menu
-U.GLMap("ff", "<cmd>FzfLua files<CR>", "fzf find file")
 U.GLMap("fs", "<cmd>w<CR>", "save file")
 U.GLMap("ft", "<cmd>NvimTreeToggle<CR>", "file tree")
 U.GLMap("fo", "<cmd>Oil --float<CR>", "oil")
@@ -68,9 +65,6 @@ U.GLMap("tHr", "<cmd>Hardtime report<CR>", "Hardtime report")
 U.GLMap("Hm", ":redir @a<CR>:messages<CR>:redir END<CR>:new<CR>:put a<CR>", "messages buffer")
 U.GLMap("HL", "<cmd>Lazy<CR>", "open Lazy")
 U.GLMap("HM", "<cmd>Mason<CR>", "open Mason")
-U.GLMap("Hk", fzf.keymaps, "search keymaps")
-U.GLMap("Hb", fzf.builtin, "search fzf-lua builtin")
-U.GLMap("Hh", fzf.help_tags, "search help")
 
 -- Indent Mode
 U.GMap("<", "<gv", "", "v")
@@ -115,7 +109,6 @@ U.GLMap("uI", "<cmd>InspectTree<cr>", "Inspect Tree")
 
 -- Toggle menu
 U.GLMap("to", "<cmd>AerialToggle!<CR>", "outline")
-U.GLMap("tt", fzf.colorschemes, "themes")
 U.GLMap("tw", "<cmd>set wrap!<CR>", "toggle line wrapping")
 -- Quicker
 U.GLMap("tq", function()
@@ -138,21 +131,6 @@ U.GMap("N", "'nN'[v:searchforward]", "Prev Search Result", "o", true)
 -- Search menu
 -- Clear highlights on search when pressing <Esc> in normal mode
 U.GLMap("sc", "<cmd>nohlsearch<CR>", "clear search highlights")
-U.GLMap("sh", fzf.command_history, "search command history")
-U.GLMap("sH", fzf.search_history, "search search history")
-U.GLMap("sm", fzf.marks, "search marks")
-U.GLMap("sr", fzf.registers, "search registers")
-U.GLMap("sR", fzf.oldfiles, "search recent files")
-U.GLMap("st", fzf.treesitter, "search treesitter")
-U.GLMap("sd", fzf.diagnostics_workspace, "diagnostics search")
-U.GLMap("ss", fzf.blines, "search current buffer")
-U.GLMap("sp", fzf.live_grep, "grep search")
-U.GLMap("sw", fzf.grep_cword, "search current word")
-U.GLMap("sh", fzf.command_history, "search command history")
-U.GLMap("sH", fzf.search_history, "search search history")
-U.GLMap("sm", fzf.marks, "search marks")
-U.GLMap("sR", fzf.registers, "search registers")
-U.GLMap("sr", fzf.oldfiles, "search recent files")
 
 -- Utilites menu
 U.GLMap("uf", function()

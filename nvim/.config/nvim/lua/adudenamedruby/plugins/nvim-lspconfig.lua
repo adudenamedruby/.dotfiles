@@ -55,7 +55,7 @@ return {
 
                     -- WARN: This is not Goto Definition, this is Goto Declaration.
                     --  For example, in C this would take you to the header.
-                    map("gD", vim.lsp.buf.declaration, "go to declaration")
+                    map("gD", fzf.lsp_declarations, "go to declaration")
 
                     -- Find references for the word under your cursor.
                     map("gr", fzf.lsp_references, "go to references")
@@ -71,11 +71,14 @@ return {
 
                     -- Fuzzy find all the symbols in your current document.
                     --  Symbols are things like variables, functions, types, etc.
-                    map("<leader>ls", fzf.lsp_document_symbols, "document symbols")
+                    map("<leader>sD", fzf.lsp_document_symbols, "document symbols")
 
                     -- Fuzzy find all the symbols in your current workspace.
                     --  Similar to document symbols, except searches over your entire project.
                     map("<leader>sS", fzf.lsp_workspace_symbols, "workspace symbols")
+
+                    map("<leader>dD", fzf.lsp_document_diagnostics, "document diagnostics")
+                    map("<leader>dP", fzf.lsp_workspace_diagnostics(), "project diagnostics")
 
                     -- Rename the variable under your cursor.
                     --  Most Language Servers support renaming across files, etc.
@@ -83,7 +86,7 @@ return {
 
                     -- Execute a code action, usually your cursor needs to be on top of an error
                     -- or a suggestion from your LSP for this to activate.
-                    map("<leader>la", vim.lsp.buf.code_action, "code action", { "n", "x" })
+                    map("<leader>ca", vim.lsp.buf.code_action, "code action", { "n", "x" })
 
                     map("<leader>Hl", "<cmd>LspInfo<cr>", "server info")
 
@@ -209,14 +212,13 @@ return {
                 yamlls = {},
             }
 
-            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-                border = "single",
-                max_width = 100,
-                max_height = 30,
-            })
+            -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+            --     border = "single",
+            --     max_width = 100,
+            --     max_height = 30,
+            -- })
 
             require("lspconfig").sourcekit.setup({
-                -- capabilities = capabilities,
                 capabilities = {
                     workspace = {
                         didChangeWatchedFiles = {
@@ -265,14 +267,18 @@ return {
                 },
             })
 
-            -- nice icons
+            -- Diagnostic Config
+            -- See :help vim.diagnostic.Opts
             vim.diagnostic.config({
-                signs = {
+                severity_sort = true,
+                float = { border = "rounded", source = "if_many" },
+                underline = { severity = vim.diagnostic.severity.ERROR },
+                signs = vim.g.have_nerd_font and {
                     text = {
                         [vim.diagnostic.severity.ERROR] = " ",
                         [vim.diagnostic.severity.WARN] = " ",
                         [vim.diagnostic.severity.INFO] = " ",
-                        [vim.diagnostic.severity.HINT] = "󰠠 ",
+                        [vim.diagnostic.severity.HINT] = "󰌶 ",
                     },
                     texthl = {
                         [vim.diagnostic.severity.ERROR] = "Error",
@@ -286,6 +292,19 @@ return {
                         [vim.diagnostic.severity.INFO] = "Info",
                         [vim.diagnostic.severity.HINT] = "Hint",
                     },
+                } or {},
+                virtual_text = {
+                    source = "if_many",
+                    spacing = 2,
+                    format = function(diagnostic)
+                        local diagnostic_message = {
+                            [vim.diagnostic.severity.ERROR] = diagnostic.message,
+                            [vim.diagnostic.severity.WARN] = diagnostic.message,
+                            [vim.diagnostic.severity.INFO] = diagnostic.message,
+                            [vim.diagnostic.severity.HINT] = diagnostic.message,
+                        }
+                        return diagnostic_message[diagnostic.severity]
+                    end,
                 },
             })
         end,
