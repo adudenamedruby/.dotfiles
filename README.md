@@ -4,9 +4,7 @@
 
 Inspired by various members of Github, the dotfile repo is a great way to keep all your preferences the same across all dev environments! Tasty!
 
-Furthermore.... it helps get a system going faster from fresh install to ready for development.
-
-It's a work in progress, however, and is likely to change frequently.
+Mine is, like all others, a constant work in progress, however, and is likely to change frequently.
 
 **Important:** if for some reason you see fit to try some of these things out, please fork the repo and remove things you don't want or need before using them. Don’t blindly use my settings unless you know what a thing does - a lot of this stuff is idiosyncratic to my workflow. Don't blame me if something goes wrong, or behaves how you don't like it. You have been warned.
 
