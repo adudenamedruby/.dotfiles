@@ -5,7 +5,6 @@ $hostname\
 $localip\
 $shlvl\
 $directory\
-$git_branch\
 $git_state\
 $git_status\
 $git_metrics\
@@ -84,8 +83,8 @@ disabled = false
 [git_metrics]
 disabled = false
 
-[git_branch]
-format = 'on [$symbol$branch(:$remote_branch)]($style)'
+# [git_branch]
+# format = 'on [$symbol$branch(:$remote_branch)]($style)'
 
 [git_state]
 format = ' \([$state( $progress_current/$progress_total)]($style)\)'

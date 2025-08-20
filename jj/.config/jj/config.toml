@@ -1,0 +1,14 @@
+"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
+
+[ui]
+paginate = "never"
+
+[user]
+name = "roux g. buciu"
+email = "github@adudenamedruby.com"
+
+[git]
+push-new-bookmarks = true
+
+[templates]
+git_push_bookmark = '"rgb/push-" ++ change_id.short()'
