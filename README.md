@@ -13,53 +13,48 @@ It's a work in progress, however, and is likely to change frequently.
 # Installation
 
 ### First things first
+
 - Take a moment and appreciate what an unadulterated, fresh mac looks like. Yeah, it's pretty neat. Let's get to the nitty-gritty.
 - Sign in to Apple accounts; set System Preferences.
 - Download apps you want from App Store
-    - Xcode
-      - Once installed, open to install tools!
-    - 1Password
-
-### Spacemacs
-- Additional steps, to be done from M-x:
-    - LSP: Once Spacemacs is open, run: `package-install lsp-sourcekit`
-    - Also: `all-the-icons-fonts`
+  - Xcode
+    - Once installed, open to install tools!
+  - 1Password
 
 ## Other Software
+
 This is a list of the software I usually add afterwards that's not sourced from the App Store. It's here so I can just click to go there making my life easier. In no particular order
 
 ### Games
+
 - [Tetr.io](https://tetr.io/about/desktop/)
 
 ### Communication
+
 - [Discord](https://discord.com/new/download)
 - [Skype](https://www.skype.com/en/get-skype/)
 
 ### Development
+
 - [Arduino](https://www.arduino.cc/en/Main/Software)
 - [Dash](https://kapeli.com/dash)
 - [GitKraken](https://www.gitkraken.com/)
 
-### Entertainment
-- [Spotify](https://www.spotify.com/ca-en/download/mac/)
-
-### Browsers
-- [Firefox](https://www.mozilla.org/en-CA/firefox/new/)
-- [Arc](https://arc.net/)
-
 ### Music
+
 - [Band-in-a-Box](https://www.pgmusic.com/)
 
 ### Streaming
+
 - [OBS](https://obsproject.com/download)
 
 ### Utilities
+
 - [Amphetamine](https://apps.apple.com/us/app/amphetamine/id937984704?mt=12)
-- [AppCleaner](https://freemacsoft.net/appcleaner/)
 - [LoopBack](https://rogueamoeba.com/loopback/)
 
-
 # Why share?
+
 Sharing is caring. We learn from each other 🌷
 
 # License
