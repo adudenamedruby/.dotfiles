@@ -262,6 +262,10 @@ if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace Interwebz'
 
 [[on-window-detected]]
+if.app-id = 'app.zen-browser.zen'
+run = 'move-node-to-workspace Interwebz'
+ 
+[[on-window-detected]]
 if.app-id = 'com.apple.Safari'
 run = 'move-node-to-workspace Interwebz'
 
