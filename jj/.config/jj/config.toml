@@ -13,8 +13,9 @@ push-new-bookmarks = true
 [templates]
 git_push_bookmark = '"rgb/push-" ++ change_id.short()'
 
+[aliases]
+tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
+
 [revset-aliases]
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
-
-[aliases]
-tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
+'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
