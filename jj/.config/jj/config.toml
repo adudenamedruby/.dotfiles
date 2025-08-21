@@ -11,10 +11,16 @@ email = "github@adudenamedruby.com"
 push-new-bookmarks = true
 
 [templates]
-git_push_bookmark = '"rgb/push-" ++ change_id.short()'
+git_push_bookmark = '"rgb/" ++ change_id.short()'
 
 [aliases]
 tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
+pushnew = [
+  "util", "exec", "--", "bash", "-euo", "pipefail", "-c", """
+  name="rgb/$(~/.local/myScripts/jj-random-branch)"
+  exec jj git push --named "${name}=@"
+  """, "pushnew"
+]
 
 [revset-aliases]
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
