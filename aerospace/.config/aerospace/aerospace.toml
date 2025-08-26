@@ -286,6 +286,14 @@ if.app-id = 'com.readdle.SparkDesktop.appstore'
 run = 'move-node-to-workspace Mail'
 
 [[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = 'move-node-to-workspace Notes'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Notes'
+run = 'move-node-to-workspace Notes'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.dt.Xcode'
 run = 'move-node-to-workspace Xcode'
 
