@@ -2,6 +2,7 @@
 
 [ui]
 paginate = "never"
+default-command = "log"
 
 [user]
 name = "roux g. buciu"
