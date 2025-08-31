@@ -1,5 +1,12 @@
 #!/bin/bash
 
+MAGENTA='\033[0;35m'
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+BOLD_GREEN='\033[1;32m'
+BOLD_RED='\033[1;31m'
+NC='\033[0m'
+
 # Prompt helper: show `jj st` (if available) and ask to continue
 confirm_continue() {
   # If jj is installed, show status
@@ -8,26 +15,27 @@ confirm_continue() {
   fi
 
   while true; do
-    read -r -p "Does everything look ok to continue (y/n): " ans
+    echo -e "${MAGENTA}SYNC: ${GREEN}Verifying change...${NC}"
+    read -r -p "Continue? (y/n): " ans
     case "$ans" in
     y | Y | yes | YES) return 0 ;;
     n | N | no | NO)
-      printf "Abandoning operation.\n"
+      echo -e "${MAGENTA}SYNC: ${GREEN}cancelling operation ${NC}"
       return 1
       ;;
     *)
-      printf "Please answer 'y' or 'n'.\n"
+      echo -e "${MAGENTA}SYNC: ${BOLD_RED}Input error\n${GREEN}Please answer 'y' or 'n'.${NC}"
       ;;
     esac
   done
 }
 
 brewOperation() {
-  printf "\n+++ Updating Homebrew +++\n"
+  echo -e "${MAGENTA}SYNC: ${GREEN}Initializing ${CYAN}brew ${GREEN}update operation..."
   brew update
   brew upgrade
   brew cleanup
-  printf "+++ Finished homebrew operations +++\n\n"
+  echo -e "${MAGENTA}SYNC: ${CYAN}brew ${GREEN}update completed ${BOLD_GREEN}SUCCESSFULLY"
 }
 
 dotfilesOperation() {
@@ -37,7 +45,7 @@ dotfilesOperation() {
     # Show status + prompt; abort this operation if user says no
     if ! confirm_continue; then
       popd >/dev/null 2>&1
-      printf "+++ Dotfiles operation abandoned +++\n\n"
+      echo -e "${MAGENTA}SYNC: ${CYAN}dotfiles ${GREEN}operation ${BOLD_RED}CANCELLED"
       return 0
     fi
 
@@ -46,18 +54,21 @@ dotfilesOperation() {
     jj git push
 
     popd >/dev/null 2>&1
-    printf "+++ Finished dotfiles operations +++\n\n"
+    echo -e "${MAGENTA}SYNC: ${CYAN}dotfiles ${GREEN}operation completed ${BOLD_GREEN}SUCCESSFULLY"
   else
-    printf "Could not enter ~/.dotfiles\n"
+    echo -e "${MAGENTA}SYNC: ${GREEN}Could not pushd ~/.dotfiles"
+    echo -e "${MAGENTA}SYNC: ${CYAN}dotfiles ${GREEN}sync operation ${BOLD_RED}FAILED"
   fi
 }
 
 troveOperation() {
-  printf "\n+++ Syncing & stowing ruby-trove +++\n"
+  echo -e "${MAGENTA}SYNC: ${GREEN}Initializing ${CYAN}ruby-trove ${GREEN}sync..."
   if pushd ~/Documents/ruby-trove >/dev/null 2>&1; then
+    "$HOME/.dotfiles/bin/.local/myScripts/trove-org.sh"
+    echo -e "${MAGENTA}SYNC: ${CYAN}ruby-trove ${GREEN}organization completed ${BOLD_GREEN}SUCCESSFULLY${NC}"
     if ! confirm_continue; then
       popd >/dev/null 2>&1
-      printf "+++ Trove operation abandoned +++\n\n"
+      echo -e "${MAGENTA}SYNC: ${CYAN}ruby-trove ${GREEN}operation ${BOLD_RED}CANCELLED"
       return 0
     fi
 
@@ -66,9 +77,10 @@ troveOperation() {
     jj git push
 
     popd >/dev/null 2>&1
-    printf "+++ Finished trove operations +++\n\n"
+    echo -e "${MAGENTA}SYNC: ${CYAN}ruby-trove ${GREEN}operation completed ${BOLD_GREEN}SUCCESSFULLY"
   else
-    printf "Could not enter ~/Documents/ruby-trove\n"
+    echo -e "${MAGENTA}SYNC: ${GREEN}Could not pushd ~/Documents/ruby-trove"
+    echo -e "${MAGENTA}SYNC: ${CYAN}ruby-trove ${GREEN}sync operation ${BOLD_RED}FAILED"
   fi
 }
 
@@ -79,7 +91,7 @@ machineSynchronize() {
   trove_operation=false
 
   # Parse the command line arguments
-  while getopts "bdt" opt; do
+  while getopts "bdtah" opt; do
     case $opt in
     d)
       dotfiles_operation=true
@@ -90,15 +102,30 @@ machineSynchronize() {
     t)
       trove_operation=true
       ;;
+    a)
+      brew_operation=true
+      dotfiles_operation=true
+      trove_operation=true
+      ;;
+    h)
+      echo -e "${MAGENTA}SYNC: ${GREEN}Help menu"
+      echo "SYNC requires at least one argument to run."
+      echo "Please provide one of the following arguments:"
+      echo "   -b   runs brew update, upgrade, and clean"
+      echo "   -d   syncs & stows dotfiles"
+      echo "   -t   syncs trove"
+      echo "   -a   perform all operations"
+      echo "   -h   this menu"
+      exit 1
+      ;;
     \?)
-      echo "Invalid option: -$OPTARG" >&2
+      echo -e "${MAGENTA}SYNC: ${BOLD_RED}Error: invalid option -$OPTARG" >&2
       exit 1
       ;;
     esac
   done
 
-  cd
-  printf "\n+++ Beginning Sync Operations +++\n\n"
+  echo -e "\n${MAGENTA}SYNC: ${GREEN}Initializisg ${CYAN}SYNC ${GREEN}Operations..."
 
   # Do something with the flags
   if $brew_operation; then
@@ -113,8 +140,7 @@ machineSynchronize() {
     dotfilesOperation
   fi
 
-  printf "\n+++ Finished Sync Operations +++\n\n"
-  cd
+  echo -e "${MAGENTA}SYNC: ${GREEN}all operations completed${NC}"
 }
 
 machineSynchronize "$@"

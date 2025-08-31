@@ -19,6 +19,21 @@ done
 
 # --- helpers ---------------------------------------------------------------
 
+relpath() {
+    p=$1
+    case "$p" in
+    "$ROOT_DIR") printf '.\n' ;;
+    "$ROOT_DIR"/*) printf '%s\n' "${p#$ROOT_DIR/}" ;;
+    *) printf '%s\n' "$p" ;; # outside root → leave unchanged
+    esac
+}
+
+# true if path is under $ROOT_DIR
+in_root() {
+    p=$1
+    case "$p" in "$ROOT_DIR" | "$ROOT_DIR"/*) return 0 ;; *) return 1 ;; esac
+}
+
 # extract_frontmatter FILE -> print YAML block (no --- lines)
 extract_frontmatter() {
     awk '
@@ -112,7 +127,10 @@ move_safely() {
     fi
 
     mv "$src" "$dest"
-    printf 'Moved: %s -> %s\n' "$src" "$dest"
+
+    if in_root "$src" || in_root "$dest"; then
+        printf 'Moved: %s -> %s\n' "$(relpath "$src")" "$(relpath "$dest")"
+    fi
 }
 
 lower() {

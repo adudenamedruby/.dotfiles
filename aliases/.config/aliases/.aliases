@@ -28,6 +28,7 @@ syncCall() {
     echo "   -b   runs brew update, upgrade, and clean"
     echo "   -d   syncs & stows dotfiles"
     echo "   -t   syncs trove"
+    echo "   -a   perform all operations"
     return 1
   fi
 
