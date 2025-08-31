@@ -7,11 +7,13 @@ BOLD_GREEN='\033[1;32m'
 BOLD_RED='\033[1;31m'
 NC='\033[0m'
 
-# Prompt helper: show `jj st` (if available) and ask to continue
 confirm_continue() {
   # If jj is installed, show status
   if command -v jj >/dev/null 2>&1; then
     jj st
+  else
+    echo -e "${MAGENTA}SYNC: ${BOLD_RED}Error: jj is not installed. Please install using 'brew install jj' and try again"
+    return 1
   fi
 
   while true; do
@@ -40,9 +42,7 @@ brewOperation() {
 
 dotfilesOperation() {
   printf "+++ Syncing & stowing .dotfiles repo +++\n"
-  # Use pushd/popd so we always return to previous dir
   if pushd ~/.dotfiles >/dev/null 2>&1; then
-    # Show status + prompt; abort this operation if user says no
     if ! confirm_continue; then
       popd >/dev/null 2>&1
       echo -e "${MAGENTA}SYNC: ${CYAN}dotfiles ${GREEN}operation ${BOLD_RED}CANCELLED"
