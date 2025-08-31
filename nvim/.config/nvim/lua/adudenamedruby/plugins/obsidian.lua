@@ -4,6 +4,22 @@ return {
     "obsidian-nvim/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     ft = "markdown",
+
+    keys = function()
+        -- local obsidian = require("obsidian")
+        local U = require("adudenamedruby.core.utils")
+        return {
+
+            U.PLMap("on", "<cmd>Obsidian new<CR>", "new note"),
+            U.PLMap("ob", "<cmd>Obsidian backlinks<CR>", "show backlinks"),
+            U.PLMap("oe", "<cmd>Obsidian extract_note<CR>", "extract selection to note"),
+            U.PLMap("ol", "<cmd>Obsidian links<CR>", "pick from note links"),
+            U.PLMap("os", "<cmd>Obsidian search<CR>", "search trove"),
+            U.PLMap("ot", "<cmd>Obsidian tags<CR>", "tag occurances"),
+            U.PLMap("oc", "<cmd>Obsidian toggle_checkbox<CR>", "toggle checkbox"),
+            U.PLMap("of", "<cmd>Obsidian follow_link<CR>", "follow link"),
+        }
+    end,
     -- event = {
     --     -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
     --     -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
@@ -38,7 +54,7 @@ return {
             create_new = true,
         },
 
-        notes_subdir = "Index",
+        notes_subdir = "Inbox",
         -- Where to put new notes. Valid options are
         -- _ "current_dir" - put new notes in same directory as the current buffer.
         -- _ "notes_subdir" - put new notes in the default notes subdirectory.
@@ -134,54 +150,21 @@ return {
         -- 5. "hsplit_force" - always open a new horizontal split if the file is not in the adjacent hsplit.
         open_notes_in = "current",
 
-        -- Optional, configure additional syntax highlighting / extmarks.
-        -- This requires you have `conceallevel` set to 1 or 2. See `:help conceallevel` for more details.
-        ui = {
-            enable = true, -- set to false to disable all additional syntax features
-            ignore_conceal_warn = false, -- set to true to disable conceallevel specific warning
-            update_debounce = 200, -- update delay after a text change (in milliseconds)
-            max_file_length = 5000, -- disable UI features for files with more than this many lines
-            -- Define how various check-boxes are displayed
-            checkboxes = {
-                -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
-                [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
-                ["x"] = { char = "", hl_group = "ObsidianDone" },
-                [">"] = { char = "", hl_group = "ObsidianRightArrow" },
-                ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
-                ["!"] = { char = "", hl_group = "ObsidianImportant" },
-                -- Replace the above with this if you don't have a patched font:
-                -- [" "] = { char = "☐", hl_group = "ObsidianTodo" },
-                -- ["x"] = { char = "✔", hl_group = "ObsidianDone" },
-
-                -- You can also add more custom ones...
-            },
-            -- Use bullet marks for non-checkbox lists.
-            bullets = { char = "•", hl_group = "ObsidianBullet" },
-            external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
-            -- Replace the above with this if you don't have a patched font:
-            -- external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
-            reference_text = { hl_group = "ObsidianRefText" },
-            highlight_text = { hl_group = "ObsidianHighlightText" },
-            tags = { hl_group = "ObsidianTag" },
-            block_ids = { hl_group = "ObsidianBlockID" },
-            hl_groups = {
-                -- The options are passed directly to `vim.api.nvim_set_hl()`. See `:help nvim_set_hl`.
-                ObsidianTodo = { bold = true, fg = "#f78c6c" },
-                ObsidianDone = { bold = true, fg = "#89ddff" },
-                ObsidianRightArrow = { bold = true, fg = "#f78c6c" },
-                ObsidianTilde = { bold = true, fg = "#ff5370" },
-                ObsidianImportant = { bold = true, fg = "#d73128" },
-                ObsidianBullet = { bold = true, fg = "#89ddff" },
-                ObsidianRefText = { underline = true, fg = "#c792ea" },
-                ObsidianExtLinkIcon = { fg = "#c792ea" },
-                ObsidianTag = { italic = true, fg = "#89ddff" },
-                ObsidianBlockID = { italic = true, fg = "#89ddff" },
-                ObsidianHighlightText = { bg = "#75662e" },
-            },
-        },
-
         checkbox = {
             order = { " ", "~", "!", ">", "x" },
         },
+
+        legacy_commands = false,
     },
+
+    config = function(_, opts)
+        require("obsidian").setup(opts)
+
+        local ok, wk = pcall(require, "which-key")
+        if ok then
+            wk.add({
+                { "<leader>o", group = "Obsidian" },
+            })
+        end
+    end,
 }
