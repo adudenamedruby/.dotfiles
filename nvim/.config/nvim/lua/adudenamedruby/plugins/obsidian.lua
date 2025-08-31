@@ -67,26 +67,33 @@ return {
         -- Optional, alternatively you can customize the frontmatter data.
         ---@return table
         note_frontmatter_func = function(note)
-            local date_created = os.date("%Y/%m/%d - %H:%M:%S")
+            local out = {}
+            local meta = note.metadata or {}
 
-            local uuid = ""
-            for _ = 1, 4 do
-                uuid = uuid .. string.char(math.random(65, 90))
+            -- keep existing id; only generate if missing
+            local id = meta.uid
+            if not id or id == "" then
+                local rand = {}
+                for _ = 1, 4 do
+                    rand[#rand + 1] = string.char(math.random(65, 90))
+                end
+                id = os.date("%Y%m%d%H%M%S") .. "-" .. table.concat(rand)
             end
-            uuid = tostring(os.date("%Y%m%d%H%M%S") .. "-" .. uuid)
+            out.uid = id
 
-            local out = {
-                id = uuid,
-                created = date_created,
-                tags = note.tags,
-                hubs = {},
-                filing_status = allowed_statuses[1],
-            }
+            local created = meta.created
+            if not created or created == "" then
+                created = os.date("%Y/%m/%d - %H:%M:%S")
+            end
+            out.created = created
 
-            -- `note.metadata` contains any manually added fields in the frontmatter.
-            -- So here we just make sure those fields are kept in the frontmatter.
-            if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
-                for k, v in pairs(note.metadata) do
+            out.filing_status = meta.filing_status or allowed_statuses[1]
+            out.tags = meta.tags or note.tags or {}
+            out.hubs = meta.hubs or {}
+
+            -- preserve any other custom keys already in frontmatter
+            for k, v in pairs(meta) do
+                if out[k] == nil then
                     out[k] = v
                 end
             end

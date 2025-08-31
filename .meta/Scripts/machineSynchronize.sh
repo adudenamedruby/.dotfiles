@@ -1,67 +1,99 @@
 #!/bin/bash
 
-SCRIPTS="$HOME/.dotfiles/.meta/Scripts"
-GIT_SYNC="$HOME/.dotfiles/.meta/Scripts/gitSync.sh"
+# Prompt helper: show `jj st` (if available) and ask to continue
+confirm_continue() {
+  # If jj is installed, show status
+  if command -v jj >/dev/null 2>&1; then
+    jj st
+  fi
+
+  while true; do
+    read -r -p "Does everything look ok to continue (y/n): " ans
+    case "$ans" in
+    y | Y | yes | YES) return 0 ;;
+    n | N | no | NO)
+      printf "Abandoning operation.\n"
+      return 1
+      ;;
+    *)
+      printf "Please answer 'y' or 'n'.\n"
+      ;;
+    esac
+  done
+}
 
 brewOperation() {
-    printf "\n+++ Updating Homebrew +++\n"
-    brew update
-    brew upgrade
-    brew cleanup
-    printf "+++ Finished homebrew operations +++\n\n"
+  printf "\n+++ Updating Homebrew +++\n"
+  brew update
+  brew upgrade
+  brew cleanup
+  printf "+++ Finished homebrew operations +++\n\n"
 }
 
 dotfilesOperation() {
-    printf "+++ Syncing & stowing .dotfiles repo +++\n"
-    cd ~/.dotfiles
-    $GIT_SYNC
-    $SCRIPTS/stow.sh
+  printf "+++ Syncing & stowing .dotfiles repo +++\n"
+  # Use pushd/popd so we always return to previous dir
+  if pushd ~/.dotfiles >/dev/null 2>&1; then
+    # Show status + prompt; abort this operation if user says no
+    if ! confirm_continue; then
+      popd >/dev/null 2>&1
+      printf "+++ Dotfiles operation abandoned +++\n\n"
+      return 0
+    fi
+
+    jj describe -m "update dotfiles"
+    jj tug
+    jj git push
+
+    popd >/dev/null 2>&1
     printf "+++ Finished dotfiles operations +++\n\n"
+  else
+    printf "Could not enter ~/.dotfiles\n"
+  fi
 }
 
-reposOperation() {
-    printf "+++ Syncing personal repos +++\n\n"
-    $SCRIPTS/personalRepoSync.sh
-    printf "+++ Finished syncing personal repo operations +++\n\n"
-}
+troveOperation() {
+  printf "\n+++ Syncing & stowing ruby-trove +++\n"
+  if pushd ~/Documents/ruby-trove >/dev/null 2>&1; then
+    if ! confirm_continue; then
+      popd >/dev/null 2>&1
+      printf "+++ Trove operation abandoned +++\n\n"
+      return 0
+    fi
 
-spacemacsOperation() {
-    printf "+++ Updating Spacemacs +++"
-    cd ~/.emacs.d
-    git pull
-    cd
-    printf "+++ Finished updating Spacemacs +++\n\n"
+    jj describe -m "organize trove"
+    jj tug
+    jj git push
+
+    popd >/dev/null 2>&1
+    printf "+++ Finished trove operations +++\n\n"
+  else
+    printf "Could not enter ~/Documents/ruby-trove\n"
+  fi
 }
 
 machineSynchronize() {
   # Set default values for the flags
   dotfiles_operation=false
-  repos_operation=false
   brew_operation=false
-  spacemacs_operation=false
+  trove_operation=false
 
   # Parse the command line arguments
-  while getopts "drbsa" opt; do
+  while getopts "bdt" opt; do
     case $opt in
-      d)
-        dotfiles_operation=true
-        ;;
-      r)
-        repos_operation=true
-        ;;
-      b)
-        brew_operation=true
-        ;;
-      a)
-        dotfiles_operation=true
-        repos_operation=true
-        brew_operation=true
-        spacemacs_operation=true
-        ;;
-      \?)
-        echo "Invalid option: -$OPTARG" >&2
-        exit 1
-        ;;
+    d)
+      dotfiles_operation=true
+      ;;
+    b)
+      brew_operation=true
+      ;;
+    t)
+      trove_operation=true
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
     esac
   done
 
@@ -73,8 +105,8 @@ machineSynchronize() {
     brewOperation
   fi
 
-  if $repos_operation; then
-    reposOperation
+  if $trove_operation; then
+    troveOperation
   fi
 
   if $dotfiles_operation; then

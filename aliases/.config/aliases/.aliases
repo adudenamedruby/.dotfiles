@@ -26,10 +26,8 @@ syncCall() {
     echo "Warning: sync requires at least one argument to run."
     echo "Please provide one of the following arguments:"
     echo "   -b   runs brew update, upgrade, and clean"
-    echo "   -r   syncs all available personal repos"
     echo "   -d   syncs & stows dotfiles"
-    echo "   -----------------------------------------"
-    echo "   -a   performs all of the above operations"
+    echo "   -t   syncs trove"
     return 1
   fi
 
@@ -37,6 +35,11 @@ syncCall() {
 }
 
 alias sync='syncCall'
+
+# Organize my Trove
+trove-org() {
+  "$HOME/.dotfiles/bin/.local/myScripts/trove-org.sh"
+}
 
 # Cheatsheet
 cheatsheet() {
