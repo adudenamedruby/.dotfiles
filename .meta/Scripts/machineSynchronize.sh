@@ -12,8 +12,8 @@ confirm_continue() {
   if command -v jj >/dev/null 2>&1; then
     jj st
   else
-    echo -e "${MAGENTA}SYNC: ${BOLD_RED}Error: jj is not installed. Please install using 'brew install jj' and try again"
-    return 1
+    echo -e "${MAGENTA}SYNC: ${BOLD_RED}Error: jj is not installed. Please install using 'brew install jj' and try again${NC}"
+    exit 1
   fi
 
   while true; do
@@ -23,7 +23,7 @@ confirm_continue() {
     y | Y | yes | YES) return 0 ;;
     n | N | no | NO)
       echo -e "${MAGENTA}SYNC: ${GREEN}cancelling operation ${NC}"
-      return 1
+      exit 1
       ;;
     *)
       echo -e "${MAGENTA}SYNC: ${BOLD_RED}Input error\n${GREEN}Please answer 'y' or 'n'.${NC}"
@@ -37,15 +37,15 @@ brewOperation() {
   brew update
   brew upgrade
   brew cleanup
-  echo -e "${MAGENTA}SYNC: ${CYAN}brew ${GREEN}update completed ${BOLD_GREEN}SUCCESSFULLY"
+  echo -e "${MAGENTA}SYNC: ${CYAN}brew ${GREEN}maintenance process completed ${BOLD_GREEN}SUCCESSFULLY"
 }
 
 dotfilesOperation() {
-  printf "+++ Syncing & stowing .dotfiles repo +++\n"
+  echo -e "${MAGENTA}SYNC: ${GREEN}Initializing ${CYAN}dotfiles ${GREEN}sync..."
   if pushd ~/.dotfiles >/dev/null 2>&1; then
     if ! confirm_continue; then
       popd >/dev/null 2>&1
-      echo -e "${MAGENTA}SYNC: ${CYAN}dotfiles ${GREEN}operation ${BOLD_RED}CANCELLED"
+      echo -e "${MAGENTA}SYNC: ${CYAN}dotfiles ${GREEN}operation ${BOLD_RED}CANCELLED${NC}"
       return 0
     fi
 
@@ -127,7 +127,6 @@ machineSynchronize() {
 
   echo -e "\n${MAGENTA}SYNC: ${GREEN}Initializisg ${CYAN}SYNC ${GREEN}Operations..."
 
-  # Do something with the flags
   if $brew_operation; then
     brewOperation
   fi
