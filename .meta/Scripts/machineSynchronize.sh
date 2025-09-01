@@ -33,15 +33,15 @@ confirm_continue() {
 }
 
 brewOperation() {
-  echo -e "${MAGENTA}SYNC: ${GREEN}Initializing ${CYAN}brew ${GREEN}update operation..."
+  echo -e "${MAGENTA}SYNC: ${GREEN}Initializing ${CYAN}brew ${GREEN}update operation...${NC}"
   brew update
   brew upgrade
   brew cleanup
-  echo -e "${MAGENTA}SYNC: ${CYAN}brew ${GREEN}maintenance process completed ${BOLD_GREEN}SUCCESSFULLY"
+  echo -e "${MAGENTA}SYNC: ${CYAN}brew ${GREEN}maintenance process completed ${BOLD_GREEN}SUCCESSFULLY${NC}"
 }
 
 dotfilesOperation() {
-  echo -e "${MAGENTA}SYNC: ${GREEN}Initializing ${CYAN}dotfiles ${GREEN}sync..."
+  echo -e "${MAGENTA}SYNC: ${GREEN}Initializing ${CYAN}dotfiles ${GREEN}sync...${NC}"
   if pushd ~/.dotfiles >/dev/null 2>&1; then
     if ! confirm_continue; then
       popd >/dev/null 2>&1
@@ -54,21 +54,21 @@ dotfilesOperation() {
     jj git push
 
     popd >/dev/null 2>&1
-    echo -e "${MAGENTA}SYNC: ${CYAN}dotfiles ${GREEN}operation completed ${BOLD_GREEN}SUCCESSFULLY"
+    echo -e "${MAGENTA}SYNC: ${CYAN}dotfiles ${GREEN}operation completed ${BOLD_GREEN}SUCCESSFULLY${NC}"
   else
     echo -e "${MAGENTA}SYNC: ${GREEN}Could not pushd ~/.dotfiles"
-    echo -e "${MAGENTA}SYNC: ${CYAN}dotfiles ${GREEN}sync operation ${BOLD_RED}FAILED"
+    echo -e "${MAGENTA}SYNC: ${CYAN}dotfiles ${GREEN}sync operation ${BOLD_RED}FAILED${NC}"
   fi
 }
 
 troveOperation() {
-  echo -e "${MAGENTA}SYNC: ${GREEN}Initializing ${CYAN}ruby-trove ${GREEN}sync..."
+  echo -e "${MAGENTA}SYNC: ${GREEN}Initializing ${CYAN}ruby-trove ${GREEN}sync...${NC}"
   if pushd ~/Documents/ruby-trove >/dev/null 2>&1; then
     "$HOME/.dotfiles/bin/.local/myScripts/trove-org.sh"
     echo -e "${MAGENTA}SYNC: ${CYAN}ruby-trove ${GREEN}organization completed ${BOLD_GREEN}SUCCESSFULLY${NC}"
     if ! confirm_continue; then
       popd >/dev/null 2>&1
-      echo -e "${MAGENTA}SYNC: ${CYAN}ruby-trove ${GREEN}operation ${BOLD_RED}CANCELLED"
+      echo -e "${MAGENTA}SYNC: ${CYAN}ruby-trove ${GREEN}operation ${BOLD_RED}CANCELLED${NC}"
       return 0
     fi
 
@@ -77,10 +77,10 @@ troveOperation() {
     jj git push
 
     popd >/dev/null 2>&1
-    echo -e "${MAGENTA}SYNC: ${CYAN}ruby-trove ${GREEN}operation completed ${BOLD_GREEN}SUCCESSFULLY"
+    echo -e "${MAGENTA}SYNC: ${CYAN}ruby-trove ${GREEN}operation completed ${BOLD_GREEN}SUCCESSFULLY${NC}"
   else
-    echo -e "${MAGENTA}SYNC: ${GREEN}Could not pushd ~/Documents/ruby-trove"
-    echo -e "${MAGENTA}SYNC: ${CYAN}ruby-trove ${GREEN}sync operation ${BOLD_RED}FAILED"
+    echo -e "${MAGENTA}SYNC: ${GREEN}Could not pushd ~/Documents/ruby-trove${NC}"
+    echo -e "${MAGENTA}SYNC: ${CYAN}ruby-trove ${GREEN}sync operation ${BOLD_RED}FAILED${NC}"
   fi
 }
 
