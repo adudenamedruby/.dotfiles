@@ -89,7 +89,7 @@ return {
 
             out.filing_status = meta.filing_status or allowed_statuses[1]
             out.tags = meta.tags or note.tags or {}
-            out.hubs = meta.hubs or {}
+            out.links = meta.links or {}
 
             -- preserve any other custom keys already in frontmatter
             for k, v in pairs(meta) do
