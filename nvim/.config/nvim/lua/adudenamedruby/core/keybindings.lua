@@ -2,6 +2,7 @@
 
 -- local variables
 local U = require("adudenamedruby.core.utils")
+local float_win = nil
 
 -- Buffer menu
 U.GLMap("ba", "<cmd>:b#<CR>", "switch to last buffer")
@@ -82,8 +83,37 @@ U.GLMap("uI", "<cmd>InspectTree<cr>", "Inspect Tree")
 
 -- Toggle menu
 U.GLMap("to", "<cmd>AerialToggle!<CR>", "outline")
-U.GLMap("tw", "<cmd>set wrap!<CR>", "toggle line wrapping")
-U.GLMap("tm", "<cmd>RenderMarkdown toggle<CR>", "toggle RenderMarkdown")
+U.GLMap("tm", "<cmd>RenderMarkdown toggle<CR>", "markdown renderer")
+U.GLMap("tR", function()
+    if vim.opt.colorcolumn:get()[1] == "90" then
+        vim.opt.colorcolumn = ""
+    else
+        vim.opt.colorcolumn = "90"
+    end
+end, "Ruler")
+U.GLMap("tw", function()
+    if float_win and vim.api.nvim_win_is_valid(float_win) then
+        vim.api.nvim_win_close(float_win, true)
+        float_win = nil
+        print("Floating window closed")
+    else
+        local buf = vim.api.nvim_get_current_buf()
+        local width = 91
+        local height = vim.o.lines - 4
+        local col = math.floor((vim.o.columns - width) / 2)
+        float_win = vim.api.nvim_open_win(buf, true, {
+            relative = "editor",
+            width = width,
+            height = height,
+            col = col,
+            row = 2,
+            style = "minimal",
+            border = "rounded",
+        })
+        print("Floating window opened at 91 cols")
+    end
+end, "floating window")
+U.GLMap("tW", "<cmd>set wrap!<CR>", "line wrapping")
 
 -- Search: behaviour of n and N
 U.GMap("n", "'Nn'[v:searchforward].'zzzv'", "Next Search Result", "n", true)

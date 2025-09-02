@@ -9,10 +9,10 @@ return {
         return {
             U.PLMap("tq", function()
                 quicker.toggle()
-            end, "toggle quickfix"),
+            end, "quickfix"),
             U.PLMap("tl", function()
                 quicker.toggle({ loclist = true })
-            end, "toggle loclist"),
+            end, "loclist"),
         }
     end,
     config = function()

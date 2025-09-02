@@ -1,5 +1,11 @@
 -- NOTE: Specify the trigger character(s) used for luasnip
 local trigger_text = ";"
+local cmp_enabled = true
+
+local function toggle_blink()
+    cmp_enabled = not cmp_enabled
+    vim.notify("blink.cmp " .. (cmp_enabled and "enabled" or "disabled"))
+end
 
 return {
     "saghen/blink.cmp",
@@ -17,6 +23,13 @@ return {
     -- use a release tag to download pre-built binaries
     version = "*",
 
+    keys = function()
+        local U = require("adudenamedruby.core.utils")
+        return {
+            U.PLMap("tb", toggle_blink, "blink (current: " .. tostring(cmp_enabled) .. ")"),
+        }
+    end,
+
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
@@ -27,7 +40,7 @@ return {
             if filetype == "TelescopePrompt" or filetype == "minifiles" then
                 return false
             end
-            return true
+            return cmp_enabled
         end,
         keymap = {
             preset = "default",
