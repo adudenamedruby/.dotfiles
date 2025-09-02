@@ -72,7 +72,7 @@ troveOperation() {
       return 0
     fi
 
-    jj describe -m "organize trove"
+    jj describe -m "organize & update trove"
     jj tug
     jj git push
 
