@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#
+# :)
 # git-sync
 #
 # synchronize tracking repositories
