@@ -50,7 +50,7 @@ dotfilesOperation() {
     fi
 
     jj git fetch
-    jj rebase -s main -d @git(remote=origin,branch=main) >/dev/null 2>&1 || true
+    jj rebase -s main -d '@git(remote=origin,branch=main)' >/dev/null 2>&1 || true
     if [[ -n "$(jj diff -s)" ]]; then
       jj describe -m "update dotfiles"
       jj rebase -d main
@@ -78,7 +78,7 @@ troveOperation() {
     fi
 
     jj git fetch
-    jj rebase -s main -d @git(remote=origin,branch=main) >/dev/null 2>&1 || true
+    jj rebase -s main -d '@git(remote=origin,branch=main)' >/dev/null 2>&1 || true
     if [[ -n "$(jj diff -s)" ]]; then
       jj describe -m "update trove"
       jj rebase -d main
