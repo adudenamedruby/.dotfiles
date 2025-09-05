@@ -2,7 +2,7 @@
 
 ## Why a dotfiles repo?
 
-Inspired by various members of Github, the dotfile repo is a great way to keep all your preferences the same across all dev environments! Tasty!
+Inspired by various members of Github, the dotfile repo is a great way to keep all your preferences the same across all dev environments! Tasty! :)
 
 Mine is, like all others, a constant work in progress, however, and is likely to change frequently.
 

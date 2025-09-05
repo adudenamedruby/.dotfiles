@@ -49,9 +49,14 @@ dotfilesOperation() {
       return 0
     fi
 
-    jj describe -m "update dotfiles"
-    jj tug
-    jj git push
+    jj git fetch
+    jj rebase -s main -d @git(remote=origin,branch=main) >/dev/null 2>&1 || true
+    if [[ -n "$(jj diff -s)" ]]; then
+      jj describe -m "update dotfiles"
+      jj rebase -d main
+      jj tug
+      jj git push
+    fi
 
     popd >/dev/null 2>&1
     echo -e "${MAGENTA}SYNC: ${CYAN}dotfiles ${GREEN}operation completed ${BOLD_GREEN}SUCCESSFULLY${NC}"
@@ -72,9 +77,14 @@ troveOperation() {
       return 0
     fi
 
-    jj describe -m "organize & update trove"
-    jj tug
-    jj git push
+    jj git fetch
+    jj rebase -s main -d @git(remote=origin,branch=main) >/dev/null 2>&1 || true
+    if [[ -n "$(jj diff -s)" ]]; then
+      jj describe -m "update trove"
+      jj rebase -d main
+      jj tug
+      jj git push
+    fi
 
     popd >/dev/null 2>&1
     echo -e "${MAGENTA}SYNC: ${CYAN}ruby-trove ${GREEN}operation completed ${BOLD_GREEN}SUCCESSFULLY${NC}"
