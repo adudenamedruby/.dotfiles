@@ -8,7 +8,7 @@ BOLD_RED='\033[1;31m'
 NC='\033[0m'
 
 confirm_continue() {
-  # If jj is installed, show status
+  # check to make sure jj is installed, and show status
   if command -v jj >/dev/null 2>&1; then
     jj st
   else
