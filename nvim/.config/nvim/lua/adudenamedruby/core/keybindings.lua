@@ -98,7 +98,7 @@ U.GLMap("tw", function()
         print("Floating window closed")
     else
         local buf = vim.api.nvim_get_current_buf()
-        local width = 91
+        local width = 110
         local height = vim.o.lines - 4
         local col = math.floor((vim.o.columns - width) / 2)
         float_win = vim.api.nvim_open_win(buf, true, {
@@ -110,7 +110,7 @@ U.GLMap("tw", function()
             style = "minimal",
             border = "rounded",
         })
-        print("Floating window opened at 91 cols")
+        print("Floating window opened at 110 cols")
     end
 end, "floating window")
 U.GLMap("tW", "<cmd>set wrap!<CR>", "line wrapping")
