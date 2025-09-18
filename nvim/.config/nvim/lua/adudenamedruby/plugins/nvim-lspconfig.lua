@@ -24,12 +24,10 @@ return {
             { "antosha417/nvim-lsp-file-operations", config = true },
 
             -- Useful status updates for LSP.
-            -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
             { "j-hui/fidget.nvim", opts = {} },
 
             -- Allows extra capabilities provided by nvim-cmp
             "saghen/blink.cmp",
-            -- "hrsh7th/cmp-nvim-lsp",
         },
         config = function()
             --  This function gets run when an LSP attaches to a particular buffer.
@@ -115,6 +113,18 @@ return {
                     --     vim.lsp.buf.hover,
                     --     { desc = "Show documentation for what is under cursor" }
                     -- )
+                    -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
+                    ---@param client vim.lsp.Client
+                    ---@param method vim.lsp.protocol.Method
+                    ---@param bufnr? integer some lsp support methods only in specific files
+                    ---@return boolean
+                    local function client_supports_method(client, method, bufnr)
+                        if vim.fn.has("nvim-0.11") == 1 then
+                            return client:supports_method(method, bufnr)
+                        else
+                            return client.supports_method(method, { bufnr = bufnr })
+                        end
+                    end
 
                     -- The following two autocommands are used to highlight references of the
                     -- word under your cursor when your cursor rests there for a little while.
@@ -122,7 +132,14 @@ return {
                     --
                     -- When you move your cursor, the highlights will be cleared (the second autocommand).
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
-                    if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+                    if
+                        client
+                        and client_supports_method(
+                            client,
+                            vim.lsp.protocol.Methods.textDocument_documentHighlight,
+                            event.buf
+                        )
+                    then
                         local highlight_augroup =
                             vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
                         vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -150,17 +167,19 @@ return {
                     -- code, if the language server you are using supports them
                     --
                     -- This may be unwanted, since they displace some of your code
-                    if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+                    if
+                        client
+                        and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
+                    then
                         map("<leader>th", function()
                             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-                        end, "inlay hints")
+                        end, "[T]oggle Inlay [H]ints")
                     end
                 end,
             })
 
             -- NOTE: this is for blink
             local capabilities = require("blink.cmp").get_lsp_capabilities()
-            require("lspconfig").lua_ls.setup({ capabilities = capabilities })
 
             -- Enable the following language servers
             --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
