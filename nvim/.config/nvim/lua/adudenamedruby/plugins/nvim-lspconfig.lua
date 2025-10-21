@@ -255,21 +255,27 @@ return {
             --     max_width = 100,
             --     max_height = 30,
             -- })
-
-            require("lspconfig").sourcekit.setup({
-                filetypes = { "swift", "objective-c", "objective-cpp" },
-                capabilities = {
-                    workspace = {
-                        didChangeWatchedFiles = {
-                            dynamicRegistration = true,
-                        },
-                    },
+                local sourcekit_opts = {
+            capabilities = {
+              workspace = {
+                didChangeWatchedFiles = {
+                  dynamicRegistration = true,
                 },
-                on_init = function(client)
-                    -- HACK: to fix some issues with LSP
-                    -- more details: https://github.com/neovim/neovim/issues/19237#issuecomment-2237037154
-                    client.offset_encoding = "utf-8"
-                end,
+              },
+            },
+
+                        filetypes = { "swift", "objective-c", "objective-cpp" },
+                        on_init = function(client)
+                            -- HACK: to fix some issues with LSP
+                            -- more details: https://github.com/neovim/neovim/issues/19237#issuecomment-2237037154
+                            client.offset_encoding = "utf-8"
+                        end,
+            }
+            vim.lsp.enable("sourcekit")
+            vim.lsp.config("sourcekit", {
+                settings = {
+                    ["sourcekit"] = sourcekit_opts,
+                },
             })
 
             -- Ensure the servers and tools above are installed
