@@ -16,7 +16,7 @@ git_push_bookmark = '"rgb/" ++ change_id.short()'
 
 [aliases]
 tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
-pushnew = [
+pushNewBranch = [
   "util", "exec", "--", "bash", "-euo", "pipefail", "-c", """
   remote="origin"
   while [[ $# -gt 0 ]]; do
@@ -33,7 +33,9 @@ pushnew = [
   done
 
   name="rgb/$(~/.local/myScripts/jj-random-branch)"
-  exec jj git push "$remote" --named "${name}=@"
+  set --  # clear args so jj doesn't see them
+  exec jj git push --remote "$remote" --named "${name}=@"
+  # echo jj git push --remote "$remote" --named "${name}=@"
   """, "pushnew"
 ]
 
