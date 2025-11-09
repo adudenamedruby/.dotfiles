@@ -55,6 +55,7 @@ return {
             { "<leader>l", group = "LSP" },
             { "<leader>s", group = "Search" },
             { "<leader>t", group = "Toggles" },
+            { "<leader>tL", group = "LSP" },
             { "<leader>x", group = "Quickfix" },
             { "<leader>q", group = "Quit" },
             { "<leader>u", group = "Utilities" },

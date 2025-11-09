@@ -19,23 +19,32 @@ tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pus
 pushNewBranch = [
   "util", "exec", "--", "bash", "-euo", "pipefail", "-c", """
   remote="origin"
+  ticket=""
+
+  # Parse args
   while [[ $# -gt 0 ]]; do
     case "$1" in
       -r|--remote)
-        remote="$2"
-        shift 2
-        ;;
+        remote="$2"; shift 2 ;;
+      -t|--ticket)
+        ticket="$2"; shift 2 ;;
+      --ticket=*)
+        ticket="${1#*=}"; shift 1 ;;
       *)
         echo "Unknown argument: $1" >&2
-        exit 1
-        ;;
+        exit 1 ;;
     esac
   done
 
-  name="rgb/$(~/.local/myScripts/jj-random-branch)"
-  set --  # clear args so jj doesn't see them
+  base="$(~/.local/myScripts/jj-random-branch)"
+  if [[ -n "$ticket" ]]; then
+    name="rgb/${ticket}-${base}"
+  else
+    name="rgb/${base}"
+  fi
+
+  set --  # clear args so nothing leaks into jj git push
   exec jj git push --remote "$remote" --named "${name}=@"
-  # echo jj git push --remote "$remote" --named "${name}=@"
   """, "pushnew"
 ]
 

@@ -82,6 +82,11 @@ U.GMap("<C-u>", "<C-u>zz")
 U.GLMap("uI", "<cmd>InspectTree<cr>", "Inspect Tree")
 
 -- Toggle menu
+U.GLMap("tLb", "<cmd>LspStart<CR>", "lsp start")
+U.GLMap("tLs", "<cmd>LspStop<CR>", "lsp stop")
+U.GLMap("tLr", "<cmd>LspRestart<CR>", "lsp restart")
+U.GLMap("tLl", "<cmd>LspLog<CR>", "lsp log")
+
 U.GLMap("to", "<cmd>AerialToggle!<CR>", "outline")
 U.GLMap("tm", "<cmd>RenderMarkdown toggle<CR>", "markdown renderer")
 U.GLMap("tR", function()
