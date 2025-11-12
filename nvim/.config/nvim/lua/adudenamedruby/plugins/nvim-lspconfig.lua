@@ -105,7 +105,7 @@ return {
                     -- or a suggestion from your LSP for this to activate.
                     map("<leader>ca", vim.lsp.buf.code_action, "code action", { "n", "x" })
 
-                    map("<leader>Hl", "<cmd>LspInfo<cr>", "server info")
+                    map("<leader>li", "<cmd>LspInfo<cr>", "server info")
 
                     -- vim.keymap.set(
                     --     "n",
@@ -255,21 +255,21 @@ return {
             --     max_width = 100,
             --     max_height = 30,
             -- })
-                local sourcekit_opts = {
-            capabilities = {
-              workspace = {
-                didChangeWatchedFiles = {
-                  dynamicRegistration = true,
+            local sourcekit_opts = {
+                capabilities = {
+                    workspace = {
+                        didChangeWatchedFiles = {
+                            dynamicRegistration = true,
+                        },
+                    },
                 },
-              },
-            },
 
-                        filetypes = { "swift", "objective-c", "objective-cpp" },
-                        on_init = function(client)
-                            -- HACK: to fix some issues with LSP
-                            -- more details: https://github.com/neovim/neovim/issues/19237#issuecomment-2237037154
-                            client.offset_encoding = "utf-8"
-                        end,
+                filetypes = { "swift", "objective-c", "objective-cpp" },
+                on_init = function(client)
+                    -- HACK: to fix some issues with LSP
+                    -- more details: https://github.com/neovim/neovim/issues/19237#issuecomment-2237037154
+                    client.offset_encoding = "utf-8"
+                end,
             }
             vim.lsp.enable("sourcekit")
             vim.lsp.config("sourcekit", {

@@ -48,6 +48,12 @@ U.GLMap("HM", "<cmd>Mason<CR>", "open Mason")
 U.GMap("<", "<gv", "", "v")
 U.GMap(">", ">gv", "", "v")
 
+-- LSP Menu
+U.GLMap("lS", "<cmd>LspStart<CR>", "lsp start")
+U.GLMap("lH", "<cmd>LspStop<CR>", "lsp halt")
+U.GLMap("lR", "<cmd>LspRestart<CR>", "lsp restart")
+U.GLMap("lL", "<cmd>LspLog<CR>", "lsp log")
+
 -- Marks: Saner mark movement to save keystrokes
 U.GMap("'", "`", "")
 U.GMap("`", "'", "")
@@ -82,11 +88,6 @@ U.GMap("<C-u>", "<C-u>zz")
 U.GLMap("uI", "<cmd>InspectTree<cr>", "Inspect Tree")
 
 -- Toggle menu
-U.GLMap("tLb", "<cmd>LspStart<CR>", "lsp start")
-U.GLMap("tLs", "<cmd>LspStop<CR>", "lsp stop")
-U.GLMap("tLr", "<cmd>LspRestart<CR>", "lsp restart")
-U.GLMap("tLl", "<cmd>LspLog<CR>", "lsp log")
-
 U.GLMap("to", "<cmd>AerialToggle!<CR>", "outline")
 U.GLMap("tm", "<cmd>RenderMarkdown toggle<CR>", "markdown renderer")
 U.GLMap("tR", function()
