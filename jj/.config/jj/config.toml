@@ -30,6 +30,11 @@ pushNewBranch = [
         ticket="$2"; shift 2 ;;
       --ticket=*)
         ticket="${1#*=}"; shift 1 ;;
+      -h|--help)
+        echo "Available commands:" ;
+        echo "-r --remote Specify a remote to push to" ;
+        echo "-t --ticket Specify a ticket number to add to branch name" ;
+        exit 1 ;;
       *)
         echo "Unknown argument: $1" >&2
         exit 1 ;;
