@@ -21,21 +21,9 @@ alias vim=nvim
 alias lg=lazygit
 
 # Updates
-syncCall() {
-  if [ $# -eq 0 ]; then
-    echo "Warning: sync requires at least one argument to run."
-    echo "Please provide one of the following arguments:"
-    echo "   -b   runs brew update, upgrade, and clean"
-    echo "   -d   syncs & stows dotfiles"
-    echo "   -t   syncs trove"
-    echo "   -a   perform all operations"
-    return 1
-  fi
-
+sync() {
   $HOME/.dotfiles/.meta/Scripts/machineSynchronize.sh "$@"
 }
-
-alias sync='syncCall'
 
 # Organize my Trove
 trove-org() {
