@@ -227,15 +227,17 @@ troveOperation() {
 
 usage() {
   cat <<EOF
-Usage: $(basename "$0") [-b] [-d] [-t] [-a] [-y] [-n] [-h]
+Usage: $(basename "$0") [-b] [-d] [-t] [-h] [--auto] [--dry] [--all]
 
   -b   run brew update, upgrade, cleanup
   -d   sync dotfiles
   -t   sync ruby-trove
-  -a   perform all operations (-b -d -t)
-  -y   non-interactive (auto-yes to prompts)
-  -n   dry-run (print commands, do not execute)
   -h   show this help
+
+You can also:
+  --all   perform all operations (-b -d -t)
+  --auto   non-interactive (auto-yes to prompts)
+  --dry   dry-run (print commands, do not execute)
 EOF
 }
 
@@ -244,18 +246,31 @@ machineSynchronize() {
   local brew_operation=false
   local trove_operation=false
 
-  while getopts ":bdtaynh" opt; do
+  # Manual pre-scan for long options
+  for arg in "$@"; do
+    case $arg in
+    --dry)
+      DRY_RUN=true
+      shift
+      ;;
+    --all)
+      brew_operation=true
+      dotfiles_operation=true
+      trove_operation=true
+      shift
+      ;;
+    --auto)
+      AUTO_YES=true
+      shift
+      ;;
+    esac
+  done
+
+  while getopts ":bdth" opt; do
     case $opt in
     d) dotfiles_operation=true ;;
     b) brew_operation=true ;;
     t) trove_operation=true ;;
-    a)
-      brew_operation=true
-      dotfiles_operation=true
-      trove_operation=true
-      ;;
-    y) AUTO_YES=true ;;
-    n) DRY_RUN=true ;;
     h)
       usage
       return 0
