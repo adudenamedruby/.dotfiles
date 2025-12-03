@@ -1,5 +1,23 @@
 [
   {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "space h c": ["task::Spawn", { "task_name": "clear harp" }],
+      "space h a h": ["task::Spawn", { "task_name": "save harp 1" }],
+      "space h a t": ["task::Spawn", { "task_name": "save harp 2" }],
+      "space h a n": ["task::Spawn", { "task_name": "save harp 3" }],
+      "space h a s": ["task::Spawn", { "task_name": "save harp 4" }],
+      "space h h": ["task::Spawn", { "task_name": "open harp 1" }],
+      "space h t": ["task::Spawn", { "task_name": "open harp 2" }],
+      "space h n": ["task::Spawn", { "task_name": "open harp 3" }],
+      "space h s": ["task::Spawn", { "task_name": "open harp 4" }],
+      "space h d h": ["task::Spawn", { "task_name": "delete harp 1" }],
+      "space h d t": ["task::Spawn", { "task_name": "delete harp 2" }],
+      "space h d n": ["task::Spawn", { "task_name": "delete harp 3" }],
+      "space h d s": ["task::Spawn", { "task_name": "delete harp 4" }]
+    }
+  },
+  {
     "context": "Pane",
     "bindings": {
       "alt-ctrl-c": "search::ToggleCaseSensitive",

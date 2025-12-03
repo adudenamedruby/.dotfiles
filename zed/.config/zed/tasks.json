@@ -1,0 +1,96 @@
+[
+  {
+    "label": "save harp 1",
+    "command": "harpoon.sh add 1 \"$ZED_FILE\"",
+    "shell": "system",
+    "reveal": "never",
+    "hide": "always"
+  },
+  {
+    "label": "save harp 2",
+    "command": "harpoon.sh add 2 \"$ZED_FILE\"",
+    "shell": "system",
+    "reveal": "never",
+    "hide": "always"
+  },
+  {
+    "label": "save harp 3",
+    "command": "harpoon.sh add 3 \"$ZED_FILE\"",
+    "shell": "system",
+    "reveal": "never",
+    "hide": "always"
+  },
+  {
+    "label": "save harp 4",
+    "command": "harpoon.sh add 4 \"$ZED_FILE\"",
+    "shell": "system",
+    "reveal": "never",
+    "hide": "always"
+  },
+
+  {
+    "label": "open harp 1",
+    "command": "harpoon.sh open 1 \"$ZED_FILE\"",
+    "shell": "system",
+    "reveal": "never",
+    "hide": "always"
+  },
+  {
+    "label": "open harp 2",
+    "command": "harpoon.sh open 2 \"$ZED_FILE\"",
+    "shell": "system",
+    "reveal": "never",
+    "hide": "always"
+  },
+  {
+    "label": "open harp 3",
+    "command": "harpoon.sh open 3 \"$ZED_FILE\"",
+    "shell": "system",
+    "reveal": "never",
+    "hide": "always"
+  },
+  {
+    "label": "open harp 4",
+    "command": "harpoon.sh open 4 \"$ZED_FILE\"",
+    "shell": "system",
+    "reveal": "never",
+    "hide": "always"
+  },
+
+  {
+    "label": "delete harp 1",
+    "command": "harpoon.sh delete 1 \"$ZED_FILE\"",
+    "shell": "system",
+    "reveal": "never",
+    "hide": "always"
+  },
+  {
+    "label": "delete harp 2",
+    "command": "harpoon.sh delete 2 \"$ZED_FILE\"",
+    "shell": "system",
+    "reveal": "never",
+    "hide": "always"
+  },
+  {
+    "label": "delete harp 3",
+    "command": "harpoon.sh delete 3 \"$ZED_FILE\"",
+    "shell": "system",
+    "reveal": "never",
+    "hide": "always"
+  },
+  {
+    "label": "delete harp 4",
+    "command": "harpoon.sh delete 4 \"$ZED_FILE\"",
+    "shell": "system",
+    "reveal": "never",
+    "hide": "always"
+  },
+
+  {
+    "label": "clear harp",
+    "command": "harpoon.sh clear \"$ZED_FILE\"",
+    "shell": "system",
+    "reveal": "never",
+    "hide": "always"
+  }
+]

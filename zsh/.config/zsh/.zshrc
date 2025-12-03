@@ -113,6 +113,7 @@ export PATH="$HOME/go/bin:$PATH"
 
 # custom scripts
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.dotfiles/bin/.local/myscripts:$PATH"
 
 # Haskell!
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
