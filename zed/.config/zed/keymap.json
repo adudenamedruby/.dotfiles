@@ -51,7 +51,7 @@
       // diagnostics
       "space d n": "editor::GoToDiagnostic",
       "space d p": "editor::GoToPreviousDiagnostic",
-      "space d t": "editor::ToggleInlineDiagnostics",
+      "space d l": "editor::ToggleInlineDiagnostics",
       "space d a": "diagnostics::Deploy",
 
       // files
