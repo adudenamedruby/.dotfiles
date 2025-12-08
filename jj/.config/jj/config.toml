@@ -8,8 +8,8 @@ default-command = "log"
 name = "roux g. buciu"
 email = "github@adudenamedruby.com"
 
-[git]
-push-new-bookmarks = true
+[remotes.origin]
+auto-track-bookmarks = "glob:*"
 
 [templates]
 git_push_bookmark = '"rgb/" ++ change_id.short()'
