@@ -27,12 +27,15 @@ push = [
   remote="origin"
   ticket=""
   mode="existing"
+  pushToMain="no"
 
   # Parse args
   while [[ $# -gt 0 ]]; do
     case "$1" in
       -r|--remote)
         remote="$2"; shift 2 ;;
+      -m|--main)
+        pushToMain="yes"; shift 1 ;;
       -t|--ticket)
         ticket="$2"; mode="new"; shift 2 ;;
       --ticket=*)
@@ -43,7 +46,8 @@ push = [
         echo "Usage: jj push [OPTIONS]"
         echo
         echo "No flags: tug + push + track"
-        echo "-n, --new           Create and push a new rgb/<random> bookmark."
+        echo "-n, --new       Create and push a new rgb/<random> bookmark."
+        echo "-m, --main      Allow pushing to main (default: false)"
         echo "-t, --ticket N  Use rgb/N-<random> as the bookmark name (implies --new)"
         echo "-r, --remote R  Remote name (default: origin)"
         exit 0 ;;
@@ -77,10 +81,12 @@ push = [
     exit 1
   fi
 
-  if [[ "$closest" == "main" ]]; then
-    echo "Error: Closest bookmark is 'main'; refusing to push as a feature branch." >&2
-    echo "Create a feature bookmark (e.g. 'jj bookmark create rgb/...') or run 'jj push --new'." >&2
-    exit 1
+  if [[ "$pushToMain" == "no" ]]; then
+      if [[ "$closest" == "main" ]]; then
+        echo "Error: Closest bookmark is 'main'; refusing to push as a feature branch." >&2
+        echo "Create a feature bookmark (e.g. 'jj bookmark create rgb/...') or run 'jj push --new'." >&2
+        exit 1
+      fi
   fi
 
   # tug, first
