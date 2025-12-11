@@ -12,11 +12,21 @@ email = "github@adudenamedruby.com"
 git_push_bookmark = '"rgb/" ++ change_id.short()'
 
 [aliases]
-tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
-pushNewBranch = [
+fetch = ["git", "fetch"]
+
+pull = ["util", "exec", "--", "bash", "-c", """
+closest="$(jj log -r 'closest_bookmark(@)' -n 1 -T 'bookmarks' --no-graph | cut -d ' ' -f 1)"
+closest="${closest%\\*}"
+jj git fetch
+jj log -n 1 -r "${closest}" 2>&1 > /dev/null && jj rebase -d "${closest}" || jj rebase -d 'trunk()'
+jj log
+"""]
+
+push = [
   "util", "exec", "--", "bash", "-euo", "pipefail", "-c", """
   remote="origin"
   ticket=""
+  mode="existing"
 
   # Parse args
   while [[ $# -gt 0 ]]; do
@@ -24,31 +34,73 @@ pushNewBranch = [
       -r|--remote)
         remote="$2"; shift 2 ;;
       -t|--ticket)
-        ticket="$2"; shift 2 ;;
+        ticket="$2"; mode="new"; shift 2 ;;
       --ticket=*)
-        ticket="${1#*=}"; shift 1 ;;
+        ticket="${1#*=}"; mode="new"; shift 1 ;;
+      -n|--new)
+        mode="new"; shift 1 ;;
       -h|--help)
-        echo "Available commands:" ;
-        echo "-r --remote Specify a remote to push to" ;
-        echo "-t --ticket Specify a ticket number to add to branch name" ;
-        exit 1 ;;
+        echo "Usage: jj push [OPTIONS]"
+        echo
+        echo "No flags: tug + push + track"
+        echo "-n, --new           Create and push a new rgb/<random> bookmark."
+        echo "-t, --ticket N  Use rgb/N-<random> as the bookmark name (implies --new)"
+        echo "-r, --remote R  Remote name (default: origin)"
+        exit 0 ;;
       *)
         echo "Unknown argument: $1" >&2
         exit 1 ;;
     esac
   done
 
-  base="$(~/.local/myScripts/jj-random-branch)"
-  if [[ -n "$ticket" ]]; then
-    name="rgb/${ticket}-${base}"
-  else
-    name="rgb/${base}"
+  # new mode
+  if [[ "$mode" == "new" ]]; then
+    base="$(~/.local/myScripts/jj-random-branch)"
+    if [[ -n "$ticket" ]]; then
+      name="rgb/${ticket}-${base}"
+    else
+      name="rgb/${base}"
+    fi
+
+    set -- # clear args so nothing leaks into jj git push
+    exec jj git push --remote "$remote" --named "${name}=@"
   fi
 
-  set --  # clear args so nothing leaks into jj git push
-  exec jj git push --remote "$remote" --named "${name}=@"
-  """, "pushnew"
+# push mode
+# ensure there is a current bookmark
+  closest="$(jj log -r 'closest_bookmark(@)' -n 1 -T 'bookmarks' --no-graph | cut -d ' ' -f 1)"
+  closest="${closest%\\*}"
+
+  if [[ -z "$closest" ]]; then
+    echo "Error: No current bookmark." >&2
+    echo "Create one (e.g. 'jj bookmark create rgb/...') or run 'jj push --new'." >&2
+    exit 1
+  fi
+
+  # tug, first
+  tuggable="$(jj log -r 'closest_bookmark(@)..closest_pushable(@)' -T '"n"' --no-graph)"
+  if [[ -n "$tuggable" ]]; then
+    jj tug
+  fi
+
+  # if ahead of remote, push; otherwise say there's nothing to push
+  pushable="$(jj log -r 'remote_bookmarks(remote=origin)..@' -T 'bookmarks' --no-graph)"
+  if [[ -n "$pushable" ]]; then
+    jj git push
+  else
+    echo "Nothing to push."
+  fi
+
+  # ensure current bookmark is tracking origin
+  tracked="$(jj bookmark list -r ${closest} -t -T 'if(remote == "origin", name)')"
+  if [[ "$tracked" != "$closest" ]]; then
+    jj bookmark track "${closest}@origin"
+  fi
+
+  """, "push"
 ]
+
+tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
 
 [revset-aliases]
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
