@@ -28,7 +28,7 @@ return {
             U.PLMap("sr", fzf.registers, "registers"),
             U.PLMap("sR", fzf.oldfiles, "recent files"),
             U.PLMap("ss", fzf.blines, "swoop buffer"),
-            U.PLMap("so", fzf.treesitter, "treesitter"),
+            U.PLMap("st", fzf.treesitter, "treesitter"),
             U.PLMap("sd", fzf.diagnostics_workspace, "diagnostics"),
             U.PLMap("sv", function()
                 fzf.grep_visual()
