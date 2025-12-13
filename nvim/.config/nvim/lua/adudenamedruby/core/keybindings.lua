@@ -7,9 +7,9 @@ local float_win = nil
 -- Buffer menu
 U.GLMap("ba", "<cmd>:b#<CR>", "switch to last buffer")
 U.GLMap("be", "<cmd>:enew<CR>", "open empty buffer")
-U.GLMap("bd", "<cmd>:bd<CR>", "delete buffer")
-U.GLMap("bD", "<cmd>:bd!<CR>", "force delete buffer")
-U.GLMap("bo", "<cmd>:bd!# | e#<CR>", "force delete buffer")
+U.GLMap("bd", "<cmd>:bd<CR>", "delete current buffer")
+U.GLMap("bD", "<cmd>:bd!<CR>", "force delete all buffers")
+U.GLMap("bo", "<cmd>:bd!# | e#<CR>", "force delete other buffers")
 U.GLMap("bn", "<cmd>:bn<CR>", "next buffer")
 U.GLMap("bp", "<cmd>:bp<CR>", "previous buffer")
 U.GLMap("br", ":e<CR>:bd#<CR>:e<CR>", "reload buffer with file")
