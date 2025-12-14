@@ -1,23 +1,10 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
-local act = wezterm.action
-
--- local sessionizer = wezterm.plugin.require("https://github.com/mikkasendke/sessionizer.wezterm")
--- local fd_path = "/opt/homebrew/bin/fd"
--- sessionizer
--- local sessionizer_schema = {
--- 	-- Custom entry, label is what you see. By default id is used as the path for a workspace.
--- 	-- { label = "Some project", id = "~/dev/project" },
--- 	-- "Workspace 1", -- Simple string entry, expands to { label = "Workspace 1", id = "Workspace 1" }
--- 	sessionizer.DefaultWorkspace({}),
--- 	sessionizer.AllActiveWorkspaces({}),
--- 	sessionizer.FdSearch("~/.dotfiles", { fd_path = fd_path }),
--- 	sessionizer.FdSearch("~/Developer", { fd_path = fd_path }),
--- }
-
+local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
 local sessionizer = require("utils.sessionizer")
-local b = require("utils.background")
-local assets = wezterm.config_dir .. "/assets"
+local background = require("utils.background")
+local act = wezterm.action
+-- local assets = wezterm.config_dir .. "/assets"
 
 -- This table will hold the configuration.
 local config = {}
@@ -29,7 +16,7 @@ if wezterm.config_builder then
 end
 
 -- For example, changing the color scheme:
-config.color_scheme = b.get_default_theme()
+config.color_scheme = background.get_default_theme()
 
 config.colors = {
 	-- Override the cursor colors while preserving the rest of the theme
@@ -41,7 +28,7 @@ config.colors = {
 local fancy = false
 if fancy then
 	config.background = {
-		b.get_background(),
+		background.get_background(),
 	}
 end
 
@@ -65,7 +52,36 @@ config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.tab_and_split_indices_are_zero_based = false
 
--- tmux
+-- edit mode
+local function open_scrollback_in_vim(window, pane, nlines)
+	nlines = nlines or 2000
+
+	local ok, text = pcall(function()
+		return pane:get_lines_as_text(nlines)
+	end)
+	if not ok or not text then
+		window:toast_notification("WezTerm", "Failed to read pane scrollback", nil, 4000)
+		return
+	end
+
+	local timestamp = tostring(os.time())
+	local filename = "/tmp/wezterm-scrollback-" .. timestamp .. ".txt"
+
+	local f, ferr = io.open(filename, "w")
+	if not f then
+		window:toast_notification("WezTerm", "Failed to open file: " .. (ferr or "unknown"), nil, 4000)
+		return
+	end
+	f:write(text)
+	f:close()
+
+	local editor = os.getenv("EDITOR") or "nvim"
+	local cmd = { "sh", "-lc", string.format("%s +$ %q", editor, filename) }
+
+	window:perform_action(act({ SpawnCommandInNewTab = { args = cmd } }), pane)
+end
+
+-- keys
 config.leader = { key = "w", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{ key = "c", mods = "LEADER", action = act.ActivateCopyMode },
@@ -78,8 +94,30 @@ config.keys = {
 	{ mods = "LEADER", key = "d", action = act.CloseCurrentPane({ confirm = false }) },
 	{ mods = "LEADER", key = "p", action = act.ActivateTabRelative(-1) },
 	{ mods = "LEADER", key = "n", action = act.ActivateTabRelative(1) },
+	{ mods = "LEADER", key = "l", action = act.ShowLauncher },
 	{ mods = "LEADER", key = "v", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ mods = "LEADER", key = "s", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ mods = "LEADER", key = "R", action = act.ReloadConfiguration },
+	{ mods = "LEADER", key = "j", action = wezterm.action_callback(sessionizer.toggle) },
+	{
+		key = "e",
+		mods = "LEADER",
+		action = wezterm.action_callback(function(window, pane)
+			open_scrollback_in_vim(window, pane, 2000)
+		end),
+	},
+	{
+		mods = "LEADER",
+		key = "r",
+		action = act.PromptInputLine({
+			description = "Rename tab: ",
+			action = wezterm.action_callback(function(window, _, line)
+				if line then
+					window:active_tab():set_title(line)
+				end
+			end),
+		}),
+	},
 	-- 	{
 	-- 		mods = "LEADER",
 	-- 		key = "h",
@@ -139,20 +177,6 @@ config.keys = {
 	-- 	-- 		end
 	-- 	-- 	end),
 	-- 	-- },
-	{ mods = "LEADER", key = "R", action = act.ReloadConfiguration },
-	{ mods = "LEADER", key = "j", action = wezterm.action_callback(sessionizer.toggle) },
-	{
-		mods = "LEADER",
-		key = "r",
-		action = act.PromptInputLine({
-			description = "Rename tab: ",
-			action = wezterm.action_callback(function(window, _, line)
-				if line then
-					window:active_tab():set_title(line)
-				end
-			end),
-		}),
-	},
 }
 --
 -- for i = 1, 9 do
@@ -164,35 +188,49 @@ config.keys = {
 -- 	})
 -- end
 --
+
+-- Use if not using the bar plugin
 -- leader command status
-wezterm.on("update-right-status", function(window, _)
-	local SOLID_LEFT_ARROW = ""
-	local ARROW_FOREGROUND = { Foreground = { Color = "#c6a0f6" } }
-	local BACKGROUND = { Background = { Color = "#000000" } }
-	local workspace = window:active_workspace()
-	local prefix = "  [" .. workspace .. "]  "
+-- wezterm.on("update-right-status", function(window, _)
+-- 	local SOLID_LEFT_ARROW = ""
+-- 	local ARROW_FOREGROUND = { Foreground = { Color = "#c6a0f6" } }
+-- 	local BACKGROUND = { Background = { Color = "#000000" } }
+-- 	local workspace = window:active_workspace()
+-- 	local prefix = "  [" .. workspace .. "]  "
+--
+-- 	if window:leader_is_active() then
+-- 		prefix = " " .. utf8.char(0x1f30a) .. prefix
+-- 		SOLID_LEFT_ARROW = utf8.char(0xe0b2)
+-- 		BACKGROUND = { Background = { Color = "#8E2A2D" } }
+-- 	end
+--
+-- 	if window:active_tab():tab_id() ~= 0 then
+-- 		ARROW_FOREGROUND = { Foreground = { Color = "#1e2030" } }
+-- 	end -- arrow color based on if tab is first pane
+--
+-- 	window:set_left_status(wezterm.format({
+-- 		BACKGROUND,
+-- 		{ Text = prefix },
+-- 		ARROW_FOREGROUND,
+-- 		{ Text = SOLID_LEFT_ARROW },
+-- 	}))
+--
+-- 	-- window:set_right_status(wezterm.format({
+-- 	-- 	{ Text = "  [" .. workspace .. "]  " },
+-- 	-- }))
+-- end)
 
-	if window:leader_is_active() then
-		prefix = " " .. utf8.char(0x1f30a) .. prefix
-		SOLID_LEFT_ARROW = utf8.char(0xe0b2)
-		BACKGROUND = { Background = { Color = "#8E2A2D" } }
-	end
-
-	if window:active_tab():tab_id() ~= 0 then
-		ARROW_FOREGROUND = { Foreground = { Color = "#1e2030" } }
-	end -- arrow color based on if tab is first pane
-
-	window:set_left_status(wezterm.format({
-		BACKGROUND,
-		{ Text = prefix },
-		ARROW_FOREGROUND,
-		{ Text = SOLID_LEFT_ARROW },
-	}))
-
-	-- window:set_right_status(wezterm.format({
-	-- 	{ Text = "  [" .. workspace .. "]  " },
-	-- }))
-end)
+bar.apply_to_config(config, {
+	modules = {
+		workspaces = {
+			color = 1,
+		},
+		leader = {
+			icon = wezterm.nerdfonts.oct_rocket,
+			color = 3,
+		},
+	},
+})
 
 -- and finally, return the configuration to wezterm
 return config
