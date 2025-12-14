@@ -94,7 +94,7 @@ config.keys = {
 	{ mods = "LEADER", key = "d", action = act.CloseCurrentPane({ confirm = false }) },
 	{ mods = "LEADER", key = "p", action = act.ActivateTabRelative(-1) },
 	{ mods = "LEADER", key = "n", action = act.ActivateTabRelative(1) },
-	{ mods = "LEADER", key = "l", action = act.ShowLauncher },
+	{ mods = "LEADER", key = "l", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
 	{ mods = "LEADER", key = "v", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ mods = "LEADER", key = "s", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	{ mods = "LEADER", key = "R", action = act.ReloadConfiguration },
