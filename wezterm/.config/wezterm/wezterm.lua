@@ -1,6 +1,21 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
+local act = wezterm.action
 
+-- local sessionizer = wezterm.plugin.require("https://github.com/mikkasendke/sessionizer.wezterm")
+-- local fd_path = "/opt/homebrew/bin/fd"
+-- sessionizer
+-- local sessionizer_schema = {
+-- 	-- Custom entry, label is what you see. By default id is used as the path for a workspace.
+-- 	-- { label = "Some project", id = "~/dev/project" },
+-- 	-- "Workspace 1", -- Simple string entry, expands to { label = "Workspace 1", id = "Workspace 1" }
+-- 	sessionizer.DefaultWorkspace({}),
+-- 	sessionizer.AllActiveWorkspaces({}),
+-- 	sessionizer.FdSearch("~/.dotfiles", { fd_path = fd_path }),
+-- 	sessionizer.FdSearch("~/Developer", { fd_path = fd_path }),
+-- }
+
+local sessionizer = require("utils.sessionizer")
 local b = require("utils.background")
 local assets = wezterm.config_dir .. "/assets"
 
@@ -30,7 +45,7 @@ if fancy then
 	}
 end
 
-config.window_background_opacity = 0.985
+config.window_background_opacity = 0.98
 -- config.window_background_opacity = 1
 
 config.font = wezterm.font("FiraCode Nerd Font Mono")
@@ -54,17 +69,17 @@ config.keys = {
 	{
 		mods = "CMD",
 		key = "=",
-		action = wezterm.action.IncreaseFontSize,
+		action = act.IncreaseFontSize,
 	},
 	{
 		mods = "CMD",
 		key = "-",
-		action = wezterm.action.DecreaseFontSize,
+		action = act.DecreaseFontSize,
 	},
 	{
 		mods = "CMD",
 		key = "0",
-		action = wezterm.action.ResetFontSize,
+		action = act.ResetFontSize,
 	},
 	{
 		key = "=",
@@ -76,84 +91,94 @@ config.keys = {
 		mods = "CTRL",
 		action = "DisableDefaultAssignment",
 	},
-	-- 	{
-	-- 		mods = "LEADER",
-	-- 		key = "c",
-	-- 		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
-	-- 	},
-	-- 	{
-	-- 		mods = "LEADER",
-	-- 		key = "d",
-	-- 		action = wezterm.action.CloseCurrentPane({ confirm = true }),
-	-- 	},
+	{
+		mods = "LEADER",
+		key = "t",
+		action = act.SpawnTab("CurrentPaneDomain"),
+	},
+	{
+		mods = "LEADER",
+		key = "d",
+		action = act.CloseCurrentPane({ confirm = false }),
+	},
+	{
+		mods = "LEADER",
+		key = "p",
+		action = act.ActivateTabRelative(-1),
+	},
+	{
+		mods = "LEADER",
+		key = "n",
+		action = act.ActivateTabRelative(1),
+	},
 	-- 	{
 	-- 		mods = "LEADER|CTRL",
 	-- 		key = "h",
-	-- 		action = wezterm.action.ActivateTabRelative(-1),
+	-- 		action = act.ActivateTabRelative(-1),
 	-- 	},
 	-- 	{
 	-- 		mods = "LEADER|CTRL",
 	-- 		key = "l",
-	-- 		action = wezterm.action.ActivateTabRelative(1),
+	-- 		action = act.ActivateTabRelative(1),
 	-- 	},
-	-- 	{
-	-- 		mods = "LEADER",
-	-- 		key = "v",
-	-- 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
-	-- 	},
-	-- 	{
-	-- 		mods = "LEADER",
-	-- 		key = "s",
-	-- 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
-	-- 	},
+	{
+		mods = "LEADER",
+		key = "v",
+		action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		mods = "LEADER",
+		key = "s",
+		action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
 	-- 	{
 	-- 		mods = "LEADER",
 	-- 		key = "h",
-	-- 		action = wezterm.action.ActivatePaneDirection("Left"),
+	-- 		action = act.ActivatePaneDirection("Left"),
 	-- 	},
 	-- 	{
 	-- 		mods = "LEADER",
 	-- 		key = "j",
-	-- 		action = wezterm.action.ActivatePaneDirection("Down"),
+	-- 		action = act.ActivatePaneDirection("Down"),
 	-- 	},
 	-- 	{
 	-- 		mods = "LEADER",
 	-- 		key = "k",
-	-- 		action = wezterm.action.ActivatePaneDirection("Up"),
+	-- 		action = act.ActivatePaneDirection("Up"),
 	-- 	},
 	-- 	{
 	-- 		mods = "LEADER",
 	-- 		key = "l",
-	-- 		action = wezterm.action.ActivatePaneDirection("Right"),
+	-- 		action = act.ActivatePaneDirection("Right"),
 	-- 	},
 	-- 	{
 	-- 		mods = "LEADER",
 	-- 		key = "LeftArrow",
-	-- 		action = wezterm.action.AdjustPaneSize({ "Left", 5 }),
+	-- 		action = act.AdjustPaneSize({ "Left", 5 }),
 	-- 	},
 	-- 	{
 	-- 		mods = "LEADER",
 	-- 		key = "RightArrow",
-	-- 		action = wezterm.action.AdjustPaneSize({ "Right", 5 }),
+	-- 		action = act.AdjustPaneSize({ "Right", 5 }),
 	-- 	},
 	-- 	{
 	-- 		mods = "LEADER",
 	-- 		key = "DownArrow",
-	-- 		action = wezterm.action.AdjustPaneSize({ "Down", 5 }),
+	-- 		action = act.AdjustPaneSize({ "Down", 5 }),
 	-- 	},
 	-- 	{
 	-- 		mods = "LEADER",
 	-- 		key = "UpArrow",
-	-- 		action = wezterm.action.AdjustPaneSize({ "Up", 5 }),
+	-- 		action = act.AdjustPaneSize({ "Up", 5 }),
 	-- 	},
 	-- 	-- {
 	-- 	-- 	mods = "LEADER",
 	-- 	-- 	key = "g",
-	-- 	-- 	action = wezterm.action_callback(function(window, pane)
+	-- 	-- 	action = act.callback(function(window, pane)
 	-- 	-- 		local cwd = pane:get_current_working_dir()
 	-- 	-- 		if cwd then
 	-- 	-- 			window:perform_action(
-	-- 	-- 				wezterm.action.SpawnCommandInNewWindow({
+	-- 	-- 				act.SpawnCommandInNewWindow({
 	-- 	-- 					args = { "lazygit" },
 	-- 	-- 					cwd = cwd,
 	-- 	-- 					set_environment_variables = {
@@ -165,18 +190,28 @@ config.keys = {
 	-- 	-- 		end
 	-- 	-- 	end),
 	-- 	-- },
-	-- 	{
-	-- 		mods = "LEADER",
-	-- 		key = "r",
-	-- 		action = wezterm.action.PromptInputLine({
-	-- 			description = "Rename tab: ",
-	-- 			action = wezterm.action_callback(function(window, _, line)
-	-- 				if line then
-	-- 					window:active_tab():set_title(line)
-	-- 				end
-	-- 			end),
-	-- 		}),
-	-- 	},
+	{
+		mods = "LEADER",
+		key = "R",
+		action = act.ReloadConfiguration,
+	},
+	{
+		mods = "LEADER",
+		key = "r",
+		action = act.PromptInputLine({
+			description = "Rename tab: ",
+			action = wezterm.action_callback(function(window, _, line)
+				if line then
+					window:active_tab():set_title(line)
+				end
+			end),
+		}),
+	},
+	{
+		mods = "LEADER",
+		key = "j",
+		action = wezterm.action_callback(sessionizer.toggle),
+	},
 }
 --
 -- for i = 1, 9 do
@@ -184,7 +219,7 @@ config.keys = {
 -- 	table.insert(config.keys, {
 -- 		key = tostring(i),
 -- 		mods = "LEADER",
--- 		action = wezterm.action.ActivateTab(i - 1),
+-- 		action = act.ActivateTab(i - 1),
 -- 	})
 -- end
 --
@@ -192,11 +227,14 @@ config.keys = {
 wezterm.on("update-right-status", function(window, _)
 	local SOLID_LEFT_ARROW = ""
 	local ARROW_FOREGROUND = { Foreground = { Color = "#c6a0f6" } }
-	local prefix = ""
+	local BACKGROUND = { Background = { Color = "#000000" } }
+	local workspace = window:active_workspace()
+	local prefix = "  [" .. workspace .. "]  "
 
 	if window:leader_is_active() then
-		prefix = " " .. utf8.char(0x1f30a) -- ocean wave
+		prefix = " " .. utf8.char(0x1f30a) .. prefix
 		SOLID_LEFT_ARROW = utf8.char(0xe0b2)
+		BACKGROUND = { Background = { Color = "#8E2A2D" } }
 	end
 
 	if window:active_tab():tab_id() ~= 0 then
@@ -204,11 +242,15 @@ wezterm.on("update-right-status", function(window, _)
 	end -- arrow color based on if tab is first pane
 
 	window:set_left_status(wezterm.format({
-		{ Background = { Color = "#b7bdf8" } },
+		BACKGROUND,
 		{ Text = prefix },
 		ARROW_FOREGROUND,
 		{ Text = SOLID_LEFT_ARROW },
 	}))
+
+	-- window:set_right_status(wezterm.format({
+	-- 	{ Text = "  [" .. workspace .. "]  " },
+	-- }))
 end)
 
 -- and finally, return the configuration to wezterm

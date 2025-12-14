@@ -10,7 +10,6 @@ M.get_default_theme = function()
 		"matrix",
 		"GruvboxDarkHard",
 		"MonaLisa",
-		"vimbones",
 	})
 end
 
