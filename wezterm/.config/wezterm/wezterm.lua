@@ -45,7 +45,8 @@ if fancy then
 	}
 end
 
-config.window_background_opacity = 0.98
+config.window_background_opacity = 0.9
+config.macos_window_background_blur = 24
 -- config.window_background_opacity = 1
 
 config.font = wezterm.font("FiraCode Nerd Font Mono")
@@ -53,6 +54,7 @@ config.font_size = 16
 config.adjust_window_size_when_changing_font_size = false
 
 config.window_decorations = "RESIZE"
+config.scrollback_lines = 3000
 
 -- config.enable_mouse_reporting = true
 -- config.automatically_select_copy = true
@@ -64,73 +66,20 @@ config.use_fancy_tab_bar = false
 config.tab_and_split_indices_are_zero_based = false
 
 -- tmux
-config.leader = { key = "w", mods = "CTRL", timeout_milliseconds = 1300 }
+config.leader = { key = "w", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
-	{
-		mods = "CMD",
-		key = "=",
-		action = act.IncreaseFontSize,
-	},
-	{
-		mods = "CMD",
-		key = "-",
-		action = act.DecreaseFontSize,
-	},
-	{
-		mods = "CMD",
-		key = "0",
-		action = act.ResetFontSize,
-	},
-	{
-		key = "=",
-		mods = "CTRL",
-		action = "DisableDefaultAssignment",
-	},
-	{
-		key = "-",
-		mods = "CTRL",
-		action = "DisableDefaultAssignment",
-	},
-	{
-		mods = "LEADER",
-		key = "t",
-		action = act.SpawnTab("CurrentPaneDomain"),
-	},
-	{
-		mods = "LEADER",
-		key = "d",
-		action = act.CloseCurrentPane({ confirm = false }),
-	},
-	{
-		mods = "LEADER",
-		key = "p",
-		action = act.ActivateTabRelative(-1),
-	},
-	{
-		mods = "LEADER",
-		key = "n",
-		action = act.ActivateTabRelative(1),
-	},
-	-- 	{
-	-- 		mods = "LEADER|CTRL",
-	-- 		key = "h",
-	-- 		action = act.ActivateTabRelative(-1),
-	-- 	},
-	-- 	{
-	-- 		mods = "LEADER|CTRL",
-	-- 		key = "l",
-	-- 		action = act.ActivateTabRelative(1),
-	-- 	},
-	{
-		mods = "LEADER",
-		key = "v",
-		action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
-	},
-	{
-		mods = "LEADER",
-		key = "s",
-		action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
-	},
+	{ key = "c", mods = "LEADER", action = act.ActivateCopyMode },
+	{ mods = "CMD", key = "=", action = act.IncreaseFontSize },
+	{ mods = "CMD", key = "-", action = act.DecreaseFontSize },
+	{ mods = "CMD", key = "0", action = act.ResetFontSize },
+	{ key = "=", mods = "CTRL", action = "DisableDefaultAssignment" },
+	{ key = "-", mods = "CTRL", action = "DisableDefaultAssignment" },
+	{ mods = "LEADER", key = "t", action = act.SpawnTab("CurrentPaneDomain") },
+	{ mods = "LEADER", key = "d", action = act.CloseCurrentPane({ confirm = false }) },
+	{ mods = "LEADER", key = "p", action = act.ActivateTabRelative(-1) },
+	{ mods = "LEADER", key = "n", action = act.ActivateTabRelative(1) },
+	{ mods = "LEADER", key = "v", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{ mods = "LEADER", key = "s", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	-- 	{
 	-- 		mods = "LEADER",
 	-- 		key = "h",
@@ -190,11 +139,8 @@ config.keys = {
 	-- 	-- 		end
 	-- 	-- 	end),
 	-- 	-- },
-	{
-		mods = "LEADER",
-		key = "R",
-		action = act.ReloadConfiguration,
-	},
+	{ mods = "LEADER", key = "R", action = act.ReloadConfiguration },
+	{ mods = "LEADER", key = "j", action = wezterm.action_callback(sessionizer.toggle) },
 	{
 		mods = "LEADER",
 		key = "r",
@@ -206,11 +152,6 @@ config.keys = {
 				end
 			end),
 		}),
-	},
-	{
-		mods = "LEADER",
-		key = "j",
-		action = wezterm.action_callback(sessionizer.toggle),
 	},
 }
 --
