@@ -24,3 +24,6 @@ macos-auto-secure-input        = true
 macos-secure-input-indication  = true
 macos-option-as-alt = true
 # quit-after-last-window-closed  = false
+
+keybind = ctrl+8>n=new_window
+
