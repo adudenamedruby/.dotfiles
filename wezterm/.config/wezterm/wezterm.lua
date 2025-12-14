@@ -82,14 +82,18 @@ local function open_scrollback_in_vim(window, pane, nlines)
 end
 
 -- keys
-config.leader = { key = "w", mods = "CTRL", timeout_milliseconds = 1000 }
+config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
-	{ key = "c", mods = "LEADER", action = act.ActivateCopyMode },
+	-- zooming
+	{ key = "=", mods = "CTRL", action = "DisableDefaultAssignment" },
+	{ key = "-", mods = "CTRL", action = "DisableDefaultAssignment" },
 	{ mods = "CMD", key = "=", action = act.IncreaseFontSize },
 	{ mods = "CMD", key = "-", action = act.DecreaseFontSize },
 	{ mods = "CMD", key = "0", action = act.ResetFontSize },
-	{ key = "=", mods = "CTRL", action = "DisableDefaultAssignment" },
-	{ key = "-", mods = "CTRL", action = "DisableDefaultAssignment" },
+	-- wezterm commands
+	{ mods = "LEADER", key = "R", action = act.ReloadConfiguration },
+	{ mods = "LEADER", key = "D", action = wezterm.action.ShowDebugOverlay },
+	-- control commands
 	{ mods = "LEADER", key = "t", action = act.SpawnTab("CurrentPaneDomain") },
 	{ mods = "LEADER", key = "d", action = act.CloseCurrentPane({ confirm = false }) },
 	{ mods = "LEADER", key = "p", action = act.ActivateTabRelative(-1) },
@@ -97,27 +101,27 @@ config.keys = {
 	{ mods = "LEADER", key = "l", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
 	{ mods = "LEADER", key = "v", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ mods = "LEADER", key = "s", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ mods = "LEADER", key = "R", action = act.ReloadConfiguration },
-	{ mods = "LEADER", key = "j", action = wezterm.action_callback(sessionizer.toggle) },
+	{ mods = "LEADER", key = "g", action = wezterm.action_callback(sessionizer.toggle) },
+	{ mods = "LEADER", key = "c", action = act.ActivateCopyMode },
 	{
-		key = "e",
+		key = "r",
 		mods = "LEADER",
 		action = wezterm.action_callback(function(window, pane)
 			open_scrollback_in_vim(window, pane, 2000)
 		end),
 	},
-	{
-		mods = "LEADER",
-		key = "r",
-		action = act.PromptInputLine({
-			description = "Rename tab: ",
-			action = wezterm.action_callback(function(window, _, line)
-				if line then
-					window:active_tab():set_title(line)
-				end
-			end),
-		}),
-	},
+	-- {
+	-- 	mods = "LEADER",
+	-- 	key = "r",
+	-- 	action = act.PromptInputLine({
+	-- 		description = "Rename tab: ",
+	-- 		action = wezterm.action_callback(function(window, _, line)
+	-- 			if line then
+	-- 				window:active_tab():set_title(line)
+	-- 			end
+	-- 		end),
+	-- 	}),
+	-- },
 	-- 	{
 	-- 		mods = "LEADER",
 	-- 		key = "h",
@@ -160,7 +164,7 @@ config.keys = {
 	-- 	},
 	-- 	-- {
 	-- 	-- 	mods = "LEADER",
-	-- 	-- 	key = "g",
+	-- 	-- 	key = "G",
 	-- 	-- 	action = act.callback(function(window, pane)
 	-- 	-- 		local cwd = pane:get_current_working_dir()
 	-- 	-- 		if cwd then
