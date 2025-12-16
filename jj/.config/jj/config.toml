@@ -3,6 +3,8 @@
 [ui]
 paginate = "never"
 default-command = "log"
+pager = "delta"
+diff-formatter = "delta"
 
 [user]
 name = "roux g. buciu"
