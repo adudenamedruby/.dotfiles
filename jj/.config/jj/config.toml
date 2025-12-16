@@ -98,7 +98,7 @@ push = [
   fi
 
   # if ahead of remote, push; otherwise say there's nothing to push
-  pushable="$(jj log -r 'remote_bookmarks(remote=origin)..@' -T 'bookmarks' --no-graph)"
+  pushable="$(jj log -r "remote_bookmarks(remote=exact:${remote})..@" -T 'bookmarks' --no-graph)"
   if [[ -n "$pushable" ]]; then
     jj git push
   else
