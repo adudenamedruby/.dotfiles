@@ -98,7 +98,7 @@ config.keys = {
 	{ mods = "LEADER", key = "d", action = act.CloseCurrentPane({ confirm = false }) },
 	{ mods = "LEADER", key = "p", action = act.ActivateTabRelative(-1) },
 	{ mods = "LEADER", key = "n", action = act.ActivateTabRelative(1) },
-	{ mods = "LEADER", key = "l", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+	{ mods = "LEADER", key = "w", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
 	{ mods = "LEADER", key = "v", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ mods = "LEADER", key = "s", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	{ mods = "LEADER", key = "g", action = wezterm.action_callback(sessionizer.toggle) },
@@ -232,6 +232,9 @@ bar.apply_to_config(config, {
 		leader = {
 			icon = wezterm.nerdfonts.oct_rocket,
 			color = 3,
+		},
+		pane = {
+			enabled = false,
 		},
 	},
 })
