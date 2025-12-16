@@ -1,10 +1,10 @@
 "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
 
 [ui]
-paginate = "never"
 default-command = "log"
 pager = "delta"
-diff-formatter = "delta"
+diff-formatter = "delta-jj"
+paginate = "never"
 
 [user]
 name = "roux g. buciu"

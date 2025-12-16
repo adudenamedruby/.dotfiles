@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+WIDTH="${COLUMNS:-$(tput cols)}"
+exec delta --width "$WIDTH" "$@"
