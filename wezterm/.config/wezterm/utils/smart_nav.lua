@@ -47,4 +47,26 @@ function M.split_nav(resize_or_move, mods, key, dir)
 	}
 end
 
+-- Smart scrolling that works with nvim
+---@param mods string
+---@param key string
+---@param scroll_amount number
+function M.smart_scroll(mods, key, scroll_amount)
+	local event = "SmartScroll_" .. key
+	wezterm.on(event, function(win, pane)
+		if M.is_nvim(pane) then
+			-- pass the keys through to vim/nvim
+			win:perform_action({ SendKey = { key = key, mods = mods } }, pane)
+		else
+			-- scroll in wezterm
+			win:perform_action({ ScrollByPage = scroll_amount }, pane)
+		end
+	end)
+	return {
+		key = key,
+		mods = mods,
+		action = wezterm.action.EmitEvent(event),
+	}
+end
+
 return M

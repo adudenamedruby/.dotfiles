@@ -34,7 +34,7 @@ if fancy then
 end
 
 config.window_background_opacity = 0.9
-config.macos_window_background_blur = 24
+config.macos_window_background_blur = 30
 -- config.window_background_opacity = 1
 
 config.font = wezterm.font("FiraCode Nerd Font Mono")
@@ -42,7 +42,8 @@ config.font_size = 16
 config.adjust_window_size_when_changing_font_size = false
 
 config.window_decorations = "RESIZE"
-config.scrollback_lines = 3000
+-- config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
+config.scrollback_lines = 5000
 
 -- config.enable_mouse_reporting = true
 -- config.automatically_select_copy = true
@@ -116,6 +117,9 @@ config.keys = {
 	smart_nav.split_nav("move", "CTRL", "j", "Down"),
 	smart_nav.split_nav("move", "CTRL", "k", "Up"),
 	smart_nav.split_nav("move", "CTRL", "l", "Right"),
+	-- Smart scrolling with CTRL+u/d (works with nvim)
+	smart_nav.smart_scroll("CTRL", "u", -0.5),
+	smart_nav.smart_scroll("CTRL", "d", 0.5),
 	-- {
 	-- 	mods = "LEADER",
 	-- 	key = "r",
