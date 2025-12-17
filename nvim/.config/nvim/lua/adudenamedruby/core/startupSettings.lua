@@ -46,3 +46,21 @@ vim.api.nvim_create_autocmd("FileType", {
 --         ]])
 --     end,
 -- })
+
+-- Wezterm integration: Set IS_NVIM user var so Wezterm knows Neovim is running
+-- This enables seamless navigation between Wezterm panes and Neovim splits
+vim.api.nvim_create_autocmd({ "VimEnter", "VimResume" }, {
+	desc = "Tell Wezterm that Neovim is active",
+	group = vim.api.nvim_create_augroup("wezterm-nvim-integration", { clear = true }),
+	callback = function()
+		io.stdout:write("\x1b]1337;SetUserVar=IS_NVIM=MQo\007")
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "VimLeave", "VimSuspend" }, {
+	desc = "Tell Wezterm that Neovim is inactive",
+	group = vim.api.nvim_create_augroup("wezterm-nvim-integration-leave", { clear = true }),
+	callback = function()
+		io.stdout:write("\x1b]1337;SetUserVar=IS_NVIM=MAo\007")
+	end,
+})

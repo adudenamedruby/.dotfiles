@@ -138,14 +138,13 @@ U.GMap("j", "gj")
 U.GMap("k", "gk")
 
 -- Window movement
+-- NOTE: Window navigation with CTRL+hjkl is now handled by smart-splits.nvim
+-- See lua/adudenamedruby/plugins/smart-splits.lua for configuration
+-- This enables seamless navigation between Neovim splits and Wezterm panes
 -- KMap("c-h", "<cmd>wincmd h<CR>", "move focus to the left window")
 -- KMap("c-l", "<cmd>wincmd l<CR>", "move focus to the right window")
 -- KMap("c-j", "<cmd>wincmd j<CR>", "move focus to the lower window")
 -- KMap("c-k", "<cmd>wincmd k<CR>", "move focus to the upper window")
-U.GMap("<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>")
-U.GMap("<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>")
-U.GMap("<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>")
-U.GMap("<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>")
 
 -- Windows menu
 U.GLMap("ws", "<cmd>:split<CR>", "horizontal split")

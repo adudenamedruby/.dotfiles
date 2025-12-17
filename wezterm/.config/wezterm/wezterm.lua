@@ -3,6 +3,7 @@ local wezterm = require("wezterm")
 local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
 local sessionizer = require("utils.sessionizer")
 local background = require("utils.background")
+local smart_nav = require("utils.smart_nav")
 local act = wezterm.action
 -- local assets = wezterm.config_dir .. "/assets"
 
@@ -110,6 +111,11 @@ config.keys = {
 			open_scrollback_in_vim(window, pane, 2000)
 		end),
 	},
+	-- Smart navigation with CTRL+hjkl (works with nvim splits)
+	smart_nav.split_nav("move", "CTRL", "h", "Left"),
+	smart_nav.split_nav("move", "CTRL", "j", "Down"),
+	smart_nav.split_nav("move", "CTRL", "k", "Up"),
+	smart_nav.split_nav("move", "CTRL", "l", "Right"),
 	-- {
 	-- 	mods = "LEADER",
 	-- 	key = "r",
