@@ -16,9 +16,6 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
--- For example, changing the color scheme:
-config.color_scheme = background.get_default_theme()
-
 config.colors = {
 	-- Override the cursor colors while preserving the rest of the theme
 	cursor_bg = "#e04ba4", -- Set the cursor background color to red
@@ -234,6 +231,14 @@ config.keys = {
 -- 	-- 	{ Text = "  [" .. workspace .. "]  " },
 -- 	-- }))
 -- end)
+
+-- Set per-window theme based on daily rotation
+wezterm.on("window-config-reloaded", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	local theme = background.get_theme_for_window(window)
+	overrides.color_scheme = theme
+	window:set_config_overrides(overrides)
+end)
 
 bar.apply_to_config(config, {
 	modules = {
