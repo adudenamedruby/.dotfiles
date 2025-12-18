@@ -47,15 +47,18 @@ function M.split_nav(resize_or_move, mods, key, dir)
 	}
 end
 
--- Smart scrolling that works with nvim
+-- Smart scrolling that works with nvim and pagers
 ---@param mods string
 ---@param key string
 ---@param scroll_amount number
 function M.smart_scroll(mods, key, scroll_amount)
 	local event = "SmartScroll_" .. key
 	wezterm.on(event, function(win, pane)
-		if M.is_nvim(pane) then
-			-- pass the keys through to vim/nvim
+		local is_alternate_screen = pane:is_alt_screen_active()
+
+		-- If in alternate screen mode (pagers, vim, etc.) or if it's nvim, send keys through
+		if M.is_nvim(pane) or is_alternate_screen then
+			-- pass the keys through to vim/nvim or pager
 			win:perform_action({ SendKey = { key = key, mods = mods } }, pane)
 		else
 			-- scroll in wezterm

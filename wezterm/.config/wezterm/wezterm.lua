@@ -95,6 +95,7 @@ config.keys = {
 	-- wezterm commands
 	{ mods = "LEADER", key = "R", action = act.ReloadConfiguration },
 	{ mods = "LEADER", key = "D", action = wezterm.action.ShowDebugOverlay },
+	{ key = "Enter", mods = "SHIFT", action = wezterm.action({ SendString = "\x1b\r" }) },
 	-- control commands
 	{ mods = "LEADER", key = "t", action = act.SpawnTab("CurrentPaneDomain") },
 	{ mods = "LEADER", key = "d", action = act.CloseCurrentPane({ confirm = false }) },
