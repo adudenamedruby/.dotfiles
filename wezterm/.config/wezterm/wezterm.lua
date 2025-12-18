@@ -277,13 +277,7 @@ config.keys = {
 -- 	-- }))
 -- end)
 
--- Set per-window theme based on daily rotation
-wezterm.on("window-config-reloaded", function(window, pane)
-	local overrides = window:get_config_overrides() or {}
-	local theme = background.get_theme_for_window(window)
-	overrides.color_scheme = theme
-	window:set_config_overrides(overrides)
-end)
+config.color_scheme = background.get_daily_theme()
 
 bar.apply_to_config(config, {
 	modules = {
@@ -300,5 +294,4 @@ bar.apply_to_config(config, {
 	},
 })
 
--- and finally, return the configuration to wezterm
 return config
