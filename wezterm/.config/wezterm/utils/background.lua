@@ -4,12 +4,82 @@ local M = {}
 
 -- List of your favorite themes
 local THEMES = {
+	"Gruvbox Material (Gogh)",
+	"Apple System Colors",
+	"Tomorrow Night Burns",
+	"Bitmute (terminal.sexy)",
+	"Sequoia Monochrome",
+	"Arthur",
+	"Ocean Dark (Gogh)",
+	"Trim Yer Beard (terminal.sexy)",
+	"Bleh-1 (terminal.sexy)",
 	"Catppuccin Mocha",
-	"rose-pine",
+	"Afterglow",
+	"Ef-Night",
+	"Ayu Dark (Gogh)",
+	"Pretty and Pastel (terminal.sexy)",
+	"Everblush",
+	"Darktooth (base16)",
+	"N0tch2k",
+	"PaperColor Dark (base16)",
+	"FrontEndDelight",
+	"Poimandres",
+	"Spacedust",
+	"Rosé Pine (base16)",
+	"Hybrid (Gogh)",
+	"Adventure",
+	"Shaman",
+	"Cloud (terminal.sexy)",
+	"Wombat",
 	"Glacier",
-	"matrix",
+	"Operator Mono Dark",
+	"Kasugano (terminal.sexy)",
+	"Atelier Dune (base16)",
+	"Mirage",
+	"Birds Of Paradise (Gogh)",
+	"Ocean (base16)",
+	"Tomorrow Night (Gogh)",
+	"Grayscale Dark (base16)",
+	"Pnevma",
+	"Soft Server (Gogh)",
+	"Fahrenheit",
+	"Batman",
+	"JWR dark (terminal.sexy)",
+	"Embers (base16)",
+	"Count Von Count (terminal.sexy)",
 	"GruvboxDarkHard",
-	"MonaLisa",
+	"Cai (Gogh)",
+	"Red Phoenix (terminal.sexy)",
+	"Apathy (base16)",
+	"Smyck (Gogh)",
+	"Default (dark) (terminal.sexy)",
+	"Arthur",
+	"Twilight",
+	"Apprentice (base16)",
+	"Navy and Ivory (terminal.sexy)",
+	"Shic (terminal.sexy)",
+	"Pulp (terminal.sexy)",
+	"Elemental",
+	"Woodland (base16)",
+	"DjangoRebornAgain",
+	"Rosé Pine (Gogh)",
+	"ICOrangePPL (Gogh)",
+	"Breath (Gogh)",
+	"Ashes (base16)",
+	"BlulocoDark",
+	"Green Screen (base16)",
+	"Tomorrow (dark) (terminal.sexy)",
+	"Mashup Colors (terminal.sexy)",
+	"Aardvark Blue",
+	"Arcoiris",
+	"Aci (Gogh)",
+	"Matrix",
+	"Chiapre",
+	"Pnevma",
+	"3024 Night",
+	"Wryan",
+	"Atelierdune (dark) (terminal.sexy)",
+	"Grape (Gogh)",
 }
 
 -- Cache file to store window-theme mappings
@@ -59,13 +129,13 @@ local function save_cache(cache)
 	end
 
 	file:write("{\n")
-	file:write(string.format('  day = %d,\n', cache.day))
-	file:write('  windows = {\n')
+	file:write(string.format("  day = %d,\n", cache.day))
+	file:write("  windows = {\n")
 	for window_id, theme in pairs(cache.windows) do
 		file:write(string.format('    [%d] = "%s",\n', window_id, theme))
 	end
-	file:write('  }\n')
-	file:write('}\n')
+	file:write("  }\n")
+	file:write("}\n")
 	file:close()
 end
 
@@ -97,7 +167,7 @@ M.get_theme_for_window = function(window)
 	if cache.day ~= current_day then
 		cache = {
 			day = current_day,
-			windows = {}
+			windows = {},
 		}
 	end
 
@@ -124,6 +194,32 @@ M.get_theme_for_window = function(window)
 	save_cache(cache)
 
 	return theme
+end
+
+-- Set theme manually for a specific window
+M.set_theme_for_window = function(window, theme_name)
+	local window_id = window:window_id()
+	local current_day = get_day_of_year()
+
+	-- Load cache
+	local cache = load_cache()
+
+	-- Initialize cache if needed
+	if cache.day ~= current_day then
+		cache = {
+			day = current_day,
+			windows = {},
+		}
+	end
+
+	-- Save the manual override
+	cache.windows[window_id] = theme_name
+	save_cache(cache)
+
+	-- Apply the theme immediately
+	local overrides = window:get_config_overrides() or {}
+	overrides.color_scheme = theme_name
+	window:set_config_overrides(overrides)
 end
 
 -- Legacy function for backward compatibility (uses random theme)

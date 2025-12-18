@@ -110,6 +110,51 @@ config.keys = {
 			open_scrollback_in_vim(window, pane, 2000)
 		end),
 	},
+	{
+		key = "B",
+		mods = "LEADER",
+		action = wezterm.action_callback(function(window, pane)
+			local schemes = wezterm.color.get_builtin_schemes()
+			local choices = {}
+
+			for name, _ in pairs(schemes) do
+				table.insert(choices, { label = name })
+			end
+
+			table.sort(choices, function(a, b)
+				return a.label < b.label
+			end)
+
+			window:perform_action(
+				act.InputSelector({
+					action = wezterm.action_callback(function(inner_window, inner_pane, id, label)
+						if label then
+							-- Apply the selected theme to this window
+							local overrides = inner_window:get_config_overrides() or {}
+							overrides.color_scheme = label
+							inner_window:set_config_overrides(overrides)
+						end
+					end),
+					title = "Select Theme",
+					choices = choices,
+					fuzzy = true,
+					fuzzy_description = "Search themes: ",
+				}),
+				pane
+			)
+		end),
+	},
+	{
+		key = "b",
+		mods = "LEADER",
+		action = wezterm.action_callback(function(window, pane)
+			local overrides = window:get_config_overrides() or {}
+			local current_theme = overrides.color_scheme or config.color_scheme or "Unknown"
+			window:copy_to_clipboard(current_theme)
+
+			window:toast_notification("WezTerm", "Copied: " .. current_theme, nil, 2000)
+		end),
+	},
 	-- Smart navigation with CTRL+hjkl (works with nvim splits)
 	smart_nav.split_nav("move", "CTRL", "h", "Left"),
 	smart_nav.split_nav("move", "CTRL", "j", "Down"),
