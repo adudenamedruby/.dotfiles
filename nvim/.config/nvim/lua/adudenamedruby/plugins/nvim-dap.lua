@@ -32,9 +32,7 @@ end
 
 return {
     "mfussenegger/nvim-dap",
-    dependencies = {
-        "wojciech-kulik/xcodebuild.nvim",
-    },
+    dependencies = {},
     config = function()
         local define = vim.fn.sign_define
         define("DapBreakpoint", { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })

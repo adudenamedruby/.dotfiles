@@ -88,16 +88,16 @@ U.GMap("<C-u>", "<C-u>zz")
 U.GLMap("uI", "<cmd>InspectTree<cr>", "Inspect Tree")
 
 -- Toggle menu
-U.GLMap("to", "<cmd>AerialToggle!<CR>", "outline")
-U.GLMap("tm", "<cmd>RenderMarkdown toggle<CR>", "markdown renderer")
-U.GLMap("tR", function()
+U.GLMap("To", "<cmd>AerialToggle!<CR>", "outline")
+U.GLMap("Tm", "<cmd>RenderMarkdown toggle<CR>", "markdown renderer")
+U.GLMap("TR", function()
     if vim.opt.colorcolumn:get()[1] == "90" then
         vim.opt.colorcolumn = ""
     else
         vim.opt.colorcolumn = "90"
     end
 end, "Ruler")
-U.GLMap("tw", function()
+U.GLMap("Tw", function()
     if float_win and vim.api.nvim_win_is_valid(float_win) then
         vim.api.nvim_win_close(float_win, true)
         float_win = nil
@@ -119,7 +119,7 @@ U.GLMap("tw", function()
         print("Floating window opened at 110 cols")
     end
 end, "floating window")
-U.GLMap("tW", "<cmd>set wrap!<CR>", "line wrapping")
+U.GLMap("TW", "<cmd>set wrap!<CR>", "line wrapping")
 
 -- Search: behaviour of n and N
 U.GMap("n", "'Nn'[v:searchforward].'zzzv'", "Next Search Result", "n", true)

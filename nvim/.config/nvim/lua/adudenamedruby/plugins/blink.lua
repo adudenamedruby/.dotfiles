@@ -26,7 +26,7 @@ return {
     keys = function()
         local U = require("adudenamedruby.core.utils")
         return {
-            U.PLMap("tb", toggle_blink, "blink (current: " .. tostring(cmp_enabled) .. ")"),
+            U.PLMap("Tb", toggle_blink, "blink (current: " .. tostring(cmp_enabled) .. ")"),
         }
     end,
 

@@ -19,7 +19,7 @@ return {
                 fzf.nvim_options()
             end, "NVim options"),
 
-            U.PLMap("tt", fzf.colorschemes, "themes"),
+            U.PLMap("Tt", fzf.colorschemes, "themes"),
 
             U.PLMap("sh", fzf.search_history, "search history"),
             U.PLMap("sH", fzf.command_history, "command history"),

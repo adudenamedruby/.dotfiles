@@ -6,42 +6,32 @@ return {
         local U = require("adudenamedruby.core.utils")
 
         return {
-            U.PLMap("dt", "<cmd>Trouble diagnostics toggle<CR>", "Trouble (project)"),
-            U.PLMap("dt", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "Trouble (buffer)"),
-            U.PLMap("xT", "<cmd>Trouble loclist toggle<cr>", "toggle loclist (Trouble)"),
-            U.PLMap("xt", "<cmd>Trouble gflist toggle<cr>", "toggle quickfix (Trouble)"),
+            U.PLMap("tb", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "buffer"),
+            U.PLMap("tp", "<cmd>Trouble diagnostics toggle<CR>", "project"),
+            U.PLMap("tS", "<cmd>Trouble symbols toggle<CR>", "symbols"),
+            U.PLMap("tt", "<cmd>Trouble lsp_type_definitions toggle<CR>", "lsp type definitions"),
+            U.PLMap("tr", "<cmd>Trouble lsp_references toggle<CR>", "lsp references"),
+            U.PLMap("ts", "<cmd>Trouble lsp_document_symbols toggle<CR>", "lsp symbols"),
+            U.PLMap("td", "<cmd>Trouble lsp_definitions toggle<CR>", "lsp definitions"),
+            U.PLMap("tD", "<cmd>Trouble lsp_declarations toggle<CR>", "lsp declarations"),
+            U.PLMap("tl", "<cmd>Trouble lsp toggle<CR>", "lsp items"),
+            U.PLMap("tL", "<cmd>Trouble loclist toggle<cr>", "loclist"),
+            U.PLMap("tq", "<cmd>Trouble quickfix toggle<cr>", "quickfix"),
         }
     end,
     config = function()
         require("trouble").setup({
-            auto_open = false,
-            auto_close = false,
-            auto_preview = true,
-            auto_jump = false,
-            mode = "quickfix",
-            severity = vim.diagnostic.severity.WARN,
-            cycle_results = false,
+            focus = true,
         })
 
-        vim.api.nvim_create_autocmd("User", {
-            pattern = { "XcodebuildBuildFinished", "XcodebuildTestsFinished" },
-            callback = function(event)
-                if event.data.cancelled then
-                    return
-                end
+        local harpoon = require("trouble")
+        harpoon.setup({})
 
-                if event.data.success then
-                    require("trouble").close()
-                elseif not event.data.failedCount or event.data.failedCount > 0 then
-                    if next(vim.fn.getqflist()) then
-                        require("trouble").open("quickfix")
-                    else
-                        require("trouble").close()
-                    end
-
-                    require("trouble").refresh()
-                end
-            end,
-        })
+        local ok, wk = pcall(require, "which-key")
+        if ok then
+            wk.add({
+                { "<leader>t", group = "trouble" },
+            })
+        end
     end,
 }

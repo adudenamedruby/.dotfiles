@@ -7,10 +7,10 @@ return {
         local quicker = require("quicker")
         local U = require("adudenamedruby.core.utils")
         return {
-            U.PLMap("tq", function()
+            U.PLMap("Tq", function()
                 quicker.toggle()
             end, "quickfix"),
-            U.PLMap("tl", function()
+            U.PLMap("Tl", function()
                 quicker.toggle({ loclist = true })
             end, "loclist"),
         }

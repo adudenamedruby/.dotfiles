@@ -1,6 +1,3 @@
--- local home = os.getenv("HOME")
--- local swiftformat_config = home .. "/.config/swiftformat/.swiftformat"
---
 return {
     -- Autoformat
     "stevearc/conform.nvim",
@@ -41,29 +38,6 @@ return {
                     lsp_format = lsp_format_opt,
                 }
             end,
-            -- formatters = {
-            --     swiftformat = {
-            --         command = "swiftformat",
-            --         args = {
-            --             "--config",
-            --             "~/.config/swiftformat/.swiftformat",
-            --             "--stdinpath",
-            --             "$FILENAME",
-            --         },
-            --         range_args = function(ctx)
-            --             return {
-            --                 "--config",
-            --                 "~/.config/swiftformat/.swiftformat",
-            --                 "--linerange",
-            --                 ctx.range.start[1] .. "," .. ctx.range["end"][1],
-            --             }
-            --         end,
-            --         stdin = true,
-            --         condition = function(ctx)
-            --             return vim.fs.basename(ctx.filename) ~= "README.md"
-            --         end,
-            --     },
-            -- },
             formatters_by_ft = {
                 html = { "prettier" },
                 json = { "prettier" },
