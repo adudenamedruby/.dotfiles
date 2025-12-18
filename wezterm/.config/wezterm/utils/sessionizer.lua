@@ -87,6 +87,11 @@ M.toggle = function(window, pane)
 		wezterm.log_error("Failed to run fd on .dotfiles: " .. tostring(stderr_dot))
 	end
 
+	-- Sort projects alphabetically by label
+	table.sort(projects, function(a, b)
+		return a.label < b.label
+	end)
+
 	-- 3. Display Selector
 	window:perform_action(
 		act.InputSelector({
