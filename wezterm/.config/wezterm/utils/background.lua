@@ -8,7 +8,6 @@ local THEMES = {
 	"Tomorrow Night Burns",
 	"Bitmute (terminal.sexy)",
 	"Sequoia Monochrome",
-	"Arthur",
 	"Ocean Dark (Gogh)",
 	"Trim Yer Beard (terminal.sexy)",
 	"Bleh-1 (terminal.sexy)",
@@ -39,7 +38,6 @@ local THEMES = {
 	"Ocean (base16)",
 	"Tomorrow Night (Gogh)",
 	"Grayscale Dark (base16)",
-	"Pnevma",
 	"Soft Server (Gogh)",
 	"Fahrenheit",
 	"Batman",
@@ -84,22 +82,6 @@ local THEMES = {
 -- Get the day of the year (1-365/366)
 local function get_day_of_year()
 	return tonumber(os.date("%j"))
-end
-
--- Get a random theme excluding the given theme
-local function get_random_theme_excluding(excluded_theme)
-	local available_themes = {}
-	for _, theme in ipairs(THEMES) do
-		if theme ~= excluded_theme then
-			table.insert(available_themes, theme)
-		end
-	end
-
-	if #available_themes == 0 then
-		return excluded_theme -- Fallback if only one theme exists
-	end
-
-	return available_themes[math.random(#available_themes)]
 end
 
 -- Get the daily rotating theme
