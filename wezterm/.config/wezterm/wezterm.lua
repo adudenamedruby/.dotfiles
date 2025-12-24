@@ -5,9 +5,7 @@ local sessionizer = require("utils.sessionizer")
 local background = require("utils.background")
 local smart_nav = require("utils.smart_nav")
 local act = wezterm.action
--- local assets = wezterm.config_dir .. "/assets"
 
--- This table will hold the configuration.
 local config = {}
 
 -- In newer versions of wezterm, use the config_builder which will
@@ -80,7 +78,7 @@ local function open_scrollback_in_vim(window, pane, nlines)
 	window:perform_action(act({ SpawnCommandInNewTab = { args = cmd } }), pane)
 end
 
--- keys
+-- keybinds
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	-- zooming
@@ -129,7 +127,6 @@ config.keys = {
 				act.InputSelector({
 					action = wezterm.action_callback(function(inner_window, inner_pane, id, label)
 						if label then
-							-- Apply the selected theme to this window
 							local overrides = inner_window:get_config_overrides() or {}
 							overrides.color_scheme = label
 							inner_window:set_config_overrides(overrides)
@@ -160,7 +157,7 @@ config.keys = {
 	smart_nav.split_nav("move", "CTRL", "j", "Down"),
 	smart_nav.split_nav("move", "CTRL", "k", "Up"),
 	smart_nav.split_nav("move", "CTRL", "l", "Right"),
-	-- Smart scrolling with CTRL+u/d (works with nvim)
+	-- Smart scrolling with CTRL+u/d (compatible with nvim)
 	smart_nav.smart_scroll("CTRL", "u", -0.5),
 	smart_nav.smart_scroll("CTRL", "d", 0.5),
 	-- {
@@ -235,48 +232,8 @@ config.keys = {
 	-- 	-- 	end),
 	-- 	-- },
 }
---
--- for i = 1, 9 do
--- 	-- leader + number to activate that tab
--- 	table.insert(config.keys, {
--- 		key = tostring(i),
--- 		mods = "LEADER",
--- 		action = act.ActivateTab(i - 1),
--- 	})
--- end
---
 
--- Use if not using the bar plugin
--- leader command status
--- wezterm.on("update-right-status", function(window, _)
--- 	local SOLID_LEFT_ARROW = ""
--- 	local ARROW_FOREGROUND = { Foreground = { Color = "#c6a0f6" } }
--- 	local BACKGROUND = { Background = { Color = "#000000" } }
--- 	local workspace = window:active_workspace()
--- 	local prefix = "  [" .. workspace .. "]  "
---
--- 	if window:leader_is_active() then
--- 		prefix = " " .. utf8.char(0x1f30a) .. prefix
--- 		SOLID_LEFT_ARROW = utf8.char(0xe0b2)
--- 		BACKGROUND = { Background = { Color = "#8E2A2D" } }
--- 	end
---
--- 	if window:active_tab():tab_id() ~= 0 then
--- 		ARROW_FOREGROUND = { Foreground = { Color = "#1e2030" } }
--- 	end -- arrow color based on if tab is first pane
---
--- 	window:set_left_status(wezterm.format({
--- 		BACKGROUND,
--- 		{ Text = prefix },
--- 		ARROW_FOREGROUND,
--- 		{ Text = SOLID_LEFT_ARROW },
--- 	}))
---
--- 	-- window:set_right_status(wezterm.format({
--- 	-- 	{ Text = "  [" .. workspace .. "]  " },
--- 	-- }))
--- end)
-
+-- must apply theme before bar
 config.color_scheme = background.get_daily_theme()
 
 bar.apply_to_config(config, {

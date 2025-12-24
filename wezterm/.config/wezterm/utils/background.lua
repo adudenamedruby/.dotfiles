@@ -1,7 +1,6 @@
 local wezterm = require("wezterm")
 local M = {}
 
--- List of your favorite themes
 local THEMES = {
 	"Gruvbox Material (Gogh)",
 	"Apple System Colors",
@@ -79,12 +78,10 @@ local THEMES = {
 	"Grape (Gogh)",
 }
 
--- Get the day of the year (1-365/366)
 local function get_day_of_year()
 	return tonumber(os.date("%j"))
 end
 
--- Get the daily rotating theme
 M.get_daily_theme = function()
 	local day = get_day_of_year()
 	local index = ((day - 1) % #THEMES) + 1

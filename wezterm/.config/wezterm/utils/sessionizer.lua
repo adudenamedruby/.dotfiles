@@ -8,7 +8,7 @@ local fd = "/opt/homebrew/bin/fd"
 M.toggle = function(window, pane)
 	local projects = {}
 
-	-- 1. Search for Git Repos in ~/Developer
+	-- Search for Git Repos in ~/Developer
 	local success_dev, stdout_dev, stderr_dev = wezterm.run_child_process({
 		fd,
 		"-HI",
@@ -32,7 +32,7 @@ M.toggle = function(window, pane)
 		wezterm.log_error("Failed to run fd on Developer: " .. stderr_dev)
 	end
 
-	-- 2. Search for Subfolders in ~/.dotfiles
+	-- Search for Subfolders in ~/.dotfiles
 	local success_dot, stdout_dot, stderr_dot = wezterm.run_child_process({
 		fd,
 		"--color=never",
@@ -87,12 +87,11 @@ M.toggle = function(window, pane)
 		wezterm.log_error("Failed to run fd on .dotfiles: " .. tostring(stderr_dot))
 	end
 
-	-- Sort projects alphabetically by label
 	table.sort(projects, function(a, b)
 		return a.label < b.label
 	end)
 
-	-- 3. Display Selector
+	-- Display Selector
 	window:perform_action(
 		act.InputSelector({
 			action = wezterm.action_callback(function(win, _, id, label)
