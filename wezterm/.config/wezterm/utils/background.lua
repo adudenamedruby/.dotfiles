@@ -2,6 +2,7 @@ local wezterm = require("wezterm")
 local M = {}
 
 local THEMES = {
+	"Default (dark) (terminal.sexy)",
 	"Gruvbox Material (Gogh)",
 	"Apple System Colors",
 	"Tomorrow Night Burns",
@@ -48,7 +49,6 @@ local THEMES = {
 	"Red Phoenix (terminal.sexy)",
 	"Apathy (base16)",
 	"Smyck (Gogh)",
-	"Default (dark) (terminal.sexy)",
 	"Arthur",
 	"Twilight",
 	"Apprentice (base16)",
