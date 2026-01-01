@@ -100,7 +100,7 @@ push = [
   # if ahead of remote, push; otherwise say there's nothing to push
   pushable="$(jj log -r "remote_bookmarks(remote=exact:${remote})..@" -T 'bookmarks' --no-graph)"
   if [[ -n "$pushable" ]]; then
-    jj git push
+    jj git push --remote "$remote"
   else
     echo "Nothing to push."
   fi
@@ -108,7 +108,7 @@ push = [
   # ensure current bookmark is tracking origin
   tracked="$(jj bookmark list -r ${closest} -t -T 'if(remote == "origin", name)')"
   if [[ "$tracked" != "$closest" ]]; then
-    jj bookmark track "${closest}@origin"
+    jj bookmark track "${closest}@${remote}"
   fi
 
   """, "push"
