@@ -94,8 +94,10 @@ config.keys = {
 	-- control commands
 	{ mods = "LEADER", key = "t", action = act.SpawnTab("CurrentPaneDomain") },
 	{ mods = "LEADER", key = "d", action = act.CloseCurrentPane({ confirm = false }) },
-	{ mods = "LEADER", key = "p", action = act.ActivateTabRelative(-1) },
 	{ mods = "LEADER", key = "n", action = act.ActivateTabRelative(1) },
+	{ mods = "LEADER", key = "p", action = act.ActivateTabRelative(-1) },
+	{ mods = "LEADER", key = "N", action = act.SwitchWorkspaceRelative(1) },
+	{ mods = "LEADER", key = "P", action = act.SwitchWorkspaceRelative(-1) },
 	{ mods = "LEADER", key = "w", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
 	{ mods = "LEADER", key = "v", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ mods = "LEADER", key = "s", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
