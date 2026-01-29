@@ -20,6 +20,9 @@ alias vim=nvim
 #lazygit
 alias lg=lazygit
 
+#narya testing
+alias nn=$HOME/Developer/narya/.build/arm64-apple-macosx/debug/narya
+
 # Updates
 sync() {
   $HOME/.dotfiles/.meta/Scripts/machineSynchronize.sh "$@"

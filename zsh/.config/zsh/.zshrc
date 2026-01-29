@@ -73,22 +73,6 @@ cursor_mode() {
 
 cursor_mode
 
-tmux() {
-    if [[ $# -eq 0 ]]; then
-        # Check if there are any existing tmux sessions
-        if tmux ls >/dev/null 2>&1; then
-            # Attach to the last session if sessions exist
-            command tmux a
-        else
-            # Start a new session named 'random' if no sessions exist
-            command tmux new -s random
-        fi
-    else
-        # Pass all other arguments to the real tmux command
-        command tmux "$@"
-    fi
-}
-
 # Types
 export EDITOR=nvim
 export VISUAL=nvim
@@ -102,7 +86,7 @@ fi
 # source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme
 source $HOME/.dotfiles/zsh/.config/zsh/plugins/vi-mode.plugin.zsh
 source $HOME/.dotfiles/zsh/.config/zsh/plugins/colored-man-pages.plugin.zsh
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-you-should-use/you-should-use.plugin.zsh
 
