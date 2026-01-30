@@ -1,130 +1,127 @@
-# # don't look here!
-# --exclude firefox-ios/Client/Generated,firefox-ios/Sync/Generated,firefox-ios/Storage/Generated,focus-ios/Blockzilla/Generated,.venv,.build
-#
-# # options
-# --allman false
-# --self init-only # redundantSelf
-# --importgrouping testable-bottom # sortedImports
-# --commas always # trailingCommas
-# --trimwhitespace always # trailingSpace
-# --indent 4 #indent
-# --ifdef no-indent #indent
-# --indentstrings true #indent
-# --wraparguments before-first # wrapArguments
-# --wrapparameters before-first # wrapArguments
-# --wrapcollections before-first # wrapArguments
-# --wrapconditions before-first # wrapArguments
-# --wrapreturntype if-multiline #wrapArguments
-# --wrapeffects if-multiline #wrapArguments
-# --closingparen balanced #wrapArguments
-# --wraptypealiases before-first # wrapArguments
-# --funcattributes prev-line # wrapAttributes
-# --computedvarattrs prev-line # wrapAttributes
-# --storedvarattrs same-line # wrapAttributes
-# --complexattrs prev-line # wrapAttributes
-# --typeattributes prev-line # wrapAttributes
-# --wrapternary before-operators # wrap
-# --extensionacl on-declarations # extensionAccessControl
-# --redundanttype inferred # redundantType, propertyType
-# --shortoptionals always # typeSugar
-# --semicolons never # semicolons
-# --doccomments preserve # docComments
-# # still deciding on these
-# # --structthreshold 20 # organizeDeclarations
-# # --enumthreshold 20 # organizeDeclarations
-# # --organizetypes class,struct,enum,extension,actor # organizeDeclarations
-# # --visibilityorder beforeMarks,instanceLifecycle,open,public,package,internal,fileprivate,private # organizeDeclarations
-# # --typeorder nestedType,staticProperty,staticPropertyWithBody,classPropertyWithBody,swiftUIPropertyWrapper,instanceProperty,instancePropertyWithBody,staticMethod,classMethod,instanceMethod # organizeDeclarations
-# # --sortswiftuiprops first-appearance-sort #organizeDeclarations
-#
-# # Rules
-# --rules acronyms
-# --rules andOperator
-# --rules anyObjectProtocol
-# --rules applicationMain
-# --rules assertionFailures
-# --rules blankLineAfterImports
-# --rules blankLineAfterSwitchCase
-# --rules blankLinesAroundMark
-# --rules blankLinesAtEndOfScope
-# --rules blankLinesAtStartOfScope
-# --rules blankLinesBetweenChainedFunctions
-# --rules blankLinesBetweenScopes
-# --rules blockComments
-# --rules braces
-# --rules conditionalAssignment
-# --rules consecutiveBlankLines
-# --rules consecutiveSpaces
-# --rules consistentSwitchCaseSpacing
-# --rules duplicateImports
-# --rules elseOnSameLine
-# --rules emptyBraces
-# --rules enumNamespaces
-# --rules extensionAccessControl
-# --rules genericExtensions
-# --rules hoistAwait
-# --rules hoistPatternLet
-# --rules hoistTry
-# --rules indent
-# --rules initCoderUnavailable
-# --rules isEmpty
-# --rules leadingDelimiters
-# --rules linebreakAtEndOfFile
-# --rules linebreaks
-# --rules modifierOrder
-# --rules numberFormatting
-# --rules opaqueGenericParameters
-# --rules redundantBackticks
-# --rules redundantBreak
-# --rules redundantClosure
-# --rules redundantExtensionACL
-# --rules redundantFileprivate
-# --rules redundantGet
-# --rules redundantInit
-# --rules redundantInternal
-# --rules redundantLet
-# --rules redundantLetError
-# --rules redundantNilInit
-# --rules redundantObjc
-# --rules redundantOptionalBinding
-# --rules redundantParens
-# --rules redundantPattern
-# --rules redundantProperty
-# --rules redundantRawValues
-# --rules redundantSelf
-# --rules redundantStaticSelf
-# --rules redundantType
-# --rules redundantTypedThrows
-# --rules redundantVoidReturnType
-# --rules semicolons
-# --rules sortDeclarations
-# --rules sortImports
-# --rules sortTypealiases
-# --rules spaceAroundBraces
-# --rules spaceAroundBrackets
-# --rules spaceAroundComments
-# --rules spaceAroundGenerics
-# --rules spaceAroundOperators
-# --rules spaceAroundParens
-# --rules spaceInsideBraces
-# --rules spaceInsideBrackets
-# --rules spaceInsideComments
-# --rules spaceInsideGenerics
-# --rules spaceInsideParens
-# --rules strongOutlets
-# --rules strongifiedSelf
-# --rules todos
-# --rules trailingClosures
-# --rules trailingCommas
-# --rules trailingSpace
-# --rules typeSugar
-# --rules unusedArguments
-# --rules void
-# --rules wrapArguments
-# --rules wrapAttributes
-# --rules wrapEnumCases
-# --rules wrapLoopBodies
-# --rules wrapMultilineConditionalAssignment
-# --rules wrapSingleLineComments
-# --rules wrapSwitchCases
-# --rules yodaConditions
+# options
+--allman false
+--self init-only # redundantSelf
+--importgrouping testable-bottom # sortedImports
+--commas always # trailingCommas
+--trimwhitespace always # trailingSpace
+--indent 4 #indent
+--ifdef no-indent #indent
+--indentstrings true #indent
+--wraparguments before-first # wrapArguments
+--wrapparameters before-first # wrapArguments
+--wrapcollections before-first # wrapArguments
+--wrapconditions before-first # wrapArguments
+--wrapreturntype if-multiline #wrapArguments
+--wrapeffects if-multiline #wrapArguments
+--closingparen balanced #wrapArguments
+--wraptypealiases before-first # wrapArguments
+--funcattributes prev-line # wrapAttributes
+--computedvarattrs prev-line # wrapAttributes
+--storedvarattrs same-line # wrapAttributes
+--complexattrs prev-line # wrapAttributes
+--typeattributes prev-line # wrapAttributes
+--wrapternary before-operators # wrap
+--extensionacl on-declarations # extensionAccessControl
+--redundanttype inferred # redundantType, propertyType
+--shortoptionals always # typeSugar
+--semicolons never # semicolons
+--doccomments preserve # docComments
+# still deciding on these
+# --structthreshold 20 # organizeDeclarations
+# --enumthreshold 20 # organizeDeclarations
+# --organizetypes class,struct,enum,extension,actor # organizeDeclarations
+# --visibilityorder beforeMarks,instanceLifecycle,open,public,package,internal,fileprivate,private # organizeDeclarations
+# --typeorder nestedType,staticProperty,staticPropertyWithBody,classPropertyWithBody,swiftUIPropertyWrapper,instanceProperty,instancePropertyWithBody,staticMethod,classMethod,instanceMethod # organizeDeclarations
+# --sortswiftuiprops first-appearance-sort #organizeDeclarations
+
+# Rules
+--rules acronyms
+--rules andOperator
+--rules anyObjectProtocol
+--rules applicationMain
+--rules assertionFailures
+--rules blankLineAfterImports
+--rules blankLineAfterSwitchCase
+--rules blankLinesAroundMark
+--rules blankLinesAtEndOfScope
+--rules blankLinesAtStartOfScope
+--rules blankLinesBetweenChainedFunctions
+--rules blankLinesBetweenScopes
+--rules blockComments
+--rules braces
+--rules conditionalAssignment
+--rules consecutiveBlankLines
+--rules consecutiveSpaces
+--rules consistentSwitchCaseSpacing
+--rules duplicateImports
+--rules elseOnSameLine
+--rules emptyBraces
+--rules enumNamespaces
+--rules extensionAccessControl
+--rules genericExtensions
+--rules hoistAwait
+--rules hoistPatternLet
+--rules hoistTry
+--rules indent
+--rules initCoderUnavailable
+--rules isEmpty
+--rules leadingDelimiters
+--rules linebreakAtEndOfFile
+--rules linebreaks
+--rules modifierOrder
+--rules numberFormatting
+--rules opaqueGenericParameters
+--rules redundantBackticks
+--rules redundantBreak
+--rules redundantClosure
+--rules redundantExtensionACL
+--rules redundantFileprivate
+--rules redundantGet
+--rules redundantInit
+--rules redundantInternal
+--rules redundantLet
+--rules redundantLetError
+--rules redundantNilInit
+--rules redundantObjc
+--rules redundantOptionalBinding
+--rules redundantParens
+--rules redundantPattern
+--rules redundantProperty
+--rules redundantRawValues
+--rules redundantSelf
+--rules redundantStaticSelf
+--rules redundantType
+--rules redundantTypedThrows
+--rules redundantVoidReturnType
+--rules semicolons
+--rules sortDeclarations
+--rules sortImports
+--rules sortTypealiases
+--rules spaceAroundBraces
+--rules spaceAroundBrackets
+--rules spaceAroundComments
+--rules spaceAroundGenerics
+--rules spaceAroundOperators
+--rules spaceAroundParens
+--rules spaceInsideBraces
+--rules spaceInsideBrackets
+--rules spaceInsideComments
+--rules spaceInsideGenerics
+--rules spaceInsideParens
+--rules strongOutlets
+--rules strongifiedSelf
+--rules todos
+--rules trailingClosures
+--rules trailingCommas
+--rules trailingSpace
+--rules typeSugar
+--rules unusedArguments
+--rules void
+--rules wrapArguments
+--rules wrapAttributes
+--rules wrapEnumCases
+--rules wrapLoopBodies
+--rules wrapMultilineConditionalAssignment
+--rules wrapSingleLineComments
+--rules wrapSwitchCases
+--rules yodaConditions
