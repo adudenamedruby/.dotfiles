@@ -5,7 +5,7 @@
 !/zsh/.config/zsh/.zshrc
 /zsh/.config/zsh/*
 /emacs/.emacs.d/*
-/tmux/.config/tmux/plugins/*
+.meta/tmux/.config/tmux/plugins/*
 !/emacs/.emacs.d/tree-sitter
 !/emacs/.emacs.d/init.el
 !/emacs/.emacs.d/early-init.el
