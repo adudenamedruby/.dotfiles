@@ -300,6 +300,30 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>E8D74AEF-BDC8-4D0C-B689-B31B7EB3D3F0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>F4CF0FEF-15F4-42EA-8D7B-AF7B407F2227</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>7F38D819-C6DB-4933-B4AA-26BD7911F006</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>8B599495-2AF3-4CAF-B5B7-989006F00E62</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>AFDFF7FB-F435-4664-B686-0671D60B056E</key>
 		<array>
@@ -906,9 +930,9 @@
 						<key>matchmode</key>
 						<integer>0</integer>
 						<key>matchstring</key>
-						<string>fxios</string>
+						<string>firefox</string>
 						<key>outputlabel</key>
-						<string>fxios</string>
+						<string>firefox</string>
 						<key>uid</key>
 						<string>DF26F76D-5523-413B-B141-69453EEB112A</string>
 					</dict>
@@ -953,6 +977,34 @@
 						<string>myrepos</string>
 						<key>uid</key>
 						<string>FE2A3C73-4A31-44CA-ACB0-5B31E1A15D8D</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>fxios</string>
+						<key>outputlabel</key>
+						<string>fxios</string>
+						<key>uid</key>
+						<string>F4CF0FEF-15F4-42EA-8D7B-AF7B407F2227</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>fxios-homebrew</string>
+						<key>outputlabel</key>
+						<string>fxios-homebrew</string>
+						<key>uid</key>
+						<string>8B599495-2AF3-4CAF-B5B7-989006F00E62</string>
 					</dict>
 				</array>
 				<key>elselabel</key>
@@ -1019,7 +1071,7 @@
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"title":"GitHub","arg":"github"},{"title":"Home","arg":"home","subtitle":"View my profile"},{"imagefile":"f35a3988f24873039cdc57eb278b28acea536bc7.png","title":"Search","arg":"search","subtitle":"Search GitHub"},{"imagefile":"94e245b01fd6ac4365c21fa483925df77636ea66.png","title":"User","arg":"user","subtitle":"Open user's homepage"},{"imagefile":"4e5025e909ca2744e1d1419c13d400e0f9e4c156.png","title":"Open Repo","arg":"repo","subtitle":"Open a specific repo"},{"imagefile":"d17a6ff95b2195240aad01de8961e7cfcd96305f.png","title":"FxiOS","arg":"fxios","subtitle":"Open the Firefox iOS repo"},{"imagefile":"1929788b7a0e101695cdfeff873a67983147efa5.png","title":"Mozilla mobile","arg":"mobile","subtitle":"Open the Mozilla-Mobile group"},{"title":"Notifications","arg":"notifications","subtitle":"See what's going on in your GitHub world"},{"title":"See My Repositories","arg":"myrepos"}]</string>
+				<string>[{"title":"GitHub","arg":"github"},{"title":"Home","arg":"home","subtitle":"View my profile"},{"imagefile":"f35a3988f24873039cdc57eb278b28acea536bc7.png","title":"Search","arg":"search","subtitle":"Search GitHub"},{"imagefile":"94e245b01fd6ac4365c21fa483925df77636ea66.png","title":"User","arg":"user","subtitle":"Open user's homepage"},{"imagefile":"4e5025e909ca2744e1d1419c13d400e0f9e4c156.png","title":"Open Repo","arg":"repo","subtitle":"Open a specific repo"},{"imagefile":"d17a6ff95b2195240aad01de8961e7cfcd96305f.png","title":"Firefox Repo","arg":"firefox","subtitle":"Open the Firefox iOS repo"},{"imagefile":"1929788b7a0e101695cdfeff873a67983147efa5.png","title":"Mozilla mobile","arg":"mobile","subtitle":"Open the Mozilla-Mobile group"},{"title":"Notifications","arg":"notifications","subtitle":"See what's going on in your GitHub world"},{"title":"See My Repositories","arg":"myrepos"},{"title":"fxios-ctl","arg":"fxios","subtitle":"Open the fxios-ctl repo"},{"title":"fxios-homebrew","arg":"fxios-homebrew","subtitle":"Open the fxios homebrew repo"}]</string>
 				<key>keyword</key>
 				<string>git</string>
 				<key>matchmode</key>
@@ -1259,7 +1311,7 @@
 				<key>items</key>
 				<string>[{"title":"Home","arg":"main","subtitle":"Open the mozilla\/main repo"},{"imagefile":"5dfa03a3e411e4da57d7ce9301a85915b01653d2.png","title":"Open Issue(s)","arg":"issue","subtitle":"Open all issues, or a specific issue"},{"title":"Fx-iOS Wiki","arg":"wiki","subtitle":"Open Firefox iOS Wiki"},{"imagefile":"a2d1b9c8d8015948f844a416efa4759fc0e9c0d2.png","title":"adudenamedruby's Fork","arg":"fork","subtitle":"Firefox-iOS - my fork"},{"imagefile":"62af086be857f7c5d3322aa39c49e371411a333f.png","title":"Pull Requests","arg":"pull","subtitle":""},{"imagefile":"7ef514b164a716f1faeeb058f3171cc1f399cf2a.png","title":"Localization","arg":"l10n","subtitle":"L10N Repo"}]</string>
 				<key>keyword</key>
-				<string>fxios</string>
+				<string>firefox</string>
 				<key>matchmode</key>
 				<integer>0</integer>
 				<key>runningsubtext</key>
@@ -1389,6 +1441,27 @@
 			<string>0D1FD25C-D8CC-42C9-9416-23B4A57D228E</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://github.com/mozilla-mobile/fxios-ctl</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>E8D74AEF-BDC8-4D0C-B689-B31B7EB3D3F0</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1578,6 +1651,27 @@ git pull</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://github.com/mozilla-mobile/homebrew-fxios</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>7F38D819-C6DB-4933-B4AA-26BD7911F006</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -1722,6 +1816,13 @@ git push</string>
 			<key>ypos</key>
 			<real>1370</real>
 		</dict>
+		<key>7F38D819-C6DB-4933-B4AA-26BD7911F006</key>
+		<dict>
+			<key>xpos</key>
+			<real>580</real>
+			<key>ypos</key>
+			<real>1440</real>
+		</dict>
 		<key>885E725B-04C0-48EF-B673-D2C86B85ED09</key>
 		<dict>
 			<key>xpos</key>
@@ -1823,9 +1924,9 @@ git push</string>
 		<key>C2B65F69-AE36-4761-8A7A-852897B09FFA</key>
 		<dict>
 			<key>xpos</key>
-			<real>680</real>
+			<real>675</real>
 			<key>ypos</key>
-			<real>1000</real>
+			<real>1005</real>
 		</dict>
 		<key>C32D5F07-C114-4C52-9A18-7642747B6C5C</key>
 		<dict>
@@ -1875,6 +1976,13 @@ git push</string>
 			<real>655</real>
 			<key>ypos</key>
 			<real>725</real>
+		</dict>
+		<key>E8D74AEF-BDC8-4D0C-B689-B31B7EB3D3F0</key>
+		<dict>
+			<key>xpos</key>
+			<real>580</real>
+			<key>ypos</key>
+			<real>1305</real>
 		</dict>
 		<key>F1107CAC-6645-40F5-8382-85C2EC9310CA</key>
 		<dict>

@@ -20,8 +20,8 @@ alias vim=nvim
 #lazygit
 alias lg=lazygit
 
-#narya testing
-alias nn=$HOME/Developer/narya/.build/arm64-apple-macosx/debug/narya
+#fxios testing
+alias fxtest=$HOME/Developer/fxios-ctl/.build/arm64-apple-macosx/debug/fxios
 
 # Updates
 sync() {
