@@ -1336,7 +1336,7 @@
 				<key>matchmode</key>
 				<integer>0</integer>
 				<key>matchstring</key>
-				<string>fxios</string>
+				<string>firefox</string>
 				<key>replacestring</key>
 				<string></string>
 			</dict>
@@ -1798,9 +1798,9 @@ git push</string>
 		<key>7A664528-41E6-43A0-A236-B63E1520227E</key>
 		<dict>
 			<key>xpos</key>
-			<real>605</real>
+			<real>595</real>
 			<key>ypos</key>
-			<real>1025</real>
+			<real>1035</real>
 		</dict>
 		<key>7C2D4636-4283-4717-ACD5-71711DBF4968</key>
 		<dict>
