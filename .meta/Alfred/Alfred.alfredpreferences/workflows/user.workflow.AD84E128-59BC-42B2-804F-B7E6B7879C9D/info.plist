@@ -419,6 +419,18 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>2E5CEE39-A4E6-43B4-B95B-A5F406530289</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>CB5D8F00-0636-4B22-84E2-9C7154631C6C</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>F329BCDD-5025-4025-A2B3-12E43A559233</key>
 		<array>
@@ -978,6 +990,20 @@
 						<key>uid</key>
 						<string>A8C7C95A-700B-4A31-8029-4F4F02EDD7FC</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>lattice</string>
+						<key>outputlabel</key>
+						<string>lattice</string>
+						<key>uid</key>
+						<string>CB5D8F00-0636-4B22-84E2-9C7154631C6C</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
@@ -1148,7 +1174,7 @@
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"People","arg":"people","subtitle":"People Directory"},{"title":"ADP","arg":"adp","subtitle":"Payroll Information"},{"title":"WorkDay","arg":"workday","subtitle":"Open WorkDay"},{"title":"Account","arg":"account","subtitle":"Account Management Portal"},{"title":"Air Mozilla","arg":"air","subtitle":"Watch Mozilla content"},{"title":"Gear Store","arg":"gear","subtitle":"Buy fun Mozilla merch!"},{"title":"Mana","arg":"mana","subtitle":"Mozilla Internal Wiki"},{"title":"MANA Search","arg":"search","subtitle":"Do an advanced MANA search"},{"title":"Udemy","arg":"udemy","subtitle":"Learning is fun!"},{"title":"Service Now","arg":"service","subtitle":"For all your Mozilla needs"},{"title":"The Hub","arg":"hub","subtitle":"For all your gear needs"},{"title":"PTO","arg":"pto","subtitle":"Personal Time Off - Take a break!"},{"title":"discourse","arg":"discourse","subtitle":"Chat about stuff!"},{"title":"Element","arg":"element","subtitle":"Element board"},{"title":"Bitrise","arg":"bitrise","subtitle":"CI pipeline"},{"title":"Bugzilla","arg":"bugzilla","subtitle":"Report pesky bugs..."},{"title":"Matrix","arg":"matrix","subtitle":"Matrix chat"},{"title":"Moderator","arg":"moderator","subtitle":"Ask questions for events"},{"title":"Retrium","arg":"retrium","subtitle":"Retro moderating tool"},{"title":"Figma","arg":"figma","subtitle":"Figma design systems"},{"title":"Wiki","arg":"wiki","subtitle":"Mozilla Wiki"},{"title":"Sentry","arg":"sentry","subtitle":"Crash reporting dashboard"},{"title":"Looker","arg":"looker","subtitle":"Metrics interpretation"},{"title":"gleandict","arg":"gleandict","subtitle":"Glean Dictionary Alpha"},{"title":"CultureAmp","arg":"cultureamp","subtitle":"Culture Amp"},{"title":"greenhouse","arg":"greenhouse","subtitle":"Greenhouse interviewing center"},{"title":"Data Review","arg":"dataReview","subtitle":"mazilla\/data-review repo"},{"title":"Nimbus","arg":"experimenter","subtitle":"Experimenter: nimbus"},{"title":"SiQ","arg":"siq","subtitle":"Hotel Desking"},{"title":"Coffee Chat","arg":"chat","subtitle":""},{"title":"Pontoon","arg":"pontoon","subtitle":"Localization platform"}]</string>
+				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"People","arg":"people","subtitle":"People Directory"},{"title":"ADP","arg":"adp","subtitle":"Payroll Information"},{"title":"WorkDay","arg":"workday","subtitle":"Open WorkDay"},{"title":"Account","arg":"account","subtitle":"Account Management Portal"},{"title":"Air Mozilla","arg":"air","subtitle":"Watch Mozilla content"},{"title":"Gear Store","arg":"gear","subtitle":"Buy fun Mozilla merch!"},{"title":"Mana","arg":"mana","subtitle":"Mozilla Internal Wiki"},{"title":"MANA Search","arg":"search","subtitle":"Do an advanced MANA search"},{"title":"Udemy","arg":"udemy","subtitle":"Learning is fun!"},{"title":"Service Now","arg":"service","subtitle":"For all your Mozilla needs"},{"title":"The Hub","arg":"hub","subtitle":"For all your gear needs"},{"title":"PTO","arg":"pto","subtitle":"Personal Time Off - Take a break!"},{"title":"discourse","arg":"discourse","subtitle":"Chat about stuff!"},{"title":"Element","arg":"element","subtitle":"Element board"},{"title":"Bitrise","arg":"bitrise","subtitle":"CI pipeline"},{"title":"Bugzilla","arg":"bugzilla","subtitle":"Report pesky bugs..."},{"title":"Matrix","arg":"matrix","subtitle":"Matrix chat"},{"title":"Moderator","arg":"moderator","subtitle":"Ask questions for events"},{"title":"Retrium","arg":"retrium","subtitle":"Retro moderating tool"},{"title":"Figma","arg":"figma","subtitle":"Figma design systems"},{"title":"Wiki","arg":"wiki","subtitle":"Mozilla Wiki"},{"title":"Sentry","arg":"sentry","subtitle":"Crash reporting dashboard"},{"title":"Looker","arg":"looker","subtitle":"Metrics interpretation"},{"title":"gleandict","arg":"gleandict","subtitle":"Glean Dictionary Alpha"},{"title":"CultureAmp","arg":"cultureamp","subtitle":"Culture Amp"},{"title":"greenhouse","arg":"greenhouse","subtitle":"Greenhouse interviewing center"},{"title":"Data Review","arg":"dataReview","subtitle":"mazilla\/data-review repo"},{"title":"Nimbus","arg":"experimenter","subtitle":"Experimenter: nimbus"},{"title":"SiQ","arg":"siq","subtitle":"Hotel Desking"},{"title":"Coffee Chat","arg":"chat","subtitle":""},{"title":"Pontoon","arg":"pontoon","subtitle":"Localization platform"},{"title":"Lattice","arg":"lattice","subtitle":"The new culture amp"}]</string>
 				<key>keyword</key>
 				<string>moz</string>
 				<key>matchmode</key>
@@ -1631,6 +1657,27 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://mozilla.latticehq.com/</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>2E5CEE39-A4E6-43B4-B95B-A5F406530289</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -1698,6 +1745,13 @@
 			<real>705</real>
 			<key>ypos</key>
 			<real>1125</real>
+		</dict>
+		<key>2E5CEE39-A4E6-43B4-B95B-A5F406530289</key>
+		<dict>
+			<key>xpos</key>
+			<real>475</real>
+			<key>ypos</key>
+			<real>2310</real>
 		</dict>
 		<key>3C5CA918-9D3F-49BC-9B99-62434AFB671A</key>
 		<dict>
