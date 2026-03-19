@@ -1,7 +1,7 @@
 return {
     -- Essential tools for working with rust
     "mrcjkb/rustaceanvim",
-    version = "^6", -- Recommended
+    version = "^8", -- Recommended
     lazy = false, -- This plugin is already lazy
     ["rust-analyzer"] = {
         cargo = {
