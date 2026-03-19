@@ -258,6 +258,10 @@ if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace Terminal'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'move-node-to-workspace Hack'
+
+[[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = 'move-node-to-workspace Terminal'
 
@@ -332,6 +336,10 @@ run = 'move-node-to-workspace Chat'
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
 run = 'move-node-to-workspace Mail'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = 'move-node-to-workspace Chat'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
