@@ -190,6 +190,8 @@ brewOperation() {
   run brew update || return $?
   run brew upgrade || true
   run brew cleanup || true
+  log "Updating ${CYAN}gh dash${NC}"
+  gh extension upgrade dlvhdr/gh-dash
   ok "${CYAN}brew${NC} maintenance process completed SUCCESSFULLY"
 }
 
