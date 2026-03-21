@@ -84,6 +84,36 @@ theme:
     table:
       showSeparator: true
       compact: false
+  colors:
+    text:
+      primary: "#cdd6f4"
+      secondary: "#94e2d5"
+      inverted: "#11111b"
+      faint: "#bac2de"
+      warning: "#f9e2af"
+      success: "#a6e3a1"
+      error: "#f38ba8"
+    background:
+      selected: "#313244"
+    border:
+      primary: "#94e2d5"
+      secondary: "#45475a"
+      faint: "#313244"
+      # colors:
+      #   text:
+      #     primary: "#cdd6f4"
+      #     secondary: "#a6e3a1"
+      #     inverted: "#11111b"
+      #     faint: "#bac2de"
+      #     warning: "#f9e2af"
+      #     success: "#a6e3a1"
+      #     error: "#f38ba8"
+      #   background:
+      #     selected: "#313244"
+      #   border:
+      #     primary: "#a6e3a1"
+      #     secondary: "#45475a"
+      #     faint: "#313244"
 pager:
   diff: ""
 confirmQuit: false
