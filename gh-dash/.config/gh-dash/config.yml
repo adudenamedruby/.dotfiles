@@ -75,8 +75,17 @@ defaults:
         width: 20
         hidden: true
   refetchIntervalMinutes: 30
-keybindings: {}
-repoPaths: {}
+# 'vim -c ":silent Octo pr edit {{.PNumber}}"'
+keybindings:
+  prs:
+    - key: C
+      name: code review
+      command: >
+        wezterm cli spawn --cwd {{.RepoPath}}
+repoPaths:
+  adudenamedruby/*: ~/Developer/*
+  mozilla/*: ~/Developer/*
+  mozilla-mobile/*: ~/Developer/*
 theme:
   ui:
     sectionsShowCount: true
@@ -114,7 +123,7 @@ theme:
       #     secondary: "#45475a"
       #     faint: "#313244"
 pager:
-  diff: ""
+  diff: "diffnav"
 confirmQuit: false
 showAuthorIcons: true
 smartFilteringAtLaunch: false
