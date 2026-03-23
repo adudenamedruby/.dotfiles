@@ -41,7 +41,7 @@ return {
         workspaces = {
             {
                 name = "personal",
-                path = vim.fn.expand("~") .. "/Documents/ruby-trove",
+                path = vim.fn.expand("~") .. "/Developer/ruby-trove",
             },
         },
 
