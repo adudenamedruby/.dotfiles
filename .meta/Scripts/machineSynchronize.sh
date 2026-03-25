@@ -208,7 +208,7 @@ dotfilesOperation() {
 
 troveOperation() {
   log "Initializing ${CYAN}ruby-trove${NC} sync..."
-  local repo="$HOME/Documents/ruby-trove"
+  local repo="$HOME/Developer/ruby-trove"
   local org="$HOME/.dotfiles/bin/.local/myScripts/trove-org.sh"
 
   if [[ -x "$org" ]]; then
