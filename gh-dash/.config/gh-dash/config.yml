@@ -75,13 +75,12 @@ defaults:
         width: 20
         hidden: true
   refetchIntervalMinutes: 30
-# 'vim -c ":silent Octo pr edit {{.PNumber}}"'
 keybindings:
   prs:
     - key: C
       name: code review
       command: >
-        wezterm cli spawn --cwd {{.RepoPath}}
+        wezterm cli spawn --cwd {{.RepoPath}} -- nvim -c ':silent Octo pr edit {{.PrNumber}}'
 repoPaths:
   adudenamedruby/*: ~/Developer/*
   mozilla/*: ~/Developer/*
