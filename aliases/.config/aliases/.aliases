@@ -20,6 +20,9 @@ alias vim=nvim
 #lazygit
 alias lg=lazygit
 
+# gh dash
+alias dash='gh dash'
+
 #fxios testing
 alias fxtest=$HOME/Developer/fxios-ctl/.build/arm64-apple-macosx/debug/fxios
 
