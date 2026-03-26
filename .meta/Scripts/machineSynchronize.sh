@@ -161,16 +161,12 @@ jj_sync_repo() {
 
   (
     cd "$dir" || exit 2
-    run jj git fetch || exit $?
-    # Rebase onto origin/main; ignore no-op failures
-    run jj rebase -s main -d '@git(remote=origin,branch=main)' >/dev/null 2>&1 || true
+    run jj pull || exit $?
 
     # Only proceed if there are changes
     if [[ -n "$(jj diff -s)" ]]; then
       run jj describe -m "$msg" || exit $?
-      run jj rebase -d main || exit $?
-      run jj tug || exit $?
-      run jj git push || exit $?
+      run jj push -m || exit $?
     fi
   ) || {
     err "$label sync encountered an error."
