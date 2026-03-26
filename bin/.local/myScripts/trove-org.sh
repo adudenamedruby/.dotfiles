@@ -4,7 +4,7 @@ set -eu
 IFS='
 	'
 
-ROOT_DIR="${ROOT_DIR:-$HOME/Documents/ruby-trove}"
+ROOT_DIR="${ROOT_DIR:-$HOME/Developer/ruby-trove}"
 INBOX_DIR="$ROOT_DIR/Inbox"
 HUBS_DIR="$ROOT_DIR/Hubs"
 ATOMS_DIR="$ROOT_DIR/Atoms"
