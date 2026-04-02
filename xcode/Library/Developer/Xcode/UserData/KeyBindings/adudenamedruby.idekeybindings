@@ -632,7 +632,7 @@
 				<key>GroupedAlternate</key>
 				<string>NO</string>
 				<key>Keyboard Shortcut</key>
-				<string>^@e</string>
+				<string>^@u</string>
 				<key>Navigation</key>
 				<string>NO</string>
 				<key>Title</key>
@@ -654,7 +654,7 @@
 				<key>GroupedAlternate</key>
 				<string>NO</string>
 				<key>Keyboard Shortcut</key>
-				<string>^@-</string>
+				<string>^@e</string>
 				<key>Navigation</key>
 				<string>NO</string>
 				<key>Title</key>
@@ -676,7 +676,7 @@
 				<key>GroupedAlternate</key>
 				<string>NO</string>
 				<key>Keyboard Shortcut</key>
-				<string>^$@E</string>
+				<string>^$@U</string>
 				<key>Navigation</key>
 				<string>NO</string>
 				<key>Title</key>
@@ -698,7 +698,7 @@
 				<key>GroupedAlternate</key>
 				<string>NO</string>
 				<key>Keyboard Shortcut</key>
-				<string>^@_</string>
+				<string>^$@E</string>
 				<key>Navigation</key>
 				<string>NO</string>
 				<key>Title</key>
@@ -1500,7 +1500,7 @@
 				<key>GroupedAlternate</key>
 				<string>NO</string>
 				<key>Keyboard Shortcut</key>
-				<string>$@E</string>
+				<string>^@-</string>
 				<key>Navigation</key>
 				<string>NO</string>
 				<key>Title</key>
