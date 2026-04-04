@@ -94,6 +94,7 @@ resolve_target_dir() {
     hub) printf '%s\n' "$HUBS_DIR" ;;
     atom) printf '%s\n' "$ATOMS_DIR" ;;
     book) printf '%s\n' "$SOURCES_DIR/Books" ;;
+    blink) printf '%s\n' "$SOURCES_DIR/Blinkist" ;;
     video) printf '%s\n' "$SOURCES_DIR/Videos" ;;
     article) printf '%s\n' "$SOURCES_DIR/Articles" ;;
     podcast) printf '%s\n' "$SOURCES_DIR/Podcasts" ;;
