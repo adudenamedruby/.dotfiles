@@ -154,7 +154,7 @@ return {
                     min_width = 80,
                     max_width = 90,
                     max_height = 30,
-                    border = "padded",
+                    border = "rounded",
                     direction_priority = {
                         menu_north = { "n", "w", "s", "e" },
                         menu_south = { "s", "e", "n", "w" },
