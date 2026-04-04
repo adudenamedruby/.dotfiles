@@ -151,7 +151,7 @@ return {
                 -- Whether to use treesitter highlighting, disable if you run into performance issues
                 treesitter_highlighting = true,
                 window = {
-                    min_width = 80,
+                    min_width = 85,
                     max_width = 90,
                     max_height = 30,
                     border = "rounded",
