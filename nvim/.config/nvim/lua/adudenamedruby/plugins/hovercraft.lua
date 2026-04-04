@@ -16,6 +16,30 @@ return {
             end, "lsp info help"),
         }
     end,
+    config = function(_, opts)
+        local hovercraft = require("hovercraft")
+        hovercraft.setup(opts)
+
+        -- Reposition the hover window after it appears
+        hovercraft.ui:register_onshow(function(_bufnr)
+            vim.schedule(function()
+                local wc = hovercraft.ui.window_config
+                if not wc or not vim.api.nvim_win_is_valid(wc.winnr) then
+                    return
+                end
+
+                local width = vim.api.nvim_win_get_width(0)
+                local height = 20
+                vim.api.nvim_win_set_config(wc.winnr, {
+                    relative = "editor",
+                    row = vim.o.lines - height - 2,
+                    col = 0,
+                    width = width,
+                    height = height,
+                })
+            end)
+        end)
+    end,
     opts = function()
         return {
             providers = {
@@ -25,19 +49,18 @@ return {
                         require("hovercraft.provider.lsp.hover").new(),
                     },
                     {
-                        "Man",
-                        require("hovercraft.provider.man").new(),
-                    },
-                    {
                         "Dictionary",
                         require("hovercraft.provider.dictionary").new(),
+                    },
+                    {
+                        "Man",
+                        require("hovercraft.provider.man").new(),
                     },
                 },
             },
 
             window = {
                 border = "rounded",
-                max_width = 90,
             },
 
             keys = {

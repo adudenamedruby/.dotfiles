@@ -106,12 +106,6 @@ return {
 
                     map("<leader>li", "<cmd>checkhealth vim.lsp<cr>", "server info")
 
-                    -- vim.keymap.set(
-                    --     "n",
-                    --     "<leader>li",
-                    --     vim.lsp.buf.hover,
-                    --     { desc = "Show documentation for what is under cursor" }
-                    -- )
                     -- The following two autocommands are used to highlight references of the
                     -- word under your cursor when your cursor rests there for a little while.
                     --    See `:help CursorHold` for information about when this is executed
@@ -120,10 +114,7 @@ return {
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
                     if
                         client
-                        and client:supports_method(
-                            vim.lsp.protocol.Methods.textDocument_documentHighlight,
-                            event.buf
-                        )
+                        and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
                     then
                         local highlight_augroup =
                             vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
