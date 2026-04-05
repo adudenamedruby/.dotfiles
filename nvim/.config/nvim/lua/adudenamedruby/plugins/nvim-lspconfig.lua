@@ -175,6 +175,7 @@ return {
                 "ruff",
                 "sourcekit",
                 "yamlls",
+                "bash-language-server",
             })
 
             -- Mason: install LSP servers and tools
@@ -189,7 +190,9 @@ return {
                     "lua-language-server",
                     "ruff",
                     "yaml-language-server",
-                    "prettier",
+                    "prettierd",
+                    "bash-language-server",
+                    "clangd",
                     "shfmt",
                     "stylua",
                     "codelldb",
