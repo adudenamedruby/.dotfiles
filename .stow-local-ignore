@@ -1,5 +1,7 @@
 # Ignor other folder
 \.git
 \.gitignore
+\.jj
+\.jjignore
 Meta
 README\.md
