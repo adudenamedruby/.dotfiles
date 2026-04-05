@@ -35,23 +35,46 @@ function _G.CustomTabLine()
     return filepath ~= "" and filepath or vim.fn.fnamemodify(bufname, ":p")
 end
 
+local undodir = vim.fn.expand("~/.vim/undodir")
+if vim.fn.isdirectory(undodir) == 0 then
+    vim.fn.mkdir(undodir, "p")
+end
+
 local options = {
-    backup = false, -- creates a backup file
+    -- general line stuff
+    cursorline = true, -- highlight the current line
+    number = true, -- set numbered lines
+    numberwidth = 4, -- set number column width to 2 {default 4}
+    scrolloff = 100, -- is one of my fav
+    sidescrolloff = 8,
+    wrap = false, -- display lines as one long line
+
+    -- tabs
+    expandtab = true, -- convert tabs to spaces
+    shiftwidth = 4,
+    smartindent = true, -- make indenting smarter again
+    autoindent = true, -- copy indent from current line
+    softtabstop = 4,
+    tabstop = 4,
+
+    -- search
+    hlsearch = true, -- highlight all matches on previous search pattern
+    ignorecase = true, -- ignore case in search patterns
+    incsearch = true,
+    smartcase = true, -- smart case
+
+    -- other
+    autochdir = false,
     breakindent = true,
     clipboard = "unnamedplus", -- allows neovim to access the system clipboard
     cmdheight = 2, -- more space in the neovim command line for displaying messages
     colorcolumn = "90",
     completeopt = { "menuone", "noselect" }, -- mostly just for cmp
     conceallevel = 2, -- so that `` is visible in markdown files
-    cursorline = true, -- highlight the current line
-    expandtab = true, -- convert tabs to spaces
     fileencoding = "utf-8", -- the encoding written to a file
     foldenable = false,
     foldmethod = "manual",
-    hlsearch = true, -- highlight all matches on previous search pattern
-    ignorecase = true, -- ignore case in search patterns
     inccommand = "split",
-    incsearch = true,
     --isfname:append("@-@"),
     linebreak = true, -- don't split words
     listchars = {
@@ -65,31 +88,27 @@ local options = {
     list = true,
     mouse = "a", -- allow the mouse to be used in neovim
     nu = true,
-    number = true, -- set numbered lines
-    numberwidth = 4, -- set number column width to 2 {default 4}
     pumheight = 10, -- pop up menu height
     relativenumber = true, -- set relative numbered lines
-    scrolloff = 100, -- is one of my fav
-    shiftwidth = 4,
     showmode = false, -- we don't need to see things like -- INSERT -- anymore
     showtabline = 2, -- always show tabs
-    sidescrolloff = 8,
     signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
-    smartcase = true, -- smart case
-    smartindent = true, -- make indenting smarter again
-    softtabstop = 4,
     splitbelow = true, -- force all horizontal splits to go below current window
     splitright = true, -- force all vertical splits to go to the right of current window
-    swapfile = false, -- creates a swapfile
-    tabstop = 4,
     termguicolors = true,
     tabline = "%!v:lua.CustomTabLine()",
     timeoutlen = 500, -- time to wait for a mapped sequence to complete (in milliseconds)
-    undofile = true, -- enable persistent undo
     updatetime = 250,
-    wrap = true, -- display lines as one long line
-    writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
     -- guicursor = ""
+    --
+    -- File history
+    autoread = true, -- auto-reload changes outside of neovim
+    autowrite = false, -- do not auto-save
+    backup = false, -- creates a backup file
+    swapfile = false, -- creates a swapfile
+    undofile = true, -- enable persistent undo
+    undodir = undodir,
+    writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 }
 
 for key, value in pairs(options) do

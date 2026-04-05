@@ -13,3 +13,5 @@ U.GLMap("de", "<cmd>RustLsp explainError<CR>", "explain error")
 U.GLMap("dr", "<cmd>RustLsp renderDiagnostic<CR>", "render diagnostic")
 U.GLMap("dR", "<cmd>RustLsp relatedDiagnostics<CR>", "related diagnostic")
 U.GLMap("ld", "<cmd>RustLsp openDocs<CR>", "open docs at cursor")
+
+vim.opt_local.colorcolumn = "100"
