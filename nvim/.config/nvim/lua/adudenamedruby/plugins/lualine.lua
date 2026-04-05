@@ -84,7 +84,7 @@ return {
                 lualine_y = {},
                 lualine_z = {},
             },
-            extensions = { "nvim-dap-ui", "quickfix", "trouble", "nvim-tree", "oil", "lazy", "mason" },
+            extensions = { "nvim-dap-ui", "quickfix", "trouble", "nvim-tree", "lazy", "mason" },
         })
     end,
 }

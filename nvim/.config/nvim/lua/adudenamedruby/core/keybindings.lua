@@ -30,7 +30,6 @@ U.GLMap("dq", vim.diagnostic.setloclist, "open diagnostic quickfix list")
 -- Files menu
 U.GLMap("fs", "<cmd>w<CR>", "save file")
 U.GLMap("ft", "<cmd>NvimTreeToggle<CR>", "file tree")
-U.GLMap("fo", "<cmd>Oil --float<CR>", "oil")
 
 -- Git menu
 U.GLMap("gb", "<cmd>Gitsigns blame<CR>", "git blame")
