@@ -49,3 +49,6 @@ vim.api.nvim_create_autocmd({ "VimLeave", "VimSuspend" }, {
         io.stdout:write("\x1b]1337;SetUserVar=IS_NVIM=MAo\007")
     end,
 })
+
+-- In rust the rule is 100 characters, so update the colorcolumn to that.
+vim.api.nvim_create_autocmd("Filetype", { pattern = "rust", command = "set colorcolumn=100" })

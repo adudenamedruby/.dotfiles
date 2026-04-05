@@ -46,13 +46,22 @@ local options = {
     cursorline = true, -- highlight the current line
     expandtab = true, -- convert tabs to spaces
     fileencoding = "utf-8", -- the encoding written to a file
+    foldenable = false,
+    foldmethod = "manual",
     hlsearch = true, -- highlight all matches on previous search pattern
     ignorecase = true, -- ignore case in search patterns
     inccommand = "split",
     incsearch = true,
     --isfname:append("@-@"),
     linebreak = true, -- don't split words
-    listchars = { tab = "» ", trail = "·", nbsp = "␣", space = "·" },
+    listchars = {
+        tab = "» ",
+        trail = "·",
+        nbsp = "¬",
+        space = "·",
+        precedes = "«",
+        extends = "»",
+    },
     list = true,
     mouse = "a", -- allow the mouse to be used in neovim
     nu = true,

@@ -5,7 +5,6 @@ return {
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
-    ---@type snacks.Config
     opts = {
         indent = { enabled = true },
         quickfile = { enabled = true },

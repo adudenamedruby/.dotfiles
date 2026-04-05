@@ -1,4 +1,5 @@
 return {
+    -- notifications for nvim
     "j-hui/fidget.nvim",
     event = "VeryLazy",
     config = function()
