@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is my Neovim configuration using lazy.nvim as the plugin manager. The configuration follows a modular structure with separate files for core settings, utilities, and individual plugin configurations.
+This is my NeoVim configuration using lazy.nvim as the plugin manager. The configuration follows a modular structure with separate files for core settings, utilities, and individual plugin configurations.
 
 ## Development Commands
 
