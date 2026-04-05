@@ -39,25 +39,7 @@ stylua .
 5. `utils` - Keymap helper functions
 6. `keybindings` - Global keymaps
 
-### Directory Structure
-
-```
-lua/adudenamedruby/
-├── core/                    # Core configuration modules
-│   ├── startupSettings.lua  # Leader keys, global settings, autocommands
-│   ├── options.lua          # Vim options (indent, UI, behavior)
-│   ├── dailyColorscheme.lua # Daily colorscheme rotation system
-│   ├── keybindings.lua      # Global keybindings
-│   └── utils.lua            # Keymap helper functions
-├── lazy.lua                 # Plugin manager bootstrap
-└── plugins/                 # Individual plugin configurations (lazy.nvim style)
-    ├── nvim-lspconfig.lua   # LSP configuration
-    ├── blink.lua            # Completion engine
-    ├── conform.lua          # Formatting
-    ├── harpoon.lua          # File navigation
-    ├── fzf-lua.lua          # Fuzzy finder
-    └── ...                  # 40+ other plugin configs
-```
+Finally, there's things in the various `after` folders for file specific configurations
 
 ### Core Concepts
 
