@@ -40,8 +40,8 @@ return {
         files = {
             -- shorten each path component to 1 char,
             -- but keep the last 2 components intact
-            path_shorten = 1,
-            path_shorten_exclude = { -1, -2 }, -- keep last 2 full
+            -- path_shorten = 1,
+            -- formatter = "path.filename_first",
         },
         keymap = {
             fzf = {

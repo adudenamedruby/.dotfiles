@@ -99,7 +99,6 @@ local options = {
     tabline = "%!v:lua.CustomTabLine()",
     timeoutlen = 500, -- time to wait for a mapped sequence to complete (in milliseconds)
     updatetime = 250,
-    -- guicursor = ""
     --
     -- File history
     autoread = true, -- auto-reload changes outside of neovim

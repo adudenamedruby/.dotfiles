@@ -10,7 +10,7 @@ return {
         -- See the docs for other config options.
         recipe = { "default", { animate = false } },
         ncmode = "buffers", -- use 'windows' to fade inactive windows
-        fadelevel = 0.4, -- any value between 0 and 1. 0 is hidden and 1 is opaque.
+        fadelevel = 0.5, -- any value between 0 and 1. 0 is hidden and 1 is opaque.
         tint = {
             -- bg = {rgb={0,0,0}, intensity=0.3}, -- adds 30% black to background
             -- fg = {rgb={0,0,255}, intensity=0.3}, -- adds 30% blue to foreground
