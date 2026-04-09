@@ -388,3 +388,8 @@ run = 'move-node-to-workspace Utilities'
 [[on-window-detected]]
 if.app-id = 'com.apple.ActivityMonitor'
 run = 'move-node-to-workspace Utilities'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.weather'
+run = 'move-node-to-workspace Utilities'
+

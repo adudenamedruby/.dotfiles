@@ -76,6 +76,9 @@ return {
                     -- Find references for the word under your cursor.
                     map("gr", fzf.lsp_references, "go to references")
 
+                    -- Find references for the word under your cursor.
+                    map("<leader>lf", vim.lsp.buf.references, "go to references")
+
                     -- Jump to the implementation of the word under your cursor.
                     --  Useful when your language has ways of declaring types without an actual implementation.
                     map("gi", fzf.lsp_implementations, "go to implementation")
