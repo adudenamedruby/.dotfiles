@@ -354,7 +354,7 @@ if.app-id = 'us.zoom.xos'
 run = 'move-node-to-workspace External'
 
 [[on-window-detected]]
-if.app-id = 'com.skype.skype'
+if.app-id = 'com.obsproject.obs-studio'
 run = 'move-node-to-workspace External'
 
 [[on-window-detected]]
@@ -372,10 +372,6 @@ run = 'move-node-to-workspace Lightroom'
 [[on-window-detected]]
 if.app-id = 'com.apple.Photos'
 run = 'move-node-to-workspace Lightroom'
-
-[[on-window-detected]]
-if.app-id = 'com.obsproject.obs-studio'
-run = 'move-node-to-workspace OBS'
 
 [[on-window-detected]]
 if.app-id = 'org.racket-lang.DrRacket'
