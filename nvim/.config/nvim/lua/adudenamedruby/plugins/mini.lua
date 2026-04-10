@@ -19,7 +19,7 @@ return {
         --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
         --  - ci'  - [C]hange [I]nside [']quote
         --  n or l - next or last functionality
-        require("mini.ai").setup({ n_lines = 500 })
+        require("mini.ai").setup({ n_lines = 100 })
 
         -- this is very useful, by hitting `sj` you can split arguments into new lines (ctrl+m in Xcode)
         require("mini.splitjoin").setup({
