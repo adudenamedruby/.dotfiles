@@ -76,9 +76,6 @@ return {
                     -- Find references for the word under your cursor.
                     map("gr", fzf.lsp_references, "go to references")
 
-                    -- Find references for the word under your cursor.
-                    map("<leader>lf", vim.lsp.buf.references, "go to references")
-
                     -- Jump to the implementation of the word under your cursor.
                     --  Useful when your language has ways of declaring types without an actual implementation.
                     map("gi", fzf.lsp_implementations, "go to implementation")
@@ -86,7 +83,7 @@ return {
                     -- Jump to the type of the word under your cursor.
                     --  Useful when you're not sure what type a variable is and you want to see
                     --  the definition of its *type*, not where it was *defined*.
-                    map("<leader>ld", fzf.lsp_typedefs, "type definition")
+                    map("<leader>ct", fzf.lsp_typedefs, "type definition")
 
                     -- Fuzzy find all the symbols in your current document.
                     --  Symbols are things like variables, functions, types, etc.
@@ -101,13 +98,19 @@ return {
 
                     -- Rename the variable under your cursor.
                     --  Most Language Servers support renaming across files, etc.
-                    map("<leader>lr", vim.lsp.buf.rename, "rename")
+                    map("<leader>cr", vim.lsp.buf.rename, "rename")
 
                     -- Execute a code action, usually your cursor needs to be on top of an error
                     -- or a suggestion from your LSP for this to activate.
+                    -- if vim.bo.filetype == "rust" then
+                    --     map("<leader>ca", function()
+                    --         vim.cmd.RustLsp("codeAction")
+                    --     end, "code action")
+                    -- else
                     map("<leader>ca", vim.lsp.buf.code_action, "code action", { "n", "x" })
+                    -- end
 
-                    map("<leader>li", "<cmd>checkhealth vim.lsp<cr>", "server info")
+                    map("<leader>Hli", "<cmd>checkhealth vim.lsp<cr>", "server info")
 
                     -- The following two autocommands are used to highlight references of the
                     -- word under your cursor when your cursor rests there for a little while.
@@ -150,7 +153,7 @@ return {
                         client
                         and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
                     then
-                        map("<leader>Th", function()
+                        map("<leader>Hlh", function()
                             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
                         end, "[T]oggle Inlay [H]ints")
                     end

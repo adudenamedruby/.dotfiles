@@ -48,10 +48,10 @@ U.GMap("<", "<gv", "", "v")
 U.GMap(">", ">gv", "", "v")
 
 -- LSP Menu
-U.GLMap("lS", "<cmd>lsp enable<CR>", "lsp start")
-U.GLMap("lH", "<cmd>lsp disable<CR>", "lsp halt")
-U.GLMap("lR", "<cmd>lsp restart<CR>", "lsp restart")
-U.GLMap("lL", "<cmd>lsp log<CR>", "lsp log")
+U.GLMap("HlS", "<cmd>lsp enable<CR>", "lsp start")
+U.GLMap("HlH", "<cmd>lsp disable<CR>", "lsp halt")
+U.GLMap("HlR", "<cmd>lsp restart<CR>", "lsp restart")
+U.GLMap("Hll", "<cmd>lsp log<CR>", "lsp log")
 
 -- Marks: Saner mark movement to save keystrokes
 U.GMap("'", "`", "")

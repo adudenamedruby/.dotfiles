@@ -1,7 +1,7 @@
 return {
     -- Essential tools for working with rust
     "mrcjkb/rustaceanvim",
-    version = "^8", -- Recommended
+    version = "^9", -- Recommended
     lazy = false, -- This plugin is already lazy
     ["rust-analyzer"] = {
         cargo = {
@@ -13,6 +13,7 @@ return {
             tools = {
                 float_win_config = {
                     auto_focus = true,
+                    open_split = "vertical", -- 'vertical'
                 },
             },
         }

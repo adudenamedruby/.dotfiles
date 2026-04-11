@@ -39,6 +39,7 @@ return {
                 F12 = "<F12>",
             },
         },
+        sort = { "alphanum", "mod" },
     },
     config = function(_, opts)
         local wk = require("which-key")
@@ -48,12 +49,14 @@ return {
         wk.add({
             { "<leader>b", group = "Buffers" },
             { "<leader>c", group = "Code" },
+            { "<leader>cc", group = "Compilation" },
             { "<leader>d", group = "Debug" },
+            { "<leader>dd", group = "Debugger" },
             { "<leader>f", group = "Find" },
             { "<leader>g", group = "Git" },
             { "<leader>H", group = "Help" },
-            { "<leader>l", group = "LSP" },
-            { "<leader>lo", group = "LSP" },
+            { "<leader>Hl", group = "LSP" },
+            { "<leader>n", group = "Notes" },
             { "<leader>s", group = "Search" },
             { "<leader>T", group = "Toggles" },
             { "<leader>x", group = "Quickfix" },

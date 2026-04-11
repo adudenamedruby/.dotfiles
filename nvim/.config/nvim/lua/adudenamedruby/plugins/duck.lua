@@ -4,7 +4,7 @@ return {
         local duck = require("duck")
         local U = require("adudenamedruby.core.utils")
         return {
-            U.PLMap("uDd", function()
+            U.PLMap("uDs", function()
                 duck.hatch()
             end, "summon duck"),
             U.PLMap("uDc", function()

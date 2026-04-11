@@ -6,26 +6,26 @@ local function setupListeners()
     dap.listeners.after["event_initialized"]["me"] = function()
         if not areSet then
             areSet = true
-            U.GLMap("dc", dap.continue, "continue")
-            U.GLMap("dC", dap.run_to_cursor, "run to cursor")
-            U.GLMap("ds", dap.step_over, "step over")
-            U.GLMap("di", dap.step_into, "step into")
-            U.GLMap("do", dap.step_out, "step out")
-            U.GLMap("dh", require("dap.ui.widgets").hover, "hover", { "n", "v" })
-            U.GLMap("de", require("dapui").eval, "eval", { "n", "v" })
+            U.GLMap("ddc", dap.continue, "continue")
+            U.GLMap("ddC", dap.run_to_cursor, "run to cursor")
+            U.GLMap("dds", dap.step_over, "step over")
+            U.GLMap("ddi", dap.step_into, "step into")
+            U.GLMap("ddo", dap.step_out, "step out")
+            U.GLMap("ddh", require("dap.ui.widgets").hover, "hover", { "n", "v" })
+            U.GLMap("dde", require("dapui").eval, "eval", { "n", "v" })
         end
     end
 
     dap.listeners.after["event_terminated"]["me"] = function()
         if areSet then
             areSet = false
-            vim.keymap.del("n", "<leader>dc")
-            vim.keymap.del("n", "<leader>dC")
-            vim.keymap.del("n", "<leader>ds")
-            vim.keymap.del("n", "<leader>di")
-            vim.keymap.del("n", "<leader>do")
-            vim.keymap.del({ "n", "v" }, "<leader>dh")
-            vim.keymap.del({ "n", "v" }, "<leader>de")
+            vim.keymap.del("n", "<leader>ddc")
+            vim.keymap.del("n", "<leader>ddC")
+            vim.keymap.del("n", "<leader>dds")
+            vim.keymap.del("n", "<leader>ddi")
+            vim.keymap.del("n", "<leader>ddo")
+            vim.keymap.del({ "n", "v" }, "<leader>ddh")
+            vim.keymap.del({ "n", "v" }, "<leader>dde")
         end
     end
 end
@@ -40,6 +40,10 @@ return {
         define("DapStopped", { text = "", texthl = "DiagnosticOk", linehl = "", numhl = "" })
         define("DapLogPoint", { text = "", texthl = "DiagnosticInfo", linehl = "", numhl = "" })
         define("DapLogPoint", { text = "", texthl = "DiagnosticInfo", linehl = "", numhl = "" })
+
+        local U = require("adudenamedruby.core.utils")
+        U.GLMap("ddb", ":DapToggleBreakpoint<CR>", "toggle breakpoint")
+        U.GLMap("ddB", ":DapClearBreakpoints<CR>", "clear all breakpoints")
 
         setupListeners()
 

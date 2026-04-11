@@ -10,14 +10,14 @@ return {
         local U = require("adudenamedruby.core.utils")
         return {
 
-            U.PLMap("on", "<cmd>Obsidian new<CR>", "new note"),
-            U.PLMap("ob", "<cmd>Obsidian backlinks<CR>", "show backlinks"),
-            U.PLMap("oe", "<cmd>Obsidian extract_note<CR>", "extract selection to note"),
-            U.PLMap("ol", "<cmd>Obsidian links<CR>", "pick from note links"),
-            U.PLMap("os", "<cmd>Obsidian search<CR>", "search trove"),
-            U.PLMap("ot", "<cmd>Obsidian tags<CR>", "tag occurances"),
-            U.PLMap("oc", "<cmd>Obsidian toggle_checkbox<CR>", "toggle checkbox"),
-            U.PLMap("of", "<cmd>Obsidian follow_link<CR>", "follow link"),
+            U.PLMap("nn", "<cmd>Obsidian new<CR>", "new note"),
+            U.PLMap("nb", "<cmd>Obsidian backlinks<CR>", "show backlinks"),
+            U.PLMap("ne", "<cmd>Obsidian extract_note<CR>", "extract selection to note"),
+            U.PLMap("nl", "<cmd>Obsidian links<CR>", "pick from note links"),
+            U.PLMap("ns", "<cmd>Obsidian search<CR>", "search trove"),
+            U.PLMap("nt", "<cmd>Obsidian tags<CR>", "tag occurances"),
+            U.PLMap("nc", "<cmd>Obsidian toggle_checkbox<CR>", "toggle checkbox"),
+            U.PLMap("nf", "<cmd>Obsidian follow_link<CR>", "follow link"),
         }
     end,
     -- event = {
@@ -166,12 +166,5 @@ return {
 
     config = function(_, opts)
         require("obsidian").setup(opts)
-
-        local ok, wk = pcall(require, "which-key")
-        if ok then
-            wk.add({
-                { "<leader>o", group = "Obsidian" },
-            })
-        end
     end,
 }
