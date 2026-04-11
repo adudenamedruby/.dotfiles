@@ -7,6 +7,225 @@ local function toggle_blink()
     vim.notify("blink.cmp " .. (cmp_enabled and "enabled" or "disabled"))
 end
 
+-- Custom documentation window (bottom of screen, not anchored to completion menu)
+local doc_win_id = nil
+local doc_buf_id = nil
+
+local function close_doc_window()
+    if doc_win_id and vim.api.nvim_win_is_valid(doc_win_id) then
+        vim.api.nvim_win_close(doc_win_id, true)
+    end
+    doc_win_id = nil
+    if doc_buf_id and vim.api.nvim_buf_is_valid(doc_buf_id) then
+        vim.api.nvim_buf_delete(doc_buf_id, { force = true })
+    end
+    doc_buf_id = nil
+end
+
+local function get_doc_lines(item)
+    local lines = {}
+
+    -- Add detail
+    if item.detail and item.detail ~= "" then
+        for s in item.detail:gmatch("[^\r\n]+") do
+            table.insert(lines, s)
+        end
+    end
+
+    -- Add documentation
+    local doc = item.documentation
+    if doc then
+        if #lines > 0 then
+            table.insert(lines, "")
+        end
+        if type(doc) == "string" then
+            for s in doc:gmatch("[^\r\n]+") do
+                table.insert(lines, s)
+            end
+        elseif doc.value then
+            local doc_lines = {}
+            vim.lsp.util.convert_input_to_markdown_lines(doc, doc_lines)
+            vim.list_extend(lines, doc_lines)
+        end
+    end
+
+    return lines
+end
+
+local function update_doc_content(item)
+    if not doc_buf_id or not vim.api.nvim_buf_is_valid(doc_buf_id) then
+        return
+    end
+    local lines = get_doc_lines(item)
+    if #lines == 0 then
+        lines = { "No documentation available" }
+    end
+    vim.bo[doc_buf_id].modifiable = true
+    vim.api.nvim_buf_set_lines(doc_buf_id, 0, -1, false, lines)
+    vim.bo[doc_buf_id].modifiable = false
+end
+
+local function show_doc_floating(item)
+    -- If the window is already open, just update the content
+    if doc_win_id and vim.api.nvim_win_is_valid(doc_win_id) then
+        update_doc_content(item)
+        return
+    end
+
+    local lines = get_doc_lines(item)
+    if #lines == 0 then
+        vim.notify("No documentation available", vim.log.levels.INFO)
+        return
+    end
+
+    doc_buf_id = vim.api.nvim_create_buf(false, true)
+    vim.api.nvim_buf_set_lines(doc_buf_id, 0, -1, false, lines)
+    vim.bo[doc_buf_id].filetype = "markdown"
+    vim.bo[doc_buf_id].modifiable = false
+
+    local editor_width = vim.o.columns
+    local editor_height = vim.o.lines
+    local win_height = 15
+    -- Position: bottom of editor, above statusline (2 = statusline + cmdline)
+    local row = editor_height - win_height - 2
+    local col = 0
+    local win_width = editor_width
+
+    doc_win_id = vim.api.nvim_open_win(doc_buf_id, false, {
+        relative = "editor",
+        row = row,
+        col = col,
+        width = win_width,
+        height = win_height,
+        style = "minimal",
+        border = "rounded",
+        zindex = 1100,
+    })
+
+    vim.wo[doc_win_id].wrap = true
+    vim.wo[doc_win_id].linebreak = true
+    vim.wo[doc_win_id].conceallevel = 2
+    vim.bo[doc_buf_id].textwidth = 100
+
+    -- Update content when selection changes, close when completion hides
+    local augroup = vim.api.nvim_create_augroup("BlinkCustomDoc", { clear = true })
+    vim.api.nvim_create_autocmd("User", {
+        group = augroup,
+        pattern = "BlinkCmpListSelect",
+        callback = function()
+            local new_item = require("blink.cmp").get_selected_item()
+            if new_item then
+                vim.schedule(function()
+                    update_doc_content(new_item)
+                end)
+            end
+        end,
+    })
+    vim.api.nvim_create_autocmd({ "User", "InsertLeave", "BufLeave" }, {
+        group = augroup,
+        pattern = { "BlinkCmpHide", "" },
+        callback = function(ev)
+            -- For User events, only react to BlinkCmpHide
+            if ev.event == "User" and ev.match ~= "BlinkCmpHide" then
+                return
+            end
+            vim.schedule(function()
+                close_doc_window()
+            end)
+            vim.api.nvim_del_augroup_by_id(augroup)
+        end,
+    })
+end
+
+-- Peekup-style bottom split (uncomment to use instead of floating window)
+-- local function show_doc_split(item)
+--     close_doc_window()
+--
+--     local lines = get_doc_lines(item)
+--     if #lines == 0 then
+--         vim.notify("No documentation available", vim.log.levels.INFO)
+--         return
+--     end
+--
+--     doc_buf_id = vim.api.nvim_create_buf(false, true)
+--     vim.api.nvim_buf_set_lines(doc_buf_id, 0, -1, false, lines)
+--     vim.bo[doc_buf_id].filetype = "markdown"
+--     vim.bo[doc_buf_id].modifiable = false
+--     vim.bo[doc_buf_id].bufhidden = "wipe"
+--
+--     -- Open a bottom split
+--     local save_splitbelow = vim.o.splitbelow
+--     vim.o.splitbelow = true
+--     vim.cmd("botright " .. 15 .. "split")
+--     vim.o.splitbelow = save_splitbelow
+--
+--     doc_win_id = vim.api.nvim_get_current_win()
+--     vim.api.nvim_win_set_buf(doc_win_id, doc_buf_id)
+--     vim.wo[doc_win_id].wrap = true
+--     vim.wo[doc_win_id].linebreak = true
+--     vim.wo[doc_win_id].textwidth = 100
+--     vim.wo[doc_win_id].conceallevel = 2
+--     vim.wo[doc_win_id].winfixheight = true
+--
+--     -- Return focus to the previous window
+--     vim.cmd("wincmd p")
+--
+--     local augroup = vim.api.nvim_create_augroup("BlinkCustomDoc", { clear = true })
+--     vim.api.nvim_create_autocmd({ "CursorMoved", "InsertLeave", "BufLeave" }, {
+--         group = augroup,
+--         callback = function()
+--             close_doc_window()
+--             vim.api.nvim_del_augroup_by_id(augroup)
+--         end,
+--     })
+-- end
+
+local function doc_window_is_open()
+    return doc_win_id and vim.api.nvim_win_is_valid(doc_win_id)
+end
+
+local function scroll_doc_window(delta)
+    if not doc_window_is_open() then
+        return false
+    end
+    vim.schedule(function()
+        if not doc_window_is_open() or not doc_buf_id then
+            return
+        end
+        local line_count = vim.api.nvim_buf_line_count(doc_buf_id)
+        local win_height = vim.api.nvim_win_get_height(doc_win_id)
+        local current = vim.api.nvim_win_get_cursor(doc_win_id)
+        local new_line = math.max(1, math.min(current[1] + delta, line_count))
+        vim.api.nvim_win_set_cursor(doc_win_id, { new_line, 0 })
+        -- Also adjust the viewport scroll position
+        local new_top = math.max(1, math.min(new_line, line_count - win_height + 1))
+        vim.api.nvim_win_call(doc_win_id, function()
+            vim.fn.winrestview({ topline = new_top })
+        end)
+    end)
+    return true
+end
+
+local function toggle_custom_doc()
+    local item = require("blink.cmp").get_selected_item()
+    if not item then
+        return require("blink.cmp").show()
+    end
+
+    -- Schedule to escape blink's restricted callback context
+    vim.schedule(function()
+        -- If doc window is open, close it
+        if doc_win_id and vim.api.nvim_win_is_valid(doc_win_id) then
+            close_doc_window()
+            return
+        end
+
+        show_doc_floating(item)
+        -- To use the split version instead, comment out the line above and uncomment:
+        -- show_doc_split(item)
+    end)
+end
+
 return {
     "saghen/blink.cmp",
     lazy = false, -- lazy loading handled internally
@@ -44,7 +263,22 @@ return {
         end,
         keymap = {
             preset = "default",
-            ["<C-h>"] = { "show", "show_documentation", "hide_documentation" },
+            -- ["<C-h>"] = { "show", "show_documentation", "hide_documentation" },
+            ["<C-h>"] = { toggle_custom_doc },
+            ["<C-d>"] = {
+                function()
+                    return scroll_doc_window(10)
+                end,
+                "scroll_documentation_down",
+                "fallback",
+            },
+            ["<C-u>"] = {
+                function()
+                    return scroll_doc_window(-10)
+                end,
+                "scroll_documentation_up",
+                "fallback",
+            },
             ["<C-s>"] = { "select_and_accept" },
         },
 
@@ -136,7 +370,7 @@ return {
 
             menu = {
                 min_width = 15,
-                max_height = 10,
+                max_height = 6,
                 border = "none",
             },
 
