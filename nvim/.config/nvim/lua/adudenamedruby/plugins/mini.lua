@@ -1,6 +1,6 @@
 return {
     -- Collection of various small independent plugins/modules
-    "echasnovski/mini.nvim",
+    "nvim-mini/mini.nvim",
     keys = function()
         local mini = require("mini.jump2d")
         local U = require("adudenamedruby.core.utils")
