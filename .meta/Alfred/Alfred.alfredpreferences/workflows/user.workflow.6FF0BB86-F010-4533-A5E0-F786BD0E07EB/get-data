@@ -1,0 +1,39 @@
+#!/usr/bin/osascript -l JavaScript
+
+// Helpers
+function envVar(varName) {
+  return $.NSProcessInfo
+    .processInfo
+    .environment
+    .objectForKey(varName).js
+}
+
+// Main
+const ignoredFolders = envVar("ignored_folders").split("\n")
+
+const sfItems = Application("Notes").folders().flatMap(folderReference => {
+  const folderName = folderReference.name()
+
+  if (ignoredFolders.find(ignoredFolder => ignoredFolder === folderName)) return []
+
+  return folderReference.notes().map(noteReference => {
+    try {
+      const note = noteReference.properties()
+
+      return {
+        uid: note.id,
+        title: note.passwordProtected ? "🔒" + note.name : note.name,
+        subtitle: folderName,
+        arg: note.id,
+        match: folderName + " " + note.name + " " + note.plaintext
+      }
+    } catch {
+      throw `Corrupted note: ${noteReference.name()}. Try editing it and replacing images.`
+    }
+  })
+})
+
+// Output JSON
+sfItems.length > 0 ?
+  JSON.stringify({ cache: { seconds: 300, loosereload: true }, items: sfItems }) :
+  JSON.stringify({ items: [{ title: "No Notes Found", subtitle: "Ensure you have not ignored all folders in the configuration", valid: false }] })

@@ -1,0 +1,949 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.alfredapp.vitor.notes</string>
+	<key>connections</key>
+	<dict>
+		<key>021446E7-D0A0-446F-BF2A-8237DCF82771</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>219E1723-ECE3-4055-8ED5-DDB5A8413CC0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>2147E2B1-6709-40D6-8EC6-F626C40612D7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>219E1723-ECE3-4055-8ED5-DDB5A8413CC0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>219E1723-ECE3-4055-8ED5-DDB5A8413CC0</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F614E007-E2C0-4CC6-8658-98ADC7175B55</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>18947147-6454-4699-87F1-C2657E18C435</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>3D6923D0-3ECA-4EA0-8413-38A266E560CA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7F63EE2D-456F-430A-A305-DCD2CDC8EF81</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>54DCED12-EBDC-41E2-8C54-1813A0E6EFC3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>574E7EC5-22A2-4004-BEAA-5B58569FF5DF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>55FCCF66-5323-47E4-85D4-415544D50336</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>574E7EC5-22A2-4004-BEAA-5B58569FF5DF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>574E7EC5-22A2-4004-BEAA-5B58569FF5DF</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8993B0EE-14E4-44E0-884C-1E16F7D09F9C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>73B3FAE5-F0A9-4600-840D-C69B082F0C52</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B781C12D-FEC7-4F1E-9C09-AE1DE9CDE7F7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>2147E2B1-6709-40D6-8EC6-F626C40612D7</string>
+				<key>modifiers</key>
+				<integer>262144</integer>
+				<key>modifiersubtext</key>
+				<string>Delete</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>021446E7-D0A0-446F-BF2A-8237DCF82771</string>
+				<key>modifiers</key>
+				<integer>1835008</integer>
+				<key>modifiersubtext</key>
+				<string>Flush cache</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>7F63EE2D-456F-430A-A305-DCD2CDC8EF81</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>219E1723-ECE3-4055-8ED5-DDB5A8413CC0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>8993B0EE-14E4-44E0-884C-1E16F7D09F9C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B781C12D-FEC7-4F1E-9C09-AE1DE9CDE7F7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A7A42BF8-7C9C-42A6-9585-A098322102E4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3D6923D0-3ECA-4EA0-8413-38A266E560CA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>BC343D4E-85E5-4616-8C24-8432C511B220</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>73B3FAE5-F0A9-4600-840D-C69B082F0C52</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>DBE6075C-D835-49C5-9027-C2CED6C19DBE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FC435CEF-F487-4965-B6B9-777B08CFD7D2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>FC435CEF-F487-4965-B6B9-777B08CFD7D2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A7A42BF8-7C9C-42A6-9585-A098322102E4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<true/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Vítor Galvão</string>
+	<key>description</key>
+	<string>Search and create notes in Notes.app</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Notes</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>{var:last_note_keyword}</string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string>Edit most recently modified note</string>
+				<key>text</key>
+				<string>Open Last Note</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>54DCED12-EBDC-41E2-8C54-1813A0E6EFC3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>// Helpers
+function envVar(varName) {
+  return $.NSProcessInfo
+    .processInfo
+    .environment
+    .objectForKey(varName).js
+}
+
+// Main
+const ignoredFolders = envVar("ignored_folders").split("\n")
+
+Application("Notes").notes().find(noteReference =&gt; !ignoredFolders.find(ignoredFolder =&gt; ignoredFolder === noteReference.container().name())).id()</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>574E7EC5-22A2-4004-BEAA-5B58569FF5DF</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>55FCCF66-5323-47E4-85D4-415544D50336</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.transform</string>
+			<key>uid</key>
+			<string>8993B0EE-14E4-44E0-884C-1E16F7D09F9C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>tasksettings</key>
+				<dict>
+					<key>target_path</key>
+					<string>{const:alfred_workflow_cache}/state.txt</string>
+					<key>use_finder</key>
+					<false/>
+				</dict>
+				<key>taskuid</key>
+				<string>com.alfredapp.automation.core/files-and-folders/path.trash</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.automation.task</string>
+			<key>uid</key>
+			<string>F614E007-E2C0-4CC6-8658-98ADC7175B55</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>BC343D4E-85E5-4616-8C24-8432C511B220</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>function run(argv) {
+  Application("Notes").notes.byId(argv[0]).show()
+}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>B781C12D-FEC7-4F1E-9C09-AE1DE9CDE7F7</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>{var:search_keyword}</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Collecting notes…</string>
+				<key>script</key>
+				<string>readonly cache_file="${alfred_workflow_cache}/cache.json"
+readonly state_file="${alfred_workflow_cache}/state.txt"
+
+# Helper to show results and exit
+function show_data {
+  &lt; "${cache_file}" &amp;&amp; exit 0
+
+  # If cache somehow failed to load, show message and delete state
+  echo '{ "items": [{ "title": "Unable to Load Results",
+    "subtitle": "Open the debugger and try again",
+    "valid": false }] }'
+  rm -f "${state_file}"
+  exit 1
+}
+
+# Get latest state
+readonly state="$(osascript -l JavaScript -e 'Application("Notes").notes[0].properties()' || uuidgen)"
+
+# Exit early if state has not changed
+[[ "${state}" == "$(&lt; "${state_file}")" ]] &amp;&amp; show_data
+
+# Update cache and state
+mkdir -p "${alfred_workflow_cache}"
+./get-data &gt; "${cache_file}" &amp;&amp; echo "${state}" &gt; "${state_file}"
+show_data</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string>Find notes by title and content</string>
+				<key>title</key>
+				<string>Search Notes</string>
+				<key>type</key>
+				<integer>11</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>73B3FAE5-F0A9-4600-840D-C69B082F0C52</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>function run(argv) {
+  Application("Notes").notes.byId(argv[0]).delete()
+}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>2147E2B1-6709-40D6-8EC6-F626C40612D7</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>tell application id "com.runningwithcrayons.Alfred" to reload workflow (system attribute "alfred_workflow_bundleid")</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>18947147-6454-4699-87F1-C2657E18C435</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict/>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>219E1723-ECE3-4055-8ED5-DDB5A8413CC0</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict/>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>021446E7-D0A0-446F-BF2A-8237DCF82771</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>DBE6075C-D835-49C5-9027-C2CED6C19DBE</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>{var:new_note_keyword}</string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string>Create note titled “{query}”</string>
+				<key>text</key>
+				<string>Make New Note</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>FC435CEF-F487-4965-B6B9-777B08CFD7D2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>behaviour</key>
+				<integer>1</integer>
+				<key>fontmode</key>
+				<integer>0</integer>
+				<key>fontsizing</key>
+				<integer>0</integer>
+				<key>footertext</key>
+				<string>⌘↩ Create note</string>
+				<key>inputfile</key>
+				<string></string>
+				<key>inputtype</key>
+				<integer>0</integer>
+				<key>loadingtext</key>
+				<string></string>
+				<key>outputmode</key>
+				<integer>0</integer>
+				<key>scriptinput</key>
+				<integer>0</integer>
+				<key>spellchecking</key>
+				<integer>0</integer>
+				<key>stackview</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.userinterface.text</string>
+			<key>uid</key>
+			<string>3D6923D0-3ECA-4EA0-8413-38A266E560CA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>function envVar(varName) {
+  return $.NSProcessInfo
+    .processInfo
+    .environment
+    .objectForKey(varName).js
+}
+
+function run(argv) {
+  const title = `&lt;h1&gt;${envVar("note_title")}&lt;/h1&gt;&lt;br&gt;`
+  const body = argv[0].replaceAll("\n", "&lt;br&gt;")
+  const notesApp = Application("Notes")
+  const folder = notesApp.folders.byName(envVar("new_notes_folder"))
+  const newNote = notesApp.Note({ body: title + body })
+
+  if (!folder.exists()) notesApp.folders.push(notesApp.Folder({ name: envVar("new_notes_folder") }))
+
+  folder.notes.push(newNote)
+}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>7F63EE2D-456F-430A-A305-DCD2CDC8EF81</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>note_title</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>A7A42BF8-7C9C-42A6-9585-A098322102E4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>## Usage
+
+Search notes via the `ns` keyword.
+
+![Searching notes](images/about/search.png)
+
+* &lt;kbd&gt;↩&lt;/kbd&gt; Open note in the Notes app.
+* &lt;kbd&gt;⌃&lt;/kbd&gt;&lt;kbd&gt;↩&lt;/kbd&gt; Delete note.
+* &lt;kbd&gt;⌘&lt;/kbd&gt;&lt;kbd&gt;⌥&lt;/kbd&gt;&lt;kbd&gt;⌃&lt;/kbd&gt;&lt;kbd&gt;↩&lt;/kbd&gt; Force cache flush.
+
+Create a new note from within Alfred via the `nn` keyword.
+
+![Creating new note](images/about/new.png)
+
+Quickly open the last modified note via the `nl` keyword.
+
+![Opening last modified note](images/about/last.png)
+
+Configure the [Hotkeys](https://www.alfredapp.com/help/workflows/triggers/hotkey/) for faster triggering.</string>
+	<key>uidata</key>
+	<dict>
+		<key>021446E7-D0A0-446F-BF2A-8237DCF82771</key>
+		<dict>
+			<key>xpos</key>
+			<real>490</real>
+			<key>ypos</key>
+			<real>610</real>
+		</dict>
+		<key>18947147-6454-4699-87F1-C2657E18C435</key>
+		<dict>
+			<key>note</key>
+			<string>Flush cache</string>
+			<key>xpos</key>
+			<real>905</real>
+			<key>ypos</key>
+			<real>470</real>
+		</dict>
+		<key>2147E2B1-6709-40D6-8EC6-F626C40612D7</key>
+		<dict>
+			<key>xpos</key>
+			<real>490</real>
+			<key>ypos</key>
+			<real>470</real>
+		</dict>
+		<key>219E1723-ECE3-4055-8ED5-DDB5A8413CC0</key>
+		<dict>
+			<key>xpos</key>
+			<real>805</real>
+			<key>ypos</key>
+			<real>500</real>
+		</dict>
+		<key>3D6923D0-3ECA-4EA0-8413-38A266E560CA</key>
+		<dict>
+			<key>xpos</key>
+			<real>490</real>
+			<key>ypos</key>
+			<real>690</real>
+		</dict>
+		<key>54DCED12-EBDC-41E2-8C54-1813A0E6EFC3</key>
+		<dict>
+			<key>xpos</key>
+			<real>265</real>
+			<key>ypos</key>
+			<real>65</real>
+		</dict>
+		<key>55FCCF66-5323-47E4-85D4-415544D50336</key>
+		<dict>
+			<key>note</key>
+			<string>Open last note</string>
+			<key>xpos</key>
+			<real>80</real>
+			<key>ypos</key>
+			<real>175</real>
+		</dict>
+		<key>574E7EC5-22A2-4004-BEAA-5B58569FF5DF</key>
+		<dict>
+			<key>xpos</key>
+			<real>490</real>
+			<key>ypos</key>
+			<real>175</real>
+		</dict>
+		<key>73B3FAE5-F0A9-4600-840D-C69B082F0C52</key>
+		<dict>
+			<key>xpos</key>
+			<real>265</real>
+			<key>ypos</key>
+			<real>330</real>
+		</dict>
+		<key>7F63EE2D-456F-430A-A305-DCD2CDC8EF81</key>
+		<dict>
+			<key>xpos</key>
+			<real>680</real>
+			<key>ypos</key>
+			<real>690</real>
+		</dict>
+		<key>8993B0EE-14E4-44E0-884C-1E16F7D09F9C</key>
+		<dict>
+			<key>xpos</key>
+			<real>645</real>
+			<key>ypos</key>
+			<real>205</real>
+		</dict>
+		<key>A7A42BF8-7C9C-42A6-9585-A098322102E4</key>
+		<dict>
+			<key>xpos</key>
+			<real>420</real>
+			<key>ypos</key>
+			<real>720</real>
+		</dict>
+		<key>B781C12D-FEC7-4F1E-9C09-AE1DE9CDE7F7</key>
+		<dict>
+			<key>xpos</key>
+			<real>490</real>
+			<key>ypos</key>
+			<real>330</real>
+		</dict>
+		<key>BC343D4E-85E5-4616-8C24-8432C511B220</key>
+		<dict>
+			<key>note</key>
+			<string>List notes</string>
+			<key>xpos</key>
+			<real>80</real>
+			<key>ypos</key>
+			<real>330</real>
+		</dict>
+		<key>DBE6075C-D835-49C5-9027-C2CED6C19DBE</key>
+		<dict>
+			<key>note</key>
+			<string>Make note</string>
+			<key>xpos</key>
+			<real>80</real>
+			<key>ypos</key>
+			<real>690</real>
+		</dict>
+		<key>F614E007-E2C0-4CC6-8658-98ADC7175B55</key>
+		<dict>
+			<key>note</key>
+			<string>Reset state</string>
+			<key>xpos</key>
+			<real>905</real>
+			<key>ypos</key>
+			<real>330</real>
+		</dict>
+		<key>FC435CEF-F487-4965-B6B9-777B08CFD7D2</key>
+		<dict>
+			<key>xpos</key>
+			<real>265</real>
+			<key>ypos</key>
+			<real>690</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>ns</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Search Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>search_keyword</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>nn</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>New Note Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>new_note_keyword</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>nl</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keywords to interact with notes.</string>
+			<key>label</key>
+			<string>Last Note Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>last_note_keyword</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>Notes</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Folder to create new notes in.</string>
+			<key>label</key>
+			<string>New Notes Folder</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>new_notes_folder</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>Recently Deleted</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+				<key>verticalsize</key>
+				<integer>6</integer>
+			</dict>
+			<key>description</key>
+			<string>Newline-separared list of folders to hide in lists.</string>
+			<key>label</key>
+			<string>Ignored Folders</string>
+			<key>type</key>
+			<string>textarea</string>
+			<key>variable</key>
+			<string>ignored_folders</string>
+		</dict>
+	</array>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>26.1</string>
+	<key>webaddress</key>
+	<string>https://github.com/alfredapp/notes-workflow/</string>
+</dict>
+</plist>
