@@ -9,15 +9,16 @@ return {
         -- local obsidian = require("obsidian")
         local U = require("adudenamedruby.core.utils")
         return {
-
-            U.PLMap("nn", "<cmd>Obsidian new<CR>", "new note"),
             U.PLMap("nb", "<cmd>Obsidian backlinks<CR>", "show backlinks"),
-            U.PLMap("ne", "<cmd>Obsidian extract_note<CR>", "extract selection to note"),
-            U.PLMap("nl", "<cmd>Obsidian links<CR>", "pick from note links"),
-            U.PLMap("ns", "<cmd>Obsidian search<CR>", "search trove"),
-            U.PLMap("nt", "<cmd>Obsidian tags<CR>", "tag occurances"),
             U.PLMap("nc", "<cmd>Obsidian toggle_checkbox<CR>", "toggle checkbox"),
+            U.PLMap("ne", "<cmd>Obsidian extract_note<CR>", "extract selection to note"),
             U.PLMap("nf", "<cmd>Obsidian follow_link<CR>", "follow link"),
+            U.PLMap("nl", "<cmd>Obsidian links<CR>", "pick from note links"),
+            U.PLMap("nn", "<cmd>Obsidian new<CR>", "new note"),
+            U.PLMap("ns", "<cmd>Obsidian search<CR>", "search trove"),
+            U.PLMap("nT", "<cmd>Obsidian tags<CR>", "Tags"),
+            U.PLMap("nt", "<cmd>Obsidian toc<CR>", "table of contents picker"),
+            U.PLMap("nq", "<cmd>Obsidian quick_switch<CR>", "quick switch"),
         }
     end,
     -- event = {
