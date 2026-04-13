@@ -17,24 +17,11 @@ alias dots="cd ~/.dotfiles"
 # don't use vim
 alias vim=nvim
 
-#lazygit
-alias lg=lazygit
-
 # gh dash
 alias dash='gh dash'
 
 #fxios testing
 alias fxtest=$HOME/Developer/fxios-ctl/.build/arm64-apple-macosx/debug/fxios
-
-# Updates
-sync() {
-  $HOME/.dotfiles/.meta/Scripts/machineSynchronize.sh "$@"
-}
-
-# Organize my Trove
-trove-org() {
-  "$HOME/.dotfiles/bin/.local/myScripts/trove-org.sh"
-}
 
 # Cheatsheet
 cheatsheet() {
