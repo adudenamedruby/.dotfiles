@@ -232,4 +232,31 @@ return {
             })
         end,
     },
+    {
+        "sainnhe/gruvbox-material",
+        lazy = true,
+        priority = 1000,
+        config = function()
+            vim.g.gruvbox_material_background = "hard"
+            vim.g.gruvbox_material_enable_bold = "1"
+        end,
+    },
+    {
+        "webhooked/kanso.nvim",
+        lazy = true,
+        priority = 1000,
+        config = function()
+            require("kanso").setup({
+                background = { -- map the value of 'background' option to a theme
+                    dark = "ink", -- try "zen", "mist" or "pearl" !
+                    light = "pearl", -- try "zen", "mist" or "ink" !
+                },
+            })
+        end,
+    },
+    {
+        "xero/miasma.nvim",
+        lazy = true,
+        priority = 1000,
+    },
 }

@@ -8,6 +8,9 @@ local colorschemes = {
     "mfd-amber",
     "mfd-flir-fusion",
     "mithrandir",
+    "kanso",
+    "gruvbox",
+    "miasma",
 }
 
 -- Map colorscheme names to their lazy.nvim plugin names
@@ -19,8 +22,10 @@ local scheme_to_plugin = {
     ["carbonfox"] = "nightfox.nvim",
     ["duskfox"] = "nightfox.nvim",
     ["mfd-amber"] = "mfd.nvim",
-    ["mfd-flir-fusion"] = "mfd.nvim",
     ["mithrandir"] = "mithrandir.nvim",
+    ["gruvbox"] = "gruvbox-material",
+    ["kanso"] = "kanso",
+    ["miasma"] = "miasma",
 }
 
 local function pick_new_scheme(old_scheme)
