@@ -337,6 +337,14 @@ default_browser="$(plutil -convert json "${HOME}/Library/Preferences/com.apple.L
 			<integer>2</integer>
 		</dict>
 		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>2632A583-2FC4-4B53-A86A-E1CB5393845F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
 			<key>config</key>
 			<dict>
 				<key>alfredfiltersresults</key>
@@ -386,14 +394,6 @@ default_browser="$(plutil -convert json "${HOME}/Library/Preferences/com.apple.L
 			<string>F237951A-300A-4DAC-A7AB-CC69BEF8CC93</string>
 			<key>version</key>
 			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.junction</string>
-			<key>uid</key>
-			<string>2632A583-2FC4-4B53-A86A-E1CB5393845F</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>type</key>

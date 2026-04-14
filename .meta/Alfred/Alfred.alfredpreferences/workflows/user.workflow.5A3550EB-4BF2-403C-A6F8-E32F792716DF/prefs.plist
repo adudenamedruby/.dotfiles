@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>bookmarks_keyword</key>
-	<string>}</string>
+	<string>@</string>
 	<key>history_keyword</key>
-	<string>}}</string>
+	<string>@-</string>
 	<key>showAllTags</key>
 	<true/>
 	<key>useURL</key>
