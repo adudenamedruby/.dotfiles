@@ -2,7 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>keyword</key>
-	<string>!y</string>
+	<key>bookmarks_keyword</key>
+	<string>}</string>
+	<key>history_keyword</key>
+	<string>}}</string>
+	<key>showAllTags</key>
+	<true/>
+	<key>useURL</key>
+	<false/>
 </dict>
 </plist>

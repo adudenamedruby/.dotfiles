@@ -79,7 +79,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>rust search</string>
+	<string>rust</string>
 	<key>objects</key>
 	<array>
 		<dict>

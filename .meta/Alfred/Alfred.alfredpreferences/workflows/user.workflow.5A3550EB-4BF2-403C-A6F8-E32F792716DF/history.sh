@@ -3,7 +3,7 @@
 # Automatically Get History Database for Default Profile
 case "${releaseChannel}" in
 	"zen")
-		readonly versionCode="278CDD2020B02885"
+		readonly versionCode="6ED35B3CA1B5D3AF"
 		;;
 	"zenTwilight")
 		readonly versionCode="9EBD2AC824310766"
