@@ -120,6 +120,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Search MANA for '...'</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>F329BCDD-5025-4025-A2B3-12E43A559233</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>browser</key>
 				<string></string>
 				<key>skipqueryencode</key>
@@ -135,25 +154,6 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>B4C1D9E5-7CD3-415F-88B7-62DD827B3D30</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>subtext</key>
-				<string></string>
-				<key>text</key>
-				<string>Search MANA for '...'</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>F329BCDD-5025-4025-A2B3-12E43A559233</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -184,7 +184,7 @@
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"title":"SSO","arg":"sso","subtitle":"Single Sign On"},{"title":"People","arg":"people","subtitle":"People Directory"},{"title":"ADP","arg":"adp","subtitle":"Payroll Information"},{"title":"WorkDay","arg":"workday","subtitle":"Open WorkDay"},{"title":"Account","arg":"account","subtitle":"Account Management Portal"},{"title":"Air Mozilla","arg":"air","subtitle":"Watch Mozilla content"},{"title":"Gear Store","arg":"gear","subtitle":"Buy fun Mozilla merch!"},{"title":"Mana","arg":"mana","subtitle":"Mozilla Internal Wiki"},{"title":"MANA Search","arg":"search","subtitle":"Do an advanced MANA search"},{"title":"Udemy","arg":"udemy","subtitle":"Learning is fun!"},{"title":"Service Now","arg":"service","subtitle":"For all your Mozilla needs"},{"title":"The Hub","arg":"hub","subtitle":"For all your gear needs"},{"title":"PTO","arg":"pto","subtitle":"Personal Time Off - Take a break!"},{"title":"discourse","arg":"discourse","subtitle":"Chat about stuff!"},{"title":"Element","arg":"element","subtitle":"Element board"},{"title":"Bitrise","arg":"bitrise","subtitle":"CI pipeline"},{"title":"Bugzilla","arg":"bugzilla","subtitle":"Report pesky bugs..."},{"title":"Matrix","arg":"matrix","subtitle":"Matrix chat"},{"title":"Moderator","arg":"moderator","subtitle":"Ask questions for events"},{"title":"Retrium","arg":"retrium","subtitle":"Retro moderating tool"},{"title":"Figma","arg":"figma","subtitle":"Figma design systems"},{"title":"Wiki","arg":"wiki","subtitle":"Mozilla Wiki"},{"title":"Sentry","arg":"sentry","subtitle":"Crash reporting dashboard"},{"title":"Looker","arg":"looker","subtitle":"Metrics interpretation"},{"title":"gleandict","arg":"gleandict","subtitle":"Glean Dictionary Alpha"},{"title":"CultureAmp","arg":"cultureamp","subtitle":"Culture Amp"},{"title":"greenhouse","arg":"greenhouse","subtitle":"Greenhouse interviewing center"},{"title":"Data Review","arg":"dataReview","subtitle":"mazilla\/data-review repo"},{"title":"Nimbus","arg":"experimenter","subtitle":"Experimenter: nimbus"},{"title":"SiQ","arg":"siq","subtitle":"Hotel Desking"},{"title":"Coffee Chat","arg":"chat","subtitle":""},{"title":"Pontoon","arg":"pontoon","subtitle":"Localization platform"},{"title":"Lattice","arg":"lattice","subtitle":"The new culture amp"}]</string>
+				<string>[{"title":"MANA Search","arg":"search","subtitle":"Do an advanced MANA search"},{"title":"Coffee Chat","arg":"chat","subtitle":""}]</string>
 				<key>keyword</key>
 				<string>moz</string>
 				<key>matchmode</key>

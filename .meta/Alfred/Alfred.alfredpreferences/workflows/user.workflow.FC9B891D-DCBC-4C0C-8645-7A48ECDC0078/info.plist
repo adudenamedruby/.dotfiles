@@ -125,6 +125,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Open a ticket...</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>5FD9ACBD-4685-42BF-A1B0-16A7882D745B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>browser</key>
 				<string></string>
 				<key>skipqueryencode</key>
@@ -146,21 +165,19 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
+				<key>matchmode</key>
 				<integer>0</integer>
-				<key>subtext</key>
+				<key>matchstring</key>
+				<string>FIXIOS-</string>
+				<key>replacestring</key>
 				<string></string>
-				<key>text</key>
-				<string>Open a ticket...</string>
-				<key>withspace</key>
-				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.utility.replace</string>
 			<key>uid</key>
-			<string>5FD9ACBD-4685-42BF-A1B0-16A7882D745B</string>
+			<string>0816FCDB-3399-4C41-92D9-ECA1254579ED</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -176,23 +193,6 @@
 			<string>alfred.workflow.utility.replace</string>
 			<key>uid</key>
 			<string>E2FAF062-0BE9-4CBF-A021-90B9C2A6B8E2</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>FIXIOS-</string>
-				<key>replacestring</key>
-				<string></string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.replace</string>
-			<key>uid</key>
-			<string>0816FCDB-3399-4C41-92D9-ECA1254579ED</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -252,7 +252,7 @@
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"title":"Sprint Board","arg":"sprint","subtitle":"Sprint board for current sprint"},{"title":"Ticket","arg":"ticket","subtitle":"Search for a specific ticket"},{"title":"Backlog","arg":"backlog","subtitle":"Launch the FxiOS Backlog"},{"title":"Technical Backlog","arg":"tech backlog","subtitle":""},{"title":"Epic Board","arg":"epics","subtitle":"Launch the FxiOS Epic Board"},{"title":"Search","arg":"search","subtitle":"Search the FXiOS project"}]</string>
+				<string>[{"title":"Ticket","arg":"ticket","subtitle":"Search for a specific ticket"},{"title":"Search","arg":"search","subtitle":"Search the FXiOS project"}]</string>
 				<key>keyword</key>
 				<string>jira</string>
 				<key>matchmode</key>
