@@ -10,6 +10,7 @@ local colorschemes = {
     "mfd-hud",
     "mfd-flir-fusion",
     "mfd-nerv",
+    "mithrandir",
 }
 
 local function pick_new_scheme(old_scheme)
