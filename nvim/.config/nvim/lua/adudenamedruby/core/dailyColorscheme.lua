@@ -6,6 +6,10 @@ local colorschemes = {
     "kanagawa",
     "carbonfox",
     "duskfox",
+    "mfd-amber",
+    "mfd-hud",
+    "mfd-flir-fusion",
+    "mfd-nerv",
 }
 
 local function pick_new_scheme(old_scheme)
