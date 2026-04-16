@@ -32,8 +32,14 @@ config.window_background_opacity = 0.9
 config.macos_window_background_blur = 30
 -- config.window_background_opacity = 1
 
-config.font = wezterm.font("FiraCode Nerd Font Mono")
-config.font_size = 16
+local username = os.getenv("USER")
+if username == "ruby-moz" then
+	config.font = wezterm.font("FixedsysExcelsior Nerd Font")
+	config.font_size = 18
+else
+	config.font = wezterm.font("FiraCode Nerd Font Mono")
+	config.font_size = 16
+end
 config.adjust_window_size_when_changing_font_size = false
 
 config.window_decorations = "RESIZE"
