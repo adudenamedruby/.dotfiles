@@ -1,6 +1,7 @@
 require("adudenamedruby.plugins.colorscheme")
 
 local colorschemes = {
+    "ember",
     "catppuccin",
     "tokyonight-moon",
     "kanagawa",
