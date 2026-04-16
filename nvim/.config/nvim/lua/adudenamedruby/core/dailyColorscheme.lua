@@ -1,5 +1,3 @@
-require("adudenamedruby.plugins.colorscheme")
-
 local colorschemes = {
     "ember",
     "catppuccin",
@@ -12,6 +10,21 @@ local colorschemes = {
     "mfd-flir-fusion",
     "mfd-nerv",
     "mithrandir",
+}
+
+-- Map colorscheme names to their lazy.nvim plugin names
+local scheme_to_plugin = {
+    ["ember"] = "ember",
+    ["catppuccin"] = "catppuccin",
+    ["tokyonight-moon"] = "tokyonight",
+    ["kanagawa"] = "kanagawa",
+    ["carbonfox"] = "nightfox.nvim",
+    ["duskfox"] = "nightfox.nvim",
+    ["mfd-amber"] = "mfd.nvim",
+    ["mfd-hud"] = "mfd.nvim",
+    ["mfd-flir-fusion"] = "mfd.nvim",
+    ["mfd-nerv"] = "mfd.nvim",
+    ["mithrandir"] = "mithrandir.nvim",
 }
 
 local function pick_new_scheme(old_scheme)
@@ -50,6 +63,12 @@ function M.set_daily_colorscheme()
         file = io.open(daily_file, "w")
         file:write(today .. "\n" .. chosen_scheme)
         file:close()
+    end
+
+    -- Load only the needed colorscheme plugin
+    local plugin_name = scheme_to_plugin[chosen_scheme]
+    if plugin_name then
+        require("lazy").load({ plugins = { plugin_name } })
     end
 
     vim.cmd("colorscheme " .. chosen_scheme)

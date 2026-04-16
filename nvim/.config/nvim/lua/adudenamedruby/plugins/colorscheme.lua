@@ -2,7 +2,7 @@ return {
     {
         "catppuccin/nvim",
         name = "catppuccin",
-        lazy = false,
+        lazy = true,
         priority = 1000,
         config = function()
             require("catppuccin").setup({
@@ -69,7 +69,7 @@ return {
     {
         "folke/tokyonight.nvim",
         name = "tokyonight",
-        lazy = false,
+        lazy = true,
         priority = 1000,
         config = function()
             require("tokyonight").setup({
@@ -124,7 +124,7 @@ return {
     {
         "rebelot/kanagawa.nvim",
         name = "kanagawa",
-        lazy = false,
+        lazy = true,
         priority = 1000,
         config = function()
             require("kanagawa").setup({
@@ -155,7 +155,7 @@ return {
     },
     {
         "EdenEast/nightfox.nvim",
-        lazy = false,
+        lazy = true,
         priority = 1000,
         config = function()
             require("nightfox").setup({
@@ -205,12 +205,12 @@ return {
     },
     {
         "kungfusheep/mfd.nvim",
-        lazy = false,
+        lazy = true,
         priority = 1000,
     },
     {
         "adudenamedruby/mithrandir.nvim",
-        lazy = false,
+        lazy = true,
         priority = 1000,
         opts = {
             transparent = false,
@@ -224,10 +224,11 @@ return {
     {
         "ember-theme/nvim",
         name = "ember",
+        lazy = true,
         priority = 1000,
         config = function()
             require("ember").setup({
-                variant = "ember", -- "ember" | "ember-soft" | "ember-light"
+                variant = "ember",
             })
         end,
     },
