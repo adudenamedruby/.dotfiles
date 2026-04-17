@@ -6,9 +6,7 @@ local colorschemes = {
     "carbonfox",
     "duskfox",
     "mfd-amber",
-    "mfd-hud",
     "mfd-flir-fusion",
-    "mfd-nerv",
     "mithrandir",
 }
 
@@ -21,9 +19,7 @@ local scheme_to_plugin = {
     ["carbonfox"] = "nightfox.nvim",
     ["duskfox"] = "nightfox.nvim",
     ["mfd-amber"] = "mfd.nvim",
-    ["mfd-hud"] = "mfd.nvim",
     ["mfd-flir-fusion"] = "mfd.nvim",
-    ["mfd-nerv"] = "mfd.nvim",
     ["mithrandir"] = "mithrandir.nvim",
 }
 
