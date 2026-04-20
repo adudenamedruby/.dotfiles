@@ -28,6 +28,7 @@ push = [
   "util", "exec", "--", "bash", "-euo", "pipefail", "-c", """
   remote="origin"
   ticket=""
+  describe=""
   mode="existing"
   pushToMain="no"
 
@@ -42,6 +43,10 @@ push = [
         ticket="$2"; mode="new"; shift 2 ;;
       --ticket=*)
         ticket="${1#*=}"; mode="new"; shift 1 ;;
+      -d|--describe)
+        describe="$2"; mode="new"; shift 2 ;;
+      --describe=*)
+        describe="${1#*=}"; mode="new"; shift 1 ;;
       -n|--new)
         mode="new"; shift 1 ;;
       -h|--help)
@@ -50,6 +55,7 @@ push = [
         echo "No flags: tug + push + track"
         echo "-n, --new       Create and push a new rgb/<random> bookmark."
         echo "-m, --main      Allow pushing to main (default: false)"
+        echo "-d, --describe S  Use S as the bookmark name instead of random (implies --new)"
         echo "-t, --ticket N  Use rgb/N-<random> as the bookmark name (implies --new)"
         echo "-r, --remote R  Remote name (default: origin)"
         exit 0 ;;
@@ -61,7 +67,15 @@ push = [
 
   # new mode
   if [[ "$mode" == "new" ]]; then
-    base="$(~/.local/myScripts/jj-random-branch)"
+    if [[ -n "$describe" ]]; then
+      if [[ ${#describe} -lt 3 || ${#describe} -gt 60 ]]; then
+        echo "Error: --describe must be between 3 and 60 characters (got ${#describe})." >&2
+        exit 1
+      fi
+      base="$describe"
+    else
+      base="$(~/.local/myScripts/jj-random-branch)"
+    fi
     if [[ -n "$ticket" ]]; then
       name="rgb/${ticket}-${base}"
     else

@@ -37,7 +37,6 @@ local THEMES = {
 	"Birds Of Paradise (Gogh)",
 	"Ocean (base16)",
 	"Tomorrow Night (Gogh)",
-	"Grayscale Dark (base16)",
 	"Soft Server (Gogh)",
 	"Fahrenheit",
 	"Batman",
