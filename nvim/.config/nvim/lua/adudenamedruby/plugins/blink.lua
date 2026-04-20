@@ -137,49 +137,6 @@ local function show_doc_floating(item)
     })
 end
 
--- Peekup-style bottom split (uncomment to use instead of floating window)
--- local function show_doc_split(item)
---     close_doc_window()
---
---     local lines = get_doc_lines(item)
---     if #lines == 0 then
---         vim.notify("No documentation available", vim.log.levels.INFO)
---         return
---     end
---
---     doc_buf_id = vim.api.nvim_create_buf(false, true)
---     vim.api.nvim_buf_set_lines(doc_buf_id, 0, -1, false, lines)
---     vim.bo[doc_buf_id].filetype = "markdown"
---     vim.bo[doc_buf_id].modifiable = false
---     vim.bo[doc_buf_id].bufhidden = "wipe"
---
---     -- Open a bottom split
---     local save_splitbelow = vim.o.splitbelow
---     vim.o.splitbelow = true
---     vim.cmd("botright " .. 15 .. "split")
---     vim.o.splitbelow = save_splitbelow
---
---     doc_win_id = vim.api.nvim_get_current_win()
---     vim.api.nvim_win_set_buf(doc_win_id, doc_buf_id)
---     vim.wo[doc_win_id].wrap = true
---     vim.wo[doc_win_id].linebreak = true
---     vim.wo[doc_win_id].textwidth = 100
---     vim.wo[doc_win_id].conceallevel = 2
---     vim.wo[doc_win_id].winfixheight = true
---
---     -- Return focus to the previous window
---     vim.cmd("wincmd p")
---
---     local augroup = vim.api.nvim_create_augroup("BlinkCustomDoc", { clear = true })
---     vim.api.nvim_create_autocmd({ "CursorMoved", "InsertLeave", "BufLeave" }, {
---         group = augroup,
---         callback = function()
---             close_doc_window()
---             vim.api.nvim_del_augroup_by_id(augroup)
---         end,
---     })
--- end
-
 local function doc_window_is_open()
     return doc_win_id and vim.api.nvim_win_is_valid(doc_win_id)
 end
