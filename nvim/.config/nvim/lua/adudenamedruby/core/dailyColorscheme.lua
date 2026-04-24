@@ -6,7 +6,6 @@ local colorschemes = {
     "carbonfox",
     "duskfox",
     "mfd-amber",
-    "mfd-flir-fusion",
     "mithrandir",
     "kanso",
     "gruvbox",
