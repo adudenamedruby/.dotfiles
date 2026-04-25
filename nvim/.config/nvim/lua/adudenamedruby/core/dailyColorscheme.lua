@@ -6,9 +6,8 @@ local colorschemes = {
     "carbonfox",
     "duskfox",
     "mfd-amber",
-    "mithrandir",
     "kanso",
-    "gruvbox",
+    "gruvbox-material",
     "miasma",
 }
 
@@ -21,7 +20,6 @@ local scheme_to_plugin = {
     ["carbonfox"] = "nightfox.nvim",
     ["duskfox"] = "nightfox.nvim",
     ["mfd-amber"] = "mfd.nvim",
-    ["mithrandir"] = "mithrandir.nvim",
     ["gruvbox"] = "gruvbox-material",
     ["kanso"] = "kanso",
     ["miasma"] = "miasma",

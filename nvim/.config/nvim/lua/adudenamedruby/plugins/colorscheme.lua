@@ -209,19 +209,6 @@ return {
         priority = 1000,
     },
     {
-        "adudenamedruby/mithrandir.nvim",
-        lazy = true,
-        priority = 1000,
-        opts = {
-            transparent = false,
-            italics = { comments = true, keywords = false, functions = false, variables = false },
-            plugins = { treesitter = true, lsp = true, telescope = true, cmp = true, gitsigns = true },
-        },
-        config = function(_, opts)
-            require("mithrandir").setup(opts)
-        end,
-    },
-    {
         "ember-theme/nvim",
         name = "ember",
         lazy = true,
