@@ -240,15 +240,53 @@ config.color_scheme = background.get_daily_theme()
 
 bar.apply_to_config(config, {
 	modules = {
-		workspaces = {
-			color = 1,
+		tabs = {
+			active_tab_fg = 4,
+			active_tab_bg = "transparent",
+			inactive_tab_fg = 6,
+			inactive_tab_bg = "transparent",
+			new_tab_fg = 2,
+			new_tab_bg = "transparent",
+		},
+		workspace = {
+			enabled = true,
+			icon = wezterm.nerdfonts.cod_window,
+			color = 4,
 		},
 		leader = {
-			icon = wezterm.nerdfonts.oct_rocket,
+			enabled = true,
 			color = 3,
+		},
+		zoom = {
+			enabled = false,
+			color = 4,
 		},
 		pane = {
 			enabled = false,
+		},
+		username = {
+			enabled = false,
+			color = 6,
+		},
+		hostname = {
+			enabled = true,
+			color = 8,
+		},
+		clock = {
+			enabled = false,
+			icon = wezterm.nerdfonts.md_calendar_clock,
+			format = "%H:%M",
+			color = 5,
+		},
+		cwd = {
+			enabled = false,
+			icon = wezterm.nerdfonts.oct_file_directory,
+			color = 7,
+		},
+		ssh = {
+			enabled = true,
+			icon = wezterm.nerdfonts.md_ssh,
+			color = 5,
 		},
 	},
 })
