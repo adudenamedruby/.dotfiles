@@ -20,50 +20,21 @@ local scheme_to_plugin = {
     ["carbonfox"] = "nightfox.nvim",
     ["duskfox"] = "nightfox.nvim",
     ["mfd-amber"] = "mfd.nvim",
-    ["gruvbox"] = "gruvbox-material",
-    ["kanso"] = "kanso",
-    ["miasma"] = "miasma",
+    ["gruvbox-material"] = "gruvbox-material",
+    ["kanso"] = "kanso.nvim",
+    ["miasma"] = "miasma.nvim",
 }
-
-local function pick_new_scheme(old_scheme)
-    local new_scheme = colorschemes[math.random(#colorschemes)]
-    while new_scheme == old_scheme do
-        new_scheme = colorschemes[math.random(#colorschemes)]
-    end
-    return new_scheme
-end
 
 local M = {}
 
 function M.set_daily_colorscheme()
-    -- Where to persist scheme & date info: ~/.cache/nvim/daily_colorscheme
-    local daily_file = vim.fn.stdpath("cache") .. "/daily_colorscheme"
-    local today = os.date("%Y-%m-%d")
-    local chosen_scheme = nil
+    -- Stable per-day index: epoch-day count at local midnight, modulo list size.
+    -- Increments by exactly 1 each local day, so themes cycle in list order.
+    local t = os.date("*t")
+    t.hour, t.min, t.sec = 0, 0, 0
+    local day_count = math.floor(os.time(t) / 86400)
+    local chosen_scheme = colorschemes[(day_count % #colorschemes) + 1]
 
-    local file = io.open(daily_file, "r")
-    if file then
-        local content = file:read("*all")
-        file:close()
-
-        local stored_date, stored_scheme = content:match("^(%d%d%d%d%-%d%d%-%d%d)\n(.*)$")
-
-        if stored_date == today then
-            chosen_scheme = stored_scheme
-        else
-            chosen_scheme = pick_new_scheme(stored_scheme)
-            file = io.open(daily_file, "w")
-            file:write(today .. "\n" .. chosen_scheme)
-            file:close()
-        end
-    else
-        chosen_scheme = pick_new_scheme(nil)
-        file = io.open(daily_file, "w")
-        file:write(today .. "\n" .. chosen_scheme)
-        file:close()
-    end
-
-    -- Load only the needed colorscheme plugin
     local plugin_name = scheme_to_plugin[chosen_scheme]
     if plugin_name then
         require("lazy").load({ plugins = { plugin_name } })
