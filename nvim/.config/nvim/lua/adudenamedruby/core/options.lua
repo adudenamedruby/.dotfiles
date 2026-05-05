@@ -66,10 +66,8 @@ local options = {
     -- other
     autochdir = false,
     breakindent = true,
-    clipboard = "unnamedplus", -- allows neovim to access the system clipboard
     cmdheight = 2, -- more space in the neovim command line for displaying messages
     colorcolumn = "90",
-    completeopt = { "menuone", "noselect" }, -- mostly just for cmp
     conceallevel = 2, -- so that `` is visible in markdown files
     fileencoding = "utf-8", -- the encoding written to a file
     foldenable = false,
