@@ -9,6 +9,7 @@ local colorschemes = {
     "kanso",
     "gruvbox-material",
     "miasma",
+    "thorn",
 }
 
 -- Map colorscheme names to their lazy.nvim plugin names
@@ -23,6 +24,7 @@ local scheme_to_plugin = {
     ["gruvbox-material"] = "gruvbox-material",
     ["kanso"] = "kanso.nvim",
     ["miasma"] = "miasma.nvim",
+    ["thorn"] = "thorn.nvim",
 }
 
 local M = {}

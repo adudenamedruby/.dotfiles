@@ -49,6 +49,7 @@
   "scratch-buf": { "branch": "main", "commit": "2927ec9ef6a24d9fa02420f3d6517c3b3309452b" },
   "smart-splits.nvim": { "branch": "master", "commit": "80be31a3d2e37d32bd37794da72a4f69fce7a85f" },
   "snacks.nvim": { "branch": "main", "commit": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e" },
+  "thorn.nvim": { "branch": "main", "commit": "a793d5026ae09a17da175c5d8bd884df18a4b9a1" },
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
   "tokyonight": { "branch": "main", "commit": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6" },
   "trouble.nvim": { "branch": "main", "commit": "bd67efe408d4816e25e8491cc5ad4088e708a69a" },

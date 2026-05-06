@@ -246,4 +246,10 @@ return {
         lazy = true,
         priority = 1000,
     },
+    {
+        "jpwol/thorn.nvim",
+        lazy = true,
+        priority = 1000,
+        opts = {},
+    },
 }
