@@ -2,7 +2,6 @@ local colorschemes = {
     "ember",
     "catppuccin",
     "tokyonight-moon",
-    "kanagawa",
     "carbonfox",
     "duskfox",
     "mfd-amber",
@@ -10,6 +9,7 @@ local colorschemes = {
     "gruvbox-material",
     "miasma",
     "thorn",
+    "kanagawa",
 }
 
 -- Map colorscheme names to their lazy.nvim plugin names
