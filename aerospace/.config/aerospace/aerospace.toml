@@ -361,6 +361,11 @@ run = 'move-node-to-workspace External'
 if.app-id = 'com.jetbrains.rustrover'
 run = 'move-node-to-workspace Hack'
 
+
+[[on-window-detected]]
+if.app-id = 'org.videolan.vlc'
+run = 'move-node-to-workspace Random'
+
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
 run = 'move-node-to-workspace Hack'
