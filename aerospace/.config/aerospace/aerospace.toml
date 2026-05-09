@@ -373,6 +373,11 @@ run = 'move-node-to-workspace Lightroom'
 if.app-id = 'com.apple.Photos'
 run = 'move-node-to-workspace Lightroom'
 
+
+[[on-window-detected]]
+if.app-id = 'com.adobe.Photoshop'
+run = 'move-node-to-workspace Affinity'
+
 [[on-window-detected]]
 if.app-id = 'org.racket-lang.DrRacket'
 run = 'move-node-to-workspace Random'
