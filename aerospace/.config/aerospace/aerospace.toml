@@ -302,6 +302,10 @@ if.app-id = 'com.apple.Notes'
 run = 'move-node-to-workspace Notes'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.Preview'
+run = 'move-node-to-workspace Notes'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.dt.Xcode'
 run = 'move-node-to-workspace Xcode'
 
