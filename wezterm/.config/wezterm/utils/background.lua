@@ -62,7 +62,6 @@ local THEMES = {
 	"Breath (Gogh)",
 	"Ashes (base16)",
 	"BlulocoDark",
-	"Green Screen (base16)",
 	"Tomorrow (dark) (terminal.sexy)",
 	"Mashup Colors (terminal.sexy)",
 	"Aardvark Blue",
