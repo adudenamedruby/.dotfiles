@@ -334,6 +334,10 @@ if.app-id = 'com.apple.iBooksX'
 run = 'move-node-to-workspace Books'
 
 [[on-window-detected]]
+if.app-id = 'net.kovidgoyal.calibre'
+run = 'move-node-to-workspace Books'
+
+[[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'move-node-to-workspace Chat'
 

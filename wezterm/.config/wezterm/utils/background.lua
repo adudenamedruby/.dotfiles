@@ -68,7 +68,7 @@ local THEMES = {
 	"Arcoiris",
 	"Aci (Gogh)",
 	"Matrix",
-	"Chiapre",
+	"Ciapre",
 	"Pnevma",
 	"3024 Night",
 	"Wryan",
