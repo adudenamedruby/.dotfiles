@@ -44,8 +44,8 @@
              ;:prog-left {:key :j}
              :arrows-and-edit-layer {:key :c}
              ; :symbols-layer {:key :right_command}
-             :numbers-layer {:key :x}
-             :window-layer {:key :v}}
+             :numbers-layer {:key :v}
+             :window-layer {:key :x}}
 
 ;; main contains multiple manipulators
  :main [;;{:des "..."                               ;; -> description
@@ -77,10 +77,10 @@
 
         {:des "Arrows layer" ;; only the right hand side
          :rules [:arrows-and-edit-layer;; Top row
-                 [:u :!SOleft_arrow]
-                 [:i :!Sdown_arrow]
-                 [:o :!Sup_arrow]
-                 [:p :!SOright_arrow]
+                 [:u :!Oleft_arrow]
+                 [:i :!Odown_arrow]
+                 [:o :!Oup_arrow]
+                 [:p :!Oright_arrow]
 
                  [:h :!Oleft_arrow]
                  [:j :left_arrow]
