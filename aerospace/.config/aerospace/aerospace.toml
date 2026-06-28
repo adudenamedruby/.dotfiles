@@ -302,6 +302,10 @@ if.app-id = 'com.apple.Notes'
 run = 'move-node-to-workspace Notes'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.Numbers'
+run = 'move-node-to-workspace Notes'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.Preview'
 run = 'move-node-to-workspace Notes'
 
@@ -367,6 +371,10 @@ run = 'move-node-to-workspace External'
 
 [[on-window-detected]]
 if.app-id = 'com.obsproject.obs-studio'
+run = 'move-node-to-workspace External'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.FaceTime'
 run = 'move-node-to-workspace External'
 
 [[on-window-detected]]
