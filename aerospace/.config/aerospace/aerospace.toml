@@ -326,8 +326,32 @@ if.app-id = 'com.algoriddim.djay-iphone-free'
 run = 'move-node-to-workspace Groove'
 
 [[on-window-detected]]
-if.app-id = 'com.valvesoftware.Steam'
+if.app-id = 'com.lumbeat.afrolatindrummachine'
 run = 'move-node-to-workspace Groove'
+
+[[on-window-detected]]
+if.app-id = 'com.lumbeat.braziliandrummachine'
+run = 'move-node-to-workspace Groove'
+
+[[on-window-detected]]
+if.app-id = 'com.lumbeat.FunkDrummer'
+run = 'move-node-to-workspace Groove'
+
+[[on-window-detected]]
+if.app-id = 'com.lumbeat.SoftDrummer'
+run = 'move-node-to-workspace Groove'
+
+[[on-window-detected]]
+if.app-id = 'com.massimobiolcati.irealbookmac'
+run = 'move-node-to-workspace Groove'
+
+[[on-window-detected]]
+if.app-id = 'com.lumbeat.mideastdrummer'
+run = 'move-node-to-workspace Groove'
+
+[[on-window-detected]]
+if.app-id = 'com.valvesoftware.Steam'
+run = 'move-node-to-workspace Random'
 
 [[on-window-detected]]
 if.app-id = 'com.seriflabs.affinityphoto2'
