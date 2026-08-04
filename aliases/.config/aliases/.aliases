@@ -20,6 +20,9 @@ alias vim=nvim
 # gh dash
 alias dash='gh dash'
 
+#flush DNS
+alias flushdns="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && echo 'DNS cache flushed'"
+
 #fxios testing
 alias fxtest=$HOME/Developer/fxios-ctl/.build/arm64-apple-macosx/debug/fxios
 
