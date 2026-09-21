@@ -352,6 +352,30 @@ if.app-id = 'com.lumbeat.mideastdrummer'
 run = 'move-node-to-workspace Groove'
 
 [[on-window-detected]]
+if.app-id = 'ukmusicapps.Quartet1'
+run = 'move-node-to-workspace Groove'
+
+[[on-window-detected]]
+if.app-id = 'ukmusicapps.Quartet2'
+run = 'move-node-to-workspace Groove'
+
+[[on-window-detected]]
+if.app-id = 'ukmusicapps.Quartet3'
+run = 'move-node-to-workspace Groove'
+
+[[on-window-detected]]
+if.app-id = 'ukmusicapps.Quartet4'
+run = 'move-node-to-workspace Groove'
+
+[[on-window-detected]]
+if.app-id = 'ukmusicapps.Quartet5'
+run = 'move-node-to-workspace Groove'
+
+[[on-window-detected]]
+if.app-id = 'ukmusicapps.Quartet6'
+run = 'move-node-to-workspace Groove'
+
+[[on-window-detected]]
 if.app-id = 'com.valvesoftware.Steam'
 run = 'move-node-to-workspace Random'
 
