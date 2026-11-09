@@ -316,6 +316,10 @@ if.app-id = 'com.apple.dt.Xcode'
 run = 'move-node-to-workspace Xcode'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.dt.Devices'
+run = 'move-node-to-workspace Xcode'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.iphonesimulator'
 run = 'move-node-to-workspace Xcode'
 

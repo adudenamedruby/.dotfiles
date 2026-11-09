@@ -1,0 +1,38 @@
+{
+  "fileVersion" : 1,
+  "recipe" : {
+    "background" : "gradient",
+    "colorScheme" : "dark",
+    "palette" : {
+      "colorOverrides" : {
+        "number" : {
+          "hue" : {
+            "radians" : 2.303834612632515
+          }
+        },
+        "preprocessor" : {
+          "hue" : {
+            "radians" : 0.5235987755982988
+          }
+        },
+        "string" : {
+          "hue" : {
+            "radians" : 1.0471975511965976
+          }
+        }
+      },
+      "primary" : {
+        "hue" : {
+          "intensity" : 0.6902939981177276,
+          "radians" : 5.288347633542818
+        }
+      },
+      "secondary" : {
+        "hue" : {
+          "intensity" : 0.3882480963381247,
+          "radians" : 4.60766922526503
+        }
+      }
+    }
+  }
+}
