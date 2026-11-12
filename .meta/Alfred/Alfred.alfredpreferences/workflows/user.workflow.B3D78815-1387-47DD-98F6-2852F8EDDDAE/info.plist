@@ -21,6 +21,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>C23DE40E-BC72-4756-AB76-B5C490295929</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F0B20344-6B06-4325-BD92-2302C7CE0AD9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>D3C7911A-8E03-48A9-83A1-973C22FB30BD</key>
 		<array>
 			<dict>
@@ -45,6 +58,48 @@
 	<string>Dance Classes</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>stageacademy</string>
+				<key>subtext</key>
+				<string>Learn to Speak</string>
+				<key>text</key>
+				<string>Stage Academy</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>C23DE40E-BC72-4756-AB76-B5C490295929</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string>com.apple.Safari</string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://stageacademy.mykajabi.com/library</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>F0B20344-6B06-4325-BD92-2302C7CE0AD9</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -148,6 +203,13 @@
 			<key>ypos</key>
 			<real>745</real>
 		</dict>
+		<key>C23DE40E-BC72-4756-AB76-B5C490295929</key>
+		<dict>
+			<key>xpos</key>
+			<real>85</real>
+			<key>ypos</key>
+			<real>490</real>
+		</dict>
 		<key>D3C7911A-8E03-48A9-83A1-973C22FB30BD</key>
 		<dict>
 			<key>xpos</key>
@@ -161,6 +223,13 @@
 			<real>295</real>
 			<key>ypos</key>
 			<real>620</real>
+		</dict>
+		<key>F0B20344-6B06-4325-BD92-2302C7CE0AD9</key>
+		<dict>
+			<key>xpos</key>
+			<real>300</real>
+			<key>ypos</key>
+			<real>495</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
