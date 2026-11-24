@@ -8,20 +8,7 @@
 	<string>Internet</string>
 	<key>connections</key>
 	<dict>
-		<key>3350E25D-8ACF-495E-9579-81101B25FF66</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>EB013586-59C9-4F1D-81B7-2D55FCCFFBD7</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>C23DE40E-BC72-4756-AB76-B5C490295929</key>
+		<key>4603F062-49F2-4030-89E5-F542BF6A3AC1</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -30,15 +17,41 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>sourceoutputuid</key>
+				<string>14BF19C7-4A46-4364-88D1-EC8B80A00183</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>EB013586-59C9-4F1D-81B7-2D55FCCFFBD7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>AA7AE02D-199F-4435-AD66-3CD199BF0036</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>5CA54E41-75F7-440B-8765-E17496C70579</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>564B51F5-3FA7-4A21-BD43-294CEEB69258</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
 		</array>
-		<key>D3C7911A-8E03-48A9-83A1-973C22FB30BD</key>
+		<key>DAA8C400-FE5C-4D15-B586-0A01FAFE4CE0</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>5CA54E41-75F7-440B-8765-E17496C70579</string>
+				<string>4603F062-49F2-4030-89E5-F542BF6A3AC1</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -61,21 +74,91 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>2</integer>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"imagefile":"6eaa796542da7f15b98218e9d81a1917e1b1cb36.png","title":"Dance Masterclass","arg":"ballet"},{"imagefile":"93d88480d77e4754436705a49bba7b5d71182209.png","title":"Steezy","arg":"steezy"},{"imagefile":"47dbc9fdfab9925e67bf84006b5546695abc61ae.png","title":"StageAcademy","arg":"voice"}]</string>
 				<key>keyword</key>
-				<string>stageacademy</string>
+				<string>&gt;&gt;</string>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>runningsubtext</key>
+				<string></string>
 				<key>subtext</key>
-				<string>Learn to Speak</string>
-				<key>text</key>
-				<string>Stage Academy</string>
+				<string></string>
+				<key>title</key>
+				<string>Websites</string>
 				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>DAA8C400-FE5C-4D15-B586-0A01FAFE4CE0</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>ballet</string>
+						<key>outputlabel</key>
+						<string>ballet</string>
+						<key>uid</key>
+						<string>AA7AE02D-199F-4435-AD66-3CD199BF0036</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>voice</string>
+						<key>outputlabel</key>
+						<string>voice</string>
+						<key>uid</key>
+						<string>14BF19C7-4A46-4364-88D1-EC8B80A00183</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>steezy</string>
+						<key>outputlabel</key>
+						<string>steezy</string>
+						<key>uid</key>
+						<string>564B51F5-3FA7-4A21-BD43-294CEEB69258</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
 				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
-			<string>C23DE40E-BC72-4756-AB76-B5C490295929</string>
+			<string>4603F062-49F2-4030-89E5-F542BF6A3AC1</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -103,27 +186,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>ballet</string>
-				<key>subtext</key>
-				<string>DANCE MASTERCLASS | Online Dance Classes from the World's Top Artists</string>
-				<key>text</key>
-				<string>Dance Masterclass</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>3350E25D-8ACF-495E-9579-81101B25FF66</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>browser</key>
 				<string>com.apple.Safari</string>
 				<key>skipqueryencode</key>
@@ -139,27 +201,6 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>EB013586-59C9-4F1D-81B7-2D55FCCFFBD7</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>steezy</string>
-				<key>subtext</key>
-				<string>Modern Dance Classes</string>
-				<key>text</key>
-				<string>STEEZY</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>D3C7911A-8E03-48A9-83A1-973C22FB30BD</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -189,12 +230,12 @@
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>3350E25D-8ACF-495E-9579-81101B25FF66</key>
+		<key>4603F062-49F2-4030-89E5-F542BF6A3AC1</key>
 		<dict>
 			<key>xpos</key>
-			<real>80</real>
+			<real>425</real>
 			<key>ypos</key>
-			<real>615</real>
+			<real>250</real>
 		</dict>
 		<key>5CA54E41-75F7-440B-8765-E17496C70579</key>
 		<dict>
@@ -203,19 +244,12 @@
 			<key>ypos</key>
 			<real>745</real>
 		</dict>
-		<key>C23DE40E-BC72-4756-AB76-B5C490295929</key>
+		<key>DAA8C400-FE5C-4D15-B586-0A01FAFE4CE0</key>
 		<dict>
 			<key>xpos</key>
-			<real>85</real>
+			<real>150</real>
 			<key>ypos</key>
-			<real>490</real>
-		</dict>
-		<key>D3C7911A-8E03-48A9-83A1-973C22FB30BD</key>
-		<dict>
-			<key>xpos</key>
-			<real>75</real>
-			<key>ypos</key>
-			<real>740</real>
+			<real>125</real>
 		</dict>
 		<key>EB013586-59C9-4F1D-81B7-2D55FCCFFBD7</key>
 		<dict>
@@ -227,9 +261,9 @@
 		<key>F0B20344-6B06-4325-BD92-2302C7CE0AD9</key>
 		<dict>
 			<key>xpos</key>
-			<real>300</real>
+			<real>620</real>
 			<key>ypos</key>
-			<real>495</real>
+			<real>435</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
